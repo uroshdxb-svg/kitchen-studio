@@ -12,6 +12,13 @@
     "test": "node tests/site.test.mjs"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2"
+    "@supabase/supabase-js": "^2",
+    "jspdf": "^2.5.1",
+    "pdfjs-dist": "^2.16.105",
+    "svg2pdf.js": "^2.2.4",
+    "three": "^0.128.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.138.0"
   }
 }
