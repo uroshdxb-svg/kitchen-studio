@@ -13,8 +13,5 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2"
-  },
-  "devDependencies": {
-    "wrangler": "^4.138.0"
   }
 }

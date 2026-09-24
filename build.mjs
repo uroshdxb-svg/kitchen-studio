@@ -28,9 +28,7 @@ if(mode==="artifact"){
   out("dist-standalone","Kitchen_Studio.html",html);
   console.log("dist-standalone/Kitchen_Studio.html",(html.length/1e6).toFixed(2),"MB");
 }else{
-  let fileCfg={};try{fileCfg=JSON.parse(read("site.config.json"));}catch(_){}
-  /* env vars win; site.config.json (public anon key only, never a secret) is the fallback so a Git-connected deploy needs no env setup */
-  const cfg={supabaseUrl:process.env.SUPABASE_URL||fileCfg.supabaseUrl||"",supabaseAnonKey:process.env.SUPABASE_ANON_KEY||fileCfg.supabaseAnonKey||"",siteUrl:process.env.SITE_URL||fileCfg.siteUrl||"",version:ver};
+  const cfg={supabaseUrl:process.env.SUPABASE_URL||"",supabaseAnonKey:process.env.SUPABASE_ANON_KEY||"",siteUrl:process.env.SITE_URL||"",version:ver};
   const D="dist";
   fs.rmSync(path.join(ROOT,D),{recursive:true,force:true});
   // app
