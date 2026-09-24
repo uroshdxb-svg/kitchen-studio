@@ -1,0 +1,6 @@
+node_modules/
+dist/
+dist-artifact/
+dist-standalone/
+.env
+public/shots/test-*.png

@@ -1,0 +1,406 @@
+<title>Kitchen Studio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script>try{var t=localStorage.getItem("ks.theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<style>
+:root{
+  --ground:#F2F4F7; --surface:#FFFFFF; --sunk:#E7EBF0; --ink:#17202A; --muted:#66727F; --line:#E1E6EC; --line2:#CBD3DC;
+  --steel:#AEBBC5; --steel-fill:#DDE4EA; --accent:#3B6CF6; --accent-ink:#FFFFFF; --accent-soft:#E8EEFF;
+  --primary:#F0602F; --primary-ink:#FFFFFF; --primary-soft:#FFEDE5;
+  --dim:#D9542A; --ok:#1E8A4F; --warn:#B8730A; --bad:#D63B3B; --top-fill:#F6EAC9; --grid:#DFE4EA;
+  --shadow:0 1px 2px rgba(23,32,42,.06),0 8px 24px rgba(23,32,42,.10); --shadow-lg:0 -2px 24px rgba(23,32,42,.14);
+  --r:14px; --rs:10px; --pill:999px;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif; --f-disp:var(--f-body);
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --top:56px; --tabbar:64px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1318; --surface:#171D24; --sunk:#10151B; --ink:#E7ECF1; --muted:#8E9AA7; --line:#26303A; --line2:#33404C;
+    --steel:#5F707C; --steel-fill:#2B3843; --accent:#8CA6FF; --accent-ink:#0B1230; --accent-soft:#1E2A52;
+    --primary:#FF7A4A; --primary-ink:#1A0E08; --primary-soft:#3A2218;
+    --dim:#FF8E63; --ok:#5FD093; --warn:#F0B354; --bad:#FF7B7B; --top-fill:#4A4126; --grid:#222C36;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.45); --shadow-lg:0 -2px 24px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1318; --surface:#171D24; --sunk:#10151B; --ink:#E7ECF1; --muted:#8E9AA7; --line:#26303A; --line2:#33404C;
+  --steel:#5F707C; --steel-fill:#2B3843; --accent:#8CA6FF; --accent-ink:#0B1230; --accent-soft:#1E2A52;
+  --primary:#FF7A4A; --primary-ink:#1A0E08; --primary-soft:#3A2218;
+  --dim:#FF8E63; --ok:#5FD093; --warn:#F0B354; --bad:#FF7B7B; --top-fill:#4A4126; --grid:#222C36;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.45); --shadow-lg:0 -2px 24px rgba(0,0,0,.5);
+}
+html{color-scheme:light dark}
+:root[data-theme="light"]{color-scheme:light}
+:root[data-theme="dark"]{color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.45;overflow:hidden;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none;padding:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ---------- app shell ---------- */
+.app{position:fixed;inset:0;padding-top:env(safe-area-inset-top,0px);display:grid;grid-template-rows:var(--top) minmax(0,1fr);grid-template-columns:1fr;background:var(--ground)}
+.top{display:flex;align-items:center;gap:10px;padding:0 12px;background:var(--surface);border-bottom:1px solid var(--line);z-index:5}
+.brand{display:flex;align-items:center;gap:8px;font-weight:800;letter-spacing:-.01em;font-size:16px;white-space:nowrap}
+.brand .mark{width:26px;height:26px;border-radius:8px;background:var(--primary);display:grid;place-items:center;color:var(--primary-ink);font-family:var(--f-mono);font-size:12px;font-weight:600}
+.brand span{display:none}
+@media (min-width:600px){.brand span{display:inline}}
+.top .grow{flex:1}
+.seg{display:inline-flex;background:var(--sunk);border-radius:var(--pill);padding:3px;gap:2px}
+.seg button{border-radius:var(--pill);padding:0 14px;height:32px;font-weight:700;font-size:13.5px;color:var(--muted);transition:background .15s,color .15s}
+.seg button[aria-pressed=true]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.iconbtn{width:36px;height:36px;border-radius:var(--pill);display:grid;place-items:center;color:var(--ink);background:transparent}
+.iconbtn:hover{background:var(--sunk)}
+.iconbtn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.save{font-family:var(--f-mono);font-size:11px;color:var(--muted);white-space:nowrap;display:none}
+@media (min-width:720px){.save{display:block}}
+select.mini{border:1px solid var(--line);background:var(--surface);border-radius:var(--pill);padding:0 30px 0 12px;height:32px;font-weight:600;font-size:13px;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2366727F' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.menu{position:absolute;right:12px;top:calc(var(--top) + 6px + env(safe-area-inset-top,0px));background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:6px;display:flex;flex-direction:column;min-width:220px;z-index:30}
+.menu button{text-align:left;padding:10px 12px;border-radius:var(--rs);font-weight:600;font-size:14px}
+.menu button:hover{background:var(--sunk)}
+.menu button.danger{color:var(--bad)}
+.menu-sep{height:1px;background:var(--line);margin:6px 4px}
+.menu-acct{padding:8px 12px 4px;font-size:12.5px;color:var(--muted);font-family:var(--f-mono);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dlg{border:0;border-radius:var(--r);background:var(--surface);color:var(--ink);padding:0;width:min(520px,calc(100vw - 24px));max-height:min(80vh,720px);box-shadow:var(--shadow-lg)}
+.dlg::backdrop{background:rgba(10,14,18,.45)}
+.dlg-head{display:flex;align-items:center;justify-content:space-between;padding:14px 12px 6px 20px}
+.dlg-head h2{margin:0;font-size:18px;font-weight:800;letter-spacing:-.01em;text-transform:none;color:var(--ink)}
+.dlg-body{padding:6px 20px 20px;display:flex;flex-direction:column;gap:12px;overflow:auto;max-height:calc(min(80vh,720px) - 60px)}
+.dlg-body p{margin:0;color:var(--muted);font-size:14px}
+.klist{display:flex;flex-direction:column;gap:6px}
+.krow{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--rs);background:var(--ground);cursor:pointer;border:1.5px solid transparent}
+.krow[aria-current=true]{border-color:var(--primary)}
+.krow .kname{font-weight:700;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.krow .kmeta{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);white-space:nowrap}
+.krow .kacts{display:flex;gap:2px}
+.krow .kacts button{width:32px;height:32px;border-radius:var(--pill);display:grid;place-items:center;color:var(--muted)}
+.krow .kacts button:hover{background:var(--surface);color:var(--ink)}
+.krow .kacts svg{width:16px;height:16px}
+.share-url{display:flex;gap:8px;align-items:center}
+.share-url input{flex:1;min-width:0;font-family:var(--f-mono);font-size:12.5px}
+.banner{position:fixed;left:50%;bottom:calc(var(--tabbar) + 12px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:35;background:var(--surface);color:var(--ink);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--r);padding:10px 12px 10px 14px;display:flex;gap:10px;align-items:center;max-width:calc(100% - 24px);font-size:13.5px}
+@media (min-width:1000px){:root:not([data-layout=phone]) .banner{left:auto;right:16px;bottom:16px;transform:none}}
+.menu-lbl{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:2px 12px 6px}
+.menu .seg.theme{display:flex;margin:0 6px 6px}
+.menu .seg.theme button{flex:1;text-align:center;padding:0 8px;height:32px;border-radius:var(--pill);font-weight:700;font-size:13px}
+.menu .seg.theme button[aria-pressed=true]{background:var(--surface);color:var(--ink)}
+
+/* ---------- stage ---------- */
+.stage{position:relative;min-height:0;overflow:hidden}
+.canvas{position:absolute;inset:0;overflow:auto;-webkit-overflow-scrolling:touch;display:flex;align-items:flex-start;justify-content:center;background:var(--ground)}
+.canvas svg{display:block;margin:auto;border-radius:var(--r)}
+.v3d{position:absolute;inset:0;line-height:0}
+.v3d canvas{display:block;touch-action:none;width:100%;height:100%}
+.joy{position:absolute;left:16px;bottom:calc(16px + var(--hudpad,0px));width:112px;height:112px;border-radius:50%;background:rgba(20,30,38,.35);border:2px solid rgba(255,255,255,.7);touch-action:none;display:flex;align-items:center;justify-content:center}
+.joy .nub{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.85);pointer-events:none}
+.no3d{padding:24px 16px;line-height:1.45;color:var(--muted);position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.it,.it *{touch-action:none}
+.it{cursor:grab;-webkit-user-select:none;user-select:none}
+.it:active{cursor:grabbing}
+.hud{position:absolute;left:12px;right:12px;top:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;pointer-events:none}
+.hud>*{pointer-events:auto}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:var(--pill);padding:6px 12px;font-family:var(--f-mono);font-size:11.5px;color:var(--muted);box-shadow:0 1px 2px rgba(0,0,0,.05);max-width:70vw;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.chip b{color:var(--ink);font-weight:500}.chip .bad{color:var(--bad)}
+.status span{display:inline}
+.status span:not(:first-child)::before{content:"·";margin:0 6px;color:var(--line2)}
+.zoom{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:var(--pill);box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.zoom button{width:36px;height:34px;font-size:18px;font-weight:600;color:var(--ink);border-radius:var(--pill)}
+.zoom button:hover{background:var(--sunk)}
+.fab{position:absolute;right:16px;bottom:calc(16px + var(--hudpad,0px));height:48px;padding:0 20px 0 16px;border-radius:var(--pill);background:var(--primary);color:var(--primary-ink);font-weight:800;font-size:15px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 18px rgba(240,96,47,.35);z-index:4}
+.fab svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round}
+.bar3d{position:absolute;left:12px;top:60px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;max-width:min(360px,calc(100% - 140px));z-index:3}
+.bar3d .row{display:flex;gap:8px}
+.bar3d .note{background:var(--surface);border:1px solid var(--line);border-radius:var(--rs);padding:6px 10px;font-size:12px;color:var(--muted);box-shadow:0 1px 2px rgba(0,0,0,.05)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--surface);border:1px solid var(--line2);border-radius:var(--pill);padding:0 16px;height:40px;font-weight:700;font-size:14px;white-space:nowrap;transition:background .15s,border-color .15s}
+.btn:hover{background:var(--sunk)}
+.btn.pri{background:var(--primary);border-color:var(--primary);color:var(--primary-ink)}
+.btn.pri:hover{filter:brightness(1.05)}
+.btn.sm{height:34px;padding:0 12px;font-size:13px}
+.btn.danger{color:var(--bad)}
+.btn[disabled]{opacity:.5;cursor:default}
+.btn[aria-pressed=true]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+
+/* inspector (selected item) */
+.selbar{position:absolute;left:12px;right:12px;bottom:calc(12px + var(--hudpad,0px));margin:0 auto;max-width:460px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:14px 16px;display:flex;flex-direction:column;gap:10px;z-index:6}
+@media (min-width:1000px){.selbar{left:16px;right:auto;width:380px}}
+.selbar .ttl{font-weight:800;font-size:15px}
+.selbar .meta{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);line-height:1.5}
+.tag{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;border-radius:var(--pill);background:var(--ink);color:var(--ground);font-family:var(--f-mono);font-size:12px;padding:0 7px;margin-right:8px;vertical-align:middle}
+.selbar .bar{gap:8px}
+
+/* ---------- panel (bottom sheet on phone, side panel on desktop) ---------- */
+.panel{position:absolute;left:0;right:0;bottom:0;top:auto;background:var(--surface);border-radius:20px 20px 0 0;box-shadow:var(--shadow-lg);display:flex;flex-direction:column;z-index:8;transform:translateY(calc(100% - var(--tabbar) - env(safe-area-inset-bottom,0px)));transition:transform .28s cubic-bezier(.2,.8,.2,1);height:min(88%,calc(100% - 8px));touch-action:none}
+.panel.half{transform:translateY(46%)}
+.panel.full{transform:translateY(0)}
+.panel .grab{height:18px;display:grid;place-items:center;flex:none}
+.panel .grab i{width:40px;height:5px;border-radius:3px;background:var(--line2)}
+.tabs{display:flex;gap:4px;padding:2px 8px 8px;overflow-x:auto;scrollbar-width:none;flex:none;height:calc(var(--tabbar) - 18px)}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:1 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:64px;padding:4px 10px;border-radius:var(--rs);color:var(--muted);font-weight:700;font-size:11.5px;letter-spacing:.01em;white-space:nowrap}
+.tabs button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tabs button[aria-selected=true]{color:var(--primary);background:var(--primary-soft)}
+.panel .body{flex:1;min-height:0;overflow:auto;-webkit-overflow-scrolling:touch;padding:4px 16px calc(24px + env(safe-area-inset-bottom,0px));touch-action:pan-y}
+@media (min-width:1000px){
+  :root:not([data-layout=phone]) .app{grid-template-columns:400px 1fr}
+  :root:not([data-layout=phone]) .top{grid-column:1/-1}
+  :root:not([data-layout=phone]) .panel{position:relative;grid-row:2;grid-column:1;transform:none!important;height:auto;min-height:0;overflow:hidden;border-radius:0;box-shadow:none;border-right:1px solid var(--line);touch-action:auto}
+  :root:not([data-layout=phone]) .panel .grab{display:none}
+  :root:not([data-layout=phone]) .tabs{height:auto;padding:12px 12px 6px;gap:6px}
+  :root:not([data-layout=phone]) .tabs button{flex:1 1 0;min-width:0;flex-direction:row;font-size:12.5px;padding:8px 4px;gap:5px}
+  :root:not([data-layout=phone]) .tabs button svg{width:18px;height:18px}
+  :root:not([data-layout=phone]) .stage{grid-row:2;grid-column:2}
+  :root:not([data-layout=phone]) .fab{display:none}
+}
+.pane{display:flex;flex-direction:column;gap:12px;padding-top:6px}
+h2{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:10px 0 0;font-weight:800}
+.fld{display:flex;flex-direction:column;gap:4px}
+.fld label,.lbl{font-size:12px;font-weight:700;color:var(--muted)}
+input[type=number],input[type=text],input[type=search],select,textarea{background:var(--ground);border:1px solid transparent;border-radius:var(--rs);padding:9px 12px;min-height:42px;width:100%;transition:border-color .15s,background .15s}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);background:var(--surface);outline:none}
+input[type=number]{font-family:var(--f-mono);font-size:14px}
+input[type=search]{padding-left:40px;min-height:48px;font-size:16px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2366727F' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-3.5-3.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:12px center;border-radius:var(--pill)}
+input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;height:16px;width:16px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2366727F' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E") center/contain no-repeat;cursor:pointer}
+input[type=range]{accent-color:var(--primary)}
+.bar{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:end}
+.chips{display:flex;flex-wrap:nowrap;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 0;margin:0 -16px;padding-inline:16px}
+.chips::-webkit-scrollbar{display:none}
+.chips.wrap{flex-wrap:wrap;margin:0;padding-inline:0;overflow:visible}
+.chip-t{flex:none;background:var(--ground);border:1px solid transparent;border-radius:var(--pill);padding:0 13px;height:34px;font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap}
+.chip-t[aria-pressed=true]{background:var(--ink);color:var(--ground)}
+.results{display:flex;flex-direction:column;gap:8px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;padding:12px 14px;border:1px solid var(--line);border-radius:var(--r);align-items:center;background:var(--surface)}
+.row .bm{font-weight:800;font-size:15px;line-height:1.25}
+.row .bm span{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;display:block;margin-bottom:2px}
+.row .nm{font-size:13px;color:var(--muted)}
+.row .dm{font-family:var(--f-mono);font-size:12px;display:flex;flex-wrap:wrap;gap:2px 10px;align-items:center;margin-top:4px}
+.row .acts{display:flex;flex-direction:column;gap:6px;align-items:center}
+.addbtn{width:40px;height:40px;border-radius:var(--pill);background:var(--primary);color:var(--primary-ink);display:grid;place-items:center;font-size:22px;font-weight:600;line-height:1}
+.pill{font-family:var(--f-mono);font-size:10.5px;border:1px solid currentColor;border-radius:var(--pill);padding:1px 7px;text-decoration:none}
+.pill.ok{color:var(--ok)} .pill.warn{color:var(--warn)} .pill.me{color:var(--accent)}
+.ut{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.empty{padding:16px 2px;color:var(--muted);display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.note{font-size:13.5px;color:var(--muted);max-width:62ch;margin:0}
+.note.warnbox{border-left:3px solid var(--warn);padding-left:10px;color:var(--ink)}
+#aiNotes{background:var(--ground);border-radius:var(--rs);padding:10px 12px}
+#aiNotes ul{margin:4px 0 0;padding-left:18px;color:var(--ink)}
+#aiNotes li{margin-bottom:4px}
+.checks{display:flex;flex-wrap:wrap;gap:6px 16px}
+.checks label{display:flex;gap:8px;align-items:center;font-size:14px;font-weight:600}
+.checks input[type=checkbox]{width:18px;height:18px;accent-color:var(--primary)}
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
+td.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;text-align:right}
+td.w{white-space:normal;min-width:180px}
+.totals{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+.totals div{background:var(--ground);border-radius:var(--rs);padding:10px 12px}
+.totals b{display:block;font-family:var(--f-mono);font-weight:500;font-size:20px}
+.toast{position:fixed;left:50%;top:calc(var(--top) + 12px + env(safe-area-inset-top,0px));transform:translateX(-50%);background:var(--ink);color:var(--ground);padding:10px 16px;border-radius:var(--pill);font-size:14px;font-weight:600;z-index:40;max-width:calc(100% - 32px);box-shadow:var(--shadow)}
+.backlink{align-self:flex-start;color:var(--accent);font-weight:700;font-size:14px;display:inline-flex;gap:4px;align-items:center}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step .n{flex:none;width:26px;height:26px;border-radius:var(--pill);background:var(--ink);color:var(--ground);font-family:var(--f-mono);font-size:12px;display:grid;place-items:center;margin-top:2px}
+.step>div{flex:1;display:flex;flex-direction:column;gap:8px}
+@media (max-width:999px){.stage{--sab:env(safe-area-inset-bottom,0px);--hudpad:calc(var(--tabbar) + env(safe-area-inset-bottom,0px))}.canvas{padding-bottom:var(--hudpad)}}
+:root[data-layout=phone] .stage{--sab:0px;--hudpad:var(--tabbar)}:root[data-layout=phone] .canvas{padding-bottom:var(--hudpad)}:root[data-layout=phone] .selbar{left:12px;right:12px;width:auto}
+@media (prefers-reduced-motion:reduce){.panel,.seg button{transition:none}}
+</style>
+
+<div class="app">
+  <header class="top">
+    <div class="brand"><div class="mark">KS</div><span>Kitchen Studio</span></div>
+    <div class="seg" role="group" aria-label="View">
+      <button id="vPlan" aria-pressed="true">Plan</button>
+      <button id="vElev" aria-pressed="false">Elevation</button>
+      <button id="v3dBtn" aria-pressed="false">3D</button>
+    </div>
+    <div id="wallFld" hidden><select id="wallSel" class="mini" aria-label="Wall"><option value="N">North wall</option><option value="S">South wall</option><option value="W">West wall</option><option value="E">East wall</option></select></div>
+    <div class="grow"></div>
+    <div class="save" id="saveState" aria-live="polite">Example layout</div>
+    <button class="iconbtn" id="kitchensBtn" aria-label="My kitchens" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5A1.5 1.5 0 0 1 4.5 6h4.2l1.8 2h9A1.5 1.5 0 0 1 21 9.5v8A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5z"/></svg></button>
+    <button class="iconbtn" id="menuBtn" aria-label="More" aria-expanded="false"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/></svg></button>
+    <div class="menu" id="menu" hidden>
+      <div class="menu-acct" id="acctRow" hidden></div>
+      <button id="mKitchens" hidden>My kitchens</button>
+      <button id="mShare" hidden>Share link</button>
+      <button id="mSignIn" hidden>Sign in to save online</button>
+      <div class="menu-sep" id="acctSep" hidden></div>
+      <button id="projSave">Save project file</button>
+      <button id="projOpen">Open project file</button>
+      <div class="menu-sep"></div>
+      <div class="menu-lbl">Appearance</div>
+      <div class="seg theme" id="themeSeg" role="radiogroup" aria-label="Appearance">
+        <button data-theme="system" aria-pressed="true">Auto</button>
+        <button data-theme="light" aria-pressed="false">Light</button>
+        <button data-theme="dark" aria-pressed="false">Dark</button>
+      </div>
+      <div class="menu-sep"></div>
+      <button id="clearAll" class="danger">Clear layout</button>
+      <input type="file" id="projFile" accept=".json,application/json" hidden>
+    </div>
+  </header>
+
+  <main class="stage" id="stage" aria-label="Drawing">
+    <div class="canvas" id="sheet"><svg id="svg" xmlns="http://www.w3.org/2000/svg"></svg></div>
+    <div id="v3d" class="v3d" hidden>
+      <canvas id="cv3d"></canvas>
+      <div class="joy" id="joy" hidden aria-label="Walk joystick"><div class="nub" id="joyNub"></div></div>
+      <div class="no3d" id="no3d" hidden>3D needs WebGL and the three.js library, and one of them didn't load in this browser. Plan and elevation still work.</div>
+    </div>
+    <div class="hud">
+      <div class="chip status" id="status"></div>
+      <div class="zoom" role="group" aria-label="Zoom"><button id="zOut" aria-label="Zoom out">−</button><button id="zIn" aria-label="Zoom in">+</button></div>
+    </div>
+    <div class="bar3d" id="bar3d" hidden><div class="row"><button class="btn pri sm" id="walkBtn" aria-pressed="false">Walk through</button><button class="btn sm" id="reset3d">Reset view</button></div><span class="note" id="hint3d">Drag to orbit, pinch or scroll to zoom, two fingers (or Shift-drag) to pan. Tap an item to select it.</span></div>
+    <button class="fab" id="fabAdd"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add</button>
+    <div class="selbar" id="selbar" hidden></div>
+  </main>
+
+  <aside class="panel" id="panel" aria-label="Library">
+    <div class="grab" id="grab"><i></i></div>
+    <nav class="tabs" role="tablist">
+      <button role="tab" id="t-room" aria-selected="false" data-tab="room"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 4l9 6.5V20H3z"/><path d="M9 20v-6h6v6"/></svg>Room</button>
+      <button role="tab" id="t-eq" aria-selected="true" data-tab="eq"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 11h18M8 15h3"/></svg>Equipment</button>
+      <button role="tab" id="t-ss" aria-selected="false" data-tab="ss"><svg viewBox="0 0 24 24"><path d="M3 8h18M5 8v12M19 8v12M8 14h8"/></svg>Stainless</button>
+      <button role="tab" id="t-ai" aria-selected="false" data-tab="ai"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9l4.2-1.4z"/><path d="M5 17l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg>AI design</button>
+      <button role="tab" id="t-sch" aria-selected="false" data-tab="sch"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h7M9 8h3"/></svg>Schedule</button>
+      <button role="tab" id="t-new" aria-selected="false" data-tab="new" hidden>New model</button>
+    </nav>
+    <div class="body" id="pbody">
+
+      <div class="pane" id="p-room" hidden>
+        <h2>Room size</h2>
+        <div class="grid2">
+          <div class="fld"><label for="roomW">Width</label><input id="roomW" type="number" min="2000" max="40000" step="100" inputmode="numeric"></div>
+          <div class="fld"><label for="roomD">Length</label><input id="roomD" type="number" min="2000" max="40000" step="100" inputmode="numeric"></div>
+          <div class="fld"><label for="roomH">Ceiling</label><input id="roomH" type="number" min="2200" max="6000" step="50" inputmode="numeric"></div>
+        </div>
+        <h2>Your floor plan</h2>
+        <div class="step"><div class="n">1</div><div>
+          <p class="note">Upload the landlord's drawing, an architect's PDF or a photo of a sketch. It sits under the grid so you can draw the real room over it.</p>
+          <div class="bar"><button class="btn pri" id="fpPick">Upload plan</button><input type="file" id="fpFile" accept="image/*,application/pdf,.pdf" hidden></div>
+          <div class="note" id="fpMsg" aria-live="polite"></div>
+        </div></div>
+        <div id="fpTools" class="pane" hidden>
+          <div class="bar"><div class="fld" style="flex:1 1 160px"><label for="fpOp">Plan visibility</label><input id="fpOp" type="range" min="0.1" max="1" step="0.05" value="0.55"></div>
+            <label class="checks"><span style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="fpShow" checked> Show plan</span></label><button class="btn sm danger" id="fpRemove">Remove</button></div>
+          <div class="step"><div class="n">2</div><div>
+            <div class="bar"><button class="btn" id="calBtn">Set scale</button><button class="btn" id="moveBtn" aria-pressed="false">Move plan image</button></div>
+            <div class="note" id="calHint" aria-live="polite"></div>
+            <div class="bar" id="calBox" hidden><div class="fld"><label for="calDist">Real distance A to B (mm)</label><input id="calDist" type="number" min="100" step="10" inputmode="numeric" style="width:160px"></div><button class="btn pri" id="calApply">Apply scale</button></div>
+            <div class="note" id="fpScaleNow"></div>
+          </div></div>
+        </div>
+        <div class="step"><div class="n">3</div><div>
+          <p class="note">Rooms are rarely a clean rectangle. Trace the inside corners and the planner uses that outline for the plan, the clash checks and the 3D walls.</p>
+          <div class="bar"><button class="btn" id="traceBtn">Trace the walls</button><button class="btn sm" id="traceUndo" hidden>Undo corner</button><button class="btn sm pri" id="traceDone" hidden>Finish</button><button class="btn sm" id="rectBtn" hidden>Back to a rectangle</button></div>
+          <label class="checks"><span style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="traceOrtho" checked> Keep walls at right angles</span></label>
+          <div class="note" id="traceHint" aria-live="polite"></div>
+        </div></div>
+        <div class="step"><div class="n">4</div><div>
+          <div class="bar"><div class="fld" style="flex:1 1 160px"><label for="archType">Doors, columns and services</label><select id="archType"></select></div><div class="fld" style="width:100px"><label for="archW">Width</label><input id="archW" type="number" value="900" step="50" min="150" inputmode="numeric"></div><button class="btn pri" id="archAdd">Add</button></div>
+          <p class="note">Doors and windows snap to the nearest wall. Equipment that blocks a door swing or sits outside the walls turns red.</p>
+        </div></div>
+      </div>
+
+      <div class="pane" id="p-eq">
+        <input id="q" type="search" placeholder="Search 400+ models: combi, Rational, fryer…" autocomplete="off" aria-label="Search brand, model or type">
+        <div class="chips" id="catChips"></div>
+        <label class="checks"><span style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="hideUS"> Hide US-spec models</span></label>
+        <div class="results" id="results"></div>
+        <button class="btn" id="goNewBtn">Add a model that's missing</button>
+      </div>
+
+      <div class="pane" id="p-ss" hidden>
+        <div class="fld"><label for="ssType">Module</label><select id="ssType"></select></div>
+        <div class="grid2">
+          <div class="fld"><label for="ssW">Width</label><input id="ssW" type="number" step="50" inputmode="numeric"></div>
+          <div class="fld"><label for="ssD">Depth</label><input id="ssD" type="number" step="50" inputmode="numeric"></div>
+          <div class="fld"><label for="ssH">Height</label><input id="ssH" type="number" step="10" inputmode="numeric"></div>
+          <div class="fld" id="ssZf"><label for="ssZ">Mounted at (underside)</label><input id="ssZ" type="number" step="50" inputmode="numeric"></div>
+        </div>
+        <div><div class="lbl">Standard widths</div><div class="chips" id="ssWChips"></div></div>
+        <div><div class="lbl">Standard depths</div><div class="chips" id="ssDChips"></div></div>
+        <div class="checks" id="ssOpts"></div>
+        <div class="fld"><label for="ssMat">Material</label>
+          <select id="ssMat"><option>AISI 304, 1.2 mm</option><option>AISI 304, 1.5 mm</option><option>AISI 316, 1.5 mm</option><option>AISI 430, 1.0 mm</option></select></div>
+        <p class="note" id="ssDesc"></p>
+        <button class="btn pri" id="ssAdd">Add to layout</button>
+      </div>
+
+      <div class="pane" id="p-new" hidden>
+        <button class="backlink" id="backToEq">← Back to equipment</button>
+        <p class="note">Can't find a model? Enter it here. Claude can look up its dimensions, or you can type them from the spec sheet. Saved models appear in search from then on.</p>
+        <div class="grid2">
+          <div class="fld"><label for="nBrand">Brand</label><input id="nBrand" type="text" placeholder="e.g. MKN" autocomplete="off"></div>
+          <div class="fld"><label for="nModel">Model</label><input id="nModel" type="text" placeholder="e.g. FlexiCombi 10.1" autocomplete="off"></div>
+        </div>
+        <button class="btn" id="nLookup">Look up dimensions with Claude</button>
+        <div class="note" id="nMsg" aria-live="polite"></div>
+        <div class="fld"><label for="nName">Description</label><input id="nName" type="text" autocomplete="off"></div>
+        <div class="grid2">
+          <div class="fld"><label for="nW">Width</label><input id="nW" type="number" min="50" step="1" inputmode="numeric"></div>
+          <div class="fld"><label for="nD">Depth</label><input id="nD" type="number" min="50" step="1" inputmode="numeric"></div>
+          <div class="fld"><label for="nH">Height</label><input id="nH" type="number" min="20" step="1" inputmode="numeric"></div>
+          <div class="fld"><label for="nKw">Load kW</label><input id="nKw" type="number" min="0" step="0.1" inputmode="decimal"></div>
+        </div>
+        <div class="grid2">
+          <div class="fld"><label for="nCat">Category</label><select id="nCat"></select></div>
+          <div class="fld"><label for="nMount">Sits</label><select id="nMount"><option value="floor">On the floor</option><option value="top">On a counter / stand</option></select></div>
+          <div class="fld"><label for="nPower">Energy</label><select id="nPower"><option>electric</option><option>gas</option><option>charcoal</option><option>none</option></select></div>
+          <div class="fld"><label for="nElec">Electrical</label><input id="nElec" type="text" placeholder="400V 3N 50Hz" autocomplete="off"></div>
+        </div>
+        <div class="checks"><label><input type="checkbox" id="nWater"> Water connection</label><label><input type="checkbox" id="nDrain"> Drain</label></div>
+        <div class="bar"><button class="btn pri" id="nSave">Save and add</button><button class="btn" id="nSaveOnly">Save only</button></div>
+      </div>
+
+      <div class="pane" id="p-ai" hidden>
+        <h2>Start from a template</h2>
+        <div class="bar"><div class="fld" style="flex:1 1 200px"><label for="tplSel">Kitchen type</label><select id="tplSel"></select></div><button class="btn pri" id="tplLoad">Load</button></div>
+        <p class="note">A template swaps in a typical equipment list for that kitchen type and arranges it. Undo brings your layout back.</p>
+        <h2>Arrange</h2>
+        <div id="aiBriefBox" hidden class="pane">
+          <div class="fld"><label for="aiText">Describe the kitchen</label>
+            <textarea id="aiText" rows="4" placeholder="e.g. Burger and fried chicken cloud kitchen, 250 orders a day, 4 cooks, delivery only. Needs a lot of cold storage."></textarea></div>
+          <button class="btn pri" id="aiBrief">Choose equipment and lay it out</button>
+          <p class="note">Claude picks models from the catalogue and the stainless you'd need, then the layout rules place them. This replaces the current layout. You can undo it.</p>
+        </div>
+        <p class="note" id="aiNoBrief">Add the equipment you want, then let the planner arrange it. Describing a kitchen in words works on the published page inside Claude, not in the offline file.</p>
+        <div class="bar">
+          <div class="fld" style="width:120px"><label for="aiAisle">Aisle width</label><input id="aiAisle" type="number" min="900" max="2000" step="50" value="1200" inputmode="numeric"></div>
+          <button class="btn pri" id="aiArrange">Arrange the plan</button>
+          <button class="btn" id="aiUndo" hidden>Undo</button>
+        </div>
+        <div class="bar" id="aiTrimBar" hidden><button class="btn" id="aiTrim">Remove what didn't fit</button><span class="note" id="aiTrimTxt"></span></div>
+        <div class="note" id="aiNotes">The planner puts the cooking line on the longest wall under a hood, a pass table in front of it, cold storage and warewashing on the side walls, prep and sinks opposite, and countertop machines onto tables. It keeps 900 mm clear in front of every unit.</div>
+      </div>
+
+      <div class="pane" id="p-sch" hidden>
+        <div class="totals" id="totals"></div>
+        <h2>Equipment</h2>
+        <div class="tblwrap" id="schEq"></div>
+        <h2>Stainless fabrication</h2>
+        <div class="tblwrap" id="schSs"></div>
+        <h2>Drawing set</h2>
+        <div class="grid2"><div class="fld"><label for="pdfProject">Project name</label><input id="pdfProject" type="text" placeholder="e.g. Burger cloud kitchen, Riyadh" autocomplete="off"></div>
+          <div class="fld"><label for="pdfBy">Drawn by</label><input id="pdfBy" type="text" autocomplete="off"></div>
+          <div class="fld"><label for="pdfPaper">Paper</label><select id="pdfPaper"><option value="a3">A3 landscape</option><option value="a4">A4 landscape</option></select></div></div>
+        <div class="bar"><button class="btn pri" id="expPdf">Export PDF drawing set</button><button class="btn" id="expCsv">Schedule CSV</button><button class="btn" id="expSvg">Plan SVG</button></div>
+        <p class="note">The PDF is drawn to scale with a title block: equipment plan, utilities plan, four wall elevations and the schedules. Print at 100% to keep the scale.</p>
+        <p class="note">Catalogue dimensions were read from manufacturer or dealer spec pages (linked on each row). Confirm against the current spec sheet before ordering or fabricating.</p>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="toast" id="toast" hidden></div>
+<dialog id="dlg" class="dlg">
+  <div class="dlg-head"><h2 id="dlgTitle">Sign in</h2><button class="iconbtn" id="dlgClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div id="dlgBody" class="dlg-body"></div>
+</dialog>
+<div class="banner" id="banner" hidden></div>

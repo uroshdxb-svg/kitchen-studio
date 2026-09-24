@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Kitchen Studio — Commercial kitchen design for operators</title>
+<meta name="description" content="Design your commercial kitchen yourself. Real equipment, real dimensions, drawings your contractor can build from. Free while in early access.">
+<meta property="og:title" content="Kitchen Studio — Vibe your own kitchen">
+<meta property="og:description" content="Lay out your commercial kitchen with real equipment in an afternoon and hand your contractor a drawing set. No consultant, no CAD.">
+<meta property="og:image" content="/shots/og.png">
+<meta name="theme-color" content="#F0602F">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script>window.KS_CONFIG=__KS_CONFIG__;</script>
+<style>
+:root{--ground:#F2F4F7;--surface:#FFFFFF;--sunk:#E7EBF0;--ink:#17202A;--muted:#66727F;--line:#E1E6EC;--primary:#F0602F;--primary-ink:#FFFFFF;--primary-soft:#FFEDE5;--accent:#3B6CF6;--r:14px;--pill:999px;
+  --shadow:0 1px 2px rgba(23,32,42,.06),0 12px 32px rgba(23,32,42,.10);--f:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--ground:#0E1318;--surface:#171D24;--sunk:#10151B;--ink:#E7ECF1;--muted:#8E9AA7;--line:#26303A;--primary:#FF7A4A;--primary-ink:#1A0E08;--primary-soft:#3A2218;--accent:#8CA6FF;--shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.45)}}
+:root[data-theme=dark]{--ground:#0E1318;--surface:#171D24;--sunk:#10151B;--ink:#E7ECF1;--muted:#8E9AA7;--line:#26303A;--primary:#FF7A4A;--primary-ink:#1A0E08;--primary-soft:#3A2218;--accent:#8CA6FF;--shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.45)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.01em;text-decoration:none}
+.mark{width:32px;height:32px;border-radius:10px;background:var(--primary);color:var(--primary-ink);display:grid;place-items:center;font-family:var(--mono);font-size:14px;font-weight:600}
+.brand small{display:block;font-weight:600;font-size:12px;color:var(--muted);letter-spacing:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:var(--pill);padding:0 22px;height:48px;font:inherit;font-weight:700;font-size:16px;cursor:pointer;text-decoration:none;background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.06);white-space:nowrap}
+.btn.pri{background:var(--primary);color:var(--primary-ink)}
+.btn.sm{height:40px;padding:0 16px;font-size:14.5px}
+.hero{padding:40px 0 24px;display:grid;gap:28px;align-items:center}
+@media (min-width:900px){.hero{grid-template-columns:1.05fr 1fr;padding:56px 0 40px}}
+h1{font-size:clamp(34px,5.6vw,58px);line-height:1.02;letter-spacing:-.03em;margin:0 0 16px;font-weight:800}
+h1 em{font-style:normal;color:var(--primary)}
+.lead{font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:52ch;margin:0 0 24px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.cta .note{font-size:13px;color:var(--muted);flex-basis:100%;margin-top:4px}
+.phone{position:relative;justify-self:center;width:min(330px,80vw);aspect-ratio:9/19.2;border-radius:38px;background:var(--ink);padding:10px;box-shadow:var(--shadow)}
+.phone img{width:100%;height:100%;object-fit:cover;border-radius:30px;display:block;background:var(--sunk)}
+.tag{position:absolute;left:-14px;bottom:60px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;font-family:var(--mono);font-size:12px;box-shadow:var(--shadow);line-height:1.35}
+.tag b{color:var(--primary);font-weight:500}
+section{padding:36px 0}
+h2{font-size:clamp(26px,3.4vw,38px);letter-spacing:-.025em;line-height:1.08;margin:0 0 10px;font-weight:800}
+.sub{color:var(--muted);max-width:60ch;margin:0 0 28px}
+.claims{display:grid;gap:14px}
+@media (min-width:700px){.claims{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1000px){.claims{grid-template-columns:repeat(3,1fr)}}
+.claim{background:var(--surface);border-radius:var(--r);padding:20px 20px 18px;box-shadow:0 1px 2px rgba(0,0,0,.05);border:1px solid var(--line)}
+.claim .k{font-family:var(--mono);font-size:12px;color:var(--primary);margin-bottom:8px}
+.claim h3{margin:0 0 8px;font-size:18px;letter-spacing:-.01em}
+.claim p{margin:0;color:var(--muted);font-size:15px}
+.shots{display:grid;gap:14px}
+@media (min-width:800px){.shots{grid-template-columns:1.4fr 1fr}}
+.shot{border-radius:var(--r);overflow:hidden;border:2px solid var(--primary);background:var(--surface);box-shadow:var(--shadow)}
+.shot img{display:block;width:100%;height:auto}
+.shot figcaption{font-family:var(--mono);font-size:12px;color:var(--muted);padding:8px 12px}
+.who{display:grid;gap:14px}
+@media (min-width:800px){.who{grid-template-columns:repeat(3,1fr)}}
+.who div{background:var(--sunk);border-radius:var(--r);padding:18px}
+.who h3{margin:0 0 6px;font-size:17px}.who p{margin:0;color:var(--muted);font-size:15px}
+.wait{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px;box-shadow:var(--shadow)}
+.wait form{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.wait input{flex:1 1 240px;height:48px;border-radius:var(--pill);border:1.5px solid var(--line);background:var(--ground);color:var(--ink);padding:0 18px;font:inherit;font-size:16px}
+.wait input:focus{outline:2px solid var(--accent);border-color:transparent}
+.wait .msg{font-size:14px;color:var(--muted);margin:10px 0 0}
+.honest{font-size:14px;color:var(--muted);max-width:70ch}
+footer{padding:28px 0 48px;color:var(--muted);font-size:13.5px;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;border-top:1px solid var(--line);margin-top:20px}
+footer a{text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="/"><span class="mark">KS</span><span>Kitchen Studio<small>Commercial kitchen design for operators</small></span></a>
+    <a class="btn sm pri" href="/app/">Open the studio</a>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>Design your commercial kitchen <em>yourself.</em></h1>
+      <p class="lead">Lay out your kitchen with real equipment at real sizes in an afternoon, check it in 3D, and hand your contractor a to-scale drawing set. No consultant. No CAD. Works on your phone, in the empty room.</p>
+      <div class="cta">
+        <a class="btn pri" href="/app/">Start a kitchen, it's free</a>
+        <a class="btn" href="#how">See how it works</a>
+        <span class="note">Free during early access. Nothing to install; your work saves in the browser and, when you sign in, to your account.</span>
+      </div>
+    </div>
+    <div class="phone"><img src="/shots/plan-phone.png" alt="Kitchen Studio plan view on a phone: a 9 by 6 metre kitchen with a cooking line, pass and dish area" width="330" height="704">
+      <div class="tag">Rational iCombi Pro 10-1/1 E<br><b>850 × 842 × 1014 mm · 18.9 kW · water · drain</b></div></div>
+  </section>
+
+  <section id="how">
+    <h2>Five things it does that a sketch can't</h2>
+    <p class="sub">Every unit on the plan is a real model with published dimensions, power, water and drain. That is what turns a picture into something a contractor can build.</p>
+    <div class="claims">
+      <div class="claim"><div class="k">01 · Real equipment</div><h3>400+ verified models</h3><p>Combi ovens, fryers, fridges, dishwashers, ice machines and more from the brands you'd actually buy. Tap one and the spec card opens. A missing model gets added from its spec sheet.</p></div>
+      <div class="claim"><div class="k">02 · Stainless you can spec</div><h3>Tables, sinks, hoods, shelves</h3><p>Fabricated modules sized in 50 mm steps with the options a fabricator needs: upstands, undershelves, pre-rinse, heat lamps. They go straight into the schedule.</p></div>
+      <div class="claim"><div class="k">03 · Plan, elevation, 3D, walkthrough</div><h3>See the mistake before the slab</h3><p>The fridge door that hits the pass, the hood that doesn't cover the line, the dishwasher with no landing space. Walk through the kitchen at eye height before it exists.</p></div>
+      <div class="claim"><div class="k">04 · A drawing set</div><h3>What you hand the contractor</h3><p>To-scale PDF: floor plan, four elevations, equipment schedule with electrical loads, and a utilities plan marking every power, water and drain point.</p></div>
+      <div class="claim"><div class="k">05 · Starts from your room</div><h3>Photo of the floor plan in</h3><p>Upload the landlord's plan or a photo, set the scale from one known distance, trace the walls. Doors and columns block where things can go.</p></div>
+      <div class="claim"><div class="k">+ AI first draft</div><h3>Describe it, get a layout</h3><p>"Burger cloud kitchen, 250 orders a day, four cooks." It picks equipment from the catalogue and lays it out to fit your room. You decide what stays.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="shots">
+      <figure class="shot" style="margin:0"><img src="/shots/plan-desktop.png" alt="Plan view on a laptop with the equipment panel open" width="1280" height="900"><figcaption>Plan view with real symbols, clearances and the equipment panel</figcaption></figure>
+      <figure class="shot" style="margin:0"><img src="/shots/3d.png" alt="3D view of the same kitchen" width="800" height="900"><figcaption>The same kitchen in 3D, one tap away</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>Built by a chef who has opened kitchens, for the people about to open one</h2>
+    <p class="sub">Not a CAD tool, not a residential planner, not an equipment shop. A design tool for the person who signs the equipment order.</p>
+    <div class="who">
+      <div><h3>Opening your first place</h3><p>A room, a menu, a budget and about 90 days. Get a layout you trust before you talk to a dealer.</p></div>
+      <div><h3>Adding a cloud kitchen unit</h3><p>Fit a 250-order-a-day line into 40 m² and know where every drain goes before the fit-out starts.</p></div>
+      <div><h3>Rolling out the next site</h3><p>Start from your last kitchen, drop it into the new room, fix what's different, export the set.</p></div>
+    </div>
+  </section>
+
+  <section id="waitlist">
+    <div class="wait">
+      <h2 style="font-size:26px">Get early access updates</h2>
+      <p class="sub" style="margin-bottom:0">One email when something meaningful ships: shared links, templates, the catalogue growing. No newsletter.</p>
+      <form id="wlForm" hidden><input id="wlEmail" type="email" required placeholder="you@restaurant.com" autocomplete="email" inputmode="email" aria-label="Email"><button class="btn pri" type="submit" id="wlBtn">Keep me posted</button></form>
+      <p class="msg" id="wlMsg">Follow along on Instagram, TikTok or YouTube: search for Kitchen Studio, or open the studio and start drawing.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="honest">Kitchen Studio helps you plan; it does not replace an architect, an engineer or MEP drawings. Equipment dimensions come from manufacturers' published specification sheets and must be confirmed with your supplier before ordering. Brand and model names are used for identification only and imply no endorsement. AI-generated layouts are a first draft for a human to check.</p>
+  </section>
+
+  <footer>
+    <span>Kitchen Studio · Vibe your own kitchen.</span>
+    <span><a href="/app/">Open the studio</a></span>
+  </footer>
+</div>
+<script src="/app/vendor/supabase.js" defer></script>
+<script src="/app/cloud.js" defer></script>
+<script>
+addEventListener("DOMContentLoaded",()=>{
+  const be=window.KS_backend;if(!be)return;
+  const f=document.getElementById("wlForm"),m=document.getElementById("wlMsg"),b=document.getElementById("wlBtn");f.hidden=false;m.textContent="";
+  f.addEventListener("submit",async e=>{e.preventDefault();const em=document.getElementById("wlEmail").value.trim();b.disabled=true;
+    try{await be.waitlist(em,"landing");m.textContent="You're on the list. Meanwhile, the studio is open: start a kitchen.";f.hidden=true;}
+    catch(err){m.textContent=/duplicate|unique/i.test(err.message||"")?"You're already on the list.":"That didn't go through. Try again in a moment.";b.disabled=false;}});
+});
+</script>
+</body>
+</html>
