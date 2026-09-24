@@ -1,0 +1,9 @@
+{
+  // Cloudflare Workers config: serves dist/ as static assets, worker.js handles the share-link and /app rewrites.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "kitchen-studio",
+  "main": "worker.js",
+  "compatibility_date": "2025-06-01",
+  "assets": { "directory": "./dist", "binding": "ASSETS", "html_handling": "auto-trailing-slash" },
+  "observability": { "enabled": true }
+}

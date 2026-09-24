@@ -31,10 +31,12 @@ Environment variables read at build time (all optional; without them the app run
 
 ## Deploy (once)
 
-1. **Supabase**: create a project. Open SQL Editor, paste `supabase/migrations/0001_init.sql`, Run. Authentication → URL Configuration: set Site URL to the site and add `https://<site>/app/` (and the `*.pages.dev` preview URL) to Redirect URLs. Email sign-in is on by default; enable Google under Providers if wanted.
-2. **Cloudflare Pages**: Workers & Pages → Create → Pages → Connect to Git → this repo. Build command `npm run build`, output directory `dist`. Add the three environment variables above. Every push to `main` deploys.
-3. **Domain**: Pages → Custom domains → add it. Cloudflare handles DNS and HTTPS.
+1. **Supabase**: create a project. Open SQL Editor, paste `supabase/migrations/0001_init.sql`, Run. Put the Project URL and the `anon public` key into `site.config.json` (they are public by design; row-level security does the protecting). Authentication → URL Configuration: set Site URL to the site and add `https://<site>/app/` to Redirect URLs. Email sign-in is on by default; enable Google under Providers if wanted.
+2. **Cloudflare (Workers, connected to Git)**: Workers & Pages → Create → Import a repository → this repo. Build command `npm run build`, deploy command `npx wrangler deploy` (the defaults). No variables needed. Every push to `main` builds and deploys; the site is served from `dist/` as static assets and `worker.js` maps `/k/<id>` and `/app` to the app page. The first deploy prints the `*.workers.dev` address.
+3. **Domain**: the Worker → Settings → Domains & Routes → add a custom domain. Cloudflare handles DNS and HTTPS.
 4. **AI (optional)**: needs an Anthropic API key. `npm i -g supabase && supabase login && supabase link --project-ref <ref>`, then `supabase secrets set ANTHROPIC_API_KEY=sk-ant-...` and `supabase functions deploy ai`. Optional secrets: `AI_MODEL` (default `claude-sonnet-4-5`), `AI_DAILY_LIMIT` (default 40 calls per user per day). Until this is done, the AI brief and model lookup show "didn't work" and everything else runs.
+
+Local preview of the deployed shape: `npm run build && npx wrangler dev`.
 
 ## How it fits together
 
