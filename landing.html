@@ -63,6 +63,11 @@ h2{font-size:clamp(26px,3.4vw,38px);letter-spacing:-.025em;line-height:1.08;marg
 .wait input{flex:1 1 240px;height:48px;border-radius:var(--pill);border:1.5px solid var(--line);background:var(--ground);color:var(--ink);padding:0 18px;font:inherit;font-size:16px}
 .wait input:focus{outline:2px solid var(--accent);border-color:transparent}
 .wait .msg{font-size:14px;color:var(--muted);margin:10px 0 0}
+.demo{margin:0;border-radius:16px;overflow:hidden;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
+.demo .bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--line)}
+.demo .bar i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.demo .bar span{margin-left:10px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.demo video{display:block;width:100%;height:auto;aspect-ratio:16/10;background:var(--sunk)}
 .honest{font-size:14px;color:var(--muted);max-width:70ch}
 footer{padding:28px 0 48px;color:var(--muted);font-size:13.5px;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;border-top:1px solid var(--line);margin-top:20px}
 footer a{text-decoration:none}
@@ -81,12 +86,24 @@ footer a{text-decoration:none}
       <p class="lead">Lay out your kitchen with real equipment at real sizes in an afternoon, check it in 3D, and hand your contractor a to-scale drawing set. No consultant. No CAD. Works on your phone, in the empty room.</p>
       <div class="cta">
         <a class="btn pri" href="/app/">Start a kitchen, it's free</a>
-        <a class="btn" href="#how">See how it works</a>
+        <a class="btn" href="#demo">Watch the 1-minute demo</a>
         <span class="note">Free during early access. Nothing to install; your work saves in the browser and, when you sign in, to your account.</span>
       </div>
     </div>
     <div class="phone"><img src="/shots/plan-phone.png" alt="Kitchen Studio plan view on a phone: a 9 by 6 metre kitchen with a cooking line, pass and dish area" width="330" height="704">
       <div class="tag">Rational iCombi Pro 10-1/1 E<br><b>850 × 842 × 1014 mm · 18.9 kW · water · drain</b></div></div>
+  </section>
+
+  <section id="demo">
+    <h2>See it work, start to finish</h2>
+    <p class="sub">An empty 7 × 5 m room to a drawing set in under a minute: real equipment, stainless, an AI first layout, elevations, 3D and a walkthrough. Recorded in the real app, nothing staged.</p>
+    <figure class="demo">
+      <div class="bar"><i></i><i></i><i></i><span>kitchenstudio.design/app</span></div>
+      <video id="demoVid" muted loop playsinline preload="none" poster="/demo-poster.jpg" aria-label="Screen recording: designing a burger cloud kitchen in Kitchen Studio">
+        <source src="/demo.webm" type="video/webm"><source src="/demo.mp4" type="video/mp4">
+      </video>
+    </figure>
+    <div class="cta" style="margin-top:18px"><a class="btn pri" href="/app/">Try it on your own room</a></div>
   </section>
 
   <section id="how">
@@ -141,6 +158,10 @@ footer a{text-decoration:none}
 <script src="/app/cloud.js" defer></script>
 <script>
 addEventListener("DOMContentLoaded",()=>{
+  const v=document.getElementById("demoVid");
+  if(v){const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;if(reduce)v.controls=true;
+    else if("IntersectionObserver" in window){new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){v.play().catch(()=>{v.controls=true;});}else v.pause();}),{threshold:.35}).observe(v);}
+    else{v.autoplay=true;v.play().catch(()=>{});}}
   const be=window.KS_backend;if(!be)return;
   const f=document.getElementById("wlForm"),m=document.getElementById("wlMsg"),b=document.getElementById("wlBtn");f.hidden=false;m.textContent="";
   f.addEventListener("submit",async e=>{e.preventDefault();const em=document.getElementById("wlEmail").value.trim();b.disabled=true;
