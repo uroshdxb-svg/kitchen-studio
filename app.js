@@ -437,16 +437,17 @@ function imgToCanvas(file){return new Promise((res,rej)=>{const u=URL.createObje
 $("fpFile").addEventListener("change",async e=>{const f=e.target.files[0];e.target.value="";if(!f)return;$("fpMsg").textContent="Reading "+f.name+"…";
   try{const pdf=/pdf$/i.test(f.type)||/\.pdf$/i.test(f.name),cv=pdf?await pdfToCanvas(f):await imgToCanvas(f);
     const src=cv.toDataURL("image/jpeg",.72),mmpp=state.room.w/cv.width;under={src,pw:cv.width,ph:cv.height,mmpp,x:0,y:0,op:.55,show:true};blobUrl(under);calPts=[];
-    $("fpMsg").textContent=`Loaded ${f.name}${pdf?" (page 1)":""}. Next: set the scale.`;if(view!=="plan")setView("plan");fpUI();changed();}
+    planFile={file:f,pdf};$("fpReadMsg").textContent="";$("fpUndo").hidden=true;
+    $("fpMsg").textContent=`Loaded ${f.name}${pdf?" (page 1)":""}. Let AI read it below, or set the scale and trace the walls yourself.`;if(view!=="plan")setView("plan");fpUI();changed();}
   catch(err){$("fpMsg").textContent="That file couldn't be read. Use a JPG, PNG or PDF"+(/load/.test(String(err&&err.message))?" (PDF needs an internet connection the first time).":".");}});
 $("fpPick").addEventListener("click",()=>$("fpFile").click());
 $("fpOp").addEventListener("input",e=>{if(under){under.op=+e.target.value;render();}});
 $("fpOp").addEventListener("change",()=>{if(under)changed();});
 $("fpShow").addEventListener("change",e=>{if(under){under.show=e.target.checked;changed();}});
-$("fpRemove").addEventListener("click",()=>{under=null;setMode(null);fpUI();changed();});
+$("fpRemove").addEventListener("click",()=>{under=null;planFile=null;setMode(null);fpUI();changed();});
 function setMode(m){mode=m;calPts=[];tracePts=[];hover=null;svg.style.touchAction=m==="moveplan"?"none":"";svg.style.cursor=m==="cal"||m==="trace"?"crosshair":m==="moveplan"?"move":"";fpUI();render();}
 function fpUI(){
-  const has=!!under;$("fpTools").hidden=!has;$("fpShow").checked=!!(under&&under.show);if(under)$("fpOp").value=under.op;
+  const has=!!under;$("fpTools").hidden=!has;$("fpAI").hidden=!(has&&planFile);$("fpShow").checked=!!(under&&under.show);if(under)$("fpOp").value=under.op;
   $("fpScaleNow").textContent=has?`Plan image is ${Math.round(under.pw*under.mmpp)} × ${Math.round(under.ph*under.mmpp)} mm at the current scale.`:"";
   $("calBtn").textContent=mode==="cal"?"Cancel":"Set scale";$("calBox").hidden=!(mode==="cal"&&calPts.length===2);
   $("calHint").textContent=mode==="cal"?(calPts.length<2?`Tap point ${calPts.length?"B":"A"} on the drawing: the two ends of a wall or dimension you know.`:"Enter the real distance between A and B."):"";
@@ -486,6 +487,109 @@ $("archAdd").addEventListener("click",()=>{const k=$("archType").value,t=ARCH[k]
   const it={id:newId(),kind:"arch",archType:k,brand:"Building",model:t.n,name:t.n,cat:"Building",w,d:k==="column"?w:t.d,h:k==="column"?state.room.h:2100,mount:k==="column"?"floor":"arch",power:"none",kw:null,elec:null,water:false,drain:false,conf:"user",x:Math.round(state.room.w/2-w/2),y:wallish?-t.d:Math.round(state.room.d/2),rot:0};
   state.items.push(it);if(wallish)snapArch(it);sel=it.id;if(view==="elev")setView("plan");changed();toast(wallish?`Added ${t.n}. Drag it along any wall; it snaps to the nearest one.`:`Added ${t.n}. Drag it into place.`);
   revealCanvas();});
+
+/* ---------- read a drawing with AI: room, openings, existing equipment ---------- */
+let planFile=null,drawUndo=null;
+const DRAW_SS=Object.keys(SS);
+async function drawingPages(){/* up to 3 pages as JPEG base64 + the PDF text layer with positions */
+  const pages=[];let text="";
+  const toJpeg=cv=>{const k=Math.min(1,1568/Math.max(cv.width,cv.height));let c=cv;if(k<1){c=document.createElement("canvas");c.width=Math.round(cv.width*k);c.height=Math.round(cv.height*k);c.getContext("2d").drawImage(cv,0,0,c.width,c.height);}
+    return {data:c.toDataURL("image/jpeg",.82).split(",")[1],media_type:"image/jpeg",w:c.width,h:c.height};};
+  if(!planFile.pdf){pages.push(toJpeg(await imgToCanvas(planFile.file)));return {pages,text:""};}
+  if(typeof pdfjsLib==="undefined"){await loadScript("pdfjs-src","https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js");await loadScript("pdfjs-worker-src","https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js");}
+  const doc=await pdfjsLib.getDocument({data:new Uint8Array(await planFile.file.arrayBuffer())}).promise;
+  for(let n=1;n<=Math.min(3,doc.numPages);n++){const page=await doc.getPage(n);let vp=page.getViewport({scale:1});vp=page.getViewport({scale:Math.min(3,1568/Math.max(vp.width,vp.height))});
+    const cv=document.createElement("canvas");cv.width=Math.round(vp.width);cv.height=Math.round(vp.height);const cx=cv.getContext("2d");cx.fillStyle="#fff";cx.fillRect(0,0,cv.width,cv.height);await page.render({canvasContext:cx,viewport:vp}).promise;pages.push(toJpeg(cv));
+    try{const tc=await page.getTextContent(),v1=page.getViewport({scale:1});for(const it of tc.items){const s=(it.str||"").trim();if(!s)continue;const [x,y]=v1.convertToViewportPoint(it.transform[4],it.transform[5]);
+      text+=`p${n} ${Math.round(x/v1.width*1000)},${Math.round(y/v1.height*1000)} ${s}\n`;if(text.length>9000)break;}}catch(_){}}
+  return {pages,text:text.slice(0,9000)};}
+function drawingPrompt(nPages,text){return `You are reading a commercial kitchen drawing so a layout app can rebuild it. You get ${nPages} page image${nPages>1?"s":""}${text?" and the PDF text layer (lines: page, x,y in 0-1000 from the page's top-left, text)":""}.
+The drawing can be anything: an architect's or consultant's CAD plan in millimetres, a landlord's plan in metres, a hand sketch, a photo of paper, with labels in any language (for example Arabic). Read dimension strings and schedules; don't guess sizes you can read.
+
+Find the main kitchen floor plan and return:
+1. room: the INTERIOR outline (inside faces of walls) as corner points in millimetres, clockwise, starting top-left. Origin (0,0) is the top-left of the room's interior bounding box; x grows to the right and y grows DOWN, exactly as the plan appears on the page (never rotate it). Walls are usually orthogonal. A plain rectangle has 4 corners; L or notched rooms have more. Ignore short wall stubs that don't close the room. Convert metres to mm. If the overall dimensions include wall thickness, subtract it.
+2. image_box: where that interior bounding box sits on the plan page image, as fractions 0-1 of the image width/height (x0,y0 top-left, x1,y1 bottom-right), and plan_page (1-based).
+3. openings: doors (single "door", double "door2"), "window", "column". Doors/windows: the wall they are in (N=top,S=bottom,W=left,E=right), offset_mm = distance along that wall from its top/left end to the opening's start, width_mm. Columns: x_mm,y_mm (top-left) and w_mm,d_mm.
+4. items: every piece of equipment or stainless drawn in the room, including overhead hoods and wall shelves, each with:
+   ref (the tag on the drawing, e.g. "01-04", or ""), name (short, English, what it is, e.g. "Upright chiller, 1 door"), qty is always 1 (list repeats separately),
+   type: one of ${DRAW_SS.join(", ")} for fabricated stainless modules (table=work table, cab=cabinet table, sink1/2/3=sinks with that many bowls, hand=hand wash basin, landing=dishwasher landing table, rack=storage shelving, trolley, wshelf=wall shelf, wcab=wall cabinet, hood=exhaust hood, gantry=pass shelf on a counter), or "equipment" for anything else (fridges, freezers, ovens, ranges, burners, grills, fryers, dishwashers, ice machines, POS, computers...),
+   category (equipment only): one of ${CATS.join(", ")},
+   brand, model: only if written on the drawing, else "",
+   w_mm = length along its front, d_mm = front-to-back depth, h_mm (use the schedule's L × W × H when an item has a reference; L=w, W=d, and for "900+100" use 900),
+   rot = which way it faces: 0 = back against the TOP wall, front facing down; 180 = back to the BOTTOM wall, facing up; 270 = back to the LEFT wall, facing right; 90 = back to the RIGHT wall, facing left. Island units: the side with doors/drawers is the front.
+   x_mm, y_mm = top-left corner of its footprint on the plan in room coordinates (for rot 90/270 the footprint on the page is d_mm wide and w_mm tall),
+   mount: "floor", "top" (sits on a counter: countertop burners, microwaves, computers, POS) or "over" (hoods, wall shelves, wall cabinets),
+   power: "electric", "gas" or "none"; kw (number or null); water and drain (true/false) if the schedule or symbols say so.
+5. height_mm of the ceiling if written, else null.
+6. notes: up to 4 short sentences on anything uncertain the user should check.
+Positions come from the drawing; when a dimension chain gives exact positions, use it.
+
+Reply with ONLY this JSON:
+{"plan_page":1,"drawing_kind":"cad|sketch|photo|other","units_seen":"mm|m|other","room":{"outline_mm":[[0,0],[5900,0],[5900,4600],[0,4600]],"height_mm":null},"image_box":{"x0":0.18,"y0":0.2,"x1":0.73,"y1":0.8},"openings":[{"type":"door","wall":"S","offset_mm":1200,"width_mm":900}],"items":[{"ref":"01-03","name":"Upright chiller, 1 door","type":"equipment","category":"Refrigeration","brand":"","model":"","w_mm":800,"d_mm":750,"h_mm":2100,"rot":0,"x_mm":3650,"y_mm":0,"mount":"floor","power":"electric","kw":1,"water":false,"drain":false}],"notes":["..."]}
+${text?"\nPDF TEXT LAYER:\n"+text:""}`;}
+function cleanDrawing(r){/* sanity-check the model's JSON into something the app can apply */
+  const num=(v,lo,hi)=>{if(v===null||v===undefined||v==="")return null;v=+v;return Number.isFinite(v)?Math.max(lo,Math.min(hi,v)):null;};
+  if(!r||!r.room||!Array.isArray(r.room.outline_mm)||r.room.outline_mm.length<3)throw new Error("no room");
+  let P=r.room.outline_mm.map(q=>[+q[0],+q[1]]).filter(q=>Number.isFinite(q[0])&&Number.isFinite(q[1]));
+  const minX=Math.min(...P.map(q=>q[0])),minY=Math.min(...P.map(q=>q[1]));P=P.map(q=>[Math.round((q[0]-minX)/10)*10,Math.round((q[1]-minY)/10)*10]);
+  for(let i=0;i<P.length;i++){const a=P[i],b=P[(i+1)%P.length];if(Math.abs(a[0]-b[0])<60)b[0]=a[0];else if(Math.abs(a[1]-b[1])<60)b[1]=a[1];}/* square up near-orthogonal walls */
+  P=P.filter((q,i)=>{const n=P[(i+1)%P.length];return !(n[0]===q[0]&&n[1]===q[1]);});
+  const w=Math.max(...P.map(q=>q[0])),d=Math.max(...P.map(q=>q[1]));if(!(w>=1500&&d>=1500&&w<=40000&&d<=40000))throw new Error("room size "+w+"x"+d);
+  const rect=P.length===4&&P.every(q=>(q[0]===0||q[0]===w)&&(q[1]===0||q[1]===d));
+  const b=r.image_box||{},box=[b.x0,b.y0,b.x1,b.y1].map(v=>num(v,0,1));const okBox=box.every(v=>v!==null)&&box[2]-box[0]>.05&&box[3]-box[1]>.05;
+  const items=(Array.isArray(r.items)?r.items:[]).map((t,i)=>{const type=DRAW_SS.includes(t.type)?t.type:"equipment",W=num(t.w_mm,100,8000),D=num(t.d_mm,100,4000);if(!W||!D)return null;
+    const rot=[0,90,180,270].includes(+t.rot)?+t.rot:0,mount=["floor","top","over"].includes(t.mount)?t.mount:(type==="equipment"?"floor":SS[type].mount);
+    return {i,ref:String(t.ref||"").slice(0,12),name:String(t.name||(type==="equipment"?"Equipment":SS[type].n)).slice(0,70),type,cat:CATS.includes(t.category)?t.category:null,brand:String(t.brand||"").slice(0,40),model:String(t.model||"").slice(0,60),
+      w:Math.round(W),d:Math.round(D),h:Math.round(num(t.h_mm,20,4000)||(type==="equipment"?900:SS[type].h)),rot,x:Math.round(num(t.x_mm,-500,w+500)||0),y:Math.round(num(t.y_mm,-500,d+500)||0),mount,
+      power:["electric","gas","none"].includes(t.power)?t.power:(type==="equipment"?"electric":"none"),kw:num(t.kw,0,200),water:!!t.water,drain:!!t.drain};}).filter(Boolean);
+  const openings=(Array.isArray(r.openings)?r.openings:[]).map(o=>({type:["door","door2","window","column"].includes(o.type)?o.type:null,wall:["N","S","E","W"].includes(o.wall)?o.wall:"S",off:num(o.offset_mm,0,40000)||0,w:num(o.width_mm||o.w_mm,150,4000)||900,x:num(o.x_mm,0,40000),y:num(o.y_mm,0,40000),d:num(o.d_mm,100,2000)})).filter(o=>o.type);
+  return {P:rect?null:P,w,d,h:num(r.room.height_mm,2200,6000),box:okBox?box:null,page:Math.max(1,Math.min(3,+r.plan_page||1)),items,openings,notes:(Array.isArray(r.notes)?r.notes:[]).slice(0,4).map(String),kind:String(r.drawing_kind||"")};}
+function drawingItem(t){/* one detected item -> an app item: catalogue match if brand+model are known, else a stainless module or a generic unit with the drawn size */
+  const base={id:newId(),x:t.x,y:t.y,rot:t.rot,conf:"drawing"};
+  if(t.type!=="equipment"){const s=SS[t.type];return Object.assign(base,{kind:"ss",ssType:t.type,brand:"Fabricated",model:s.n,name:t.ref?`${s.n} (${t.ref})`:s.n,cat:"Stainless",w:t.w,d:t.d,h:t.h,mount:s.mount,z:s.mount==="over"?s.z:undefined,power:"none",kw:null,elec:null,water:!!s.water,drain:!!s.drain,opts:[],mat:"AISI 304, 1.2 mm"});}
+  const hit=t.brand&&t.model?all().find(e=>e.brand.toLowerCase()===t.brand.toLowerCase()&&e.model.toLowerCase().replace(/\s+/g,"")===t.model.toLowerCase().replace(/\s+/g,"")):null;
+  if(hit)return Object.assign(base,JSON.parse(JSON.stringify(hit)),{id:base.id,x:t.x,y:t.y,rot:t.rot});
+  return Object.assign(base,{kind:"eq",brand:t.brand||"From drawing",model:t.model||(t.ref?"Ref "+t.ref:"As drawn"),name:t.name,cat:t.cat||"Prep",w:t.w,d:t.d,h:t.h,mount:t.mount==="over"?"floor":t.mount,power:t.power,kw:t.kw,elec:null,water:t.water,drain:t.drain,src:null});}
+async function applyDrawing(g,keep){
+  drawUndo=JSON.stringify({room:state.room,items:state.items,under:underData()});
+  const R={w:g.w,d:g.d,h:g.h||state.room.h};if(g.P)R.poly=g.P;state.room=R;
+  const arch=[];for(const o of g.openings){const t=ARCH[o.type];if(o.type==="column"){if(o.x===null||o.y===null)continue;arch.push({id:newId(),kind:"arch",archType:"column",brand:"Building",model:t.n,name:t.n,cat:"Building",w:o.w,d:o.d||o.w,h:R.h,mount:"floor",power:"none",kw:null,elec:null,water:false,drain:false,conf:"drawing",x:o.x,y:o.y,rot:0});continue;}
+    const along=o.off+o.w/2,it={id:newId(),kind:"arch",archType:o.type,brand:"Building",model:t.n,name:t.n,cat:"Building",w:o.w,d:t.d,h:2100,mount:"arch",power:"none",kw:null,elec:null,water:false,drain:false,conf:"drawing",rot:0,
+      x:o.wall==="N"||o.wall==="S"?Math.round(along-o.w/2):o.wall==="W"?-t.d:R.w,y:o.wall==="N"?-t.d:o.wall==="S"?R.d:Math.round(along-o.w/2)};arch.push(it);}
+  state.items=[...arch,...keep.map(drawingItem)];
+  for(const it of state.items){if(it.kind==="arch")snapArch(it);else clamp(it);}
+  /* align the drawing under the new room */
+  if(g.box){try{let pw=under?under.pw:0,ph=under?under.ph:0;
+      if(planFile.pdf&&g.page!==1){const cv=await pdfPageCanvas(planFile.file,g.page);under={src:cv.toDataURL("image/jpeg",.72),pw:cv.width,ph:cv.height,mmpp:1,x:0,y:0,op:.55,show:true};blobUrl(under);pw=cv.width;ph=cv.height;}
+      if(under){const bw=(g.box[2]-g.box[0])*pw,bh=(g.box[3]-g.box[1])*ph,mm=(g.w/bw+g.d/bh)/2;under.mmpp=mm;under.x=Math.round(-g.box[0]*pw*mm);under.y=Math.round(-g.box[1]*ph*mm);under.op=Math.min(under.op,.45);}}catch(_){}}
+  sel=null;roomInputs();fpUI();if(view!=="plan")setView("plan");changed();$("fpUndo").hidden=false;revealCanvas();}
+async function pdfPageCanvas(file,n){const doc=await pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise,page=await doc.getPage(n);let vp=page.getViewport({scale:1});vp=page.getViewport({scale:Math.min(3,1800/Math.max(vp.width,vp.height))});
+  const cv=document.createElement("canvas");cv.width=Math.round(vp.width);cv.height=Math.round(vp.height);const cx=cv.getContext("2d");cx.fillStyle="#fff";cx.fillRect(0,0,cv.width,cv.height);await page.render({canvasContext:cx,viewport:vp}).promise;return cv;}
+function reviewDrawing(g){
+  const fmt=t=>`${t.w} × ${t.d}${t.h?" × "+t.h:""}`,kindName={cad:"CAD drawing",sketch:"sketch",photo:"photo"}[g.kind]||"drawing";
+  const rows=g.items.map((t,k)=>`<label class="rv-row"><input type="checkbox" data-k="${k}" checked><div><div>${t.ref?`<b>${esc(t.ref)}</b> `:""}${esc(t.name)}<span class="tag">${t.type==="equipment"?esc(t.cat||"equipment"):"stainless"}${t.mount!=="floor"?" · "+t.mount:""}</span></div><div class="d">${fmt(t)} mm${t.kw?" · "+t.kw+" kW":""}</div></div></label>`).join("");
+  const nd=g.openings.filter(o=>/door/.test(o.type)).length,nc=g.openings.filter(o=>o.type==="column").length;
+  openDlg("What the drawing shows",`<p>Read from your ${kindName}. Untick anything you don't want, then build it. You can move and resize everything afterwards, and Undo import brings back what you had.</p>
+    <div class="rv-sum"><div>Room<b>${(g.w/1000).toFixed(2)} × ${(g.d/1000).toFixed(2)} m</b></div><div>Shape<b>${g.P?g.P.length+" corners":"rectangle"}</b></div><div>Doors / columns<b>${nd} / ${nc}</b></div><div>Items<b>${g.items.length}</b></div></div>
+    ${g.items.length?`<div class="rv-list">${rows}</div>`:`<p>No equipment found in the drawing: you'll get the empty room.</p>`}
+    ${g.notes.length?`<div class="note"><b>Check:</b> ${g.notes.map(esc).join(" ")}</div>`:""}
+    <div class="bar"><button class="btn pri" id="rvApply">Build the room${g.items.length?" and equipment":""}</button><button class="btn" id="rvCancel">Cancel</button></div>`);
+  $("rvCancel").onclick=closeDlg;
+  $("rvApply").onclick=async()=>{const keep=[...$("dlgBody").querySelectorAll("input[data-k]")].filter(c=>c.checked).map(c=>g.items[+c.dataset.k]);closeDlg();await applyDrawing(g,keep);
+    $("fpReadMsg").textContent=`Built ${(g.w/1000).toFixed(2)} × ${(g.d/1000).toFixed(2)} m with ${keep.length} item${keep.length===1?"":"s"}. Drawing aligned underneath: check a few items against it.`;toast("Room built from your drawing.");};}
+async function readDrawing(){
+  if(!planFile){toast("Upload a drawing first.");return;}
+  const ask=window.KS_readDrawing||(be&&be.ai?(p,o)=>be.ai(p,o):null);
+  if(!ask){$("fpReadMsg").textContent="Reading drawings needs the online studio at kitchenstudio.design.";return;}
+  if(be&&!be.user()&&!window.KS_readDrawing){openSignIn("Sign in to let AI read your drawing. It's free.");return;}
+  const btn=$("fpRead");btn.disabled=true;const msg=$("fpReadMsg");msg.textContent="Reading the drawing… this takes 20 to 60 seconds.";
+  try{const {pages,text}=await drawingPages();msg.textContent=`Reading ${pages.length} page${pages.length>1?"s":""}…`;
+    const r=await ask(drawingPrompt(pages.length,text),{images:pages.map(q=>({media_type:q.media_type,data:q.data})),kind:"drawing",maxTokens:8000});
+    const g=cleanDrawing(r);msg.textContent="";reviewDrawing(g);}
+  catch(e){console.warn(e);msg.textContent=e&&e.code==="rate_limited"?"The AI is busy or today's limit is reached. Try again later.":e&&e.code==="not_granted"?"Sign in to read drawings.":/room/.test(e&&e.message||"")?"Couldn't find a room outline in this drawing. Set the scale and trace the walls instead.":"The drawing couldn't be read this time. Try again, or set the scale and trace the walls yourself.";}
+  btn.disabled=false;}
+$("fpRead").addEventListener("click",readDrawing);
+$("fpUndo").addEventListener("click",()=>{if(!drawUndo)return;const s=JSON.parse(drawUndo);state.room=s.room;state.items=s.items;if(s.under){under=s.under;blobUrl(under);}drawUndo=null;$("fpUndo").hidden=true;roomInputs();fpUI();changed();toast("Back to what you had before the import.");});
 
 /* ---------- auto layout (rule-based) + AI brief ---------- */
 const COOK=["fryer","range","chargrill","griddle","induction","pasta","tiltpan","oven","salamander","hsoven"];

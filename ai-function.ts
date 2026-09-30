@@ -37,10 +37,18 @@ Deno.serve(async (req) => {
   const { data: { user }, error: uerr } = await userClient.auth.getUser();
   if (uerr || !user) return reply(401, { error: "Sign in first", code: "not_granted" });
 
-  let body: { prompt?: string; tier?: string; kind?: string };
+  let body: { prompt?: string; tier?: string; kind?: string; images?: { media_type?: string; data?: string }[] | null; max_tokens?: number | null };
   try { body = await req.json(); } catch (_) { return reply(400, { error: "Bad request" }); }
   const prompt = String(body.prompt ?? "");
   if (prompt.length < 10 || prompt.length > 120_000) return reply(400, { error: "Prompt too short or too long" });
+  // optional images (drawing reader): up to 4 JPEG/PNG pages, 8 MB of base64 in total
+  const images = (Array.isArray(body.images) ? body.images : []).slice(0, 4)
+    .filter((im) => im && typeof im.data === "string" && /^image\/(jpeg|png|webp)$/.test(String(im.media_type)));
+  if (images.reduce((s, im) => s + String(im.data).length, 0) > 8_000_000) return reply(413, { error: "Drawing too large", code: "failed" });
+  const maxTokens = Math.min(Math.max(Number(body.max_tokens) || 4000, 500), 12000);
+  const content = images.length
+    ? [...images.map((im) => ({ type: "image", source: { type: "base64", media_type: im.media_type, data: im.data } })), { type: "text", text: prompt }]
+    : prompt;
 
   // Daily limit
   const admin = createClient(SUPABASE_URL, SERVICE_KEY);
@@ -54,9 +62,9 @@ Deno.serve(async (req) => {
     headers: { "x-api-key": ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "content-type": "application/json" },
     body: JSON.stringify({
       model: MODEL,
-      max_tokens: 4000,
+      max_tokens: maxTokens,
       system: "You answer for a commercial kitchen design app. Reply with only the JSON the user asks for: no prose, no code fences.",
-      messages: [{ role: "user", content: prompt }],
+      messages: [{ role: "user", content }],
     }),
   });
   if (res.status === 429 || res.status === 529) return reply(429, { error: "The AI is busy. Try again in a minute.", code: "rate_limited" });
@@ -65,7 +73,7 @@ Deno.serve(async (req) => {
   const text = (out.content ?? []).filter((c: { type: string }) => c.type === "text").map((c: { text: string }) => c.text).join("\n");
 
   await admin.from("ai_usage").insert({
-    owner: user.id, kind: body.kind ?? (prompt.includes("EQUIPMENT CATALOGUE") ? "brief" : "lookup"),
+    owner: user.id, kind: body.kind ?? (images.length ? "drawing" : prompt.includes("EQUIPMENT CATALOGUE") ? "brief" : "lookup"),
     tokens_in: out.usage?.input_tokens ?? null, tokens_out: out.usage?.output_tokens ?? null,
   });
 

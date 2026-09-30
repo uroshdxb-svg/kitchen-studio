@@ -61,6 +61,13 @@ select.mini{border:1px solid var(--line);background:var(--surface);border-radius
 .menu button{text-align:left;padding:10px 12px;border-radius:var(--rs);font-weight:600;font-size:14px}
 .menu button:hover{background:var(--sunk)}
 .menu button.danger{color:var(--bad)}
+.readbox{background:var(--primary-soft);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:10px;font-size:14px}
+.rv-sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+.rv-sum div{background:var(--ground);border-radius:var(--rs);padding:8px 10px}.rv-sum b{display:block;font-family:var(--f-mono);font-weight:500;font-size:16px}
+.rv-list{display:flex;flex-direction:column;gap:4px;max-height:42vh;overflow:auto}
+.rv-row{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border-radius:var(--rs);background:var(--ground);font-size:13.5px}
+.rv-row input{margin-top:3px}.rv-row .d{font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.rv-row .tag{font-family:var(--f-mono);font-size:10.5px;border-radius:999px;padding:0 6px;background:var(--surface);color:var(--muted);margin-left:4px}
 .menu-sep{height:1px;background:var(--line);margin:6px 4px}
 .menu-acct{padding:8px 12px 4px;font-size:12.5px;color:var(--muted);font-family:var(--f-mono);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dlg{border:0;border-radius:var(--r);background:var(--surface);color:var(--ink);padding:0;width:min(520px,calc(100vw - 24px));max-height:min(80vh,720px);box-shadow:var(--shadow-lg)}
@@ -287,6 +294,11 @@ td.w{white-space:normal;min-width:180px}
           <div class="bar"><button class="btn pri" id="fpPick">Upload plan</button><input type="file" id="fpFile" accept="image/*,application/pdf,.pdf" hidden></div>
           <div class="note" id="fpMsg" aria-live="polite"></div>
         </div></div>
+        <div id="fpAI" class="readbox" hidden>
+          <div><b>Let AI read it.</b> Room size and shape, doors and columns, and the equipment already drawn, including the schedule if the drawing has one. Works with CAD PDFs, hand sketches and photos, in any language.</div>
+          <div class="bar"><button class="btn pri" id="fpRead">Read this drawing</button><button class="btn sm" id="fpUndo" hidden>Undo import</button></div>
+          <div class="note" id="fpReadMsg" aria-live="polite"></div>
+        </div>
         <div id="fpTools" class="pane" hidden>
           <div class="bar"><div class="fld" style="flex:1 1 160px"><label for="fpOp">Plan visibility</label><input id="fpOp" type="range" min="0.1" max="1" step="0.05" value="0.55"></div>
             <label class="checks"><span style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="fpShow" checked> Show plan</span></label><button class="btn sm danger" id="fpRemove">Remove</button></div>
