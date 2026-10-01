@@ -1,6 +1,3 @@
-Warning: truncated output (original token count: 31417)
-Total output lines: 1087
-
 (function(){
 "use strict";
 const $=id=>document.getElementById(id);
@@ -552,7 +549,46 @@ function drawingItem(t){/* one detected item -> an app item: catalogue match if 
   if(t.type!=="equipment"){const s=SS[t.type];return Object.assign(base,{kind:"ss",ssType:t.type,brand:"Fabricated",model:s.n,name:t.ref?`${s.n} (${t.ref})`:s.n,cat:"Stainless",w:t.w,d:t.d,h:t.h,mount:s.mount,z:s.mount==="over"?s.z:undefined,power:"none",kw:null,elec:null,water:!!s.water,drain:!!s.drain,opts:[],mat:"AISI 304, 1.2 mm"});}
   const hit=t.brand&&t.model?all().find(e=>e.brand.toLowerCase()===t.brand.toLowerCase()&&e.model.toLowerCase().replace(/\s+/g,"")===t.model.toLowerCase().replace(/\s+/g,"")):null;
   if(hit)return Object.assign(base,JSON.parse(JSON.stringify(hit)),{id:base.id,x:t.x,y:t.y,rot:t.rot});
-  return Object.assign(base,{kind:"eq",brand:t.brand||"From drawing",model:t.model||(t.ref?"Ref "+t.ref:"As drawn"),name:t.name,cat:t.cat||"Prep",w:t.w,d:t.d,h:t.h,mount:t.mount==="over"?"floor…1417 tokens truncated…ner("click",readDrawing);
+  return Object.assign(base,{kind:"eq",brand:t.brand||"From drawing",model:t.model||(t.ref?"Ref "+t.ref:"As drawn"),name:t.name,cat:t.cat||"Prep",w:t.w,d:t.d,h:t.h,mount:t.mount==="over"?"floor":t.mount,power:t.power,kw:t.kw,elec:null,water:t.water,drain:t.drain,src:null});}
+async function applyDrawing(g,keep){
+  drawUndo=JSON.stringify({room:state.room,items:state.items,under:underData()});
+  const R={w:g.w,d:g.d,h:g.h||state.room.h};if(g.P)R.poly=g.P;state.room=R;
+  const arch=[];for(const o of g.openings){const t=ARCH[o.type];if(o.type==="column"){if(o.x===null||o.y===null)continue;arch.push({id:newId(),kind:"arch",archType:"column",brand:"Building",model:t.n,name:t.n,cat:"Building",w:o.w,d:o.d||o.w,h:R.h,mount:"floor",power:"none",kw:null,elec:null,water:false,drain:false,conf:"drawing",x:o.x,y:o.y,rot:0});continue;}
+    const along=o.off+o.w/2,it={id:newId(),kind:"arch",archType:o.type,brand:"Building",model:t.n,name:t.n,cat:"Building",w:o.w,d:t.d,h:2100,mount:"arch",power:"none",kw:null,elec:null,water:false,drain:false,conf:"drawing",rot:0,
+      x:o.wall==="N"||o.wall==="S"?Math.round(along-o.w/2):o.wall==="W"?-t.d:R.w,y:o.wall==="N"?-t.d:o.wall==="S"?R.d:Math.round(along-o.w/2)};arch.push(it);}
+  state.items=[...arch,...keep.map(drawingItem)];
+  for(const it of state.items){if(it.kind==="arch")snapArch(it);else clamp(it);}
+  /* align the drawing under the new room */
+  if(g.box){try{let pw=under?under.pw:0,ph=under?under.ph:0;
+      if(planFile.pdf&&g.page!==1){const cv=await pdfPageCanvas(planFile.file,g.page);under={src:cv.toDataURL("image/jpeg",.72),pw:cv.width,ph:cv.height,mmpp:1,x:0,y:0,op:.55,show:true};blobUrl(under);pw=cv.width;ph=cv.height;}
+      if(under){const bw=(g.box[2]-g.box[0])*pw,bh=(g.box[3]-g.box[1])*ph,mm=(g.w/bw+g.d/bh)/2;under.mmpp=mm;under.x=Math.round(-g.box[0]*pw*mm);under.y=Math.round(-g.box[1]*ph*mm);under.op=Math.min(under.op,.45);}}catch(_){}}
+  sel=null;roomInputs();fpUI();if(view!=="plan")setView("plan");changed();$("fpUndo").hidden=false;revealCanvas();}
+async function pdfPageCanvas(file,n){const doc=await pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise,page=await doc.getPage(n);let vp=page.getViewport({scale:1});vp=page.getViewport({scale:Math.min(3,1800/Math.max(vp.width,vp.height))});
+  const cv=document.createElement("canvas");cv.width=Math.round(vp.width);cv.height=Math.round(vp.height);const cx=cv.getContext("2d");cx.fillStyle="#fff";cx.fillRect(0,0,cv.width,cv.height);await page.render({canvasContext:cx,viewport:vp}).promise;return cv;}
+function reviewDrawing(g){
+  const fmt=t=>`${t.w} × ${t.d}${t.h?" × "+t.h:""}`,kindName={cad:"CAD drawing",sketch:"sketch",photo:"photo"}[g.kind]||"drawing";
+  const rows=g.items.map((t,k)=>`<label class="rv-row"><input type="checkbox" data-k="${k}" checked><div><div>${t.ref?`<b>${esc(t.ref)}</b> `:""}${esc(t.name)}<span class="tag">${t.type==="equipment"?esc(t.cat||"equipment"):"stainless"}${t.mount!=="floor"?" · "+t.mount:""}</span></div><div class="d">${fmt(t)} mm${t.kw?" · "+t.kw+" kW":""}</div></div></label>`).join("");
+  const nd=g.openings.filter(o=>/door/.test(o.type)).length,nc=g.openings.filter(o=>o.type==="column").length;
+  openDlg("What the drawing shows",`<p>Read from your ${kindName}. Untick anything you don't want, then build it. You can move and resize everything afterwards, and Undo import brings back what you had.</p>
+    <div class="rv-sum"><div>Room<b>${(g.w/1000).toFixed(2)} × ${(g.d/1000).toFixed(2)} m</b></div><div>Shape<b>${g.P?g.P.length+" corners":"rectangle"}</b></div><div>Doors / columns<b>${nd} / ${nc}</b></div><div>Items<b>${g.items.length}</b></div></div>
+    ${g.items.length?`<div class="rv-list">${rows}</div>`:`<p>No equipment found in the drawing: you'll get the empty room.</p>`}
+    ${g.notes.length?`<div class="note"><b>Check:</b> ${g.notes.map(esc).join(" ")}</div>`:""}
+    <div class="bar"><button class="btn pri" id="rvApply">Build the room${g.items.length?" and equipment":""}</button><button class="btn" id="rvCancel">Cancel</button></div>`);
+  $("rvCancel").onclick=closeDlg;
+  $("rvApply").onclick=async()=>{const keep=[...$("dlgBody").querySelectorAll("input[data-k]")].filter(c=>c.checked).map(c=>g.items[+c.dataset.k]);closeDlg();await applyDrawing(g,keep);
+    $("fpReadMsg").textContent=`Built ${(g.w/1000).toFixed(2)} × ${(g.d/1000).toFixed(2)} m with ${keep.length} item${keep.length===1?"":"s"}. Drawing aligned underneath: check a few items against it.`;toast("Room built from your drawing.");};}
+async function readDrawing(){
+  if(!planFile){toast("Upload a drawing first.");return;}
+  const ask=window.KS_readDrawing||(be&&be.ai?(p,o)=>be.ai(p,o):null);
+  if(!ask){$("fpReadMsg").textContent="Reading drawings needs the online studio at kitchenstudio.design.";return;}
+  if(be&&!be.user()&&!window.KS_readDrawing){openSignIn("Sign in to let AI read your drawing. It's free.");return;}
+  const btn=$("fpRead");btn.disabled=true;const msg=$("fpReadMsg");msg.textContent="Reading the drawing… this takes 20 to 60 seconds.";
+  try{const {pages,text}=await drawingPages();msg.textContent=`Reading ${pages.length} page${pages.length>1?"s":""}…`;
+    const r=await ask(drawingPrompt(pages.length,text),{images:pages.map(q=>({media_type:q.media_type,data:q.data})),kind:"drawing",maxTokens:8000});
+    const g=cleanDrawing(r);msg.textContent="";reviewDrawing(g);}
+  catch(e){console.warn(e);msg.textContent=e&&e.code==="rate_limited"?"The AI is busy or today's limit is reached. Try again later.":e&&e.code==="not_granted"?"Sign in to read drawings.":/room/.test(e&&e.message||"")?"Couldn't find a room outline in this drawing. Set the scale and trace the walls instead.":"The drawing couldn't be read this time. Try again, or set the scale and trace the walls yourself.";}
+  btn.disabled=false;}
+$("fpRead").addEventListener("click",readDrawing);
 $("fpUndo").addEventListener("click",()=>{if(!drawUndo)return;const s=JSON.parse(drawUndo);state.room=s.room;state.items=s.items;if(s.under){under=s.under;blobUrl(under);}drawUndo=null;$("fpUndo").hidden=true;roomInputs();fpUI();changed();toast("Back to what you had before the import.");});
 
 /* ---------- auto layout (rule-based) + AI brief ---------- */
