@@ -1105,7 +1105,7 @@ async function boot(){
   be=window.KS_backend||null;
   if(be){curId=localStorage.getItem("ks.curId")||null;if(curId==="")curId=null;
     sampleFn={json:(prompt,opts)=>be.ai(prompt,opts)};$("aiBriefBox").hidden=false;$("aiNoBrief").hidden=true;
-    await be.ready;acctUI();
+    await be.ready;acctUI();if(be.linkError&&be.linkError())toast(be.linkError());
     const shared=await loadSharedFromUrl();
     if(!shared)await cloudSync();else if(be.user())cloudSync();
     if(!be.user()&&!shared)saveLabel(isExample?"Example layout · sign in to save online":"Saved on this device · sign in to save online");

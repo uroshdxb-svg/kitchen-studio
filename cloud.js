@@ -4,6 +4,10 @@
   const cfg=window.KS_CONFIG||{};
   if(window.KS_backend)return;/* a backend was injected already (tests, mocks) */
   if(!cfg.supabaseUrl||!cfg.supabaseAnonKey||!window.supabase){window.KS_backend=null;return;}
+  /* a sign-in link that failed comes back with the reason in the URL; keep it for the app to show, then tidy the address bar */
+  let linkError=null;try{const q=new URLSearchParams((location.hash||"").replace(/^#/,"")+"&"+(location.search||"").replace(/^\?/,""));
+    if(q.get("error")||q.get("error_code")){const code=q.get("error_code")||q.get("error");linkError=code==="otp_expired"?"That sign-in link has expired or was already used. Send yourself a new one.":(q.get("error_description")||"The sign-in link didn't work.").replace(/\+/g," ")+" Send yourself a new one.";
+      history.replaceState(null,"",location.pathname);}}catch(_){}
   const sb=window.supabase.createClient(cfg.supabaseUrl,cfg.supabaseAnonKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
   const siteUrl=(cfg.siteUrl||location.origin).replace(/\/$/,"");
   let user=null;const listeners=new Set();
@@ -16,8 +20,8 @@
   const summary=p=>{try{const R=p.room,n=(p.items||[]).filter(i=>i.kind!=="arch").length;return `${(R.w/1000).toFixed(1)} × ${(R.d/1000).toFixed(1)} m · ${n} item${n===1?"":"s"}`;}catch(_){return "";}};
   const providers=fetch(cfg.supabaseUrl+"/auth/v1/settings",{headers:{apikey:cfg.supabaseAnonKey}}).then(r=>r.json()).then(j=>Object.keys(j.external||{}).filter(k=>j.external[k])).catch(()=>["email"]);
   window.KS_backend={
-    ready,user:()=>user,providers:()=>providers,onAuth:f=>{listeners.add(f);return()=>listeners.delete(f);},
-    signInEmail:async email=>{const {error}=await sb.auth.signInWithOtp({email,options:{emailRedirectTo:siteUrl+"/app/"}});if(error)fail(error);},
+    ready,linkError:()=>linkError,user:()=>user,providers:()=>providers,onAuth:f=>{listeners.add(f);return()=>listeners.delete(f);},
+    signInEmail:async email=>{const {error}=await sb.auth.signInWithOtp({email,options:{emailRedirectTo:siteUrl+"/app/"}});if(error){if(error.status===429||/rate limit/i.test(error.message||""))error.message="Too many sign-in emails in a short time. Wait a few minutes and try again.";fail(error);}},
     signInGoogle:async()=>{const {error}=await sb.auth.signInWithOAuth({provider:"google",options:{redirectTo:siteUrl+"/app/"}});if(error)fail(error);},
     signOut:()=>sb.auth.signOut(),
     listProjects:async()=>{need();const {data,error}=await sb.from("projects").select("id,name,summary,updated_at,is_public,public_id,version").order("updated_at",{ascending:false});if(error)fail(error);return data||[];},
