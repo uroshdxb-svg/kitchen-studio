@@ -30,7 +30,8 @@ check(/Saved online/.test(await page.textContent("#saveState")),"first kitchen c
 const list1=await page.evaluate(()=>JSON.parse(localStorage.getItem("ks.mock")).projects);check(list1.length===1,"one project in backend");
 
 console.log("3. edit, my kitchens, rename, new kitchen");
-await page.click("#t-room");await page.fill("#roomW","7000");await page.dispatchEvent("#roomW","change");await page.waitForTimeout(1600);
+await page.click("#t-room");await page.fill("#roomW","7000");await page.dispatchEvent("#roomW","change");await page.reload();await page.waitForTimeout(1600);
+check((await page.inputValue("#roomW"))==="7000","last edit survives an immediate page reload");
 const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem("ks.mock")).projects[0].data.room.w);check(saved===7000,"edit persisted to backend (room w=7000)");
 await page.click("#kitchensBtn");await page.waitForTimeout(400);
 check(/My kitchens/.test(await page.textContent("#dlgTitle")),"my kitchens dialog");
