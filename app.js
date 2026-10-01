@@ -20,6 +20,13 @@ const SS={
   hood:{n:"Exhaust hood, wall type",w:2000,d:1200,h:500,mount:"over",z:2000,opts:["Baffle filters","Lights","Fresh-air plenum"],desc:"Box hood. Size it to overhang the cooking line by 150-300 mm each side."},
   gantry:{n:"Pass shelf / gantry",w:1800,d:350,h:400,mount:"top",opts:["Heat lamps","Ticket rail","Double tier"],desc:"Sits on a counter or pass. Add heat lamps as an option."}
 };
+/* fabricated refrigeration: placed as equipment (they have a load), drawn from their names */
+const SSR={
+  rcounter:{n:"Counter chiller",w:1300,d:700,h:865,kw:0.25,opts:["Freezer","Upstand 100 mm"],name:(w,o)=>`Counter ${o.includes("Freezer")?"freezer":"chiller"}, ${Math.max(1,Math.round((w-340)/460))} doors, ${w} mm`,desc:"Fabricated refrigerated counter with hinged doors and a worktop. Load is a typical figure: replace it with the fabricator's compressor rating."},
+  rlowboy:{n:"Lowboy chiller, drawers",w:1700,d:900,h:600,kw:0.3,opts:["2 drawers","4 drawers","6 drawers","Freezer"],name:(w,o)=>`Lowboy ${o.includes("Freezer")?"freezer":"chiller"}, ${(o.find(x=>/drawers/.test(x))||"4 drawers")}, ${w} mm`,desc:"Low refrigerated base for griddles, hot plates and grills on top. Make it as deep as the equipment it carries."},
+  rsaladf:{n:"Saladette, flush GN top",w:1800,d:700,h:865,kw:0.35,opts:[],name:w=>`Saladette prep fridge, flush GN top with sliding lid, ${w} mm`,desc:"GN pans set into the worktop, sliding lid in the same plane."},
+  rsaladr:{n:"Saladette, raised GN rail",w:1800,d:700,h:865,kw:0.35,opts:[],name:w=>`Saladette prep fridge, raised GN rail with lid, ${w} mm`,desc:"Refrigerated GN rail above the worktop with a hinged lid."}
+};
 const STD_W=[600,900,1200,1500,1800,2100,2400], STD_D=[300,400,600,700,800];
 
 let state={room:{w:9000,d:6000,h:3000},items:[]};
@@ -174,6 +181,7 @@ function renderSel(){
     h+=`<div class="grid2"><div class="fld"><label for="selW">Width</label><input id="selW" type="number" step="50" value="${it.w}" inputmode="numeric"></div>
     <div class="fld"><label for="selD">Depth</label><input id="selD" type="number" step="50" value="${it.d}" inputmode="numeric"></div>
     <div class="fld"><label for="selH">Height</label><input id="selH" type="number" step="10" value="${it.h}" inputmode="numeric"></div>
+    ${it.kind!=="ss"&&it.power!=="none"?`<div class="fld"><label for="selKw">Load kW</label><input id="selKw" type="number" step="0.05" min="0" value="${it.kw??""}" inputmode="decimal"></div>`:""}
     ${it.mount==="over"?`<div class="fld"><label for="selZ">Mounted at</label><input id="selZ" type="number" step="50" value="${it.z}" inputmode="numeric"></div>`:""}</div>`;
     if(it.opts?.length||it.mat)h+=`<div class="meta">${esc([it.mat,...(it.opts||[])].filter(Boolean).join(" · "))}</div>`;
   }else if(it.conf==="ai")h+=`<div class="meta" style="color:${C.dim}">AI-estimated dimensions. Check against the spec sheet.</div>`;
@@ -189,7 +197,9 @@ $("selbar").addEventListener("click",e=>{
   changed();
 });
 $("selbar").addEventListener("change",e=>{
-  const it=state.items.find(i=>i.id===sel);if(!it||(it.kind!=="ss"&&it.kind!=="arch"))return;
+  const it=state.items.find(i=>i.id===sel);if(!it)return;
+  if(e.target.id==="selKw"){it.kw=e.target.value===""?null:Math.min(500,Math.max(0,+e.target.value));changed();return;}
+  if(it.kind!=="ss"&&it.kind!=="arch"&&it.conf!=="user")return;
   const v=Math.round(+e.target.value);if(!(v>0))return;
   if(e.target.id==="selW")it.w=Math.min(6000,Math.max(200,v));
   if(e.target.id==="selD")it.d=Math.min(3000,Math.max(150,v));
@@ -301,20 +311,22 @@ $("results").addEventListener("click",e=>{
 
 /* ---------- stainless ---------- */
 function ssInit(){
-  $("ssType").innerHTML=Object.entries(SS).map(([k,v])=>`<option value="${k}">${esc(v.n)}</option>`).join("");
+  $("ssType").innerHTML=Object.entries(SS).map(([k,v])=>`<option value="${k}">${esc(v.n)}</option>`).join("")+`<optgroup label="Refrigerated">`+Object.entries(SSR).map(([k,v])=>`<option value="${k}">${esc(v.n)}</option>`).join("")+`</optgroup>`;
   $("ssWChips").innerHTML=STD_W.map(v=>`<button class="chip-t" data-v="${v}">${v}</button>`).join("");
   $("ssDChips").innerHTML=STD_D.map(v=>`<button class="chip-t" data-v="${v}">${v}</button>`).join("");
   ssLoad();
 }
-function ssLoad(){const t=SS[$("ssType").value];$("ssW").value=t.w;$("ssD").value=t.d;$("ssH").value=t.h;$("ssZ").value=t.z||"";$("ssZf").hidden=t.mount!=="over";
+function ssLoad(){const k=$("ssType").value,t=SS[k]||SSR[k];$("ssW").value=t.w;$("ssD").value=t.d;$("ssH").value=t.h;$("ssZ").value=t.z||"";$("ssZf").hidden=t.mount!=="over";$("ssKwf").hidden=!SSR[k];$("ssKw").value=SSR[k]?SSR[k].kw:"";
   ssOptsSel=new Set();$("ssOpts").innerHTML=t.opts.map((o,k)=>`<label><input type="checkbox" id="ssOpt${k}" data-o="${esc(o)}"> ${esc(o)}</label>`).join("");$("ssDesc").textContent=t.desc;}
 $("ssType").addEventListener("change",ssLoad);
 $("ssWChips").addEventListener("click",e=>{const v=e.target.dataset.v;if(v)$("ssW").value=v;});
 $("ssDChips").addEventListener("click",e=>{const v=e.target.dataset.v;if(v)$("ssD").value=v;});
 $("ssAdd").addEventListener("click",()=>{
-  const k=$("ssType").value,t=SS[k];const w=Math.round(+$("ssW").value),d=Math.round(+$("ssD").value),h=Math.round(+$("ssH").value);
+  const k=$("ssType").value,t=SS[k]||SSR[k];const w=Math.round(+$("ssW").value),d=Math.round(+$("ssD").value),h=Math.round(+$("ssH").value);
   if(!(w>=200&&w<=6000&&d>=150&&d<=3000&&h>=20&&h<=3000)){toast("Check the sizes: width 200-6000, depth 150-3000, height 20-3000.");return;}
   const opts=[...$("ssOpts").querySelectorAll("input:checked")].map(i=>i.dataset.o);
+  if(SSR[k]){const r=SSR[k],kw=+$("ssKw").value;if(!($("ssKw").value!==""&&kw>0&&kw<=20)){toast("Enter the electrical load in kW. Use the fabricator's compressor rating, or keep the typical figure.");$("ssKw").focus();return;}
+    const nm=r.name(w,opts);place({kind:"eq",brand:"Fabricated",model:nm,name:`${nm}, ${$("ssMat").value}`,cat:"Refrigeration",w,d,h,mount:"floor",power:"electric",kw,elec:"230V 1N 50Hz",water:false,drain:false,opts:opts.filter(o=>!/drawers/.test(o)),mat:$("ssMat").value,conf:"user"});return;}
   place({kind:"ss",ssType:k,brand:"Fabricated",model:t.n,name:t.n,cat:"Stainless",w,d,h,mount:t.mount,z:t.mount==="over"?Math.round(+$("ssZ").value)||t.z:undefined,
     power:"none",kw:null,elec:null,water:!!t.water||opts.includes("Pre-rinse sink"),drain:!!t.drain||opts.includes("Pre-rinse sink"),opts,mat:$("ssMat").value,conf:"user"});
 });
@@ -351,6 +363,7 @@ function readNew(){
   const brand=$("nBrand").value.trim(),model=$("nModel").value.trim(),w=Math.round(+$("nW").value),d=Math.round(+$("nD").value),h=Math.round(+$("nH").value);
   if(!brand||!model){toast("Brand and model are required.");return null;}
   if(!(w>=50&&d>=50&&h>=20)){toast("Enter width, depth and height in millimetres.");return null;}
+  const pw=$("nPower").value,kwv=$("nKw").value;if((pw==="electric"||pw==="gas")&&!(kwv!==""&&+kwv>0)){toast(`Enter the ${pw==="gas"?"gas":"electrical"} load in kW from the spec sheet or rating plate (V × A ÷ 1000).`);$("nKw").focus();return null;}
   return {brand,model,cat:$("nCat").value,name:$("nName").value.trim()||"Custom model",w,d,h,mount:$("nMount").value,power:$("nPower").value,kw:$("nKw").value===""?null:+$("nKw").value,
     elec:$("nElec").value.trim()||null,water:$("nWater").checked,drain:$("nDrain").checked,src:null,conf:lastConf==="ai"?"ai":"user",cid:"c"+Date.now().toString(36)};
 }
