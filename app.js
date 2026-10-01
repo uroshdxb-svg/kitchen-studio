@@ -918,11 +918,13 @@ function changed(){dirty=true;isExample=false;render();$("saveState").textConten
 function currentPayload(){return JSON.parse(JSON.stringify({v:1,name:projName||undefined,room:state.room,items:state.items,under:underData(),at:Date.now()}));}
 const projTitle=()=>projName||"Untitled kitchen";
 function saveLabel(where){$("saveState").textContent=be&&(curId||sharedFrom||!isExample)?`${projTitle()} · ${where}`:where;}
+function persistLocal(payload=currentPayload()){
+  try{localStorage.setItem("ks.project",JSON.stringify(payload));localStorage.setItem("ks.curId",curId||"");return true;}catch(_){return false;}}
 async function persist(){
   if(saving){again=true;return;}saving=true;
   const payload=currentPayload();
   let where="";
-  try{localStorage.setItem("ks.project",JSON.stringify(payload));localStorage.setItem("ks.curId",curId||"");where="Saved on this device";}catch(_){}
+  if(persistLocal(payload))where="Saved on this device";
   if(db){try{let cloud=payload;if(JSON.stringify(payload).length>230000){cloud=JSON.parse(JSON.stringify(payload));if(cloud.under)cloud.under.src=null;}await db.doc("projects/main").set(cloud);where=cloud===payload?"Saved":"Saved (plan image kept on this device only)";}catch(_){}}
   if(be&&be.user()&&curId){try{const r=await be.saveProject(curId,payload,projName||undefined);where=r.stripped?"Saved online (plan image kept on this device only)":"Saved online";}catch(_){where="Saved on this device, not online";}}
   else if(be&&be.user()&&!curId)where="Saved on this device · not yet in My kitchens";
@@ -930,6 +932,9 @@ async function persist(){
   saveLabel(where||"Not saved (storage unavailable)");
   saving=false;if(again){again=false;persist();}
 }
+function flushLocal(){if(!dirty)return;clearTimeout(saveT);persistLocal();}
+window.addEventListener("pagehide",flushLocal);
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden")flushLocal();});
 function saveCustomLocal(){try{localStorage.setItem("ks.custom",JSON.stringify(custom));}catch(_){}}
 function underData(){return under?{src:under.src,pw:under.pw,ph:under.ph,mmpp:under.mmpp,x:under.x,y:under.y,op:under.op,show:under.show}:null;}
 function blobUrl(u){try{const b=atob(u.src.split(",")[1]),arr=new Uint8Array(b.length);for(let i=0;i<b.length;i++)arr[i]=b.charCodeAt(i);const url=URL.createObjectURL(new Blob([arr],{type:"image/jpeg"})),im=new Image();im.onload=()=>{if(under===u){u.url=url;render();}};im.src=url;}catch(_){}}
