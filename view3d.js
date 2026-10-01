@@ -54,7 +54,7 @@ const KS3D=(function(){
       case "counter":{feet(g,w,d,fh);B(g,0,fh,0,w,h-fh-40,d,M.steel,true);B(g,-10,h-40,-5,w+20,40,d+20,M.steel2,true);const comp=Math.min(420,w*.26),n=Math.max(1,Math.round((w-comp)/460)),dw=(w-comp)/n;
         for(let y=fh+60;y<h-130;y+=50)B(g,40,y,F,comp-80,22,6,M.dark);
         const nd=KS_drawerSecs(it,n),dh=(h-fh-90)/2;for(let i=0;i<n;i++){const x0=comp+dw*i;if(i<nd)for(let j=0;j<2;j++){const y0=fh+20+j*(dh+10);B(g,x0+8,y0,F,dw-16,dh,24,M.steel,true);handleH(g,x0+dw*.3,y0+dh-50,F+24,dw*.4);}else{B(g,x0+8,fh+20,F,dw-16,h-fh-80,24,M.steel,true);handleH(g,x0+dw*.3,h-120,F+24,dw*.4);}}
-        if(/pan|salad|prep counter/i.test(it.name||"")){B(g,comp,h,10,w-comp-20,150,d*.5,M.steel2,true);B(g,comp+20,h+150,30,w-comp-60,8,d*.5-40,M.steel,true);B(g,comp+20,h,d*.5+10,w-comp-60,8,d*.4,M.dark);}break;}
+        if(/flush/i.test(it.name||"")){B(g,comp+20,h-6,40,w-comp-60,8,d*.42,M.dark);B(g,comp+20,h,40+d*.42-d*.21,w-comp-60,6,d*.21,M.steel2,true);}else if(/pan|salad|prep counter/i.test(it.name||"")){B(g,comp,h,10,w-comp-20,150,d*.5,M.steel2,true);B(g,comp+20,h+150,30,w-comp-60,8,d*.5-40,M.steel,true);B(g,comp+20,h,d*.5+10,w-comp-60,8,d*.4,M.dark);}break;}
       case "ice":if(floorEq)feet(g,w,d,fh);body();B(g,w*.08,fh+(h-fh)*.45,F,w*.84,(h-fh)*.4,18,M.steel2,true);for(let y=fh+30;y<fh+(h-fh)*.35;y+=40)B(g,w*.1,y,F,w*.8,18,6,M.dark);break;
       case "dishuc":feet(g,w,d,fh);body();B(g,12,fh+70,F,w-24,h-fh-180,18,M.steel2,true);handleH(g,w*.2,h-170,F+18,w*.6);B(g,w*.08,h-75,F,w*.3,45,5,M.screen);break;
       case "dishhood":{feet(g,w,d,fh);const top=h*.58,gap=h*.44;B(g,0,fh,0,w,gap-fh,d,M.steel,true);B(g,0,top,0,w,h-top,d,M.steel,true);for(const [x,z] of [[0,0],[w-50,0]])B(g,x,gap,z,50,top-gap,50,M.steel2);
