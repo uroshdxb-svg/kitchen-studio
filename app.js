@@ -170,7 +170,7 @@ function renderSel(){
     <div class="bar">${it.archType==="door"?`<button class="btn sm" data-act="flip">Flip swing</button>`:""}${wallish?"":`<button class="btn sm" data-act="rot">Rotate 90°</button>`}<button class="btn sm" data-act="dup">Duplicate</button><button class="btn sm danger" data-act="del">Remove</button></div>`;return;}
   let h=`<div><span class="tag">${tagOf(it)}</span><span class="ttl">${esc(itemLabel(it))}</span></div>`;
   h+=`<div class="meta">${it.w} × ${it.d} × ${it.h} H${it.mount!=="floor"?` · underside at ${zOf(it)}`:""} · ${it.x} from west wall, ${it.y} from north wall${ut?"<br>"+esc(ut):""}${collides(it)?`<br><span style="color:${C.bad}">${!insideRoom(it)?"Outside the room outline":blocksDoor(it)?"Blocks a door swing":`Overlaps another ${it.mount==="top"?"countertop":"floor"} item`}</span>`:""}</div>`;
-  if(it.kind==="ss"){
+  if(it.kind==="ss"||it.conf==="user"){
     h+=`<div class="grid2"><div class="fld"><label for="selW">Width</label><input id="selW" type="number" step="50" value="${it.w}" inputmode="numeric"></div>
     <div class="fld"><label for="selD">Depth</label><input id="selD" type="number" step="50" value="${it.d}" inputmode="numeric"></div>
     <div class="fld"><label for="selH">Height</label><input id="selH" type="number" step="10" value="${it.h}" inputmode="numeric"></div>
@@ -199,6 +199,20 @@ $("selbar").addEventListener("change",e=>{
   clamp(it);changed();
 });
 
+/* ---------- elevation drag: slide along the wall, lift wall-hung items ---------- */
+/* position along the wall as the elevation draws it (left edge, mm) */
+function elevPos(it){const R=state.room;return ({N:it.x,S:R.w-it.x-fw(it),E:it.y,W:R.d-it.y-fd(it)})[wall];}
+function elevSetPos(it,s){const R=state.room;if(wall==="N")it.x=s;else if(wall==="S")it.x=R.w-s-fw(it);else if(wall==="E")it.y=s;else it.y=R.d-s-fd(it);}
+function elevDragMove(d,p){const it=d.it,R=state.room,horiz=wall==="N"||wall==="S",L=horiz?R.w:R.d,W=horiz?fw(it):fd(it),T=70;
+  let s=Math.round((p.x-d.ox)/10)*10;
+  /* snap to the edges of neighbours on the same mount that share this wall */
+  const near=o=>({N:o.y,S:R.d-o.y-fd(o),W:o.x,E:R.w-o.x-fw(o)})[wall]<=1200;
+  for(const o of state.items){if(o===it||o.kind==="arch"||o.mount!==it.mount||!near(o))continue;const a=elevPos(o),b=a+(horiz?fw(o):fd(o));
+    if(Math.abs(s-b)<T)s=b;else if(Math.abs(s+W-a)<T)s=a-W;else if(Math.abs(s-a)<T)s=a;else if(Math.abs(s+W-b)<T)s=b-W;}
+  s=Math.max(0,Math.min(L-W,s));elevSetPos(it,s);clamp(it);
+  if(it.mount==="over"){let z=Math.round((-(p.y-d.oy)-it.h)/10)*10;z=Math.max(0,Math.min(R.h-it.h,z));for(const v of [900,1200,1500,1800,2000])if(Math.abs(z-v)<40)z=v;it.z=z;}
+  d.moved=true;render();}
+
 /* ---------- drag ---------- */
 let drag=null,threeReady=false,orbitSet=false;
 const svg=$("svg");
@@ -211,6 +225,8 @@ svg.addEventListener("pointerdown",e=>{
   const g=e.target.closest(".it");
   if(!g){if(sel){sel=null;render();}return;}
   const it=state.items.find(i=>i.id===g.dataset.id);if(!it)return;
+  if(view==="elev"){sel=it.id;const p=toWorld(e);drag={elev:true,it,ox:p.x-elevPos(it),oy:p.y+zOf(it)+it.h,moved:false,pid:e.pointerId};
+    try{svg.setPointerCapture(e.pointerId);}catch(_){}render();e.preventDefault();return;}
   if(view!=="plan"){if(sel!==it.id){sel=it.id;render();}return;}
   // keep the touched element in the page while the finger is down, or the browser drops the gesture
   const was=sel;sel=it.id;if(was!==sel){renderSel();const r=g.querySelector("rect");if(r){r.setAttribute("stroke",C.accent);r.setAttribute("stroke-width",r.getAttribute("stroke-width")*1.8);}}
@@ -219,11 +235,12 @@ svg.addEventListener("pointerdown",e=>{
   e.preventDefault();
 });
 // stop the page or the drawing from scrolling while an item is under the finger
-svg.addEventListener("touchstart",e=>{if(view==="plan"&&e.target.closest&&e.target.closest(".it"))e.preventDefault();},{passive:false});
+svg.addEventListener("touchstart",e=>{if(view!=="3d"&&e.target.closest&&e.target.closest(".it"))e.preventDefault();},{passive:false});
 svg.addEventListener("touchmove",e=>{if(drag)e.preventDefault();},{passive:false});
 svg.addEventListener("pointermove",e=>{
   if(!drag||e.pointerId!==drag.pid)return;
   if(drag.plan){const q=toWorld(e);under.x=Math.round(q.x-drag.ox);under.y=Math.round(q.y-drag.oy);drag.moved=true;const im=svg.querySelector("image");if(im){im.setAttribute("x",under.x);im.setAttribute("y",under.y);}return;}
+  if(drag.elev){elevDragMove(drag,toWorld(e));return;}
   const it=drag.it,p=toWorld(e);
   let x=Math.round((p.x-drag.ox)/50)*50,y=Math.round((p.y-drag.oy)/50)*50;
   const W=fw(it),D=fd(it),T=70;
