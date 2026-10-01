@@ -15,7 +15,7 @@ function KS_symOf(it){
   if(has("chargrill","char grill","gas grill","grill 800"))return "chargrill";
   if(has("pasta"))return "pasta";
   if(has("fryer"))return "fryer";
-  if(has("range","burner","stove"))return "range";
+  if((has("burner","stove")||/\brange\b/.test(t))&&!has("refrigerat","fridge","freezer","chiller"))return "range";
   if(has("salamander"))return "salamander";
   if(has("high-speed","rapid-cook","microwave","pizza","deck oven"))return "hsoven";
   if(has("ice maker","ice machine","ice "))return "ice";
@@ -32,6 +32,8 @@ function KS_symOf(it){
   return "generic";
 }
 
+/* Counter fridges with drawers: "4 drawers" -> 2 sections of 2 stacked drawers; "drawer" with no count -> every section. */
+function KS_drawerSecs(it,n){const t=((it.name||"")+" "+(it.model||"")).toLowerCase();if(!t.includes("drawer"))return 0;const m=t.match(/(\d+)\s*-?\s*drawers?/);return m?Math.min(n,Math.ceil(+m[1]/2)):n;}
 function KS_planSym(it,upp,C,ink){
   const w=it.w,d=it.d,k=KS_symOf(it),t=upp*.9,da=`${4*upp} ${3*upp}`;let s="";
   const R=(x,y,W,H,rx,fill,dash,col)=>W>0&&H>0?`<rect x="${x}" y="${y}" width="${W}" height="${H}" rx="${rx||0}" fill="${fill||"none"}" stroke="${col||ink}" stroke-width="${t}" ${dash?`stroke-dasharray="${da}"`:""}/>`:"";
@@ -61,7 +63,7 @@ function KS_planSym(it,upp,C,ink){
       s+=R(40,80,w-80,d-180,0,"none",1);break;}
     case "counter":{const comp=Math.min(420,w*.26),n=Math.max(1,Math.round((w-comp)/460)),dw=(w-comp)/n;s+=R(12,12,w-24,d-24,0,"none",0,C.muted);
       let h="";for(let x=30;x<comp;x+=45)h+=`M${x} ${d-25}V${d-170}`;s+=P(`M${comp} 0V${d}`,1)+P(h);
-      for(let i=0;i<n;i++){if(i)s+=P(`M${comp+dw*i} 0V${d}`,1);s+=door(comp+dw*i,Math.min(dw,d*.8),i%2?"R":"L");}
+      const nd=KS_drawerSecs(it,n);for(let i=0;i<n;i++){if(i)s+=P(`M${comp+dw*i} 0V${d}`,1);const x0=comp+dw*i;if(i<nd)s+=P(`M${x0+dw*.3} ${d-35}H${x0+dw*.7}`)+R(x0+25,d,dw-50,Math.min(dw,d*.75),0,"none",1,C.muted);else s+=door(x0,Math.min(dw,d*.8),i%2?"R":"L");}
       if(/pan|salad|prep counter/i.test(it.name||"")){const pn=Math.max(3,Math.round((w-comp)/180)),pw=(w-comp-40)/pn;for(let i=0;i<pn;i++)s+=R(comp+20+pw*i+5,40,pw-10,d*.28,4);}
       break;}
     case "ice":s+=R(30,30,w-60,d*.45,6,"none",1)+P(`M0 ${d*.55}H${w}`)+R(0,d-40,w,40,0,C.sunk)+P(`M${w/2-40} ${d*.25}h80M${w/2} ${d*.25-40}v80M${w/2-28} ${d*.25-28}l56 56M${w/2-28} ${d*.25+28}l56 -56`);break;
@@ -158,7 +160,7 @@ function KS_elevSym(it,W,front,upp,C,ink,sw){
       for(let i=0;i<n;i++){s+=R(dw*i+14,g+14,dw-28,hb-g-28,6);const hx=n===2?(i?dw+70:dw-70):70;s+=P(`M${hx} ${g+(hb-g)*.38}v${(hb-g)*.24}`);}
       if(/blast|chill/i.test(it.cat+it.name))s+=R(W*.3,g+40,W*.4,60,4,C.sunk);break;}
     case "counter":{const comp=Math.min(420,W*.26),n=Math.max(1,Math.round((W-comp)/460)),dw=(W-comp)/n;s+=R(0,0,W,hb,0,body,1)+feet(hb)+R(-10,0,W+20,40,0,steel);let p="";for(let y=110;y<hb-60;y+=45)p+=`M40 ${y}H${comp-40}`;s+=P(p)+R(60,55,comp-120,40,4,C.sunk);
-      for(let i=0;i<n;i++)s+=R(comp+dw*i+10,55,dw-20,hb-75,6)+P(`M${comp+dw*i+dw*.3} 95h${dw*.4}`);break;}
+      const nd=KS_drawerSecs(it,n),dh=(hb-85)/2;for(let i=0;i<n;i++){const x0=comp+dw*i;if(i<nd)for(let j=0;j<2;j++){const y0=55+j*(dh+10);s+=R(x0+10,y0,dw-20,dh,6)+P(`M${x0+dw*.3} ${y0+35}h${dw*.4}`);}else s+=R(x0+10,55,dw-20,hb-75,6)+P(`M${x0+dw*.3} 95h${dw*.4}`);}break;}
     case "ice":s+=R(0,0,W,hb,0,body,1)+(floorEq?feet(hb):"")+P(`M0 ${hb*.12}L${W} ${hb*.12}`)+R(W*.08,hb*.16,W*.84,hb*.4,8)+P(`M${W*.35} ${hb*.5}h${W*.3}`);{let p="";for(let y=hb*.66;y<hb-30;y+=34)p+=`M${W*.1} ${y}H${W*.9}`;s+=P(p);}break;
     case "dishuc":s+=R(0,0,W,hb,0,body,1)+feet(hb)+P(`M0 95H${W}`)+R(W*.08,25,W*.3,45,4,C.sunk)+Ci(W*.8,48,20,C.sunk)+R(15,110,W-30,hb-190,6)+P(`M${W*.2} 160H${W*.8}`)+P(`M0 ${hb-65}H${W}`);break;
     case "dishhood":{const top=h*.42,gap=h*.56;s+=hit+R(0,0,W,top,0,body,1)+R(W*.62,30,W*.3,70,4,C.sunk)+P(`M-45 ${top-45}H${W+45}M-45 ${top-45}v-90M${W+45} ${top-45}v-90`)+R(0,top,50,gap-top,0,body)+R(W-50,top,50,gap-top,0,body)+R(W/2-250,gap-70,500,70,0,"none")+R(0,gap,W,hb-gap,0,body,1)+feet(hb)+R(20,gap+60,W-40,hb-gap-90,6);break;}
