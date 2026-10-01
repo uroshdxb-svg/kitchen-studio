@@ -414,8 +414,14 @@ $("projFile").addEventListener("change",async e=>{const f=e.target.files[0];e.ta
     if(Array.isArray(p.custom)){const seen=new Set(custom.map(c=>c.cid));for(const c of p.custom)if(c&&c.brand&&c.w>0&&!seen.has(c.cid))custom.push(c);saveCustomLocal();renderResults();}
     changed();toast("Project opened.");}catch(_){toast("Couldn't read that file.");}});
 $("expCsv").addEventListener("click",()=>save("kitchen-schedule.csv",csv()));
-$("expSvg").addEventListener("click",()=>{readColours();const o=planSVG(planBounds()[2]/1400,true);
-  save("kitchen-plan.svg",`<svg xmlns="http://www.w3.org/2000/svg" viewBox="${o.vb.join(" ")}" width="1400" height="${Math.round(1400*o.vb[3]/o.vb[2])}">${o.body}</svg>`);});
+function brandedPlanSVG(){
+  readColours();const upp=planBounds()[2]/1400,o=planSVG(upp,true),vb=o.vb.slice(),footer=76*upp,k=.5*upp;
+  const y=vb[1]+vb[3],x=vb[0]+vb[2]-(KS_brand.width*.5+24)*upp;
+  const brand=`<g transform="translate(${x} ${y+13*upp}) scale(${k})">${KS_brand.lockup({ink:C.ink,muted:C.muted,border:C.muted})}</g>`;
+  vb[3]+=footer;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb.join(" ")}" width="1400" height="${Math.round(1400*vb[3]/vb[2])}">${o.body}<rect x="${vb[0]}" y="${y}" width="${vb[2]}" height="${footer}" fill="${C.surface}"/><path d="M${vb[0]} ${y}H${vb[0]+vb[2]}" stroke="${C.line}" stroke-width="${upp}"/>${brand}</svg>`;
+}
+$("expSvg").addEventListener("click",()=>save("kitchen-plan.svg",brandedPlanSVG()));
 
 /* ---------- floor plan: underlay image, scale, traced walls, openings ---------- */
 let under=null;          /* {src,pw,ph,mmpp,x,y,op,show} : pw/ph in pixels, x/y top-left in mm */
@@ -819,10 +825,10 @@ function sheetSVG(PW,PH,meta,inner,side){
   let s=`<svg xmlns="http://www.w3.org/2000/svg" width="${PW}mm" height="${PH}mm" viewBox="0 0 ${PW} ${PH}"><rect width="${PW}" height="${PH}" fill="#FFFFFF"/>`;
   s+=inner;
   s+=`<rect x="${M}" y="${M}" width="${PW-2*M}" height="${PH-2*M}" fill="none" stroke="${ink}" stroke-width=".5"/><path d="M${x0} ${M}V${PH-M}" stroke="${ink}" stroke-width=".5"/>`;
-  s+=`<rect x="${x0}" y="${M}" width="${TB}" height="13" fill="${ink}"/><text x="${x0+4}" y="${M+8.8}" font-family="${F}" font-weight="bold" font-size="5" fill="#FFFFFF">KITCHEN STUDIO</text>`;
-  s+=`<text x="${x0+4}" y="${M+20}" font-family="${F}" font-size="2.4" fill="${LIGHT.muted}">PROJECT</text><text x="${x0+4}" y="${M+25.5}" font-family="${F}" font-weight="bold" font-size="4" fill="${ink}">${t(meta.project)}</text>`;
-  s+=`<text x="${x0+4}" y="${M+32}" font-family="${F}" font-size="2.4" fill="${LIGHT.muted}">DRAWING</text><text x="${x0+4}" y="${M+37.5}" font-family="${F}" font-weight="bold" font-size="4" fill="${LIGHT.dim}">${t(meta.title)}</text><path d="M${x0} ${M+41}H${PW-M}" stroke="${ink}" stroke-width=".35"/>`;
-  s+=side(x0+4,M+47,TB-8,PH-M-47-58,F,MF);
+  s+=`<rect x="${x0}" y="${M}" width="${TB}" height="24" fill="${KS_brand.colours.ink}"/><g transform="translate(${x0+4} ${M+(24-(TB-8)/KS_brand.width*KS_brand.height)/2}) scale(${(TB-8)/KS_brand.width})">${KS_brand.lockup({ink:"#FFFFFF",muted:"#C4CED8",border:"#FFFFFF",font:F})}</g>`;
+  s+=`<text x="${x0+4}" y="${M+31}" font-family="${F}" font-size="2.4" fill="${LIGHT.muted}">PROJECT</text><text x="${x0+4}" y="${M+36.5}" font-family="${F}" font-weight="bold" font-size="4" fill="${ink}">${t(meta.project)}</text>`;
+  s+=`<text x="${x0+4}" y="${M+43}" font-family="${F}" font-size="2.4" fill="${LIGHT.muted}">DRAWING</text><text x="${x0+4}" y="${M+48.5}" font-family="${F}" font-weight="bold" font-size="4" fill="${LIGHT.dim}">${t(meta.title)}</text><path d="M${x0} ${M+52}H${PW-M}" stroke="${ink}" stroke-width=".35"/>`;
+  s+=side(x0+4,M+58,TB-8,PH-M-58-58,F,MF);
   const by=PH-M-52,cell=(x,y,w,h,l,v)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="none" stroke="${ink}" stroke-width=".35"/><text x="${x+1.6}" y="${y+3.2}" font-family="${F}" font-size="2" fill="${LIGHT.muted}">${l}</text><text x="${x+1.6}" y="${y+8.2}" font-family="${MF}" font-size="3.2" fill="${ink}">${t(v)}</text>`;
   s+=cell(x0,by,TB/2,10,"SCALE",meta.scale)+cell(x0+TB/2,by,TB/2,10,"SHEET",meta.sheet)+cell(x0,by+10,TB/2,10,"DATE",meta.date)+cell(x0+TB/2,by+10,TB/2,10,"PAPER",meta.paper)+cell(x0,by+20,TB,10,"DRAWN BY",meta.by||"-");
   const note=["Concept layout. All dimensions in millimetres.","Verify equipment against current manufacturer","spec sheets and site dimensions before ordering","or fabrication. Not for construction."];

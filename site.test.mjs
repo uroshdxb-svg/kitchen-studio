@@ -2,7 +2,7 @@
 import {chromium} from "playwright";import fs from "node:fs";import path from "node:path";import {fileURLToPath} from "node:url";import {serve} from "./serve.mjs";
 const HERE=path.dirname(fileURLToPath(import.meta.url)),SHOTS=path.join(HERE,"test-results");fs.mkdirSync(SHOTS,{recursive:true});
 const PORT=5177,BASE=`http://localhost:${PORT}`;const server=await serve(PORT);
-const browser=await chromium.launch({args:["--use-gl=swiftshader","--enable-unsafe-swiftshader","--ignore-gpu-blocklist"]});
+const browser=await chromium.launch({...(process.env.KS_TEST_BROWSER?{channel:process.env.KS_TEST_BROWSER}:{}),args:["--use-gl=swiftshader","--enable-unsafe-swiftshader","--ignore-gpu-blocklist"]});
 const mock=fs.readFileSync(path.join(HERE,"mock-backend.js"),"utf8");
 const errors=[];let fails=0;const check=(ok,msg)=>{console.log((ok?"  ok   ":"  FAIL ")+msg);if(!ok)fails++;};
 const ctx=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:2,isMobile:true,hasTouch:true,colorScheme:"light"});
@@ -13,6 +13,11 @@ console.log("1. landing page");
 await page.goto(BASE+"/");await page.waitForTimeout(600);
 check(await page.title().then(t=>/Kitchen Studio/.test(t)),"title");
 check(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1),"no horizontal scroll on phone");
+check(await page.locator(".brand svg").count()===1&&/Vibe your kitchen/.test(await page.textContent(".brand")),"approved logo and tagline on landing page");
+await page.setViewportSize({width:320,height:844});
+check(await page.evaluate(()=>{const a=document.querySelector("header .brand").getBoundingClientRect(),buttons=[...document.querySelectorAll("header .btn")].map(b=>b.getBoundingClientRect());return buttons.every(b=>a.right+8<=b.left&&b.right<=innerWidth)&&document.documentElement.scrollWidth<=innerWidth;}),"logo and navigation fit a 320px phone");
+await page.setViewportSize({width:390,height:844});
+await page.screenshot({path:path.join(SHOTS,"brand-landing-phone.png")});
 check(!(await page.locator("#wlForm").isHidden()),"waitlist form shown with backend");
 check(await page.locator("#wlConsent").getAttribute("required")!==null,"waitlist requires explicit marketing consent");
 await page.fill("#wlEmail","chef@example.com");await page.check("#wlConsent");await page.click("#wlBtn");await page.waitForTimeout(300);
@@ -83,6 +88,42 @@ console.log("6. screenshots for the landing page (desktop plan, phone plan, 3D)"
 const d=await browser.newContext({viewport:{width:1280,height:900},deviceScaleFactor:1,colorScheme:"light"});await d.addInitScript(mock);const dp=await d.newPage();dp.on("pageerror",e=>errors.push("desk: "+e.message));
 await dp.goto(BASE+"/app/");await dp.waitForTimeout(1500);await dp.click("#t-eq");await dp.waitForTimeout(400);await dp.screenshot({path:path.join(SHOTS,"plan-desktop.png")});
 await dp.click("#v3dBtn");await dp.waitForTimeout(2500);await dp.screenshot({path:path.join(SHOTS,"3d.png"),clip:{x:400,y:0,width:800,height:900}});
+console.log("7. branded drawing exports, A3 and A4");
+await dp.click("#vPlan");
+await dp.click("#t-sch");
+await dp.addScriptTag({url:BASE+"/app/vendor/jspdf.min.js"});
+await dp.addScriptTag({url:BASE+"/app/vendor/svg2pdf.min.js"});
+await dp.evaluate(()=>{
+  window.__drawingSheets=[];
+  const original=window.jspdf.jsPDF.API.svg;
+  window.jspdf.jsPDF.API.svg=function(svg,options){
+    const logo=svg.querySelector('[data-ks-brand="lockup"]'),box=logo?.getBBox();
+    window.__drawingSheets.push({svg:svg.outerHTML,logo:!!logo,tagline:logo?.textContent.includes("Vibe your kitchen"),fits:!!box&&box.x>=-1&&box.x+box.width<=501&&box.y>=-1&&box.y+box.height<=101});
+    return original.call(this,svg,options);
+  };
+});
+for(const paper of ["a3","a4"]){
+  await dp.selectOption("#pdfPaper",paper);
+  await dp.locator("#pdf3d").setChecked(paper==="a3");
+  await dp.evaluate(()=>window.__drawingSheets=[]);
+  const pending=dp.waitForEvent("download",{timeout:60000});
+  await dp.click("#expPdf");
+  const pdf=await pending,file=path.join(SHOTS,"branded-"+paper+".pdf");
+  await pdf.saveAs(file);
+  check(fs.readFileSync(file).subarray(0,5).toString()==="%PDF-","valid "+paper.toUpperCase()+" PDF downloaded");
+  const sheets=await dp.evaluate(()=>window.__drawingSheets);
+  check(sheets.length>=4&&sheets.every(s=>s.logo&&s.tagline&&s.fits),"logo is visible and fits on every "+paper.toUpperCase()+" drawing sheet ("+sheets.length+" sheets)");
+  fs.writeFileSync(path.join(SHOTS,"branded-"+paper+"-first.svg"),sheets[0].svg);
+  fs.writeFileSync(path.join(SHOTS,"branded-"+paper+"-last.svg"),sheets.at(-1).svg);
+}
+const svgPending=dp.waitForEvent("download");
+await dp.click("#expSvg");const svgDownload=await svgPending,svgFile=path.join(SHOTS,"branded-plan.svg");await svgDownload.saveAs(svgFile);
+const svg=fs.readFileSync(svgFile,"utf8");
+check(svg.includes('data-ks-brand="lockup"')&&svg.includes("Vibe your kitchen"),"standalone plan SVG includes the logo and tagline");
+const layout=await dp.evaluate(svg=>{const doc=new DOMParser().parseFromString(svg,"image/svg+xml"),v=doc.documentElement.getAttribute("viewBox").split(" ").map(Number),paper=doc.querySelector("rect"),p=["x","y","width","height"].map(k=>+paper.getAttribute(k));return v[0]===p[0]&&v[1]===p[1]&&v[2]===p[2]&&v[3]>p[3];},svg);
+check(layout,"SVG branding adds space below the plan without cropping or rescaling the drawing");
+await dp.screenshot({path:path.join(SHOTS,"brand-app-desktop.png")});
+await dp.evaluate(()=>KS_ui.setTheme("dark"));await dp.screenshot({path:path.join(SHOTS,"brand-app-dark.png")});
 await d.close();
 const ph=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:2,isMobile:true,hasTouch:true,colorScheme:"light"});await ph.addInitScript(mock);const pp=await ph.newPage();
 await pp.goto(BASE+"/app/");await pp.waitForTimeout(1500);await pp.click("#zIn");await pp.waitForTimeout(400);await pp.screenshot({path:path.join(SHOTS,"plan-phone.png")});await ph.close();
