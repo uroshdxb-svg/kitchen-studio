@@ -13,4 +13,3 @@ export function serve(port=5173){
     s.listen(port,()=>res(s));});
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){serve(+process.argv[2]||5173).then(()=>console.log("http://localhost:"+(process.argv[2]||5173)));}
-
