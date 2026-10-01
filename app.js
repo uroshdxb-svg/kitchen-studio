@@ -1041,7 +1041,7 @@ async function runConsent(id){
   openDlg("Connect "+((d.client&&d.client.name)||"an app"),`<p><b>${app}</b> wants to work on the kitchens in your Kitchen Studio account${u&&u.email?` (${esc(u.email)})`:""}.</p>
     <p class="note" style="margin:10px 0 4px"><b>It will be able to</b></p><ul class="note" style="margin:0 0 8px 18px;padding:0"><li>see your saved kitchens and the equipment catalogue</li><li>create kitchens, and add, move, change or remove equipment</li><li>check layouts and read the equipment schedule and loads</li></ul>
     <p class="note" style="margin:6px 0 4px"><b>It won't be able to</b></p><ul class="note" style="margin:0 0 8px 18px;padding:0"><li>export drawings (that stays in the app)</li><li>see anyone else's kitchens or change your account</li></ul>
-    <p class="note">You can disconnect it any time from Claude's connector settings.</p>
+    <p class="note">After you choose, you go back to <b>${esc((()=>{try{return new URL(d.redirect_uri).host;}catch(_){return "the app";}})())}</b>. You can disconnect it any time from that app's connector settings.</p>
     <div class="bar"><button class="btn pri" id="ocYes">Allow</button><button class="btn" id="ocNo">Deny</button></div><p class="note" id="ocMsg" aria-live="polite"></p>`);
   const go=async ok=>{$("ocYes").disabled=$("ocNo").disabled=true;$("ocMsg").textContent=ok?"Connecting…":"Cancelling…";
     try{const r=await be.oauthDecide(id,ok);if(r&&r.redirect_url){location.href=r.redirect_url;return;}$("ocMsg").textContent="Done. You can close this tab.";}
