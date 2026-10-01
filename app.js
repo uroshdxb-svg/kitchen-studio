@@ -841,6 +841,10 @@ function buildSheets(PW,PH,meta){
   const eq=eqList();
   // 1 equipment plan
   sheets.push({title:"Equipment plan",scale:"1:"+S,inner:place(planSVG(upp,"pdf").body),side:listSide(eq.map((it,i)=>({a:String(i+1),b:(it.kind==="ss"?it.name:it.brand+" "+it.model)+"  "+it.w+"×"+it.d+"×"+it.h})),"EQUIPMENT KEY")});
+  // 3D views (rendered stills, page 2)
+  if(EXPORT_3D&&EXPORT_3D.imgs.length){const gap=6,iw=aw,ih=(ah-gap*(EXPORT_3D.imgs.length-1))/EXPORT_3D.imgs.length;let body="";
+    EXPORT_3D.imgs.forEach((src,i)=>{const x=M+8,y=M+8+i*(ih+gap);body+=`<image x="${x}" y="${y}" width="${iw}" height="${ih}" preserveAspectRatio="xMidYMid slice" href="${src}"/><rect x="${x}" y="${y}" width="${iw}" height="${ih}" fill="none" stroke="${LIGHT.line}" stroke-width=".3"/><rect x="${x+3}" y="${y+3}" width="7" height="7" fill="${LIGHT.ink}"/><text x="${x+6.5}" y="${y+8.2}" text-anchor="middle" font-family="helvetica" font-weight="bold" font-size="4.2" fill="#FFFFFF">${"AB"[i]}</text>`;});
+    sheets.push({title:"3D views",scale:"NTS",inner:body,side:listSide([{a:"A",b:"View from the south-east corner"},{a:"B",b:"View from the south-west corner"},{a:"",b:""},{a:"",b:"Rendered from the layout model."},{a:"",b:"Equipment is shown as simplified"},{a:"",b:"blocks at its listed dimensions."},{a:"",b:"Walls nearest the viewer are cut away."}],"VIEWS")});}
   // 2 utilities plan
   let marks="";const rows=[];const r=2.1*S;
   eq.forEach((it,i)=>{const pts=utilPoints(it);if(!pts.length)return;pts.forEach(p=>{const u=UT[p.k];marks+=`<circle cx="${p.x}" cy="${p.y}" r="${r}" fill="${u[0]}" stroke="#FFFFFF" stroke-width="${.25*S}"/><text x="${p.x}" y="${p.y+r*.42}" text-anchor="middle" font-family="helvetica" font-weight="bold" font-size="${r*1.15}" fill="#FFFFFF">${u[1]}</text>`;});
@@ -865,14 +869,21 @@ function buildSheets(PW,PH,meta){
     sheets.push({title:"Schedules",scale:"NTS",inner:body,side:listSide([{a:"E",b:`Electrical ${tot.E.toFixed(1)} kW`,col:UT.E[0]},{a:"G",b:`Gas ${tot.G.toFixed(1)} kW`,col:UT.G[0]},{a:"W",b:`Water points ${tot.W}`,col:UT.W[0]},{a:"D",b:`Drain points ${tot.D}`,col:UT.D[0]},{a:"",b:`Room ${R.w} × ${R.d}, ceiling ${R.h}`},{a:"",b:`Floor area ${(R.w*R.d/1e6).toFixed(1)} m² (overall)`}],"TOTALS")});}
   return sheets.map((sh,i)=>sheetSVG(PW,PH,Object.assign({},meta,{title:sh.title,scale:sh.scale,sheet:`${i+1} / ${sheets.length}`}),sh.inner,sh.side));
 }
+let EXPORT_3D=null;
 async function exportPDF(){
   const btn=$("expPdf");btn.disabled=true;const old=btn.textContent;btn.textContent="Building PDF…";
   try{
     if(!window.jspdf){await loadScript("jspdf-src","https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js");await loadScript("svg2pdf-src","https://cdn.jsdelivr.net/npm/svg2pdf.js@2.2.4/dist/svg2pdf.umd.min.js");}
     const fmt=$("pdfPaper").value,PW=fmt==="a4"?297:420,PH=fmt==="a4"?210:297;
     const keepSel=sel,kFS=FS,kFM=FM;sel=null;C=Object.assign({},LIGHT);FS="helvetica";FM="courier";let svgs;
+    EXPORT_3D={imgs:[]};
+    if($("pdf3d")?.checked!==false){try{
+      if(!threeReady){threeReady=KS3D.init($("v3d"),$("cv3d"),id=>{sel=id;render();});if(threeReady)KS3D.bindJoy($("joy"),$("joyNub"));}
+      if(threeReady){KS3D.rebuild(state,null,C,zOf,KS_symOf,fw,fd);const pxw=Math.round((PW-2*10-(PW>400?96:74)-16)*8),pxh=Math.round(((PH-2*10-26-6)/2)*8);
+        EXPORT_3D.imgs=KS3D.snapshot([{th:.6,ph:.98},{th:-.6,ph:.98}],pxw,pxh,"#FFFFFF");}
+    }catch(e){console.warn("3D views skipped",e);EXPORT_3D.imgs=[];}}
     try{svgs=buildSheets(PW,PH,{project:$("pdfProject").value.trim()||"Kitchen layout",by:$("pdfBy").value.trim(),date:new Date().toISOString().slice(0,10),paper:fmt.toUpperCase()+" landscape"});}
-    finally{sel=keepSel;FS=kFS;FM=kFM;readColours();}
+    finally{sel=keepSel;FS=kFS;FM=kFM;readColours();EXPORT_3D=null;if(threeReady){KS3D.rebuild(state,sel,C,zOf,KS_symOf,fw,fd);if(view==="3d")KS3D.draw();}}
     const doc=new window.jspdf.jsPDF({orientation:"landscape",unit:"mm",format:fmt,compress:true});
     const holder=document.createElement("div");holder.style.cssText="position:fixed;left:-99999px;top:0;width:10px;height:10px;overflow:hidden";document.body.appendChild(holder);
     for(let i=0;i<svgs.length;i++){holder.innerHTML=svgs[i];if(i)doc.addPage(fmt,"landscape");await doc.svg(holder.firstElementChild,{x:0,y:0,width:PW,height:PH});}

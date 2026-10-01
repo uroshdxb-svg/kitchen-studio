@@ -187,5 +187,17 @@ const KS3D=(function(){
     pad.addEventListener("pointermove",e=>{if(e.pointerId===id)set(e);});
     const end=e=>{if(e.pointerId!==id)return;id=null;joy.f=joy.s=0;nub.style.transform="";};pad.addEventListener("pointerup",end);pad.addEventListener("pointercancel",end);
   }
-  return {ok,init,rebuild,resize,draw,setMode,resetOrbit,bindJoy,zoom:f=>{orb.r=Math.max(1.2,Math.min(80,orb.r*f));draw();},get mode(){return mode;},stop:()=>{mode="orbit";joy.f=joy.s=0;}};
+  /* still renders for the drawing set: own renderer and camera, so the live view is untouched. views: [{th,ph}] around the room centre. */
+  function snapshot(views,pw,ph,bg){
+    if(!inited)return [];let r2;const cv=document.createElement("canvas");
+    try{r2=new THREE.WebGLRenderer({canvas:cv,antialias:true,preserveDrawingBuffer:true});}catch(e){return [];}
+    r2.setPixelRatio(1);r2.outputEncoding=THREE.sRGBEncoding;r2.shadowMap.enabled=true;r2.shadowMap.type=THREE.PCFSoftShadowMap;r2.setSize(pw,ph,false);
+    const keep=scene.background;scene.background=new THREE.Color(bg||"#FFFFFF");
+    const c2=new THREE.PerspectiveCamera(35,pw/ph,.05,400),vf=35*Math.PI/180,hf=2*Math.atan(Math.tan(vf/2)*pw/ph),rad=.5*Math.hypot(room.w,room.d,room.h),dist=rad/Math.sin(Math.min(vf,hf)/2)*.84,out=[];
+    for(const v of views){const s=Math.sin(v.ph);c2.position.set(room.w/2+dist*s*Math.sin(v.th),room.h*.35+dist*Math.cos(v.ph),room.d/2+dist*s*Math.cos(v.th));c2.lookAt(room.w/2,room.h*.3,room.d/2);c2.updateProjectionMatrix();
+      r2.render(scene,c2);out.push(cv.toDataURL("image/jpeg",.88));}
+    scene.background=keep;r2.dispose();try{r2.forceContextLoss();}catch(_){}
+    return out;
+  }
+  return {ok,init,rebuild,resize,draw,setMode,resetOrbit,bindJoy,snapshot,zoom:f=>{orb.r=Math.max(1.2,Math.min(80,orb.r*f));draw();},get mode(){return mode;},stop:()=>{mode="orbit";joy.f=joy.s=0;}};
 })();
