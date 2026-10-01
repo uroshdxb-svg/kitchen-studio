@@ -148,7 +148,7 @@ function KS_elevSym(it,W,front,upp,C,ink,sw){
     if(["range","fryer","chargrill","pasta","griddle"].includes(k))s+=R(0,-60,Math.min(110,W*.15),60,0,C.sunk);
     return s;}
   switch(k){
-    case "range":{const n=Math.max(1,Math.round(W/400))*2;s+=R(0,0,W,hb,0,body,1)+feet(hb)+P(`M0 45H${W}M0 170H${W}`)+knobs(n,108)+R(50,215,W-100,hb-270,8)+P(`M${W*.2} 270H${W*.8}`)+R(70,320,W-140,(hb-420)*.6,6,C.sunk);
+    case "range":{const n=Math.max(1,Math.round(W/400))*2;if(it.mount==="top"){s+=R(0,0,W,hb,0,body,1)+P(`M0 ${Math.min(60,hb*.2)}H${W}`)+knobs(n,hb*.62);}else s+=R(0,0,W,hb,0,body,1)+feet(hb)+P(`M0 45H${W}M0 170H${W}`)+knobs(n,108)+R(50,215,W-100,hb-270,8)+P(`M${W*.2} 270H${W*.8}`)+R(70,320,W-140,(hb-420)*.6,6,C.sunk);
       let g="";const c=n/2;for(let i=0;i<c;i++){const x=W*(i+.5)/c;g+=`M${x-90} 0v-28h180v28`;}s+=P(g);break;}
     case "fryer":case "pasta":case "chargrill":{const n=k==="chargrill"?1:Math.max(1,Math.round(W/400));s+=R(0,0,W,hb,0,body,1)+feet(hb)+P(`M0 60H${W}M0 190H${W}`)+knobs(Math.max(1,n),125);
       for(let i=0;i<n;i++){const dw=W/n;s+=R(dw*i+25,225,dw-50,hb-265,6)+P(`M${dw*i+dw*.3} 275h${dw*.4}`);}break;}
@@ -160,7 +160,7 @@ function KS_elevSym(it,W,front,upp,C,ink,sw){
       for(let i=0;i<n;i++){s+=R(dw*i+14,g+14,dw-28,hb-g-28,6);const hx=n===2?(i?dw+70:dw-70):70;s+=P(`M${hx} ${g+(hb-g)*.38}v${(hb-g)*.24}`);}
       if(/blast|chill/i.test(it.cat+it.name))s+=R(W*.3,g+40,W*.4,60,4,C.sunk);break;}
     case "counter":{const comp=Math.min(420,W*.26),n=Math.max(1,Math.round((W-comp)/460)),dw=(W-comp)/n;s+=R(0,0,W,hb,0,body,1)+feet(hb)+R(-10,0,W+20,40,0,steel);let p="";for(let y=110;y<hb-60;y+=45)p+=`M40 ${y}H${comp-40}`;s+=P(p)+R(60,55,comp-120,40,4,C.sunk);
-      const nd=KS_drawerSecs(it,n),dh=(hb-85)/2;for(let i=0;i<n;i++){const x0=comp+dw*i;if(i<nd)for(let j=0;j<2;j++){const y0=55+j*(dh+10);s+=R(x0+10,y0,dw-20,dh,6)+P(`M${x0+dw*.3} ${y0+35}h${dw*.4}`);}else s+=R(x0+10,55,dw-20,hb-75,6)+P(`M${x0+dw*.3} 95h${dw*.4}`);}break;}
+      if(/pan|salad|prep counter/i.test(it.name||""))s+=R(comp,-150,W-comp-10,150,6,steel,1)+P(`M${comp+30} -110H${W-40}`)+R(W*.5-60,-70,120,30,4,C.sunk);const nd=KS_drawerSecs(it,n),dh=(hb-85)/2;for(let i=0;i<n;i++){const x0=comp+dw*i;if(i<nd)for(let j=0;j<2;j++){const y0=55+j*(dh+10);s+=R(x0+10,y0,dw-20,dh,6)+P(`M${x0+dw*.3} ${y0+35}h${dw*.4}`);}else s+=R(x0+10,55,dw-20,hb-75,6)+P(`M${x0+dw*.3} 95h${dw*.4}`);}break;}
     case "ice":s+=R(0,0,W,hb,0,body,1)+(floorEq?feet(hb):"")+P(`M0 ${hb*.12}L${W} ${hb*.12}`)+R(W*.08,hb*.16,W*.84,hb*.4,8)+P(`M${W*.35} ${hb*.5}h${W*.3}`);{let p="";for(let y=hb*.66;y<hb-30;y+=34)p+=`M${W*.1} ${y}H${W*.9}`;s+=P(p);}break;
     case "dishuc":s+=R(0,0,W,hb,0,body,1)+feet(hb)+P(`M0 95H${W}`)+R(W*.08,25,W*.3,45,4,C.sunk)+Ci(W*.8,48,20,C.sunk)+R(15,110,W-30,hb-190,6)+P(`M${W*.2} 160H${W*.8}`)+P(`M0 ${hb-65}H${W}`);break;
     case "dishhood":{const top=h*.42,gap=h*.56;s+=hit+R(0,0,W,top,0,body,1)+R(W*.62,30,W*.3,70,4,C.sunk)+P(`M-45 ${top-45}H${W+45}M-45 ${top-45}v-90M${W+45} ${top-45}v-90`)+R(0,top,50,gap-top,0,body)+R(W-50,top,50,gap-top,0,body)+R(W/2-250,gap-70,500,70,0,"none")+R(0,gap,W,hb-gap,0,body,1)+feet(hb)+R(20,gap+60,W-40,hb-gap-90,6);break;}
