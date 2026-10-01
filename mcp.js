@@ -357,7 +357,7 @@ export async function handleMcp(request, env) {
   const url = new URL(request.url), origin = url.origin;
   if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: cors });
   if (url.pathname.startsWith(PRM_PATH)) {
-    return json({ resource: RESOURCE, authorization_servers: [SUPABASE + "/auth/v1"], bearer_methods_supported: ["header"], resource_name: "Kitchen Studio", resource_documentation: SITE });
+    return json({ resource: RESOURCE, authorization_servers: [SUPABASE + "/auth/v1"], scopes_supported: ["openid", "email", "profile", "offline_access"], bearer_methods_supported: ["header"], resource_name: "Kitchen Studio", resource_documentation: SITE });
   }
   const challenge = { "WWW-Authenticate": `Bearer resource_metadata="${SITE}${PRM_PATH}/mcp"` };
   const auth = request.headers.get("Authorization") || "", token = auth.startsWith("Bearer ") ? auth.slice(7).trim() : "";

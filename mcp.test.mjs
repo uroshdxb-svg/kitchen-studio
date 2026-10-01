@@ -55,6 +55,7 @@ console.log("2. protocol and auth");
   const badTok = await rpc("initialize", {}, "nope"); check(badTok.status === 401 && /invalid_token/.test(badTok.headers.get("WWW-Authenticate")), "bad token: 401 invalid_token");
   const prm = await handleMcp(new Request("https://kitchenstudio.design/.well-known/oauth-protected-resource/mcp"), env); const pj = await prm.json();
   check(pj.resource === "https://kitchenstudio.design/mcp" && /\/auth\/v1$/.test(pj.authorization_servers[0]), "protected resource metadata points at Supabase auth");
+  check(Array.isArray(pj.scopes_supported) && pj.scopes_supported.includes("offline_access"), "metadata lists scopes (ChatGPT requires it; offline_access gives refresh tokens)");
   const init = await rpc("initialize", { protocolVersion: "2025-06-18", capabilities: {}, clientInfo: { name: "test", version: "1" } });
   check(init.body.result.protocolVersion === "2025-06-18" && init.body.result.capabilities.tools && /kitchen/i.test(init.body.result.instructions), "initialize");
   const note = await rpc("notifications/initialized"); check(true, "notification accepted");
