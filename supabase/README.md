@@ -3,12 +3,13 @@
 The customer-data hardening release is intentionally split so the live app and
 database remain compatible throughout deployment.
 
-1. Apply `20261001102201_harden_customer_data.sql`.
+1. Apply the first four migrations, through
+   `20261001104054_least_privilege_grants.sql`.
 2. Deploy the application commit that reads project versions and writes
    waitlist consent.
 3. Confirm the landing page can join the waitlist and a signed-in user can
    create, edit and reopen a kitchen.
-4. Apply `20261001103128_enforce_waitlist_consent.sql`.
+4. Apply `20261001104056_enforce_waitlist_consent_v1.sql`.
 5. Run the Supabase security and performance advisors again.
 
 The first migration is backwards-compatible with the previous frontend. The
