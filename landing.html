@@ -74,13 +74,15 @@ h2{font-size:clamp(26px,3.4vw,38px);letter-spacing:-.025em;line-height:1.08;marg
 .honest{font-size:14px;color:var(--muted);max-width:70ch}
 footer{padding:28px 0 48px;color:var(--muted);font-size:13.5px;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;border-top:1px solid var(--line);margin-top:20px}
 footer a{text-decoration:none}
+header .cta{flex-wrap:nowrap;gap:8px}
+@media (max-width:560px){header .brand small{display:none}header .btn.sm{padding:0 12px;font-size:13.5px}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <a class="brand" href="/"><span class="mark">KS</span><span>Kitchen Studio<small>Commercial kitchen design for operators</small></span></a>
-    <a class="btn sm pri" href="/app/">Open the studio</a>
+    <span class="cta"><a class="btn sm" href="/connect/" target="_blank" rel="noopener">Use with AI</a><a class="btn sm pri" href="/app/">Open the studio</a></span>
   </header>
 
   <section class="hero">
@@ -154,7 +156,7 @@ footer a{text-decoration:none}
 
   <footer>
     <span>Kitchen Studio · Vibe your own kitchen.</span>
-    <span><a href="/app/">Open the studio</a></span>
+    <span><a href="/connect/" target="_blank" rel="noopener">Use with Claude &amp; AI</a> · <a href="/app/">Open the studio</a></span>
   </footer>
 </div>
 <script src="/app/vendor/supabase.js" defer></script>

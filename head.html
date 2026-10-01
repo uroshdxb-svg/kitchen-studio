@@ -59,7 +59,8 @@ button{cursor:pointer;border:0;background:none;padding:0}
 select.mini{border:1px solid var(--line);background:var(--surface);border-radius:var(--pill);padding:0 30px 0 12px;height:32px;font-weight:600;font-size:13px;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2366727F' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
 .menu{position:absolute;right:12px;top:calc(var(--top) + 6px + env(safe-area-inset-top,0px));background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:6px;display:flex;flex-direction:column;min-width:220px;z-index:30}
 .menu button{text-align:left;padding:10px 12px;border-radius:var(--rs);font-weight:600;font-size:14px}
-.menu button:hover{background:var(--sunk)}
+.menu button:hover,.menu .menu-link:hover{background:var(--sunk)}
+.menu .menu-link{display:block;text-align:left;padding:10px 12px;border-radius:var(--rs);font-weight:600;font-size:14px;color:inherit;text-decoration:none}
 .menu button.danger{color:var(--bad)}
 .readbox{background:var(--primary-soft);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:10px;font-size:14px}
 .rv-sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
@@ -238,6 +239,7 @@ td.w{white-space:normal;min-width:180px}
       <button id="mShare" hidden>Share link</button>
       <button id="mSignIn" hidden>Sign in to save online</button>
       <div class="menu-sep" id="acctSep" hidden></div>
+      <a class="menu-link" id="mConnect" href="/connect/" target="_blank" rel="noopener">Use with Claude &amp; AI ↗</a>
       <button id="mReport">Report a gap</button>
       <div class="menu-sep"></div>
       <button id="projSave">Save project file</button>
@@ -376,6 +378,7 @@ td.w{white-space:normal;min-width:180px}
       </div>
 
       <div class="pane" id="p-ai" hidden>
+        <p class="note">Prefer to talk it through? <a href="/connect/" target="_blank" rel="noopener">Connect Kitchen Studio to Claude</a> and ask it to edit your saved kitchens.</p>
         <h2>Start from a template</h2>
         <div class="bar"><div class="fld" style="flex:1 1 200px"><label for="tplSel">Kitchen type</label><select id="tplSel"></select></div><button class="btn pri" id="tplLoad">Load</button></div>
         <p class="note">A template swaps in a typical equipment list for that kitchen type and arranges it. Undo brings your layout back.</p>

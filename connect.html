@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Use Kitchen Studio with AI</title>
+<meta name="description" content="Connect Kitchen Studio to Claude and design your commercial kitchen by describing it.">
+<meta name="theme-color" content="#F0602F">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--ground:#F2F4F7;--surface:#FFFFFF;--sunk:#E7EBF0;--ink:#17202A;--muted:#66727F;--line:#E1E6EC;--primary:#F0602F;--primary-ink:#FFFFFF;--primary-soft:#FFEDE5;--accent:#3B6CF6;--r:14px;--pill:999px;
+  --shadow:0 1px 2px rgba(23,32,42,.06),0 12px 32px rgba(23,32,42,.10);--f:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--ground:#0E1318;--surface:#171D24;--sunk:#10151B;--ink:#E7ECF1;--muted:#8E9AA7;--line:#26303A;--primary:#FF7A4A;--primary-ink:#1A0E08;--primary-soft:#3A2218;--accent:#8CA6FF;--shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.45)}}
+:root[data-theme=dark]{--ground:#0E1318;--surface:#171D24;--sunk:#10151B;--ink:#E7ECF1;--muted:#8E9AA7;--line:#26303A;--primary:#FF7A4A;--primary-ink:#1A0E08;--primary-soft:#3A2218;--accent:#8CA6FF;--shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.45)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.01em;text-decoration:none}
+.mark{width:32px;height:32px;border-radius:10px;background:var(--primary);color:var(--primary-ink);display:grid;place-items:center;font-family:var(--mono);font-size:14px;font-weight:600}
+.brand small{display:block;font-weight:600;font-size:12px;color:var(--muted);letter-spacing:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:var(--pill);padding:0 22px;height:48px;font:inherit;font-weight:700;font-size:16px;cursor:pointer;text-decoration:none;background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.06);white-space:nowrap}
+.btn.pri{background:var(--primary);color:var(--primary-ink)}
+.btn.sm{height:40px;padding:0 16px;font-size:14.5px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+section{padding:36px 0}
+h2{font-size:clamp(26px,3.4vw,38px);letter-spacing:-.025em;line-height:1.08;margin:0 0 10px;font-weight:800}
+.sub{color:var(--muted);max-width:60ch;margin:0 0 28px}
+.claims{display:grid;gap:14px}
+@media (min-width:700px){.claims{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1000px){.claims{grid-template-columns:repeat(3,1fr)}}
+.claim{background:var(--surface);border-radius:var(--r);padding:20px 20px 18px;box-shadow:0 1px 2px rgba(0,0,0,.05);border:1px solid var(--line)}
+.claim .k{font-family:var(--mono);font-size:12px;color:var(--primary);margin-bottom:8px}
+.claim h3{margin:0 0 8px;font-size:18px;letter-spacing:-.01em}
+.claim p{margin:0;color:var(--muted);font-size:15px}
+.honest{font-size:14px;color:var(--muted);max-width:70ch}
+footer{padding:28px 0 48px;color:var(--muted);font-size:13.5px;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;border-top:1px solid var(--line);margin-top:20px}
+footer a{text-decoration:none}
+
+h1{font-size:clamp(32px,5vw,50px);line-height:1.04;letter-spacing:-.03em;margin:24px 0 14px;font-weight:800}
+h1 em{font-style:normal;color:var(--primary)}
+.lead{font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:60ch;margin:0 0 8px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 18px}
+.tabs button{height:40px;padding:0 18px;border-radius:var(--pill);border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-weight:700;font-size:15px;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--shadow)}
+.panel[hidden]{display:none}
+.status{display:inline-block;font-family:var(--mono);font-size:12px;padding:3px 10px;border-radius:var(--pill);background:var(--primary-soft);color:var(--primary);margin-bottom:10px}
+.status.soon{background:var(--sunk);color:var(--muted)}
+ol.steps{margin:0;padding:0;list-style:none;counter-reset:s}
+ol.steps li{counter-increment:s;position:relative;padding:0 0 18px 44px}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;background:var(--primary);color:var(--primary-ink);display:grid;place-items:center;font-family:var(--mono);font-size:13px;font-weight:600}
+ol.steps b{font-weight:700}
+.copy{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0 2px}
+.copy code{font-family:var(--mono);font-size:14px;background:var(--sunk);border:1px solid var(--line);border-radius:10px;padding:8px 12px;word-break:break-all}
+.copy button{height:36px;padding:0 14px;border-radius:var(--pill);border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.panel p{margin:0 0 12px}.panel p.m,.m{color:var(--muted);font-size:15px}
+.prompts{display:grid;gap:12px}
+@media (min-width:800px){.prompts{grid-template-columns:repeat(2,1fr)}}
+.prompts div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;font-size:15.5px}
+.prompts div::before{content:"you";display:block;font-family:var(--mono);font-size:11px;color:var(--primary);margin-bottom:6px}
+ul.ticks{margin:0;padding-left:20px}ul.ticks li{margin:0 0 6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="/"><span class="mark">KS</span><span>Kitchen Studio<small>Commercial kitchen design for operators</small></span></a>
+    <a class="btn sm pri" href="/app/">Open the studio</a>
+  </header>
+
+  <h1>Design your kitchen <em>by talking to your AI</em></h1>
+  <p class="lead">Connect Kitchen Studio to Claude and describe what you need. It searches the equipment catalogue, places units in your saved kitchens, checks clearances and hoods, and you open the result in the studio to see the plan, elevations and 3D.</p>
+
+  <section>
+    <h2>What it can do</h2>
+    <div class="claims">
+      <div class="claim"><div class="k">read</div><h3>Your saved kitchens</h3><p>Lists the kitchens on your account and reads the room, walls, pillars, doors and every item.</p></div>
+      <div class="claim"><div class="k">edit</div><h3>Place equipment</h3><p>Adds catalogue models and fabricated stainless (tables, sinks, lowboys, saladettes, hoods), moves, resizes and removes them.</p></div>
+      <div class="claim"><div class="k">check</div><h3>Check the layout</h3><p>Flags overlaps, units outside the room, blocked door swings, cooking not under a hood, and returns the equipment schedule with loads.</p></div>
+    </div>
+    <p class="m" style="margin-top:16px">It only touches kitchens you have saved while signed in. Drawing sets and PDF export stay in the studio. You approve access once, and you can remove the connector at any time from your AI's settings.</p>
+  </section>
+
+  <section>
+    <h2>Connect</h2>
+    <p class="sub">You need a Kitchen Studio account first: open the studio and sign in from the ••• menu, then save at least one kitchen.</p>
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-p="claude">Claude</button>
+      <button role="tab" aria-selected="false" data-p="chatgpt">ChatGPT</button>
+      <button role="tab" aria-selected="false" data-p="codex">Codex</button>
+    </div>
+
+    <div class="panel" id="p-claude">
+      <span class="status">Available now</span>
+      <p class="m">Works in Claude on the web, the desktop app and mobile once added. Needs a plan that allows custom connectors; on Team and Enterprise plans an owner may need to add it for the organization.</p>
+      <ol class="steps">
+        <li>In Claude, open <b>Settings → Connectors</b> (or <b>Customize → Connectors</b>) and choose <b>Add custom connector</b>.</li>
+        <li>Name it <b>Kitchen Studio</b> and paste the server address:
+          <div class="copy"><code id="c-url">https://kitchenstudio.design/mcp</code><button data-copy="c-url">Copy</button></div></li>
+        <li>Open <b>Advanced settings</b> and paste the OAuth Client ID. Leave the client secret empty.
+          <div class="copy"><code id="c-id">2fa9565e-5916-4f67-9fbb-6120b7dbe11f</code><button data-copy="c-id">Copy</button></div></li>
+        <li>Click <b>Add</b>, then <b>Connect</b>. Sign in to Kitchen Studio if asked and press <b>Allow</b> on the access page.</li>
+        <li>In a new chat, make sure Kitchen Studio is switched on in the tools menu, and ask for a change to one of your kitchens.</li>
+      </ol>
+    </div>
+
+    <div class="panel" id="p-chatgpt" hidden>
+      <span class="status soon">On request</span>
+      <p>ChatGPT gives each custom connector its own sign-in address, which we have to approve on our side before it can connect. Until that's self-serve, we set it up with you.</p>
+      <ol class="steps">
+        <li>In ChatGPT, turn on <b>Developer mode</b> under Settings → Apps &amp; Connectors → Advanced (needs a plan that allows custom connectors).</li>
+        <li>Create a connector with the server address <code>https://kitchenstudio.design/mcp</code> and OAuth authentication.</li>
+        <li>Use <b>Report a gap</b> in the studio's ••• menu to send us the callback address ChatGPT shows. We reply with your client ID, usually within a day.</li>
+      </ol>
+    </div>
+
+    <div class="panel" id="p-codex" hidden>
+      <span class="status soon">On request</span>
+      <p>Codex can use the same tools from the terminal. It signs in through a local callback that we register for you.</p>
+      <ol class="steps">
+        <li>Use <b>Report a gap</b> in the studio's ••• menu and ask for Codex access. We send back a client ID.</li>
+        <li>Add the server and sign in:
+          <div class="copy"><code>codex mcp add kitchen-studio --url https://kitchenstudio.design/mcp</code></div>
+          <div class="copy"><code>codex mcp login kitchen-studio</code></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <h2>Things to ask</h2>
+    <div class="prompts">
+      <div>List my kitchens and tell me what's in K-14.</div>
+      <div>In K-14, put two 4-drawer lowboys under the grill and burner, and keep the cooking surfaces level.</div>
+      <div>Add a double sink and a hand-wash basin on the west wall, then check the layout for clearance problems.</div>
+      <div>Find a 6-tray Rational combi oven and the best stand for it, and place it under the hood.</div>
+      <div>Give me the equipment schedule for K-14 with total electrical load.</div>
+      <div>Create a new kitchen, 8 by 5 metres, 3 metres high, with a door on the south wall.</div>
+    </div>
+    <p class="m" style="margin-top:16px">After a change, reload the kitchen in the studio (My kitchens) to see it in plan, elevation and 3D, and to export drawings.</p>
+  </section>
+
+  <section>
+    <p class="honest">Kitchen Studio helps you plan; it does not replace an architect, an engineer or MEP drawings. AI changes are a first draft for a human to check. Equipment dimensions come from manufacturers' published specification sheets and must be confirmed with your supplier before ordering.</p>
+  </section>
+
+  <footer>
+    <span>Kitchen Studio · Vibe your own kitchen.</span>
+    <span><a href="/">Home</a> · <a href="/app/">Open the studio</a></span>
+  </footer>
+</div>
+<script>
+document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".tabs button").forEach(x=>x.setAttribute("aria-selected",x===b));
+  document.querySelectorAll(".panel").forEach(p=>p.hidden=p.id!=="p-"+b.dataset.p);
+  history.replaceState(null,"","#"+b.dataset.p);}));
+const h=location.hash.slice(1);const t=document.querySelector('.tabs button[data-p="'+h+'"]');if(t)t.click();
+document.querySelectorAll("[data-copy]").forEach(b=>b.addEventListener("click",async()=>{
+  try{await navigator.clipboard.writeText(document.getElementById(b.dataset.copy).textContent);b.textContent="Copied";setTimeout(()=>b.textContent="Copy",1500);}catch(e){}}));
+</script>
+</body>
+</html>

@@ -46,6 +46,7 @@ if(mode==="artifact"){
   out(D,"app/app.js",appJs);
   copy("cloud.js",D,"app/cloud.js");
   for(const [name,src] of Object.entries(LIBS))copy(src,D,"app/vendor/"+name);
+  out(D,"connect/index.html",read("connect.html"));
   out(D,"index.html",read("landing.html").replace("__KS_CONFIG__",JSON.stringify(cfg)));
   for(const f of ["favicon.svg","robots.txt","sample_floorplan.png","demo.mp4","demo.webm","demo-poster.jpg"])if(fs.existsSync(path.join(ROOT,f)))copy(f,D,f);
   for(const f of fs.readdirSync(ROOT).filter(f=>/^shot-.*\.png$/.test(f)))copy(f,D,"shots/"+f.replace(/^shot-/,""));
