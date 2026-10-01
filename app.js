@@ -35,6 +35,7 @@ let db=null, sampleFn=null, downloads=null; let cat="All"; let ssOptsSel=new Set
 let be=null,curId=null,curVersion=null,projName="",sharedFrom=null,projList=[];/* cloud backend (website build) */
 const remoteEq={set:e=>{const j=JSON.parse(JSON.stringify(e));if(be&&be.user())be.saveEquipment(j).catch(()=>{});else if(db)db.doc("equipment/"+e.cid).set(j).catch(()=>{});},
   del:cid=>{if(be&&be.user())be.deleteEquipment(cid).catch(()=>{});else if(db)db.doc("equipment/"+cid).delete().catch(()=>{});}};
+let fabOpen=false;
 let uid=1; const newId=()=>"i"+Date.now().toString(36)+(uid++);
 
 /* ---------- geometry ---------- */
@@ -66,7 +67,8 @@ let FS="Barlow,Arial,sans-serif", FM="'IBM Plex Mono',Menlo,monospace";
 const eqList=()=>state.items.filter(i=>i.kind!=="arch");
 function tagOf(it){return eqList().indexOf(it)+1;}
 const tfOf=it=>{const W=fw(it),D=fd(it);return ["",`translate(${W} 0) rotate(90)`,`translate(${W} ${D}) rotate(180)`,`translate(0 ${D}) rotate(270)`][(it.rot/90)%4];};
-function itemLabel(it){return it.kind==="ss"?it.name:(it.brand+" "+it.model);}
+const isFab=it=>!!KS_fab.typeOf(it);   /* stainless fabrication, including fabricated refrigeration */
+function itemLabel(it){return isFab(it)?it.name:(it.brand+" "+it.model);}
 
 function planBounds(){const R=state.room,m=700;let x0=-m,y0=-m,x1=R.w+m,y1=R.d+m;if(under&&under.show){x0=Math.min(x0,under.x-200);y0=Math.min(y0,under.y-200);x1=Math.max(x1,under.x+under.pw*under.mmpp+200);y1=Math.max(y1,under.y+under.ph*under.mmpp+200);}return [x0,y0,x1-x0,y1-y0];}
 function planSVG(upp,forExport,faint){
@@ -185,10 +187,17 @@ function renderSel(){
     ${it.kind!=="ss"&&it.power!=="none"?`<div class="fld"><label for="selKw">Load kW</label><input id="selKw" type="number" step="0.05" min="0" value="${it.kw??""}" inputmode="decimal"></div>`:""}
     ${it.mount==="over"?`<div class="fld"><label for="selZ">Mounted at</label><input id="selZ" type="number" step="50" value="${it.z}" inputmode="numeric"></div>`:""}</div>`;
     if(it.opts?.length||it.mat)h+=`<div class="meta">${esc([it.mat,...(it.opts||[])].filter(Boolean).join(" · "))}</div>`;
-  }else if(it.conf==="ai")h+=`<div class="meta" style="color:${C.dim}">AI-estimated dimensions. Check against the spec sheet.</div>`;
+  }
+  if(isFab(it)){const fs=KS_fab.fields(it);
+    h+=`<details class="fabd" id="fabD"${fabOpen?" open":""}><summary>Fabrication details <span class="fabh">shown on the fabricator's sheet</span></summary><div class="grid2">${fs.map(f=>{const id="fab_"+f.key,val=esc(f.value);
+      const ctl=f.options?`<select id="${id}" data-fab="${f.key}">${f.options.map(o=>`<option${o===f.value?" selected":""}>${esc(o)}</option>`).join("")}</select>`
+        :f.kind==="area"?`<textarea id="${id}" data-fab="${f.key}" rows="2" placeholder="e.g. cut-out for the blender, extra brace under the grill">${val}</textarea>`
+        :`<input id="${id}" data-fab="${f.key}" type="${f.kind==="num"?"number":"text"}" value="${val}"${f.kind==="num"?' inputmode="numeric"':""}>`;
+      return `<div class="fld"${f.kind==="area"?' style="grid-column:1/-1"':""}><label for="${id}">${esc(f.label)}${f.unit?` <span class="ut">${esc(f.unit)}</span>`:""}</label>${ctl}</div>`;}).join("")}</div></details>`;}else if(it.conf==="ai")h+=`<div class="meta" style="color:${C.dim}">AI-estimated dimensions. Check against the spec sheet.</div>`;
   h+=`<div class="bar"><button class="btn sm" data-act="rot">Rotate 90°</button><button class="btn sm" data-act="dup">Duplicate</button><button class="btn sm danger" data-act="del">Remove</button></div>`;
   bar.innerHTML=h;
 }
+$("selbar").addEventListener("toggle",e=>{if(e.target.id==="fabD")fabOpen=e.target.open;},true);
 $("selbar").addEventListener("click",e=>{
   const a=e.target.closest("[data-act]")?.dataset.act;if(!a)return;const it=state.items.find(i=>i.id===sel);if(!it)return;
   if(a==="flip"){it.flip=!it.flip;}
@@ -200,6 +209,8 @@ $("selbar").addEventListener("click",e=>{
 $("selbar").addEventListener("change",e=>{
   const it=state.items.find(i=>i.id===sel);if(!it)return;
   if(e.target.id==="selKw"){it.kw=e.target.value===""?null:Math.min(500,Math.max(0,+e.target.value));changed();return;}
+  if(e.target.dataset.fab){const k=e.target.dataset.fab,d=KS_fab.defaults(it);it.fab=Object.assign({},it.fab||{});const v=e.target.type==="number"?(e.target.value===""?d[k]:Math.max(0,Math.round(+e.target.value))):e.target.value.trim();
+    if(v===d[k]||v==="")delete it.fab[k];else it.fab[k]=v;if(!Object.keys(it.fab).length)delete it.fab;changed();return;}
   if(it.kind!=="ss"&&it.kind!=="arch"&&it.conf!=="user")return;
   const v=Math.round(+e.target.value);if(!(v>0))return;
   if(e.target.id==="selW")it.w=Math.min(6000,Math.max(200,v));
@@ -328,7 +339,7 @@ $("ssAdd").addEventListener("click",()=>{
   if(!(w>=200&&w<=6000&&d>=150&&d<=3000&&h>=20&&h<=3000)){toast("Check the sizes: width 200-6000, depth 150-3000, height 20-3000.");return;}
   const opts=[...$("ssOpts").querySelectorAll("input:checked")].map(i=>i.dataset.o);
   if(SSR[k]){const r=SSR[k],kw=+$("ssKw").value;if(!($("ssKw").value!==""&&kw>0&&kw<=20)){toast("Enter the electrical load in kW. Use the fabricator's compressor rating, or keep the typical figure.");$("ssKw").focus();return;}
-    const nm=r.name(w,opts);place({kind:"eq",brand:"Fabricated",model:nm,name:`${nm}, ${$("ssMat").value}`,cat:"Refrigeration",w,d,h,mount:"floor",power:"electric",kw,elec:"230V 1N 50Hz",water:false,drain:false,opts:opts.filter(o=>!/drawers/.test(o)),mat:$("ssMat").value,conf:"user"});return;}
+    const nm=r.name(w,opts);place({kind:"eq",ssType:k,brand:"Fabricated",model:nm,name:`${nm}, ${$("ssMat").value}`,cat:"Refrigeration",w,d,h,mount:"floor",power:"electric",kw,elec:"230V 1N 50Hz",water:false,drain:false,opts:opts.filter(o=>!/drawers/.test(o)),mat:$("ssMat").value,conf:"user"});return;}
   place({kind:"ss",ssType:k,brand:"Fabricated",model:t.n,name:t.n,cat:"Stainless",w,d,h,mount:t.mount,z:t.mount==="over"?Math.round(+$("ssZ").value)||t.z:undefined,
     power:"none",kw:null,elec:null,water:!!t.water||opts.includes("Pre-rinse sink"),drain:!!t.drain||opts.includes("Pre-rinse sink"),opts,mat:$("ssMat").value,conf:"user"});
 });
@@ -384,8 +395,8 @@ $("nSaveOnly").addEventListener("click",()=>saveNew(false));
 /* ---------- schedule ---------- */
 function groups(kind){
   const m=new Map();
-  eqList().forEach((it,k)=>{if((it.kind==="ss")!==(kind==="ss"))return;
-    const key=[it.brand,it.model,it.w,it.d,it.h,(it.opts||[]).join("|"),it.mat||""].join("~");
+  eqList().forEach((it,k)=>{if(isFab(it)!==(kind==="ss"))return;
+    const key=isFab(it)?KS_fab.groupKey(it):[it.brand,it.model,it.w,it.d,it.h,(it.opts||[]).join("|"),it.mat||""].join("~");
     if(!m.has(key))m.set(key,{it,tags:[]});m.get(key).tags.push(k+1);});
   return [...m.values()];
 }
@@ -395,12 +406,12 @@ function renderSchedule(){
   eqList().forEach(i=>{if(i.power==="electric"){if(i.kw)el+=i.kw;else unk++;}if(i.power==="gas"&&i.kw)gas+=i.kw;if(i.water)wat++;if(i.drain)dr++;});
   $("totals").innerHTML=`<div><span class="lbl">Electrical load</span><b>${el.toFixed(1)} kW</b>${unk?`<span class="ut">${unk} item${unk>1?"s":""} without a listed load</span>`:""}</div><div><span class="lbl">Gas load</span><b>${gas.toFixed(1)} kW</b></div><div><span class="lbl">Water points</span><b>${wat}</b></div><div><span class="lbl">Drain points</span><b>${dr}</b></div>`;
   $("schEq").innerHTML=eq.length?`<table><thead><tr><th>No.</th><th>Qty</th><th>Brand / model</th><th>W × D × H</th><th>Energy</th><th>Electrical</th><th>W / D</th><th>Data</th></tr></thead><tbody>${eq.map(g=>{const i=g.it;return `<tr><td class="n">${g.tags.join(", ")}</td><td class="n">${g.tags.length}</td><td class="w"><b>${esc(i.brand)}</b> ${esc(i.model)}<br><span class="ut">${esc(i.name)}</span></td><td class="n">${i.w} × ${i.d} × ${i.h}</td><td>${esc(i.power||"")}${i.kw?" "+i.kw+" kW":""}</td><td>${esc(i.elec||"–")}</td><td>${i.water?"W":"–"} / ${i.drain?"D":"–"}</td><td>${i.conf==="verified"?`<a class="pill ok" href="${esc(i.src)}" target="_blank" rel="noopener">source ↗</a>`:i.conf==="ai"?`<span class="pill warn">AI estimate</span>`:`<span class="pill me">your entry</span>`}</td></tr>`;}).join("")}</tbody></table>`:`<div class="empty">No equipment placed yet.</div>`;
-  $("schSs").innerHTML=ss.length?`<table><thead><tr><th>No.</th><th>Qty</th><th>Module</th><th>W × D × H</th><th>Material</th><th>Options</th></tr></thead><tbody>${ss.map(g=>{const i=g.it;return `<tr><td class="n">${g.tags.join(", ")}</td><td class="n">${g.tags.length}</td><td class="w"><b>${esc(i.name)}</b>${i.mount==="over"?`<br><span class="ut">underside at ${i.z}</span>`:""}</td><td class="n">${i.w} × ${i.d} × ${i.h}</td><td>${esc(i.mat||"")}</td><td class="w">${esc((i.opts||[]).join(", ")||"–")}</td></tr>`;}).join("")}</tbody></table>`:`<div class="empty">No stainless modules placed yet.</div>`;
+  $("schSs").innerHTML=ss.length?`<table><thead><tr><th>No.</th><th>Qty</th><th>Module</th><th>W × D × H</th><th>Material</th><th>Options</th></tr></thead><tbody>${ss.map(g=>{const i=g.it;return `<tr><td class="n">${g.tags.join(", ")}</td><td class="n">${g.tags.length}</td><td class="w"><b>${esc(i.name)}</b>${i.mount==="over"?`<br><span class="ut">underside at ${i.z}</span>`:""}</td><td class="n">${i.w} × ${i.d} × ${i.h}</td><td>${esc(i.mat||"")}</td><td class="w">${esc([...(i.opts||[]),i.kw?i.kw+" kW, "+(i.elec||"230V"):""].filter(Boolean).join(", ")||"–")}</td></tr>`;}).join("")}</tbody></table>`:`<div class="empty">No stainless modules placed yet.</div>`;
 }
 function csv(){
   const q=v=>`"${String(v??"").replace(/"/g,'""')}"`;
   const rows=[["Type","Item no.","Qty","Brand","Model / module","Description","Width mm","Depth mm","Height mm","Energy","kW","Electrical","Water","Drain","Material","Options","Data source"]];
-  for(const k of ["eq","ss"])for(const g of groups(k)){const i=g.it;rows.push([k==="eq"?"Equipment":"Stainless",g.tags.join(" "),g.tags.length,i.brand,i.model,i.name,i.w,i.d,i.h,i.power,i.kw??"",i.elec??"",i.water?"yes":"",i.drain?"yes":"",i.mat??"",(i.opts||[]).join("; "),i.conf==="verified"?i.src:i.conf==="ai"?"AI estimate - verify":"User entry"]);}
+  for(const k of ["eq","ss"])for(const g of groups(k)){const i=g.it;rows.push([k==="eq"?"Equipment":"Fabrication",g.tags.join(" "),g.tags.length,i.brand,i.model,i.name,i.w,i.d,i.h,i.power,i.kw??"",i.elec??"",i.water?"yes":"",i.drain?"yes":"",i.mat??"",(i.opts||[]).join("; "),i.conf==="verified"?i.src:i.conf==="ai"?"AI estimate - verify":"User entry"]);}
   return "﻿"+rows.map(r=>r.map(q).join(",")).join("\r\n");
 }
 async function save(filename,data){
@@ -861,7 +872,7 @@ function buildSheets(PW,PH,meta){
   const place=body=>`<g transform="translate(${ox} ${oy}) scale(${1/S})">${body}</g>`+scaleBar(M+8,PH-M-10,S);
   const eq=eqList();
   // 1 equipment plan
-  sheets.push({title:"Equipment plan",scale:"1:"+S,inner:place(planSVG(upp,"pdf").body),side:listSide(eq.map((it,i)=>({a:String(i+1),b:(it.kind==="ss"?it.name:it.brand+" "+it.model)+"  "+it.w+"×"+it.d+"×"+it.h})),"EQUIPMENT KEY")});
+  sheets.push({title:"Equipment plan",scale:"1:"+S,inner:place(planSVG(upp,"pdf").body),side:listSide(eq.map((it,i)=>({a:String(i+1),b:itemLabel(it)+"  "+it.w+"×"+it.d+"×"+it.h})),"EQUIPMENT KEY")});
   // 3D views (rendered stills, page 2)
   if(EXPORT_3D&&EXPORT_3D.imgs.length){const gap=6,iw=aw,ih=(ah-gap*(EXPORT_3D.imgs.length-1))/EXPORT_3D.imgs.length;let body="";
     EXPORT_3D.imgs.forEach((src,i)=>{const x=M+8,y=M+8+i*(ih+gap);body+=`<image x="${x}" y="${y}" width="${iw}" height="${ih}" preserveAspectRatio="xMidYMid slice" href="${src}"/><rect x="${x}" y="${y}" width="${iw}" height="${ih}" fill="none" stroke="${LIGHT.line}" stroke-width=".3"/><rect x="${x+3}" y="${y+3}" width="7" height="7" fill="${LIGHT.ink}"/><text x="${x+6.5}" y="${y+8.2}" text-anchor="middle" font-family="helvetica" font-weight="bold" font-size="4.2" fill="#FFFFFF">${"AB"[i]}</text>`;});
@@ -876,12 +887,40 @@ function buildSheets(PW,PH,meta){
   // 3 elevations, 2 x 2
   const keepWall=wall;let ev="";const cw=aw/2,ch=(ah-6)/2,Lmax=Math.max(R.w,R.d)+1200,Hm=R.h+1300,Se=pickScale(Lmax,Hm,cw-6,ch-6);
   ELEV_PDF=true;["N","E","S","W"].forEach((wl,i)=>{wall=wl;const o=elevSVG(Se*.25),cx=M+8+(i%2)*cw,cy=M+8+Math.floor(i/2)*ch;ev+=`<g transform="translate(${cx-o.vb[0]/Se+(cw-o.vb[2]/Se)/2} ${cy-o.vb[1]/Se+(ch-o.vb[3]/Se)/2}) scale(${1/Se})">${o.body}</g>`;});wall=keepWall;ELEV_PDF=false;
-  sheets.push({title:"Wall elevations",scale:"1:"+Se,inner:ev+scaleBar(M+8,PH-M-10,Se),side:listSide([...eq.map((it,i)=>({a:String(i+1),b:it.kind==="ss"?it.name:it.brand+" "+it.model})),{a:"",b:"Shows items within 1200 mm of each wall.",col:LIGHT.muted}],"EQUIPMENT KEY")});
+  sheets.push({title:"Wall elevations",scale:"1:"+Se,inner:ev+scaleBar(M+8,PH-M-10,Se),side:listSide([...eq.map((it,i)=>({a:String(i+1),b:itemLabel(it)})),{a:"",b:"Shows items within 1200 mm of each wall.",col:LIGHT.muted}],"EQUIPMENT KEY")});
+  // 3b stainless fabrication details: one detail per design, with quantity and the plan's item numbers
+  const fg=groups("ss");
+  if(fg.length){
+    const per=PW>400?2:1,gap=5,ch=(ah+6-gap*(per-1))/per,cw=aw+4,specW=PW>400?118:Math.min(84,cw*.44),dwW=cw-specW-6,SC=[5,10,15,20,25,30,40,50,75,100];
+    const P={ink:LIGHT.ink,dim:LIGHT.dim,steel:"#EEF2F5"};
+    const wrapT=(str,maxC)=>{const out=[];let cur="";for(const w of String(str).split(" ")){if((cur+" "+w).trim().length>maxC&&cur){out.push(cur);cur=w;}else cur=(cur+" "+w).trim();}if(cur)out.push(cur);return out;};
+    for(let p=0;p<fg.length;p+=per){let body="";const onSheet=[];
+      fg.slice(p,p+per).forEach((g,k)=>{const it=g.it,sp=KS_fab.spec(it),n=p+k+1,cx=M+6,cy=M+6+k*(ch+gap);onSheet.push({a:"F"+n,b:sp.label+" ×"+g.tags.length});
+        const below=PW<=400,specCols=below?2:1,colW=below?(cw-10)/2:specW-3,maxC=Math.floor((colW-22)/(2.05*.5));let fsz=2.05,lh=2.85;
+        const blocks=sp.rows.map(([lab,val])=>{const wr=wrapT(val,maxC);return wr.map((t,i)=>({lab:i?null:lab,txt:t}));});
+        /* two columns on A4: split the rows where the line counts balance */
+        const total=blocks.reduce((a,b2)=>a+b2.length,0);let cols=[blocks];if(specCols===2){let acc=0,cut=blocks.length;for(let i=0;i<blocks.length;i++){acc+=blocks[i].length;if(acc>=total/2){cut=i+1;break;}}cols=[blocks.slice(0,cut),blocks.slice(cut)];}
+        const colLines=cols.map(c2=>c2.reduce((a,b2)=>a+b2.length,0)+c2.length*.35),maxLines=Math.max(...colLines);
+        const specH=below?maxLines*lh+8:0,dwW2=below?cw-4:dwW,dwH=ch-11-specH;
+        let sc=SC[SC.length-1],c=null;for(const x of SC){const t2=KS_fab.card(it,1/x,P);if(t2.w<=dwW2&&t2.h<=dwH){sc=x;c=t2;break;}}if(!c)c=KS_fab.card(it,1/sc,P);
+        body+=`<rect x="${cx}" y="${cy}" width="${cw}" height="${ch}" fill="none" stroke="${LIGHT.line}" stroke-width=".3"/><rect x="${cx}" y="${cy}" width="${cw}" height="7.5" fill="${LIGHT.sunk}"/>`;
+        body+=`<text x="${cx+3}" y="${cy+5.2}" font-family="helvetica" font-weight="bold" font-size="3.3" fill="${LIGHT.ink}">F${n}  ${esc(sp.label)}</text>`;
+        body+=`<text x="${cx+cw-3}" y="${cy+5.2}" text-anchor="end" font-family="helvetica" font-size="2.6" fill="${LIGHT.ink}">Qty ${g.tags.length}  ·  plan item${g.tags.length>1?"s":""} ${g.tags.join(", ")}  ·  scale 1:${sc}</text>`;
+        body+=`<g transform="translate(${cx+2} ${cy+9})">${c.body}</g>`;
+        const sy0=below?cy+ch-specH+4:cy+12,room=below?specH-5:ch-12;
+        if(maxLines*lh>room){const f=room/(maxLines*lh);fsz=Math.max(1.6,fsz*f);lh=Math.max(2.25,lh*f);}
+        body+=below?`<path d="M${cx} ${cy+ch-specH}H${cx+cw}" stroke="${LIGHT.line}" stroke-width=".3"/>`:`<path d="M${cx+cw-specW-3} ${cy+7.5}V${cy+ch}" stroke="${LIGHT.line}" stroke-width=".3"/>`;
+        cols.forEach((col,ci)=>{const sx=below?cx+3+ci*(colW+4):cx+cw-specW,lx=sx+21;let y=sy0;
+          for(const blk of col){for(const l of blk){if(y>cy+ch-1.5)break;if(l.lab)body+=`<text x="${sx}" y="${y}" font-family="helvetica" font-weight="bold" font-size="${fsz}" fill="${LIGHT.muted}">${esc(l.lab.toUpperCase())}</text>`;body+=`<text x="${lx}" y="${y}" font-family="helvetica" font-size="${fsz}" fill="${LIGHT.ink}">${esc(l.txt)}</text>`;y+=lh;}y+=lh*.35;}});
+      });
+      sheets.push({title:"Stainless fabrication details",scale:"As shown",inner:body,side:listSide([...onSheet,{a:"",b:""},{a:"",b:"GENERAL NOTES",col:LIGHT.muted},
+        {a:"1",b:"All dimensions in mm, overall sizes."},{a:"2",b:"AISI 304, No. 4 satin, unless noted."},{a:"3",b:"Check all sizes on site before cutting."},{a:"4",b:"Send shop drawings for approval"},{a:"",b:"before fabrication starts."},{a:"5",b:"Plan item numbers match sheet 1."},{a:"6",b:"Water, waste and power by others,"},{a:"",b:"positions on the utilities plan."},{a:"7",b:"Fabricated refrigeration: loads are"},{a:"",b:"typical; confirm compressor rating."}],"ON THIS SHEET")});}
+  }
   // 4+ schedules
   const lines=[];lines.push({h:"EQUIPMENT SCHEDULE"});lines.push({c:["No.","Qty","Brand / model","Description","W × D × H","Energy","Electrical","W","D"],b:1});
   for(const g of groups("eq")){const i=g.it;lines.push({c:[g.tags.join(","),g.tags.length,i.brand+" "+i.model,i.name,`${i.w} × ${i.d} × ${i.h}`,(i.power||"")+(i.kw?" "+i.kw+" kW":""),i.elec||"-",i.water?"Y":"-",i.drain?"Y":"-"]});}
-  lines.push({h:""});lines.push({h:"STAINLESS FABRICATION SCHEDULE"});lines.push({c:["No.","Qty","Module","Options","W × D × H","Material","","",""],b:1});
-  for(const g of groups("ss")){const i=g.it;lines.push({c:[g.tags.join(","),g.tags.length,i.name+(i.mount==="over"?` (underside ${i.z})`:""),(i.opts||[]).join(", ")||"-",`${i.w} × ${i.d} × ${i.h}`,i.mat||"","","",""]});}
+  lines.push({h:""});lines.push({h:"STAINLESS FABRICATION SCHEDULE (details on the fabrication sheets)"});lines.push({c:["No.","Qty","Module","Options","W × D × H","Material","","",""],b:1});
+  for(const g of groups("ss")){const i=g.it;lines.push({c:[g.tags.join(","),g.tags.length,i.name+(i.mount==="over"?` (underside ${i.z})`:""),[...(i.opts||[]),i.kw?i.kw+" kW":""].filter(Boolean).join(", ")||"-",`${i.w} × ${i.d} × ${i.h}`,i.mat||"","","",""]});}
   const colX=[0,16,26,92,168,206,238,278,286].map(v=>v*(aw+16)/296),per=Math.floor((ah+6)/4.6);
   for(let p=0;p<lines.length;p+=per){let body="";lines.slice(p,p+per).forEach((ln,k)=>{const y=M+12+k*4.6;
       if(ln.h!==undefined)body+=`<text x="${M+6}" y="${y}" font-family="helvetica" font-weight="bold" font-size="3.4" fill="${LIGHT.dim}">${esc(ln.h)}</text>`;
@@ -933,7 +972,7 @@ function setTab(t,opts){for(const k of ["room","eq","ss","new","ai","sch"]){$("p
 document.querySelector(".tabs").addEventListener("click",e=>{const t=e.target.closest("[data-tab]");if(!t)return;const k=t.dataset.tab;
   if(phone()&&k===curTab&&panelState!=="peek"){setPanel("peek");return;}setTab(k);});
 $("goNewBtn").addEventListener("click",()=>{setTab("new");});
-window.KS_ui={setPanel,setTab,setView,setTheme,fitToRoom:a=>{const r=fitToRoom(a||1200);changed();showTrim();return r;},deselect:()=>{sel=null;render();}};
+window.KS_ui={setPanel,setTab,setView,setTheme,fitToRoom:a=>{const r=fitToRoom(a||1200);changed();showTrim();return r;},deselect:()=>{sel=null;render();},select:id=>{sel=id;render();},items:()=>JSON.parse(JSON.stringify(state.items))};
 $("backToEq").addEventListener("click",()=>setTab("eq"));
 $("fabAdd").addEventListener("click",()=>{setTab("eq");if(phone())setPanel("half");setTimeout(()=>$("q").focus({preventScroll:true}),350);});
 (function(){const g=$("grab");let y0=null,s0=null;
@@ -1000,7 +1039,7 @@ document.addEventListener("visibilitychange",()=>{if(document.visibilityState===
 function saveCustomLocal(){try{localStorage.setItem("ks.custom",JSON.stringify(custom));}catch(_){}}
 function underData(){return under?{src:under.src,pw:under.pw,ph:under.ph,mmpp:under.mmpp,x:under.x,y:under.y,op:under.op,show:under.show}:null;}
 function blobUrl(u){try{const b=atob(u.src.split(",")[1]),arr=new Uint8Array(b.length);for(let i=0;i<b.length;i++)arr[i]=b.charCodeAt(i);const url=URL.createObjectURL(new Blob([arr],{type:"image/jpeg"})),im=new Image();im.onload=()=>{if(under===u){u.url=url;render();}};im.src=url;}catch(_){}}
-function adopt(p){if(!p||!p.room||!Array.isArray(p.items))return false;state={room:{w:+p.room.w||9000,d:+p.room.d||6000,h:+p.room.h||3000},items:p.items.filter(i=>i&&i.w>0&&i.d>0)};
+function adopt(p){if(!p||!p.room||!Array.isArray(p.items))return false;state={room:{w:+p.room.w||9000,d:+p.room.d||6000,h:+p.room.h||3000},items:p.items.filter(i=>i&&i.w>0&&i.d>0).map(KS_fab.migrate)};
   if(typeof p.name==="string")projName=p.name.slice(0,80);
   if(Array.isArray(p.room.poly)&&p.room.poly.length>2)state.room.poly=p.room.poly.map(q=>[+q[0],+q[1]]);
   if(p.under&&p.under.src){under=Object.assign({},p.under);blobUrl(under);}else if(!p.under)under=null;mode=null;fpUI();isExample=false;sel=null;roomInputs();render();return true;}

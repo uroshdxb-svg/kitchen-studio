@@ -113,9 +113,20 @@ for(const paper of ["a3","a4"]){
   check(fs.readFileSync(file).subarray(0,5).toString()==="%PDF-","valid "+paper.toUpperCase()+" PDF downloaded");
   const sheets=await dp.evaluate(()=>window.__drawingSheets);
   check(sheets.length>=4&&sheets.every(s=>s.logo&&s.tagline&&s.fits),"logo is visible and fits on every "+paper.toUpperCase()+" drawing sheet ("+sheets.length+" sheets)");
+  check(sheets.some(s=>s.svg.includes("Stainless fabrication details")&&/F1 /.test(s.svg)&&s.svg.includes("FRONT")&&s.svg.includes("SIDE")),"fabrication detail sheet with plan, front and side views on "+paper.toUpperCase());
   fs.writeFileSync(path.join(SHOTS,"branded-"+paper+"-first.svg"),sheets[0].svg);
   fs.writeFileSync(path.join(SHOTS,"branded-"+paper+"-last.svg"),sheets.at(-1).svg);
 }
+console.log("8. fabrication details on stainless items");
+await dp.click("#t-eq");
+const fabId=await dp.evaluate(()=>{const it=KS_ui.items().find(i=>i.kind==="ss"&&/^sink|table/.test(i.ssType));KS_ui.select(it.id);return it.id;});
+await dp.waitForTimeout(200);
+check(await dp.locator("#fabD").count()===1,"stainless item shows fabrication details");
+await dp.evaluate(()=>{document.getElementById("fabD").open=true;});
+await dp.selectOption("#fab_upstand","150 mm");await dp.waitForTimeout(200);
+check(await dp.evaluate(id=>KS_ui.items().find(i=>i.id===id).fab?.upstand==="150 mm",fabId),"changing a fabrication detail is saved on the item");
+check(await dp.locator("#fabD[open]").count()===1,"details stay open after an edit");
+await dp.evaluate(()=>KS_ui.deselect());await dp.click("#t-sch");
 const svgPending=dp.waitForEvent("download");
 await dp.click("#expSvg");const svgDownload=await svgPending,svgFile=path.join(SHOTS,"branded-plan.svg");await svgDownload.saveAs(svgFile);
 const svg=fs.readFileSync(svgFile,"utf8");

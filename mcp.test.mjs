@@ -97,6 +97,14 @@ let K, ids = {};
   check(gr && gr.bottom_at_mm === 600 && gr.y_mm === 2160 + 750 && gr.x_mm === 0, "griddle on the lowboy at 600, flush to the wall");
   check(k.out.checks.ok, "layout checks pass: " + JSON.stringify(k.out.checks.issues));
   check(k.out.openings.length === 1 && k.out.openings[0].wall === "north", "door listed on the north wall");
+  const lb = k.out.items.find(i => i.id === lowboy.id);
+  check(lb.kind === "fabricated:rlowboy" && lb.fabrication_details && lb.fabrication_details.drawers === 4, "fabricated lowboy is fabrication, with drawing-sheet details");
+  const fd = await call("update_items", { kitchen_id: K, changes: [{ id: lowboy.id, fabrication_details: { edge: "Square 40 mm", comp: "Right end", notes: "brace under the griddle" } }] });
+  const k2 = await call("get_kitchen", { kitchen_id: K }), lb2 = k2.out.items.find(i => i.id === lowboy.id);
+  check(!fd.err && lb2.fabrication_details.edge === "Square 40 mm" && lb2.fabrication_details.comp === "Right end" && /brace/.test(lb2.fabrication_details.notes), "fabrication details can be edited");
+  const fbad = await call("update_items", { kitchen_id: K, changes: [{ id: lowboy.id, fabrication_details: { edge: "Wavy" } }] });
+  check(/must be one of/.test(fbad.err || ""), "bad fabrication detail value is refused");
+  const fl = await call("list_fabricated_types", {}); check(fl.out.fabrication_fields && fl.out.fabrication_fields.sink2.some(f => f.key === "drainer"), "fabrication fields listed per type");
 }
 
 /* 4. checks catch problems; edits; catalogue sizes locked */

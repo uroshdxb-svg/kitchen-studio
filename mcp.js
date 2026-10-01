@@ -6,6 +6,8 @@
 // Auth: OAuth 2.1 via Supabase Auth's OAuth server. The worker only checks the bearer token with Supabase and then talks
 // to the database AS THAT USER, so row-level security keeps every call inside the user's own kitchens.
 import cfg from "./site.config.json" with { type: "json" };
+import "./fab.js";   /* sets globalThis.KS_fab: fabrication details shared with the app */
+const FAB = globalThis.KS_fab;
 
 const SUPABASE = cfg.supabaseUrl.replace(/\/$/, "");
 const ANON = cfg.supabaseAnonKey;
@@ -68,7 +70,7 @@ const needsHood = it => it.kind === "eq" && it.power !== "none" && it.power !== 
 function underHood(it, items) { const hoods = items.filter(h => h.ssType === "hood");
   const pts = [[it.x + 20, it.y + 20], [it.x + fw(it) - 20, it.y + 20], [it.x + 20, it.y + fd(it) - 20], [it.x + fw(it) - 20, it.y + fd(it) - 20]];
   return pts.every(([x, y]) => hoods.some(h => x >= h.x && x <= h.x + fw(h) && y >= h.y && y <= h.y + fd(h))); }
-const label = it => it.kind === "arch" ? it.name : it.kind === "ss" ? it.name : `${it.brand} ${it.model}`;
+const label = it => it.kind === "arch" ? it.name : FAB.typeOf(it) ? it.name : `${it.brand} ${it.model}`;
 const eqList = items => items.filter(i => i.kind !== "arch");
 const wallOf = it => ({ 0: "north", 90: "east", 180: "south", 270: "west" })[it.rot];
 const r0 = n => Math.round(n);
@@ -130,10 +132,10 @@ function describe(p, opts = {}) {
     room: { width_mm: R.w, depth_mm: R.d, ceiling_mm: R.h, traced_outline: R.poly && R.poly.length > 2 ? R.poly : undefined },
     coordinates: "x east from the inside north-west corner, y south, mm. rot 0 = back to north wall, 90 = east, 180 = south, 270 = west.",
     items: eq.map((it, i) => { const base = it.mount === "top" ? baseUnder(it, items) : null;
-      return { no: i + 1, id: it.id, label: label(it), kind: it.kind === "ss" ? `fabricated:${it.ssType}` : it.conf === "verified" ? "catalogue" : "custom", category: it.cat,
+      return { no: i + 1, id: it.id, label: label(it), kind: FAB.typeOf(it) ? `fabricated:${FAB.typeOf(it)}` : it.conf === "verified" ? "catalogue" : "custom", category: it.cat,
         x_mm: it.x, y_mm: it.y, rot: it.rot, against_wall: wallOf(it), width_mm: it.w, depth_mm: it.d, height_mm: it.h, mount: it.mount,
         bottom_at_mm: zOf(it, items), sits_on: base ? base.id : undefined, power: it.power, kw: it.kw ?? null, water: !!it.water, drain: !!it.drain,
-        options: it.opts && it.opts.length ? it.opts : undefined, size_editable: it.kind === "ss" || it.conf !== "verified" }; }),
+        options: it.opts && it.opts.length ? it.opts : undefined, size_editable: it.kind === "ss" || it.conf !== "verified", fabrication_details: FAB.typeOf(it) ? Object.assign(FAB.defaults(it), it.fab || {}) : undefined }; }),
     openings: items.filter(i => i.kind === "arch").map(a => ({ id: a.id, type: a.archType, wall: a.mount === "arch" ? (a.rot === 0 ? "north" : a.rot === 180 ? "south" : a.rot === 270 ? "west" : "east") : undefined, x_mm: a.x, y_mm: a.y, width_mm: a.w })),
   };
   if (opts.checks !== false) out.checks = checks(p);
@@ -179,7 +181,7 @@ async function makeItem(spec, env, origin) {
     if (SSR[t]) { const s = SSR[t], bad = opts.filter(o => !s.opts.includes(o)); if (bad.length) throw new ToolError(`Options not available for ${s.n}: ${bad.join(", ")}. Available: ${s.opts.join(", ") || "none"}.`);
       if (spec.kw === undefined || spec.kw === null || !(Number(spec.kw) > 0)) throw new ToolError(`${s.n} needs its electrical load: pass kw (typical ${s.kw} kW; use the fabricator's compressor rating when known).`);
       const w = num(spec.width_mm ?? s.w, 200, 6000, "width_mm"), d = num(spec.depth_mm ?? s.d, 150, 3000, "depth_mm"), h = num(spec.height_mm ?? s.h, 20, 3000, "height_mm"), nm = s.name(w, opts);
-      return { kind: "eq", brand: "Fabricated", model: nm, name: `${nm}, ${mat}`, cat: "Refrigeration", w, d, h, mount: "floor", power: "electric", kw: Math.min(20, Number(spec.kw)), elec: "230V 1N 50Hz",
+      return { kind: "eq", ssType: t, brand: "Fabricated", model: nm, name: `${nm}, ${mat}`, cat: "Refrigeration", w, d, h, mount: "floor", power: "electric", kw: Math.min(20, Number(spec.kw)), elec: "230V 1N 50Hz",
         water: false, drain: false, opts: opts.filter(o => !/drawers/.test(o)), mat, conf: "user" }; }
     throw new ToolError(`Unknown fabricated type "${t}". Use list_fabricated_types.`);
   }
@@ -267,7 +269,7 @@ export const TOOLS = [
     inputSchema: S({ kitchen_id: { type: "string" }, items: { type: "array", items: ITEM_SPEC, maxItems: MAX_ITEMS_PER_CALL } }, ["kitchen_id", "items"]) },
   { name: "update_items", title: "Move or change equipment",
     description: "Move items (wall/offset, x/y/rot, on_top_of), change size/height/z/kw/options of fabricated and custom items, or rename them. Catalogue models keep their spec-sheet size.",
-    inputSchema: S({ kitchen_id: { type: "string" }, changes: { type: "array", maxItems: MAX_ITEMS_PER_CALL, items: { type: "object", properties: { id: { type: "string" }, ...PLACE, width_mm: { type: "number" }, depth_mm: { type: "number" }, height_mm: { type: "number" }, z_mm: { type: "number" }, kw: { type: "number" }, options: { type: "array", items: { type: "string" } }, name: { type: "string" } }, required: ["id"] } } }, ["kitchen_id", "changes"]) },
+    inputSchema: S({ kitchen_id: { type: "string" }, changes: { type: "array", maxItems: MAX_ITEMS_PER_CALL, items: { type: "object", properties: { id: { type: "string" }, ...PLACE, width_mm: { type: "number" }, depth_mm: { type: "number" }, height_mm: { type: "number" }, z_mm: { type: "number" }, kw: { type: "number" }, options: { type: "array", items: { type: "string" } }, name: { type: "string" }, fabrication_details: { type: "object", description: "Fabricated items only: details for the fabricator's drawing sheet, e.g. {\"upstand\":\"150 mm\",\"drainer\":\"Left\",\"bowl\":\"500 × 400 × 300\",\"notes\":\"...\"}. Keys and allowed values are in get_kitchen (fabrication_details) and fabrication_fields." } }, required: ["id"] } } }, ["kitchen_id", "changes"]) },
   { name: "remove_items", title: "Remove equipment", annotations: { destructiveHint: true }, description: "Remove items from a kitchen by id.",
     inputSchema: S({ kitchen_id: { type: "string" }, item_ids: { type: "array", items: { type: "string" }, maxItems: MAX_ITEMS_PER_CALL } }, ["kitchen_id", "item_ids"]) },
   { name: "check_layout", title: "Check the layout", annotations: { readOnlyHint: true },
@@ -293,7 +295,9 @@ async function runTool(name, a, ctx) {
     }
     case "list_fabricated_types":
       return { stainless: Object.entries(SS).map(([k, s]) => ({ type: k, name: s.n, default_mm: `${s.w} × ${s.d} × ${s.h}`, mount: s.mount, underside_mm: s.z, water: !!s.water, drain: !!s.drain, options: s.opts })),
-        refrigerated: Object.entries(SSR).map(([k, s]) => ({ type: k, name: s.n, default_mm: `${s.w} × ${s.d} × ${s.h}`, typical_kw: s.kw, kw_required: true, options: s.opts })), materials: MATS };
+        refrigerated: Object.entries(SSR).map(([k, s]) => ({ type: k, name: s.n, default_mm: `${s.w} × ${s.d} × ${s.h}`, typical_kw: s.kw, kw_required: true, options: s.opts })), materials: MATS,
+        fabrication_fields: Object.fromEntries([...Object.entries(SS).map(([k, x]) => [k, { kind: "ss", ssType: k, w: x.w, d: x.d, h: x.h, mount: x.mount, opts: [] }]), ...Object.entries(SSR).map(([k, x]) => [k, { kind: "eq", ssType: k, brand: "Fabricated", name: x.n, w: x.w, d: x.d, h: x.h, opts: [] }])]
+          .map(([k, it]) => [k, FAB.fields(it).map(f => ({ key: f.key, label: f.label, default: f.value, options: f.options || undefined }))])) };
     case "list_kitchens": return { kitchens: (await D.list()).map(k => ({ kitchen_id: k.id, name: k.name, summary: k.summary, updated_at: k.updated_at, shared: !!k.is_public })) };
     case "get_kitchen": { const row = await D.get(KID()); return { kitchen_id: row.id, updated_at: row.updated_at, ...describe(row.data || {}) }; }
     case "check_layout": { const row = await D.get(KID()); return checks(row.data || {}); }
@@ -329,6 +333,10 @@ async function runTool(name, a, ctx) {
           if (c.z_mm !== undefined) { if (it.mount !== "over") throw new ToolError("z_mm only applies to wall-hung items (shelves, cabinets, hoods)."); it.z = num(c.z_mm, 0, 4000, "z_mm"); }
           if (c.kw !== undefined) { if (it.conf === "verified") throw new ToolError(`${label(it)} is a catalogue model: its load comes from the spec sheet.`); it.kw = Number(c.kw) > 0 ? Math.min(500, Number(c.kw)) : null; }
           if (c.options !== undefined) { if (it.kind !== "ss") throw new ToolError("options only apply to fabricated stainless items."); const allowed = (SS[it.ssType] || {}).opts || []; const bad = c.options.filter(o => !allowed.includes(o)); if (bad.length) throw new ToolError(`Options not available: ${bad.join(", ")}. Available: ${allowed.join(", ")}.`); it.opts = c.options.map(String); }
+          if (c.fabrication_details !== undefined) { if (!FAB.typeOf(it)) throw new ToolError(`${label(it)} is not a fabricated item.`); const fs = FAB.fields(it), next = Object.assign({}, it.fab || {});
+            for (const [k, v] of Object.entries(c.fabrication_details || {})) { const f = fs.find(x => x.key === k); if (!f) throw new ToolError(`Unknown fabrication detail "${k}". Available: ${fs.map(x => x.key).join(", ")}.`);
+              if (f.options && !f.options.includes(String(v))) throw new ToolError(`${f.label} must be one of: ${f.options.join(", ")}.`); next[k] = f.kind === "num" ? num(v, 0, 5000, k) : String(v).slice(0, 400); }
+            it.fab = next; }
           if (c.name !== undefined && it.kind !== "arch") it.name = String(c.name).slice(0, 120);
           if (c.wall || c.on_top_of || (c.x_mm !== undefined && c.y_mm !== undefined)) place(it, c, p);
           else if (c.rot !== undefined) { const cx = it.x + fw(it) / 2, cy = it.y + fd(it) / 2; it.rot = [0, 90, 180, 270].includes(Number(c.rot)) ? Number(c.rot) : it.rot; it.x = r0(cx - fw(it) / 2); it.y = r0(cy - fd(it) / 2); }

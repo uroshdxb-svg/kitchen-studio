@@ -16,7 +16,7 @@ const branded=html=>html.replaceAll("__KS_BRAND_MARK__",brand.iconSVG({className
 const head=branded(read("head.html"));
 const styleEnd=head.indexOf("</style>")+"</style>".length;
 const headPart=head.slice(0,styleEnd), bodyPart=head.slice(styleEnd);
-const appJs=["brand.js","cat.js","symbols.js","view3d.js","app.js"].map(read).join("\n");
+const appJs=["brand.js","fab.js","cat.js","symbols.js","view3d.js","app.js"].map(read).join("\n");
 const META='<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">';
 const ver=Date.now().toString(36);
 const LIBS={"three.min.js":"node_modules/three/build/three.min.js","jspdf.min.js":"node_modules/jspdf/dist/jspdf.umd.min.js","svg2pdf.min.js":"node_modules/svg2pdf.js/dist/svg2pdf.umd.min.js","pdf.min.js":"node_modules/pdfjs-dist/build/pdf.min.js","pdf.worker.min.js":"node_modules/pdfjs-dist/build/pdf.worker.min.js","supabase.js":"node_modules/@supabase/supabase-js/dist/umd/supabase.js"};
