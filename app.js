@@ -110,6 +110,7 @@ function planSVG(upp,forExport,faint){
   return {vb:VB,body:s};
 }
 
+let ELEV_PDF=false;   /* drawing set: short headings so they never run under the title block */
 function elevSVG(upp){
   const R=state.room,horiz=(wall==="N"||wall==="S"),L=horiz?R.w:R.d,H=R.h,m=600,f=11*upp,f2=9*upp;
   const near=it=>({N:it.y,S:R.d-it.y-fd(it),W:it.x,E:R.w-it.x-fw(it)})[wall]<=1200;
@@ -122,7 +123,7 @@ function elevSVG(upp){
   s+=`<path d="M0 -900H${L}" stroke="${C.dim}" stroke-width="${upp*.8}" stroke-dasharray="${2*upp} ${5*upp}"/>`;
   s+=`<text x="${L+40}" y="${-900+f*.35}" font-family="${FM}" font-size="${f2}" fill="${C.dim}">900</text>`;
   s+=`<text x="${L+40}" y="${-H+f*.35}" font-family="${FM}" font-size="${f2}" fill="${C.muted}">${H}</text>`;
-  s+=`<text x="0" y="${-H-180}" font-family="${FM}" font-size="${f}" fill="${C.dim}">${({N:"NORTH",S:"SOUTH",E:"EAST",W:"WEST"})[wall]} WALL ELEVATION  ${L}  ·  items within 1200 of the wall</text>`;
+  s+=`<text x="0" y="${-H-180}" font-family="${FM}" font-size="${f}" fill="${C.dim}">${({N:"NORTH",S:"SOUTH",E:"EAST",W:"WEST"})[wall]} WALL ELEVATION  ${L}${ELEV_PDF?"":"  ·  items within 1200 of the wall"}</text>`;
   const order={floor:0,top:1,over:2};
   const list=state.items.filter(i=>i.kind!=="arch"&&near(i)).sort((a,b)=>order[a.mount]-order[b.mount]);
   const facing={N:0,S:180,E:90,W:270}[wall];
@@ -826,9 +827,22 @@ function sheetSVG(PW,PH,meta,inner,side){
   s+=inner;
   s+=`<rect x="${M}" y="${M}" width="${PW-2*M}" height="${PH-2*M}" fill="none" stroke="${ink}" stroke-width=".5"/><path d="M${x0} ${M}V${PH-M}" stroke="${ink}" stroke-width=".5"/>`;
   s+=`<rect x="${x0}" y="${M}" width="${TB}" height="24" fill="${KS_brand.colours.ink}"/><g transform="translate(${x0+4} ${M+(24-(TB-8)/KS_brand.width*KS_brand.height)/2}) scale(${(TB-8)/KS_brand.width})">${KS_brand.lockup({ink:"#FFFFFF",muted:"#C4CED8",border:"#FFFFFF",font:F})}</g>`;
-  s+=`<text x="${x0+4}" y="${M+31}" font-family="${F}" font-size="2.4" fill="${LIGHT.muted}">PROJECT</text><text x="${x0+4}" y="${M+36.5}" font-family="${F}" font-weight="bold" font-size="4" fill="${ink}">${t(meta.project)}</text>`;
-  s+=`<text x="${x0+4}" y="${M+43}" font-family="${F}" font-size="2.4" fill="${LIGHT.muted}">DRAWING</text><text x="${x0+4}" y="${M+48.5}" font-family="${F}" font-weight="bold" font-size="4" fill="${LIGHT.dim}">${t(meta.title)}</text><path d="M${x0} ${M+52}H${PW-M}" stroke="${ink}" stroke-width=".35"/>`;
-  s+=side(x0+4,M+58,TB-8,PH-M-58-58,F,MF);
+  /* project name and drawing title wrap inside the title block (shrinking a step for long names) instead of running off the sheet */
+  let cv=null;const textW=(str,size)=>{try{cv=cv||document.createElement("canvas").getContext("2d");cv.font=`bold ${size*10}px Helvetica, Arial, sans-serif`;return cv.measureText(str).width/10;}catch(_){return str.length*size*.6;}};
+  const wrap=(str,maxW)=>{str=String(str||"").trim();for(const [size,maxL] of [[4,2],[3.4,3]]){const lines=[];let cur="";
+      for(const w of str.split(/\s+/)){const tryL=cur?cur+" "+w:w;if(textW(tryL,size)<=maxW||!cur)cur=tryL;else{lines.push(cur);cur=w;}}
+      if(cur)lines.push(cur);
+      if(lines.length<=maxL&&lines.every(l=>textW(l,size)<=maxW))return {size,lines};
+      if(size===3.4){const out=lines.slice(0,maxL).map(l=>{while(textW(l,size)>maxW&&l.length>1)l=l.slice(0,-1);return l;});
+        if(lines.length>maxL||out.some((l,i)=>l!==lines[i])){let l=out[maxL-1]||out.at(-1);while(textW(l+"…",size)>maxW&&l.length>1)l=l.slice(0,-1);out[out.length-1]=l.replace(/\s+$/,"")+"…";}
+        return {size,lines:out};}}};
+  const block=(y,label,str,fill)=>{const w=wrap(str,TB-8),lh=w.size*1.2;
+    let o=`<text x="${x0+4}" y="${y}" font-family="${F}" font-size="2.4" fill="${LIGHT.muted}">${label}</text>`;
+    w.lines.forEach((l,i)=>o+=`<text x="${x0+4}" y="${y+5.5+i*lh}" font-family="${F}" font-weight="bold" font-size="${w.size}" fill="${fill}">${t(l)}</text>`);
+    return {o,end:y+5.5+(w.lines.length-1)*lh};};
+  const pj=block(M+31,"PROJECT",meta.project,ink),dw=block(pj.end+6.5,"DRAWING",meta.title,LIGHT.dim),rule=dw.end+3.5;
+  s+=pj.o+dw.o+`<path d="M${x0} ${rule}H${PW-M}" stroke="${ink}" stroke-width=".35"/>`;
+  s+=side(x0+4,rule+6,TB-8,PH-M-52-3-(rule+6),F,MF);
   const by=PH-M-52,cell=(x,y,w,h,l,v)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="none" stroke="${ink}" stroke-width=".35"/><text x="${x+1.6}" y="${y+3.2}" font-family="${F}" font-size="2" fill="${LIGHT.muted}">${l}</text><text x="${x+1.6}" y="${y+8.2}" font-family="${MF}" font-size="3.2" fill="${ink}">${t(v)}</text>`;
   s+=cell(x0,by,TB/2,10,"SCALE",meta.scale)+cell(x0+TB/2,by,TB/2,10,"SHEET",meta.sheet)+cell(x0,by+10,TB/2,10,"DATE",meta.date)+cell(x0+TB/2,by+10,TB/2,10,"PAPER",meta.paper)+cell(x0,by+20,TB,10,"DRAWN BY",meta.by||"-");
   const note=["Concept layout. All dimensions in millimetres.","Verify equipment against current manufacturer","spec sheets and site dimensions before ordering","or fabrication. Not for construction."];
@@ -838,7 +852,7 @@ function sheetSVG(PW,PH,meta,inner,side){
 function scaleBar(x,y,S){const seg=1000/S,n=S<=50?3:S<=100?5:S<=200?10:20,step=S<=100?1:S<=200?2:5;let s="";
   for(let i=0;i<n/step;i++)s+=`<rect x="${x+i*seg*step}" y="${y}" width="${seg*step}" height="1.6" fill="${i%2?"#FFFFFF":LIGHT.ink}" stroke="${LIGHT.ink}" stroke-width=".2"/><text x="${x+i*seg*step}" y="${y+5}" font-family="courier" font-size="2.4" text-anchor="middle" fill="${LIGHT.ink}">${i*step}</text>`;
   return s+`<text x="${x+n*seg}" y="${y+5}" font-family="courier" font-size="2.4" text-anchor="middle" fill="${LIGHT.ink}">${n} m</text>`;}
-function listSide(rows,head){return (x,y,w,h,F,MF)=>{let s=`<text x="${x}" y="${y}" font-family="${F}" font-weight="bold" font-size="2.8" fill="${LIGHT.ink}">${esc(head)}</text>`;const lh=3.6,max=Math.floor((h-6)/lh);
+function listSide(rows,head){return (x,y,w,h,F,MF)=>{let s=`<text x="${x}" y="${y}" font-family="${F}" font-weight="bold" font-size="2.8" fill="${LIGHT.ink}">${esc(head)}</text>`;const lh=Math.max(3,Math.min(3.6,(h-6)/Math.max(1,rows.length))),max=rows.length*lh<=h-6?rows.length:Math.floor((h-6-lh)/lh);
   rows.slice(0,max).forEach((r,i)=>{const yy=y+6+i*lh,cut=Math.floor(w/1.45);s+=`<text x="${x}" y="${yy}" font-family="${MF}" font-size="2.3" fill="${r.col||LIGHT.ink}">${esc(r.a)}</text><text x="${x+9}" y="${yy}" font-family="${F}" font-size="2.3" fill="${LIGHT.ink}">${esc(r.b.length>cut?r.b.slice(0,cut-1)+"…":r.b)}</text>`;});
   if(rows.length>max)s+=`<text x="${x}" y="${y+6+max*lh}" font-family="${F}" font-size="2.3" fill="${LIGHT.muted}">+ ${rows.length-max} more on the schedule sheet</text>`;return s;};}
 function buildSheets(PW,PH,meta){
@@ -861,8 +875,8 @@ function buildSheets(PW,PH,meta){
   sheets.push({title:"Utilities plan",scale:"1:"+S,inner:place(planSVG(upp,"pdf",true).body+marks),side:listSide(rows,"CONNECTION POINTS")});
   // 3 elevations, 2 x 2
   const keepWall=wall;let ev="";const cw=aw/2,ch=(ah-6)/2,Lmax=Math.max(R.w,R.d)+1200,Hm=R.h+1300,Se=pickScale(Lmax,Hm,cw-6,ch-6);
-  ["N","E","S","W"].forEach((wl,i)=>{wall=wl;const o=elevSVG(Se*.25),cx=M+8+(i%2)*cw,cy=M+8+Math.floor(i/2)*ch;ev+=`<g transform="translate(${cx-o.vb[0]/Se+(cw-o.vb[2]/Se)/2} ${cy-o.vb[1]/Se+(ch-o.vb[3]/Se)/2}) scale(${1/Se})">${o.body}</g>`;});wall=keepWall;
-  sheets.push({title:"Wall elevations",scale:"1:"+Se,inner:ev+scaleBar(M+8,PH-M-10,Se),side:listSide(eq.map((it,i)=>({a:String(i+1),b:it.kind==="ss"?it.name:it.brand+" "+it.model})),"EQUIPMENT KEY")});
+  ELEV_PDF=true;["N","E","S","W"].forEach((wl,i)=>{wall=wl;const o=elevSVG(Se*.25),cx=M+8+(i%2)*cw,cy=M+8+Math.floor(i/2)*ch;ev+=`<g transform="translate(${cx-o.vb[0]/Se+(cw-o.vb[2]/Se)/2} ${cy-o.vb[1]/Se+(ch-o.vb[3]/Se)/2}) scale(${1/Se})">${o.body}</g>`;});wall=keepWall;ELEV_PDF=false;
+  sheets.push({title:"Wall elevations",scale:"1:"+Se,inner:ev+scaleBar(M+8,PH-M-10,Se),side:listSide([...eq.map((it,i)=>({a:String(i+1),b:it.kind==="ss"?it.name:it.brand+" "+it.model})),{a:"",b:"Shows items within 1200 mm of each wall.",col:LIGHT.muted}],"EQUIPMENT KEY")});
   // 4+ schedules
   const lines=[];lines.push({h:"EQUIPMENT SCHEDULE"});lines.push({c:["No.","Qty","Brand / model","Description","W × D × H","Energy","Electrical","W","D"],b:1});
   for(const g of groups("eq")){const i=g.it;lines.push({c:[g.tags.join(","),g.tags.length,i.brand+" "+i.model,i.name,`${i.w} × ${i.d} × ${i.h}`,(i.power||"")+(i.kw?" "+i.kw+" kW":""),i.elec||"-",i.water?"Y":"-",i.drain?"Y":"-"]});}
