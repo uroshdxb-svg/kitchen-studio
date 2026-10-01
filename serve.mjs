@@ -1,6 +1,6 @@
 // Tiny static server for dist/ that mimics the Cloudflare Pages _redirects rewrites (for tests and local preview).
 import http from "node:http";import fs from "node:fs";import path from "node:path";import {fileURLToPath} from "node:url";
-const ROOT=path.join(path.dirname(fileURLToPath(import.meta.url)),"..","dist");
+const ROOT=path.join(path.dirname(fileURLToPath(import.meta.url)),"dist");
 const types={".html":"text/html; charset=utf-8",".js":"text/javascript",".css":"text/css",".svg":"image/svg+xml",".png":"image/png",".json":"application/json",".txt":"text/plain",".ico":"image/x-icon"};
 export function serve(port=5173){
   return new Promise(res=>{const s=http.createServer((req,r)=>{

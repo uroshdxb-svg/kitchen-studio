@@ -1,13 +1,13 @@
 // End-to-end smoke test of the built site with a mock backend. Run: npm run build && npm test
 import {chromium} from "playwright";import fs from "node:fs";import path from "node:path";import {fileURLToPath} from "node:url";import {serve} from "./serve.mjs";
-const HERE=path.dirname(fileURLToPath(import.meta.url)),SHOTS=path.join(HERE,"..","public","shots");fs.mkdirSync(SHOTS,{recursive:true});
+const HERE=path.dirname(fileURLToPath(import.meta.url)),SHOTS=path.join(HERE,"test-results");fs.mkdirSync(SHOTS,{recursive:true});
 const PORT=5177,BASE=`http://localhost:${PORT}`;const server=await serve(PORT);
 const browser=await chromium.launch({args:["--use-gl=swiftshader","--enable-unsafe-swiftshader","--ignore-gpu-blocklist"]});
 const mock=fs.readFileSync(path.join(HERE,"mock-backend.js"),"utf8");
 const errors=[];let fails=0;const check=(ok,msg)=>{console.log((ok?"  ok   ":"  FAIL ")+msg);if(!ok)fails++;};
 const ctx=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:2,isMobile:true,hasTouch:true,colorScheme:"light"});
 await ctx.addInitScript(mock);
-const page=await ctx.newPage();page.on("pageerror",e=>errors.push("app: "+e.message));page.on("console",m=>{if(m.type()==="error")errors.push("console: "+m.text());});
+const page=await ctx.newPage();page.on("pageerror",e=>errors.push("app: "+e.message));page.on("console",m=>{if(m.type()==="error"){const loc=m.location();if(!loc.url.startsWith("https://fonts.googleapis.com/"))errors.push(`console: ${m.text()}${loc.url?` (${loc.url})`:""}`);}});
 
 console.log("1. landing page");
 await page.goto(BASE+"/");await page.waitForTimeout(600);
@@ -65,11 +65,11 @@ check(/sign in to save online/.test(await page.textContent("#saveState")),"signe
 check(/Café Riyadh/.test(await page.textContent("#saveState")),"kitchen name kept locally");
 
 console.log("6. screenshots for the landing page (desktop plan, phone plan, 3D)");
-const d=await browser.newContext({viewport:{width:1280,height:900},deviceScaleFactor:1,colorScheme:"light"});const dp=await d.newPage();dp.on("pageerror",e=>errors.push("desk: "+e.message));
+const d=await browser.newContext({viewport:{width:1280,height:900},deviceScaleFactor:1,colorScheme:"light"});await d.addInitScript(mock);const dp=await d.newPage();dp.on("pageerror",e=>errors.push("desk: "+e.message));
 await dp.goto(BASE+"/app/");await dp.waitForTimeout(1500);await dp.click("#t-eq");await dp.waitForTimeout(400);await dp.screenshot({path:path.join(SHOTS,"plan-desktop.png")});
 await dp.click("#v3dBtn");await dp.waitForTimeout(2500);await dp.screenshot({path:path.join(SHOTS,"3d.png"),clip:{x:400,y:0,width:800,height:900}});
 await d.close();
-const ph=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:2,isMobile:true,hasTouch:true,colorScheme:"light"});const pp=await ph.newPage();
+const ph=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:2,isMobile:true,hasTouch:true,colorScheme:"light"});await ph.addInitScript(mock);const pp=await ph.newPage();
 await pp.goto(BASE+"/app/");await pp.waitForTimeout(1500);await pp.click("#zIn");await pp.waitForTimeout(400);await pp.screenshot({path:path.join(SHOTS,"plan-phone.png")});await ph.close();
 check(errors.length===0,"no page errors"+(errors.length?": "+errors.join(" | "):""));
 await browser.close();server.close();

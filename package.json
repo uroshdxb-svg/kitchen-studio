@@ -9,7 +9,8 @@
     "build:artifact": "node build.mjs artifact",
     "build:standalone": "node build.mjs standalone",
     "dev": "node build.mjs && npx --yes serve dist -l 5173",
-    "test": "node tests/site.test.mjs"
+    "test": "node site.test.mjs",
+    "test:ci": "npm run build && npm test"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2",
@@ -19,6 +20,7 @@
     "three": "^0.128.0"
   },
   "devDependencies": {
+    "playwright": "^1.63.0",
     "wrangler": "^4.138.0"
   }
 }
