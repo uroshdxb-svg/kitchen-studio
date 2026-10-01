@@ -25,7 +25,7 @@ const STD_W=[600,900,1200,1500,1800,2100,2400], STD_D=[300,400,600,700,800];
 let state={room:{w:9000,d:6000,h:3000},items:[]};
 let custom=[]; let sel=null; let view="plan"; let wall="N"; let zoom=1; let dirty=false; let isExample=true;
 let db=null, sampleFn=null, downloads=null; let cat="All"; let ssOptsSel=new Set();
-let be=null,curId=null,projName="",sharedFrom=null,projList=[];/* cloud backend (website build) */
+let be=null,curId=null,curVersion=null,projName="",sharedFrom=null,projList=[];/* cloud backend (website build) */
 const remoteEq={set:e=>{const j=JSON.parse(JSON.stringify(e));if(be&&be.user())be.saveEquipment(j).catch(()=>{});else if(db)db.doc("equipment/"+e.cid).set(j).catch(()=>{});},
   del:cid=>{if(be&&be.user())be.deleteEquipment(cid).catch(()=>{});else if(db)db.doc("equipment/"+cid).delete().catch(()=>{});}};
 let uid=1; const newId=()=>"i"+Date.now().toString(36)+(uid++);
@@ -913,7 +913,7 @@ $("clearAll").addEventListener("click",()=>{const b=$("clearAll");
 let toastT;function toast(m){const t=$("toast");t.textContent=m;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>t.hidden=true,3200);}
 
 /* ---------- persistence ---------- */
-let saveT=null,saving=false,again=false;
+let saveT=null,saving=false,again=false,saveConflictShown=false;
 function changed(){dirty=true;isExample=false;render();$("saveState").textContent="Saving…";clearTimeout(saveT);saveT=setTimeout(persist,1200);}
 function currentPayload(){return JSON.parse(JSON.stringify({v:1,name:projName||undefined,room:state.room,items:state.items,under:underData(),at:Date.now()}));}
 const projTitle=()=>projName||"Untitled kitchen";
@@ -926,7 +926,7 @@ async function persist(){
   let where="";
   if(persistLocal(payload))where="Saved on this device";
   if(db){try{let cloud=payload;if(JSON.stringify(payload).length>230000){cloud=JSON.parse(JSON.stringify(payload));if(cloud.under)cloud.under.src=null;}await db.doc("projects/main").set(cloud);where=cloud===payload?"Saved":"Saved (plan image kept on this device only)";}catch(_){}}
-  if(be&&be.user()&&curId){try{const r=await be.saveProject(curId,payload,projName||undefined);where=r.stripped?"Saved online (plan image kept on this device only)":"Saved online";}catch(_){where="Saved on this device, not online";}}
+  if(be&&be.user()&&curId){try{const r=await be.saveProject(curId,payload,projName||undefined,curVersion);curVersion=Number.isInteger(r.version)?r.version:curVersion;saveConflictShown=false;where=r.stripped?"Saved online (plan image kept on this device only)":"Saved online";}catch(e){if(e&&e.code==="conflict"){where="Newer online version exists · reopen from My kitchens";if(!saveConflictShown){saveConflictShown=true;toast("This kitchen changed elsewhere. Reopen it from My kitchens before saving again.");}}else where="Saved on this device, not online";}}
   else if(be&&be.user()&&!curId)where="Saved on this device · not yet in My kitchens";
   else if(be&&!be.user())where="Saved on this device · sign in to save online";
   saveLabel(where||"Not saved (storage unavailable)");
@@ -1004,21 +1004,21 @@ async function openKitchens(){
   $("dlgBody").querySelector(".klist").addEventListener("click",async e=>{const row=e.target.closest(".krow");if(!row)return;const id=row.dataset.id,p=projList.find(x=>x.id===id),act=(e.target.closest("[data-act]")||{}).dataset;
     if(act&&act.act==="rename"){e.stopPropagation();const n=await askText("Rename kitchen",p.name,"Kitchen name");if(n){await be.renameProject(id,n).catch(()=>toast("Rename didn't save."));if(id===curId){projName=n;syncPdfName();saveLabel("Saved online");}openKitchens();}return;}
     if(act&&act.act==="share"){e.stopPropagation();shareDialog(id,p.name);return;}
-    if(act&&act.act==="del"){e.stopPropagation();const b=e.target.closest("button");if(b.dataset.armed){await be.deleteProject(id).catch(()=>toast("Delete didn't go through."));if(id===curId){curId=null;localStorage.setItem("ks.curId","");}openKitchens();}else{b.dataset.armed="1";b.style.color="var(--bad)";b.title="Tap again to delete";toast(`Tap the bin again to delete “${p.name}”.`);setTimeout(()=>{delete b.dataset.armed;b.style.color="";},4000);}return;}
+    if(act&&act.act==="del"){e.stopPropagation();const b=e.target.closest("button");if(b.dataset.armed){await be.deleteProject(id).catch(()=>toast("Delete didn't go through."));if(id===curId){curId=null;curVersion=null;localStorage.setItem("ks.curId","");}openKitchens();}else{b.dataset.armed="1";b.style.color="var(--bad)";b.title="Tap again to delete";toast(`Tap the bin again to delete “${p.name}”.`);setTimeout(()=>{delete b.dataset.armed;b.style.color="";},4000);}return;}
     openProject(id);});
 }
 function syncPdfName(){const f=$("pdfProject");if(f&&projName&&!f.value)f.value=projName;}
 async function openProject(id){if(id===curId){closeDlg();return;}
   if(curId&&dirty)await persist();
-  try{const row=await be.loadProject(id);if(!row||!adopt(row.data))throw new Error("empty");curId=id;projName=row.name||projName;sharedFrom=null;$("banner").hidden=true;localStorage.setItem("ks.curId",curId);persist();closeDlg();toast(`Opened “${projTitle()}”.`);syncPdfName();revealCanvas();}
+  try{const row=await be.loadProject(id);if(!row||!adopt(row.data))throw new Error("empty");curId=id;curVersion=Number.isInteger(row.version)?row.version:null;saveConflictShown=false;projName=row.name||projName;sharedFrom=null;$("banner").hidden=true;localStorage.setItem("ks.curId",curId);persist();closeDlg();toast(`Opened “${projTitle()}”.`);syncPdfName();revealCanvas();}
   catch(e){toast("Couldn't open that kitchen.");}}
 async function newKitchen(){if(curId&&dirty)await persist();
   const n=await askText("New kitchen","","Kitchen name");if(n===null)return;
   state={room:{w:9000,d:6000,h:3000},items:[]};under=null;mode=null;fpUI();sel=null;projName=n||"Untitled kitchen";sharedFrom=null;$("banner").hidden=true;roomInputs();render();
-  try{const r=await be.createProject(projName,currentPayload());curId=r.id;localStorage.setItem("ks.curId",curId);saveLabel("Saved online");closeDlg();toast(`“${projTitle()}” created. Set the room size, then add equipment.`);setTab("room");}
-  catch(e){curId=null;toast("Couldn't create it online; it's saved on this device.");closeDlg();}}
+  try{const r=await be.createProject(projName,currentPayload());curId=r.id;curVersion=Number.isInteger(r.version)?r.version:null;saveConflictShown=false;localStorage.setItem("ks.curId",curId);saveLabel("Saved online");closeDlg();toast(`“${projTitle()}” created. Set the room size, then add equipment.`);setTab("room");}
+  catch(e){curId=null;curVersion=null;toast("Couldn't create it online; it's saved on this device.");closeDlg();}}
 async function saveAsNew(){const n=await askText("Save to my kitchens",projName||"","Kitchen name");if(n===null)return;projName=n||"Untitled kitchen";
-  try{const r=await be.createProject(projName,currentPayload());curId=r.id;sharedFrom=null;$("banner").hidden=true;localStorage.setItem("ks.curId",curId);saveLabel("Saved online");closeDlg();toast(`Saved “${projTitle()}” to your kitchens.`);}catch(e){toast("Couldn't save online. It stays on this device.");}}
+  try{const r=await be.createProject(projName,currentPayload());curId=r.id;curVersion=Number.isInteger(r.version)?r.version:null;saveConflictShown=false;sharedFrom=null;$("banner").hidden=true;localStorage.setItem("ks.curId",curId);saveLabel("Saved online");closeDlg();toast(`Saved “${projTitle()}” to your kitchens.`);}catch(e){toast("Couldn't save online. It stays on this device.");}}
 async function shareCurrent(){if(!be.user()){openSignIn("Sign in to share a link to this kitchen.");return;}if(!curId){openDlg("Share link",`<p>Save this kitchen to your list first, then share it.</p><div class="bar"><button class="btn pri" id="shSave">Save to my kitchens</button></div>`);$("shSave").onclick=()=>saveAsNew();return;}shareDialog(curId,projName);}
 async function shareDialog(id,name){openDlg("Share link",`<p>Turning on the link…</p>`);
   try{const pid=await be.setPublic(id,true),url=be.shareUrl(pid);
@@ -1032,7 +1032,7 @@ async function shareDialog(id,name){openDlg("Share link",`<p>Turning on the link
 function showBanner(html){const b=$("banner");b.innerHTML=html;b.hidden=false;}
 async function loadSharedFromUrl(){const m=location.pathname.match(/\/k\/([A-Za-z0-9_-]{6,40})/)||[],pid=m[1]||new URLSearchParams(location.search).get("k");if(!pid)return false;
   try{const row=await be.loadShared(pid);if(!row||!adopt(row.data)){toast("That shared kitchen isn't available any more.");return false;}
-    curId=null;sharedFrom=pid;projName=(row.name||"Shared kitchen");history.replaceState(null,"","/app/");
+    curId=null;curVersion=null;sharedFrom=pid;projName=(row.name||"Shared kitchen");history.replaceState(null,"","/app/");
     showBanner(`<span>Shared kitchen <b>${esc(row.name||"")}</b>. You're looking at a copy; changes stay on this device.</span><button class="btn sm pri" id="bnSave">Save to my kitchens</button>`);
     $("bnSave").onclick=()=>{if(!be.user())openSignIn("Sign in to keep a copy of this kitchen in your account.");else saveAsNew();};
     saveLabel("Shared copy");return true;}
@@ -1043,11 +1043,11 @@ async function cloudSync(){acctUI();if(!be||!be.user())return;
   if(sharedFrom)return;/* a shared copy is saved only when the user asks */
   try{const list=await be.listProjects();projList=list;let local=null;try{local=JSON.parse(localStorage.getItem("ks.project")||"null");}catch(_){}
     const localId=localStorage.getItem("ks.curId")||"";
-    if(curId&&list.some(p=>p.id===curId)){const row=await be.loadProject(curId);
+    if(curId&&list.some(p=>p.id===curId)){const row=await be.loadProject(curId);curVersion=row&&Number.isInteger(row.version)?row.version:null;
       if(row&&row.data&&!(local&&localId===curId&&(local.at||0)>(row.data.at||0))){adopt(row.data);projName=row.name||projName;}else persist();}
-    else if(!list.length){const r=await be.createProject(projName||"My first kitchen",currentPayload());curId=r.id;projName=projName||"My first kitchen";}
-    else if(!isExample&&local&&(local.items||[]).length){const r=await be.createProject(projName||"Untitled kitchen",currentPayload());curId=r.id;projName=projName||"Untitled kitchen";}
-    else{const row=await be.loadProject(list[0].id);if(row&&adopt(row.data)){curId=row.id;projName=row.name||projName;}}
+    else if(!list.length){const r=await be.createProject(projName||"My first kitchen",currentPayload());curId=r.id;curVersion=Number.isInteger(r.version)?r.version:null;projName=projName||"My first kitchen";}
+    else if(!isExample&&local&&(local.items||[]).length){const r=await be.createProject(projName||"Untitled kitchen",currentPayload());curId=r.id;curVersion=Number.isInteger(r.version)?r.version:null;projName=projName||"Untitled kitchen";}
+    else{const row=await be.loadProject(list[0].id);if(row&&adopt(row.data)){curId=row.id;curVersion=Number.isInteger(row.version)?row.version:null;projName=row.name||projName;}}
     localStorage.setItem("ks.curId",curId||"");saveLabel("Saved online");syncPdfName();}
   catch(e){saveLabel("Saved on this device, not online");}}
 
@@ -1068,7 +1068,7 @@ async function boot(){
     const shared=await loadSharedFromUrl();
     if(!shared)await cloudSync();else if(be.user())cloudSync();
     if(!be.user()&&!shared)saveLabel(isExample?"Example layout · sign in to save online":"Saved on this device · sign in to save online");
-    be.onAuth(async u=>{acctUI();if(u){closeDlg();toast(`Signed in as ${u.email||"you"}.`);await cloudSync();}else{curId=null;localStorage.setItem("ks.curId","");saveLabel("Saved on this device · sign in to save online");toast("Signed out. Your kitchen stays on this device.");}});
+    be.onAuth(async u=>{acctUI();if(u){closeDlg();toast(`Signed in as ${u.email||"you"}.`);await cloudSync();}else{curId=null;curVersion=null;localStorage.setItem("ks.curId","");saveLabel("Saved on this device · sign in to save online");toast("Signed out. Your kitchen stays on this device.");}});
     return;}
   const use=window.claude&&window.claude.use?n=>window.claude.use(n).catch(()=>null):()=>Promise.resolve(null);
   use("sample").then(s=>{sampleFn=s;$("aiBriefBox").hidden=!s;$("aiNoBrief").hidden=!!s;if(!s){$("nLookup").hidden=true;}});
