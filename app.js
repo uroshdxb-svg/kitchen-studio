@@ -292,7 +292,7 @@ function matches(){
 let shown=[];
 function renderResults(){
   shown=matches();const q=$("q").value.trim();
-  if(!shown.length){$("results").innerHTML=`<div class="empty"><div>No model matches${q?` “${esc(q)}”`:""}.</div><button class="btn" id="goNew">Add ${q?`“${esc(q)}”`:"it"} as a new model</button></div>`;return;}
+  if(!shown.length){$("results").innerHTML=`<div class="empty"><div>No model matches${q?` “${esc(q)}”`:""}.</div><button class="btn" id="goNew">Add ${q?`“${esc(q)}”`:"it"} as a new model</button><button class="btn" id="goReport">Ask for it to be added to the catalogue</button></div>`;return;}
   const total=shown.length;shown=shown.slice(0,60);
   $("results").innerHTML=`<div class="ut" style="padding:6px 2px">${total} model${total===1?"":"s"}${total>60?", showing the first 60. Type to narrow it down.":""}</div>`+shown.map((e,k)=>{
     const pill=e.conf==="verified"?`<a class="pill ok" href="${esc(e.src)}" target="_blank" rel="noopener">spec source ↗</a>`:e.conf==="ai"?`<span class="pill warn">AI estimate</span>`:`<span class="pill me">your entry</span>`;
@@ -303,6 +303,7 @@ function renderResults(){
 }
 $("q").addEventListener("input",renderResults);$("hideUS").addEventListener("change",renderResults);
 $("results").addEventListener("click",e=>{
+  if(e.target.id==="goReport"){const q=$("q").value.trim();openReport({kind:"equipment",message:q?`Please add ${q} to the catalogue. Spec sheet link: `:""});return;}
   if(e.target.id==="goNew"){const q=$("q").value.trim().split(/\s+/);$("nBrand").value=q[0]||"";$("nModel").value=q.slice(1).join(" ");setTab("new");return;}
   const a=e.target.closest("[data-add]"),r=e.target.closest("[data-rm]");
   if(a)place(shown[+a.dataset.add]);
@@ -1029,6 +1030,28 @@ function openSignIn(note){openDlg("Sign in",`<p>${esc(note||"Save your kitchens 
   if(be.providers)be.providers().then(list=>{if(!list.includes("google")&&$("siGoogle"))$("siGoogle").hidden=true;});
   setTimeout(()=>$("siEmail").focus(),50);}
 $("mSignIn").addEventListener("click",()=>openSignIn());
+/* Report a gap: missing equipment, wrong drawing, bug or idea. Goes to the reports table; the kitchen file rides along if ticked. */
+function openReport(pre){
+  if(!be||!be.report){openDlg("Report a gap",`<p>Reporting works in the online app at kitchenstudio.design. This copy runs offline.</p>`);return;}
+  const u=be.user(),it=state.items.find(i=>i.id===sel);
+  openDlg("Report a gap",`<p>Missing equipment, a drawing that looks wrong, something broken, or something you wish it did. Every report is read.</p>
+  <div class="fld"><label for="rpKind">What is it?</label><select id="rpKind"><option value="equipment">Missing equipment or wrong specs</option><option value="drawing">A drawing looks wrong</option><option value="bug">Something doesn't work</option><option value="feature">An idea or missing feature</option></select></div>
+  <div class="fld"><label for="rpMsg">Tell us</label><textarea id="rpMsg" rows="5" maxlength="4000" placeholder="${it?esc("e.g. The "+itemLabel(it)+" draws with doors, but it has drawers."):"e.g. I need a 4-drawer lowboy 1700 × 900 × 600, or a link to the spec sheet."}"></textarea></div>
+  <div class="checks"><label><input type="checkbox" id="rpAttach" checked> Attach this kitchen layout so the problem can be seen exactly</label></div>
+  ${u?"":`<div class="fld"><label for="rpEmail">Your email, if you'd like a reply (optional)</label><input id="rpEmail" type="email" autocomplete="email" inputmode="email"></div>`}
+  <div class="bar"><button class="btn pri" id="rpSend">Send report</button><button class="btn" id="rpNo">Cancel</button></div><p class="note" id="rpNote" aria-live="polite"></p>`);
+  if(pre&&pre.kind)$("rpKind").value=pre.kind;if(pre&&pre.message)$("rpMsg").value=pre.message;
+  setTimeout(()=>$("rpMsg").focus(),50);$("rpNo").onclick=closeDlg;
+  $("rpSend").onclick=async()=>{const msg=$("rpMsg").value.trim(),em=$("rpEmail")?$("rpEmail").value.trim():"";
+    if(msg.length<3){$("rpNote").textContent="Write a few words about what's missing or wrong.";return;}
+    if(em&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){$("rpNote").textContent="That email doesn't look right. Leave it empty if you don't want a reply.";return;}
+    $("rpSend").disabled=true;$("rpNote").textContent="Sending…";
+    const ctx={view,wall,selected:it?{brand:it.brand,model:it.model,name:it.name,kind:it.kind,ssType:it.ssType||null}:null,items:state.items.length,room:state.room?{w:state.room.w,d:state.room.d,h:state.room.h}:null,screen:innerWidth+"x"+innerHeight,ua:navigator.userAgent.slice(0,200),build:(document.querySelector('script[src*="app.js"]')||{}).src||null};
+    let proj=null;if($("rpAttach").checked){try{const p=JSON.parse(JSON.stringify(state));if(p.under)p.under.src=null;proj=p;}catch(_){}}
+    try{await be.report({kind:$("rpKind").value,message:msg,email:em||null,view,context:ctx,project:proj});
+      $("dlgBody").innerHTML=`<p>Thanks, it's in. ${u||em?"You'll hear back by email if there's a question.":"Add your email next time if you'd like a reply."}</p><div class="bar"><button class="btn pri" id="rpDone">Close</button></div>`;$("rpDone").onclick=closeDlg;}
+    catch(e){$("rpSend").disabled=false;$("rpNote").textContent="It didn't send: "+(e.message||"try again in a minute.");}};}
+$("mReport").addEventListener("click",()=>openReport());
 $("kitchensBtn").addEventListener("click",()=>{if(!be.user())openSignIn();else openKitchens();});
 $("mKitchens").addEventListener("click",()=>{if(!be.user())openSignIn();else openKitchens();});
 $("mShare").addEventListener("click",()=>shareCurrent());

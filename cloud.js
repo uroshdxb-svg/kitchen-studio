@@ -39,6 +39,8 @@
     ai:async(prompt,opts)=>{need();opts=opts||{};const {data,error}=await sb.functions.invoke("ai",{body:{prompt,tier:opts.modelTier||"default",kind:opts.kind||null,images:opts.images||null,max_tokens:opts.maxTokens||null}});
       if(error){const st=error.context&&error.context.status;const e=new Error(error.message||"AI request failed");e.code=st===429?"rate_limited":st===401||st===403?"not_granted":"failed";throw e;}
       if(data&&data.error){const e=new Error(data.error);e.code=data.code||"failed";throw e;}return data&&data.json;},
+    report:async r=>{const row={kind:r.kind||"gap",message:String(r.message||"").slice(0,4000),view:r.view||null,context:r.context||null,project:r.project||null,email:user?(user.email||null):(r.email||null)};if(user)row.reporter=user.id;
+      const {error}=await sb.from("reports").insert(row);if(error)fail(error);},
     waitlist:async(email,consent,note)=>{if(consent!==true){const e=new Error("Marketing consent is required");e.code="consent_required";throw e;}const {error}=await sb.from("waitlist").insert({email,note:note||null,source:location.pathname,marketing_consent:true,consent_at:new Date().toISOString(),consent_version:"v1"});if(error)fail(error);}
   };
 })();

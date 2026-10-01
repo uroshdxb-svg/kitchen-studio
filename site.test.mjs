@@ -68,6 +68,17 @@ await page.click("#menuBtn");await page.click("#mSignOut");await page.waitForTim
 check(/sign in to save online/.test(await page.textContent("#saveState")),"signed-out label");
 check(/Café Riyadh/.test(await page.textContent("#saveState")),"kitchen name kept locally");
 
+console.log("5b. report a gap (signed out, with layout attached)");
+if(await page.locator("#menu").isHidden())await page.click("#menuBtn");await page.click("#mReport");await page.waitForTimeout(200);
+check(/Report a gap/.test(await page.textContent("#dlgTitle")),"report dialog opens");
+await page.click("#rpSend");check(/few words/.test(await page.textContent("#rpNote")),"empty report is refused");
+await page.selectOption("#rpKind","drawing");await page.fill("#rpMsg","Lowboy draws doors, it has drawers");await page.fill("#rpEmail","chef@example.com");
+await page.click("#rpSend");await page.waitForTimeout(400);
+const reps=await page.evaluate(()=>JSON.parse(localStorage.getItem("ks.mock")).reports||[]);
+check(reps.length===1&&reps[0].kind==="drawing"&&reps[0].email==="chef@example.com","report stored with kind and email");
+check(reps[0]&&reps[0].project&&Array.isArray(reps[0].project.items)&&reps[0].context&&reps[0].context.view,"report carries the layout and context");
+check(/Thanks/.test(await page.textContent("#dlgBody")),"report thank-you shown");await page.click("#rpDone");
+
 console.log("6. screenshots for the landing page (desktop plan, phone plan, 3D)");
 const d=await browser.newContext({viewport:{width:1280,height:900},deviceScaleFactor:1,colorScheme:"light"});await d.addInitScript(mock);const dp=await d.newPage();dp.on("pageerror",e=>errors.push("desk: "+e.message));
 await dp.goto(BASE+"/app/");await dp.waitForTimeout(1500);await dp.click("#t-eq");await dp.waitForTimeout(400);await dp.screenshot({path:path.join(SHOTS,"plan-desktop.png")});

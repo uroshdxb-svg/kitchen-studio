@@ -20,6 +20,7 @@
     loadShared:async pid=>{S=load();const p=S.projects.find(p=>p.public_id===pid&&p.is_public);return p?{name:p.name,data:p.data,updated_at:p.updated_at}:null;},
     listEquipment:async()=>{S=load();return S.equipment;},saveEquipment:async e=>{S=load();S.equipment=S.equipment.filter(x=>x.cid!==e.cid).concat([e]);save(S);},deleteEquipment:async cid=>{S=load();S.equipment=S.equipment.filter(x=>x.cid!==cid);save(S);},
     ai:async prompt=>{if(!S.user){const e=new Error("no");e.code="not_granted";throw e;}return {found:false,note:"mock"};},
+    report:async r=>{S=load();(S.reports=S.reports||[]).push(Object.assign({at:Date.now()},r));localStorage.setItem(K,JSON.stringify(S));},
     waitlist:async(email,consent,note)=>{if(consent!==true)throw new Error("Marketing consent is required");S=load();if(S.waitlist.some(w=>w.email.toLowerCase()===email.toLowerCase()))throw new Error("duplicate key");S.waitlist.push({email,note,marketing_consent:true,consent_version:"v1"});save(S);}
   };
 })();
