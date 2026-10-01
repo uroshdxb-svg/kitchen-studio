@@ -1,0 +1,28 @@
+name: Production smoke check
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-live-pages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check landing page
+        shell: bash
+        run: |
+          set -euo pipefail
+          body="$(curl --fail --silent --show-error --location --retry 3 --max-time 20 https://kitchenstudio.design/)"
+          grep -q "Kitchen Studio" <<<"$body"
+      - name: Check design app
+        shell: bash
+        run: |
+          set -euo pipefail
+          body="$(curl --fail --silent --show-error --location --retry 3 --max-time 20 https://kitchenstudio.design/app/)"
+          grep -q "Kitchen Studio" <<<"$body"
+
