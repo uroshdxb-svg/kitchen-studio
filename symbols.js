@@ -3,6 +3,7 @@ function KS_symOf(it){
   if(it.kind==="arch")return "arch:"+it.archType;
   if(it.kind==="ss")return "ss:"+it.ssType;
   const t=((it.cat||"")+" "+(it.name||"")+" "+(it.model||"")).toLowerCase(),has=(...k)=>k.some(x=>t.includes(x));
+  if(has("oven stand"))return "stand";
   if(has("cold room","freezer room","walk-in"))return "coldroom";
   if(has("shelving","dunnage"))return "ss:rack";
   if(has("racking trolley","tray trolley","rack trolley"))return "ss:trolley";
@@ -34,6 +35,9 @@ function KS_symOf(it){
 }
 
 /* Counter fridges with drawers: "4 drawers" -> 2 sections of 2 stacked drawers; "drawer" with no count -> every section. */
+/* Oven stand variant from its name: sides (Stand II+), back (III), doors (IV), runners, castors. */
+function KS_standOf(it){const t=((it.name||"")+" "+(it.model||"")).toLowerCase();const iv=/stand iv\b/.test(t),iii=/stand iii\b|ultravent/.test(t),ii=/stand ii\b|low stand|mobilityline|xs stand ii/.test(t);
+  return {sides:iv||iii||ii,back:iv||iii,doors:iv,runners:iv||iii||ii,castors:/castor|mobility/.test(t),shelf:!(iv||iii||ii)};}
 function KS_drawerSecs(it,n){const t=((it.name||"")+" "+(it.model||"")).toLowerCase();if(!t.includes("drawer"))return 0;const m=t.match(/(\d+)\s*-?\s*drawers?/);return m?Math.min(n,Math.ceil(+m[1]/2)):n;}
 function KS_planSym(it,upp,C,ink){
   const w=it.w,d=it.d,k=KS_symOf(it),t=upp*.9,da=`${4*upp} ${3*upp}`;let s="";
@@ -106,6 +110,11 @@ function KS_planSym(it,upp,C,ink){
     case "ss:wcab":s+=P(`M0 0L${w} ${d}`,1,C.muted)+P(`M${w/2} ${d-30}V${d}`);break;
     case "ss:hood":s+=R(150,150,w-300,d-300,0,"none",1,C.muted)+P(`M0 0L150 150M${w} 0L${w-150} 150M0 ${d}L150 ${d-150}M${w} ${d}L${w-150} ${d-150}`,1,C.muted)+R(150,60,w-300,70,0,"none",1,C.muted);break;
     case "ss:gantry":s+=R(0,d/2-25,50,50,0,ink)+R(w-50,d/2-25,50,50,0,ink)+P(`M50 ${d/2}H${w-50}`,1,C.muted);break;
+    case "stand":{const v=KS_standOf(it),L=45;for(const [x,y] of [[0,0],[w-L,0],[0,d-L],[w-L,d-L]])s+=R(x,y,L,L,0,ink);
+      if(v.sides)s+=R(0,0,25,d,0,C.sunk)+R(w-25,0,25,d,0,C.sunk);if(v.back)s+=R(0,0,w,25,0,C.sunk);
+      if(v.runners){let p="";for(let y=90;y<d-60;y+=70)p+=`M30 ${y}h70M${w-100} ${y}h70`;s+=P(p,0,C.muted);}
+      if(v.shelf)s+=R(60,60,w-120,d-120,0,"none",1,C.muted);
+      if(v.doors)s+=P(`M${w/2} ${d}V${d-30}`)+P(`M0 ${d+w/2}A${w/2} ${w/2} 0 0 0 ${w/2} ${d}M${w} ${d+w/2}A${w/2} ${w/2} 0 0 1 ${w/2} ${d}`,1,C.muted);break;}
     default:s+=P(`M0 0L${w} ${d}M${w} 0L0 ${d}`,0,C.muted)+R(0,d-40,w,40,0,C.sunk);
   }
   return s;
@@ -169,6 +178,14 @@ function KS_elevSym(it,W,front,upp,C,ink,sw){
     case "mixer":s+=hit+R(W*.08,h*.88,W*.84,h*.12,8,body,1)+R(W*.58,h*.2,W*.3,h*.68,6,body,1)+R(W*.05,0,W*.85,h*.24,24,body,1)+P(`M${W*.12} ${h*.5}H${W*.56}L${W*.5} ${h*.84}H${W*.18}Z`,0,steel)+P(`M${W*.34} ${h*.24}V${h*.5}`)+Ci(W*.73,h*.12,Math.min(28,W*.06),C.sunk);break;
     case "bowl":case "slicer":s+=hit+R(W*.12,h*.55,W*.76,h*.45,10,body,1)+P(`M${W*.2} ${h*.06}H${W*.8}L${W*.7} ${h*.55}H${W*.3}Z`,0,steel)+R(W*.26,0,W*.48,h*.06,4,C.sunk)+Ci(W*.5,h*.78,Math.min(30,W*.09),C.sunk);break;
     case "espresso":{s+=hit+R(0,0,W,h*.5,10,body,1)+R(W*.04,h*.5,W*.92,h*.32,0,C.sunk)+R(0,h*.82,W,h*.12,4,body,1)+R(40,h*.94,40,h*.06,0,C.sunk)+R(W-80,h*.94,40,h*.06,0,C.sunk);const n=W>600?2:1;for(let i=0;i<n;i++){const x=W*(i+1)/(n+1);s+=R(x-45,h*.5,90,h*.1,6,body)+P(`M${x} ${h*.6}v${h*.06}`);}break;}
+    case "stand":{const v=KS_standOf(it),L=40,ch=v.castors?110:0,top=36;s+=hit;
+      if(!front){s+=R(0,0,W,top,0,steel,1)+R(0,top,L,h-top-ch,0,steel,1)+R(W-L,top,L,h-top-ch,0,steel,1);if(v.sides||v.back)s+=R(L,top,W-2*L,h-top-ch-20,0,C.sunk);}
+      else{s+=R(0,0,W,top,0,steel,1)+R(0,top,L,h-top-ch,0,steel,1)+R(W-L,top,L,h-top-ch,0,steel,1);
+        if(v.back&&!v.doors)s+=R(L,top,W-2*L,h-top-ch-20,0,C.sunk);
+        if(v.runners&&!v.doors){let p="";for(let y=top+50;y<h-ch-60;y+=Math.max(40,(h-top-ch-110)/14))p+=`M${L} ${y}h70M${W-L-70} ${y}h70`;s+=P(p);}
+        if(v.shelf)s+=R(L,h-ch-170,W-2*L,25,0,steel,1);
+        if(v.doors)s+=R(L+6,top+10,(W-2*L)/2-9,h-top-ch-40,4)+R(W/2+3,top+10,(W-2*L)/2-9,h-top-ch-40,4)+P(`M${W/2-40} ${h*.45}v${h*.15}M${W/2+40} ${h*.45}v${h*.15}`);}
+      if(v.castors)s+=Ci(L/2+15,h-ch/2,ch/2-6,C.sunk)+Ci(W-L/2-15,h-ch/2,ch/2-6,C.sunk);break;}
     default:s+=R(0,0,W,hb,0,body,1)+(floorEq?feet(hb):"")+P(`M0 ${Math.min(120,hb*.18)}H${W}`)+R(W*.1,Math.min(120,hb*.18)*.25,W*.3,Math.min(120,hb*.18)*.5,4,C.sunk)+(hb>400?R(W*.06,Math.min(120,hb*.18)+20,W*.88,hb-Math.min(120,hb*.18)-50,6):"");
   }
   return s;

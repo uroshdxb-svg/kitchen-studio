@@ -96,6 +96,15 @@ const KS3D=(function(){
         if(o.includes("Lights"))for(let i=0;i<Math.max(2,Math.round(w/900));i++)B(g,w*(i+.5)/Math.max(2,Math.round(w/900))-150,h*.62,d*.7,300,15,80,M.lamp);break;
       case "ss:gantry":B(g,30,0,d/2-20,40,h,40,M.steel2);B(g,w-70,0,d/2-20,40,h,40,M.steel2);B(g,0,h-35,0,w,35,d,M.steel,true);if(o.includes("Double tier"))B(g,0,h*.5,0,w,30,d,M.steel,true);
         if(o.includes("Heat lamps")){const n=Math.max(2,Math.round(w/600));for(let i=0;i<n;i++){const x=w*(i+.5)/n;Cy(g,x,h-95,d/2,8,60,M.dark);Cy(g,x,h-150,d/2,70,55,M.lamp);}}break;
+      case "stand":{const s=KS_standOf(it),L=40,ch=s.castors?110:0,top=36;
+        for(const [x,z] of [[0,0],[w-L,0],[0,d-L],[w-L,d-L]])B(g,x,ch,z,L,h-ch-top,L,M.steel2,true);B(g,0,h-top,0,w,top,d,M.steel,true);
+        if(s.castors)for(const [x,z] of [[L/2,L/2],[w-L/2,L/2],[L/2,d-L/2],[w-L/2,d-L/2]])Cy(g,x,ch/2,z,ch/2-8,30,M.dark,"x");
+        if(s.sides){B(g,0,ch+20,L,18,h-ch-top-20,d-2*L,M.steel,true);B(g,w-18,ch+20,L,18,h-ch-top-20,d-2*L,M.steel,true);}
+        if(s.back)B(g,L,ch+20,0,w-2*L,h-ch-top-20,18,M.steel,true);
+        if(s.runners&&!s.doors)for(let y=ch+80;y<h-top-40;y+=Math.max(40,(h-ch-top-110)/14)){B(g,18,y,L+20,30,10,d-2*L-40,M.steel2);B(g,w-48,y,L+20,30,10,d-2*L-40,M.steel2);}
+        if(s.shelf)B(g,L,ch+150,L,w-2*L,20,d-2*L,M.steel,true);
+        if(s.doors){B(g,L,ch+20,F-20,(w-2*L)/2-4,h-ch-top-40,20,M.steel,true);B(g,w/2+4,ch+20,F-20,(w-2*L)/2-4,h-ch-top-40,20,M.steel,true);handleV(g,w/2-50,h*.45,F,h*.15);handleV(g,w/2+28,h*.45,F,h*.15);}
+        break;}
       default:if(floorEq)feet(g,w,d,fh);body();B(g,w*.06,fh+(h-fh)*.08,F,w*.88,(h-fh)*.7,10,M.steel2,true);B(g,w*.1,h-(h-fh)*.16,F,w*.3,(h-fh)*.09,5,M.screen);
     }
     return g;
