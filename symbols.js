@@ -19,6 +19,7 @@ function KS_symOf(it){
   if(has("salamander"))return "salamander";
   if(has("high-speed","rapid-cook","microwave","pizza","deck oven"))return "hsoven";
   if(has("ice maker","ice machine","ice "))return "ice";
+  if(has("lowboy","low boy","chef base","chefbase","refrigerated base","freezer base"))return "counter";
   if(has("counter","undercounter","saladette"))if(has("fridge","refrigerat","freezer","prep counter","salad"))return "counter";
   if(has("fridge","refrigerator","freezer","blast","chiller","reach-in","bottle cooler","multideck","display"))return "fridge";
   if(has("combi","oven","cook & hold","cook and hold","holding cabinet","cvap","hold"))return "oven";
