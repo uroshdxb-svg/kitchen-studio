@@ -20,10 +20,10 @@
     signInEmail:async email=>{const {error}=await sb.auth.signInWithOtp({email,options:{emailRedirectTo:siteUrl+"/app/"}});if(error)fail(error);},
     signInGoogle:async()=>{const {error}=await sb.auth.signInWithOAuth({provider:"google",options:{redirectTo:siteUrl+"/app/"}});if(error)fail(error);},
     signOut:()=>sb.auth.signOut(),
-    listProjects:async()=>{need();const {data,error}=await sb.from("projects").select("id,name,summary,updated_at,is_public,public_id").order("updated_at",{ascending:false});if(error)fail(error);return data||[];},
-    loadProject:async id=>{need();const {data,error}=await sb.from("projects").select("id,name,data,updated_at,is_public,public_id").eq("id",id).maybeSingle();if(error)fail(error);return data;},
-    createProject:async(name,payload)=>{need();const s=strip(payload);const {data,error}=await sb.from("projects").insert({owner:user.id,name:name||"Untitled kitchen",data:s.data,summary:summary(payload)}).select("id,public_id").single();if(error)fail(error);return Object.assign({stripped:s.stripped},data);},
-    saveProject:async(id,payload,name)=>{need();const s=strip(payload);const row={data:s.data,summary:summary(payload),updated_at:new Date().toISOString()};if(name)row.name=name;const {error}=await sb.from("projects").update(row).eq("id",id);if(error)fail(error);return {stripped:s.stripped};},
+    listProjects:async()=>{need();const {data,error}=await sb.from("projects").select("id,name,summary,updated_at,is_public,public_id,version").order("updated_at",{ascending:false});if(error)fail(error);return data||[];},
+    loadProject:async id=>{need();const {data,error}=await sb.from("projects").select("id,name,data,updated_at,is_public,public_id,version").eq("id",id).maybeSingle();if(error)fail(error);return data;},
+    createProject:async(name,payload)=>{need();const s=strip(payload);const {data,error}=await sb.from("projects").insert({owner:user.id,name:name||"Untitled kitchen",data:s.data,summary:summary(payload)}).select("id,public_id,version,updated_at").single();if(error)fail(error);return Object.assign({stripped:s.stripped},data);},
+    saveProject:async(id,payload,name,expectedVersion)=>{need();const s=strip(payload);const row={data:s.data,summary:summary(payload),updated_at:new Date().toISOString()};if(name)row.name=name;let q=sb.from("projects").update(row).eq("id",id);if(Number.isInteger(expectedVersion))q=q.eq("version",expectedVersion);const {data,error}=await q.select("version,updated_at").maybeSingle();if(error)fail(error);if(!data){const e=new Error("A newer online version exists");e.code="conflict";throw e;}return {stripped:s.stripped,version:data.version,updated_at:data.updated_at};},
     renameProject:async(id,name)=>{need();const {error}=await sb.from("projects").update({name}).eq("id",id);if(error)fail(error);},
     deleteProject:async id=>{need();const {error}=await sb.from("projects").delete().eq("id",id);if(error)fail(error);},
     setPublic:async(id,on)=>{need();const {data,error}=await sb.from("projects").update({is_public:!!on}).eq("id",id).select("public_id").single();if(error)fail(error);return data.public_id;},
@@ -35,6 +35,6 @@
     ai:async(prompt,opts)=>{need();opts=opts||{};const {data,error}=await sb.functions.invoke("ai",{body:{prompt,tier:opts.modelTier||"default",kind:opts.kind||null,images:opts.images||null,max_tokens:opts.maxTokens||null}});
       if(error){const st=error.context&&error.context.status;const e=new Error(error.message||"AI request failed");e.code=st===429?"rate_limited":st===401||st===403?"not_granted":"failed";throw e;}
       if(data&&data.error){const e=new Error(data.error);e.code=data.code||"failed";throw e;}return data&&data.json;},
-    waitlist:async(email,note)=>{const {error}=await sb.from("waitlist").insert({email,note:note||null,source:location.pathname});if(error)fail(error);}
+    waitlist:async(email,consent,note)=>{if(consent!==true){const e=new Error("Marketing consent is required");e.code="consent_required";throw e;}const {error}=await sb.from("waitlist").insert({email,note:note||null,source:location.pathname,marketing_consent:true,consent_at:new Date().toISOString(),consent_version:"v1"});if(error)fail(error);}
   };
 })();
