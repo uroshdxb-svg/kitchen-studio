@@ -9,7 +9,7 @@
     "build:artifact": "node build.mjs artifact",
     "build:standalone": "node build.mjs standalone",
     "dev": "node build.mjs && npx --yes serve dist -l 5173",
-    "test": "node site.test.mjs",
+    "test": "node site.test.mjs && node mcp.test.mjs",
     "test:ci": "npm run build && npm test"
   },
   "dependencies": {

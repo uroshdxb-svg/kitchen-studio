@@ -33,6 +33,8 @@ if(mode==="artifact"){
   const cfg={supabaseUrl:process.env.SUPABASE_URL||fileCfg.supabaseUrl||"",supabaseAnonKey:process.env.SUPABASE_ANON_KEY||fileCfg.supabaseAnonKey||"",siteUrl:process.env.SITE_URL||fileCfg.siteUrl||"",version:ver};
   const D="dist";
   fs.rmSync(path.join(ROOT,D),{recursive:true,force:true});
+  // catalogue rows for the MCP server (mcp.js reads /app/catalogue.json through the ASSETS binding)
+  {const m={};new Function("m",read("cat.js")+";m.rows=CATALOGUE_ROWS;")(m);out(D,"app/catalogue.json",JSON.stringify(m.rows));}
   const libs={"jspdf-src":"/app/vendor/jspdf.min.js","svg2pdf-src":"/app/vendor/svg2pdf.min.js","pdfjs-src":"/app/vendor/pdf.min.js","pdfjs-worker-src":"/app/vendor/pdf.worker.min.js"};
   const seo=`<meta name="description" content="Design your commercial kitchen yourself. Real equipment, real dimensions, drawings your contractor can build from."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#F0602F">`;
   const scripts=[`<script>window.KS_CONFIG=${JSON.stringify(cfg)};window.KS_LIBS=${JSON.stringify(libs)};</script>`,

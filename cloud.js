@@ -21,8 +21,11 @@
   const providers=fetch(cfg.supabaseUrl+"/auth/v1/settings",{headers:{apikey:cfg.supabaseAnonKey}}).then(r=>r.json()).then(j=>Object.keys(j.external||{}).filter(k=>j.external[k])).catch(()=>["email"]);
   window.KS_backend={
     ready,linkError:()=>linkError,user:()=>user,providers:()=>providers,onAuth:f=>{listeners.add(f);return()=>listeners.delete(f);},
-    signInEmail:async email=>{const {error}=await sb.auth.signInWithOtp({email,options:{emailRedirectTo:siteUrl+"/app/"}});if(error){if(error.status===429||/rate limit/i.test(error.message||""))error.message="Too many sign-in emails in a short time. Wait a few minutes and try again.";fail(error);}},
-    signInGoogle:async()=>{const {error}=await sb.auth.signInWithOAuth({provider:"google",options:{redirectTo:siteUrl+"/app/"}});if(error)fail(error);},
+    signInEmail:async(email,redirect)=>{const {error}=await sb.auth.signInWithOtp({email,options:{emailRedirectTo:redirect||siteUrl+"/app/"}});if(error){if(error.status===429||/rate limit/i.test(error.message||""))error.message="Too many sign-in emails in a short time. Wait a few minutes and try again.";fail(error);}},
+    signInGoogle:async redirect=>{const {error}=await sb.auth.signInWithOAuth({provider:"google",options:{redirectTo:redirect||siteUrl+"/app/"}});if(error)fail(error);},
+    /* OAuth consent for apps such as Claude's Kitchen Studio connector (Supabase OAuth 2.1 server) */
+    oauthDetails:async id=>{const {data,error}=await sb.auth.oauth.getAuthorizationDetails(id);if(error)fail(error);return data;},
+    oauthDecide:async(id,approve)=>{const fn=approve?sb.auth.oauth.approveAuthorization:sb.auth.oauth.denyAuthorization;const {data,error}=await fn.call(sb.auth.oauth,id,{skipBrowserRedirect:true});if(error)fail(error);return data;},
     signOut:()=>sb.auth.signOut(),
     listProjects:async()=>{need();const {data,error}=await sb.from("projects").select("id,name,summary,updated_at,is_public,public_id,version").order("updated_at",{ascending:false});if(error)fail(error);return data||[];},
     loadProject:async id=>{need();const {data,error}=await sb.from("projects").select("id,name,data,updated_at,is_public,public_id,version").eq("id",id).maybeSingle();if(error)fail(error);return data;},

@@ -1025,11 +1025,28 @@ function openSignIn(note){openDlg("Sign in",`<p>${esc(note||"Save your kitchens 
   <div class="fld"><label for="siEmail">Email</label><input id="siEmail" type="email" autocomplete="email" inputmode="email" placeholder="you@restaurant.com"></div>
   <div class="bar"><button class="btn pri" id="siSend">Email me a sign-in link</button><button class="btn" id="siGoogle">Continue with Google</button></div><p class="note" id="siMsg">No password. The link signs you in on this device.</p>`);
   $("siSend").onclick=async()=>{const em=$("siEmail").value.trim();if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){$("siMsg").textContent="Enter a valid email address.";return;}$("siSend").disabled=true;
-    try{await be.signInEmail(em);$("siMsg").textContent=`Link sent to ${em}. Open it on this device; this page will sign in by itself.`;}catch(e){$("siMsg").textContent="Couldn't send the link: "+(e.message||"try again.");$("siSend").disabled=false;}};
-  $("siGoogle").onclick=async()=>{try{await be.signInGoogle();}catch(e){$("siMsg").textContent="Google sign-in didn't start: "+(e.message||"try again.");}};
+    try{await be.signInEmail(em,consentId()?location.href:undefined);$("siMsg").textContent=`Link sent to ${em}. Open it on this device; this page will sign in by itself.`;}catch(e){$("siMsg").textContent="Couldn't send the link: "+(e.message||"try again.");$("siSend").disabled=false;}};
+  $("siGoogle").onclick=async()=>{try{await be.signInGoogle(consentId()?location.href:undefined);}catch(e){$("siMsg").textContent="Google sign-in didn't start: "+(e.message||"try again.");}};
   if(be.providers)be.providers().then(list=>{if(!list.includes("google")&&$("siGoogle"))$("siGoogle").hidden=true;});
   setTimeout(()=>$("siEmail").focus(),50);}
 $("mSignIn").addEventListener("click",()=>openSignIn());
+/* OAuth consent: Claude (or another app) asks to work on this person's kitchens through the Kitchen Studio MCP server */
+function consentId(){if(!/^\/oauth\/consent\/?$/.test(location.pathname))return null;return new URLSearchParams(location.search).get("authorization_id");}
+async function runConsent(id){
+  if(!be||!be.oauthDetails){openDlg("Connect an app",`<p>Connecting apps works in the online app at kitchenstudio.design.</p>`);return;}
+  if(!be.user()){openSignIn("Sign in to connect it to your Kitchen Studio kitchens. You'll come straight back here.");return;}
+  let d;try{d=await be.oauthDetails(id);}catch(e){openDlg("Connect an app",`<p>This connection request has expired or was already used. Start the connection again from Claude.</p>`);return;}
+  if(d&&d.redirect_url&&!d.client){location.href=d.redirect_url;return;}
+  const app=esc((d.client&&d.client.name)||"An app"),u=be.user();
+  openDlg("Connect "+((d.client&&d.client.name)||"an app"),`<p><b>${app}</b> wants to work on the kitchens in your Kitchen Studio account${u&&u.email?` (${esc(u.email)})`:""}.</p>
+    <p class="note" style="margin:10px 0 4px"><b>It will be able to</b></p><ul class="note" style="margin:0 0 8px 18px;padding:0"><li>see your saved kitchens and the equipment catalogue</li><li>create kitchens, and add, move, change or remove equipment</li><li>check layouts and read the equipment schedule and loads</li></ul>
+    <p class="note" style="margin:6px 0 4px"><b>It won't be able to</b></p><ul class="note" style="margin:0 0 8px 18px;padding:0"><li>export drawings (that stays in the app)</li><li>see anyone else's kitchens or change your account</li></ul>
+    <p class="note">You can disconnect it any time from Claude's connector settings.</p>
+    <div class="bar"><button class="btn pri" id="ocYes">Allow</button><button class="btn" id="ocNo">Deny</button></div><p class="note" id="ocMsg" aria-live="polite"></p>`);
+  const go=async ok=>{$("ocYes").disabled=$("ocNo").disabled=true;$("ocMsg").textContent=ok?"Connecting…":"Cancelling…";
+    try{const r=await be.oauthDecide(id,ok);if(r&&r.redirect_url){location.href=r.redirect_url;return;}$("ocMsg").textContent="Done. You can close this tab.";}
+    catch(e){$("ocYes").disabled=$("ocNo").disabled=false;$("ocMsg").textContent="That didn't work: "+(e.message||"try again.");}};
+  $("ocYes").onclick=()=>go(true);$("ocNo").onclick=()=>go(false);}
 /* Report a gap: missing equipment, wrong drawing, bug or idea. Goes to the reports table; the kitchen file rides along if ticked. */
 function openReport(pre){
   if(!be||!be.report){openDlg("Report a gap",`<p>Reporting works in the online app at kitchenstudio.design. This copy runs offline.</p>`);return;}
@@ -1129,10 +1146,11 @@ async function boot(){
   if(be){curId=localStorage.getItem("ks.curId")||null;if(curId==="")curId=null;
     sampleFn={json:(prompt,opts)=>be.ai(prompt,opts)};$("aiBriefBox").hidden=false;$("aiNoBrief").hidden=true;
     await be.ready;acctUI();if(be.linkError&&be.linkError())toast(be.linkError());
+    if(consentId())setTimeout(()=>runConsent(consentId()),0);
     const shared=await loadSharedFromUrl();
     if(!shared)await cloudSync();else if(be.user())cloudSync();
     if(!be.user()&&!shared)saveLabel(isExample?"Example layout · sign in to save online":"Saved on this device · sign in to save online");
-    be.onAuth(async u=>{acctUI();if(u){closeDlg();toast(`Signed in as ${u.email||"you"}.`);await cloudSync();}else{curId=null;curVersion=null;localStorage.setItem("ks.curId","");saveLabel("Saved on this device · sign in to save online");toast("Signed out. Your kitchen stays on this device.");}});
+    be.onAuth(async u=>{acctUI();if(u){closeDlg();toast(`Signed in as ${u.email||"you"}.`);if(consentId())runConsent(consentId());await cloudSync();}else{curId=null;curVersion=null;localStorage.setItem("ks.curId","");saveLabel("Saved on this device · sign in to save online");toast("Signed out. Your kitchen stays on this device.");}});
     return;}
   const use=window.claude&&window.claude.use?n=>window.claude.use(n).catch(()=>null):()=>Promise.resolve(null);
   use("sample").then(s=>{sampleFn=s;$("aiBriefBox").hidden=!s;$("aiNoBrief").hidden=!!s;if(!s){$("nLookup").hidden=true;}});

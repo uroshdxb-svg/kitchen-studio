@@ -120,3 +120,5 @@ create policy "reports: anyone can file" on public.reports for insert to anon, a
     and (project is null or pg_column_size(project) < 1500000)
     and (context is null or pg_column_size(context) < 20000)
   );
+revoke all privileges on table public.reports from anon, authenticated;
+grant insert (reporter, email, kind, message, view, context, project) on public.reports to anon, authenticated;
