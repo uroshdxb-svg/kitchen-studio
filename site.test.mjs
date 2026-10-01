@@ -74,4 +74,3 @@ await pp.goto(BASE+"/app/");await pp.waitForTimeout(1500);await pp.click("#zIn")
 check(errors.length===0,"no page errors"+(errors.length?": "+errors.join(" | "):""));
 await browser.close();server.close();
 console.log(fails?`\n${fails} check(s) failed`:"\nall checks passed");process.exit(fails?1:0);
-
