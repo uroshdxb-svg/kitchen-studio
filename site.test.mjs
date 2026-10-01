@@ -14,7 +14,8 @@ await page.goto(BASE+"/");await page.waitForTimeout(600);
 check(await page.title().then(t=>/Kitchen Studio/.test(t)),"title");
 check(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1),"no horizontal scroll on phone");
 check(!(await page.locator("#wlForm").isHidden()),"waitlist form shown with backend");
-await page.fill("#wlEmail","chef@example.com");await page.click("#wlBtn");await page.waitForTimeout(300);
+check(await page.locator("#wlConsent").getAttribute("required")!==null,"waitlist requires explicit marketing consent");
+await page.fill("#wlEmail","chef@example.com");await page.check("#wlConsent");await page.click("#wlBtn");await page.waitForTimeout(300);
 check(/on the list/.test(await page.textContent("#wlMsg")),"waitlist submit");
 
 console.log("2. app, signed out");
@@ -28,6 +29,8 @@ await page.fill("#siEmail","chef@example.com");await page.click("#siSend");await
 check(!(await page.locator("#dlg").evaluate(d=>d.open)),"dialog closed after sign-in");
 check(/Saved online/.test(await page.textContent("#saveState")),"first kitchen created online: "+await page.textContent("#saveState"));
 const list1=await page.evaluate(()=>JSON.parse(localStorage.getItem("ks.mock")).projects);check(list1.length===1,"one project in backend");
+const conflict=await page.evaluate(async()=>{const s=JSON.parse(localStorage.getItem("ks.mock")),p=s.projects[0],v=p.version;p.version=v+1;localStorage.setItem("ks.mock",JSON.stringify(s));let code="";try{await window.KS_backend.saveProject(p.id,p.data,p.name,v);}catch(e){code=e.code||"";}p.version=v;localStorage.setItem("ks.mock",JSON.stringify(s));return code;});
+check(conflict==="conflict","stale cloud save is rejected");
 
 console.log("3. edit, my kitchens, rename, new kitchen");
 await page.click("#t-room");await page.fill("#roomW","7000");await page.dispatchEvent("#roomW","change");await page.reload();await page.waitForTimeout(1600);

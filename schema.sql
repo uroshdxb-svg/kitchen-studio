@@ -1,4 +1,5 @@
--- Kitchen Studio: initial schema. Run in the Supabase SQL editor (or `supabase db push`).
+-- Kitchen Studio: historical bootstrap schema. For a new project, run this file
+-- and then every file in supabase/migrations in timestamp order.
 -- Tables: profiles, projects (saved kitchens), equipment (a user's custom models), waitlist, ai_usage.
 
 create extension if not exists pgcrypto;

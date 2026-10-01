@@ -62,6 +62,9 @@ h2{font-size:clamp(26px,3.4vw,38px);letter-spacing:-.025em;line-height:1.08;marg
 .wait form{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
 .wait input{flex:1 1 240px;height:48px;border-radius:var(--pill);border:1.5px solid var(--line);background:var(--ground);color:var(--ink);padding:0 18px;font:inherit;font-size:16px}
 .wait input:focus{outline:2px solid var(--accent);border-color:transparent}
+.wait .consent{display:flex;align-items:flex-start;gap:9px;flex:1 0 100%;font-size:13px;color:var(--muted);line-height:1.4}
+.wait .consent input{flex:0 0 auto;width:18px;height:18px;margin:1px 0 0;padding:0;border-radius:4px}
+.wait .hp{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
 .wait .msg{font-size:14px;color:var(--muted);margin:10px 0 0}
 .demo{margin:0;border-radius:16px;overflow:hidden;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
 .demo .bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--line)}
@@ -140,7 +143,7 @@ footer a{text-decoration:none}
     <div class="wait">
       <h2 style="font-size:26px">Get early access updates</h2>
       <p class="sub" style="margin-bottom:0">One email when something meaningful ships: shared links, templates, the catalogue growing. No newsletter.</p>
-      <form id="wlForm" hidden><input id="wlEmail" type="email" required placeholder="you@restaurant.com" autocomplete="email" inputmode="email" aria-label="Email"><button class="btn pri" type="submit" id="wlBtn">Keep me posted</button></form>
+      <form id="wlForm" hidden><input id="wlEmail" type="email" required maxlength="254" placeholder="you@restaurant.com" autocomplete="email" inputmode="email" aria-label="Email"><input class="hp" id="wlCompany" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" aria-label="Leave this field empty"><button class="btn pri" type="submit" id="wlBtn">Keep me posted</button><label class="consent"><input id="wlConsent" type="checkbox" required> <span>I agree to receive occasional Kitchen Studio product updates by email. I can unsubscribe at any time.</span></label></form>
       <p class="msg" id="wlMsg">Follow along on Instagram, TikTok or YouTube: search for Kitchen Studio, or open the studio and start drawing.</p>
     </div>
   </section>
@@ -164,8 +167,8 @@ addEventListener("DOMContentLoaded",()=>{
     else{v.autoplay=true;v.play().catch(()=>{});}}
   const be=window.KS_backend;if(!be)return;
   const f=document.getElementById("wlForm"),m=document.getElementById("wlMsg"),b=document.getElementById("wlBtn");f.hidden=false;m.textContent="";
-  f.addEventListener("submit",async e=>{e.preventDefault();const em=document.getElementById("wlEmail").value.trim();b.disabled=true;
-    try{await be.waitlist(em,"landing");m.textContent="You're on the list. Meanwhile, the studio is open: start a kitchen.";f.hidden=true;}
+  f.addEventListener("submit",async e=>{e.preventDefault();const em=document.getElementById("wlEmail").value.trim(),consent=document.getElementById("wlConsent").checked;if(document.getElementById("wlCompany").value){m.textContent="You're on the list.";f.hidden=true;return;}b.disabled=true;
+    try{await be.waitlist(em,consent,"landing");m.textContent="You're on the list. Meanwhile, the studio is open: start a kitchen.";f.hidden=true;}
     catch(err){m.textContent=/duplicate|unique/i.test(err.message||"")?"You're already on the list.":"That didn't go through. Try again in a moment.";b.disabled=false;}});
 });
 </script>
