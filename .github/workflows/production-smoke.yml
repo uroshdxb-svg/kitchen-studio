@@ -25,4 +25,3 @@ jobs:
           set -euo pipefail
           body="$(curl --fail --silent --show-error --location --retry 3 --max-time 20 https://kitchenstudio.design/app/)"
           grep -q "Kitchen Studio" <<<"$body"
-
