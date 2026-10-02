@@ -34,6 +34,11 @@ if(mode==="artifact"){
 }else{
   let fileCfg={};try{fileCfg=JSON.parse(read("site.config.json"));}catch(_){}
   const cfg={supabaseUrl:process.env.SUPABASE_URL||fileCfg.supabaseUrl||"",supabaseAnonKey:process.env.SUPABASE_ANON_KEY||fileCfg.supabaseAnonKey||"",siteUrl:process.env.SITE_URL||fileCfg.siteUrl||"",version:ver};
+  // social profiles: only the ones filled in site.config.json "social" are linked, so nothing points at an account that doesn't exist yet
+  const SOCIAL_NAMES={instagram:"Instagram",tiktok:"TikTok",youtube:"YouTube",linkedin:"LinkedIn",threads:"Threads"};
+  const social=Object.entries(SOCIAL_NAMES).filter(([k])=>/^https:\/\//.test((fileCfg.social||{})[k]||"")).map(([k,n])=>`<a href="${fileCfg.social[k]}" target="_blank" rel="noopener me">${n}</a>`);
+  const socialMsg=social.length?`Follow along on ${social.join(", ")}, or open the studio and start drawing.`:"Follow along on Instagram, TikTok or YouTube: search for Kitchen Studio, or open the studio and start drawing.";
+  const withSocial=html=>html.replace("__KS_SOCIAL_MSG__",socialMsg).replace("__KS_SOCIAL_LINKS__",social.map(a=>" · "+a).join(""));
   const D="dist";
   fs.rmSync(path.join(ROOT,D),{recursive:true,force:true});
   // catalogue rows for the MCP server (mcp.js reads /app/catalogue.json through the ASSETS binding)
@@ -49,8 +54,8 @@ if(mode==="artifact"){
   out(D,"app/app.js",appJs);
   copy("cloud.js",D,"app/cloud.js");
   for(const [name,src] of Object.entries(LIBS))copy(src,D,"app/vendor/"+name);
-  out(D,"connect/index.html",branded(read("connect.html")));
-  out(D,"index.html",branded(read("landing.html")).replace("__KS_CONFIG__",JSON.stringify(cfg)));
+  out(D,"connect/index.html",withSocial(branded(read("connect.html"))));
+  out(D,"index.html",withSocial(branded(read("landing.html"))).replace("__KS_CONFIG__",JSON.stringify(cfg)));
   for(const f of ["favicon.svg","robots.txt","sample_floorplan.png","demo.mp4","demo.webm","demo-poster.jpg"])if(fs.existsSync(path.join(ROOT,f)))copy(f,D,f);
   for(const f of fs.readdirSync(ROOT).filter(f=>/^shot-.*\.png$/.test(f)))copy(f,D,"shots/"+f.replace(/^shot-/,""));
   out(D,"logo.svg",brand.lockupSVG());
