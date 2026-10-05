@@ -135,6 +135,24 @@ const layout=await dp.evaluate(svg=>{const doc=new DOMParser().parseFromString(s
 check(layout,"SVG branding adds space below the plan without cropping or rescaling the drawing");
 await dp.screenshot({path:path.join(SHOTS,"brand-app-desktop.png")});
 await dp.evaluate(()=>KS_ui.setTheme("dark"));await dp.screenshot({path:path.join(SHOTS,"brand-app-dark.png")});
+await dp.evaluate(()=>KS_ui.setTheme("light"));
+
+console.log("9. undo, redo and a person in the aisle");
+const n0=await dp.evaluate(()=>KS_ui.items().length);
+await dp.click("#personBtn");await dp.waitForTimeout(300);
+const person=await dp.evaluate(()=>KS_ui.items().find(i=>i.archType==="person"));
+check(!!person&&person.w===600,"Person button drops a 600 mm figure into the plan");
+check(await dp.evaluate(()=>KS_ui.items().length)===n0+1,"one item added");
+check(/\d{3,4}/.test(await dp.textContent("#aisleG")),"aisle widths are drawn around the person: "+(await dp.textContent("#aisleG")));
+check(/clear/.test(await dp.textContent("#selbar")),"selection panel reads the clear aisle width");
+await dp.screenshot({path:path.join(SHOTS,"person-aisle.png")});
+check(!(await dp.locator("#undoBtn").isDisabled()),"undo is enabled after a change");
+await dp.click("#undoBtn");await dp.waitForTimeout(300);
+check(await dp.evaluate(()=>KS_ui.items().length)===n0&&!(await dp.evaluate(()=>KS_ui.items().some(i=>i.archType==="person"))),"undo removes the person");
+await dp.click("#redoBtn");await dp.waitForTimeout(300);
+check(await dp.evaluate(()=>KS_ui.items().some(i=>i.archType==="person")),"redo brings the person back");
+await dp.click("#svg",{position:{x:5,y:5}}).catch(()=>{});await dp.keyboard.press("Control+z");await dp.waitForTimeout(300);
+check(await dp.evaluate(()=>KS_ui.items().length)===n0,"Ctrl+Z undoes too");
 await d.close();
 const ph=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:2,isMobile:true,hasTouch:true,colorScheme:"light"});await ph.addInitScript(mock);const pp=await ph.newPage();
 await pp.goto(BASE+"/app/");await pp.waitForTimeout(1500);await pp.click("#zIn");await pp.waitForTimeout(400);await pp.screenshot({path:path.join(SHOTS,"plan-phone.png")});await ph.close();

@@ -87,6 +87,10 @@ function KS_planSym(it,upp,C,ink){
       else s+=door(0,w,it.flip?"R":"L");break;}
     case "arch:window":s+=R(0,0,w,d,0,C.surface)+P(`M0 ${d*.35}H${w}M0 ${d*.65}H${w}M0 0V${d}M${w} 0V${d}`);break;
     case "arch:column":s+=P(`M0 0L${w} ${d}M${w} 0L0 ${d}`);break;
+    case "arch:person":{/* top view: shoulders, head, nose to the front (y = d) */
+      s+=`<ellipse cx="${w/2}" cy="${d*.46}" rx="${w/2-8}" ry="${d*.34}" fill="${C.surface}" fill-opacity=".9" stroke="${ink}" stroke-width="${t}"/>`;
+      s+=`<circle cx="${w/2}" cy="${d*.52}" r="${Math.min(w,d)*.27}" fill="#F0602F" fill-opacity=".85" stroke="${ink}" stroke-width="${t}"/>`;
+      s+=P(`M${w/2-40} ${d*.52+Math.min(w,d)*.25}L${w/2} ${d-6}L${w/2+40} ${d*.52+Math.min(w,d)*.25}`);break;}
     case "arch:drain":s+=Ci(w/2,d/2,w*.42,C.surface)+P(`M${w*.2} ${d*.2}L${w*.8} ${d*.8}M${w*.8} ${d*.2}L${w*.2} ${d*.8}M${w/2} ${d*.08}V${d*.92}M${w*.08} ${d/2}H${w*.92}`);break;
     case "arch:gas":case "arch:water":case "arch:power":{const L={"arch:gas":"G","arch:water":"W","arch:power":"E"}[k],col={"arch:gas":"#C8900A","arch:water":"#1F7FC2","arch:power":"#C8451B"}[k];
       s+=`<circle cx="${w/2}" cy="${d/2}" r="${w*.46}" fill="${col}" stroke="${ink}" stroke-width="${t}"/><text x="${w/2}" y="${d/2+w*.2}" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="${w*.55}" fill="#fff">${L}</text>`;break;}

@@ -121,6 +121,12 @@ select.mini{border:1px solid var(--line);background:var(--surface);border-radius
 .zoom{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:var(--pill);box-shadow:0 1px 2px rgba(0,0,0,.05)}
 .zoom button{width:36px;height:34px;font-size:18px;font-weight:600;color:var(--ink);border-radius:var(--pill)}
 .zoom button:hover{background:var(--sunk)}
+.tools{display:inline-flex;gap:6px;align-items:center;flex-wrap:nowrap;justify-content:flex-end}
+@media (max-width:640px){.hud{flex-wrap:wrap}.hud .tools{margin-left:auto}.pill-btn .lbl{display:none}.pill-btn{width:36px;padding:0;justify-content:center}.tools{gap:4px}.zoom button{width:32px}}
+.zoom button svg,.pill-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}
+.zoom button:disabled{color:var(--line);cursor:default;background:none}
+.pill-btn{display:inline-flex;align-items:center;gap:5px;height:36px;padding:0 13px 0 10px;background:var(--surface);border:1px solid var(--line);border-radius:var(--pill);box-shadow:0 1px 2px rgba(0,0,0,.05);font-weight:700;font-size:13px;color:var(--ink)}
+.pill-btn:hover{background:var(--sunk)}
 .fab{position:absolute;right:16px;bottom:calc(16px + var(--hudpad,0px));height:48px;padding:0 20px 0 16px;border-radius:var(--pill);background:var(--primary);color:var(--primary-ink);font-weight:800;font-size:15px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 18px rgba(240,96,47,.35);z-index:4}
 .fab svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round}
 .bar3d{position:absolute;left:12px;top:60px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;max-width:min(360px,calc(100% - 140px));z-index:3}
@@ -271,7 +277,11 @@ td.w{white-space:normal;min-width:180px}
     </div>
     <div class="hud">
       <div class="chip status" id="status"></div>
-      <div class="zoom" role="group" aria-label="Zoom"><button id="zOut" aria-label="Zoom out">−</button><button id="zIn" aria-label="Zoom in">+</button></div>
+      <div class="tools">
+        <div class="zoom" role="group" aria-label="History"><button id="undoBtn" aria-label="Undo" title="Undo (Ctrl+Z)" disabled><svg viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg></button><button id="redoBtn" aria-label="Redo" title="Redo (Ctrl+Shift+Z)" disabled><svg viewBox="0 0 24 24"><path d="m15 14 5-5-5-5"/><path d="M20 9H9.5a5.5 5.5 0 0 0 0 11H13"/></svg></button></div>
+        <button class="pill-btn" id="personBtn" title="Drop a person in to check aisle widths"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.2"/><path d="M12 8.5v6.5M8 11.5l4-2 4 2M9.5 21l2.5-6 2.5 6"/></svg><span class="lbl">Person</span></button>
+        <div class="zoom" role="group" aria-label="Zoom"><button id="zOut" aria-label="Zoom out">−</button><button id="zIn" aria-label="Zoom in">+</button></div>
+      </div>
     </div>
     <div class="bar3d" id="bar3d" hidden><div class="row"><button class="btn pri sm" id="walkBtn" aria-pressed="false">Walk through</button><button class="btn sm" id="reset3d">Reset view</button></div><span class="note" id="hint3d">Drag to orbit, pinch or scroll to zoom, two fingers (or Shift-drag) to pan. Tap an item to select it.</span></div>
     <button class="fab" id="fabAdd"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add</button>

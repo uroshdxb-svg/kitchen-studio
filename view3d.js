@@ -72,6 +72,13 @@ const KS3D=(function(){
       case "arch:door":case "arch:door2":{const dh=Math.min(2100,it.h||2100);B(g,-50,0,d-10,w+100,dh+50,30,M.dark);const n=sym==="arch:door2"?2:1;for(let i=0;i<n;i++){B(g,w/n*i+8,0,d-5,w/n-16,dh,40,M.doorleaf,true);B(g,n===2?(i?w/2+60:w/2-100):(it.flip?60:w-100),dh*.48,d+35,40,120,30,M.steel2);}break;}
       case "arch:window":B(g,-40,1000,d-10,w+80,1200,25,M.dark);B(g,0,1040,d-5,w,1120,30,M.sky);break;
       case "arch:column":B(g,0,0,0,w,it.h,d,M.wall,true);break;
+      case "arch:person":{/* chef figure, faces the front (z = d) */
+        const jk=M.jacket||(M.jacket=mat(0xf1f2ee,{metalness:0,roughness:.75})),tr=M.trouser||(M.trouser=mat(0x2b3138,{metalness:0,roughness:.8})),sk=M.skin||(M.skin=mat(0xc89a78,{metalness:0,roughness:.7})),ap=M.apron||(M.apron=mat(0xf0602f,{metalness:0,roughness:.7}));
+        const k=h/1750,cx=w/2,cz=d/2,lh=820*k,th=600*k;
+        B(g,cx-150,0,cz-80,130,lh,160,tr);B(g,cx+20,0,cz-80,130,lh,160,tr);
+        B(g,cx-200,lh,cz-115,400,th,230,jk);B(g,cx-160,lh-150,cz+115,320,th*.9,8,ap);
+        B(g,cx-292,lh+th-560*k,cz-55,90,560*k,110,jk);B(g,cx+202,lh+th-560*k,cz-55,90,560*k,110,jk);
+        Cy(g,cx,lh+th,cz,55,60*k,sk);Cy(g,cx,lh+th+60*k,cz,100,215*k,sk);B(g,cx-25,lh+th+120*k,cz+90,50,40,30,sk);break;}
       case "arch:drain":Cy(g,w/2,1,d/2,w*.45,6,M.dark);break;
       case "arch:gas":Cy(g,w/2,0,d/2,18,500,M.gasy);B(g,w/2-40,420,d/2-40,80,80,80,M.gasy);break;
       case "arch:water":Cy(g,w/2,0,d/2,16,550,M.waterb);B(g,w/2-35,480,d/2-35,70,70,70,M.waterb);break;

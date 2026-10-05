@@ -36,16 +36,18 @@ let be=null,curId=null,curVersion=null,projName="",sharedFrom=null,projList=[];/
 const remoteEq={set:e=>{const j=JSON.parse(JSON.stringify(e));if(be&&be.user())be.saveEquipment(j).catch(()=>{});else if(db)db.doc("equipment/"+e.cid).set(j).catch(()=>{});},
   del:cid=>{if(be&&be.user())be.deleteEquipment(cid).catch(()=>{});else if(db)db.doc("equipment/"+cid).delete().catch(()=>{});}};
 let fabOpen=false;
+let undoStack=[],redoStack=[],curSnap=null,lastUpp=1;   /* undo history (snapshots of room + items); plan scale for live overlays */
 let uid=1; const newId=()=>"i"+Date.now().toString(36)+(uid++);
 
 /* ---------- geometry ---------- */
 const fw=i=>i.rot%180?i.d:i.w, fd=i=>i.rot%180?i.w:i.d;
+const isPerson=it=>it.kind==="arch"&&it.archType==="person";
 const hit=(a,b)=>a.x<b.x+fw(b)-1&&a.x+fw(a)>b.x+1&&a.y<b.y+fd(b)-1&&a.y+fd(a)>b.y+1;
 function collides(it){if(it.mount==="over"||it.mount==="arch"||it.ssType==="gantry")return false;return state.items.some(o=>o!==it&&o.mount===it.mount&&o.ssType!=="gantry"&&hit(it,o))||(it.kind!=="arch"&&!insideRoom(it))||blocksDoor(it);}
 function baseUnder(it){const cx=it.x+fw(it)/2,cy=it.y+fd(it)/2;let best=null;
   for(const o of state.items){if(o.mount!=="floor"||o===it)continue;if(cx>=o.x&&cx<=o.x+fw(o)&&cy>=o.y&&cy<=o.y+fd(o)&&(!best||o.h>best.h))best=o;}return best;}
 function zOf(it){if(it.mount==="floor"||it.mount==="arch")return 0;if(it.mount==="over")return it.z||1500;const b=baseUnder(it);return b?b.h:900;}
-function clamp(it){const m=it.mount==="arch"?WALL_T+40:0;it.x=Math.max(-m,Math.min(state.room.w+m-fw(it),it.x));it.y=Math.max(-m,Math.min(state.room.d+m-fd(it),it.y));}
+function clamp(it){const m=it.mount==="arch"&&!isPerson(it)?WALL_T+40:0;it.x=Math.max(-m,Math.min(state.room.w+m-fw(it),it.x));it.y=Math.max(-m,Math.min(state.room.d+m-fd(it),it.y));}
 function findSpot(it){
   const R=state.room,W=fw(it),D=fd(it);
   const free=(x,y)=>{it.x=x;it.y=y;return !collides(it);};
@@ -72,6 +74,7 @@ function itemLabel(it){return isFab(it)?it.name:(it.brand+" "+it.model);}
 
 function planBounds(){const R=state.room,m=700;let x0=-m,y0=-m,x1=R.w+m,y1=R.d+m;if(under&&under.show){x0=Math.min(x0,under.x-200);y0=Math.min(y0,under.y-200);x1=Math.max(x1,under.x+under.pw*under.mmpp+200);y1=Math.max(y1,under.y+under.ph*under.mmpp+200);}return [x0,y0,x1-x0,y1-y0];}
 function planSVG(upp,forExport,faint){
+  if(!forExport)lastUpp=upp;
   const R=state.room,m=700,pdf=forExport==="pdf",VB=pdf?[-m,-m,R.w+2*m,R.d+2*m]:planBounds(); const f=11*upp,f2=9*upp,sw=1.2*upp;
   let s=`<defs><pattern id="g" width="500" height="500" patternUnits="userSpaceOnUse"><path d="M500 0H0V500" fill="none" stroke="${C.grid}" stroke-width="${upp*.8}"/></pattern></defs>`;
   if(pdf)s="";else s+=`<rect x="${VB[0]}" y="${VB[1]}" width="${VB[2]}" height="${VB[3]}" fill="${C.surface}"/>`;
@@ -95,6 +98,7 @@ function planSVG(upp,forExport,faint){
   const order={arch:-1,floor:0,top:1,over:2};
   const list=[...state.items].sort((a,b)=>(a.kind==="arch"?-1:order[a.mount])-(b.kind==="arch"?-1:order[b.mount]));
   for(const it of list){
+    if(forExport&&isPerson(it))continue;
     const W=fw(it),D=fd(it),bad=collides(it),on=!forExport&&sel===it.id,over=it.mount==="over";
     const fill=over?C.muted:it.mount==="top"?C["top-fill"]:it.kind==="ss"?C["steel-fill"]:C.surface;
     const stroke=faint?C.steel:bad&&!pdf?C.bad:on?C.accent:over?C.muted:C.ink;
@@ -108,7 +112,7 @@ function planSVG(upp,forExport,faint){
     s+=`<text x="${bx}" y="${by+r*.38}" text-anchor="middle" font-family="${FM}" font-size="${r*1.05}" font-weight="500" fill="${on?C.surface:C.ink}">${tg}</text>`;
     s+=`</g>`;
   }
-  if(!forExport)s+=overlaySVG(upp);
+  if(!forExport)s+=`<g id="aisleG" style="pointer-events:none">${aisleSVG(upp)}</g>`+overlaySVG(upp);
   return {vb:VB,body:s};
 }
 
@@ -143,7 +147,7 @@ function elevSVG(upp){
 }
 
 function render(){
-  readColours();
+  readColours();if(curSnap===null)curSnap=snapNow();undoUI();
   const sheet=$("sheet"),svg=$("svg");
   svg.style.display=view==="3d"?"none":"block";if(view!=="3d")$("bar3d").hidden=true;$("v3d").hidden=view!=="3d";
   if(view==="3d"){
@@ -174,6 +178,9 @@ function renderSel(){
   if(!it){bar.hidden=true;bar.innerHTML="";return;}
   bar.hidden=false;
   const ut=[it.power&&it.power!=="none"?it.power+(it.kw?` ${it.kw} kW`:""):null,it.elec,it.water?"water":null,it.drain?"drain":null].filter(Boolean).join(" · ");
+  if(isPerson(it)){const a=aisles(it);
+    bar.innerHTML=`<div><span class="ttl">Person</span></div><div class="meta">${it.w} mm across the shoulders, ${it.h} tall. Drag them into an aisle to read the clear width.<br>${aisleText(a)}</div>
+    <div class="bar"><button class="btn sm" data-act="rot">Turn 90°</button><button class="btn sm" data-act="dup">Add another</button><button class="btn sm danger" data-act="del">Remove</button></div>`;return;}
   if(it.kind==="arch"){const wallish=/door|window/.test(it.archType);
     bar.innerHTML=`<div><span class="ttl">${esc(it.name)}</span></div><div class="meta">${wallish?"Snaps to the nearest wall as you drag it.":"Drag it into place."}</div>
     <div class="grid2"><div class="fld"><label for="selW">${it.archType==="column"?"Width":"Opening width"}</label><input id="selW" type="number" step="50" value="${it.w}" inputmode="numeric"></div>${it.archType==="column"?`<div class="fld"><label for="selD">Depth</label><input id="selD" type="number" step="50" value="${it.d}" inputmode="numeric"></div>`:""}</div>
@@ -273,6 +280,7 @@ svg.addEventListener("pointermove",e=>{
   }
   [x,y]=snapToWalls(it,x,y);it.x=x;it.y=y;if(it.kind==="arch")snapArch(it);clamp(it);drag.moved=true;
   const g=svg.querySelector(`.it[data-id="${it.id}"]`);if(g){g.setAttribute("transform",`translate(${it.x} ${it.y})`);if(g.firstElementChild)g.firstElementChild.setAttribute("transform",tfOf(it));}
+  if(isPerson(it)){const ag=svg.querySelector("#aisleG");if(ag)ag.innerHTML=aisleSVG(lastUpp);}
 });
 function endDrag(e){if(!drag||(e&&e.pointerId!==drag.pid))return;const m=drag.moved;drag=null;if(m)changed();else render();}
 svg.addEventListener("pointerup",e=>{if(tapStart&&tapStart.pid===e.pointerId){const t=tapStart;tapStart=null;if(Math.hypot(e.clientX-t.x,e.clientY-t.y)<12)planTap(toWorld(e));return;}endDrag(e);});svg.addEventListener("pointercancel",endDrag);
@@ -1009,13 +1017,13 @@ for(const [id,k,lo,hi] of [["roomW","w",2000,40000],["roomD","d",2000,40000],["r
   $(id).addEventListener("change",e=>{const v=Math.round(+e.target.value);if(!(v>=lo&&v<=hi)){toast(`Enter a value between ${lo} and ${hi} mm.`);roomInputs();return;}state.room[k]=v;state.items.forEach(i=>{if(i.archType==="column")i.h=state.room.h;clamp(i);});changed();});
 let clearArmed=0;
 $("clearAll").addEventListener("click",()=>{const b=$("clearAll");
-  if(Date.now()-clearArmed<4000){state.items=state.items.filter(i=>i.kind==="arch");sel=null;b.textContent="Clear layout";clearArmed=0;changed();toast("Layout cleared.");}
+  if(Date.now()-clearArmed<4000){state.items=state.items.filter(i=>i.kind==="arch"&&!isPerson(i));sel=null;b.textContent="Clear layout";clearArmed=0;changed();toast("Layout cleared.");}
   else{clearArmed=Date.now();b.textContent="Tap again to clear";setTimeout(()=>{if(clearArmed&&Date.now()-clearArmed>=3900){b.textContent="Clear layout";clearArmed=0;}},4000);}});
 let toastT;function toast(m){const t=$("toast");t.textContent=m;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>t.hidden=true,3200);}
 
 /* ---------- persistence ---------- */
 let saveT=null,saving=false,again=false,saveConflictShown=false;
-function changed(){dirty=true;isExample=false;render();$("saveState").textContent="Saving…";clearTimeout(saveT);saveT=setTimeout(persist,1200);}
+function changed(){histNote();dirty=true;isExample=false;render();$("saveState").textContent="Saving…";clearTimeout(saveT);saveT=setTimeout(persist,1200);}
 function currentPayload(){return JSON.parse(JSON.stringify({v:1,name:projName||undefined,room:state.room,items:state.items,under:underData(),at:Date.now()}));}
 const projTitle=()=>projName||"Untitled kitchen";
 function saveLabel(where){$("saveState").textContent=be&&(curId||sharedFrom||!isExample)?`${projTitle()} · ${where}`:where;}
@@ -1042,7 +1050,7 @@ function blobUrl(u){try{const b=atob(u.src.split(",")[1]),arr=new Uint8Array(b.l
 function adopt(p){if(!p||!p.room||!Array.isArray(p.items))return false;state={room:{w:+p.room.w||9000,d:+p.room.d||6000,h:+p.room.h||3000},items:p.items.filter(i=>i&&i.w>0&&i.d>0).map(KS_fab.migrate)};
   if(typeof p.name==="string")projName=p.name.slice(0,80);
   if(Array.isArray(p.room.poly)&&p.room.poly.length>2)state.room.poly=p.room.poly.map(q=>[+q[0],+q[1]]);
-  if(p.under&&p.under.src){under=Object.assign({},p.under);blobUrl(under);}else if(!p.under)under=null;mode=null;fpUI();isExample=false;sel=null;roomInputs();render();return true;}
+  if(p.under&&p.under.src){under=Object.assign({},p.under);blobUrl(under);}else if(!p.under)under=null;mode=null;fpUI();isExample=false;sel=null;roomInputs();histReset();render();return true;}
 
 function example(){
   const find=(b,m)=>BASE.find(e=>e.brand===b&&e.model===m);
@@ -1224,5 +1232,56 @@ async function boot(){
       custom=remote.sort((a,b)=>(b.cid||"").localeCompare(a.cid||""));saveCustomLocal();renderResults();}catch(_){}
   });
 }
+/* ---------- undo / redo: every committed change (changed()) is one step ---------- */
+function snapNow(){return JSON.stringify({room:state.room,items:state.items});}
+function histReset(){undoStack=[];redoStack=[];curSnap=null;undoUI();}
+function histNote(){const s=snapNow();if(curSnap!==null&&s!==curSnap){undoStack.push(curSnap);if(undoStack.length>100)undoStack.shift();redoStack=[];}curSnap=s;undoUI();}
+function undoUI(){const u=$("undoBtn"),r=$("redoBtn");if(u)u.disabled=!undoStack.length;if(r)r.disabled=!redoStack.length;}
+function histGo(back){const from=back?undoStack:redoStack,to=back?redoStack:undoStack;if(!from.length){toast(back?"Nothing to undo.":"Nothing to redo.");return;}
+  to.push(snapNow());const p=JSON.parse(from.pop());state.room=p.room;state.items=p.items;curSnap=snapNow();
+  if(sel&&!state.items.some(i=>i.id===sel))sel=null;drag=null;roomInputs();fpUI();changed();}
+$("undoBtn").addEventListener("click",()=>histGo(true));
+$("redoBtn").addEventListener("click",()=>histGo(false));
+document.addEventListener("keydown",e=>{if(!(e.ctrlKey||e.metaKey)||e.altKey)return;const t=e.target;if(t&&(/input|select|textarea/i.test(t.tagName)||t.isContentEditable))return;
+  const k=e.key.toLowerCase();if(k==="z"){e.preventDefault();histGo(!e.shiftKey);}else if(k==="y"){e.preventDefault();histGo(false);}});
+
+/* ---------- people: a 600 mm figure you drop in to check aisles ---------- */
+const PERSON={w:600,d:400,h:1750};
+function aisles(p){const x0=p.x,y0=p.y,x1=x0+fw(p),y1=y0+fd(p),cx=(x0+x1)/2,cy=(y0+y1)/2;
+  const obs=state.items.filter(o=>o.mount==="floor"&&!isPerson(o)).map(o=>[o.x,o.y,o.x+fw(o),o.y+fd(o)]);
+  const inside=obs.some(r=>r[0]<x1-1&&r[2]>x0+1&&r[1]<y1-1&&r[3]>y0+1);
+  let L=-Infinity,Rt=Infinity,T=-Infinity,B=Infinity;
+  for(const r of obs){if(r[1]<y1&&r[3]>y0){if(r[2]<=cx)L=Math.max(L,r[2]);else if(r[0]>=cx)Rt=Math.min(Rt,r[0]);}
+    if(r[0]<x1&&r[2]>x0){if(r[3]<=cy)T=Math.max(T,r[3]);else if(r[1]>=cy)B=Math.min(B,r[1]);}}
+  for(const w of wallSegs()){if(w.h){if(w.a<x1&&w.b>x0){if(w.c<=cy)T=Math.max(T,w.c);else B=Math.min(B,w.c);}}else if(w.a<y1&&w.b>y0){if(w.c<=cx)L=Math.max(L,w.c);else Rt=Math.min(Rt,w.c);}}
+  const ew=isFinite(L)&&isFinite(Rt)?Math.round(Rt-L):null,ns=isFinite(T)&&isFinite(B)?Math.round(B-T):null;
+  return {inside,cx,cy,L,R:Rt,T,B,ew,ns};}
+const aisleRate=v=>v<900?{t:"too tight to work",c:C.bad||"#C8451B"}:v<1200?{t:"one cook",c:"#B7800A"}:{t:"two can pass",c:"#2E8B57"};
+function aisleText(a){if(a.inside)return `<span style="color:${C.bad}">Standing inside a piece of equipment. Move them into the walkway.</span>`;
+  const parts=[];if(a.ew!==null)parts.push(["East–west",a.ew]);if(a.ns!==null)parts.push(["North–south",a.ns]);
+  if(!parts.length)return "Outside the room.";
+  return parts.map(([n,v])=>{const r=aisleRate(v);return `${n} clear: <b style="color:${r.c}">${v} mm</b>, ${r.t}`;}).join("<br>")+`<br><span style="color:${C.muted}">Under 900 is too tight to work in; 1200 lets two people pass.</span>`;}
+function aisleSVG(upp){if(view!=="plan")return "";let s="";const f=10*upp,t=70;
+  for(const p of state.items){if(!isPerson(p))continue;const a=aisles(p);if(a.inside)continue;
+    const dim=(x1,y1,x2,y2,v,horiz)=>{const r=aisleRate(v),c=r.c,mx=(x1+x2)/2,my=(y1+y2)/2,lab=`${v}`,bw=lab.length*f*.68+f*.9,bh=f*1.6;
+      let d=`M${x1} ${y1}L${x2} ${y2}`;d+=horiz?`M${x1} ${y1-t}V${y1+t}M${x2} ${y2-t}V${y2+t}`:`M${x1-t} ${y1}H${x1+t}M${x2-t} ${y2}H${x2+t}`;
+      const lx=horiz?mx:mx,ly=horiz?my-bh*.9:my;
+      return `<path d="${d}" stroke="${c}" stroke-width="${1.6*upp}" fill="none" stroke-dasharray="${5*upp} ${3*upp}"/>`+
+        `<g transform="translate(${horiz?lx:lx+bw*.65} ${ly})"><rect x="${-bw/2}" y="${-bh/2}" width="${bw}" height="${bh}" rx="${bh/2}" fill="${C.surface}" stroke="${c}" stroke-width="${upp}"/>`+
+        `<text x="0" y="${f*.36}" text-anchor="middle" font-family="${FM}" font-size="${f}" font-weight="600" fill="${c}">${lab}</text></g>`;};
+    if(a.ew!==null)s+=dim(a.L,a.cy,a.R,a.cy,a.ew,true);
+    if(a.ns!==null)s+=dim(a.cx,a.T,a.cx,a.B,a.ns,false);}
+  return s;}
+function personFits(it){const a=[it.x,it.y,it.x+fw(it),it.y+fd(it)];if(!insideRoom(it)||a[0]<0||a[1]<0||a[2]>state.room.w||a[3]>state.room.d)return false;
+  return !state.items.some(o=>o!==it&&(o.mount==="floor"||isPerson(o))&&a[0]<o.x+fw(o)&&a[2]>o.x&&a[1]<o.y+fd(o)&&a[3]>o.y);}
+function addPerson(){const R=state.room,it=Object.assign({id:newId(),kind:"arch",archType:"person",brand:"Building",model:"Person",name:"Person",cat:"Building",mount:"arch",power:"none",kw:null,elec:null,water:false,drain:false,conf:"user",x:0,y:0,rot:0},PERSON);
+  /* nearest free spot to the middle of the room */
+  let best=null;const cx=R.w/2,cy=R.d/2;
+  for(let y=0;y+it.d<=R.d;y+=50)for(let x=0;x+it.w<=R.w;x+=50){it.x=x;it.y=y;if(!personFits(it))continue;const dd=Math.hypot(x+it.w/2-cx,y+it.d/2-cy);if(!best||dd<best.dd)best={x,y,dd};}
+  if(best){it.x=best.x;it.y=best.y;}else{it.x=Math.round((cx-it.w/2)/50)*50;it.y=Math.round((cy-it.d/2)/50)*50;}
+  state.items.push(it);sel=it.id;if(view==="elev")setView("plan");changed();
+  toast(best?"Person added. Drag them into an aisle to read the clear width.":"Person added, but there's no free floor. Drag them into a walkway.");revealCanvas();}
+$("personBtn").addEventListener("click",addPerson);
+
 boot();
 })();
