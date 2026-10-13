@@ -35,6 +35,8 @@ An undated “coming soon” is a research signal, not a current deadline. Mark 
 
 ## Draft a reviewable batch
 
+Read the `consumer` and `offer` modules from `$kitchen-studio-founder` when sharpening qualification questions or the pilot pitch. Keep simulated objections labeled as hypotheses outside this ledger. Do not record synthetic replies, qualification confirmations, price answers, pilots or payments as customer evidence. Use its `pricing` and `launch` modules for a proposed paid experiment only after the current learning-pilot and product-readiness checks.
+
 Write one individually relevant initial message: one verified observation, the current supported pilot offer, one easy question, and verified sender signature. Address a company team if the person/role is unknown. Keep it brief. Avoid tracking pixels, attachments, fabricated relationships, guaranteed savings, MEP/approval claims and made-up testimonials.
 
 Store drafts with `apply`, then export `packet`. Label candidates, free pilots and paying customers separately. Finish with research and drafts when asked to prepare, find or reverse engineer a workflow; those requests do not authorize sending.

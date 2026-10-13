@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kitchen Studio Founder Toolkit"
+  short_description: "Pressure-test offers, economics and validation evidence"
+  default_prompt: "Use $kitchen-studio-founder to review the current Kitchen Studio evidence, challenge the biggest assumption and prepare the next concrete validation step."

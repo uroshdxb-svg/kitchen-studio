@@ -1,0 +1,26 @@
+{
+  "currency": "AED",
+  "sale_unit": "paid project",
+  "price": {"value": null, "basis": "unknown", "source": ""},
+  "direct_cost_per_unit": {"value": null, "basis": "unknown", "source": ""},
+  "labor_minutes_per_unit": {"value": null, "basis": "unknown", "source": ""},
+  "labor_rate_per_hour": {"value": null, "basis": "unknown", "source": ""},
+  "acquisition_cost_per_unit": {"value": null, "basis": "unknown", "source": ""},
+  "fixed_monthly": {"value": null, "basis": "unknown", "source": ""},
+  "startup": {"value": null, "basis": "unknown", "source": ""},
+  "capacity_per_month": {"value": null, "basis": "unknown", "source": ""},
+  "units_per_month": [
+    {"value": null, "basis": "unknown", "source": ""},
+    {"value": null, "basis": "unknown", "source": ""},
+    {"value": null, "basis": "unknown", "source": ""},
+    {"value": null, "basis": "unknown", "source": ""},
+    {"value": null, "basis": "unknown", "source": ""},
+    {"value": null, "basis": "unknown", "source": ""},
+    {"value": null, "basis": "unknown", "source": ""},
+    {"value": null, "basis": "unknown", "source": ""},
+    {"value": null, "basis": "unknown", "source": ""},
+    {"value": null, "basis": "unknown", "source": ""},
+    {"value": null, "basis": "unknown", "source": ""},
+    {"value": null, "basis": "unknown", "source": ""}
+  ]
+}
