@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kitchen Studio Acquisition"
+  short_description: "Find public leads and manage validation outreach"
+  default_prompt: "Use $kitchen-studio-acquisition to find public prospects for Kitchen Studio and prepare a reviewable outreach batch."
