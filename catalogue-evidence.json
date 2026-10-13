@@ -1,0 +1,563 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-13T07:46:41.467Z",
+  "records": {
+    "electroluxprofessional|361130": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|361130",
+      "brand": "Electrolux Professional",
+      "model": "361130",
+      "manufacturer_sku": "361130 (RTT20)",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-13T07:46:41.467Z",
+      "source_row_hash": "e990b354a2eeda8dcd061789d11423955944af68d99ff80fa4e83a4cbedda7f7",
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361130",
+        "Storage",
+        "Service rack trolley, 20x GN1/1",
+        "935",
+        "610",
+        "1460",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/pd/food-distribution/service-trolleys/trolleys-for-plates-and-trays/service-trolleys-rack-trolley-for-20-gn-1-1-361130/",
+        "Global (unpowered)",
+        "Manufacturer page; 4 castors (2 braked)",
+        "2026-10-10"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/pd/food-distribution/service-trolleys/trolleys-for-plates-and-trays/service-trolleys-rack-trolley-for-20-gn-1-1-361130/",
+          "revision": "Current manufacturer product page, COD 361130",
+          "retrieved_at": "2026-10-13T07:46:41.467Z"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux%20Professional/English/Rack%20Trolley%20for%2020%20GN%201-1_361130.pdf?version=1769261469",
+          "revision": "Manufacturer PDF footer 2026.02.09",
+          "document_sha256": "8ce1e734d0a0573aa6288a5ea72b9cf232314cf0296ccf76179ee2ca1285b6f7",
+          "retrieved_at": "2026-10-13T07:46:41.467Z"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Exact brand/model/SKU matched to manufacturer product and current documents; original spreadsheet model representation retained with exact manufacturer SKU in sidecar."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Manufacturer explicitly labels external Width 935, Depth 610, Height 1460 mm; front/side/top drawing visually checked, including wheels."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Floor-standing mobile trolley, 4 pivoting 125mm wheels, 2 brakes."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "The complete manufacturer short-form specification states an already-assembled stainless rack with tray supports, top shelf and four caster wheels. Full assembly drawings show a purely mechanical mobile trolley, no service connections. Utility nonapplicability is a reviewer inference from that complete construction/drawing, scoped to the trolley itself, not appliances placed on it."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "The complete manufacturer short-form specification states an already-assembled stainless rack with tray supports, top shelf and four caster wheels. Full assembly drawings show a purely mechanical mobile trolley, no service connections. Utility nonapplicability is a reviewer inference from that complete construction/drawing, scoped to the trolley itself, not appliances placed on it."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "The complete manufacturer short-form specification states an already-assembled stainless rack with tray supports, top shelf and four caster wheels. Full assembly drawings show a purely mechanical mobile trolley, no service connections. Utility nonapplicability is a reviewer inference from that complete construction/drawing, scoped to the trolley itself, not appliances placed on it."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "The complete manufacturer short-form specification states an already-assembled stainless rack with tray supports, top shelf and four caster wheels. Full assembly drawings show a purely mechanical mobile trolley, no service connections. Utility nonapplicability is a reviewer inference from that complete construction/drawing, scoped to the trolley itself, not appliances placed on it."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"assembly\":\"Delivered already assembled, as stated on S2 page 1.\",\"mount\":\"Floor-standing mobile trolley, 4 pivoting 125mm wheels, 2 brakes.\",\"clearance_status\":\"No numeric installation/service clearance specified for this mobile rack; none is invented. Preserve handling/access space in project planning.\",\"capacity\":\"20 GN1/1 trays; manufacturer texts disagree about single-row versus two-row arrangement, so arrangement is not claimed.\",\"utility_basis\":\"Complete mechanical construction and inspected drawings; no electrical/gas/water/drain connection on trolley.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current official COD 361130 page links the reviewed sheet; PDF footer is 2026.02.09 and published dimensions agree. No newer contradictory sheet linked on the current page."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "17-field normalized row validated; supported Storage category/floor mounting/none power, null nonapplicable input/supply and explicit0/0 services; market/source/note preserved."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manufacturer exact product description, construction and specification",
+          "reason": "Exact manufacturer product identity; source SKU 361130 (RTT20)"
+        },
+        "model": {
+          "value": "361130",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manufacturer exact product description, construction and specification",
+          "reason": "Exact manufacturer product identity; source SKU 361130 (RTT20)"
+        },
+        "w": {
+          "value": "935",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information and front/side/top dimension drawings",
+          "reason": "Manufacturer explicitly labels external Width 935, Depth 610, Height 1460 mm; front/side/top drawing visually checked, including wheels.",
+          "original_value": "935",
+          "original_unit": "mm",
+          "conversion": "No numerical unit conversion; orientation mapping documented."
+        },
+        "d": {
+          "value": "610",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information and front/side/top dimension drawings",
+          "reason": "Manufacturer explicitly labels external Width 935, Depth 610, Height 1460 mm; front/side/top drawing visually checked, including wheels.",
+          "original_value": "610",
+          "original_unit": "mm",
+          "conversion": "No numerical unit conversion; orientation mapping documented."
+        },
+        "h": {
+          "value": "1460",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information and front/side/top dimension drawings",
+          "reason": "Manufacturer explicitly labels external Width 935, Depth 610, Height 1460 mm; front/side/top drawing visually checked, including wheels.",
+          "original_value": "1460",
+          "original_unit": "mm",
+          "conversion": "No numerical unit conversion; orientation mapping documented."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manufacturer exact product description, construction and specification",
+          "reason": "Floor-standing mobile trolley, 4 pivoting 125mm wheels, 2 brakes."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manufacturer exact product description, construction and specification",
+          "reason": "The complete manufacturer short-form specification states an already-assembled stainless rack with tray supports, top shelf and four caster wheels. Full assembly drawings show a purely mechanical mobile trolley, no service connections. Utility nonapplicability is a reviewer inference from that complete construction/drawing, scoped to the trolley itself, not appliances placed on it."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manufacturer exact product description, construction and specification",
+          "reason": "The complete manufacturer short-form specification states an already-assembled stainless rack with tray supports, top shelf and four caster wheels. Full assembly drawings show a purely mechanical mobile trolley, no service connections. Utility nonapplicability is a reviewer inference from that complete construction/drawing, scoped to the trolley itself, not appliances placed on it."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manufacturer exact product description, construction and specification",
+          "reason": "The complete manufacturer short-form specification states an already-assembled stainless rack with tray supports, top shelf and four caster wheels. Full assembly drawings show a purely mechanical mobile trolley, no service connections. Utility nonapplicability is a reviewer inference from that complete construction/drawing, scoped to the trolley itself, not appliances placed on it."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manufacturer exact product description, construction and specification",
+          "reason": "The complete manufacturer short-form specification states an already-assembled stainless rack with tray supports, top shelf and four caster wheels. Full assembly drawings show a purely mechanical mobile trolley, no service connections. Utility nonapplicability is a reviewer inference from that complete construction/drawing, scoped to the trolley itself, not appliances placed on it."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manufacturer exact product description, construction and specification",
+          "reason": "The complete manufacturer short-form specification states an already-assembled stainless rack with tray supports, top shelf and four caster wheels. Full assembly drawings show a purely mechanical mobile trolley, no service connections. Utility nonapplicability is a reviewer inference from that complete construction/drawing, scoped to the trolley itself, not appliances placed on it."
+        }
+      },
+      "installation_details": {
+        "assembly": "Delivered already assembled, as stated on S2 page 1.",
+        "mount": "Floor-standing mobile trolley, 4 pivoting 125mm wheels, 2 brakes.",
+        "clearance_status": "No numeric installation/service clearance specified for this mobile rack; none is invented. Preserve handling/access space in project planning.",
+        "capacity": "20 GN1/1 trays; manufacturer texts disagree about single-row versus two-row arrangement, so arrangement is not claimed.",
+        "utility_basis": "Complete mechanical construction and inspected drawings; no electrical/gas/water/drain connection on trolley."
+      },
+      "photo_policy": "Link to the official product page; no product image copied or hosted.",
+      "review_scope": "New passive manufactured equipment. Data review, not an engineering or compliance certificate.",
+      "certificate": {
+        "schema_version": 1,
+        "passed": true,
+        "key": "electroluxprofessional|361130",
+        "row_hash": "e990b354a2eeda8dcd061789d11423955944af68d99ff80fa4e83a4cbedda7f7",
+        "evidence_hash": "921506933b8d9f83efe4353c5a30551e50f6b26895c4ba63c27a0cfa09092302",
+        "reviewed_at": "2026-10-13T07:46:41.467Z",
+        "errors": []
+      }
+    },
+    "araven|919": {
+      "schema_version": 1,
+      "key": "araven|919",
+      "brand": "Araven",
+      "model": "919",
+      "manufacturer_sku": "00919",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-13T07:46:41.467Z",
+      "source_row_hash": "778bc4f55811a4a4bcb28cb6634983153e81193e124154b9016200113e0cff37",
+      "proposed_queue_row": [
+        "Araven",
+        "919",
+        "Storage",
+        "Mobile ingredient bin 80 L with window",
+        "435",
+        "655",
+        "560",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://araven.com/en/ingredient-bins/ingredient-bin-80-l-21-gal/",
+        "Global (unpowered)",
+        "Manufacturer page; wheeled",
+        "2026-10-06"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://araven.com/en/ingredient-bins/ingredient-bin-80-l-21-gal/",
+          "revision": "Current product table for 00919 / EAN 8411777009196",
+          "retrieved_at": "2026-10-13T07:46:41.467Z"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://araven.com/wp-content/uploads/2024/05/Folleto-contenedores-accesibles-EN.pdf",
+          "revision": "Current product-linked ingredient-bin brochure; page 3 / printed page 65",
+          "retrieved_at": "2026-10-13T07:46:41.467Z"
+        },
+        {
+          "id": "S3",
+          "kind": "manufacturer-specification",
+          "url": "https://araven.com/wp-content/uploads/2023/01/Resumen_catalogo_Araven_Hosteleria.pdf",
+          "revision": "2026 summary catalogue linked by the official Resources catalogue page; PDF page 26",
+          "retrieved_at": "2026-10-13T07:46:41.467Z"
+        },
+        {
+          "id": "S4",
+          "kind": "manufacturer-product-page",
+          "url": "https://araven.com/en/resources/",
+          "revision": "Official current catalogue index",
+          "retrieved_at": "2026-10-13T07:46:41.467Z"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Exact brand/model/SKU matched to manufacturer product and current documents; original spreadsheet model representation retained with exact manufacturer SKU in sidecar."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Manufacturer states 655 x 435 x h560 mm for SKU00919. Reviewed product/brochure front-lid orientation maps the 435mm shorter front width and 655mm long depth to this row; overall closed-lid height is 560mm. Preserve manufacturer dimension order separately."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile bin on polyamide wheels, floor-standing."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Manufacturer identifies an HDPE dry-food storage bin with manually operated lid and polyamide wheels, explicitly for non-refrigerated dry bulk food. Reviewed construction/brochure shows no powered/heated/plumbed components. No electric/gas/water/drain utility connection applies to the passive container itself; cleaning is not a plumbed operational water connection."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Manufacturer identifies an HDPE dry-food storage bin with manually operated lid and polyamide wheels, explicitly for non-refrigerated dry bulk food. Reviewed construction/brochure shows no powered/heated/plumbed components. No electric/gas/water/drain utility connection applies to the passive container itself; cleaning is not a plumbed operational water connection."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Manufacturer identifies an HDPE dry-food storage bin with manually operated lid and polyamide wheels, explicitly for non-refrigerated dry bulk food. Reviewed construction/brochure shows no powered/heated/plumbed components. No electric/gas/water/drain utility connection applies to the passive container itself; cleaning is not a plumbed operational water connection."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Manufacturer identifies an HDPE dry-food storage bin with manually operated lid and polyamide wheels, explicitly for non-refrigerated dry bulk food. Reviewed construction/brochure shows no powered/heated/plumbed components. No electric/gas/water/drain utility connection applies to the passive container itself; cleaning is not a plumbed operational water connection."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\":\"Mobile bin on polyamide wheels, floor-standing.\",\"storage_conditions\":\"Dry, ventilated location away from heat/damp, as described in the manufacturer ingredient-bin instructions.\",\"dimension_basis\":\"Manufacturer 655 x 435 x h560mm; catalogue front width435/depth655, lid closed. Opening-access height is not supplied and is not claimed.\",\"capacity_litres\":80,\"material\":\"HDPE\",\"temperature_range_c\":\"-40 to +90 in current product/brochure\",\"utility_basis\":\"Passive dry-food bin construction; utility flags refer to equipment services, not washing.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "reason": "Current exact-model official product page matches the product-linked brochure and current 2026 summary catalogue for SKU00919. Numeric sheet model919 is the same SKU as00919; leading zero formatting is retained in manufacturer_sku."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "17-field normalized row validated; supported Storage category/floor mounting/none power, null nonapplicable input/supply and explicit0/0 services; market/source/note preserved."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Araven",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manufacturer exact product description, construction and specification",
+          "reason": "Exact manufacturer product identity; source SKU 00919"
+        },
+        "model": {
+          "value": "919",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manufacturer exact product description, construction and specification",
+          "reason": "Exact manufacturer product identity; source SKU 00919"
+        },
+        "w": {
+          "value": "435",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Technical/Logistic metric table; S2 page 3 SKU00919 and product illustration; S3 PDF page 26",
+          "reason": "Manufacturer states 655 x 435 x h560 mm for SKU00919. Reviewed product/brochure front-lid orientation maps the 435mm shorter front width and 655mm long depth to this row; overall closed-lid height is 560mm. Preserve manufacturer dimension order separately.",
+          "original_value": "435",
+          "original_unit": "mm",
+          "conversion": "No numerical unit conversion; orientation mapping documented."
+        },
+        "d": {
+          "value": "655",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Technical/Logistic metric table; S2 page 3 SKU00919 and product illustration; S3 PDF page 26",
+          "reason": "Manufacturer states 655 x 435 x h560 mm for SKU00919. Reviewed product/brochure front-lid orientation maps the 435mm shorter front width and 655mm long depth to this row; overall closed-lid height is 560mm. Preserve manufacturer dimension order separately.",
+          "original_value": "655",
+          "original_unit": "mm",
+          "conversion": "No numerical unit conversion; orientation mapping documented."
+        },
+        "h": {
+          "value": "560",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Technical/Logistic metric table; S2 page 3 SKU00919 and product illustration; S3 PDF page 26",
+          "reason": "Manufacturer states 655 x 435 x h560 mm for SKU00919. Reviewed product/brochure front-lid orientation maps the 435mm shorter front width and 655mm long depth to this row; overall closed-lid height is 560mm. Preserve manufacturer dimension order separately.",
+          "original_value": "560",
+          "original_unit": "mm",
+          "conversion": "No numerical unit conversion; orientation mapping documented."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manufacturer exact product description, construction and specification",
+          "reason": "Mobile bin on polyamide wheels, floor-standing."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manufacturer exact product description, construction and specification",
+          "reason": "Manufacturer identifies an HDPE dry-food storage bin with manually operated lid and polyamide wheels, explicitly for non-refrigerated dry bulk food. Reviewed construction/brochure shows no powered/heated/plumbed components. No electric/gas/water/drain utility connection applies to the passive container itself; cleaning is not a plumbed operational water connection."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manufacturer exact product description, construction and specification",
+          "reason": "Manufacturer identifies an HDPE dry-food storage bin with manually operated lid and polyamide wheels, explicitly for non-refrigerated dry bulk food. Reviewed construction/brochure shows no powered/heated/plumbed components. No electric/gas/water/drain utility connection applies to the passive container itself; cleaning is not a plumbed operational water connection."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manufacturer exact product description, construction and specification",
+          "reason": "Manufacturer identifies an HDPE dry-food storage bin with manually operated lid and polyamide wheels, explicitly for non-refrigerated dry bulk food. Reviewed construction/brochure shows no powered/heated/plumbed components. No electric/gas/water/drain utility connection applies to the passive container itself; cleaning is not a plumbed operational water connection."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manufacturer exact product description, construction and specification",
+          "reason": "Manufacturer identifies an HDPE dry-food storage bin with manually operated lid and polyamide wheels, explicitly for non-refrigerated dry bulk food. Reviewed construction/brochure shows no powered/heated/plumbed components. No electric/gas/water/drain utility connection applies to the passive container itself; cleaning is not a plumbed operational water connection."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manufacturer exact product description, construction and specification",
+          "reason": "Manufacturer identifies an HDPE dry-food storage bin with manually operated lid and polyamide wheels, explicitly for non-refrigerated dry bulk food. Reviewed construction/brochure shows no powered/heated/plumbed components. No electric/gas/water/drain utility connection applies to the passive container itself; cleaning is not a plumbed operational water connection."
+        }
+      },
+      "installation_details": {
+        "mount": "Mobile bin on polyamide wheels, floor-standing.",
+        "storage_conditions": "Dry, ventilated location away from heat/damp, as described in the manufacturer ingredient-bin instructions.",
+        "dimension_basis": "Manufacturer 655 x 435 x h560mm; catalogue front width435/depth655, lid closed. Opening-access height is not supplied and is not claimed.",
+        "capacity_litres": 80,
+        "material": "HDPE",
+        "temperature_range_c": "-40 to +90 in current product/brochure",
+        "utility_basis": "Passive dry-food bin construction; utility flags refer to equipment services, not washing."
+      },
+      "photo_policy": "Link to the official product page; no product image copied or hosted.",
+      "review_scope": "New passive manufactured equipment. Data review, not an engineering or compliance certificate.",
+      "certificate": {
+        "schema_version": 1,
+        "passed": true,
+        "key": "araven|919",
+        "row_hash": "778bc4f55811a4a4bcb28cb6634983153e81193e124154b9016200113e0cff37",
+        "evidence_hash": "87ff6fccb25c46463cee3740c655ae23ed507e4817db83a2944fa1d0d8ed4b04",
+        "reviewed_at": "2026-10-13T07:46:41.467Z",
+        "errors": []
+      }
+    }
+  }
+}
