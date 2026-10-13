@@ -443,5 +443,5 @@ const CATALOGUE_ROWS = [
 ["Cambro", "Camshelving Premium FW900 (18x24)", "Storage", "Camshelving Premium 4-tier starter unit 610x460x1830", 610, 460, 1830, "floor", "none", null, null, 0, 0, "https://caterspeed.co.uk/product/cambro-camshelving-premium-4-tier-starter-unit-1830h-x-610w-x-460d-mm/"],
 ["Cambro", "Camshelving Elements ESU182472V4580", "Storage", "Camshelving Elements 4-tier starter unit 610x460x1830", 610, 460, 1830, "floor", "none", null, null, 0, 0, "https://www.goforgreenuk.com/cambro-camshelving-elements-4-tier-starter-unit-1830-x-610-x-460mm-fr120"],
 ["Electrolux Professional","361130","Storage","Service rack trolley, 20x GN1/1",935,610,1460,"floor","none",null,null,0,0,"https://www.electroluxprofessional.com/en-my/pd/food-distribution/service-trolleys/trolleys-for-plates-and-trays/service-trolleys-rack-trolley-for-20-gn-1-1-361130/"],
-["Araven","919","Storage","Mobile ingredient bin 80 L with window",435,655,560,"floor","none",null,null,0,0,"https://araven.com/en/ingredient-bins/ingredient-bin-80-l-21-gal/"]
+["Araven","919","Storage","Mobile ingredient bin 80 L with window (SKU 00919)",435,655,560,"floor","none",null,null,0,0,"https://araven.com/en/ingredient-bins/ingredient-bin-80-l-21-gal/"]
 ];

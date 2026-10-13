@@ -1,6 +1,12 @@
 {
   "schema_version": 1,
   "reviewed_at": "2026-10-13T07:46:41.467Z",
+  "runtime_projections": {
+    "araven|919": {
+      "name": "Mobile ingredient bin 80 L with window (SKU 00919)",
+      "reason": "Append the manufacturer SKU to the searchable runtime name while preserving the exact certified Sheet row and queue model 919. Manufacturer SKU 00919 is evidenced in this record."
+    }
+  },
   "records": {
     "electroluxprofessional|361130": {
       "schema_version": 1,
