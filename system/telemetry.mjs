@@ -28,7 +28,8 @@ export function projectQueue(q,now=Date.now()){
     return {id:text(id,120),owner:t.owner,title:text(t.title,200),status:t.status,reason:text(t.reason),createdAt:time(t.createdAt),updatedAt:time(t.updatedAt),completedAt:time(t.completedAt),deadline:time(t.deadline),retryAt:time(t.retryAt),lease:l?{verified,heartbeatAt:time(l.heartbeatAt),expiresAt:time(l.expiresAt)}:null};
   });
   const workers=Object.fromEntries(entries(q.workers).filter(([id])=>roles.has(id)).map(([id,w])=>[id,{at:time(w.at)}]));
-  const handoffs=entries(q.receipts).map(([,r])=>({taskId:text(r.taskId,120),from:roles.has(r.from)?r.from:null,to:roles.has(r.to)?r.to:null,createdAt:time(r.createdAt),ackDueAt:time(r.ackDueAt),acceptedAt:time(r.acceptedAt)})).filter(r=>r.from&&r.to).sort((a,b)=>Date.parse(b.createdAt)-Date.parse(a.createdAt)).slice(0,12);
+  const allHandoffs=entries(q.receipts).map(([id,r])=>({taskId:text(r.taskId,120),from:roles.has(r.from)?r.from:null,to:roles.has(r.to)?r.to:null,createdAt:time(r.createdAt),ackDueAt:time(r.ackDueAt),acceptedAt:time(r.acceptedAt),pending:!r.acceptedAt&&q.tasks[r.taskId]?.status==='awaiting_ack'&&q.tasks[r.taskId]?.pendingReceipt===id&&q.tasks[r.taskId]?.owner===r.from})).filter(r=>r.from&&r.to).sort((a,b)=>Date.parse(b.createdAt)-Date.parse(a.createdAt));
+  const handoffs=allHandoffs.filter((r,i)=>r.pending||i<12);
   return {schemaVersion:1,revision:q.revision,queueUpdatedAt:q.updatedAt,fetchedAt:new Date(now).toISOString(),roles:ROLES,goal:GOAL,tasks,workers,handoffs};
 }
 export function feedState(data,now,failed=false){
@@ -49,9 +50,11 @@ export function taskState(t,now,feed='current'){
 }
 export function roleView(data,id,now,feed){
   const tasks=(data?.tasks||[]).filter(t=>t.owner===id);
-  const priority=['working','approval','blocked','handoff','expired','unconfirmed','unknown','queued','done','cancelled'];
-  const ranked=tasks.map(task=>({task,state:taskState(task,now,feed)})).sort((a,b)=>priority.indexOf(a.state)-priority.indexOf(b.state)||Date.parse(b.task.updatedAt||0)-Date.parse(a.task.updatedAt||0));
+  const priority=['working','incoming','approval','blocked','handoff','expired','unconfirmed','unknown','queued','done','cancelled'];
+  const incoming=(data?.handoffs||[]).filter(h=>h.pending&&h.to===id).map(h=>data.tasks.find(t=>t.id===h.taskId)).filter(Boolean).map(task=>({task,state:'incoming',incoming:true}));
+  const ranked=[...incoming,...tasks.map(task=>({task,state:taskState(task,now,feed)}))].sort((a,b)=>priority.indexOf(a.state)-priority.indexOf(b.state)||Date.parse(b.task.updatedAt||0)-Date.parse(a.task.updatedAt||0));
   const current=ranked.find(x=>!['done','cancelled'].includes(x.state))||ranked[0];
-  return {id,tasks:ranked,current:current?.task??null,state:current?.state||(data?.workers?.[id]?.at?'idle':'unknown'),lastTick:data?.workers?.[id]?.at??null};
+  return {id,tasks:ranked,current:current?.task??null,incoming:current?.incoming===true,state:current?.state||(data?.workers?.[id]?.at?'idle':'unknown'),lastTick:data?.workers?.[id]?.at??null};
 }
-export const LABELS={working:'Working',queued:'Queued',blocked:'Blocked',approval:'Awaiting approval',handoff:'Awaiting ACK',done:'Done',idle:'Idle',unknown:'Unobserved',expired:'Lease expired',unconfirmed:'Activity unconfirmed',cancelled:'Cancelled'};
+export function attentionCount(data,now,feed){return data.tasks.filter(t=>['blocked','approval','handoff','expired','unconfirmed','unknown'].includes(taskState(t,now,feed))).length;}
+export const LABELS={working:'Working',queued:'Queued',blocked:'Blocked',approval:'Awaiting approval',handoff:'Awaiting ACK',incoming:'ACK needed',done:'Done',idle:'Idle',unknown:'Unobserved',expired:'Lease expired',unconfirmed:'Activity unconfirmed',cancelled:'Cancelled'};
