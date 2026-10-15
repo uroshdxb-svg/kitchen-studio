@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": 23,
-  "updatedAt": "2026-10-15T19:49:10.022Z",
+  "revision": 24,
+  "updatedAt": "2026-10-15T19:51:03.122Z",
   "tasks": {
     "KS-COORDINATION-PILOT-20261015": {
       "id": "KS-COORDINATION-PILOT-20261015",
@@ -114,14 +114,22 @@
         "retrySafe": false,
         "resource": null
       },
-      "status": "ready",
-      "attempts": 0,
-      "totalAttempts": 0,
-      "generation": 0,
-      "lease": null,
+      "status": "leased",
+      "attempts": 1,
+      "totalAttempts": 1,
+      "generation": 1,
+      "lease": {
+        "worker": "supervisor",
+        "runId": "supervisor-incidents-20261015-pass1",
+        "token": "1d436c41-552b-461f-960c-4db9c3c2c07d",
+        "generation": 1,
+        "claimedAt": "2026-10-15T19:51:03.122Z",
+        "heartbeatAt": "2026-10-15T19:51:03.122Z",
+        "expiresAt": "2026-10-15T19:56:03.122Z"
+      },
       "retryAt": null,
       "createdAt": "2026-10-15T19:20:18.441Z",
-      "updatedAt": "2026-10-15T19:20:18.441Z",
+      "updatedAt": "2026-10-15T19:51:03.122Z",
       "evidence": null,
       "pendingReceipt": null
     },
@@ -496,6 +504,15 @@
         ]
       },
       "at": "2026-10-15T19:49:10.022Z"
+    },
+    "supervisor-incidents-20261015-pass1:claim": {
+      "fingerprint": "8a00a76222fad1f3493969cbb8e8a01fad9b08ccad9cb790817874cb814b5021",
+      "result": {
+        "taskId": "KS-SUPERVISOR-PARENT-ACK-20261015-01",
+        "token": "1d436c41-552b-461f-960c-4db9c3c2c07d",
+        "generation": 1
+      },
+      "at": "2026-10-15T19:51:03.122Z"
     }
   },
   "receipts": {
