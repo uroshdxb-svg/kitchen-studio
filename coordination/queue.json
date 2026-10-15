@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": 20,
-  "updatedAt": "2026-10-15T19:23:20.125Z",
+  "revision": 23,
+  "updatedAt": "2026-10-15T19:49:10.022Z",
   "tasks": {
     "KS-COORDINATION-PILOT-20261015": {
       "id": "KS-COORDINATION-PILOT-20261015",
@@ -466,6 +466,36 @@
         "issues": []
       },
       "at": "2026-10-15T19:23:20.125Z"
+    },
+    "scheduled-supervisor-20261015T193100Z:tick": {
+      "fingerprint": "1f745f8ec5a9823954b0f5c661f9ba54369bb3d66581decf35fe2952dced9245",
+      "result": {
+        "ok": true
+      },
+      "at": "2026-10-15T19:49:10.022Z"
+    },
+    "scheduled-supervisor-20261015T193100Z:scan": {
+      "fingerprint": "d46d2904bd03adb84fc6041ed58f9155d17a3da06a4d064c79d639b712f25158",
+      "result": {
+        "notify": [],
+        "issues": []
+      },
+      "at": "2026-10-15T19:49:10.022Z"
+    },
+    "scheduled-supervisor-20261015T193100Z:checkpoint": {
+      "fingerprint": "6a1349424a4eeb279c6a0048d1ae0ca4cb847e1ee8edc87843681f95fc8e7d80",
+      "result": {
+        "results": [
+          {
+            "ok": true
+          },
+          {
+            "notify": [],
+            "issues": []
+          }
+        ]
+      },
+      "at": "2026-10-15T19:49:10.022Z"
     }
   },
   "receipts": {
@@ -524,8 +554,8 @@
   },
   "workers": {
     "supervisor": {
-      "at": "2026-10-15T19:20:18.441Z",
-      "runId": "manual-activation-20261015-supervisor",
+      "at": "2026-10-15T19:49:10.022Z",
+      "runId": "scheduled-supervisor-20261015T193100Z",
       "expectedEveryMs": 3600000,
       "graceMs": 3600000
     },
