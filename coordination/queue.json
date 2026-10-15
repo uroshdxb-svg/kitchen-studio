@@ -1,9 +1,54 @@
 {
   "schemaVersion": 1,
-  "revision": 0,
-  "updatedAt": null,
-  "tasks": {},
-  "operations": {},
+  "revision": 1,
+  "updatedAt": "2026-10-15T17:58:08.586Z",
+  "tasks": {
+    "KS-COORDINATION-PILOT-20261015": {
+      "id": "KS-COORDINATION-PILOT-20261015",
+      "owner": "supervisor",
+      "kind": "work",
+      "title": "Verify shared queue claims and acknowledged read-only handoff",
+      "dependencies": [],
+      "maxAttempts": 3,
+      "maxTotalAttempts": 12,
+      "deadline": null,
+      "dedupeKey": "KS-COORDINATION-PILOT-20261015",
+      "retrySafe": true,
+      "resource": null,
+      "specification": {
+        "id": "KS-COORDINATION-PILOT-20261015",
+        "owner": "supervisor",
+        "kind": "work",
+        "title": "Verify shared queue claims and acknowledged read-only handoff",
+        "dependencies": [],
+        "maxAttempts": 3,
+        "maxTotalAttempts": 12,
+        "deadline": null,
+        "dedupeKey": "KS-COORDINATION-PILOT-20261015",
+        "retrySafe": true,
+        "resource": null
+      },
+      "status": "ready",
+      "attempts": 0,
+      "totalAttempts": 0,
+      "generation": 0,
+      "lease": null,
+      "retryAt": null,
+      "createdAt": "2026-10-15T17:58:08.586Z",
+      "updatedAt": "2026-10-15T17:58:08.586Z",
+      "evidence": null,
+      "pendingReceipt": null
+    }
+  },
+  "operations": {
+    "KS-PILOT-20261015-enqueue": {
+      "fingerprint": "000b888ba43790817310e3a99e7ce3422327cf3d6279abae8df7c885504c0a49",
+      "result": {
+        "taskId": "KS-COORDINATION-PILOT-20261015"
+      },
+      "at": "2026-10-15T17:58:08.586Z"
+    }
+  },
   "receipts": {},
   "workers": {},
   "alerts": {}
