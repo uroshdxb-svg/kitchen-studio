@@ -10284,6 +10284,1704 @@
       "identity_note": "Base models identify equipment configuration. Do not add color suffix variants as separate catalog entries.",
       "integration_review": "Integration owner independently read current official product pages and exact-model metric dimensional tables. Manufacturer catalog text evidence was reviewed by delegated Cambro researcher; owner reviewed dossier, conversion and field scope. No visual or binary archive claim.",
       "source_row_hash": "01de161fbd9e0a10c22ee41f6dab196e168c468b065d43864143cb4363808422"
+    },
+    "electroluxprofessional|361220": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|361220",
+      "brand": "Electrolux Professional",
+      "model": "361220",
+      "manufacturer_sku": "361220 (STR122)",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "review_date": "2026-10-15",
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361220",
+        "Storage",
+        "Two Tier Service Trolley 1200 mm",
+        1295,
+        695,
+        816,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-1200-mm-361220/"
+      ],
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361220",
+        "Storage",
+        "Two Tier Service Trolley 1200 mm",
+        "1295",
+        "695",
+        "816",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-1200-mm-361220/",
+        "Global (unpowered)",
+        "Official manufacturer page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-1200-mm-361220/",
+          "retrieved_date": "2026-10-15",
+          "tool_ref": "turn54view0"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361220_two_tier_service_trolley_1200_mm.pdf?version=1792081292",
+          "retrieved_date": "2026-10-15",
+          "revision": "2026/03/13",
+          "tool_ref": "turn55view0",
+          "retrieval_method": "web__run click product page Data Sheet link 18"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361220 matches exact PDF 361220 (STR122)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Page and PDF page 2 explicitly label external Width 1295, Depth 695, Height 816 mm; direct mapping, no conversion or drawing-derived values."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.\", \"assembly\": \"Not supplied in reviewed text; no assembly claim.\", \"clearance_status\": \"Numeric clearance not specified; no zero clearance claimed. Allow handling access.\", \"utility_basis\": \"Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page linked exact specification PDF dated 2026/03/13; dimensions and construction agree."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "17-column queue uses Storage/floor/none, blank kW and electrical supply, explicit water/drain 0; integration owner must run importer and regression validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361220 matches exact PDF 361220 (STR122)."
+        },
+        "model": {
+          "value": "361220",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361220 matches exact PDF 361220 (STR122)."
+        },
+        "w": {
+          "value": "1295",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 1295, Depth 695, Height 816 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "1295",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "d": {
+          "value": "695",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 1295, Depth 695, Height 816 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "695",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "h": {
+          "value": "816",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 1295, Depth 695, Height 816 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "816",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        }
+      },
+      "installation_details": {
+        "mount": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.",
+        "assembly": "Not supplied in reviewed text; no assembly claim.",
+        "clearance_status": "Numeric clearance not specified; no zero clearance claimed. Allow handling access.",
+        "utility_basis": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+      },
+      "review_scope": "Manufacturer text review with explicit external dimension labels and complete mechanical construction; no visual drawing inspection, binary archive hash or compliance certification claimed.",
+      "limitations": [
+        "Binary archives not captured; no SHA256 claimed.",
+        "Visual drawings not reviewed; labelled external dimensions used."
+      ],
+      "distinctness_note": "Numeric COD and manufacturer mnemonic establish distinct shelf-count/size or platform construction; nominal shelf size in product name is not external width.",
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner independently read all six exact manufacturer PDFs, confirming COD/alias, labelled overall dimensions, complete passive construction and revision dates; delegated researcher also read every current product page and linked PDF. No visual review or binary archival claim.",
+      "source_row_hash": "8fbe79688a347365352686027e275b60b72a28718eb769e611cdfc352cfe5110"
+    },
+    "electroluxprofessional|361226": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|361226",
+      "brand": "Electrolux Professional",
+      "model": "361226",
+      "manufacturer_sku": "361226 (STR403)",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "review_date": "2026-10-15",
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361226",
+        "Storage",
+        "Three Tier Service Trolley 400 mm",
+        495,
+        695,
+        816,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-400-mm-361226/"
+      ],
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361226",
+        "Storage",
+        "Three Tier Service Trolley 400 mm",
+        "495",
+        "695",
+        "816",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-400-mm-361226/",
+        "Global (unpowered)",
+        "Official manufacturer page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-400-mm-361226/",
+          "retrieved_date": "2026-10-15",
+          "tool_ref": "turn54view1"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361226_three_tier_service_trolley_400_mm.pdf?version=1792081292",
+          "retrieved_date": "2026-10-15",
+          "revision": "2026/03/13",
+          "tool_ref": "turn55view1",
+          "retrieval_method": "web__run click product page Data Sheet link 18"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361226 matches exact PDF 361226 (STR403)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Page and PDF page 2 explicitly label external Width 495, Depth 695, Height 816 mm; direct mapping, no conversion or drawing-derived values."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 400x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 400x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 400x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 400x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.\", \"assembly\": \"Not supplied in reviewed text; no assembly claim.\", \"clearance_status\": \"Numeric clearance not specified; no zero clearance claimed. Allow handling access.\", \"utility_basis\": \"Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 400x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page linked exact specification PDF dated 2026/03/13; dimensions and construction agree."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "17-column queue uses Storage/floor/none, blank kW and electrical supply, explicit water/drain 0; integration owner must run importer and regression validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361226 matches exact PDF 361226 (STR403)."
+        },
+        "model": {
+          "value": "361226",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361226 matches exact PDF 361226 (STR403)."
+        },
+        "w": {
+          "value": "495",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 495, Depth 695, Height 816 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "495",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "d": {
+          "value": "695",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 495, Depth 695, Height 816 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "695",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "h": {
+          "value": "816",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 495, Depth 695, Height 816 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "816",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 400x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 400x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 400x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 400x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 400x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        }
+      },
+      "installation_details": {
+        "mount": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.",
+        "assembly": "Not supplied in reviewed text; no assembly claim.",
+        "clearance_status": "Numeric clearance not specified; no zero clearance claimed. Allow handling access.",
+        "utility_basis": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 400x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+      },
+      "review_scope": "Manufacturer text review with explicit external dimension labels and complete mechanical construction; no visual drawing inspection, binary archive hash or compliance certification claimed.",
+      "limitations": [
+        "Binary archives not captured; no SHA256 claimed.",
+        "Visual drawings not reviewed; labelled external dimensions used."
+      ],
+      "distinctness_note": "Numeric COD and manufacturer mnemonic establish distinct shelf-count/size or platform construction; nominal shelf size in product name is not external width.",
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner independently read all six exact manufacturer PDFs, confirming COD/alias, labelled overall dimensions, complete passive construction and revision dates; delegated researcher also read every current product page and linked PDF. No visual review or binary archival claim.",
+      "source_row_hash": "212519f8231011744e9e12298cb42c07a66164390ca581a7a2a857323a969510"
+    },
+    "electroluxprofessional|361214": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|361214",
+      "brand": "Electrolux Professional",
+      "model": "361214",
+      "manufacturer_sku": "361214 (STR603)",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "review_date": "2026-10-15",
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361214",
+        "Storage",
+        "Three Tier Service Trolley 600 mm",
+        695,
+        695,
+        816,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-600-mm-361214/"
+      ],
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361214",
+        "Storage",
+        "Three Tier Service Trolley 600 mm",
+        "695",
+        "695",
+        "816",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-600-mm-361214/",
+        "Global (unpowered)",
+        "Official manufacturer page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-600-mm-361214/",
+          "retrieved_date": "2026-10-15",
+          "tool_ref": "turn54view2"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361214_three_tier_service_trolley_600_mm.pdf?version=1792081292",
+          "retrieved_date": "2026-10-15",
+          "revision": "2026/03/13",
+          "tool_ref": "turn55view2",
+          "retrieval_method": "web__run click product page Data Sheet link 18"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361214 matches exact PDF 361214 (STR603)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Page and PDF page 2 explicitly label external Width 695, Depth 695, Height 816 mm; direct mapping, no conversion or drawing-derived values."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 600x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 600x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 600x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 600x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.\", \"assembly\": \"Not supplied in reviewed text; no assembly claim.\", \"clearance_status\": \"Numeric clearance not specified; no zero clearance claimed. Allow handling access.\", \"utility_basis\": \"Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 600x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page linked exact specification PDF dated 2026/03/13; dimensions and construction agree."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "17-column queue uses Storage/floor/none, blank kW and electrical supply, explicit water/drain 0; integration owner must run importer and regression validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361214 matches exact PDF 361214 (STR603)."
+        },
+        "model": {
+          "value": "361214",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361214 matches exact PDF 361214 (STR603)."
+        },
+        "w": {
+          "value": "695",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 695, Depth 695, Height 816 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "695",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "d": {
+          "value": "695",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 695, Depth 695, Height 816 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "695",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "h": {
+          "value": "816",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 695, Depth 695, Height 816 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "816",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 600x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 600x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 600x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 600x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 600x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        }
+      },
+      "installation_details": {
+        "mount": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.",
+        "assembly": "Not supplied in reviewed text; no assembly claim.",
+        "clearance_status": "Numeric clearance not specified; no zero clearance claimed. Allow handling access.",
+        "utility_basis": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 600x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+      },
+      "review_scope": "Manufacturer text review with explicit external dimension labels and complete mechanical construction; no visual drawing inspection, binary archive hash or compliance certification claimed.",
+      "limitations": [
+        "Binary archives not captured; no SHA256 claimed.",
+        "Visual drawings not reviewed; labelled external dimensions used."
+      ],
+      "distinctness_note": "Numeric COD and manufacturer mnemonic establish distinct shelf-count/size or platform construction; nominal shelf size in product name is not external width.",
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner independently read all six exact manufacturer PDFs, confirming COD/alias, labelled overall dimensions, complete passive construction and revision dates; delegated researcher also read every current product page and linked PDF. No visual review or binary archival claim.",
+      "source_row_hash": "2d3a24df0f865f7b44afbfc869758226abb787edb6a6cf4698e1e6eccc651358"
+    },
+    "electroluxprofessional|361218": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|361218",
+      "brand": "Electrolux Professional",
+      "model": "361218",
+      "manufacturer_sku": "361218 (STR903)",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "review_date": "2026-10-15",
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361218",
+        "Storage",
+        "Three Tier Service Trolley 900 mm",
+        995,
+        695,
+        816,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-900-mm-361218/"
+      ],
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361218",
+        "Storage",
+        "Three Tier Service Trolley 900 mm",
+        "995",
+        "695",
+        "816",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-900-mm-361218/",
+        "Global (unpowered)",
+        "Official manufacturer page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-900-mm-361218/",
+          "retrieved_date": "2026-10-15",
+          "tool_ref": "turn54view3"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361218_three_tier_service_trolley_900_mm.pdf?version=1792081292",
+          "retrieved_date": "2026-10-15",
+          "revision": "2026/03/13",
+          "tool_ref": "turn55view3",
+          "retrieval_method": "web__run click product page Data Sheet link 18"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361218 matches exact PDF 361218 (STR903)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Page and PDF page 2 explicitly label external Width 995, Depth 695, Height 816 mm; direct mapping, no conversion or drawing-derived values."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 900x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 900x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 900x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 900x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.\", \"assembly\": \"Not supplied in reviewed text; no assembly claim.\", \"clearance_status\": \"Numeric clearance not specified; no zero clearance claimed. Allow handling access.\", \"utility_basis\": \"Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 900x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page linked exact specification PDF dated 2026/03/13; dimensions and construction agree."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "17-column queue uses Storage/floor/none, blank kW and electrical supply, explicit water/drain 0; integration owner must run importer and regression validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361218 matches exact PDF 361218 (STR903)."
+        },
+        "model": {
+          "value": "361218",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361218 matches exact PDF 361218 (STR903)."
+        },
+        "w": {
+          "value": "995",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 995, Depth 695, Height 816 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "995",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "d": {
+          "value": "695",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 995, Depth 695, Height 816 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "695",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "h": {
+          "value": "816",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 995, Depth 695, Height 816 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "816",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 900x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 900x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 900x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 900x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 900x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        }
+      },
+      "installation_details": {
+        "mount": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.",
+        "assembly": "Not supplied in reviewed text; no assembly claim.",
+        "clearance_status": "Numeric clearance not specified; no zero clearance claimed. Allow handling access.",
+        "utility_basis": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 900x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+      },
+      "review_scope": "Manufacturer text review with explicit external dimension labels and complete mechanical construction; no visual drawing inspection, binary archive hash or compliance certification claimed.",
+      "limitations": [
+        "Binary archives not captured; no SHA256 claimed.",
+        "Visual drawings not reviewed; labelled external dimensions used."
+      ],
+      "distinctness_note": "Numeric COD and manufacturer mnemonic establish distinct shelf-count/size or platform construction; nominal shelf size in product name is not external width.",
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner independently read all six exact manufacturer PDFs, confirming COD/alias, labelled overall dimensions, complete passive construction and revision dates; delegated researcher also read every current product page and linked PDF. No visual review or binary archival claim.",
+      "source_row_hash": "83caac0c245ec8f6f7765c427aacc1852867415e84e7b99923085755eeb43546"
+    },
+    "electroluxprofessional|361222": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|361222",
+      "brand": "Electrolux Professional",
+      "model": "361222",
+      "manufacturer_sku": "361222 (STR123)",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "review_date": "2026-10-15",
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361222",
+        "Storage",
+        "Three Tier Service Trolley 1200 mm",
+        1295,
+        695,
+        816,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-1200-mm-361222/"
+      ],
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361222",
+        "Storage",
+        "Three Tier Service Trolley 1200 mm",
+        "1295",
+        "695",
+        "816",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-1200-mm-361222/",
+        "Global (unpowered)",
+        "Official manufacturer page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-1200-mm-361222/",
+          "retrieved_date": "2026-10-15",
+          "tool_ref": "turn54view4"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361222_three_tier_service_trolley_1200_mm.pdf?version=1792081292",
+          "retrieved_date": "2026-10-15",
+          "revision": "2026/03/13",
+          "tool_ref": "turn55view4",
+          "retrieval_method": "web__run click product page Data Sheet link 18"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361222 matches exact PDF 361222 (STR123)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Page and PDF page 2 explicitly label external Width 1295, Depth 695, Height 816 mm; direct mapping, no conversion or drawing-derived values."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.\", \"assembly\": \"Not supplied in reviewed text; no assembly claim.\", \"clearance_status\": \"Numeric clearance not specified; no zero clearance claimed. Allow handling access.\", \"utility_basis\": \"Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page linked exact specification PDF dated 2026/03/13; dimensions and construction agree."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "17-column queue uses Storage/floor/none, blank kW and electrical supply, explicit water/drain 0; integration owner must run importer and regression validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361222 matches exact PDF 361222 (STR123)."
+        },
+        "model": {
+          "value": "361222",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361222 matches exact PDF 361222 (STR123)."
+        },
+        "w": {
+          "value": "1295",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 1295, Depth 695, Height 816 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "1295",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "d": {
+          "value": "695",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 1295, Depth 695, Height 816 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "695",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "h": {
+          "value": "816",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 1295, Depth 695, Height 816 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "816",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        }
+      },
+      "installation_details": {
+        "mount": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.",
+        "assembly": "Not supplied in reviewed text; no assembly claim.",
+        "clearance_status": "Numeric clearance not specified; no zero clearance claimed. Allow handling access.",
+        "utility_basis": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame, formed sound-damping shelves with folded edges and four manually propelled swivel wheels; shelf size 1200x600 mm. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+      },
+      "review_scope": "Manufacturer text review with explicit external dimension labels and complete mechanical construction; no visual drawing inspection, binary archive hash or compliance certification claimed.",
+      "limitations": [
+        "Binary archives not captured; no SHA256 claimed.",
+        "Visual drawings not reviewed; labelled external dimensions used."
+      ],
+      "distinctness_note": "Numeric COD and manufacturer mnemonic establish distinct shelf-count/size or platform construction; nominal shelf size in product name is not external width.",
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner independently read all six exact manufacturer PDFs, confirming COD/alias, labelled overall dimensions, complete passive construction and revision dates; delegated researcher also read every current product page and linked PDF. No visual review or binary archival claim.",
+      "source_row_hash": "ab0ac03d16be7c37f2ac5a9ddd0ad60c797f0f45848b13d2fe42df36979cf839"
+    },
+    "electroluxprofessional|361230": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|361230",
+      "brand": "Electrolux Professional",
+      "model": "361230",
+      "manufacturer_sku": "361230 (STR601)",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "review_date": "2026-10-15",
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361230",
+        "Storage",
+        "Platform Trolley 600 mm",
+        670,
+        600,
+        900,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-platform-trolley-600-mm-361230/"
+      ],
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361230",
+        "Storage",
+        "Platform Trolley 600 mm",
+        "670",
+        "600",
+        "900",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-platform-trolley-600-mm-361230/",
+        "Global (unpowered)",
+        "Official manufacturer page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-platform-trolley-600-mm-361230/",
+          "retrieved_date": "2026-10-15",
+          "tool_ref": "turn55view5"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361230_platform_trolley_600_mm.pdf?version=1792081292",
+          "retrieved_date": "2026-10-15",
+          "revision": "2026/09/10",
+          "tool_ref": "turn56view0",
+          "retrieval_method": "web__run click product page Data Sheet link 18"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361230 matches exact PDF 361230 (STR601)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Page and PDF page 2 explicitly label external Width 670, Depth 600, Height 900 mm; direct mapping, no conversion or drawing-derived values."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame with integral handle and one formed 600x600 mm sound-damping platform with folded edges; manual four-wheel transport. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame with integral handle and one formed 600x600 mm sound-damping platform with folded edges; manual four-wheel transport. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame with integral handle and one formed 600x600 mm sound-damping platform with folded edges; manual four-wheel transport. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame with integral handle and one formed 600x600 mm sound-damping platform with folded edges; manual four-wheel transport. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.\", \"assembly\": \"Not supplied in reviewed text; no assembly claim.\", \"clearance_status\": \"Numeric clearance not specified; no zero clearance claimed. Allow handling access.\", \"utility_basis\": \"Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame with integral handle and one formed 600x600 mm sound-damping platform with folded edges; manual four-wheel transport. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page links exact SKU PDF revision 2026/09/10; identity, construction and dimensions agree."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "17-column queue uses Storage/floor/none, blank kW and electrical supply, explicit water/drain 0; integration owner must run importer and regression validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361230 matches exact PDF 361230 (STR601)."
+        },
+        "model": {
+          "value": "361230",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361230 matches exact PDF 361230 (STR601)."
+        },
+        "w": {
+          "value": "670",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 670, Depth 600, Height 900 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "670",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "d": {
+          "value": "600",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 670, Depth 600, Height 900 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "600",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "h": {
+          "value": "900",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 670, Depth 600, Height 900 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "900",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame with integral handle and one formed 600x600 mm sound-damping platform with folded edges; manual four-wheel transport. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame with integral handle and one formed 600x600 mm sound-damping platform with folded edges; manual four-wheel transport. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame with integral handle and one formed 600x600 mm sound-damping platform with folded edges; manual four-wheel transport. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame with integral handle and one formed 600x600 mm sound-damping platform with folded edges; manual four-wheel transport. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame with integral handle and one formed 600x600 mm sound-damping platform with folded edges; manual four-wheel transport. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        }
+      },
+      "installation_details": {
+        "mount": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.",
+        "assembly": "Not supplied in reviewed text; no assembly claim.",
+        "clearance_status": "Numeric clearance not specified; no zero clearance claimed. Allow handling access.",
+        "utility_basis": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25 mm tube frame with integral handle and one formed 600x600 mm sound-damping platform with folded edges; manual four-wheel transport. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+      },
+      "review_scope": "Manufacturer text review with explicit external dimension labels and complete mechanical construction; no visual drawing inspection, binary archive hash or compliance certification claimed.",
+      "limitations": [
+        "Binary archives not captured; no SHA256 claimed.",
+        "Visual drawings not reviewed; labelled external dimensions used."
+      ],
+      "distinctness_note": "Numeric COD and manufacturer mnemonic establish distinct shelf-count/size or platform construction; nominal shelf size in product name is not external width.",
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner independently read all six exact manufacturer PDFs, confirming COD/alias, labelled overall dimensions, complete passive construction and revision dates; delegated researcher also read every current product page and linked PDF. No visual review or binary archival claim.",
+      "source_row_hash": "4cc2549933b5b0cc8218883d604389756e107c5f5d7ce5380a840c1d4b30d676"
     }
   }
 }

@@ -109,15 +109,15 @@
         "361262",
         "361263"
       ],
-      "state": "pr-open",
+      "state": "merged-live-verification-pending",
       "source_before": 455,
       "source_before_sha": "704e9f8ac7cd3794b62a228e165f394a3ce58e41",
       "source_after": 460,
       "verified_additions": 5,
-      "merged_additions": 0,
+      "merged_additions": 5,
       "live_verified_additions": 0,
       "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/9",
-      "merge_sha": null,
+      "merge_sha": "964d7fb5ce41947368d044a0957af30bb8180fb2",
       "deployment_url": null,
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-15-electrolux-gn-03.csv",
@@ -128,7 +128,9 @@
       "validation": {
         "import": "5 additions; repeat dry run zero additions and five duplicates",
         "preservation": "455 prior rows unchanged; exact manufacturer identities unique",
-        "regressions": "npm run test:ci passed with system Chromium; all five exact SKUs searched and added; built catalogue readback 460"
+        "regressions": "npm run test:ci passed with system Chromium; all five exact SKUs searched and added; built catalogue readback 460",
+        "github_ci": "https://github.com/uroshdxb-svg/kitchen-studio/actions/runs/38769811824",
+        "review": "Queue rollover and original/held population findings corrected; threads resolved; ordinary expected-head merge succeeded."
       }
     },
     {
@@ -149,15 +151,15 @@
         "361212",
         "361216"
       ],
-      "state": "pr-open",
+      "state": "merged-live-verification-pending",
       "source_before": 460,
       "source_before_sha": "11d2c34f50c9d3208e6d1c34f8acb69028415809",
       "source_after": 473,
       "verified_additions": 13,
-      "merged_additions": 0,
+      "merged_additions": 13,
       "live_verified_additions": 0,
       "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/10",
-      "merge_sha": null,
+      "merge_sha": "791776af45883480ba290d2364f7a7ff24e7d2bf",
       "deployment_url": null,
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-15-electrolux-service-04.csv",
@@ -168,7 +170,9 @@
       "validation": {
         "import": "13 additions; repeat dry run zero additions and 13 duplicates",
         "preservation": "460 previous rows unchanged; normalized identities and exact SKUs unique",
-        "regressions": "npm run test:ci passed using system Chromium; all 13 exact SKUs searched and added; built catalogue readback 473"
+        "regressions": "npm run test:ci passed using system Chromium; all 13 exact SKUs searched and added; built catalogue readback 473",
+        "github_ci": "https://github.com/uroshdxb-svg/kitchen-studio/actions/runs/38769942336",
+        "review": "Automated review completed without findings; subsequent queue reconciliation reviewed by integration owner; ordinary expected-head merge succeeded."
       }
     },
     {
@@ -180,14 +184,14 @@
         "CD1313",
         "CD1826PDB"
       ],
-      "state": "prepared",
+      "state": "pr-open",
       "source_before": 473,
       "source_before_sha": "e7947d245c6f0d1aaf5b0317f391a296ba250a80",
       "source_after": 477,
       "verified_additions": 4,
       "merged_additions": 0,
       "live_verified_additions": 0,
-      "pr_url": null,
+      "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/11",
       "merge_sha": null,
       "deployment_url": null,
       "evidence": "catalogue-evidence.json",
@@ -201,11 +205,44 @@
         "preservation": "473 prior rows unchanged; normalized identities unique",
         "regressions": "npm run test:ci passed using system Chromium; all four exact SKUs searched and added; built catalogue readback 477"
       }
+    },
+    {
+      "id": "2026-10-15-electrolux-service-06",
+      "manufacturer": "Electrolux Professional",
+      "models": [
+        "361220",
+        "361226",
+        "361214",
+        "361218",
+        "361222",
+        "361230"
+      ],
+      "state": "prepared",
+      "source_before": 477,
+      "source_before_sha": "2bebf77177e920dd26a463f76631c666732789a9",
+      "source_after": 483,
+      "verified_additions": 6,
+      "merged_additions": 0,
+      "live_verified_additions": 0,
+      "pr_url": null,
+      "merge_sha": null,
+      "deployment_url": null,
+      "evidence": "catalogue-evidence.json",
+      "csv": "equipment/batches/2026-10-15-electrolux-service-06.csv",
+      "limitations": [
+        "Text-only official source review; no binary archival or visual drawing claims.",
+        "Legacy queue overlap awaiting parent investigation."
+      ],
+      "validation": {
+        "import": "6 additions; repeat dry run zero additions and 6 duplicates",
+        "preservation": "477 prior rows unchanged; exact CODs and normalized identities unique",
+        "regressions": "npm run test:ci passed with system Chromium; all six exact SKUs searched and added; built catalogue readback 483"
+      }
     }
   ],
   "current_merged": {
-    "sha": "704e9f8ac7cd3794b62a228e165f394a3ce58e41",
-    "count": 455,
+    "sha": "791776af45883480ba290d2364f7a7ff24e7d2bf",
+    "count": 473,
     "as_of": "2026-10-15",
     "live_count": 444
   }
