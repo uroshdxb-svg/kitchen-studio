@@ -1,0 +1,9 @@
+{
+  "SC225/SC225S": "Current page states 23.7 cm length vs 31.25 inches; brochure says 79.3 cm. Require direct diagram/spec review before overriding erroneous page.",
+  "SC330/SC330S": "Current page dimensions contain conflicting 54.9 cm depth or 98.3 cm length; brochure gives 95.4 x 56 x 94.7 cm. Require direct spec review before overriding.",
+  "BC331KD": "Current page copies large-cart metric dimensions; imperial and catalog do not match that metric row.",
+  "CD300": "Page imperial W/D reversed relative to metric; held.",
+  "CD1826MTCHB": "Current page D/H reversed versus historic catalog; held.",
+  "CD1327": "Current page height 8.25 inches versus 2018 USA catalog 8.125 inches; clarify current exact size.",
+  "CD100H": "Current page depth 33.125 inches versus 2018 USA catalog 33.375 inches; clarify current exact size."
+}
