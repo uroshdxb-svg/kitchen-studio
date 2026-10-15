@@ -170,6 +170,37 @@
         "preservation": "460 previous rows unchanged; normalized identities and exact SKUs unique",
         "regressions": "npm run test:ci passed using system Chromium; all 13 exact SKUs searched and added; built catalogue readback 473"
       }
+    },
+    {
+      "id": "2026-10-15-cambro-05",
+      "manufacturer": "Cambro",
+      "models": [
+        "BC340KD",
+        "CD100",
+        "CD1313",
+        "CD1826PDB"
+      ],
+      "state": "prepared",
+      "source_before": 473,
+      "source_before_sha": "e7947d245c6f0d1aaf5b0317f391a296ba250a80",
+      "source_after": 477,
+      "verified_additions": 4,
+      "merged_additions": 0,
+      "live_verified_additions": 0,
+      "pr_url": null,
+      "merge_sha": null,
+      "deployment_url": null,
+      "evidence": "catalogue-evidence.json",
+      "csv": "equipment/batches/2026-10-15-cambro-05.csv",
+      "limitations": [
+        "Text-only official source review; no binary archival or visual drawing claims.",
+        "Legacy queue overlap awaiting parent investigation."
+      ],
+      "validation": {
+        "import": "4 added; repeat dry run zero additions and 4 duplicates",
+        "preservation": "473 prior rows unchanged; normalized identities unique",
+        "regressions": "npm run test:ci passed using system Chromium; all four exact SKUs searched and added; built catalogue readback 477"
+      }
     }
   ],
   "current_merged": {
