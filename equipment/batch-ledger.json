@@ -12,8 +12,9 @@
   "baseline": {
     "main_sha": "f44cb7cf826ba4a62de0652728b52c1783919597",
     "merged_count": 444,
-    "live_count": null,
-    "live_blocker": "Workspace outbound proxy HTTP 403; browser ERR_TUNNEL_CONNECTION_FAILED; web tool inaccessible."
+    "live_count": 444,
+    "live_verified_at": "2026-10-15T16:18:00Z",
+    "live_verification": "Parent independently read production app through dot cloud browser: All category, Hide US-spec unchecked, 444 models."
   },
   "batches": [
     {
@@ -25,14 +26,14 @@
         "361286",
         "361290"
       ],
-      "state": "pr-open",
+      "state": "merged-live-verification-pending",
       "source_before": 444,
       "source_after": 448,
       "verified_additions": 4,
-      "merged_additions": 0,
+      "merged_additions": 4,
       "live_verified_additions": 0,
       "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/7",
-      "merge_sha": null,
+      "merge_sha": "c83fca241c5affe7f2c999dceb3301dbbb473341",
       "deployment_url": null,
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-15-electrolux-passive-01.csv",
@@ -54,9 +55,53 @@
         "app_search_add": "All four exact manufacturer SKUs successfully searched and added in local browser; built catalogue.json has 448 rows",
         "browser": "System /usr/bin/chromium; pinned Playwright browser download blocked by proxy",
         "regressions": "npm run test:ci passed: build, existing app/browser suite and MCP suite",
-        "wrangler": "wrangler deploy --dry-run passed with temporary writable config/log directories"
+        "wrangler": "wrangler deploy --dry-run passed with temporary writable config/log directories",
+        "github_ci": "https://github.com/uroshdxb-svg/kitchen-studio/actions/runs/38767158907",
+        "review": "Automated review completed; pre-import baseline preservation finding fixed in cc9db01 and thread resolved."
       },
-      "source_before_sha": "f44cb7cf826ba4a62de0652728b52c1783919597"
+      "source_before_sha": "f44cb7cf826ba4a62de0652728b52c1783919597",
+      "release_receipt": "PR #7 merged by ordinary API; origin/main readback 448 with all four SKUs; production readback HTTP 403. Parent checking deployment separately.",
+      "deployment_blocker": "Parent live count remains 444 after merge. GitHub CI is test-only; README requires Cloudflare Git-triggered build/deploy. Local wrangler whoami unauthenticated. Existing Cloudflare production build must be inspected/retried by authenticated operator; no credential or permission changes made."
+    },
+    {
+      "id": "2026-10-15-electrolux-passive-02",
+      "manufacturer": "Electrolux Professional",
+      "models": [
+        "361288",
+        "361294",
+        "361296",
+        "361292",
+        "361000",
+        "341185",
+        "341184"
+      ],
+      "state": "prepared",
+      "source_before": 448,
+      "source_before_sha": "c83fca241c5affe7f2c999dceb3301dbbb473341",
+      "source_after": 455,
+      "verified_additions": 7,
+      "merged_additions": 0,
+      "live_verified_additions": 0,
+      "pr_url": null,
+      "merge_sha": null,
+      "deployment_url": null,
+      "evidence": "catalogue-evidence.json",
+      "csv": "equipment/batches/2026-10-15-electrolux-passive-02.csv",
+      "limitations": [
+        "Text-only official source review; no binary archival or visual drawing claims.",
+        "Legacy queue overlap awaiting parent investigation."
+      ],
+      "validation": {
+        "import": "7 added; repeat dry run zero additions, 7 duplicates",
+        "preservation": "448 prior rows unchanged; normalized identities and exact CODs unique",
+        "regressions": "npm run test:ci passed (system Chromium); all seven exact SKU search/add checks passed; built catalogue readback 455"
+      }
     }
-  ]
+  ],
+  "current_merged": {
+    "sha": "c83fca241c5affe7f2c999dceb3301dbbb473341",
+    "count": 448,
+    "as_of": "2026-10-15",
+    "live_count": 444
+  }
 }
