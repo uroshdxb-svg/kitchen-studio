@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": 5,
-  "updatedAt": "2026-10-15T18:06:23.064Z",
+  "revision": 14,
+  "updatedAt": "2026-10-15T19:20:18.441Z",
   "tasks": {
     "KS-COORDINATION-PILOT-20261015": {
       "id": "KS-COORDINATION-PILOT-20261015",
@@ -52,6 +52,230 @@
       },
       "pendingReceipt": "KS-COORDINATION-PILOT-20261015:1:handoff",
       "completedAt": "2026-10-15T18:06:23.064Z"
+    },
+    "KS-CATALOG-PARENT-ACK-20261015-01": {
+      "id": "KS-CATALOG-PARENT-ACK-20261015-01",
+      "owner": "catalog",
+      "kind": "work",
+      "title": "Reconcile accepted legacy catalogue evidence and cursors; no new import before 16 October",
+      "dependencies": [],
+      "maxAttempts": 3,
+      "maxTotalAttempts": 12,
+      "deadline": "2026-10-31T19:59:59Z",
+      "dedupeKey": "KS-CATALOG-PARENT-ACK-20261015-01",
+      "retrySafe": false,
+      "resource": "catalogue-writer",
+      "specification": {
+        "id": "KS-CATALOG-PARENT-ACK-20261015-01",
+        "owner": "catalog",
+        "kind": "work",
+        "title": "Reconcile accepted legacy catalogue evidence and cursors; no new import before 16 October",
+        "dependencies": [],
+        "maxAttempts": 3,
+        "maxTotalAttempts": 12,
+        "deadline": "2026-10-31T19:59:59Z",
+        "dedupeKey": "KS-CATALOG-PARENT-ACK-20261015-01",
+        "retrySafe": false,
+        "resource": "catalogue-writer"
+      },
+      "status": "ready",
+      "attempts": 0,
+      "totalAttempts": 0,
+      "generation": 0,
+      "lease": null,
+      "retryAt": null,
+      "createdAt": "2026-10-15T19:20:18.441Z",
+      "updatedAt": "2026-10-15T19:20:18.441Z",
+      "evidence": null,
+      "pendingReceipt": null
+    },
+    "KS-SUPERVISOR-PARENT-ACK-20261015-01": {
+      "id": "KS-SUPERVISOR-PARENT-ACK-20261015-01",
+      "owner": "supervisor",
+      "kind": "work",
+      "title": "Reconcile accepted inherited CEO incidents and current role receipts",
+      "dependencies": [],
+      "maxAttempts": 3,
+      "maxTotalAttempts": 12,
+      "deadline": null,
+      "dedupeKey": "KS-SUPERVISOR-PARENT-ACK-20261015-01",
+      "retrySafe": false,
+      "resource": null,
+      "specification": {
+        "id": "KS-SUPERVISOR-PARENT-ACK-20261015-01",
+        "owner": "supervisor",
+        "kind": "work",
+        "title": "Reconcile accepted inherited CEO incidents and current role receipts",
+        "dependencies": [],
+        "maxAttempts": 3,
+        "maxTotalAttempts": 12,
+        "deadline": null,
+        "dedupeKey": "KS-SUPERVISOR-PARENT-ACK-20261015-01",
+        "retrySafe": false,
+        "resource": null
+      },
+      "status": "ready",
+      "attempts": 0,
+      "totalAttempts": 0,
+      "generation": 0,
+      "lease": null,
+      "retryAt": null,
+      "createdAt": "2026-10-15T19:20:18.441Z",
+      "updatedAt": "2026-10-15T19:20:18.441Z",
+      "evidence": null,
+      "pendingReceipt": null
+    },
+    "CEO-011": {
+      "id": "CEO-011",
+      "owner": "content-qa",
+      "kind": "content",
+      "title": "Finish inherited item07 media and claim QA; retain missing-media18/19/20 blockers",
+      "dependencies": [],
+      "maxAttempts": 3,
+      "maxTotalAttempts": 12,
+      "deadline": null,
+      "dedupeKey": "CEO-011",
+      "retrySafe": false,
+      "resource": null,
+      "specification": {
+        "id": "CEO-011",
+        "owner": "content-qa",
+        "kind": "content",
+        "title": "Finish inherited item07 media and claim QA; retain missing-media18/19/20 blockers",
+        "dependencies": [],
+        "maxAttempts": 3,
+        "maxTotalAttempts": 12,
+        "deadline": null,
+        "dedupeKey": "CEO-011",
+        "retrySafe": false,
+        "resource": null
+      },
+      "status": "ready",
+      "attempts": 0,
+      "totalAttempts": 0,
+      "generation": 0,
+      "lease": null,
+      "retryAt": null,
+      "createdAt": "2026-10-15T19:20:18.441Z",
+      "updatedAt": "2026-10-15T19:20:18.441Z",
+      "evidence": null,
+      "pendingReceipt": null
+    },
+    "kitchen-studio-zero-extra-cost-edutainment-pilot": {
+      "id": "kitchen-studio-zero-extra-cost-edutainment-pilot",
+      "owner": "content-qa",
+      "kind": "content",
+      "title": "Unfinished finite edutainment example and zero-extra-cost workflow evidence",
+      "dependencies": [],
+      "maxAttempts": 3,
+      "maxTotalAttempts": 12,
+      "deadline": "2026-10-25T14:00:00Z",
+      "dedupeKey": "kitchen-studio-zero-extra-cost-edutainment-pilot",
+      "retrySafe": false,
+      "resource": null,
+      "specification": {
+        "id": "kitchen-studio-zero-extra-cost-edutainment-pilot",
+        "owner": "content-qa",
+        "kind": "content",
+        "title": "Unfinished finite edutainment example and zero-extra-cost workflow evidence",
+        "dependencies": [],
+        "maxAttempts": 3,
+        "maxTotalAttempts": 12,
+        "deadline": "2026-10-25T14:00:00Z",
+        "dedupeKey": "kitchen-studio-zero-extra-cost-edutainment-pilot",
+        "retrySafe": false,
+        "resource": null
+      },
+      "status": "ready",
+      "attempts": 0,
+      "totalAttempts": 0,
+      "generation": 0,
+      "lease": null,
+      "retryAt": null,
+      "createdAt": "2026-10-15T19:20:18.441Z",
+      "updatedAt": "2026-10-15T19:20:18.441Z",
+      "evidence": null,
+      "pendingReceipt": null
+    },
+    "PRODUCT-HANDOFF-ACK-2026-10-15-184911Z": {
+      "id": "PRODUCT-HANDOFF-ACK-2026-10-15-184911Z",
+      "owner": "product",
+      "kind": "work",
+      "title": "Accepted CEO-005, GM-EXP-001, CEO-013 and CEO-020 measurement and acceptance scope",
+      "dependencies": [],
+      "maxAttempts": 3,
+      "maxTotalAttempts": 12,
+      "deadline": null,
+      "dedupeKey": "PRODUCT-HANDOFF-ACK-2026-10-15-184911Z",
+      "retrySafe": false,
+      "resource": null,
+      "specification": {
+        "id": "PRODUCT-HANDOFF-ACK-2026-10-15-184911Z",
+        "owner": "product",
+        "kind": "work",
+        "title": "Accepted CEO-005, GM-EXP-001, CEO-013 and CEO-020 measurement and acceptance scope",
+        "dependencies": [],
+        "maxAttempts": 3,
+        "maxTotalAttempts": 12,
+        "deadline": null,
+        "dedupeKey": "PRODUCT-HANDOFF-ACK-2026-10-15-184911Z",
+        "retrySafe": false,
+        "resource": null
+      },
+      "status": "ready",
+      "attempts": 0,
+      "totalAttempts": 0,
+      "generation": 0,
+      "lease": null,
+      "retryAt": null,
+      "createdAt": "2026-10-15T19:20:18.441Z",
+      "updatedAt": "2026-10-15T19:20:18.441Z",
+      "evidence": null,
+      "pendingReceipt": null
+    },
+    "KS-COORD-ACTIVATION-20261015": {
+      "id": "KS-COORD-ACTIVATION-20261015",
+      "owner": "supervisor",
+      "kind": "work",
+      "title": "Controlled manual metadata handoff and acknowledgement verification; no product effects",
+      "dependencies": [],
+      "maxAttempts": 3,
+      "maxTotalAttempts": 12,
+      "deadline": null,
+      "dedupeKey": "KS-COORD-ACTIVATION-20261015",
+      "retrySafe": true,
+      "resource": null,
+      "specification": {
+        "id": "KS-COORD-ACTIVATION-20261015",
+        "owner": "supervisor",
+        "kind": "work",
+        "title": "Controlled manual metadata handoff and acknowledgement verification; no product effects",
+        "dependencies": [],
+        "maxAttempts": 3,
+        "maxTotalAttempts": 12,
+        "deadline": null,
+        "dedupeKey": "KS-COORD-ACTIVATION-20261015",
+        "retrySafe": true,
+        "resource": null
+      },
+      "status": "leased",
+      "attempts": 1,
+      "totalAttempts": 1,
+      "generation": 1,
+      "lease": {
+        "worker": "supervisor",
+        "runId": "manual-activation-20261015-supervisor",
+        "token": "efc3a5df-22b9-4ea5-b264-4fc8fa42ac1b",
+        "generation": 1,
+        "claimedAt": "2026-10-15T19:20:18.441Z",
+        "heartbeatAt": "2026-10-15T19:20:18.441Z",
+        "expiresAt": "2026-10-15T19:23:18.441Z"
+      },
+      "retryAt": null,
+      "createdAt": "2026-10-15T19:20:18.441Z",
+      "updatedAt": "2026-10-15T19:20:18.441Z",
+      "evidence": null,
+      "pendingReceipt": null
     }
   },
   "operations": {
@@ -93,6 +317,98 @@
         "ok": true
       },
       "at": "2026-10-15T18:06:23.064Z"
+    },
+    "KS-ACTIVATION-20261015-enqueue-KS-CATALOG-PARENT-ACK-20261015-01": {
+      "fingerprint": "bd76376d3ef0c78a4cfdb5334ee08c944ac4b0867af2598899f82488cdab637b",
+      "result": {
+        "taskId": "KS-CATALOG-PARENT-ACK-20261015-01"
+      },
+      "at": "2026-10-15T19:20:18.441Z"
+    },
+    "KS-ACTIVATION-20261015-enqueue-KS-SUPERVISOR-PARENT-ACK-20261015-01": {
+      "fingerprint": "c937fb03f2d5dba5908cf70beb34d31a0a739f06a6e065444f2fe6b2064ff429",
+      "result": {
+        "taskId": "KS-SUPERVISOR-PARENT-ACK-20261015-01"
+      },
+      "at": "2026-10-15T19:20:18.441Z"
+    },
+    "KS-ACTIVATION-20261015-enqueue-CEO-011": {
+      "fingerprint": "0476c3956f0301dd26848ae420afbd917d1afc9ceb441213a025aead7037c999",
+      "result": {
+        "taskId": "CEO-011"
+      },
+      "at": "2026-10-15T19:20:18.441Z"
+    },
+    "KS-ACTIVATION-20261015-enqueue-kitchen-studio-zero-extra-cost-edutainment-pilot": {
+      "fingerprint": "d85229bb03ffba3ba34f24d852d426dc435d4ce13f8e7e31c0aa48c6df304852",
+      "result": {
+        "taskId": "kitchen-studio-zero-extra-cost-edutainment-pilot"
+      },
+      "at": "2026-10-15T19:20:18.441Z"
+    },
+    "KS-ACTIVATION-20261015-enqueue-PRODUCT-HANDOFF-ACK-2026-10-15-184911Z": {
+      "fingerprint": "24b2bcbd757d38884e75885f20542904ce91187433670a2f6bc445a13e649f4e",
+      "result": {
+        "taskId": "PRODUCT-HANDOFF-ACK-2026-10-15-184911Z"
+      },
+      "at": "2026-10-15T19:20:18.441Z"
+    },
+    "KS-ACTIVATION-20261015-enqueue-KS-COORD-ACTIVATION-20261015": {
+      "fingerprint": "d2f940ab574d440200a26a77d9d73bbbea60ae1878a29bfbf77f26ab906ab52b",
+      "result": {
+        "taskId": "KS-COORD-ACTIVATION-20261015"
+      },
+      "at": "2026-10-15T19:20:18.441Z"
+    },
+    "KS-ACTIVATION-20261015-supervisor-tick": {
+      "fingerprint": "4f6b6309519cebc9844c7d1e7253140fec4c6f2279cce75bf65806ea7f2b8ded",
+      "result": {
+        "ok": true
+      },
+      "at": "2026-10-15T19:20:18.441Z"
+    },
+    "KS-ACTIVATION-20261015-claim": {
+      "fingerprint": "3218fe103fa22498c1a4b797312d91b076c4140ec20461f37a72706e69aab72f",
+      "result": {
+        "taskId": "KS-COORD-ACTIVATION-20261015",
+        "token": "efc3a5df-22b9-4ea5-b264-4fc8fa42ac1b",
+        "generation": 1
+      },
+      "at": "2026-10-15T19:20:18.441Z"
+    },
+    "KS-ACTIVATION-20261015-migrate": {
+      "fingerprint": "58f968f2f71a579c8cd23da2f6bd0965474756bb4143360f0957fa3aa115e359",
+      "result": {
+        "results": [
+          {
+            "taskId": "KS-CATALOG-PARENT-ACK-20261015-01"
+          },
+          {
+            "taskId": "KS-SUPERVISOR-PARENT-ACK-20261015-01"
+          },
+          {
+            "taskId": "CEO-011"
+          },
+          {
+            "taskId": "kitchen-studio-zero-extra-cost-edutainment-pilot"
+          },
+          {
+            "taskId": "PRODUCT-HANDOFF-ACK-2026-10-15-184911Z"
+          },
+          {
+            "taskId": "KS-COORD-ACTIVATION-20261015"
+          },
+          {
+            "ok": true
+          },
+          {
+            "taskId": "KS-COORD-ACTIVATION-20261015",
+            "token": "efc3a5df-22b9-4ea5-b264-4fc8fa42ac1b",
+            "generation": 1
+          }
+        ]
+      },
+      "at": "2026-10-15T19:20:18.441Z"
     }
   },
   "receipts": {
@@ -117,6 +433,14 @@
       }
     }
   },
-  "workers": {},
-  "alerts": {}
+  "workers": {
+    "supervisor": {
+      "at": "2026-10-15T19:20:18.441Z",
+      "runId": "manual-activation-20261015-supervisor",
+      "expectedEveryMs": 3600000,
+      "graceMs": 3600000
+    }
+  },
+  "alerts": {},
+  "expectationsStartedAt": "2026-10-15T17:58:08.586Z"
 }
