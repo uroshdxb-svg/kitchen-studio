@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": 15,
-  "updatedAt": "2026-10-15T19:20:59.622Z",
+  "revision": 16,
+  "updatedAt": "2026-10-15T19:21:46.626Z",
   "tasks": {
     "KS-COORDINATION-PILOT-20261015": {
       "id": "KS-COORDINATION-PILOT-20261015",
@@ -235,7 +235,7 @@
     },
     "KS-COORD-ACTIVATION-20261015": {
       "id": "KS-COORD-ACTIVATION-20261015",
-      "owner": "supervisor",
+      "owner": "reviewer",
       "kind": "work",
       "title": "Controlled manual metadata handoff and acknowledgement verification; no product effects",
       "dependencies": [],
@@ -258,14 +258,22 @@
         "retrySafe": true,
         "resource": null
       },
-      "status": "awaiting_ack",
+      "status": "leased",
       "attempts": 1,
-      "totalAttempts": 1,
-      "generation": 1,
-      "lease": null,
+      "totalAttempts": 2,
+      "generation": 2,
+      "lease": {
+        "worker": "reviewer",
+        "runId": "manual-activation-20261015-reviewer",
+        "token": "8fd5009a-6cd8-4a5a-ac53-1f16bab097f9",
+        "generation": 2,
+        "claimedAt": "2026-10-15T19:21:46.626Z",
+        "heartbeatAt": "2026-10-15T19:21:46.626Z",
+        "expiresAt": "2026-10-15T19:24:46.626Z"
+      },
       "retryAt": null,
       "createdAt": "2026-10-15T19:20:18.441Z",
-      "updatedAt": "2026-10-15T19:20:59.622Z",
+      "updatedAt": "2026-10-15T19:21:46.626Z",
       "evidence": null,
       "pendingReceipt": "KS-COORD-ACTIVATION-20261015:1:handoff"
     }
@@ -408,6 +416,15 @@
         "receiptId": "KS-COORD-ACTIVATION-20261015:1:handoff"
       },
       "at": "2026-10-15T19:20:59.622Z"
+    },
+    "KS-COORD-ACTIVATION-20261015-reviewer-accept": {
+      "fingerprint": "b0b013c5fa5214c7e866fe7ac7f20e1345becee9cb83a89a74c07312a0effc06",
+      "result": {
+        "taskId": "KS-COORD-ACTIVATION-20261015",
+        "token": "8fd5009a-6cd8-4a5a-ac53-1f16bab097f9",
+        "generation": 2
+      },
+      "at": "2026-10-15T19:21:46.626Z"
     }
   },
   "receipts": {
@@ -457,8 +474,11 @@
       },
       "createdAt": "2026-10-15T19:20:59.622Z",
       "ackDueAt": "2026-10-15T20:20:59.622Z",
-      "acceptedAt": null,
-      "acceptedBy": null
+      "acceptedAt": "2026-10-15T19:21:46.626Z",
+      "acceptedBy": {
+        "worker": "reviewer",
+        "runId": "manual-activation-20261015-reviewer"
+      }
     }
   },
   "workers": {
