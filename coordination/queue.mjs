@@ -1,5 +1,6 @@
 // Coordination metadata only. This module never publishes, deploys, or calls an AI service.
 import {createHash, randomUUID} from 'node:crypto';
+import registry from './workers.json' with {type:'json'};
 const hash=x=>createHash('sha256').update(stable(x)).digest('hex');
 const stable=x=>JSON.stringify(x,(_,v)=>v&&typeof v==='object'&&!Array.isArray(v)?Object.fromEntries(Object.entries(v).sort(([a],[b])=>a.localeCompare(b))):v);
 const copy=x=>structuredClone(x);
@@ -8,7 +9,34 @@ const iso=n=>new Date(n).toISOString();
 const terminal=new Set(['done','cancelled']);
 const text=(v,max=500)=>typeof v==='string'&&v.trim().length>0&&v.length<=max;
 const validId=v=>typeof v==='string'&&/^[A-Za-z0-9][A-Za-z0-9._:-]{0,119}$/.test(v);
-export const emptyQueue=()=>({schemaVersion:1,revision:0,updatedAt:null,tasks:{},operations:{},receipts:{},workers:{},alerts:{}});
+const record=v=>v&&typeof v==='object'&&!Array.isArray(v);
+const timestamp=v=>typeof v==='string'&&Number.isFinite(Date.parse(v));
+const boundedMetadata=(v,message)=>requireThat(record(v)&&stable(v).length<=10000,message);
+function references(refs){
+ requireThat(Array.isArray(refs)&&refs.length>0&&refs.every(x=>text(x,1000)),'Evidence references must be nonempty strings up to 1000 characters');
+ requireThat(stable(refs).length<=10000,'Evidence is metadata, not raw notes');return copy(refs);
+}
+function humanDecision(value){
+ requireThat(record(value)&&Object.keys(value).every(k=>['decision','reference'].includes(k))&&['approved','declined'].includes(value.decision)&&text(value.reference),'Actual human decision reference required for approval-held work');
+ return copy(value);
+}
+function resolutionMetadata(value,retired=false){
+ boundedMetadata(value,'Corrupt resolution/retirement metadata');
+ const allowed=retired?['at','refs','humanDecision']:['summary','refs','at'];
+ requireThat(Object.keys(value).every(k=>allowed.includes(k))&&timestamp(value.at),'Corrupt resolution/retirement metadata');
+ references(value.refs);
+ if(retired){requireThat(Object.hasOwn(value,'humanDecision'),'Corrupt retirement decision');if(value.humanDecision!==null)humanDecision(value.humanDecision);}
+ else requireThat(text(value.summary),'Corrupt resolution summary');
+ return copy(value);
+}
+function expectedWorkers(q){
+ const expected=q.expectedWorkers===undefined?registry.expectedWorkers:q.expectedWorkers;
+ requireThat(record(expected)&&Object.keys(registry.expectedWorkers).every(id=>Object.hasOwn(expected,id)),'Corrupt/missing expected worker registry');
+ for(const [id,e] of Object.entries(expected))requireThat(validId(id)&&record(e)&&Object.keys(e).every(k=>['expectedEveryMs','graceMs','firstExpectedAt'].includes(k))&&Number.isSafeInteger(e.expectedEveryMs)&&e.expectedEveryMs>=3600000&&e.expectedEveryMs<=31*86400000&&Number.isSafeInteger(e.graceMs)&&e.graceMs>=0&&e.graceMs<=86400000&&(e.firstExpectedAt===null||timestamp(e.firstExpectedAt)),'Corrupt expected worker '+id);
+ return expected;
+}
+const earliestOperation=q=>Object.values(q.operations).reduce((first,o)=>first===null?Date.parse(o.at):Math.min(first,Date.parse(o.at)),null);
+export const emptyQueue=()=>({schemaVersion:1,revision:0,updatedAt:null,expectationsStartedAt:null,expectedWorkers:copy(registry.expectedWorkers),tasks:{},operations:{},receipts:{},workers:{},alerts:{}});
 export function validateQueue(q){
  requireThat(q?.schemaVersion===1&&Number.isInteger(q.revision),'Unknown/corrupt queue schema');
  for(const k of ['tasks','operations','receipts','workers','alerts'])requireThat(q[k]&&typeof q[k]==='object'&&!Array.isArray(q[k]),'Missing queue collection: '+k);
@@ -24,10 +52,14 @@ export function validateQueue(q){
   else requireThat(t.lease===null,'Unexpected active lease '+id);
   if(t.status==='awaiting_ack')requireThat(q.receipts[t.pendingReceipt]?.taskId===id&&!q.receipts[t.pendingReceipt].acceptedAt,'Missing pending handoff '+id);
   if(t.status==='retry_wait')requireThat(Number.isFinite(Date.parse(t.retryAt)),'Missing retry time '+id);
+  if(t.resolution!==undefined)resolutionMetadata(t.resolution);
+  if(t.retirement!==undefined){resolutionMetadata(t.retirement,true);requireThat(t.status==='cancelled'&&text(t.reason),'Corrupt retired task '+id);boundedMetadata({summary:t.reason,...t.retirement},'Corrupt retirement metadata');}
  }
- requireThat(q.updatedAt===null||Number.isFinite(Date.parse(q.updatedAt)),'Corrupt queue timestamp');
+ requireThat(q.updatedAt===null||timestamp(q.updatedAt),'Corrupt queue timestamp');
+ expectedWorkers(q);
+ requireThat(q.expectationsStartedAt===undefined||q.expectationsStartedAt===null||(timestamp(q.expectationsStartedAt)&&(q.updatedAt===null?q.revision===0:Date.parse(q.expectationsStartedAt)<=Date.parse(q.updatedAt))),'Corrupt expectation startup anchor');
  for(const [id,r] of Object.entries(q.receipts))requireThat(r&&r.id===id&&q.tasks[r.taskId]&&text(r.from)&&text(r.to)&&Number.isFinite(Date.parse(r.ackDueAt))&&Number.isFinite(Date.parse(r.createdAt)),'Corrupt handoff receipt '+id);
- for(const [id,w] of Object.entries(q.workers))requireThat(w&&validId(id)&&validId(w.runId)&&Number.isFinite(Date.parse(w.at))&&(w.expectedEveryMs===null||(Number.isInteger(w.expectedEveryMs)&&w.expectedEveryMs>=3600000)),'Corrupt worker receipt '+id);
+ for(const [id,w] of Object.entries(q.workers))requireThat(w&&validId(id)&&validId(w.runId)&&Number.isFinite(Date.parse(w.at))&&(w.expectedEveryMs===null||(Number.isSafeInteger(w.expectedEveryMs)&&w.expectedEveryMs>=3600000))&&(w.graceMs===undefined||(Number.isSafeInteger(w.graceMs)&&w.graceMs>=0&&w.graceMs<=86400000)),'Corrupt worker receipt '+id);
  for(const [id,o] of Object.entries(q.operations))requireThat(validId(id)&&o&&/^[a-f0-9]{64}$/.test(o.fingerprint??'')&&o.result&&typeof o.result==='object'&&Number.isFinite(Date.parse(o.at)),'Corrupt operation receipt '+id);
  return q;
 }
@@ -52,8 +84,8 @@ function availableResource(q,t){
  requireThat(!Object.values(q.tasks).some(other=>other.id!==t.id&&other.resource===t.resource&&occupied.has(other.status)),'Exclusive resource requires reconciliation or completion: '+t.resource);
 }
 function evidence(e,kind){
- requireThat(e?.outcome==='pass'&&Array.isArray(e.refs)&&e.refs.length>0&&e.refs.every(x=>text(x,1000)),'Passing evidence references required');
- requireThat(stable(e).length<=10000,'Evidence is metadata, not raw notes');
+ requireThat(e?.outcome==='pass','Passing evidence references required');
+ references(e.refs);boundedMetadata(e,'Evidence is metadata, not raw notes');
  if(kind==='release'){
   requireThat(/^[a-f0-9]{40}$/.test(e.commit??'')&&/^https:\/\//.test(e.ciUrl??'')&&/^https:\/\//.test(e.deploymentUrl??''),'Release requires commit, CI and deployment evidence');
   requireThat(/^https:\/\/kitchenstudio\.design\//.test(e.productionUrl??'')&&Number.isFinite(Date.parse(e.checkedAt))&&e.liveVerified===true,'Release requires actual production readback');
@@ -67,7 +99,7 @@ function defer(t,now,reason,retryable){
  t.status='retry_wait';t.retryAt=iso(now+Math.min(3600000,60000*2**Math.max(0,t.attempts-1)));
 }
 export function inspectQueue(input,now=Date.now()){
- const q=validateQueue(input),issues=[];
+ const q=validateQueue(input),issues=[];requireThat(Number.isFinite(now),'Invalid clock');
  const add=(key,severity,taskId,reason)=>issues.push({key,severity,taskId,reason,fingerprint:hash({key,severity,reason})});
  for(const t of Object.values(q.tasks)){
   if(t.status==='leased'&&Date.parse(t.lease.expiresAt)<=now)add('lease:'+t.id,'warning',t.id,'Lease expired; reconcile side effects before retry');
@@ -76,7 +108,15 @@ export function inspectQueue(input,now=Date.now()){
   if(t.deadline&&!terminal.has(t.status)&&Date.parse(t.deadline)<=now)add('deadline:'+t.id,'critical',t.id,'Task deadline passed without verified completion');
   if(!terminal.has(t.status)&&t.dependencies.some(id=>['blocked','needs_approval','cancelled'].includes(q.tasks[id]?.status)))add('dependency:'+t.id,'warning',t.id,'Dependency requires attention');
  }
- for(const [id,w] of Object.entries(q.workers))if(w.expectedEveryMs&&now-Date.parse(w.at)>w.expectedEveryMs+(w.graceMs??3600000))add('worker:'+id,'warning',null,'Expected worker receipt overdue: '+id);
+ const expected=expectedWorkers(q),anchor=Object.hasOwn(q,'expectationsStartedAt')?(q.expectationsStartedAt===null?null:Date.parse(q.expectationsStartedAt)):earliestOperation(q);
+ for(const [id,e] of Object.entries(expected)){
+  const w=q.workers[id];
+  if(w){if(now-Date.parse(w.at)>e.expectedEveryMs+e.graceMs)add('worker:'+id,'warning',null,'Expected worker receipt overdue: '+id);continue;}
+  const due=e.firstExpectedAt!==null?Date.parse(e.firstExpectedAt):(anchor===null?null:anchor+e.expectedEveryMs);
+  if(due===null)add('worker-uninitialized:'+id,'warning',null,'Expected worker startup anchor uninitialized: '+id);
+  else if(now>due+e.graceMs)add('worker:'+id,'warning',null,'Expected worker has never reported: '+id);
+ }
+ for(const [id,w] of Object.entries(q.workers))if(!Object.hasOwn(expected,id)&&w.expectedEveryMs&&now-Date.parse(w.at)>w.expectedEveryMs+(w.graceMs??3600000))add('worker:'+id,'warning',null,'Expected worker receipt overdue: '+id);
  return issues;
 }
 export function applyCommand(input,c,now=Date.now()){
@@ -85,6 +125,11 @@ export function applyCommand(input,c,now=Date.now()){
  if(prior){requireThat(prior.fingerprint===fingerprint,'opId reused with different command');return {queue:copy(input),result:copy(prior.result)};}
  requireThat(!input.updatedAt||now>=Date.parse(input.updatedAt),'Clock moved backwards; refresh authoritative UTC time');
  const q=copy(input);let result={ok:true};
+ // Anchor once to committed history; a legacy nonempty state without history stays visibly uninitialized.
+ if(q.expectationsStartedAt===undefined){
+  const anchor=earliestOperation(q);
+  q.expectationsStartedAt=anchor!==null?iso(anchor):(q.revision===0?iso(now):null);
+ }else if(q.expectationsStartedAt===null&&q.revision===0)q.expectationsStartedAt=iso(now);
  switch(c.type){
  case 'batch':{
   requireThat(Array.isArray(c.commands)&&c.commands.length>0&&c.commands.length<=10&&c.commands.every(x=>x.type!=='batch'&&x.opId!==c.opId),'Invalid bounded command batch');
@@ -136,17 +181,19 @@ export function applyCommand(input,c,now=Date.now()){
   const t=lease(q,c,now);requireThat(text(c.reason),'Block reason required');t.status=c.approvalRequired?'needs_approval':'blocked';t.reason=c.reason;t.lease=null;t.retryAt=null;break;
  }
  case 'resume':{
-  const t=q.tasks[c.taskId];requireThat(c.worker==='supervisor'&&t?.status==='blocked'&&text(c.resolution)&&Array.isArray(c.refs)&&c.refs.length,'Only supervisor may resume resolved non-approval blockers');
+  const t=q.tasks[c.taskId];requireThat(c.worker==='supervisor'&&t?.status==='blocked'&&text(c.resolution),'Only supervisor may resume resolved non-approval blockers');
   // A supervisor may queue a fresh bounded attempt only after recording new evidence.
-  requireThat(c.resolution!==t.reason,'New resolution evidence required');t.status='ready';t.reason=null;t.attempts=0;t.retryAt=null;t.resolution={summary:c.resolution,refs:copy(c.refs),at:iso(now)};break;
+  requireThat(c.resolution!==t.reason,'New resolution evidence required');t.status='ready';t.reason=null;t.attempts=0;t.retryAt=null;t.resolution=resolutionMetadata({summary:c.resolution,refs:c.refs,at:iso(now)});break;
  }
  case 'retire':{
-  const t=q.tasks[c.taskId];requireThat(c.worker==='supervisor'&&t&&['blocked','needs_approval','ready','retry_wait'].includes(t.status)&&text(c.resolution)&&Array.isArray(c.refs)&&c.refs.length,'Only supervisor may retire inactive work with resolution evidence');
-  if(t.status==='needs_approval')requireThat(['approved','declined'].includes(c.humanDecision?.decision)&&text(c.humanDecision?.reference),'Actual human decision reference required for approval-held work');
-  t.status='cancelled';t.reason=c.resolution;t.retryAt=null;t.lease=null;t.retirement={at:iso(now),refs:copy(c.refs),humanDecision:c.humanDecision??null};break;
+  const t=q.tasks[c.taskId];requireThat(c.worker==='supervisor'&&t&&['blocked','needs_approval','ready','retry_wait'].includes(t.status)&&text(c.resolution),'Only supervisor may retire inactive work with resolution evidence');
+  if(t.status==='needs_approval'||c.humanDecision!==undefined)humanDecision(c.humanDecision);
+  const retirement=resolutionMetadata({at:iso(now),refs:c.refs,humanDecision:c.humanDecision??null},true);
+  boundedMetadata({summary:c.resolution,...retirement},'Evidence is metadata, not raw notes');
+  t.status='cancelled';t.reason=c.resolution;t.retryAt=null;t.lease=null;t.retirement=retirement;break;
  }
  case 'worker_tick':{
-  requireThat(text(c.worker,120)&&validId(c.runId),'Worker identity required');
+  requireThat(validId(c.worker)&&validId(c.runId),'Worker identity required');
   requireThat(c.expectedEveryMs===undefined||(Number.isInteger(c.expectedEveryMs)&&c.expectedEveryMs>=3600000),'Expected polling cadence must be at least hourly');
   q.workers[c.worker]={at:iso(now),runId:c.runId,expectedEveryMs:c.expectedEveryMs??null,graceMs:3600000};break;
  }

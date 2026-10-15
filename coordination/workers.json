@@ -85,5 +85,53 @@
     }
   ],
   "runtimeWarning": "This is the desired role map, not confirmation of scheduler edits. Local APIs may require a local calling thread. Shared queue and schedules poll; no instant trigger or continuous execution is promised.",
-  "activationGate": "Recurring queue writes are on hold: actual Cloudflare preview builds on state commits require an authorized metadata-branch exclusion or a verified non-deploying backend."
+  "activationGate": "Recurring queue writes are on hold: actual Cloudflare preview builds on state commits require an authorized metadata-branch exclusion or a verified non-deploying backend.",
+  "expectedWorkers": {
+    "supervisor": {
+      "expectedEveryMs": 3600000,
+      "graceMs": 3600000,
+      "firstExpectedAt": null
+    },
+    "catalog": {
+      "expectedEveryMs": 86400000,
+      "graceMs": 3600000,
+      "firstExpectedAt": null
+    },
+    "discovery": {
+      "expectedEveryMs": 86400000,
+      "graceMs": 3600000,
+      "firstExpectedAt": null
+    },
+    "reviewer": {
+      "expectedEveryMs": 432000000,
+      "graceMs": 3600000,
+      "firstExpectedAt": null
+    },
+    "reliability": {
+      "expectedEveryMs": 259200000,
+      "graceMs": 3600000,
+      "firstExpectedAt": null
+    },
+    "content-qa": {
+      "expectedEveryMs": 86400000,
+      "graceMs": 3600000,
+      "firstExpectedAt": null
+    },
+    "social-readiness": {
+      "expectedEveryMs": 43200000,
+      "graceMs": 3600000,
+      "firstExpectedAt": null
+    },
+    "product": {
+      "expectedEveryMs": 604800000,
+      "graceMs": 3600000,
+      "firstExpectedAt": null
+    },
+    "cx": {
+      "expectedEveryMs": 604800000,
+      "graceMs": 3600000,
+      "firstExpectedAt": null
+    }
+  },
+  "expectationPolicy": "Monitoring expectations only; not scheduler activation evidence. firstExpectedAt may be explicitly anchored; otherwise use persisted expectationsStartedAt, or the earliest committed operation for legacy schema1 state. No anchor is an uninitialized warning, never healthy. Cadence is the maximum nominal gap plus grace (weekly roles retain their full gap). The recurring-write activation gate still applies."
 }
