@@ -25,13 +25,13 @@
         "361286",
         "361290"
       ],
-      "state": "prepared",
+      "state": "pr-open",
       "source_before": 444,
       "source_after": 448,
       "verified_additions": 4,
       "merged_additions": 0,
       "live_verified_additions": 0,
-      "pr_url": null,
+      "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/7",
       "merge_sha": null,
       "deployment_url": null,
       "evidence": "catalogue-evidence.json",
@@ -52,7 +52,8 @@
         },
         "catalogue_validation": "448 rows; 444 original rows unchanged; normalized identities unique; four exact SKU aliases unique; field evidence checks pass",
         "app_search_add": "All four exact manufacturer SKUs successfully searched and added in local browser; built catalogue.json has 448 rows",
-        "browser": "System /usr/bin/chromium; pinned Playwright browser download blocked by proxy"
+        "browser": "System /usr/bin/chromium; pinned Playwright browser download blocked by proxy",
+        "regressions": "npm run test:ci passed: build, existing app/browser suite and MCP suite"
       }
     }
   ]
