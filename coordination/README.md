@@ -6,6 +6,8 @@ Workers wake on their existing schedules and poll this queue. A handoff makes wo
 
 The queue is `coordination/queue.json` on the dedicated `coordination-state` Git branch in this repository. Application source stays on main. Never put customer records, credentials, buyer-question banks, commercial hypotheses, raw private notes or private document URLs on this public branch. Store only sanitized task IDs, roles, public evidence references, artifact hashes and outcomes. Public lease tokens are fencing identifiers, not credentials. Repository write access is the trust boundary.
 
+**Activation gate observed 15 October 2026:** the bounded connected pilot proved GitHub CAS, but Cloudflare currently builds and deploys a preview after each coordination-state commit. Do not enable recurring ledger writes until the authorized configuration owner excludes that metadata branch, or a supported non-deploying CAS backend is verified. Do not silently change Cloudflare settings or mistake a successful preview check for a skipped build. Source and tests can ship while this operational gate remains explicit.
+
 Use the connected GitHub tools already authorized for this repository. No new account, service, token, database or scheduler configuration is required. Do not edit Codex's hidden scheduler database or TOML files. If the calling environment cannot update a schedule through the supported scheduler API, record that exact blocker and leave the configuration unchanged.
 
 ### Optimistic transaction protocol
