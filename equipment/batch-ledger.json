@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-15",
+  "target": {
+    "minimum_live_count": 1001,
+    "deadline": "2026-10-31",
+    "daily_aim": [
+      35,
+      40
+    ]
+  },
+  "baseline": {
+    "main_sha": "f44cb7cf826ba4a62de0652728b52c1783919597",
+    "merged_count": 444,
+    "live_count": null,
+    "live_blocker": "Workspace outbound proxy HTTP 403; browser ERR_TUNNEL_CONNECTION_FAILED; web tool inaccessible."
+  },
+  "batches": [
+    {
+      "id": "2026-10-15-electrolux-passive-01",
+      "manufacturer": "Electrolux Professional",
+      "models": [
+        "361128",
+        "361132",
+        "361286",
+        "361290"
+      ],
+      "state": "prepared",
+      "source_before": 444,
+      "source_after": 448,
+      "verified_additions": 4,
+      "merged_additions": 0,
+      "live_verified_additions": 0,
+      "pr_url": null,
+      "merge_sha": null,
+      "deployment_url": null,
+      "evidence": "catalogue-evidence.json",
+      "csv": "equipment/batches/2026-10-15-electrolux-passive-01.csv",
+      "limitations": [
+        "Official PDF text reviewed; binary archival and visual drawing inspection unavailable. Explicit dimension labels and complete mechanical descriptions support the imported fields.",
+        "Legacy queue not accessible; overlap unknown, so do not claim these are beyond the 455 held candidates."
+      ],
+      "validation": {
+        "import_first_run": {
+          "added": 4,
+          "duplicates": 0,
+          "skipped": 0
+        },
+        "import_repeat_dry_run": {
+          "added": 0,
+          "duplicates": 4
+        },
+        "catalogue_validation": "448 rows; 444 original rows unchanged; normalized identities unique; four exact SKU aliases unique; field evidence checks pass",
+        "app_search_add": "All four exact manufacturer SKUs successfully searched and added in local browser; built catalogue.json has 448 rows",
+        "browser": "System /usr/bin/chromium; pinned Playwright browser download blocked by proxy"
+      }
+    }
+  ]
+}

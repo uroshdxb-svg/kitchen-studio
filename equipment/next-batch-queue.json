@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "legacy_queue": {
+    "reported_held_count": 455,
+    "source": "PR #5 body and import-queue.mjs",
+    "sheet_url": null,
+    "state": "held-source-unavailable",
+    "missing": [
+      "Exact original Sheet URL/ID and authorized access; not found by connected Drive title searches or Kitchen Studio folder listing.",
+      "Per-row complete official exact-variant evidence before importing."
+    ],
+    "count_policy": "Do not subtract newly researched models from 455 until overlap is reconciled."
+  },
+  "next_batch": {
+    "id": "2026-10-16-electrolux-passive-02",
+    "state": "research-required",
+    "manufacturer": "Electrolux Professional",
+    "candidates": [
+      {
+        "model": "361288",
+        "discovery_url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-rack-trolley-for-10-gn-1-1-361128/",
+        "missing": [
+          "Open exact product page and linked current specification.",
+          "Check exact identity, external dimensions, mounting, all utilities and installation notes.",
+          "Deduplicate exact SKU and aliases against current main and restored legacy queue."
+        ]
+      },
+      {
+        "model": "361294",
+        "discovery_url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-rack-trolley-for-10-gn-1-1-361128/",
+        "missing": [
+          "Open exact product page and linked current specification.",
+          "Check exact identity, external dimensions, mounting, all utilities and installation notes.",
+          "Deduplicate exact SKU and aliases against current main and restored legacy queue."
+        ]
+      },
+      {
+        "model": "361296",
+        "discovery_url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-rack-trolley-for-10-gn-1-1-361128/",
+        "missing": [
+          "Open exact product page and linked current specification.",
+          "Check exact identity, external dimensions, mounting, all utilities and installation notes.",
+          "Deduplicate exact SKU and aliases against current main and restored legacy queue."
+        ]
+      },
+      {
+        "model": "361292",
+        "discovery_url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-rack-trolley-for-10-gn-1-1-361128/",
+        "missing": [
+          "Open exact product page and linked current specification.",
+          "Check exact identity, external dimensions, mounting, all utilities and installation notes.",
+          "Deduplicate exact SKU and aliases against current main and restored legacy queue."
+        ]
+      },
+      {
+        "model": "361000",
+        "discovery_url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-rack-trolley-for-10-gn-1-1-361128/",
+        "missing": [
+          "Open exact product page and linked current specification.",
+          "Check exact identity, external dimensions, mounting, all utilities and installation notes.",
+          "Deduplicate exact SKU and aliases against current main and restored legacy queue."
+        ]
+      },
+      {
+        "model": "341185",
+        "discovery_url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-rack-trolley-for-10-gn-1-1-361128/",
+        "missing": [
+          "Open exact product page and linked current specification.",
+          "Check exact identity, external dimensions, mounting, all utilities and installation notes.",
+          "Deduplicate exact SKU and aliases against current main and restored legacy queue."
+        ]
+      },
+      {
+        "model": "341184",
+        "discovery_url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-rack-trolley-for-10-gn-1-1-361128/",
+        "missing": [
+          "Open exact product page and linked current specification.",
+          "Check exact identity, external dimensions, mounting, all utilities and installation notes.",
+          "Deduplicate exact SKU and aliases against current main and restored legacy queue."
+        ]
+      }
+    ]
+  }
+}
