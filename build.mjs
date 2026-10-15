@@ -53,6 +53,7 @@ if(mode==="artifact"){
   out(D,"connect/index.html",branded(read("connect.html")));
   out(D,"index.html",branded(read("landing.html")).replace("__KS_CONFIG__",JSON.stringify(cfg)));
   await buildDiscovery((file,data)=>out(D,file,data),branded);
+  for(const f of ['index.html','system.css','client.mjs','telemetry.mjs'])copy('system/'+f,D,'system/'+f);
   for(const f of ["favicon.svg","robots.txt","sample_floorplan.png","demo.mp4","demo.webm","demo-poster.jpg"])if(fs.existsSync(path.join(ROOT,f)))copy(f,D,f);
   for(const f of fs.readdirSync(ROOT).filter(f=>/^shot-.*\.png$/.test(f)))copy(f,D,"shots/"+f.replace(/^shot-/,""));
   out(D,"logo.svg",brand.lockupSVG());
