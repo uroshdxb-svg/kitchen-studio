@@ -1,6 +1,6 @@
 # Daily equipment verification and release
 
-Goal: more than 1,000 real distinct equipment entries on the live platform by 2026-10-31. The verified source baseline on 2026-10-15 is 444 rows at main f44cb7cf826ba4a62de0652728b52c1783919597. The parent independently verified the live app at 444 on 2026-10-15 at 16:18 UTC; subsequent merged additions still require deployment verification. At least 557 net additions are needed from that baseline. Aim for 35–40 daily, split into small manufacturer-specific reviewable batches; evidence quality takes priority.
+Goal: more than 1,000 real distinct equipment entries on the live platform by 2026-10-31. The verified source baseline on 2026-10-15 is 444 rows at main f44cb7cf826ba4a62de0652728b52c1783919597. The parent independently verified the initial live app at 444 on 2026-10-15 at 16:18 UTC. At 17:17:25 UTC, authenticated production verification confirmed both catalogue endpoints at 483, matching source with all 39 additions present; production interactive browser QA remains untested. See the ledger for the complete deployment receipt. At least 557 net additions are needed from that baseline. Aim for 35–40 daily, split into small manufacturer-specific reviewable batches; evidence quality takes priority.
 
 ## Daily execution instruction
 

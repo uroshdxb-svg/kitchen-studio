@@ -26,15 +26,15 @@
         "361286",
         "361290"
       ],
-      "state": "merged-live-verification-pending",
+      "state": "live-verified",
       "source_before": 444,
       "source_after": 448,
       "verified_additions": 4,
       "merged_additions": 4,
-      "live_verified_additions": 0,
+      "live_verified_additions": 4,
       "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/7",
       "merge_sha": "c83fca241c5affe7f2c999dceb3301dbbb473341",
-      "deployment_url": null,
+      "deployment_url": "https://kitchenstudio.design/app/catalogue.json",
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-15-electrolux-passive-01.csv",
       "limitations": [
@@ -57,11 +57,16 @@
         "regressions": "npm run test:ci passed: build, existing app/browser suite and MCP suite",
         "wrangler": "wrangler deploy --dry-run passed with temporary writable config/log directories",
         "github_ci": "https://github.com/uroshdxb-svg/kitchen-studio/actions/runs/38767158907",
-        "review": "Automated review completed; pre-import baseline preservation finding fixed in cc9db01 and thread resolved."
+        "review": "Automated review completed; pre-import baseline preservation finding fixed in cc9db01 and thread resolved.",
+        "production_browser_qa": "untested"
       },
       "source_before_sha": "f44cb7cf826ba4a62de0652728b52c1783919597",
-      "release_receipt": "PR #7 merged by ordinary API; origin/main readback 448 with all four SKUs; production readback HTTP 403. Parent checking deployment separately.",
-      "deployment_blocker": "Parent live count remains 444 after merge. GitHub CI is test-only; README requires Cloudflare Git-triggered build/deploy. Local wrangler whoami unauthenticated. Existing Cloudflare production build must be inspected/retried by authenticated operator; no credential or permission changes made."
+      "release_receipt": "Live catalogue presence and exact source match verified by parent at 2026-10-15T17:17:25Z; see production_verification for endpoints, version/build IDs and timestamps. Interactive production browser QA remains untested.",
+      "deployment_blocker": null,
+      "live_verified_at": "2026-10-15T17:17:25Z",
+      "production_verification_ref": "production_verification",
+      "historical_deployment_blocker": "Parent live count remains 444 after merge. GitHub CI is test-only; README requires Cloudflare Git-triggered build/deploy. Local wrangler whoami unauthenticated. Existing Cloudflare production build must be inspected/retried by authenticated operator; no credential or permission changes made.",
+      "historical_pre_deployment_release_receipt": "PR #7 merged by ordinary API; origin/main readback 448 with all four SKUs; production readback HTTP 403. Parent checking deployment separately."
     },
     {
       "id": "2026-10-15-electrolux-passive-02",
@@ -75,16 +80,16 @@
         "341185",
         "341184"
       ],
-      "state": "merged-live-verification-pending",
+      "state": "live-verified",
       "source_before": 448,
       "source_before_sha": "c83fca241c5affe7f2c999dceb3301dbbb473341",
       "source_after": 455,
       "verified_additions": 7,
       "merged_additions": 7,
-      "live_verified_additions": 0,
+      "live_verified_additions": 7,
       "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/8",
       "merge_sha": "704e9f8ac7cd3794b62a228e165f394a3ce58e41",
-      "deployment_url": null,
+      "deployment_url": "https://kitchenstudio.design/app/catalogue.json",
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-15-electrolux-passive-02.csv",
       "limitations": [
@@ -96,8 +101,12 @@
         "preservation": "448 prior rows unchanged; normalized identities and exact CODs unique",
         "regressions": "npm run test:ci passed (system Chromium); all seven exact SKU search/add checks passed; built catalogue readback 455",
         "github_ci": "https://github.com/uroshdxb-svg/kitchen-studio/actions/runs/38768355555",
-        "review": "Automated review completed without inline findings; ordinary expected-head merge succeeded."
-      }
+        "review": "Automated review completed without inline findings; ordinary expected-head merge succeeded.",
+        "production_browser_qa": "untested"
+      },
+      "live_verified_at": "2026-10-15T17:17:25Z",
+      "production_verification_ref": "production_verification",
+      "release_receipt": "Live catalogue presence and exact source match verified by parent at 2026-10-15T17:17:25Z; see production_verification for endpoints, version/build IDs and timestamps. Interactive production browser QA remains untested."
     },
     {
       "id": "2026-10-15-electrolux-gn-03",
@@ -109,16 +118,16 @@
         "361262",
         "361263"
       ],
-      "state": "merged-live-verification-pending",
+      "state": "live-verified",
       "source_before": 455,
       "source_before_sha": "704e9f8ac7cd3794b62a228e165f394a3ce58e41",
       "source_after": 460,
       "verified_additions": 5,
       "merged_additions": 5,
-      "live_verified_additions": 0,
+      "live_verified_additions": 5,
       "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/9",
       "merge_sha": "964d7fb5ce41947368d044a0957af30bb8180fb2",
-      "deployment_url": null,
+      "deployment_url": "https://kitchenstudio.design/app/catalogue.json",
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-15-electrolux-gn-03.csv",
       "limitations": [
@@ -130,8 +139,12 @@
         "preservation": "455 prior rows unchanged; exact manufacturer identities unique",
         "regressions": "npm run test:ci passed with system Chromium; all five exact SKUs searched and added; built catalogue readback 460",
         "github_ci": "https://github.com/uroshdxb-svg/kitchen-studio/actions/runs/38769811824",
-        "review": "Queue rollover and original/held population findings corrected; threads resolved; ordinary expected-head merge succeeded."
-      }
+        "review": "Queue rollover and original/held population findings corrected; threads resolved; ordinary expected-head merge succeeded.",
+        "production_browser_qa": "untested"
+      },
+      "live_verified_at": "2026-10-15T17:17:25Z",
+      "production_verification_ref": "production_verification",
+      "release_receipt": "Live catalogue presence and exact source match verified by parent at 2026-10-15T17:17:25Z; see production_verification for endpoints, version/build IDs and timestamps. Interactive production browser QA remains untested."
     },
     {
       "id": "2026-10-15-electrolux-service-04",
@@ -151,16 +164,16 @@
         "361212",
         "361216"
       ],
-      "state": "merged-live-verification-pending",
+      "state": "live-verified",
       "source_before": 460,
       "source_before_sha": "11d2c34f50c9d3208e6d1c34f8acb69028415809",
       "source_after": 473,
       "verified_additions": 13,
       "merged_additions": 13,
-      "live_verified_additions": 0,
+      "live_verified_additions": 13,
       "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/10",
       "merge_sha": "791776af45883480ba290d2364f7a7ff24e7d2bf",
-      "deployment_url": null,
+      "deployment_url": "https://kitchenstudio.design/app/catalogue.json",
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-15-electrolux-service-04.csv",
       "limitations": [
@@ -172,8 +185,12 @@
         "preservation": "460 previous rows unchanged; normalized identities and exact SKUs unique",
         "regressions": "npm run test:ci passed using system Chromium; all 13 exact SKUs searched and added; built catalogue readback 473",
         "github_ci": "https://github.com/uroshdxb-svg/kitchen-studio/actions/runs/38769942336",
-        "review": "Automated review completed without findings; subsequent queue reconciliation reviewed by integration owner; ordinary expected-head merge succeeded."
-      }
+        "review": "Automated review completed without findings; subsequent queue reconciliation reviewed by integration owner; ordinary expected-head merge succeeded.",
+        "production_browser_qa": "untested"
+      },
+      "live_verified_at": "2026-10-15T17:17:25Z",
+      "production_verification_ref": "production_verification",
+      "release_receipt": "Live catalogue presence and exact source match verified by parent at 2026-10-15T17:17:25Z; see production_verification for endpoints, version/build IDs and timestamps. Interactive production browser QA remains untested."
     },
     {
       "id": "2026-10-15-cambro-05",
@@ -184,16 +201,16 @@
         "CD1313",
         "CD1826PDB"
       ],
-      "state": "merged-live-verification-pending",
+      "state": "live-verified",
       "source_before": 473,
       "source_before_sha": "e7947d245c6f0d1aaf5b0317f391a296ba250a80",
       "source_after": 477,
       "verified_additions": 4,
       "merged_additions": 4,
-      "live_verified_additions": 0,
+      "live_verified_additions": 4,
       "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/11",
       "merge_sha": "903907f9daa66a47f9944b24db876d36c82f55ba",
-      "deployment_url": null,
+      "deployment_url": "https://kitchenstudio.design/app/catalogue.json",
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-15-cambro-05.csv",
       "limitations": [
@@ -205,8 +222,12 @@
         "preservation": "473 prior rows unchanged; normalized identities unique",
         "regressions": "npm run test:ci passed using system Chromium; all four exact SKUs searched and added; built catalogue readback 477",
         "github_ci": "https://github.com/uroshdxb-svg/kitchen-studio/actions/runs/38770000684",
-        "review": "Automated review completed without findings; ordinary expected-head merge succeeded."
-      }
+        "review": "Automated review completed without findings; ordinary expected-head merge succeeded.",
+        "production_browser_qa": "untested"
+      },
+      "live_verified_at": "2026-10-15T17:17:25Z",
+      "production_verification_ref": "production_verification",
+      "release_receipt": "Live catalogue presence and exact source match verified by parent at 2026-10-15T17:17:25Z; see production_verification for endpoints, version/build IDs and timestamps. Interactive production browser QA remains untested."
     },
     {
       "id": "2026-10-15-electrolux-service-06",
@@ -219,16 +240,16 @@
         "361222",
         "361230"
       ],
-      "state": "merged-live-verification-pending",
+      "state": "live-verified",
       "source_before": 477,
       "source_before_sha": "903907f9daa66a47f9944b24db876d36c82f55ba",
       "source_after": 483,
       "verified_additions": 6,
       "merged_additions": 6,
-      "live_verified_additions": 0,
+      "live_verified_additions": 6,
       "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/12",
       "merge_sha": "34672b7fe165c9660663fc9c2fc5527eb200c897",
-      "deployment_url": null,
+      "deployment_url": "https://kitchenstudio.design/app/catalogue.json",
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-15-electrolux-service-06.csv",
       "limitations": [
@@ -240,26 +261,54 @@
         "preservation": "477 prior rows unchanged; exact CODs and normalized identities unique",
         "regressions": "npm run test:ci passed with system Chromium; all six exact SKUs searched and added; built catalogue readback 483",
         "github_ci": "https://github.com/uroshdxb-svg/kitchen-studio/actions/runs/38770443714",
-        "review": "Automated review completed without findings; metadata-only reconciliation reviewed by integration owner; ordinary expected-head merge succeeded."
+        "review": "Automated review completed without findings; metadata-only reconciliation reviewed by integration owner; ordinary expected-head merge succeeded.",
+        "production_browser_qa": "untested"
       },
-      "release_receipt": "origin/main readback confirmed 483 entries and all six final-batch exact CODs after merge. Live remains last verified by parent at 444; delivered additions remain zero."
+      "release_receipt": "Live catalogue presence and exact source match verified by parent at 2026-10-15T17:17:25Z; see production_verification for endpoints, version/build IDs and timestamps. Interactive production browser QA remains untested.",
+      "live_verified_at": "2026-10-15T17:17:25Z",
+      "production_verification_ref": "production_verification",
+      "historical_pre_deployment_release_receipt": "origin/main readback confirmed 483 entries and all six final-batch exact CODs after merge. Live remains last verified by parent at 444; delivered additions remain zero."
     }
   ],
   "current_merged": {
-    "sha": "34672b7fe165c9660663fc9c2fc5527eb200c897",
+    "sha": "3bfb4a6937ddb8ecfdc1808a305af8cf3552a42f",
     "count": 483,
-    "as_of": "2026-10-15T16:39:51.189400+00:00",
-    "live_count": 444
+    "as_of": "2026-10-15T17:17:25Z",
+    "live_count": 483
   },
   "daily_totals": {
     "date": "2026-10-15",
     "verified_additions": 39,
     "merged_additions": 39,
-    "live_verified_additions": 0,
+    "live_verified_additions": 39,
     "catalogue_count": 483,
-    "last_verified_live_count": 444,
-    "deployment_blocker": "Authenticated operator must inspect/retry existing connected Cloudflare production build. No Cloudflare credentials available in execution environment; parent browser signed out.",
+    "last_verified_live_count": 483,
+    "deployment_blocker": null,
     "remaining_to_target_from_merged": 518,
-    "remaining_to_target_from_last_verified_live": 557
+    "remaining_to_target_from_last_verified_live": 518,
+    "historical_deployment_blocker": "Authenticated operator must inspect/retry existing connected Cloudflare production build. No Cloudflare credentials available in execution environment; parent browser signed out.",
+    "production_browser_qa": "untested"
+  },
+  "production_verification": {
+    "verified_at": "2026-10-15T17:17:25Z",
+    "reported_by": "Parent thread 01a13bce-03b7-71b0-8de0-a73fdfda8012 using the user authenticated local Cloudflare conversation; receipt supplied to integration owner, not independently re-fetched in this execution environment.",
+    "source_sha": "3bfb4a6937ddb8ecfdc1808a305af8cf3552a42f",
+    "catalogue_count": 483,
+    "verified_additions": 39,
+    "catalogue_urls": [
+      "https://kitchenstudio.design/app/catalogue.json",
+      "https://kitchen-studio.urosh-dxb.workers.dev/app/catalogue.json"
+    ],
+    "result": "Both production endpoints contain 483 entries exactly matching source; all 39 additions present. Custom-domain HTTP 200 and exact catalogue match verified at the stated time.",
+    "production_version": "f2c7f1f1-0738-4fee-a614-578612fe69f6",
+    "deployed_at": "2026-10-15T16:45:14.898804Z",
+    "traffic_percent": 100,
+    "build_id": "6e6db2fc-bf38-42c0-b8b0-e739887b24fe",
+    "build_status": "succeeded",
+    "build_command": "npx wrangler deploy",
+    "build_finished_at": "2026-10-15T16:45:23.390Z",
+    "manual_deployment": false,
+    "configuration_change": false,
+    "interactive_browser_qa": "untested in production; earlier local browser checks are preserved separately"
   }
 }
