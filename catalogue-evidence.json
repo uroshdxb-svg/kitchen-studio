@@ -5182,6 +5182,3971 @@
       "reviewed_at": "2026-10-15",
       "integration_review": "Integration owner independently read exact official product pages and linked PDF text; identity, labelled external dimensions and passive mechanical construction agree. No visual review or binary archive claim.",
       "source_row_hash": "44f16001acaa2e5e0e9248e6ae7f0819576118de6ced3c5c3a00741fbfc7b57f"
+    },
+    "electroluxprofessional|361200": {
+      "brand": "Electrolux Professional",
+      "model": "361200",
+      "manufacturer_sku": "361200 (STR602WH)",
+      "title": "Two Tier Service Trolley with Handle 600 mm",
+      "review_date": "2026-10-15",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-with-handle-600-mm-361200/",
+          "retrieved_date": "2026-10-15"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361200_two_tier_service_trolley_with_handle_600_mm.pdf?version=1792081159",
+          "revision": "2026/03/13",
+          "pages": 2,
+          "review": "Text only",
+          "retrieved_date": "2026-10-15",
+          "retrieval_method": "web__run click official product page Data Sheet link 18"
+        }
+      ],
+      "dimensions_mm": {
+        "width": 695,
+        "depth": 695,
+        "height": 916
+      },
+      "dimension_evidence": "S1 labelled external dimensions match S2 page 2. Exact SKU and alias on S2 page 1.",
+      "net_weight_kg": 18,
+      "construction": "AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers.",
+      "utility_assessment": {
+        "power": "none",
+        "power_kw": null,
+        "electrical_supply": null,
+        "water": 0,
+        "drain": 0,
+        "gas": "not applicable",
+        "basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields."
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361200",
+        "Storage",
+        "Two Tier Service Trolley with Handle 600 mm",
+        695,
+        695,
+        916,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-with-handle-600-mm-361200/"
+      ],
+      "duplicate_check": {
+        "exact_sku_absent_from_cat_js": true,
+        "alias_absent_from_cat_js": true
+      },
+      "blockers": [],
+      "limitations": [
+        "No visual drawing review or binary archive performed.",
+        "No assembly or numeric installation clearance claims.",
+        "Integration owner must validate full import schema, duplicates, and certification."
+      ],
+      "schema_version": 1,
+      "key": "electroluxprofessional|361200",
+      "market": "Global (unpowered)",
+      "installation_details": {
+        "mount": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.",
+        "assembly": "No delivery assembly claim; welded frame construction documented.",
+        "clearance_status": "Numeric clearance not supplied; no zero clearance claim. Allow handling access.",
+        "utility_basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+      },
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361200 matches exact PDF 361200 (STR602WH)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Both sources explicitly label external Width 695, Depth 695, Height 916 mm; no conversion."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.\", \"assembly\": \"No delivery assembly claim; welded frame construction documented.\", \"clearance_status\": \"Numeric clearance not supplied; no zero clearance claim. Allow handling access.\", \"utility_basis\": \"Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page and exact linked PDF dated 2026/03/13 reviewed."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Storage/floor/none candidate; importer and regression checks remain with integration owner."
+        }
+      },
+      "review_scope": "Text-only official product page and two-page manufacturer PDF. No visual drawing review, archive hash or compliance certification claimed.",
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361200",
+        "Storage",
+        "Two Tier Service Trolley with Handle 600 mm",
+        "695",
+        "695",
+        "916",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-with-handle-600-mm-361200/",
+        "Global (unpowered)",
+        "Official page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361200 matches exact PDF 361200 (STR602WH)."
+        },
+        "model": {
+          "value": "361200",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361200 matches exact PDF 361200 (STR602WH)."
+        },
+        "w": {
+          "value": "695",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 695, Depth 695, Height 916 mm; no conversion.",
+          "original_value": "695",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "d": {
+          "value": "695",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 695, Depth 695, Height 916 mm; no conversion.",
+          "original_value": "695",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "h": {
+          "value": "916",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 695, Depth 695, Height 916 mm; no conversion.",
+          "original_value": "916",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        }
+      },
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner reviewed exact-model research dossier and per-model source notes; independently re-opened official product and linked PDF for 361210 and 361314, confirming distinct heights and external/platform dimension scope. Primary text review for every model was performed by delegated Electrolux researcher. No visual review or binary archival claim.",
+      "source_row_hash": "2e8b81195e95d52a691989f5ad7a8885bf4c478cab568263660a3973475121c5"
+    },
+    "electroluxprofessional|361238": {
+      "brand": "Electrolux Professional",
+      "model": "361238",
+      "manufacturer_sku": "361238 (DRT1)",
+      "title": "Dishwasher Rack Dolly 500 mm",
+      "review_date": "2026-10-15",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-dishwasher-rack-dolly-500-mm-361238/",
+          "retrieved_date": "2026-10-15"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361238_dishwasher_rack_dolly_500_mm.pdf?version=1788097037",
+          "revision": "2026/09/10",
+          "pages": 2,
+          "review": "Text only",
+          "retrieved_date": "2026-10-15",
+          "retrieval_method": "web__run click official product page Data Sheet link 18"
+        }
+      ],
+      "dimensions_mm": {
+        "width": 515,
+        "depth": 515,
+        "height": 187
+      },
+      "dimension_evidence": "S1 labelled external dimensions match S2 page 2. Exact SKU and alias on S2 page 1.",
+      "net_weight_kg": 8.4,
+      "construction": "AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Platform 500x500; stacked dishwasher baskets; 100 kg distributed capacity.",
+      "utility_assessment": {
+        "power": "none",
+        "power_kw": null,
+        "electrical_supply": null,
+        "water": 0,
+        "drain": 0,
+        "gas": "not applicable",
+        "basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields."
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361238",
+        "Storage",
+        "Dishwasher Rack Dolly 500 mm",
+        515,
+        515,
+        187,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-dishwasher-rack-dolly-500-mm-361238/"
+      ],
+      "duplicate_check": {
+        "exact_sku_absent_from_cat_js": true,
+        "alias_absent_from_cat_js": true
+      },
+      "blockers": [],
+      "limitations": [
+        "No visual drawing review or binary archive performed.",
+        "No assembly or numeric installation clearance claims.",
+        "Integration owner must validate full import schema, duplicates, and certification."
+      ],
+      "schema_version": 1,
+      "key": "electroluxprofessional|361238",
+      "market": "Global (unpowered)",
+      "installation_details": {
+        "mount": "Mobile floor trolley with 125 mm wheels.",
+        "assembly": "No delivery assembly claim; welded frame construction documented.",
+        "clearance_status": "Numeric clearance not supplied; no zero clearance claim. Allow handling access.",
+        "utility_basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Platform 500x500; stacked dishwasher baskets; 100 kg distributed capacity."
+      },
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361238 matches exact PDF 361238 (DRT1)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Both sources explicitly label external Width 515, Depth 515, Height 187 mm; no conversion."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor trolley with 125 mm wheels."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Platform 500x500; stacked dishwasher baskets; 100 kg distributed capacity."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Platform 500x500; stacked dishwasher baskets; 100 kg distributed capacity."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Platform 500x500; stacked dishwasher baskets; 100 kg distributed capacity."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Platform 500x500; stacked dishwasher baskets; 100 kg distributed capacity."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Mobile floor trolley with 125 mm wheels.\", \"assembly\": \"No delivery assembly claim; welded frame construction documented.\", \"clearance_status\": \"Numeric clearance not supplied; no zero clearance claim. Allow handling access.\", \"utility_basis\": \"Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Platform 500x500; stacked dishwasher baskets; 100 kg distributed capacity.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page and exact linked PDF dated 2026/09/10 reviewed."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Storage/floor/none candidate; importer and regression checks remain with integration owner."
+        }
+      },
+      "review_scope": "Text-only official product page and two-page manufacturer PDF. No visual drawing review, archive hash or compliance certification claimed.",
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361238",
+        "Storage",
+        "Dishwasher Rack Dolly 500 mm",
+        "515",
+        "515",
+        "187",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-dishwasher-rack-dolly-500-mm-361238/",
+        "Global (unpowered)",
+        "Official page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361238 matches exact PDF 361238 (DRT1)."
+        },
+        "model": {
+          "value": "361238",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361238 matches exact PDF 361238 (DRT1)."
+        },
+        "w": {
+          "value": "515",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 515, Depth 515, Height 187 mm; no conversion.",
+          "original_value": "515",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "d": {
+          "value": "515",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 515, Depth 515, Height 187 mm; no conversion.",
+          "original_value": "515",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "h": {
+          "value": "187",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 515, Depth 515, Height 187 mm; no conversion.",
+          "original_value": "187",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Mobile floor trolley with 125 mm wheels."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Platform 500x500; stacked dishwasher baskets; 100 kg distributed capacity."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Platform 500x500; stacked dishwasher baskets; 100 kg distributed capacity."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Platform 500x500; stacked dishwasher baskets; 100 kg distributed capacity."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Platform 500x500; stacked dishwasher baskets; 100 kg distributed capacity."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Platform 500x500; stacked dishwasher baskets; 100 kg distributed capacity."
+        }
+      },
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner reviewed exact-model research dossier and per-model source notes; independently re-opened official product and linked PDF for 361210 and 361314, confirming distinct heights and external/platform dimension scope. Primary text review for every model was performed by delegated Electrolux researcher. No visual review or binary archival claim.",
+      "source_row_hash": "f986949b646a74736b3cabb245f89ee7525ffea03558256e47bd332f05ada4a7"
+    },
+    "electroluxprofessional|361314": {
+      "brand": "Electrolux Professional",
+      "model": "361314",
+      "manufacturer_sku": "361314 (CTR11VH)",
+      "title": "Trolley for GN 1/1 variable height",
+      "review_date": "2026-10-15",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-trolley-for-gn-1-1-variable-height-361314/",
+          "retrieved_date": "2026-10-15"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361314_trolley_for_gn_1_1_variable_height.pdf?version=1792081159",
+          "revision": "2026/03/13",
+          "pages": 2,
+          "review": "Text only",
+          "retrieved_date": "2026-10-15",
+          "retrieval_method": "web__run click official product page Data Sheet link 18"
+        }
+      ],
+      "dimensions_mm": {
+        "width": 700,
+        "depth": 390,
+        "height": 1100
+      },
+      "dimension_evidence": "S1 labelled external dimensions match S2 page 2. Exact SKU and alias on S2 page 1.",
+      "net_weight_kg": 15,
+      "construction": "AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Height adjustable GN1/1 support; 70 kg evenly distributed load; 550x390 platform.",
+      "utility_assessment": {
+        "power": "none",
+        "power_kw": null,
+        "electrical_supply": null,
+        "water": 0,
+        "drain": 0,
+        "gas": "not applicable",
+        "basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields."
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361314",
+        "Storage",
+        "Trolley for GN 1/1 variable height",
+        700,
+        390,
+        1100,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-trolley-for-gn-1-1-variable-height-361314/"
+      ],
+      "duplicate_check": {
+        "exact_sku_absent_from_cat_js": true,
+        "alias_absent_from_cat_js": true
+      },
+      "blockers": [],
+      "limitations": [
+        "No visual drawing review or binary archive performed.",
+        "No assembly or numeric installation clearance claims.",
+        "Integration owner must validate full import schema, duplicates, and certification."
+      ],
+      "schema_version": 1,
+      "key": "electroluxprofessional|361314",
+      "market": "Global (unpowered)",
+      "installation_details": {
+        "mount": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.",
+        "assembly": "No delivery assembly claim; welded frame construction documented.",
+        "clearance_status": "Numeric clearance not supplied; no zero clearance claim. Allow handling access.",
+        "utility_basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Height adjustable GN1/1 support; 70 kg evenly distributed load; 550x390 platform."
+      },
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361314 matches exact PDF 361314 (CTR11VH)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Both sources explicitly label external Width 700, Depth 390, Height 1100 mm; no conversion."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Height adjustable GN1/1 support; 70 kg evenly distributed load; 550x390 platform."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Height adjustable GN1/1 support; 70 kg evenly distributed load; 550x390 platform."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Height adjustable GN1/1 support; 70 kg evenly distributed load; 550x390 platform."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Height adjustable GN1/1 support; 70 kg evenly distributed load; 550x390 platform."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.\", \"assembly\": \"No delivery assembly claim; welded frame construction documented.\", \"clearance_status\": \"Numeric clearance not supplied; no zero clearance claim. Allow handling access.\", \"utility_basis\": \"Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Height adjustable GN1/1 support; 70 kg evenly distributed load; 550x390 platform.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page and exact linked PDF dated 2026/03/13 reviewed."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Storage/floor/none candidate; importer and regression checks remain with integration owner."
+        }
+      },
+      "review_scope": "Text-only official product page and two-page manufacturer PDF. No visual drawing review, archive hash or compliance certification claimed.",
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361314",
+        "Storage",
+        "Trolley for GN 1/1 variable height",
+        "700",
+        "390",
+        "1100",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-trolley-for-gn-1-1-variable-height-361314/",
+        "Global (unpowered)",
+        "Official page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361314 matches exact PDF 361314 (CTR11VH)."
+        },
+        "model": {
+          "value": "361314",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361314 matches exact PDF 361314 (CTR11VH)."
+        },
+        "w": {
+          "value": "700",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 700, Depth 390, Height 1100 mm; no conversion.",
+          "original_value": "700",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "d": {
+          "value": "390",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 700, Depth 390, Height 1100 mm; no conversion.",
+          "original_value": "390",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "h": {
+          "value": "1100",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 700, Depth 390, Height 1100 mm; no conversion.",
+          "original_value": "1100",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Height adjustable GN1/1 support; 70 kg evenly distributed load; 550x390 platform."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Height adjustable GN1/1 support; 70 kg evenly distributed load; 550x390 platform."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Height adjustable GN1/1 support; 70 kg evenly distributed load; 550x390 platform."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Height adjustable GN1/1 support; 70 kg evenly distributed load; 550x390 platform."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Height adjustable GN1/1 support; 70 kg evenly distributed load; 550x390 platform."
+        }
+      },
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner reviewed exact-model research dossier and per-model source notes; independently re-opened official product and linked PDF for 361210 and 361314, confirming distinct heights and external/platform dimension scope. Primary text review for every model was performed by delegated Electrolux researcher. No visual review or binary archival claim.",
+      "source_row_hash": "42d0f94867193668c2f64922d4e45cb7990913459f23aaf64b35a485b756de2d"
+    },
+    "electroluxprofessional|361204": {
+      "brand": "Electrolux Professional",
+      "model": "361204",
+      "manufacturer_sku": "361204 (STR902WH)",
+      "title": "Two Tier Service Trolley with Handle 900 mm",
+      "review_date": "2026-10-15",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-with-handle-900-mm-361204/",
+          "retrieved_date": "2026-10-15"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361204_two_tier_service_trolley_with_handle_900_mm.pdf?version=1786680003",
+          "revision": "2026/03/13",
+          "pages": 2,
+          "review": "Text only",
+          "retrieved_date": "2026-10-15",
+          "retrieval_method": "web__run click official product page Data Sheet link 18"
+        }
+      ],
+      "dimensions_mm": {
+        "width": 995,
+        "depth": 695,
+        "height": 916
+      },
+      "dimension_evidence": "S1 labelled external dimensions match S2 page 2. Exact SKU and alias on S2 page 1.",
+      "net_weight_kg": 27,
+      "construction": "AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers.",
+      "utility_assessment": {
+        "power": "none",
+        "power_kw": null,
+        "electrical_supply": null,
+        "water": 0,
+        "drain": 0,
+        "gas": "not applicable",
+        "basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields."
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361204",
+        "Storage",
+        "Two Tier Service Trolley with Handle 900 mm",
+        995,
+        695,
+        916,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-with-handle-900-mm-361204/"
+      ],
+      "duplicate_check": {
+        "exact_sku_absent_from_cat_js": true,
+        "alias_absent_from_cat_js": true
+      },
+      "blockers": [],
+      "limitations": [
+        "No visual drawing review or binary archive performed.",
+        "No assembly or numeric installation clearance claims.",
+        "Integration owner must validate full import schema, duplicates, and certification."
+      ],
+      "schema_version": 1,
+      "key": "electroluxprofessional|361204",
+      "market": "Global (unpowered)",
+      "installation_details": {
+        "mount": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.",
+        "assembly": "No delivery assembly claim; welded frame construction documented.",
+        "clearance_status": "Numeric clearance not supplied; no zero clearance claim. Allow handling access.",
+        "utility_basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+      },
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361204 matches exact PDF 361204 (STR902WH)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Both sources explicitly label external Width 995, Depth 695, Height 916 mm; no conversion."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.\", \"assembly\": \"No delivery assembly claim; welded frame construction documented.\", \"clearance_status\": \"Numeric clearance not supplied; no zero clearance claim. Allow handling access.\", \"utility_basis\": \"Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page and exact linked PDF dated 2026/03/13 reviewed."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Storage/floor/none candidate; importer and regression checks remain with integration owner."
+        }
+      },
+      "review_scope": "Text-only official product page and two-page manufacturer PDF. No visual drawing review, archive hash or compliance certification claimed.",
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361204",
+        "Storage",
+        "Two Tier Service Trolley with Handle 900 mm",
+        "995",
+        "695",
+        "916",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-with-handle-900-mm-361204/",
+        "Global (unpowered)",
+        "Official page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361204 matches exact PDF 361204 (STR902WH)."
+        },
+        "model": {
+          "value": "361204",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361204 matches exact PDF 361204 (STR902WH)."
+        },
+        "w": {
+          "value": "995",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 995, Depth 695, Height 916 mm; no conversion.",
+          "original_value": "995",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "d": {
+          "value": "695",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 995, Depth 695, Height 916 mm; no conversion.",
+          "original_value": "695",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "h": {
+          "value": "916",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 995, Depth 695, Height 916 mm; no conversion.",
+          "original_value": "916",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        }
+      },
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner reviewed exact-model research dossier and per-model source notes; independently re-opened official product and linked PDF for 361210 and 361314, confirming distinct heights and external/platform dimension scope. Primary text review for every model was performed by delegated Electrolux researcher. No visual review or binary archival claim.",
+      "source_row_hash": "e4fd690516e35bbcc4bc392248d7f2959e9ed5815ac03617a82bb76305f73b66"
+    },
+    "electroluxprofessional|361244": {
+      "brand": "Electrolux Professional",
+      "model": "361244",
+      "manufacturer_sku": "361244 (DRT4)",
+      "title": "4 Dishwasher Rack Trolley",
+      "review_date": "2026-10-15",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-4-dishwasher-rack-trolley-361244/",
+          "retrieved_date": "2026-10-15"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361244_4_dishwasher_rack_trolley.pdf?version=1792081159",
+          "revision": "2026/09/10",
+          "pages": 2,
+          "review": "Text only",
+          "retrieved_date": "2026-10-15",
+          "retrieval_method": "web__run click official product page Data Sheet link 18"
+        }
+      ],
+      "dimensions_mm": {
+        "width": 645,
+        "depth": 645,
+        "height": 900
+      },
+      "dimension_evidence": "S1 labelled external dimensions match S2 page 2. Exact SKU and alias on S2 page 1.",
+      "net_weight_kg": 14,
+      "construction": "AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. L-shaped runners for four 500x500 dishwasher racks.",
+      "utility_assessment": {
+        "power": "none",
+        "power_kw": null,
+        "electrical_supply": null,
+        "water": 0,
+        "drain": 0,
+        "gas": "not applicable",
+        "basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields."
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361244",
+        "Storage",
+        "4 Dishwasher Rack Trolley",
+        645,
+        645,
+        900,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-4-dishwasher-rack-trolley-361244/"
+      ],
+      "duplicate_check": {
+        "exact_sku_absent_from_cat_js": true,
+        "alias_absent_from_cat_js": true
+      },
+      "blockers": [],
+      "limitations": [
+        "No visual drawing review or binary archive performed.",
+        "No assembly or numeric installation clearance claims.",
+        "Integration owner must validate full import schema, duplicates, and certification."
+      ],
+      "schema_version": 1,
+      "key": "electroluxprofessional|361244",
+      "market": "Global (unpowered)",
+      "installation_details": {
+        "mount": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.",
+        "assembly": "No delivery assembly claim; welded frame construction documented.",
+        "clearance_status": "Numeric clearance not supplied; no zero clearance claim. Allow handling access.",
+        "utility_basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. L-shaped runners for four 500x500 dishwasher racks."
+      },
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361244 matches exact PDF 361244 (DRT4)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Both sources explicitly label external Width 645, Depth 645, Height 900 mm; no conversion."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. L-shaped runners for four 500x500 dishwasher racks."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. L-shaped runners for four 500x500 dishwasher racks."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. L-shaped runners for four 500x500 dishwasher racks."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. L-shaped runners for four 500x500 dishwasher racks."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.\", \"assembly\": \"No delivery assembly claim; welded frame construction documented.\", \"clearance_status\": \"Numeric clearance not supplied; no zero clearance claim. Allow handling access.\", \"utility_basis\": \"Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. L-shaped runners for four 500x500 dishwasher racks.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page and exact linked PDF dated 2026/09/10 reviewed."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Storage/floor/none candidate; importer and regression checks remain with integration owner."
+        }
+      },
+      "review_scope": "Text-only official product page and two-page manufacturer PDF. No visual drawing review, archive hash or compliance certification claimed.",
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361244",
+        "Storage",
+        "4 Dishwasher Rack Trolley",
+        "645",
+        "645",
+        "900",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-4-dishwasher-rack-trolley-361244/",
+        "Global (unpowered)",
+        "Official page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361244 matches exact PDF 361244 (DRT4)."
+        },
+        "model": {
+          "value": "361244",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361244 matches exact PDF 361244 (DRT4)."
+        },
+        "w": {
+          "value": "645",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 645, Depth 645, Height 900 mm; no conversion.",
+          "original_value": "645",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "d": {
+          "value": "645",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 645, Depth 645, Height 900 mm; no conversion.",
+          "original_value": "645",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "h": {
+          "value": "900",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 645, Depth 645, Height 900 mm; no conversion.",
+          "original_value": "900",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. L-shaped runners for four 500x500 dishwasher racks."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. L-shaped runners for four 500x500 dishwasher racks."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. L-shaped runners for four 500x500 dishwasher racks."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. L-shaped runners for four 500x500 dishwasher racks."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. L-shaped runners for four 500x500 dishwasher racks."
+        }
+      },
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner reviewed exact-model research dossier and per-model source notes; independently re-opened official product and linked PDF for 361210 and 361314, confirming distinct heights and external/platform dimension scope. Primary text review for every model was performed by delegated Electrolux researcher. No visual review or binary archival claim.",
+      "source_row_hash": "ba1cdc68e8f0b5a48eefa9966b445b786d5e61c365f3234f2e833425ce29590c"
+    },
+    "electroluxprofessional|361252": {
+      "brand": "Electrolux Professional",
+      "model": "361252",
+      "manufacturer_sku": "361252 (CTR71)",
+      "title": "7 GN 1/1 Container Trolley",
+      "review_date": "2026-10-15",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-7-gn-1-1-container-trolley-361252/",
+          "retrieved_date": "2026-10-15"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361252_7_gn_1_1_container_trolley.pdf?version=1786967717",
+          "revision": "2026/03/13",
+          "pages": 2,
+          "review": "Text only",
+          "retrieved_date": "2026-10-15",
+          "retrieval_method": "web__run click official product page Data Sheet link 18"
+        }
+      ],
+      "dimensions_mm": {
+        "width": 452,
+        "depth": 617,
+        "height": 830
+      },
+      "dimension_evidence": "S1 labelled external dimensions match S2 page 2. Exact SKU and alias on S2 page 1.",
+      "net_weight_kg": 13,
+      "construction": "AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Square tube framework; C-shaped non-tip runners for seven GN1/1 containers.",
+      "utility_assessment": {
+        "power": "none",
+        "power_kw": null,
+        "electrical_supply": null,
+        "water": 0,
+        "drain": 0,
+        "gas": "not applicable",
+        "basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields."
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361252",
+        "Storage",
+        "7 GN 1/1 Container Trolley",
+        452,
+        617,
+        830,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-7-gn-1-1-container-trolley-361252/"
+      ],
+      "duplicate_check": {
+        "exact_sku_absent_from_cat_js": true,
+        "alias_absent_from_cat_js": true
+      },
+      "blockers": [],
+      "limitations": [
+        "No visual drawing review or binary archive performed.",
+        "No assembly or numeric installation clearance claims.",
+        "Integration owner must validate full import schema, duplicates, and certification."
+      ],
+      "schema_version": 1,
+      "key": "electroluxprofessional|361252",
+      "market": "Global (unpowered)",
+      "installation_details": {
+        "mount": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.",
+        "assembly": "No delivery assembly claim; welded frame construction documented.",
+        "clearance_status": "Numeric clearance not supplied; no zero clearance claim. Allow handling access.",
+        "utility_basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Square tube framework; C-shaped non-tip runners for seven GN1/1 containers."
+      },
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361252 matches exact PDF 361252 (CTR71)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Both sources explicitly label external Width 452, Depth 617, Height 830 mm; no conversion."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Square tube framework; C-shaped non-tip runners for seven GN1/1 containers."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Square tube framework; C-shaped non-tip runners for seven GN1/1 containers."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Square tube framework; C-shaped non-tip runners for seven GN1/1 containers."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Square tube framework; C-shaped non-tip runners for seven GN1/1 containers."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.\", \"assembly\": \"No delivery assembly claim; welded frame construction documented.\", \"clearance_status\": \"Numeric clearance not supplied; no zero clearance claim. Allow handling access.\", \"utility_basis\": \"Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Square tube framework; C-shaped non-tip runners for seven GN1/1 containers.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page and exact linked PDF dated 2026/03/13 reviewed."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Storage/floor/none candidate; importer and regression checks remain with integration owner."
+        }
+      },
+      "review_scope": "Text-only official product page and two-page manufacturer PDF. No visual drawing review, archive hash or compliance certification claimed.",
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361252",
+        "Storage",
+        "7 GN 1/1 Container Trolley",
+        "452",
+        "617",
+        "830",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-7-gn-1-1-container-trolley-361252/",
+        "Global (unpowered)",
+        "Official page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361252 matches exact PDF 361252 (CTR71)."
+        },
+        "model": {
+          "value": "361252",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361252 matches exact PDF 361252 (CTR71)."
+        },
+        "w": {
+          "value": "452",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 452, Depth 617, Height 830 mm; no conversion.",
+          "original_value": "452",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "d": {
+          "value": "617",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 452, Depth 617, Height 830 mm; no conversion.",
+          "original_value": "617",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "h": {
+          "value": "830",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 452, Depth 617, Height 830 mm; no conversion.",
+          "original_value": "830",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Square tube framework; C-shaped non-tip runners for seven GN1/1 containers."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Square tube framework; C-shaped non-tip runners for seven GN1/1 containers."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Square tube framework; C-shaped non-tip runners for seven GN1/1 containers."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Square tube framework; C-shaped non-tip runners for seven GN1/1 containers."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Square tube framework; C-shaped non-tip runners for seven GN1/1 containers."
+        }
+      },
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner reviewed exact-model research dossier and per-model source notes; independently re-opened official product and linked PDF for 361210 and 361314, confirming distinct heights and external/platform dimension scope. Primary text review for every model was performed by delegated Electrolux researcher. No visual review or binary archival claim.",
+      "source_row_hash": "7aaaf3c5a1745a569e78006d328d6ac76045b8093f5943edcf2dab08b11d224c"
+    },
+    "electroluxprofessional|361208": {
+      "brand": "Electrolux Professional",
+      "model": "361208",
+      "manufacturer_sku": "361208 (STR122WH)",
+      "title": "Two Tier Service Trolley with Handle 1200 mm",
+      "review_date": "2026-10-15",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-with-handle-1200-mm-361208/",
+          "retrieved_date": "2026-10-15"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361208_two_tier_service_trolley_with_handle_1200_mm.pdf?version=1792081159",
+          "revision": "2026/03/13",
+          "pages": 2,
+          "review": "Text only",
+          "retrieved_date": "2026-10-15",
+          "retrieval_method": "web__run click official product page Data Sheet link 18"
+        }
+      ],
+      "dimensions_mm": {
+        "width": 1295,
+        "depth": 695,
+        "height": 916
+      },
+      "dimension_evidence": "S1 labelled external dimensions match S2 page 2. Exact SKU and alias on S2 page 1.",
+      "net_weight_kg": 25,
+      "construction": "AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers.",
+      "utility_assessment": {
+        "power": "none",
+        "power_kw": null,
+        "electrical_supply": null,
+        "water": 0,
+        "drain": 0,
+        "gas": "not applicable",
+        "basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields."
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361208",
+        "Storage",
+        "Two Tier Service Trolley with Handle 1200 mm",
+        1295,
+        695,
+        916,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-with-handle-1200-mm-361208/"
+      ],
+      "duplicate_check": {
+        "exact_sku_absent_from_cat_js": true,
+        "alias_absent_from_cat_js": true
+      },
+      "blockers": [],
+      "limitations": [
+        "No visual drawing review or binary archive performed.",
+        "No assembly or numeric installation clearance claims.",
+        "Integration owner must validate full import schema, duplicates, and certification."
+      ],
+      "schema_version": 1,
+      "key": "electroluxprofessional|361208",
+      "market": "Global (unpowered)",
+      "installation_details": {
+        "mount": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.",
+        "assembly": "No delivery assembly claim; welded frame construction documented.",
+        "clearance_status": "Numeric clearance not supplied; no zero clearance claim. Allow handling access.",
+        "utility_basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+      },
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361208 matches exact PDF 361208 (STR122WH)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Both sources explicitly label external Width 1295, Depth 695, Height 916 mm; no conversion."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.\", \"assembly\": \"No delivery assembly claim; welded frame construction documented.\", \"clearance_status\": \"Numeric clearance not supplied; no zero clearance claim. Allow handling access.\", \"utility_basis\": \"Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page and exact linked PDF dated 2026/03/13 reviewed."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Storage/floor/none candidate; importer and regression checks remain with integration owner."
+        }
+      },
+      "review_scope": "Text-only official product page and two-page manufacturer PDF. No visual drawing review, archive hash or compliance certification claimed.",
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361208",
+        "Storage",
+        "Two Tier Service Trolley with Handle 1200 mm",
+        "1295",
+        "695",
+        "916",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-with-handle-1200-mm-361208/",
+        "Global (unpowered)",
+        "Official page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361208 matches exact PDF 361208 (STR122WH)."
+        },
+        "model": {
+          "value": "361208",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361208 matches exact PDF 361208 (STR122WH)."
+        },
+        "w": {
+          "value": "1295",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 1295, Depth 695, Height 916 mm; no conversion.",
+          "original_value": "1295",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "d": {
+          "value": "695",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 1295, Depth 695, Height 916 mm; no conversion.",
+          "original_value": "695",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "h": {
+          "value": "916",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 1295, Depth 695, Height 916 mm; no conversion.",
+          "original_value": "916",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        }
+      },
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner reviewed exact-model research dossier and per-model source notes; independently re-opened official product and linked PDF for 361210 and 361314, confirming distinct heights and external/platform dimension scope. Primary text review for every model was performed by delegated Electrolux researcher. No visual review or binary archival claim.",
+      "source_row_hash": "ff4d0d2b5a8d6ceda3c0703558c96449d313c9de4217e905a25e4920d8dfe7f6"
+    },
+    "electroluxprofessional|361202": {
+      "brand": "Electrolux Professional",
+      "model": "361202",
+      "manufacturer_sku": "361202 (STR603WH)",
+      "title": "Three Tier Service Trolley with Handle 600 mm",
+      "review_date": "2026-10-15",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-with-handle-600-mm-361202/",
+          "retrieved_date": "2026-10-15"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361202_three_tier_service_trolley_with_handle_600_mm.pdf?version=1792081173",
+          "revision": "2026/03/13",
+          "pages": 2,
+          "review": "Text only",
+          "retrieved_date": "2026-10-15",
+          "retrieval_method": "web__run click official product page Data Sheet link 18"
+        }
+      ],
+      "dimensions_mm": {
+        "width": 695,
+        "depth": 695,
+        "height": 916
+      },
+      "dimension_evidence": "S1 labelled external dimensions match S2 page 2. Exact SKU and alias on S2 page 1.",
+      "net_weight_kg": 22,
+      "construction": "AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers.",
+      "utility_assessment": {
+        "power": "none",
+        "power_kw": null,
+        "electrical_supply": null,
+        "water": 0,
+        "drain": 0,
+        "gas": "not applicable",
+        "basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields."
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361202",
+        "Storage",
+        "Three Tier Service Trolley with Handle 600 mm",
+        695,
+        695,
+        916,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-with-handle-600-mm-361202/"
+      ],
+      "duplicate_check": {
+        "exact_sku_absent_from_cat_js": true,
+        "alias_absent_from_cat_js": true
+      },
+      "blockers": [],
+      "limitations": [
+        "No visual drawing review or binary archive performed.",
+        "No assembly or numeric installation clearance claims.",
+        "Integration owner must validate full import schema, duplicates, and certification."
+      ],
+      "schema_version": 1,
+      "key": "electroluxprofessional|361202",
+      "market": "Global (unpowered)",
+      "installation_details": {
+        "mount": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.",
+        "assembly": "No delivery assembly claim; welded frame construction documented.",
+        "clearance_status": "Numeric clearance not supplied; no zero clearance claim. Allow handling access.",
+        "utility_basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+      },
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361202 matches exact PDF 361202 (STR603WH)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Both sources explicitly label external Width 695, Depth 695, Height 916 mm; no conversion."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.\", \"assembly\": \"No delivery assembly claim; welded frame construction documented.\", \"clearance_status\": \"Numeric clearance not supplied; no zero clearance claim. Allow handling access.\", \"utility_basis\": \"Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page and exact linked PDF dated 2026/03/13 reviewed."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Storage/floor/none candidate; importer and regression checks remain with integration owner."
+        }
+      },
+      "review_scope": "Text-only official product page and two-page manufacturer PDF. No visual drawing review, archive hash or compliance certification claimed.",
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361202",
+        "Storage",
+        "Three Tier Service Trolley with Handle 600 mm",
+        "695",
+        "695",
+        "916",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-with-handle-600-mm-361202/",
+        "Global (unpowered)",
+        "Official page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361202 matches exact PDF 361202 (STR603WH)."
+        },
+        "model": {
+          "value": "361202",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361202 matches exact PDF 361202 (STR603WH)."
+        },
+        "w": {
+          "value": "695",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 695, Depth 695, Height 916 mm; no conversion.",
+          "original_value": "695",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "d": {
+          "value": "695",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 695, Depth 695, Height 916 mm; no conversion.",
+          "original_value": "695",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "h": {
+          "value": "916",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 695, Depth 695, Height 916 mm; no conversion.",
+          "original_value": "916",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        }
+      },
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner reviewed exact-model research dossier and per-model source notes; independently re-opened official product and linked PDF for 361210 and 361314, confirming distinct heights and external/platform dimension scope. Primary text review for every model was performed by delegated Electrolux researcher. No visual review or binary archival claim.",
+      "source_row_hash": "4046105f7456c0deb293f5594f371c1803e0ab20885e062c41487b213fa6eb2c"
+    },
+    "electroluxprofessional|361206": {
+      "brand": "Electrolux Professional",
+      "model": "361206",
+      "manufacturer_sku": "361206 (STR903WH)",
+      "title": "Three Tier Service Trolley with Handle 900 mm",
+      "review_date": "2026-10-15",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-with-handle-900-mm-361206/",
+          "retrieved_date": "2026-10-15"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361206_three_tier_service_trolley_with_handle_900_mm.pdf?version=1792081173",
+          "revision": "2026/03/13",
+          "pages": 2,
+          "review": "Text only",
+          "retrieved_date": "2026-10-15",
+          "retrieval_method": "web__run click official product page Data Sheet link 18"
+        }
+      ],
+      "dimensions_mm": {
+        "width": 995,
+        "depth": 695,
+        "height": 916
+      },
+      "dimension_evidence": "S1 labelled external dimensions match S2 page 2. Exact SKU and alias on S2 page 1.",
+      "net_weight_kg": 30,
+      "construction": "AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers.",
+      "utility_assessment": {
+        "power": "none",
+        "power_kw": null,
+        "electrical_supply": null,
+        "water": 0,
+        "drain": 0,
+        "gas": "not applicable",
+        "basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields."
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361206",
+        "Storage",
+        "Three Tier Service Trolley with Handle 900 mm",
+        995,
+        695,
+        916,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-with-handle-900-mm-361206/"
+      ],
+      "duplicate_check": {
+        "exact_sku_absent_from_cat_js": true,
+        "alias_absent_from_cat_js": true
+      },
+      "blockers": [],
+      "limitations": [
+        "No visual drawing review or binary archive performed.",
+        "No assembly or numeric installation clearance claims.",
+        "Integration owner must validate full import schema, duplicates, and certification."
+      ],
+      "schema_version": 1,
+      "key": "electroluxprofessional|361206",
+      "market": "Global (unpowered)",
+      "installation_details": {
+        "mount": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.",
+        "assembly": "No delivery assembly claim; welded frame construction documented.",
+        "clearance_status": "Numeric clearance not supplied; no zero clearance claim. Allow handling access.",
+        "utility_basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+      },
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361206 matches exact PDF 361206 (STR903WH)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Both sources explicitly label external Width 995, Depth 695, Height 916 mm; no conversion."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.\", \"assembly\": \"No delivery assembly claim; welded frame construction documented.\", \"clearance_status\": \"Numeric clearance not supplied; no zero clearance claim. Allow handling access.\", \"utility_basis\": \"Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page and exact linked PDF dated 2026/03/13 reviewed."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Storage/floor/none candidate; importer and regression checks remain with integration owner."
+        }
+      },
+      "review_scope": "Text-only official product page and two-page manufacturer PDF. No visual drawing review, archive hash or compliance certification claimed.",
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361206",
+        "Storage",
+        "Three Tier Service Trolley with Handle 900 mm",
+        "995",
+        "695",
+        "916",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-with-handle-900-mm-361206/",
+        "Global (unpowered)",
+        "Official page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361206 matches exact PDF 361206 (STR903WH)."
+        },
+        "model": {
+          "value": "361206",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361206 matches exact PDF 361206 (STR903WH)."
+        },
+        "w": {
+          "value": "995",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 995, Depth 695, Height 916 mm; no conversion.",
+          "original_value": "995",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "d": {
+          "value": "695",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 995, Depth 695, Height 916 mm; no conversion.",
+          "original_value": "695",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "h": {
+          "value": "916",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 995, Depth 695, Height 916 mm; no conversion.",
+          "original_value": "916",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        }
+      },
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner reviewed exact-model research dossier and per-model source notes; independently re-opened official product and linked PDF for 361210 and 361314, confirming distinct heights and external/platform dimension scope. Primary text review for every model was performed by delegated Electrolux researcher. No visual review or binary archival claim.",
+      "source_row_hash": "c9627f11369d538f257a86b19d47c6df49e242908d39635d040ad3ae2c8a360e"
+    },
+    "electroluxprofessional|361210": {
+      "brand": "Electrolux Professional",
+      "model": "361210",
+      "manufacturer_sku": "361210 (STR123WH)",
+      "title": "Three Tier Service Trolley with Handle 1200 mm",
+      "review_date": "2026-10-15",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-with-handle-1200-mm-361210/",
+          "retrieved_date": "2026-10-15"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361210_three_tier_service_trolley_with_handle_1200_mm.pdf?version=1792081174",
+          "revision": "2026/03/13",
+          "pages": 2,
+          "review": "Text only",
+          "retrieved_date": "2026-10-15",
+          "retrieval_method": "web__run click official product page Data Sheet link 18"
+        }
+      ],
+      "dimensions_mm": {
+        "width": 1295,
+        "depth": 695,
+        "height": 975
+      },
+      "dimension_evidence": "S1 labelled external dimensions match S2 page 2. Exact SKU and alias on S2 page 1.",
+      "net_weight_kg": 30,
+      "construction": "AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers.",
+      "utility_assessment": {
+        "power": "none",
+        "power_kw": null,
+        "electrical_supply": null,
+        "water": 0,
+        "drain": 0,
+        "gas": "not applicable",
+        "basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields."
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361210",
+        "Storage",
+        "Three Tier Service Trolley with Handle 1200 mm",
+        1295,
+        695,
+        975,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-with-handle-1200-mm-361210/"
+      ],
+      "duplicate_check": {
+        "exact_sku_absent_from_cat_js": true,
+        "alias_absent_from_cat_js": true
+      },
+      "blockers": [],
+      "limitations": [
+        "No visual drawing review or binary archive performed.",
+        "No assembly or numeric installation clearance claims.",
+        "Integration owner must validate full import schema, duplicates, and certification."
+      ],
+      "schema_version": 1,
+      "key": "electroluxprofessional|361210",
+      "market": "Global (unpowered)",
+      "installation_details": {
+        "mount": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.",
+        "assembly": "No delivery assembly claim; welded frame construction documented.",
+        "clearance_status": "Numeric clearance not supplied; no zero clearance claim. Allow handling access.",
+        "utility_basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+      },
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361210 matches exact PDF 361210 (STR123WH)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Both sources explicitly label external Width 1295, Depth 695, Height 975 mm; no conversion."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.\", \"assembly\": \"No delivery assembly claim; welded frame construction documented.\", \"clearance_status\": \"Numeric clearance not supplied; no zero clearance claim. Allow handling access.\", \"utility_basis\": \"Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page and exact linked PDF dated 2026/03/13 reviewed."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Storage/floor/none candidate; importer and regression checks remain with integration owner."
+        }
+      },
+      "review_scope": "Text-only official product page and two-page manufacturer PDF. No visual drawing review, archive hash or compliance certification claimed.",
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361210",
+        "Storage",
+        "Three Tier Service Trolley with Handle 1200 mm",
+        "1295",
+        "695",
+        "975",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-with-handle-1200-mm-361210/",
+        "Global (unpowered)",
+        "Official page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361210 matches exact PDF 361210 (STR123WH)."
+        },
+        "model": {
+          "value": "361210",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361210 matches exact PDF 361210 (STR123WH)."
+        },
+        "w": {
+          "value": "1295",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 1295, Depth 695, Height 975 mm; no conversion.",
+          "original_value": "1295",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "d": {
+          "value": "695",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 1295, Depth 695, Height 975 mm; no conversion.",
+          "original_value": "695",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "h": {
+          "value": "975",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 1295, Depth 695, Height 975 mm; no conversion.",
+          "original_value": "975",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        }
+      },
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner reviewed exact-model research dossier and per-model source notes; independently re-opened official product and linked PDF for 361210 and 361314, confirming distinct heights and external/platform dimension scope. Primary text review for every model was performed by delegated Electrolux researcher. No visual review or binary archival claim.",
+      "source_row_hash": "2255548f6c9bb9fc6b371cf8fd63b0781e3539dac6d0674a1d2f259051866dde"
+    },
+    "electroluxprofessional|361224": {
+      "brand": "Electrolux Professional",
+      "model": "361224",
+      "manufacturer_sku": "361224 (STR402)",
+      "title": "Two Tier Service Trolley 400 mm",
+      "review_date": "2026-10-15",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-400-mm-361224/",
+          "retrieved_date": "2026-10-15"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361224_two_tier_service_trolley_400_mm.pdf?version=1792081175",
+          "revision": "2026/03/13",
+          "pages": 2,
+          "review": "Text only",
+          "retrieved_date": "2026-10-15",
+          "retrieval_method": "web__run click official product page Data Sheet link 18"
+        }
+      ],
+      "dimensions_mm": {
+        "width": 495,
+        "depth": 695,
+        "height": 816
+      },
+      "dimension_evidence": "S1 labelled external dimensions match S2 page 2. Exact SKU and alias on S2 page 1.",
+      "net_weight_kg": 15,
+      "construction": "AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers.",
+      "utility_assessment": {
+        "power": "none",
+        "power_kw": null,
+        "electrical_supply": null,
+        "water": 0,
+        "drain": 0,
+        "gas": "not applicable",
+        "basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields."
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361224",
+        "Storage",
+        "Two Tier Service Trolley 400 mm",
+        495,
+        695,
+        816,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-400-mm-361224/"
+      ],
+      "duplicate_check": {
+        "exact_sku_absent_from_cat_js": true,
+        "alias_absent_from_cat_js": true
+      },
+      "blockers": [],
+      "limitations": [
+        "No visual drawing review or binary archive performed.",
+        "No assembly or numeric installation clearance claims.",
+        "Integration owner must validate full import schema, duplicates, and certification."
+      ],
+      "schema_version": 1,
+      "key": "electroluxprofessional|361224",
+      "market": "Global (unpowered)",
+      "installation_details": {
+        "mount": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.",
+        "assembly": "No delivery assembly claim; welded frame construction documented.",
+        "clearance_status": "Numeric clearance not supplied; no zero clearance claim. Allow handling access.",
+        "utility_basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+      },
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361224 matches exact PDF 361224 (STR402)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Both sources explicitly label external Width 495, Depth 695, Height 816 mm; no conversion."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.\", \"assembly\": \"No delivery assembly claim; welded frame construction documented.\", \"clearance_status\": \"Numeric clearance not supplied; no zero clearance claim. Allow handling access.\", \"utility_basis\": \"Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page and exact linked PDF dated 2026/03/13 reviewed."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Storage/floor/none candidate; importer and regression checks remain with integration owner."
+        }
+      },
+      "review_scope": "Text-only official product page and two-page manufacturer PDF. No visual drawing review, archive hash or compliance certification claimed.",
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361224",
+        "Storage",
+        "Two Tier Service Trolley 400 mm",
+        "495",
+        "695",
+        "816",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-400-mm-361224/",
+        "Global (unpowered)",
+        "Official page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361224 matches exact PDF 361224 (STR402)."
+        },
+        "model": {
+          "value": "361224",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361224 matches exact PDF 361224 (STR402)."
+        },
+        "w": {
+          "value": "495",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 495, Depth 695, Height 816 mm; no conversion.",
+          "original_value": "495",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "d": {
+          "value": "695",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 495, Depth 695, Height 816 mm; no conversion.",
+          "original_value": "695",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "h": {
+          "value": "816",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 495, Depth 695, Height 816 mm; no conversion.",
+          "original_value": "816",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        }
+      },
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner reviewed exact-model research dossier and per-model source notes; independently re-opened official product and linked PDF for 361210 and 361314, confirming distinct heights and external/platform dimension scope. Primary text review for every model was performed by delegated Electrolux researcher. No visual review or binary archival claim.",
+      "source_row_hash": "42cd46c4e86bec7666c1cbd652a5cf1166f0b4780eb0d8baa273f5335501920c"
+    },
+    "electroluxprofessional|361212": {
+      "brand": "Electrolux Professional",
+      "model": "361212",
+      "manufacturer_sku": "361212 (STR602)",
+      "title": "Two Tier Service Trolley 600 mm",
+      "review_date": "2026-10-15",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-600-mm-361212/",
+          "retrieved_date": "2026-10-15"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361212_two_tier_service_trolley_600_mm.pdf?version=1792081175",
+          "revision": "2026/03/13",
+          "pages": 2,
+          "review": "Text only",
+          "retrieved_date": "2026-10-15",
+          "retrieval_method": "web__run click official product page Data Sheet link 18"
+        }
+      ],
+      "dimensions_mm": {
+        "width": 695,
+        "depth": 695,
+        "height": 816
+      },
+      "dimension_evidence": "S1 labelled external dimensions match S2 page 2. Exact SKU and alias on S2 page 1.",
+      "net_weight_kg": 21,
+      "construction": "AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers.",
+      "utility_assessment": {
+        "power": "none",
+        "power_kw": null,
+        "electrical_supply": null,
+        "water": 0,
+        "drain": 0,
+        "gas": "not applicable",
+        "basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields."
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361212",
+        "Storage",
+        "Two Tier Service Trolley 600 mm",
+        695,
+        695,
+        816,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-600-mm-361212/"
+      ],
+      "duplicate_check": {
+        "exact_sku_absent_from_cat_js": true,
+        "alias_absent_from_cat_js": true
+      },
+      "blockers": [],
+      "limitations": [
+        "No visual drawing review or binary archive performed.",
+        "No assembly or numeric installation clearance claims.",
+        "Integration owner must validate full import schema, duplicates, and certification."
+      ],
+      "schema_version": 1,
+      "key": "electroluxprofessional|361212",
+      "market": "Global (unpowered)",
+      "installation_details": {
+        "mount": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.",
+        "assembly": "No delivery assembly claim; welded frame construction documented.",
+        "clearance_status": "Numeric clearance not supplied; no zero clearance claim. Allow handling access.",
+        "utility_basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+      },
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361212 matches exact PDF 361212 (STR602)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Both sources explicitly label external Width 695, Depth 695, Height 816 mm; no conversion."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.\", \"assembly\": \"No delivery assembly claim; welded frame construction documented.\", \"clearance_status\": \"Numeric clearance not supplied; no zero clearance claim. Allow handling access.\", \"utility_basis\": \"Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page and exact linked PDF dated 2026/03/13 reviewed."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Storage/floor/none candidate; importer and regression checks remain with integration owner."
+        }
+      },
+      "review_scope": "Text-only official product page and two-page manufacturer PDF. No visual drawing review, archive hash or compliance certification claimed.",
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361212",
+        "Storage",
+        "Two Tier Service Trolley 600 mm",
+        "695",
+        "695",
+        "816",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-600-mm-361212/",
+        "Global (unpowered)",
+        "Official page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361212 matches exact PDF 361212 (STR602)."
+        },
+        "model": {
+          "value": "361212",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361212 matches exact PDF 361212 (STR602)."
+        },
+        "w": {
+          "value": "695",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 695, Depth 695, Height 816 mm; no conversion.",
+          "original_value": "695",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "d": {
+          "value": "695",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 695, Depth 695, Height 816 mm; no conversion.",
+          "original_value": "695",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "h": {
+          "value": "816",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 695, Depth 695, Height 816 mm; no conversion.",
+          "original_value": "816",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        }
+      },
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner reviewed exact-model research dossier and per-model source notes; independently re-opened official product and linked PDF for 361210 and 361314, confirming distinct heights and external/platform dimension scope. Primary text review for every model was performed by delegated Electrolux researcher. No visual review or binary archival claim.",
+      "source_row_hash": "ba20ec8df5d6807b68f224a918ac0d27fa26b083c75aba1cbff5d0227592cbd9"
+    },
+    "electroluxprofessional|361216": {
+      "brand": "Electrolux Professional",
+      "model": "361216",
+      "manufacturer_sku": "361216 (STR902)",
+      "title": "Two Tier Service Trolley 900 mm",
+      "review_date": "2026-10-15",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-900-mm-361216/",
+          "retrieved_date": "2026-10-15"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361216_two_tier_service_trolley_900_mm.pdf?version=1786680048",
+          "revision": "2026/03/13",
+          "pages": 2,
+          "review": "Text only",
+          "retrieved_date": "2026-10-15",
+          "retrieval_method": "web__run click official product page Data Sheet link 18"
+        }
+      ],
+      "dimensions_mm": {
+        "width": 995,
+        "depth": 695,
+        "height": 816
+      },
+      "dimension_evidence": "S1 labelled external dimensions match S2 page 2. Exact SKU and alias on S2 page 1.",
+      "net_weight_kg": 21,
+      "construction": "AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers.",
+      "utility_assessment": {
+        "power": "none",
+        "power_kw": null,
+        "electrical_supply": null,
+        "water": 0,
+        "drain": 0,
+        "gas": "not applicable",
+        "basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields."
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361216",
+        "Storage",
+        "Two Tier Service Trolley 900 mm",
+        995,
+        695,
+        816,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-900-mm-361216/"
+      ],
+      "duplicate_check": {
+        "exact_sku_absent_from_cat_js": true,
+        "alias_absent_from_cat_js": true
+      },
+      "blockers": [],
+      "limitations": [
+        "No visual drawing review or binary archive performed.",
+        "No assembly or numeric installation clearance claims.",
+        "Integration owner must validate full import schema, duplicates, and certification."
+      ],
+      "schema_version": 1,
+      "key": "electroluxprofessional|361216",
+      "market": "Global (unpowered)",
+      "installation_details": {
+        "mount": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.",
+        "assembly": "No delivery assembly claim; welded frame construction documented.",
+        "clearance_status": "Numeric clearance not supplied; no zero clearance claim. Allow handling access.",
+        "utility_basis": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+      },
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361216 matches exact PDF 361216 (STR902)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Both sources explicitly label external Width 995, Depth 695, Height 816 mm; no conversion."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers.\", \"assembly\": \"No delivery assembly claim; welded frame construction documented.\", \"clearance_status\": \"Numeric clearance not supplied; no zero clearance claim. Allow handling access.\", \"utility_basis\": \"Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page and exact linked PDF dated 2026/03/13 reviewed."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Storage/floor/none candidate; importer and regression checks remain with integration owner."
+        }
+      },
+      "review_scope": "Text-only official product page and two-page manufacturer PDF. No visual drawing review, archive hash or compliance certification claimed.",
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361216",
+        "Storage",
+        "Two Tier Service Trolley 900 mm",
+        "995",
+        "695",
+        "816",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-two-tier-service-trolley-900-mm-361216/",
+        "Global (unpowered)",
+        "Official page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361216 matches exact PDF 361216 (STR902)."
+        },
+        "model": {
+          "value": "361216",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Official COD 361216 matches exact PDF 361216 (STR902)."
+        },
+        "w": {
+          "value": "995",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 995, Depth 695, Height 816 mm; no conversion.",
+          "original_value": "995",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "d": {
+          "value": "695",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 995, Depth 695, Height 816 mm; no conversion.",
+          "original_value": "695",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "h": {
+          "value": "816",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Specifications; S2 page 2 Key Information",
+          "reason": "Both sources explicitly label external Width 995, Depth 695, Height 816 mm; no conversion.",
+          "original_value": "816",
+          "original_unit": "mm",
+          "conversion": "None; explicitly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic bumpers."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Features; S2 page 1 identity/Main Features/Construction",
+          "reason": "Reviewer inference from manufacturer complete passive mechanical trolley construction; no powered, heated or plumbed assembly described, not merely absent utility fields. AISI 304 stainless steel; welded 25 mm tube framework; mechanical shelves or runners. Sound-absorbing seamless shelves; four 125 mm swivel wheels, two braked; buffers."
+        }
+      },
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner reviewed exact-model research dossier and per-model source notes; independently re-opened official product and linked PDF for 361210 and 361314, confirming distinct heights and external/platform dimension scope. Primary text review for every model was performed by delegated Electrolux researcher. No visual review or binary archival claim.",
+      "source_row_hash": "b2da6ba0c3660c37a8daf17a5117c18e8c7a7d5c5bab61978bf8bea5cb9d8320"
     }
   }
 }
