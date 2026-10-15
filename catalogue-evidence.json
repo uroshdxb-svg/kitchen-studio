@@ -3772,6 +3772,1416 @@
       "reviewed_at": "2026-10-15",
       "integration_review": "Integration owner independently read exact official product pages and linked PDF text; identity, labelled external dimensions and passive mechanical construction agree. No visual review or binary archive claim.",
       "source_row_hash": "0c0d783878a8b941507b1137d6c674140940dcfadd53d8c595b9209f73ce00e1"
+    },
+    "electroluxprofessional|361254": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|361254",
+      "brand": "Electrolux Professional",
+      "model": "361254",
+      "manufacturer_sku": "361254 (CTR81T)",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "review_date": "2026-10-15",
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361254",
+        "Storage",
+        "Container trolley with worktop, 8 GN1/1",
+        452,
+        657,
+        900,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-8-gn-1-1-container-trolley-with-worktop-361254/"
+      ],
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361254",
+        "Storage",
+        "Container trolley with worktop, 8 GN1/1",
+        "452",
+        "657",
+        "900",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-8-gn-1-1-container-trolley-with-worktop-361254/",
+        "Global (unpowered)",
+        "Official manufacturer page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-8-gn-1-1-container-trolley-with-worktop-361254/",
+          "retrieved_date": "2026-10-15",
+          "tool_ref": "turn40view0"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361254_8_gn_1_1_container_trolley_with_worktop.pdf?version=1792081236",
+          "retrieved_date": "2026-10-15",
+          "revision": "2026/03/13",
+          "tool_ref": "turn41view0",
+          "retrieval_method": "web__run click product page Data Sheet link 18"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361254 matches exact PDF 361254 (CTR81T)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Page and PDF page 2 explicitly label external Width 452, Depth 657, Height 900 mm; direct mapping, no conversion or drawing-derived values."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.\", \"assembly\": \"Not supplied in reviewed text; no assembly claim.\", \"clearance_status\": \"Numeric clearance not specified; no zero clearance claimed. Allow handling access.\", \"utility_basis\": \"Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page linked exact specification PDF dated 2026/03/13; dimensions and construction agree."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "17-column queue uses Storage/floor/none, blank kW and electrical supply, explicit water/drain 0; integration owner must run importer and regression validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361254 matches exact PDF 361254 (CTR81T)."
+        },
+        "model": {
+          "value": "361254",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361254 matches exact PDF 361254 (CTR81T)."
+        },
+        "w": {
+          "value": "452",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 452, Depth 657, Height 900 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "452",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "d": {
+          "value": "657",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 452, Depth 657, Height 900 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "657",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "h": {
+          "value": "900",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 452, Depth 657, Height 900 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "900",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        }
+      },
+      "installation_details": {
+        "mount": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.",
+        "assembly": "Not supplied in reviewed text; no assembly claim.",
+        "clearance_status": "Numeric clearance not specified; no zero clearance claimed. Allow handling access.",
+        "utility_basis": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+      },
+      "review_scope": "Manufacturer text review with explicit external dimension labels and complete mechanical construction; no visual drawing inspection, binary archive hash or compliance certification claimed.",
+      "limitations": [
+        "Binary archives not captured; no SHA256 claimed.",
+        "Visual drawings not reviewed; labelled external dimensions used."
+      ],
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner independently read exact official product pages and linked PDF text; identity, labelled external dimensions and passive mechanical construction agree. No visual review or binary archive claim.",
+      "source_row_hash": "2acc3332f89854493a64439bfa1903c545148d9a52ff5bde745b917f363143ca"
+    },
+    "electroluxprofessional|361255": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|361255",
+      "brand": "Electrolux Professional",
+      "model": "361255",
+      "manufacturer_sku": "361255 (CTR161T)",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "review_date": "2026-10-15",
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361255",
+        "Storage",
+        "Container trolley with worktop, 16 GN1/1",
+        617,
+        810,
+        900,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-16-gn-1-1-container-trolley-with-worktop-361255/"
+      ],
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361255",
+        "Storage",
+        "Container trolley with worktop, 16 GN1/1",
+        "617",
+        "810",
+        "900",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-16-gn-1-1-container-trolley-with-worktop-361255/",
+        "Global (unpowered)",
+        "Official manufacturer page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-16-gn-1-1-container-trolley-with-worktop-361255/",
+          "retrieved_date": "2026-10-15",
+          "tool_ref": "turn40view1"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361255_16_gn_1_1_container_trolley_with_worktop.pdf?version=1792081236",
+          "retrieved_date": "2026-10-15",
+          "revision": "2026/03/13",
+          "tool_ref": "turn41view1",
+          "retrieval_method": "web__run click product page Data Sheet link 18"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361255 matches exact PDF 361255 (CTR161T)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Page and PDF page 2 explicitly label external Width 617, Depth 810, Height 900 mm; direct mapping, no conversion or drawing-derived values."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.\", \"assembly\": \"Not supplied in reviewed text; no assembly claim.\", \"clearance_status\": \"Numeric clearance not specified; no zero clearance claimed. Allow handling access.\", \"utility_basis\": \"Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page linked exact specification PDF dated 2026/03/13; dimensions and construction agree."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "17-column queue uses Storage/floor/none, blank kW and electrical supply, explicit water/drain 0; integration owner must run importer and regression validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361255 matches exact PDF 361255 (CTR161T)."
+        },
+        "model": {
+          "value": "361255",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361255 matches exact PDF 361255 (CTR161T)."
+        },
+        "w": {
+          "value": "617",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 617, Depth 810, Height 900 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "617",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "d": {
+          "value": "810",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 617, Depth 810, Height 900 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "810",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "h": {
+          "value": "900",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 617, Depth 810, Height 900 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "900",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        }
+      },
+      "installation_details": {
+        "mount": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.",
+        "assembly": "Not supplied in reviewed text; no assembly claim.",
+        "clearance_status": "Numeric clearance not specified; no zero clearance claimed. Allow handling access.",
+        "utility_basis": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame, worktop and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+      },
+      "review_scope": "Manufacturer text review with explicit external dimension labels and complete mechanical construction; no visual drawing inspection, binary archive hash or compliance certification claimed.",
+      "limitations": [
+        "Binary archives not captured; no SHA256 claimed.",
+        "Visual drawings not reviewed; labelled external dimensions used."
+      ],
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner independently read exact official product pages and linked PDF text; identity, labelled external dimensions and passive mechanical construction agree. No visual review or binary archive claim.",
+      "source_row_hash": "a16c150fada3dc83523da45e7252f8c8606caaf107eefc996b2fe6baaa007e2a"
+    },
+    "electroluxprofessional|361261": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|361261",
+      "brand": "Electrolux Professional",
+      "model": "361261",
+      "manufacturer_sku": "361261 (MDNT171GN)",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "review_date": "2026-10-15",
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361261",
+        "Storage",
+        "Container trolley, 17 GN1/1",
+        452,
+        617,
+        1590,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-17-gn-1-1-container-trolley-361261/"
+      ],
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361261",
+        "Storage",
+        "Container trolley, 17 GN1/1",
+        "452",
+        "617",
+        "1590",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-17-gn-1-1-container-trolley-361261/",
+        "Global (unpowered)",
+        "Official manufacturer page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-17-gn-1-1-container-trolley-361261/",
+          "retrieved_date": "2026-10-15",
+          "tool_ref": "turn40view4"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361261_17_gn_1_1_container_trolley.pdf?version=1788863362",
+          "retrieved_date": "2026-10-15",
+          "revision": "2026/03/13",
+          "tool_ref": "turn41view4",
+          "retrieval_method": "web__run click product page Data Sheet link 18"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361261 matches exact PDF 361261 (MDNT171GN)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Page and PDF page 2 explicitly label external Width 452, Depth 617, Height 1590 mm; direct mapping, no conversion or drawing-derived values."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.\", \"assembly\": \"Not supplied in reviewed text; no assembly claim.\", \"clearance_status\": \"Numeric clearance not specified; no zero clearance claimed. Allow handling access.\", \"utility_basis\": \"Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page linked exact specification PDF dated 2026/03/13; dimensions and construction agree."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "17-column queue uses Storage/floor/none, blank kW and electrical supply, explicit water/drain 0; integration owner must run importer and regression validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361261 matches exact PDF 361261 (MDNT171GN)."
+        },
+        "model": {
+          "value": "361261",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361261 matches exact PDF 361261 (MDNT171GN)."
+        },
+        "w": {
+          "value": "452",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 452, Depth 617, Height 1590 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "452",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "d": {
+          "value": "617",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 452, Depth 617, Height 1590 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "617",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "h": {
+          "value": "1590",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 452, Depth 617, Height 1590 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "1590",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        }
+      },
+      "installation_details": {
+        "mount": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.",
+        "assembly": "Not supplied in reviewed text; no assembly claim.",
+        "clearance_status": "Numeric clearance not specified; no zero clearance claimed. Allow handling access.",
+        "utility_basis": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+      },
+      "review_scope": "Manufacturer text review with explicit external dimension labels and complete mechanical construction; no visual drawing inspection, binary archive hash or compliance certification claimed.",
+      "limitations": [
+        "Binary archives not captured; no SHA256 claimed.",
+        "Visual drawings not reviewed; labelled external dimensions used."
+      ],
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner independently read exact official product pages and linked PDF text; identity, labelled external dimensions and passive mechanical construction agree. No visual review or binary archive claim.",
+      "source_row_hash": "af8b5c134bbb462b3e54dc160e9b92cf78f0e3b6938bb83f6983a3ef4b3de803"
+    },
+    "electroluxprofessional|361262": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|361262",
+      "brand": "Electrolux Professional",
+      "model": "361262",
+      "manufacturer_sku": "361262 (MDNT341GN)",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "review_date": "2026-10-15",
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361262",
+        "Storage",
+        "Container trolley, 34 GN1/1",
+        809,
+        617,
+        1590,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-34-gn-1-1-container-trolley-361262/"
+      ],
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361262",
+        "Storage",
+        "Container trolley, 34 GN1/1",
+        "809",
+        "617",
+        "1590",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-34-gn-1-1-container-trolley-361262/",
+        "Global (unpowered)",
+        "Official manufacturer page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-34-gn-1-1-container-trolley-361262/",
+          "retrieved_date": "2026-10-15",
+          "tool_ref": "turn40view5"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361262_34_gn_1_1_container_trolley.pdf?version=1792081235",
+          "retrieved_date": "2026-10-15",
+          "revision": "2026/03/13",
+          "tool_ref": "turn41view5",
+          "retrieval_method": "web__run click product page Data Sheet link 18"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361262 matches exact PDF 361262 (MDNT341GN)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Page and PDF page 2 explicitly label external Width 809, Depth 617, Height 1590 mm; direct mapping, no conversion or drawing-derived values."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners in two rows for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners in two rows for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners in two rows for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners in two rows for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.\", \"assembly\": \"Not supplied in reviewed text; no assembly claim.\", \"clearance_status\": \"Numeric clearance not specified; no zero clearance claimed. Allow handling access.\", \"utility_basis\": \"Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners in two rows for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page linked exact specification PDF dated 2026/03/13; dimensions and construction agree."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "17-column queue uses Storage/floor/none, blank kW and electrical supply, explicit water/drain 0; integration owner must run importer and regression validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361262 matches exact PDF 361262 (MDNT341GN)."
+        },
+        "model": {
+          "value": "361262",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361262 matches exact PDF 361262 (MDNT341GN)."
+        },
+        "w": {
+          "value": "809",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 809, Depth 617, Height 1590 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "809",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "d": {
+          "value": "617",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 809, Depth 617, Height 1590 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "617",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "h": {
+          "value": "1590",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 809, Depth 617, Height 1590 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "1590",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners in two rows for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners in two rows for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners in two rows for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners in two rows for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners in two rows for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        }
+      },
+      "installation_details": {
+        "mount": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.",
+        "assembly": "Not supplied in reviewed text; no assembly claim.",
+        "clearance_status": "Numeric clearance not specified; no zero clearance claimed. Allow handling access.",
+        "utility_basis": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped retaining runners in two rows for GN1/1 containers. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+      },
+      "review_scope": "Manufacturer text review with explicit external dimension labels and complete mechanical construction; no visual drawing inspection, binary archive hash or compliance certification claimed.",
+      "limitations": [
+        "Binary archives not captured; no SHA256 claimed.",
+        "Visual drawings not reviewed; labelled external dimensions used."
+      ],
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner independently read exact official product pages and linked PDF text; identity, labelled external dimensions and passive mechanical construction agree. No visual review or binary archive claim.",
+      "source_row_hash": "f6722db1f16273e88d5bcef748b58a4ff251652bb0b519b995ea2b8bb9103371"
+    },
+    "electroluxprofessional|361263": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|361263",
+      "brand": "Electrolux Professional",
+      "model": "361263",
+      "manufacturer_sku": "361263 (MDNT17DK)",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "review_date": "2026-10-15",
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361263",
+        "Storage",
+        "Container trolley, 17 containers 530x400 mm",
+        657,
+        487,
+        1590,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-17-container-trolley-530x400mm-361263/"
+      ],
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361263",
+        "Storage",
+        "Container trolley, 17 containers 530x400 mm",
+        "657",
+        "487",
+        "1590",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-17-container-trolley-530x400mm-361263/",
+        "Global (unpowered)",
+        "Official manufacturer page and PDF text checked; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-17-container-trolley-530x400mm-361263/",
+          "retrieved_date": "2026-10-15",
+          "tool_ref": "turn40view6"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361263_17_container_trolley_530x400mm.pdf?version=1792081236",
+          "retrieved_date": "2026-10-15",
+          "revision": "2026/03/13",
+          "tool_ref": "turn41view6",
+          "retrieval_method": "web__run click product page Data Sheet link 18"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Official COD 361263 matches exact PDF 361263 (MDNT17DK)."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Page and PDF page 2 explicitly label external Width 657, Depth 487, Height 1590 mm; direct mapping, no conversion or drawing-derived values."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped runners with retaining ends for 530x400 mm containers; supplied assembled. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped runners with retaining ends for 530x400 mm containers; supplied assembled. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped runners with retaining ends for 530x400 mm containers; supplied assembled. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped runners with retaining ends for 530x400 mm containers; supplied assembled. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.\", \"assembly\": \"Delivered assembled per S2 page 1.\", \"clearance_status\": \"Numeric clearance not specified; no zero clearance claimed. Allow handling access.\", \"utility_basis\": \"Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped runners with retaining ends for 530x400 mm containers; supplied assembled. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current product page linked exact specification PDF dated 2026/03/13; dimensions and construction agree."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "17-column queue uses Storage/floor/none, blank kW and electrical supply, explicit water/drain 0; integration owner must run importer and regression validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361263 matches exact PDF 361263 (MDNT17DK)."
+        },
+        "model": {
+          "value": "361263",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Official COD 361263 matches exact PDF 361263 (MDNT17DK)."
+        },
+        "w": {
+          "value": "657",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 657, Depth 487, Height 1590 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "657",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "d": {
+          "value": "487",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 657, Depth 487, Height 1590 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "487",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "h": {
+          "value": "1590",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "Page and PDF page 2 explicitly label external Width 657, Depth 487, Height 1590 mm; direct mapping, no conversion or drawing-derived values.",
+          "original_value": "1590",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped runners with retaining ends for 530x400 mm containers; supplied assembled. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped runners with retaining ends for 530x400 mm containers; supplied assembled. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped runners with retaining ends for 530x400 mm containers; supplied assembled. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped runners with retaining ends for 530x400 mm containers; supplied assembled. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 identity/Main Features/Construction; S1 corresponding sections",
+          "reason": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped runners with retaining ends for 530x400 mm containers; supplied assembled. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+        }
+      },
+      "installation_details": {
+        "mount": "Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm.",
+        "assembly": "Delivered assembled per S2 page 1.",
+        "clearance_status": "Numeric clearance not specified; no zero clearance claimed. Allow handling access.",
+        "utility_basis": "Reviewer inference from complete passive construction, scoped to trolley only: AISI 304 welded 25x25 mm frame and C-shaped runners with retaining ends for 530x400 mm containers; supplied assembled. Four swivel castors, two braked; mobile floor trolley. Wheel diameter 125 mm. No electrical, gas, operational water or drain service applies to these manual mechanical assemblies. Not inferred merely from absent fields."
+      },
+      "review_scope": "Manufacturer text review with explicit external dimension labels and complete mechanical construction; no visual drawing inspection, binary archive hash or compliance certification claimed.",
+      "limitations": [
+        "Binary archives not captured; no SHA256 claimed.",
+        "Visual drawings not reviewed; labelled external dimensions used."
+      ],
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner independently read exact official product pages and linked PDF text; identity, labelled external dimensions and passive mechanical construction agree. No visual review or binary archive claim.",
+      "source_row_hash": "44f16001acaa2e5e0e9248e6ae7f0819576118de6ced3c5c3a00741fbfc7b57f"
     }
   }
 }

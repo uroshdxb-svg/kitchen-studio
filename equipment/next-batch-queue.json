@@ -12,23 +12,97 @@
     "count_policy": "Do not subtract newly researched models from 455 until overlap is reconciled."
   },
   "next_batch": {
-    "id": "2026-10-15-electrolux-passive-03",
-    "state": "research-in-progress",
+    "id": "2026-10-15-electrolux-service-04",
     "manufacturer": "Electrolux Professional",
-    "candidates": [],
-    "note": "Independent researcher checking additional service trolleys; exact records will be added after official evidence review. Cambro cart research also in progress; conflicts remain held."
+    "state": "integration-review-pending",
+    "models": [
+      "361200",
+      "361238",
+      "361314",
+      "361204",
+      "361244",
+      "361252",
+      "361208",
+      "361202",
+      "361206",
+      "361210",
+      "361224",
+      "361212",
+      "361216"
+    ]
   },
   "previous_queue": {
-    "id": "2026-10-15-electrolux-passive-02",
-    "state": "imported-testing",
+    "id": "2026-10-15-electrolux-gn-03",
+    "state": "pr-open",
+    "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/9",
     "models": [
-      "361288",
-      "361294",
-      "361296",
-      "361292",
-      "361000",
-      "341185",
-      "341184"
+      "361254",
+      "361255",
+      "361261",
+      "361262",
+      "361263"
     ]
-  }
+  },
+  "held_candidates": [
+    {
+      "brand": "Electrolux Professional",
+      "model": "361258",
+      "blockers": [
+        "Manufacturer PDF page 2 technical table is unsupported by text extraction; official product page explicitly supplies W/D/H, but PDF corroboration or image review remains incomplete."
+      ],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-17-gn-2-1-container-trolley-361258/",
+          "retrieved_date": "2026-10-15",
+          "tool_ref": "turn40view2"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361258_17_gn_2_1_container_trolley.pdf?version=1788440657",
+          "retrieved_date": "2026-10-15",
+          "revision": "2026/07/01",
+          "tool_ref": "turn41view2",
+          "retrieval_method": "web__run click product page Data Sheet link 19"
+        }
+      ]
+    },
+    {
+      "brand": "Electrolux Professional",
+      "model": "361260",
+      "blockers": [
+        "Manufacturer PDF page 2 technical table is unsupported by text extraction; official product page explicitly supplies W/D/H, but PDF corroboration or image review remains incomplete."
+      ],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-17-gn-2-1-container-trolley-space-saving-361260/",
+          "retrieved_date": "2026-10-15",
+          "tool_ref": "turn40view3"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361260_17_gn_2_1_container_trolley_space_saving.pdf?version=1792081236",
+          "retrieved_date": "2026-10-15",
+          "revision": "2026/07/01",
+          "tool_ref": "turn41view3",
+          "retrieval_method": "web__run click product page Data Sheet link 19"
+        }
+      ]
+    }
+  ],
+  "historical_candidate_sources": [
+    {
+      "url": "https://drive.google.com/file/d/1FHilDFkwn2Nus6IunXvjWZnxoggAcWg-/view",
+      "drive_id": "1FHilDFkwn2Nus6IunXvjWZnxoggAcWg-",
+      "date": "2026-10-01",
+      "reported_rows": 36,
+      "state": "unverified-parent-located",
+      "instruction": "Historical candidate CSV, not the missing source for 455 held candidates (457 original rows before two were imported in PR #5). Deduplicate against current main, then independently verify exact manufacturer variants before use."
+    }
+  ]
 }
