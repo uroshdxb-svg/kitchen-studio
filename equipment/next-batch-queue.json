@@ -12,28 +12,21 @@
     "count_policy": "Do not subtract newly researched models from 455 until overlap is reconciled."
   },
   "next_batch": {
-    "id": "2026-10-15-electrolux-service-04",
-    "manufacturer": "Electrolux Professional",
+    "id": "2026-10-15-cambro-05",
+    "manufacturer": "Cambro",
     "state": "integration-review-pending",
     "models": [
-      "361200",
-      "361238",
-      "361314",
-      "361204",
-      "361244",
-      "361252",
-      "361208",
-      "361202",
-      "361206",
-      "361210",
-      "361224",
-      "361212",
-      "361216"
-    ]
+      "BC340KD",
+      "CD100",
+      "CD1313",
+      "CD1826PDB"
+    ],
+    "research_branch": "codex/equipment-research-checkpoint-2026-10-15",
+    "research_file": "equipment/pending-research/cambro.json"
   },
   "previous_queue": {
     "id": "2026-10-15-electrolux-passive-02",
-    "state": "imported-testing",
+    "state": "merged-live-verification-pending",
     "models": [
       "361288",
       "361294",
@@ -94,6 +87,156 @@
           "retrieval_method": "web__run click product page Data Sheet link 19"
         }
       ]
+    },
+    {
+      "brand": "Electrolux Professional",
+      "model": "361227",
+      "blockers": [
+        "Product page and linked PDF title identify a trolley but short description identifies EVO700/900 base support. Resolve exact identity before import; title 600x800 also conflicts with external 695x695x975 interpretation."
+      ],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/meal-distribution-system-2-tier-service-trolley-with-1-handle-600x800mm-361227/",
+          "retrieved_date": "2026-10-15"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361227_2_tier_service_trolley_with_1_handle_600x800mm.pdf?version=1792081173",
+          "revision": "2026/03/13",
+          "pages": 2,
+          "review": "Text only",
+          "retrieved_date": "2026-10-15",
+          "retrieval_method": "web__run click official product page Data Sheet link 18"
+        }
+      ]
+    },
+    {
+      "brand": "Electrolux Professional",
+      "model": "361228",
+      "blockers": [
+        "Short description says h=800 while labelled external height is 975. May be platform versus overall height but drawing not visually inspected; confirm before import."
+      ],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/meal-distribution-system-2-tier-service-trolley-with-1-handle-900x800mm-361228/",
+          "retrieved_date": "2026-10-15"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361228_2_tier_service_trolley_with_1_handle_900x800mm.pdf?version=1792081173",
+          "revision": "2026/03/13",
+          "pages": 2,
+          "review": "Text only",
+          "retrieved_date": "2026-10-15",
+          "retrieval_method": "web__run click official product page Data Sheet link 18"
+        }
+      ]
+    },
+    {
+      "brand": "Cambro",
+      "model": "SC230",
+      "blockers": [
+        "Current product page and 2025 Europe brochure publish different exterior dimensions. Manufacturing tolerance alone does not resolve which nominal dimensions or regional configuration apply; obtain current exact dimensional sheet."
+      ],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.cambro.com/Products/food-and-salad-bars/service-and-utility-carts/service-cart-pro/",
+          "retrieved_at": "2026-10-15",
+          "revision": "Current product listing"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-catalog",
+          "url": "https://www.cambro.com/globalassets/pdfs/2025-equipt-broch-english-europe-lr.pdf",
+          "retrieved_at": "2026-10-15",
+          "revision": "2025 equipment brochure",
+          "locator": "Printed page 31",
+          "retrieval_method": "Official PDF indexed text via search_service_web_run; direct open exceeded size limit or network blocked"
+        }
+      ]
+    },
+    {
+      "brand": "Cambro",
+      "model": "SC230S",
+      "blockers": [
+        "Current product page and 2025 Europe brochure publish different exterior dimensions. Manufacturing tolerance alone does not resolve which nominal dimensions or regional configuration apply; obtain current exact dimensional sheet."
+      ],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.cambro.com/Products/food-and-salad-bars/service-and-utility-carts/service-cart-pro/",
+          "retrieved_at": "2026-10-15",
+          "revision": "Current product listing"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-catalog",
+          "url": "https://www.cambro.com/globalassets/pdfs/2025-equipt-broch-english-europe-lr.pdf",
+          "retrieved_at": "2026-10-15",
+          "revision": "2025 equipment brochure",
+          "locator": "Printed page 31",
+          "retrieval_method": "Official PDF indexed text via search_service_web_run; direct open exceeded size limit or network blocked"
+        }
+      ]
+    },
+    {
+      "brand": "Cambro",
+      "model": "SC337",
+      "blockers": [
+        "Current product page and 2025 Europe brochure publish different exterior dimensions. Manufacturing tolerance alone does not resolve which nominal dimensions or regional configuration apply; obtain current exact dimensional sheet."
+      ],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.cambro.com/Products/food-and-salad-bars/service-and-utility-carts/service-cart-pro/",
+          "retrieved_at": "2026-10-15",
+          "revision": "Current product listing"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-catalog",
+          "url": "https://www.cambro.com/globalassets/pdfs/2025-equipt-broch-english-europe-lr.pdf",
+          "retrieved_at": "2026-10-15",
+          "revision": "2025 equipment brochure",
+          "locator": "Printed page 31",
+          "retrieval_method": "Official PDF indexed text via search_service_web_run; direct open exceeded size limit or network blocked"
+        }
+      ]
+    },
+    {
+      "brand": "Cambro",
+      "model": "SC337S",
+      "blockers": [
+        "Current product page and 2025 Europe brochure publish different exterior dimensions. Manufacturing tolerance alone does not resolve which nominal dimensions or regional configuration apply; obtain current exact dimensional sheet."
+      ],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.cambro.com/Products/food-and-salad-bars/service-and-utility-carts/service-cart-pro/",
+          "retrieved_at": "2026-10-15",
+          "revision": "Current product listing"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-catalog",
+          "url": "https://www.cambro.com/globalassets/pdfs/2025-equipt-broch-english-europe-lr.pdf",
+          "retrieved_at": "2026-10-15",
+          "revision": "2025 equipment brochure",
+          "locator": "Printed page 31",
+          "retrieval_method": "Official PDF indexed text via search_service_web_run; direct open exceeded size limit or network blocked"
+        }
+      ]
     }
   ],
   "historical_candidate_sources": [
@@ -105,5 +248,6 @@
       "state": "unverified-parent-located",
       "instruction": "Historical candidate CSV, not the missing 457-row queue. Deduplicate against current main, then independently verify exact manufacturer variants before use."
     }
-  ]
+  ],
+  "research_checkpoint": "https://github.com/uroshdxb-svg/kitchen-studio/tree/codex/equipment-research-checkpoint-2026-10-15/equipment/pending-research"
 }

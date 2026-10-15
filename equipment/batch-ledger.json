@@ -109,14 +109,14 @@
         "361262",
         "361263"
       ],
-      "state": "prepared",
+      "state": "pr-open",
       "source_before": 455,
       "source_before_sha": "704e9f8ac7cd3794b62a228e165f394a3ce58e41",
       "source_after": 460,
       "verified_additions": 5,
       "merged_additions": 0,
       "live_verified_additions": 0,
-      "pr_url": null,
+      "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/9",
       "merge_sha": null,
       "deployment_url": null,
       "evidence": "catalogue-evidence.json",
@@ -129,6 +129,46 @@
         "import": "5 additions; repeat dry run zero additions and five duplicates",
         "preservation": "455 prior rows unchanged; exact manufacturer identities unique",
         "regressions": "npm run test:ci passed with system Chromium; all five exact SKUs searched and added; built catalogue readback 460"
+      }
+    },
+    {
+      "id": "2026-10-15-electrolux-service-04",
+      "manufacturer": "Electrolux Professional",
+      "models": [
+        "361200",
+        "361238",
+        "361314",
+        "361204",
+        "361244",
+        "361252",
+        "361208",
+        "361202",
+        "361206",
+        "361210",
+        "361224",
+        "361212",
+        "361216"
+      ],
+      "state": "prepared",
+      "source_before": 460,
+      "source_before_sha": "11d2c34f50c9d3208e6d1c34f8acb69028415809",
+      "source_after": 473,
+      "verified_additions": 13,
+      "merged_additions": 0,
+      "live_verified_additions": 0,
+      "pr_url": null,
+      "merge_sha": null,
+      "deployment_url": null,
+      "evidence": "catalogue-evidence.json",
+      "csv": "equipment/batches/2026-10-15-electrolux-service-04.csv",
+      "limitations": [
+        "Text-only official source review; no binary archival or visual drawing claims.",
+        "Legacy queue overlap awaiting parent investigation."
+      ],
+      "validation": {
+        "import": "13 additions; repeat dry run zero additions and 13 duplicates",
+        "preservation": "460 previous rows unchanged; normalized identities and exact SKUs unique",
+        "regressions": "npm run test:ci passed using system Chromium; all 13 exact SKUs searched and added; built catalogue readback 473"
       }
     }
   ],
