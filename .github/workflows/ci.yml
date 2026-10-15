@@ -21,6 +21,8 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: npm run test:ci
+      - name: Verify public production routes
+        run: node coordination/live-check.mjs
       - name: Upload browser-test evidence
         if: always()
         uses: actions/upload-artifact@v4

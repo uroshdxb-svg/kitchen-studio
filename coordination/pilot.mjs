@@ -1,0 +1,20 @@
+// No network or product writes. Demonstrates the same reducer/CAS contract.
+import assert from 'node:assert/strict';
+import {emptyQueue,transact,inspectQueue} from './queue.mjs';
+let queue=emptyQueue();
+const store={async read(){return{queue:structuredClone(queue),revision:queue.revision};},async compareAndSwap(expected,next){if(queue.revision!==expected)return false;queue=structuredClone(next);return true;}};
+let now=Date.now();
+const run=c=>transact(store,c,()=>++now);
+await run({opId:'pilot-enqueue',type:'enqueue',task:{id:'KS-PILOT-READ-ONLY',owner:'supervisor',kind:'work',title:'Verify coordination receipt without modifying the product',retrySafe:true}});
+const contenders=await Promise.allSettled(['a','b'].map(id=>run({opId:'pilot-claim-'+id,type:'claim',taskId:'KS-PILOT-READ-ONLY',worker:'supervisor',runId:'pilot-'+id,leaseMs:60000})));
+assert.equal(contenders.filter(x=>x.status==='fulfilled').length,1);
+const winner=contenders.find(x=>x.status==='fulfilled').value.result;
+const owner={taskId:winner.taskId,worker:'supervisor',runId:queue.tasks[winner.taskId].lease.runId,...winner};
+const handoffCommand={opId:'pilot-handoff',type:'handoff',...owner,to:'reviewer',summary:'Read-only pilot ready for receipt acknowledgment',evidence:{outcome:'pass',refs:['coordination/pilot.mjs']}};
+const handoff=await run(handoffCommand),replayed=await run(handoffCommand);
+assert.deepEqual(handoff.result,replayed.result);
+const accepted=await run({opId:'pilot-accept',type:'accept',taskId:winner.taskId,worker:'reviewer',runId:'pilot-review',receiptId:handoff.result.receiptId,leaseMs:60000});
+await run({opId:'pilot-complete',type:'complete',taskId:winner.taskId,worker:'reviewer',runId:'pilot-review',...accepted.result,evidence:{outcome:'pass',refs:['coordination/pilot.mjs','coordination/queue.test.mjs']}});
+assert.equal(queue.tasks[winner.taskId].status,'done');
+assert.equal(inspectQueue(queue,now).length,0);
+console.log(JSON.stringify({scope:'local_in_memory_non_destructive_pilot',competing_claims:2,successful_claims:1,replayed_handoff_receipts:Object.keys(queue.receipts).length,acknowledged:true,completed:true,product_writes:0,external_dispatches:0},null,2));

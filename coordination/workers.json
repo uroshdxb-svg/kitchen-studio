@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "stateBranch": "coordination-state",
+  "statePath": "coordination/queue.json",
+  "clock": "Fresh UTC from the executing host; reject backwards state timestamps. Refetch time and state on conflicts.",
+  "goal": {
+    "catalogueMinimum": 1001,
+    "deadline": "2026-10-31T19:59:59Z",
+    "verifiedBaseline": 483,
+    "baselineDate": "2026-10-15",
+    "dailyPlanningRange": [
+      35,
+      40
+    ],
+    "note": "Targets are not delivered counts; count only live verified identities."
+  },
+  "desiredRoles": {
+    "supervisor": {
+      "automationId": "6ad10db7e2048191ae30f18fa138a06f",
+      "cadence": "hourly polling",
+      "responsibility": "Claim coordination tasks; scan stale leases, unacknowledged receipts, worker outcomes and deadlines. Route meaningful changes only."
+    },
+    "catalog": {
+      "automationId": "6ad0f95cf6d481918c6003bde5fc4c55",
+      "cadence": "daily around 08:00 Asia/Dubai",
+      "resource": "catalogue-writer",
+      "responsibility": "One pipeline owns existing batch queue, manufacturer checks, review, approved additive release and live readback."
+    },
+    "discovery": {
+      "automationId": "6ad02ab5f040819193905d6253033c79",
+      "cadence": "existing daily around 08:00 Asia/Dubai; scheduler state still needs originating-context confirmation",
+      "responsibility": "Claim existing discovery work; preserve private fixed question bank, prepare drafts, honest independent measurement."
+    },
+    "reviewer": {
+      "automationId": "kitchen-studio-code-review-agent",
+      "cadence": "existing Wednesday/Friday 09:00 local nominal",
+      "responsibility": "Claim assigned exact-head review tasks. Return findings/receipts; no automatic release authority."
+    },
+    "reliability": {
+      "automationId": "kitchen-studio-health-monitor",
+      "cadence": "existing Monday/Thursday/Saturday 15:00 local nominal",
+      "responsibility": "Claim queued production readback checks; supervisor can perform authorized read-only checks while this role is unavailable."
+    },
+    "content-qa": {
+      "automationId": "kitchen-studio-daily-reel-producer",
+      "cadence": "existing daily 09:00 Asia/Dubai",
+      "responsibility": "Claim existing asset recovery/QA and drawing-led review tasks; no publishing, purchases, recurring generation credits or new host permission inferred."
+    },
+    "social-readiness": {
+      "automationId": "social-media-content-scheduler",
+      "cadence": "existing daily 08:00 and 17:00 Asia/Dubai",
+      "responsibility": "Claim approved-scope readiness checks; preserve exact asset approval boundaries. Coordination authorization itself adds no publication permission."
+    },
+    "product": {
+      "automationId": "kitchen-studio-product-manager",
+      "cadence": "existing Thursday 09:00 local nominal",
+      "responsibility": "Claim existing requirement/acceptance tasks and reconcile aggregate evidence."
+    },
+    "cx": {
+      "automationId": "kitchen-studio-customer-growth-cx-agent",
+      "cadence": "existing Wednesday 15:00 local nominal",
+      "responsibility": "Claim existing feedback-analysis tasks. No outreach or customer data exposure."
+    }
+  },
+  "consolidationCandidates": [
+    {
+      "automationId": "kitchen-studio-equipment-catalogue-importer",
+      "reason": "Duplicate release writer; transfer source/evidence checkpoints to catalog owner before pausing."
+    },
+    {
+      "automationId": "kitchen-studio-equipment-data-steward",
+      "reason": "Duplicate manufacturer research lane; retain its unfinished evidence under the catalog owner."
+    },
+    {
+      "automationId": "kitchen-studio-ceo",
+      "reason": "Duplicate supervision; preserve outstanding social incidents and decision ownership in supervisor queue."
+    },
+    {
+      "automationId": "kitchen-studio-growth-marketing-agent",
+      "reason": "Duplicate content production and old KPI ownership; hand off existing work to content-qa/product/discovery."
+    },
+    {
+      "automationId": "kitchen-studio-zero-extra-cost-edutainment-pilot",
+      "reason": "Fold finite deliverable/deadline into content-qa backlog; effective next run was 14:00 Dubai, not assumed 10:00."
+    }
+  ],
+  "runtimeWarning": "This is the desired role map, not confirmation of scheduler edits. Local APIs may require a local calling thread. Shared queue and schedules poll; no instant trigger or continuous execution is promised.",
+  "activationGate": "Recurring queue writes are on hold: actual Cloudflare preview builds on state commits require an authorized metadata-branch exclusion or a verified non-deploying backend.",
+  "expectedWorkers": {
+    "supervisor": {
+      "expectedEveryMs": 3600000,
+      "graceMs": 3600000,
+      "firstExpectedAt": null
+    },
+    "catalog": {
+      "expectedEveryMs": 86400000,
+      "graceMs": 3600000,
+      "firstExpectedAt": null
+    },
+    "discovery": {
+      "expectedEveryMs": 86400000,
+      "graceMs": 3600000,
+      "firstExpectedAt": null
+    },
+    "reviewer": {
+      "expectedEveryMs": 432000000,
+      "graceMs": 3600000,
+      "firstExpectedAt": null
+    },
+    "reliability": {
+      "expectedEveryMs": 259200000,
+      "graceMs": 3600000,
+      "firstExpectedAt": null
+    },
+    "content-qa": {
+      "expectedEveryMs": 86400000,
+      "graceMs": 3600000,
+      "firstExpectedAt": null
+    },
+    "social-readiness": {
+      "expectedEveryMs": 43200000,
+      "graceMs": 3600000,
+      "firstExpectedAt": null
+    },
+    "product": {
+      "expectedEveryMs": 604800000,
+      "graceMs": 3600000,
+      "firstExpectedAt": null
+    },
+    "cx": {
+      "expectedEveryMs": 604800000,
+      "graceMs": 3600000,
+      "firstExpectedAt": null
+    }
+  },
+  "expectationPolicy": "Monitoring expectations only; not scheduler activation evidence. firstExpectedAt may be explicitly anchored; otherwise use persisted expectationsStartedAt, or the earliest committed operation for legacy schema1 state. No anchor is an uninitialized warning, never healthy. Cadence is the maximum nominal gap plus grace (weekly roles retain their full gap). The recurring-write activation gate still applies."
+}
