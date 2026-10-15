@@ -564,6 +564,1238 @@
         "reviewed_at": "2026-10-13T07:46:41.467Z",
         "errors": []
       }
+    },
+    "electroluxprofessional|361128": {
+      "key": "electroluxprofessional|361128",
+      "brand": "Electrolux Professional",
+      "model": "361128",
+      "manufacturer_sku": "361128 (RTT10)",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "review_date": "2026-10-15",
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361128",
+        "Storage",
+        "Service rack trolley, 10x GN1/1",
+        515,
+        610,
+        1460,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-rack-trolley-for-10-gn-1-1-361128/"
+      ],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-rack-trolley-for-10-gn-1-1-361128/",
+          "retrieved_date": "2026-10-15",
+          "capture": "Read using web tool; exact COD and labelled width/depth/height."
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361128_rack_trolley_for_10_gn_1_1.pdf?version=1792080316",
+          "revision": "2026/03/13",
+          "retrieved_date": "2026-10-15",
+          "capture": "Two-page PDF text read using web tool; binary archive and visual drawing review unavailable.",
+          "document_sha256": null
+        }
+      ],
+      "checked_facts": {
+        "identity": "361128 (RTT10) on PDF page 1 matches current product page COD.",
+        "dimensions_mm": {
+          "width": 515,
+          "depth": 610,
+          "height": 1460,
+          "source": "S1 specifications; S2 page 2 labelled external dimensions"
+        },
+        "net_weight_kg": 25,
+        "mounting": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic buffers.",
+        "construction": "AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf."
+      },
+      "utility_assessment": {
+        "proposed_power": "none",
+        "proposed_power_kw": null,
+        "proposed_electrical_supply": null,
+        "proposed_water": 0,
+        "proposed_drain": 0,
+        "proposed_gas": "not applicable",
+        "basis": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+      },
+      "installation_notes": {
+        "numeric_clearance": "Not supplied in reviewed text; do not invent.",
+        "assembly": "Not stated in reviewed current PDF; do not copy earlier model assembly claims.",
+        "visual_drawing_review": "Not performed; explicit labelled external dimensions and complete mechanical text used."
+      },
+      "duplicate_check": "Exact model token absent from current cat.js on 2026-10-15; integration owner must rerun normalized identity checks.",
+      "blockers": [],
+      "limitations": [
+        "PDF text reviewed; drawings not visually inspected because screenshot returned no image payload.",
+        "Binary archive unavailable (proxy HTTP 403); no document SHA256 claimed."
+      ],
+      "installation_details": {
+        "mount": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic buffers.",
+        "clearance_status": "No numeric clearance provided; no zero clearance claimed. Preserve handling space.",
+        "assembly": "Not stated; do not claim delivered assembled.",
+        "utility_basis": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+      },
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361128",
+        "Storage",
+        "Service rack trolley, 10x GN1/1",
+        "515",
+        "610",
+        "1460",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-rack-trolley-for-10-gn-1-1-361128/",
+        "Global (unpowered)",
+        "Official manufacturer text review; passive mechanical trolley; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "361128 (RTT10) on PDF page 1 matches current product page COD."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "S1 and S2 page 2 explicitly label external Width 515, Depth 610, Height 1460 mm. Direct labelled orientation mapping; no conversion or inferred dimension."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic buffers."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic buffers.\", \"clearance_status\": \"No numeric clearance provided; no zero clearance claimed. Preserve handling space.\", \"assembly\": \"Not stated; do not claim delivered assembled.\", \"utility_basis\": \"Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current manufacturer product page links exact SKU PDF dated 2026/03/13; text dimensions agree."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Importer dry run passed: supported Storage category/floor mounting/none power; 17 fields, null nonapplicable supply/input and explicit 0/0 services."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "361128 (RTT10) on PDF page 1 matches current product page COD."
+        },
+        "model": {
+          "value": "361128",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "361128 (RTT10) on PDF page 1 matches current product page COD."
+        },
+        "w": {
+          "value": "515",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "S1 and S2 page 2 explicitly label external Width 515, Depth 610, Height 1460 mm. Direct labelled orientation mapping; no conversion or inferred dimension.",
+          "original_value": "515",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "d": {
+          "value": "610",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "S1 and S2 page 2 explicitly label external Width 515, Depth 610, Height 1460 mm. Direct labelled orientation mapping; no conversion or inferred dimension.",
+          "original_value": "610",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "h": {
+          "value": "1460",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "S1 and S2 page 2 explicitly label external Width 515, Depth 610, Height 1460 mm. Direct labelled orientation mapping; no conversion or inferred dimension.",
+          "original_value": "1460",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic buffers."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        }
+      },
+      "review_scope": "Manufacturer product page and specification PDF text review, with explicit external dimension labels and complete mechanical construction. No visual drawing review or compliance certification claimed.",
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner independently read all four official product pages and linked exact-model PDF text on 2026-10-15; identity, labelled external dimensions and complete mechanical construction agree. No visual drawing or binary archive claim.",
+      "source_row_hash": "03b8e57a189b8beb5eb14e6bf999ad37e694254f16d45e5c0a8c86f0b1fb2a25"
+    },
+    "electroluxprofessional|361132": {
+      "key": "electroluxprofessional|361132",
+      "brand": "Electrolux Professional",
+      "model": "361132",
+      "manufacturer_sku": "361132 (RTT30)",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "review_date": "2026-10-15",
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361132",
+        "Storage",
+        "Service rack trolley, 30x GN1/1",
+        1355,
+        610,
+        1460,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-rack-trolley-for-30-gn-1-1-361132/"
+      ],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-rack-trolley-for-30-gn-1-1-361132/",
+          "retrieved_date": "2026-10-15",
+          "capture": "Read using web tool; exact COD and labelled width/depth/height."
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361132_rack_trolley_for_30_gn_1_1.pdf?version=1792080317",
+          "revision": "2026/03/13",
+          "retrieved_date": "2026-10-15",
+          "capture": "Two-page PDF text read using web tool; binary archive and visual drawing review unavailable.",
+          "document_sha256": null
+        }
+      ],
+      "checked_facts": {
+        "identity": "361132 (RTT30) on PDF page 1 matches current product page COD.",
+        "dimensions_mm": {
+          "width": 1355,
+          "depth": 610,
+          "height": 1460,
+          "source": "S1 specifications; S2 page 2 labelled external dimensions"
+        },
+        "net_weight_kg": 47,
+        "mounting": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic buffers.",
+        "construction": "AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf."
+      },
+      "utility_assessment": {
+        "proposed_power": "none",
+        "proposed_power_kw": null,
+        "proposed_electrical_supply": null,
+        "proposed_water": 0,
+        "proposed_drain": 0,
+        "proposed_gas": "not applicable",
+        "basis": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+      },
+      "installation_notes": {
+        "numeric_clearance": "Not supplied in reviewed text; do not invent.",
+        "assembly": "Not stated in reviewed current PDF; do not copy earlier model assembly claims.",
+        "visual_drawing_review": "Not performed; explicit labelled external dimensions and complete mechanical text used."
+      },
+      "duplicate_check": "Exact model token absent from current cat.js on 2026-10-15; integration owner must rerun normalized identity checks.",
+      "blockers": [],
+      "limitations": [
+        "PDF text reviewed; drawings not visually inspected because screenshot returned no image payload.",
+        "Binary archive unavailable (proxy HTTP 403); no document SHA256 claimed."
+      ],
+      "installation_details": {
+        "mount": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic buffers.",
+        "clearance_status": "No numeric clearance provided; no zero clearance claimed. Preserve handling space.",
+        "assembly": "Not stated; do not claim delivered assembled.",
+        "utility_basis": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+      },
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361132",
+        "Storage",
+        "Service rack trolley, 30x GN1/1",
+        "1355",
+        "610",
+        "1460",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-rack-trolley-for-30-gn-1-1-361132/",
+        "Global (unpowered)",
+        "Official manufacturer text review; passive mechanical trolley; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "361132 (RTT30) on PDF page 1 matches current product page COD."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "S1 and S2 page 2 explicitly label external Width 1355, Depth 610, Height 1460 mm. Direct labelled orientation mapping; no conversion or inferred dimension."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic buffers."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic buffers.\", \"clearance_status\": \"No numeric clearance provided; no zero clearance claimed. Preserve handling space.\", \"assembly\": \"Not stated; do not claim delivered assembled.\", \"utility_basis\": \"Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current manufacturer product page links exact SKU PDF dated 2026/03/13; text dimensions agree."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Importer dry run passed: supported Storage category/floor mounting/none power; 17 fields, null nonapplicable supply/input and explicit 0/0 services."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "361132 (RTT30) on PDF page 1 matches current product page COD."
+        },
+        "model": {
+          "value": "361132",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "361132 (RTT30) on PDF page 1 matches current product page COD."
+        },
+        "w": {
+          "value": "1355",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "S1 and S2 page 2 explicitly label external Width 1355, Depth 610, Height 1460 mm. Direct labelled orientation mapping; no conversion or inferred dimension.",
+          "original_value": "1355",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "d": {
+          "value": "610",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "S1 and S2 page 2 explicitly label external Width 1355, Depth 610, Height 1460 mm. Direct labelled orientation mapping; no conversion or inferred dimension.",
+          "original_value": "610",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "h": {
+          "value": "1460",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "S1 and S2 page 2 explicitly label external Width 1355, Depth 610, Height 1460 mm. Direct labelled orientation mapping; no conversion or inferred dimension.",
+          "original_value": "1460",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic buffers."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded tube frame, movable tray supports and removable upper shelf. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        }
+      },
+      "review_scope": "Manufacturer product page and specification PDF text review, with explicit external dimension labels and complete mechanical construction. No visual drawing review or compliance certification claimed.",
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner independently read all four official product pages and linked exact-model PDF text on 2026-10-15; identity, labelled external dimensions and complete mechanical construction agree. No visual drawing or binary archive claim.",
+      "source_row_hash": "e53ae58097e0d82d32986ddf53fadc181fbfc508ab7390656f1116ccc95a19db"
+    },
+    "electroluxprofessional|361286": {
+      "key": "electroluxprofessional|361286",
+      "brand": "Electrolux Professional",
+      "model": "361286",
+      "manufacturer_sku": "361286 (PTR150)",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "review_date": "2026-10-15",
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361286",
+        "Storage",
+        "One-sided service trolley for 150 plates",
+        880,
+        470,
+        835,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-1-side-trolley-for-150-plates-height-835-mm-361286/"
+      ],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-1-side-trolley-for-150-plates-height-835-mm-361286/",
+          "retrieved_date": "2026-10-15",
+          "capture": "Read using web tool; exact COD and labelled width/depth/height."
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361286_1_side_trolley_for_150_plates_height_835_mm.pdf?version=1792080317",
+          "revision": "2026/03/13",
+          "retrieved_date": "2026-10-15",
+          "capture": "Two-page PDF text read using web tool; binary archive and visual drawing review unavailable.",
+          "document_sha256": null
+        }
+      ],
+      "checked_facts": {
+        "identity": "361286 (PTR150) on PDF page 1 matches current product page COD.",
+        "dimensions_mm": {
+          "width": 880,
+          "depth": 470,
+          "height": 835,
+          "source": "S1 specifications; S2 page 2 labelled external dimensions"
+        },
+        "net_weight_kg": 15,
+        "mounting": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic buffers.",
+        "construction": "AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm."
+      },
+      "utility_assessment": {
+        "proposed_power": "none",
+        "proposed_power_kw": null,
+        "proposed_electrical_supply": null,
+        "proposed_water": 0,
+        "proposed_drain": 0,
+        "proposed_gas": "not applicable",
+        "basis": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+      },
+      "installation_notes": {
+        "numeric_clearance": "Not supplied in reviewed text; do not invent.",
+        "assembly": "Not stated in reviewed current PDF; do not copy earlier model assembly claims.",
+        "visual_drawing_review": "Not performed; explicit labelled external dimensions and complete mechanical text used."
+      },
+      "duplicate_check": "Exact model token absent from current cat.js on 2026-10-15; integration owner must rerun normalized identity checks.",
+      "blockers": [],
+      "limitations": [
+        "PDF text reviewed; drawings not visually inspected because screenshot returned no image payload.",
+        "Binary archive unavailable (proxy HTTP 403); no document SHA256 claimed."
+      ],
+      "installation_details": {
+        "mount": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic buffers.",
+        "clearance_status": "No numeric clearance provided; no zero clearance claimed. Preserve handling space.",
+        "assembly": "Not stated; do not claim delivered assembled.",
+        "utility_basis": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+      },
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361286",
+        "Storage",
+        "One-sided service trolley for 150 plates",
+        "880",
+        "470",
+        "835",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-1-side-trolley-for-150-plates-height-835-mm-361286/",
+        "Global (unpowered)",
+        "Official manufacturer text review; passive mechanical trolley; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "361286 (PTR150) on PDF page 1 matches current product page COD."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "S1 and S2 page 2 explicitly label external Width 880, Depth 470, Height 835 mm. Direct labelled orientation mapping; no conversion or inferred dimension."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic buffers."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic buffers.\", \"clearance_status\": \"No numeric clearance provided; no zero clearance claimed. Preserve handling space.\", \"assembly\": \"Not stated; do not claim delivered assembled.\", \"utility_basis\": \"Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current manufacturer product page links exact SKU PDF dated 2026/03/13; text dimensions agree."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Importer dry run passed: supported Storage category/floor mounting/none power; 17 fields, null nonapplicable supply/input and explicit 0/0 services."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "361286 (PTR150) on PDF page 1 matches current product page COD."
+        },
+        "model": {
+          "value": "361286",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "361286 (PTR150) on PDF page 1 matches current product page COD."
+        },
+        "w": {
+          "value": "880",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "S1 and S2 page 2 explicitly label external Width 880, Depth 470, Height 835 mm. Direct labelled orientation mapping; no conversion or inferred dimension.",
+          "original_value": "880",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "d": {
+          "value": "470",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "S1 and S2 page 2 explicitly label external Width 880, Depth 470, Height 835 mm. Direct labelled orientation mapping; no conversion or inferred dimension.",
+          "original_value": "470",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "h": {
+          "value": "835",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "S1 and S2 page 2 explicitly label external Width 880, Depth 470, Height 835 mm. Direct labelled orientation mapping; no conversion or inferred dimension.",
+          "original_value": "835",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic buffers."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        }
+      },
+      "review_scope": "Manufacturer product page and specification PDF text review, with explicit external dimension labels and complete mechanical construction. No visual drawing review or compliance certification claimed.",
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner independently read all four official product pages and linked exact-model PDF text on 2026-10-15; identity, labelled external dimensions and complete mechanical construction agree. No visual drawing or binary archive claim.",
+      "source_row_hash": "5458a1cc9827d1dcc4f6d2bb0eedc875cae4e27ee29b3c0b27abd8b845f0675f"
+    },
+    "electroluxprofessional|361290": {
+      "key": "electroluxprofessional|361290",
+      "brand": "Electrolux Professional",
+      "model": "361290",
+      "manufacturer_sku": "361290 (PTR300)",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "review_date": "2026-10-15",
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "361290",
+        "Storage",
+        "Two-sided service trolley for 300 plates",
+        880,
+        840,
+        835,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-2-side-trolley-for-300-plates-height-835-mm-361290/"
+      ],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-2-side-trolley-for-300-plates-height-835-mm-361290/",
+          "retrieved_date": "2026-10-15",
+          "capture": "Read using web tool; exact COD and labelled width/depth/height."
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/361290_2_side_trolley_for_300_plates_height_835_mm.pdf?version=1792080316",
+          "revision": "2026/03/13",
+          "retrieved_date": "2026-10-15",
+          "capture": "Two-page PDF text read using web tool; binary archive and visual drawing review unavailable.",
+          "document_sha256": null
+        }
+      ],
+      "checked_facts": {
+        "identity": "361290 (PTR300) on PDF page 1 matches current product page COD.",
+        "dimensions_mm": {
+          "width": 880,
+          "depth": 840,
+          "height": 835,
+          "source": "S1 specifications; S2 page 2 labelled external dimensions"
+        },
+        "net_weight_kg": 28,
+        "mounting": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic buffers.",
+        "construction": "AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm."
+      },
+      "utility_assessment": {
+        "proposed_power": "none",
+        "proposed_power_kw": null,
+        "proposed_electrical_supply": null,
+        "proposed_water": 0,
+        "proposed_drain": 0,
+        "proposed_gas": "not applicable",
+        "basis": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+      },
+      "installation_notes": {
+        "numeric_clearance": "Not supplied in reviewed text; do not invent.",
+        "assembly": "Not stated in reviewed current PDF; do not copy earlier model assembly claims.",
+        "visual_drawing_review": "Not performed; explicit labelled external dimensions and complete mechanical text used."
+      },
+      "duplicate_check": "Exact model token absent from current cat.js on 2026-10-15; integration owner must rerun normalized identity checks.",
+      "blockers": [],
+      "limitations": [
+        "PDF text reviewed; drawings not visually inspected because screenshot returned no image payload.",
+        "Binary archive unavailable (proxy HTTP 403); no document SHA256 claimed."
+      ],
+      "installation_details": {
+        "mount": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic buffers.",
+        "clearance_status": "No numeric clearance provided; no zero clearance claimed. Preserve handling space.",
+        "assembly": "Not stated; do not claim delivered assembled.",
+        "utility_basis": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+      },
+      "proposed_queue_row": [
+        "Electrolux Professional",
+        "361290",
+        "Storage",
+        "Two-sided service trolley for 300 plates",
+        "880",
+        "840",
+        "835",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-2-side-trolley-for-300-plates-height-835-mm-361290/",
+        "Global (unpowered)",
+        "Official manufacturer text review; passive mechanical trolley; no visual drawing claim",
+        "2026-10-15"
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "361290 (PTR300) on PDF page 1 matches current product page COD."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "S1 and S2 page 2 explicitly label external Width 880, Depth 840, Height 835 mm. Direct labelled orientation mapping; no conversion or inferred dimension."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic buffers."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "{\"mount\": \"Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic buffers.\", \"clearance_status\": \"No numeric clearance provided; no zero clearance claimed. Preserve handling space.\", \"assembly\": \"Not stated; do not claim delivered assembled.\", \"utility_basis\": \"Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected.\"}"
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current manufacturer product page links exact SKU PDF dated 2026/03/13; text dimensions agree."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Importer dry run passed: supported Storage category/floor mounting/none power; 17 fields, null nonapplicable supply/input and explicit 0/0 services."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "361290 (PTR300) on PDF page 1 matches current product page COD."
+        },
+        "model": {
+          "value": "361290",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "361290 (PTR300) on PDF page 1 matches current product page COD."
+        },
+        "w": {
+          "value": "880",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "S1 and S2 page 2 explicitly label external Width 880, Depth 840, Height 835 mm. Direct labelled orientation mapping; no conversion or inferred dimension.",
+          "original_value": "880",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "d": {
+          "value": "840",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "S1 and S2 page 2 explicitly label external Width 880, Depth 840, Height 835 mm. Direct labelled orientation mapping; no conversion or inferred dimension.",
+          "original_value": "840",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "h": {
+          "value": "835",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 2 Key Information; S1 Specifications",
+          "reason": "S1 and S2 page 2 explicitly label external Width 880, Depth 840, Height 835 mm. Direct labelled orientation mapping; no conversion or inferred dimension.",
+          "original_value": "835",
+          "original_unit": "mm",
+          "conversion": "None; directly labelled external dimension."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Mobile floor trolley with four 125 mm swivel wheels, two braked; plastic buffers."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S2 page 1 exact identity/Main Features/Construction; S1 corresponding product sections",
+          "reason": "Reviewer inference from complete manufacturer mechanical construction description: AISI 304 stainless welded frame with inclined base/back shelves and adjustable plate dividers; maximum plate diameter 245 mm. Four manual swivel wheels, two braked. The trolley itself has no powered, heated, fuel-burning or plumbed assembly in its complete described construction; therefore no electric/gas/water/drain service applies. This is not based merely on an absent utility field. Drawings were not visually inspected."
+        }
+      },
+      "review_scope": "Manufacturer product page and specification PDF text review, with explicit external dimension labels and complete mechanical construction. No visual drawing review or compliance certification claimed.",
+      "reviewed_at": "2026-10-15",
+      "integration_review": "Integration owner independently read all four official product pages and linked exact-model PDF text on 2026-10-15; identity, labelled external dimensions and complete mechanical construction agree. No visual drawing or binary archive claim.",
+      "source_row_hash": "c2b47a51dde1c8e2786fdf393fba79a6f8b22cf28a6e3998e79bf927e57438ad"
     }
   }
 }
