@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": 14,
-  "updatedAt": "2026-10-15T19:20:18.441Z",
+  "revision": 15,
+  "updatedAt": "2026-10-15T19:20:59.622Z",
   "tasks": {
     "KS-COORDINATION-PILOT-20261015": {
       "id": "KS-COORDINATION-PILOT-20261015",
@@ -258,24 +258,16 @@
         "retrySafe": true,
         "resource": null
       },
-      "status": "leased",
+      "status": "awaiting_ack",
       "attempts": 1,
       "totalAttempts": 1,
       "generation": 1,
-      "lease": {
-        "worker": "supervisor",
-        "runId": "manual-activation-20261015-supervisor",
-        "token": "efc3a5df-22b9-4ea5-b264-4fc8fa42ac1b",
-        "generation": 1,
-        "claimedAt": "2026-10-15T19:20:18.441Z",
-        "heartbeatAt": "2026-10-15T19:20:18.441Z",
-        "expiresAt": "2026-10-15T19:23:18.441Z"
-      },
+      "lease": null,
       "retryAt": null,
       "createdAt": "2026-10-15T19:20:18.441Z",
-      "updatedAt": "2026-10-15T19:20:18.441Z",
+      "updatedAt": "2026-10-15T19:20:59.622Z",
       "evidence": null,
-      "pendingReceipt": null
+      "pendingReceipt": "KS-COORD-ACTIVATION-20261015:1:handoff"
     }
   },
   "operations": {
@@ -409,6 +401,13 @@
         ]
       },
       "at": "2026-10-15T19:20:18.441Z"
+    },
+    "KS-ACTIVATION-20261015-handoff": {
+      "fingerprint": "137cae70f539d9483ad16dcd8feddc60a1a3c3d93ffbe8614632d4f1a7aca7aa",
+      "result": {
+        "receiptId": "KS-COORD-ACTIVATION-20261015:1:handoff"
+      },
+      "at": "2026-10-15T19:20:59.622Z"
     }
   },
   "receipts": {
@@ -431,6 +430,35 @@
         "worker": "reviewer",
         "runId": "KS-PILOT-REVIEW"
       }
+    },
+    "KS-COORD-ACTIVATION-20261015:1:handoff": {
+      "id": "KS-COORD-ACTIVATION-20261015:1:handoff",
+      "taskId": "KS-COORD-ACTIVATION-20261015",
+      "from": "supervisor",
+      "to": "reviewer",
+      "summary": "Controlled manual metadata verification only; migrated five accepted inherited scopes remain unfinished",
+      "evidence": {
+        "outcome": "pass",
+        "refs": [
+          "https://github.com/uroshdxb-svg/kitchen-studio/commit/c141f5e811d3369ffd1bf09f1f1dc12ea64d7e8c",
+          "https://github.com/uroshdxb-svg/kitchen-studio/pull/15",
+          "https://learn.chatgpt.com/docs/pricing"
+        ],
+        "scope": "manual_metadata_cycle_not_unattended",
+        "inheritedWorkDelivered": false,
+        "quota": {
+          "planType": "prolite",
+          "weeklyUsedPercent": 21,
+          "weeklyWindowMinutes": 10080,
+          "secondary": null,
+          "ordinaryUsageAllowed": null,
+          "interpretation": "Reported applicable weekly window below preserved threshold; documented Pro has no five-hour limit"
+        }
+      },
+      "createdAt": "2026-10-15T19:20:59.622Z",
+      "ackDueAt": "2026-10-15T20:20:59.622Z",
+      "acceptedAt": null,
+      "acceptedBy": null
     }
   },
   "workers": {
