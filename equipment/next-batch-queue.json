@@ -12,9 +12,19 @@
     "count_policy": "Do not subtract newly researched models from 455 until overlap is reconciled."
   },
   "next_batch": {
+    "id": "2026-10-16-cambro-transport-01",
+    "manufacturer": "Cambro",
+    "state": "unverified-shortlist",
+    "models": [
+      "CD160",
+      "CD400",
+      "CD100H"
+    ],
+    "source": "https://www.cambro.com/Products/warewashing/camdollies/camdollies-for-catering-equipment/",
+    "instruction": "Resume open PRs and verify live releases first. These are current product-table discoveries, not certified records. Obtain exact-model technical/construction evidence and deduplicate against main and recovered legacy sources before import."
+  },
+  "previous_queue": {
     "id": "2026-10-15-electrolux-service-06",
-    "manufacturer": "Electrolux Professional",
-    "state": "integration-review-pending",
     "models": [
       "361220",
       "361226",
@@ -22,17 +32,9 @@
       "361218",
       "361222",
       "361230"
-    ]
-  },
-  "previous_queue": {
-    "id": "2026-10-15-cambro-05",
-    "models": [
-      "BC340KD",
-      "CD100",
-      "CD1313",
-      "CD1826PDB"
     ],
-    "state": "prepared"
+    "state": "pr-open",
+    "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/12"
   },
   "held_candidates": [
     {
