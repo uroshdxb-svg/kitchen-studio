@@ -184,15 +184,15 @@
         "CD1313",
         "CD1826PDB"
       ],
-      "state": "pr-open",
+      "state": "merged-live-verification-pending",
       "source_before": 473,
       "source_before_sha": "e7947d245c6f0d1aaf5b0317f391a296ba250a80",
       "source_after": 477,
       "verified_additions": 4,
-      "merged_additions": 0,
+      "merged_additions": 4,
       "live_verified_additions": 0,
       "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/11",
-      "merge_sha": null,
+      "merge_sha": "903907f9daa66a47f9944b24db876d36c82f55ba",
       "deployment_url": null,
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-15-cambro-05.csv",
@@ -203,7 +203,9 @@
       "validation": {
         "import": "4 added; repeat dry run zero additions and 4 duplicates",
         "preservation": "473 prior rows unchanged; normalized identities unique",
-        "regressions": "npm run test:ci passed using system Chromium; all four exact SKUs searched and added; built catalogue readback 477"
+        "regressions": "npm run test:ci passed using system Chromium; all four exact SKUs searched and added; built catalogue readback 477",
+        "github_ci": "https://github.com/uroshdxb-svg/kitchen-studio/actions/runs/38770000684",
+        "review": "Automated review completed without findings; ordinary expected-head merge succeeded."
       }
     },
     {
@@ -217,14 +219,14 @@
         "361222",
         "361230"
       ],
-      "state": "prepared",
+      "state": "pr-open",
       "source_before": 477,
-      "source_before_sha": "2bebf77177e920dd26a463f76631c666732789a9",
+      "source_before_sha": "903907f9daa66a47f9944b24db876d36c82f55ba",
       "source_after": 483,
       "verified_additions": 6,
       "merged_additions": 0,
       "live_verified_additions": 0,
-      "pr_url": null,
+      "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/12",
       "merge_sha": null,
       "deployment_url": null,
       "evidence": "catalogue-evidence.json",
@@ -241,8 +243,8 @@
     }
   ],
   "current_merged": {
-    "sha": "791776af45883480ba290d2364f7a7ff24e7d2bf",
-    "count": 473,
+    "sha": "903907f9daa66a47f9944b24db876d36c82f55ba",
+    "count": 477,
     "as_of": "2026-10-15",
     "live_count": 444
   }

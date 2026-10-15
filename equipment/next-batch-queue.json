@@ -33,7 +33,8 @@
       "361222",
       "361230"
     ],
-    "state": "prepared"
+    "state": "pr-open",
+    "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/12"
   },
   "held_candidates": [
     {
