@@ -12,37 +12,27 @@
     "count_policy": "Do not subtract newly researched models from 455 until overlap is reconciled."
   },
   "next_batch": {
-    "id": "2026-10-15-cambro-05",
-    "manufacturer": "Cambro",
+    "id": "2026-10-15-electrolux-service-06",
+    "manufacturer": "Electrolux Professional",
     "state": "integration-review-pending",
+    "models": [
+      "361220",
+      "361226",
+      "361214",
+      "361218",
+      "361222",
+      "361230"
+    ]
+  },
+  "previous_queue": {
+    "id": "2026-10-15-cambro-05",
     "models": [
       "BC340KD",
       "CD100",
       "CD1313",
       "CD1826PDB"
     ],
-    "research_branch": "codex/equipment-research-checkpoint-2026-10-15",
-    "research_file": "equipment/pending-research/cambro.json"
-  },
-  "previous_queue": {
-    "id": "2026-10-15-electrolux-service-04",
-    "models": [
-      "361200",
-      "361238",
-      "361314",
-      "361204",
-      "361244",
-      "361252",
-      "361208",
-      "361202",
-      "361206",
-      "361210",
-      "361224",
-      "361212",
-      "361216"
-    ],
-    "state": "pr-open",
-    "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/10"
+    "state": "prepared"
   },
   "held_candidates": [
     {

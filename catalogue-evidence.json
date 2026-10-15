@@ -9147,6 +9147,1143 @@
       "reviewed_at": "2026-10-15",
       "integration_review": "Integration owner reviewed exact-model research dossier and per-model source notes; independently re-opened official product and linked PDF for 361210 and 361314, confirming distinct heights and external/platform dimension scope. Primary text review for every model was performed by delegated Electrolux researcher. No visual review or binary archival claim.",
       "source_row_hash": "b2da6ba0c3660c37a8daf17a5117c18e8c7a7d5c5bab61978bf8bea5cb9d8320"
+    },
+    "cambro|bc340kd": {
+      "schema_version": 1,
+      "key": "cambro|bc340kd",
+      "brand": "Cambro",
+      "model": "BC340KD",
+      "manufacturer_sku": "BC340KD",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-15",
+      "candidate_runtime_row": [
+        "Cambro",
+        "BC340KD",
+        "Storage",
+        "Three-shelf knockdown large utility cart",
+        1015,
+        540,
+        950,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.cambro.com/Products/food-and-salad-bars/service-and-utility-carts/kd-knock-down-utility-cart/"
+      ],
+      "proposed_queue_row": [
+        "Cambro",
+        "BC340KD",
+        "Storage",
+        "Three-shelf knockdown large utility cart",
+        "1015",
+        "540",
+        "950",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.cambro.com/Products/food-and-salad-bars/service-and-utility-carts/kd-knock-down-utility-cart/",
+        "Global (unpowered)",
+        "Official manufacturer text reviewed; no binary or visual inspection claimed",
+        "2026-10-15"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.cambro.com/Products/food-and-salad-bars/service-and-utility-carts/kd-knock-down-utility-cart/",
+          "retrieved_at": "2026-10-15",
+          "revision": "Current product listing"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://www.cambro.com/globalassets/page-content/footer/2018-19-english-metric-world-catalog.pdf",
+          "retrieved_at": "2026-10-15",
+          "revision": "2018–19 world metric catalog",
+          "locator": "Printed page 85",
+          "retrieval_method": "Official PDF indexed text via search_service_web_run; direct open exceeded size limit or network blocked",
+          "document_type": "Manufacturer catalog specification table"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Exact base model separately listed; color options are not additional equipment."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "S1/S2 overall L/D/H: L maps to runtime w; cm multiplied by 10."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor assembly; four 127 mm swivel casters without brakes."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Assembly notes and unknown numeric clearances recorded separately."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current official product listing checked against official catalog text; binary retrieval unavailable."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Storage/floor/none row; integration validation remains required."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Cambro",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact BC340KD row; S2 printed page 85",
+          "reason": "Exact base model separately listed; color options are not additional equipment."
+        },
+        "model": {
+          "value": "BC340KD",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact BC340KD row; S2 printed page 85",
+          "reason": "Exact base model separately listed; color options are not additional equipment."
+        },
+        "w": {
+          "value": "1015",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact BC340KD row; S2 printed page 85",
+          "original_value": "101.5",
+          "original_unit": "cm",
+          "conversion": "multiply by 10",
+          "reason": "S1/S2 overall L/D/H: L maps to runtime w; cm multiplied by 10."
+        },
+        "d": {
+          "value": "540",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact BC340KD row; S2 printed page 85",
+          "original_value": "54.0",
+          "original_unit": "cm",
+          "conversion": "multiply by 10",
+          "reason": "S1/S2 overall L/D/H: L maps to runtime w; cm multiplied by 10."
+        },
+        "h": {
+          "value": "950",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact BC340KD row; S2 printed page 85",
+          "original_value": "95.0",
+          "original_unit": "cm",
+          "conversion": "multiply by 10",
+          "reason": "S1/S2 overall L/D/H: L maps to runtime w; cm multiplied by 10."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact BC340KD row; S2 printed page 85",
+          "reason": "Mobile floor assembly; four 127 mm swivel casters without brakes."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact BC340KD row; S2 printed page 85",
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact BC340KD row; S2 printed page 85",
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact BC340KD row; S2 printed page 85",
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact BC340KD row; S2 printed page 85",
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact BC340KD row; S2 printed page 85",
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        }
+      },
+      "construction_basis": "Three polypropylene shelves, aluminum uprights, handles and four 127 mm swivel casters without brakes.",
+      "installation_details": {
+        "mount": "floor",
+        "assembly": "Knockdown assembly required.",
+        "clearance_status": "Not specified; no zero-clearance assertion.",
+        "utility_basis": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+      },
+      "review_scope": "Official product and manufacturer catalog text; no visual drawing verification, binary archive or certification claim.",
+      "limitations": [
+        "No binary PDF archive: direct retrieval blocked or exceeds web size limit.",
+        "Existing unrecovered 455-row held queue still requires cross-deduplication."
+      ],
+      "identity_note": "Base models identify equipment configuration. Do not add color suffix variants as separate catalog entries.",
+      "integration_review": "Integration owner independently read current official product pages and exact-model metric dimensional tables. Manufacturer catalog text evidence was reviewed by delegated Cambro researcher; owner reviewed dossier, conversion and field scope. No visual or binary archive claim.",
+      "source_row_hash": "ac388165c321bbcd731830ace8b5f984c36f5d6991ccab2c200bdb0b438e2678"
+    },
+    "cambro|cd100": {
+      "schema_version": 1,
+      "key": "cambro|cd100",
+      "brand": "Cambro",
+      "model": "CD100",
+      "manufacturer_sku": "CD100",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-15",
+      "candidate_runtime_row": [
+        "Cambro",
+        "CD100",
+        "Storage",
+        "Camdolly for insulated food and beverage carriers",
+        500,
+        730,
+        270,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.cambro.com/Products/warewashing/camdollies/camdollies-for-catering-equipment/"
+      ],
+      "proposed_queue_row": [
+        "Cambro",
+        "CD100",
+        "Storage",
+        "Camdolly for insulated food and beverage carriers",
+        "500",
+        "730",
+        "270",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.cambro.com/Products/warewashing/camdollies/camdollies-for-catering-equipment/",
+        "Global (unpowered)",
+        "Official manufacturer text reviewed; no binary or visual inspection claimed",
+        "2026-10-15"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.cambro.com/Products/warewashing/camdollies/camdollies-for-catering-equipment/",
+          "retrieved_at": "2026-10-15",
+          "revision": "Current product listing"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://www.cambro.com/globalassets/page-content/footer/2018-19-english-metric-world-catalog.pdf",
+          "retrieved_at": "2026-10-15",
+          "revision": "2018–19 world metric catalog",
+          "locator": "Printed page 75–76",
+          "retrieval_method": "Official PDF indexed text via search_service_web_run; direct open exceeded size limit or network blocked",
+          "document_type": "Manufacturer catalog specification table"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Exact base model separately listed; color options are not additional equipment."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "S1/S2 external W/D/H, cm multiplied by 10."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor assembly; two fixed and two swivel casters, one braked."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Assembly notes and unknown numeric clearances recorded separately."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current official product listing checked against official catalog text; binary retrieval unavailable."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Storage/floor/none row; integration validation remains required."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Cambro",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD100 row; S2 printed page 75–76",
+          "reason": "Exact base model separately listed; color options are not additional equipment."
+        },
+        "model": {
+          "value": "CD100",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD100 row; S2 printed page 75–76",
+          "reason": "Exact base model separately listed; color options are not additional equipment."
+        },
+        "w": {
+          "value": "500",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD100 row; S2 printed page 75–76",
+          "original_value": "50.0",
+          "original_unit": "cm",
+          "conversion": "multiply by 10",
+          "reason": "S1/S2 external W/D/H, cm multiplied by 10."
+        },
+        "d": {
+          "value": "730",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD100 row; S2 printed page 75–76",
+          "original_value": "73.0",
+          "original_unit": "cm",
+          "conversion": "multiply by 10",
+          "reason": "S1/S2 external W/D/H, cm multiplied by 10."
+        },
+        "h": {
+          "value": "270",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD100 row; S2 printed page 75–76",
+          "original_value": "27.0",
+          "original_unit": "cm",
+          "conversion": "multiply by 10",
+          "reason": "S1/S2 external W/D/H, cm multiplied by 10."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD100 row; S2 printed page 75–76",
+          "reason": "Mobile floor assembly; two fixed and two swivel casters, one braked."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD100 row; S2 printed page 75–76",
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD100 row; S2 printed page 75–76",
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD100 row; S2 printed page 75–76",
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD100 row; S2 printed page 75–76",
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD100 row; S2 printed page 75–76",
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        }
+      },
+      "construction_basis": "Plastic load-bearing platform and two fixed and two swivel casters, one braked.",
+      "installation_details": {
+        "mount": "floor",
+        "assembly": "Not specified in reviewed text.",
+        "clearance_status": "Not specified; no zero-clearance assertion.",
+        "utility_basis": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+      },
+      "review_scope": "Official product and manufacturer catalog text; no visual drawing verification, binary archive or certification claim.",
+      "limitations": [
+        "No binary PDF archive: direct retrieval blocked or exceeds web size limit.",
+        "Existing unrecovered 455-row held queue still requires cross-deduplication."
+      ],
+      "identity_note": "Base models identify equipment configuration. Do not add color suffix variants as separate catalog entries.",
+      "integration_review": "Integration owner independently read current official product pages and exact-model metric dimensional tables. Manufacturer catalog text evidence was reviewed by delegated Cambro researcher; owner reviewed dossier, conversion and field scope. No visual or binary archive claim.",
+      "source_row_hash": "b61d29289b78dfe4f4ae9d25d8b44fad2ac52c0e974625ec2504801ca627dabf",
+      "source_scope_note": "Current page defaults to selected CD400; use its exact CD100 Product Specs row for identity/dimensions. Exact CD100 construction/casters are corroborated by researcher review of manufacturer catalog pages 75–76, not inferred from the currently selected CD400."
+    },
+    "cambro|cd1313": {
+      "schema_version": 1,
+      "key": "cambro|cd1313",
+      "brand": "Cambro",
+      "model": "CD1313",
+      "manufacturer_sku": "CD1313",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-15",
+      "candidate_runtime_row": [
+        "Cambro",
+        "CD1313",
+        "Storage",
+        "Camdolly for milk crates",
+        410,
+        410,
+        210,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.cambro.com/Products/warewashing/camdollies/camdollies-for-milk-crates--10-can-cases/"
+      ],
+      "proposed_queue_row": [
+        "Cambro",
+        "CD1313",
+        "Storage",
+        "Camdolly for milk crates",
+        "410",
+        "410",
+        "210",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.cambro.com/Products/warewashing/camdollies/camdollies-for-milk-crates--10-can-cases/",
+        "Global (unpowered)",
+        "Official manufacturer text reviewed; no binary or visual inspection claimed",
+        "2026-10-15"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.cambro.com/Products/warewashing/camdollies/camdollies-for-milk-crates--10-can-cases/",
+          "retrieved_at": "2026-10-15",
+          "revision": "Current product listing"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://www.cambro.com/globalassets/page-content/footer/2018-19-english-metric-world-catalog.pdf",
+          "retrieved_at": "2026-10-15",
+          "revision": "2018–19 world metric catalog",
+          "locator": "Printed page 75,77",
+          "retrieval_method": "Official PDF indexed text via search_service_web_run; direct open exceeded size limit or network blocked",
+          "document_type": "Manufacturer catalog specification table"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Exact base model separately listed; color options are not additional equipment."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "S1/S2 external W/D/H, cm multiplied by 10."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor assembly; four swivel casters without brakes."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Assembly notes and unknown numeric clearances recorded separately."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current official product listing checked against official catalog text; binary retrieval unavailable."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Storage/floor/none row; integration validation remains required."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Cambro",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1313 row; S2 printed page 75,77",
+          "reason": "Exact base model separately listed; color options are not additional equipment."
+        },
+        "model": {
+          "value": "CD1313",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1313 row; S2 printed page 75,77",
+          "reason": "Exact base model separately listed; color options are not additional equipment."
+        },
+        "w": {
+          "value": "410",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1313 row; S2 printed page 75,77",
+          "original_value": "41.0",
+          "original_unit": "cm",
+          "conversion": "multiply by 10",
+          "reason": "S1/S2 external W/D/H, cm multiplied by 10."
+        },
+        "d": {
+          "value": "410",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1313 row; S2 printed page 75,77",
+          "original_value": "41.0",
+          "original_unit": "cm",
+          "conversion": "multiply by 10",
+          "reason": "S1/S2 external W/D/H, cm multiplied by 10."
+        },
+        "h": {
+          "value": "210",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1313 row; S2 printed page 75,77",
+          "original_value": "21.0",
+          "original_unit": "cm",
+          "conversion": "multiply by 10",
+          "reason": "S1/S2 external W/D/H, cm multiplied by 10."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1313 row; S2 printed page 75,77",
+          "reason": "Mobile floor assembly; four swivel casters without brakes."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1313 row; S2 printed page 75,77",
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1313 row; S2 printed page 75,77",
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1313 row; S2 printed page 75,77",
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1313 row; S2 printed page 75,77",
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1313 row; S2 printed page 75,77",
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        }
+      },
+      "construction_basis": "Plastic load-bearing platform and four swivel casters without brakes.",
+      "installation_details": {
+        "mount": "floor",
+        "assembly": "Not specified in reviewed text.",
+        "clearance_status": "Not specified; no zero-clearance assertion.",
+        "utility_basis": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+      },
+      "review_scope": "Official product and manufacturer catalog text; no visual drawing verification, binary archive or certification claim.",
+      "limitations": [
+        "No binary PDF archive: direct retrieval blocked or exceeds web size limit.",
+        "Existing unrecovered 455-row held queue still requires cross-deduplication."
+      ],
+      "identity_note": "Base models identify equipment configuration. Do not add color suffix variants as separate catalog entries.",
+      "integration_review": "Integration owner independently read current official product pages and exact-model metric dimensional tables. Manufacturer catalog text evidence was reviewed by delegated Cambro researcher; owner reviewed dossier, conversion and field scope. No visual or binary archive claim.",
+      "source_row_hash": "a94048a71b17d09e537a13851157966b991b5e6754bf9604c56777ced3cd14ee"
+    },
+    "cambro|cd1826pdb": {
+      "schema_version": 1,
+      "key": "cambro|cd1826pdb",
+      "brand": "Cambro",
+      "model": "CD1826PDB",
+      "manufacturer_sku": "CD1826PDB",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-15",
+      "candidate_runtime_row": [
+        "Cambro",
+        "CD1826PDB",
+        "Storage",
+        "Camdolly for pizza dough boxes",
+        505,
+        710,
+        260,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.cambro.com/Products/warewashing/camdollies/camdollies-for-pizza-dough-boxes/"
+      ],
+      "proposed_queue_row": [
+        "Cambro",
+        "CD1826PDB",
+        "Storage",
+        "Camdolly for pizza dough boxes",
+        "505",
+        "710",
+        "260",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.cambro.com/Products/warewashing/camdollies/camdollies-for-pizza-dough-boxes/",
+        "Global (unpowered)",
+        "Official manufacturer text reviewed; no binary or visual inspection claimed",
+        "2026-10-15"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.cambro.com/Products/warewashing/camdollies/camdollies-for-pizza-dough-boxes/",
+          "retrieved_at": "2026-10-15",
+          "revision": "Current product listing"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://www.cambro.com/globalassets/page-content/footer/2018-19-english-metric-world-catalog.pdf",
+          "retrieved_at": "2026-10-15",
+          "revision": "2018–19 world metric catalog",
+          "locator": "Printed page 75",
+          "retrieval_method": "Official PDF indexed text via search_service_web_run; direct open exceeded size limit or network blocked",
+          "document_type": "Manufacturer catalog specification table"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Exact base model separately listed; color options are not additional equipment."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "S1/S2 external W/D/H, cm multiplied by 10."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Mobile floor assembly; two fixed and two swivel casters, one braked."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Assembly notes and unknown numeric clearances recorded separately."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Current official product listing checked against official catalog text; binary retrieval unavailable."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Storage/floor/none row; integration validation remains required."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Cambro",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1826PDB row; S2 printed page 75",
+          "reason": "Exact base model separately listed; color options are not additional equipment."
+        },
+        "model": {
+          "value": "CD1826PDB",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1826PDB row; S2 printed page 75",
+          "reason": "Exact base model separately listed; color options are not additional equipment."
+        },
+        "w": {
+          "value": "505",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1826PDB row; S2 printed page 75",
+          "original_value": "50.5",
+          "original_unit": "cm",
+          "conversion": "multiply by 10",
+          "reason": "S1/S2 external W/D/H, cm multiplied by 10."
+        },
+        "d": {
+          "value": "710",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1826PDB row; S2 printed page 75",
+          "original_value": "71.0",
+          "original_unit": "cm",
+          "conversion": "multiply by 10",
+          "reason": "S1/S2 external W/D/H, cm multiplied by 10."
+        },
+        "h": {
+          "value": "260",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1826PDB row; S2 printed page 75",
+          "original_value": "26.0",
+          "original_unit": "cm",
+          "conversion": "multiply by 10",
+          "reason": "S1/S2 external W/D/H, cm multiplied by 10."
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1826PDB row; S2 printed page 75",
+          "reason": "Mobile floor assembly; two fixed and two swivel casters, one braked."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1826PDB row; S2 printed page 75",
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1826PDB row; S2 printed page 75",
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1826PDB row; S2 printed page 75",
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1826PDB row; S2 printed page 75",
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 Product Specs exact CD1826PDB row; S2 printed page 75",
+          "reason": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+        }
+      },
+      "construction_basis": "Plastic load-bearing platform and two fixed and two swivel casters, one braked.",
+      "installation_details": {
+        "mount": "floor",
+        "assembly": "Not specified in reviewed text.",
+        "clearance_status": "Not specified; no zero-clearance assertion.",
+        "utility_basis": "Reviewer inference: the complete manual mechanical assembly described in construction_basis has no operational electrical, gas, water or drain connection; excludes carried equipment."
+      },
+      "review_scope": "Official product and manufacturer catalog text; no visual drawing verification, binary archive or certification claim.",
+      "limitations": [
+        "No binary PDF archive: direct retrieval blocked or exceeds web size limit.",
+        "Existing unrecovered 455-row held queue still requires cross-deduplication."
+      ],
+      "identity_note": "Base models identify equipment configuration. Do not add color suffix variants as separate catalog entries.",
+      "integration_review": "Integration owner independently read current official product pages and exact-model metric dimensional tables. Manufacturer catalog text evidence was reviewed by delegated Cambro researcher; owner reviewed dossier, conversion and field scope. No visual or binary archive claim.",
+      "source_row_hash": "01de161fbd9e0a10c22ee41f6dab196e168c468b065d43864143cb4363808422"
     }
   }
 }
