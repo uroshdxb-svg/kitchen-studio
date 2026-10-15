@@ -53,8 +53,10 @@
         "catalogue_validation": "448 rows; 444 original rows unchanged; normalized identities unique; four exact SKU aliases unique; field evidence checks pass",
         "app_search_add": "All four exact manufacturer SKUs successfully searched and added in local browser; built catalogue.json has 448 rows",
         "browser": "System /usr/bin/chromium; pinned Playwright browser download blocked by proxy",
-        "regressions": "npm run test:ci passed: build, existing app/browser suite and MCP suite"
-      }
+        "regressions": "npm run test:ci passed: build, existing app/browser suite and MCP suite",
+        "wrangler": "wrangler deploy --dry-run passed with temporary writable config/log directories"
+      },
+      "source_before_sha": "f44cb7cf826ba4a62de0652728b52c1783919597"
     }
   ]
 }
