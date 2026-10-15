@@ -6,6 +6,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import {fileURLToPath} from "node:url";
+import {buildDiscovery} from "./discovery.mjs";
 
 const ROOT=path.dirname(fileURLToPath(import.meta.url));
 const read=f=>fs.readFileSync(path.join(ROOT,f),"utf8");
@@ -39,7 +40,7 @@ if(mode==="artifact"){
   // catalogue rows for the MCP server (mcp.js reads /app/catalogue.json through the ASSETS binding)
   {const m={};new Function("m",read("cat.js")+";m.rows=CATALOGUE_ROWS;")(m);out(D,"app/catalogue.json",JSON.stringify(m.rows));}
   const libs={"jspdf-src":"/app/vendor/jspdf.min.js","svg2pdf-src":"/app/vendor/svg2pdf.min.js","pdfjs-src":"/app/vendor/pdf.min.js","pdfjs-worker-src":"/app/vendor/pdf.worker.min.js"};
-  const seo=`<meta name="description" content="Design your commercial kitchen yourself. Real equipment, real dimensions, drawings your contractor can build from."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#F0602F">`;
+  const seo=`<meta name="description" content="Plan your commercial kitchen with real-size equipment and prepare a concept layout and schedule for supplier review."><link rel="canonical" href="https://kitchenstudio.design/app/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#F0602F">`;
   const scripts=[`<script>window.KS_CONFIG=${JSON.stringify(cfg)};window.KS_LIBS=${JSON.stringify(libs)};</script>`,
     `<script src="/app/vendor/three.min.js"></script>`,
     `<script src="/app/vendor/supabase.js?v=${ver}"></script>`,
@@ -51,6 +52,7 @@ if(mode==="artifact"){
   for(const [name,src] of Object.entries(LIBS))copy(src,D,"app/vendor/"+name);
   out(D,"connect/index.html",branded(read("connect.html")));
   out(D,"index.html",branded(read("landing.html")).replace("__KS_CONFIG__",JSON.stringify(cfg)));
+  await buildDiscovery((file,data)=>out(D,file,data),branded);
   for(const f of ["favicon.svg","robots.txt","sample_floorplan.png","demo.mp4","demo.webm","demo-poster.jpg"])if(fs.existsSync(path.join(ROOT,f)))copy(f,D,f);
   for(const f of fs.readdirSync(ROOT).filter(f=>/^shot-.*\.png$/.test(f)))copy(f,D,"shots/"+f.replace(/^shot-/,""));
   out(D,"logo.svg",brand.lockupSVG());
