@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": 4,
-  "updatedAt": "2026-10-15T18:02:40.457Z",
+  "revision": 5,
+  "updatedAt": "2026-10-15T18:06:23.064Z",
   "tasks": {
     "KS-COORDINATION-PILOT-20261015": {
       "id": "KS-COORDINATION-PILOT-20261015",
@@ -28,24 +28,30 @@
         "retrySafe": true,
         "resource": null
       },
-      "status": "leased",
+      "status": "done",
       "attempts": 1,
       "totalAttempts": 2,
       "generation": 2,
-      "lease": {
-        "worker": "reviewer",
-        "runId": "KS-PILOT-REVIEW",
-        "token": "64c17816-6e23-492e-82ee-a5d14f74ba6d",
-        "generation": 2,
-        "claimedAt": "2026-10-15T18:02:40.457Z",
-        "heartbeatAt": "2026-10-15T18:02:40.457Z",
-        "expiresAt": "2026-10-15T18:32:40.457Z"
-      },
+      "lease": null,
       "retryAt": null,
       "createdAt": "2026-10-15T17:58:08.586Z",
-      "updatedAt": "2026-10-15T18:02:40.457Z",
-      "evidence": null,
-      "pendingReceipt": "KS-COORDINATION-PILOT-20261015:1:handoff"
+      "updatedAt": "2026-10-15T18:06:23.064Z",
+      "evidence": {
+        "outcome": "pass",
+        "refs": [
+          "https://github.com/uroshdxb-svg/kitchen-studio/pull/15",
+          "https://github.com/uroshdxb-svg/kitchen-studio/commit/26da6a5dda1c63635477a5473d3fc8c71c7903ec",
+          "https://github.com/uroshdxb-svg/kitchen-studio/commit/473efa9e1c7555a6462faf9e2bf898b8f8861f6c"
+        ],
+        "scope": "shared_queue_read_only_pilot",
+        "claimA": "Independently verified committed A receipt; no B receipt persisted",
+        "staleB": "Root-captured connector CONFLICT HTTP 409; no independent HTTP replay",
+        "handoff": "Independently verified source lease removed and reviewer ACK readback",
+        "productWrites": 0,
+        "schedulerChanges": 0
+      },
+      "pendingReceipt": "KS-COORDINATION-PILOT-20261015:1:handoff",
+      "completedAt": "2026-10-15T18:06:23.064Z"
     }
   },
   "operations": {
@@ -80,6 +86,13 @@
         "generation": 2
       },
       "at": "2026-10-15T18:02:40.457Z"
+    },
+    "KS-PILOT-20261015-complete": {
+      "fingerprint": "51afe287864adf0e93964ea0476bee5f0112c1d3d66094d3e71085b18230cef8",
+      "result": {
+        "ok": true
+      },
+      "at": "2026-10-15T18:06:23.064Z"
     }
   },
   "receipts": {
