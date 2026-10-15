@@ -219,15 +219,15 @@
         "361222",
         "361230"
       ],
-      "state": "pr-open",
+      "state": "merged-live-verification-pending",
       "source_before": 477,
       "source_before_sha": "903907f9daa66a47f9944b24db876d36c82f55ba",
       "source_after": 483,
       "verified_additions": 6,
-      "merged_additions": 0,
+      "merged_additions": 6,
       "live_verified_additions": 0,
       "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/12",
-      "merge_sha": null,
+      "merge_sha": "34672b7fe165c9660663fc9c2fc5527eb200c897",
       "deployment_url": null,
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-15-electrolux-service-06.csv",
@@ -238,14 +238,28 @@
       "validation": {
         "import": "6 additions; repeat dry run zero additions and 6 duplicates",
         "preservation": "477 prior rows unchanged; exact CODs and normalized identities unique",
-        "regressions": "npm run test:ci passed with system Chromium; all six exact SKUs searched and added; built catalogue readback 483"
-      }
+        "regressions": "npm run test:ci passed with system Chromium; all six exact SKUs searched and added; built catalogue readback 483",
+        "github_ci": "https://github.com/uroshdxb-svg/kitchen-studio/actions/runs/38770443714",
+        "review": "Automated review completed without findings; metadata-only reconciliation reviewed by integration owner; ordinary expected-head merge succeeded."
+      },
+      "release_receipt": "origin/main readback confirmed 483 entries and all six final-batch exact CODs after merge. Live remains last verified by parent at 444; delivered additions remain zero."
     }
   ],
   "current_merged": {
-    "sha": "903907f9daa66a47f9944b24db876d36c82f55ba",
-    "count": 477,
-    "as_of": "2026-10-15",
+    "sha": "34672b7fe165c9660663fc9c2fc5527eb200c897",
+    "count": 483,
+    "as_of": "2026-10-15T16:39:51.189400+00:00",
     "live_count": 444
+  },
+  "daily_totals": {
+    "date": "2026-10-15",
+    "verified_additions": 39,
+    "merged_additions": 39,
+    "live_verified_additions": 0,
+    "catalogue_count": 483,
+    "last_verified_live_count": 444,
+    "deployment_blocker": "Authenticated operator must inspect/retry existing connected Cloudflare production build. No Cloudflare credentials available in execution environment; parent browser signed out.",
+    "remaining_to_target_from_merged": 518,
+    "remaining_to_target_from_last_verified_live": 557
   }
 }
