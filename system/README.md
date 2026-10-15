@@ -2,7 +2,7 @@
 
 ## Mission Control visual direction
 
-The dark navy orbital layout implements a parent-verified specification of Library reference libfile_5fee45f449e08191b2f4d1c25c1cf298 (1672x941). The parent inspected the actual pixels and owns reference comparison. This Windows executor did not inspect them: supported materialization failed on os.setxattr and the bounded retry supplied no local path. No unsupported transfer or metadata bypass was used.
+The dark navy orbital layout implements a parent-verified visual specification (1672x941). The parent inspected the actual reference pixels and owns reference comparison; this executor implemented from the inspected specification.
 
 Six read-only views cover Overview, Agents, Missions, Evidence, Handoffs and Activity. Native dialog drawers support worker/mission drilldown, keyboard Escape and focus return. Task search, role/state filters, incident inspection and timestamped activity use only the public projection. Evidence links allow only exact HTTPS PR/commit/CI paths in this repository, without query strings, fragments or embedded credentials. No command/voice/trigger/approval/publishing controls exist. Static orb/connector glow is decorative; only the existing verified lease dot can pulse. Mobile uses a compact orbital graphic plus readable worker cards rather than a scaled desktop image.
 

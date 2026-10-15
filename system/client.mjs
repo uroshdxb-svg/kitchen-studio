@@ -1,4 +1,4 @@
-import {ROLES,LABELS,feedState,roleView,attentionCount} from './telemetry.mjs';
+import {ROLES,LABELS,feedState,roleView,taskState,attentionCount} from './telemetry.mjs';
 import {selectTasks,selectIncidents,selectActivity,publicEvidence} from './selectors.mjs';
 const $=id=>document.getElementById(id);
 const node=(tag,cls,value)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(value!==undefined)n.textContent=value;return n;};
@@ -50,7 +50,7 @@ function activityRow(event){const b=node('button','activity-item');b.type='butto
 function renderCollection(now,feed,views){
  if(view==='overview')return;
  const filters={role:$('role-filter').value,status:$('state-filter').value,query:$('task-search').value};
- const key=JSON.stringify([view,data,feed,filters,views.map(v=>[v.id,v.state])]);if(key===contentKey)return;contentKey=key;
+ const key=JSON.stringify([view,data,feed,filters,views.map(v=>[v.id,v.state]),data?.tasks.map(t=>[t.id,taskState(t,now,feed)])]);if(key===contentKey)return;contentKey=key;
  const list=$('collection-list');list.replaceChildren();
  setText('collection-title',({agents:'Nine worker roles',missions:'Shared missions',evidence:'Public evidence',handoffs:'Recent handoffs',activity:'Activity timeline'})[view]);
  setText('collection-kicker',feed==='current'?'CURRENT READ · PUBLIC METADATA':'SNAPSHOT CONTEXT · '+feed.toUpperCase());
@@ -80,7 +80,7 @@ function renderDetails(now,feed,views){
  if(feed!=='current')body.append(node('div','detail-callout','Snapshot context only. Current activity cannot be verified until a fresh read succeeds.'));
 }
 function renderSide(now,feed,views){
- const key=JSON.stringify([data,feed,views.map(v=>[v.id,v.state])]);if(key===sideKey)return;sideKey=key;
+ const key=JSON.stringify([data,feed,views.map(v=>[v.id,v.state]),data?.tasks.map(t=>[t.id,taskState(t,now,feed)])]);if(key===sideKey)return;sideKey=key;
  const attention=$('attention-list');attention.replaceChildren();const incidents=selectIncidents(data,now,feed);
  for(const i of incidents.slice(0,3)){const b=node('button','attention-item');b.type='button';b.append(node('strong','',i.title),node('p','',cleanReason(i.reason)),node('small','',roleName(i.owner)+' · '+LABELS[i.state]));b.addEventListener('click',()=>openTask(i.id));attention.append(b);}if(!incidents.length)attention.append(node('p','empty',data?'No attention items in this snapshot.':'Waiting for evidence.'));
  const activity=$('activity-list');activity.replaceChildren();for(const e of selectActivity(data).slice(0,4))activity.append(activityRow(e));if(!data)activity.append(node('p','empty','No recorded activity loaded.'));
