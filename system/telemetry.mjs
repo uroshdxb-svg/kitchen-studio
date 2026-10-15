@@ -1,4 +1,5 @@
 // Shared, side-effect-free public projection. Never send the raw coordination ledger to a browser.
+import {publicEvidence} from './evidence.mjs';
 export const FRESH_FETCH_MS = 90000;
 export const FRESH_ACTIVITY_MS = 300000;
 export const ROLES = [
@@ -25,7 +26,7 @@ export function projectQueue(q,now=Date.now()){
     if(t?.id!==id||!roles.has(t.owner)||!states.has(t.status))throw new Error('Invalid task metadata');
     const l=t.status==='leased'?t.lease:null;
     const verified=!!(l&&l.worker===t.owner&&typeof l.runId==='string'&&l.runId.length>0&&typeof l.token==='string'&&l.token.length>0&&Number.isInteger(l.generation)&&l.generation===t.generation&&l.generation>0&&time(l.claimedAt)&&time(l.heartbeatAt)&&time(l.expiresAt)&&Date.parse(l.claimedAt)<=Date.parse(l.heartbeatAt)&&Date.parse(l.heartbeatAt)<Date.parse(l.expiresAt)&&Date.parse(l.heartbeatAt)<=now+60000);
-    return {id:text(id,120),owner:t.owner,title:text(t.title,200),status:t.status,reason:text(t.reason),createdAt:time(t.createdAt),updatedAt:time(t.updatedAt),completedAt:time(t.completedAt),deadline:time(t.deadline),retryAt:time(t.retryAt),lease:l?{verified,heartbeatAt:time(l.heartbeatAt),expiresAt:time(l.expiresAt)}:null};
+    return {id:text(id,120),owner:t.owner,title:text(t.title,200),status:t.status,reason:text(t.reason),createdAt:time(t.createdAt),updatedAt:time(t.updatedAt),completedAt:time(t.completedAt),deadline:time(t.deadline),retryAt:time(t.retryAt),evidence:publicEvidence([...(Array.isArray(t.evidence?.refs)?t.evidence.refs:[]),t.evidence?.ciUrl]),lease:l?{verified,heartbeatAt:time(l.heartbeatAt),expiresAt:time(l.expiresAt)}:null};
   });
   const workers=Object.fromEntries(entries(q.workers).filter(([id])=>roles.has(id)).map(([id,w])=>[id,{at:time(w.at)}]));
   const allHandoffs=entries(q.receipts).map(([id,r])=>({taskId:text(r.taskId,120),from:roles.has(r.from)?r.from:null,to:roles.has(r.to)?r.to:null,createdAt:time(r.createdAt),ackDueAt:time(r.ackDueAt),acceptedAt:time(r.acceptedAt),pending:!r.acceptedAt&&q.tasks[r.taskId]?.status==='awaiting_ack'&&q.tasks[r.taskId]?.pendingReceipt===id&&q.tasks[r.taskId]?.owner===r.from})).filter(r=>r.from&&r.to).sort((a,b)=>Date.parse(b.createdAt)-Date.parse(a.createdAt));

@@ -6,6 +6,6 @@ export function fixture(now=Date.now()){
   active:task('active','catalog','leased',{lease:{worker:'catalog',runId:'test-run',generation:1,token:'NEVER-EXPOSE-THIS-TOKEN',claimedAt:iso(-10000),heartbeatAt:iso(-1000),expiresAt:iso(30000)}}),
   blocked:task('blocked','supervisor','blocked',{reason:'Fixture: current publication evidence unavailable'}),
   queue:task('queue','content-qa','ready'),approval:task('approval','social-readiness','needs_approval',{reason:'Fixture: asset-specific approval needed'}),
-  handoff:task('handoff','product','awaiting_ack',{pendingReceipt:'receipt'}),done:task('done','reviewer','done',{completedAt:iso(-20000)})
+  handoff:task('handoff','product','awaiting_ack',{pendingReceipt:'receipt'}),done:task('done','reviewer','done',{completedAt:iso(-20000),evidence:{refs:['https://github.com/uroshdxb-svg/kitchen-studio/pull/16','https://drive.google.com/private?token=HIDDEN']}})
  },workers:{supervisor:{at:iso(-1000),runId:'private-run-ID'},reliability:{at:iso(-30000)}},receipts:{receipt:{taskId:'handoff',from:'product',to:'reviewer',createdAt:iso(-20000),ackDueAt:iso(10000),acceptedAt:null}},operations:{secret:'NO-RAW-OPERATIONS'},privatePlan:'NO-PRIVATE-PLAN',account:'NO-ACCOUNT'};
 }
