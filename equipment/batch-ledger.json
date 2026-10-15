@@ -75,15 +75,15 @@
         "341185",
         "341184"
       ],
-      "state": "prepared",
+      "state": "merged-live-verification-pending",
       "source_before": 448,
       "source_before_sha": "c83fca241c5affe7f2c999dceb3301dbbb473341",
       "source_after": 455,
       "verified_additions": 7,
-      "merged_additions": 0,
+      "merged_additions": 7,
       "live_verified_additions": 0,
-      "pr_url": null,
-      "merge_sha": null,
+      "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/8",
+      "merge_sha": "704e9f8ac7cd3794b62a228e165f394a3ce58e41",
       "deployment_url": null,
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-15-electrolux-passive-02.csv",
@@ -94,13 +94,47 @@
       "validation": {
         "import": "7 added; repeat dry run zero additions, 7 duplicates",
         "preservation": "448 prior rows unchanged; normalized identities and exact CODs unique",
-        "regressions": "npm run test:ci passed (system Chromium); all seven exact SKU search/add checks passed; built catalogue readback 455"
+        "regressions": "npm run test:ci passed (system Chromium); all seven exact SKU search/add checks passed; built catalogue readback 455",
+        "github_ci": "https://github.com/uroshdxb-svg/kitchen-studio/actions/runs/38768355555",
+        "review": "Automated review completed without inline findings; ordinary expected-head merge succeeded."
+      }
+    },
+    {
+      "id": "2026-10-15-electrolux-gn-03",
+      "manufacturer": "Electrolux Professional",
+      "models": [
+        "361254",
+        "361255",
+        "361261",
+        "361262",
+        "361263"
+      ],
+      "state": "prepared",
+      "source_before": 455,
+      "source_before_sha": "704e9f8ac7cd3794b62a228e165f394a3ce58e41",
+      "source_after": 460,
+      "verified_additions": 5,
+      "merged_additions": 0,
+      "live_verified_additions": 0,
+      "pr_url": null,
+      "merge_sha": null,
+      "deployment_url": null,
+      "evidence": "catalogue-evidence.json",
+      "csv": "equipment/batches/2026-10-15-electrolux-gn-03.csv",
+      "limitations": [
+        "Text-only official source review; no binary archival or visual drawing claims.",
+        "Legacy queue overlap awaiting parent investigation."
+      ],
+      "validation": {
+        "import": "5 additions; repeat dry run zero additions and five duplicates",
+        "preservation": "455 prior rows unchanged; exact manufacturer identities unique",
+        "regressions": "npm run test:ci passed with system Chromium; all five exact SKUs searched and added; built catalogue readback 460"
       }
     }
   ],
   "current_merged": {
-    "sha": "c83fca241c5affe7f2c999dceb3301dbbb473341",
-    "count": 448,
+    "sha": "704e9f8ac7cd3794b62a228e165f394a3ce58e41",
+    "count": 455,
     "as_of": "2026-10-15",
     "live_count": 444
   }
