@@ -25,17 +25,24 @@
     "research_file": "equipment/pending-research/cambro.json"
   },
   "previous_queue": {
-    "id": "2026-10-15-electrolux-passive-02",
-    "state": "merged-live-verification-pending",
+    "id": "2026-10-15-electrolux-service-04",
     "models": [
-      "361288",
-      "361294",
-      "361296",
-      "361292",
-      "361000",
-      "341185",
-      "341184"
-    ]
+      "361200",
+      "361238",
+      "361314",
+      "361204",
+      "361244",
+      "361252",
+      "361208",
+      "361202",
+      "361206",
+      "361210",
+      "361224",
+      "361212",
+      "361216"
+    ],
+    "state": "pr-open",
+    "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/10"
   },
   "held_candidates": [
     {
@@ -246,7 +253,7 @@
       "date": "2026-10-01",
       "reported_rows": 36,
       "state": "unverified-parent-located",
-      "instruction": "Historical candidate CSV, not the missing 457-row queue. Deduplicate against current main, then independently verify exact manufacturer variants before use."
+      "instruction": "Historical candidate CSV, not the missing source for 455 held candidates (457 original rows before two were imported in PR #5). Deduplicate against current main, then independently verify exact manufacturer variants before use."
     }
   ],
   "research_checkpoint": "https://github.com/uroshdxb-svg/kitchen-studio/tree/codex/equipment-research-checkpoint-2026-10-15/equipment/pending-research"
