@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": 57,
-  "updatedAt": "2026-10-16T05:03:28.583Z",
+  "revision": 58,
+  "updatedAt": "2026-10-16T05:07:40.225Z",
   "tasks": {
     "KS-COORDINATION-PILOT-20261015": {
       "id": "KS-COORDINATION-PILOT-20261015",
@@ -88,12 +88,12 @@
         "token": "fbd771a6-e8e9-491c-8d58-a20a8439f164",
         "generation": 1,
         "claimedAt": "2026-10-16T05:03:28.583Z",
-        "heartbeatAt": "2026-10-16T05:03:28.583Z",
-        "expiresAt": "2026-10-16T05:33:28.583Z"
+        "heartbeatAt": "2026-10-16T05:07:40.225Z",
+        "expiresAt": "2026-10-16T05:37:40.225Z"
       },
       "retryAt": null,
       "createdAt": "2026-10-15T19:20:18.441Z",
-      "updatedAt": "2026-10-16T05:03:28.583Z",
+      "updatedAt": "2026-10-16T05:07:40.225Z",
       "evidence": null,
       "pendingReceipt": null
     },
@@ -1022,6 +1022,13 @@
         ]
       },
       "at": "2026-10-16T05:03:28.583Z"
+    },
+    "catalog-local-recovery-20261016T050118Z:heartbeat-01": {
+      "fingerprint": "0e9534b5bbcb0d85ceb19078538bf017f0cd70ea86798b433453826c9291cb95",
+      "result": {
+        "ok": true
+      },
+      "at": "2026-10-16T05:07:40.225Z"
     }
   },
   "receipts": {
