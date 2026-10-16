@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": 54,
-  "updatedAt": "2026-10-16T04:45:22.988Z",
+  "revision": 57,
+  "updatedAt": "2026-10-16T05:03:28.583Z",
   "tasks": {
     "KS-COORDINATION-PILOT-20261015": {
       "id": "KS-COORDINATION-PILOT-20261015",
@@ -78,14 +78,22 @@
         "retrySafe": false,
         "resource": "catalogue-writer"
       },
-      "status": "ready",
-      "attempts": 0,
-      "totalAttempts": 0,
-      "generation": 0,
-      "lease": null,
+      "status": "leased",
+      "attempts": 1,
+      "totalAttempts": 1,
+      "generation": 1,
+      "lease": {
+        "worker": "catalog",
+        "runId": "catalog-local-recovery-20261016T050118Z",
+        "token": "fbd771a6-e8e9-491c-8d58-a20a8439f164",
+        "generation": 1,
+        "claimedAt": "2026-10-16T05:03:28.583Z",
+        "heartbeatAt": "2026-10-16T05:03:28.583Z",
+        "expiresAt": "2026-10-16T05:33:28.583Z"
+      },
       "retryAt": null,
       "createdAt": "2026-10-15T19:20:18.441Z",
-      "updatedAt": "2026-10-15T19:20:18.441Z",
+      "updatedAt": "2026-10-16T05:03:28.583Z",
       "evidence": null,
       "pendingReceipt": null
     },
@@ -982,6 +990,38 @@
         ]
       },
       "at": "2026-10-16T04:45:22.988Z"
+    },
+    "catalog-local-recovery-20261016T050118Z:tick": {
+      "fingerprint": "d82371abf35b590e92b8d4b0fef9a265c20e0ea485dabb64e69427c4f7a1ffae",
+      "result": {
+        "ok": true
+      },
+      "at": "2026-10-16T05:03:28.583Z"
+    },
+    "catalog-local-recovery-20261016T050118Z:claim": {
+      "fingerprint": "a05ff100a96e4e72fcb689983c1fc4af740453d86632a956a0665b5dd1e6f399",
+      "result": {
+        "taskId": "KS-CATALOG-PARENT-ACK-20261015-01",
+        "token": "fbd771a6-e8e9-491c-8d58-a20a8439f164",
+        "generation": 1
+      },
+      "at": "2026-10-16T05:03:28.583Z"
+    },
+    "catalog-local-recovery-20261016T050118Z:admit": {
+      "fingerprint": "0419941d48873dce1ce865170f8ef27084bbcbf8f55fff16b131bc03521724b0",
+      "result": {
+        "results": [
+          {
+            "ok": true
+          },
+          {
+            "taskId": "KS-CATALOG-PARENT-ACK-20261015-01",
+            "token": "fbd771a6-e8e9-491c-8d58-a20a8439f164",
+            "generation": 1
+          }
+        ]
+      },
+      "at": "2026-10-16T05:03:28.583Z"
     }
   },
   "receipts": {
@@ -1049,6 +1089,12 @@
       "at": "2026-10-15T19:22:24.094Z",
       "runId": "manual-activation-20261015-reviewer",
       "expectedEveryMs": null,
+      "graceMs": 3600000
+    },
+    "catalog": {
+      "at": "2026-10-16T05:03:28.583Z",
+      "runId": "catalog-local-recovery-20261016T050118Z",
+      "expectedEveryMs": 86400000,
       "graceMs": 3600000
     }
   },
