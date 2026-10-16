@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": 70,
-  "updatedAt": "2026-10-16T05:24:45.465Z",
+  "revision": 71,
+  "updatedAt": "2026-10-16T05:29:27.494Z",
   "tasks": {
     "KS-COORDINATION-PILOT-20261015": {
       "id": "KS-COORDINATION-PILOT-20261015",
@@ -344,24 +344,17 @@
         "retrySafe": false,
         "resource": "catalogue-writer"
       },
-      "status": "leased",
+      "status": "needs_approval",
       "attempts": 1,
       "totalAttempts": 1,
       "generation": 1,
-      "lease": {
-        "worker": "catalog",
-        "runId": "catalog-local-recovery-20261016T050118Z",
-        "token": "19ee1f7d-14ee-4c97-906b-80ce2eac376d",
-        "generation": 1,
-        "claimedAt": "2026-10-16T05:24:45.465Z",
-        "heartbeatAt": "2026-10-16T05:24:45.465Z",
-        "expiresAt": "2026-10-16T05:54:45.465Z"
-      },
+      "lease": null,
       "retryAt": null,
       "createdAt": "2026-10-16T05:24:45.465Z",
-      "updatedAt": "2026-10-16T05:24:45.465Z",
+      "updatedAt": "2026-10-16T05:29:27.494Z",
       "evidence": null,
-      "pendingReceipt": null
+      "pendingReceipt": null,
+      "reason": "Automatic approval review rejected PR17 merge: visible trusted delegation explicitly names PR6; PR17 changes main and may trigger production. No merge occurred. Exact head 1e33c0d8fbd4dd8c4792138414552719bd1ecb20 passed independent review and hosted CI38855097400; four ready Araven rows remain preview-only, live483. Need explicit human authorization for PR17 ordinary merge and existing Git production deployment. Do not bypass rejection or claim release complete."
     }
   },
   "operations": {
@@ -1235,6 +1228,13 @@
         ]
       },
       "at": "2026-10-16T05:24:45.465Z"
+    },
+    "catalog-local-recovery-20261016T050118Z:araven01-approval-block": {
+      "fingerprint": "a4101f72a6dbef5ae00e97b3718e4549bbc5ac93fdc4d07aed9547174ae0b803",
+      "result": {
+        "ok": true
+      },
+      "at": "2026-10-16T05:29:27.494Z"
     }
   },
   "receipts": {
