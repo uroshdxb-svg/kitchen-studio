@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": 86,
-  "updatedAt": "2026-10-16T09:25:12.316Z",
+  "revision": 89,
+  "updatedAt": "2026-10-16T10:20:05.119Z",
   "tasks": {
     "KS-COORDINATION-PILOT-20261015": {
       "id": "KS-COORDINATION-PILOT-20261015",
@@ -1623,6 +1623,80 @@
         ]
       },
       "at": "2026-10-16T09:25:12.316Z"
+    },
+    "scheduled-supervisor-20261016T103131Z:tick": {
+      "fingerprint": "60299fed9827c53a0506d80b6db5f25fb9d1064680a50949920c2d7b9ba0c9c8",
+      "result": {
+        "ok": true
+      },
+      "at": "2026-10-16T10:20:05.119Z"
+    },
+    "scheduled-supervisor-20261016T103131Z:scan": {
+      "fingerprint": "ed7dbcdf2527db7332a21bb375f6917e6b8f8dab891b9ba9f094e6e2b618896d",
+      "result": {
+        "notify": [],
+        "issues": [
+          {
+            "key": "blocked:KS-SUPERVISOR-PARENT-ACK-20261015-01",
+            "severity": "warning",
+            "taskId": "KS-SUPERVISOR-PARENT-ACK-20261015-01",
+            "reason": "Report SHA256 aac9dece4f23f232d3b96c0cbb100a75a02a73d84da1f9dfaaedd6d5610d7f2c. MEDIA-018/020 files recovered; QA still pending. MEDIA-019/CLAIM-001 remain open. Current Queue/Sent/native evidence unavailable: no social read connector; failed laptop browser not retried. Social-readiness must refresh authenticated records; supervisor then reconcile coverage. Automatic-after-QA approval preserved.",
+            "fingerprint": "94dc7b6849c9830019287f81397dd30866a9863410cad0f1b853aa20ec5bc9b9"
+          },
+          {
+            "key": "blocked:KS-CATALOG-20261016-ARAVEN-01-RELEASE",
+            "severity": "approval",
+            "taskId": "KS-CATALOG-20261016-ARAVEN-01-RELEASE",
+            "reason": "Automatic approval review rejected PR17 merge: visible trusted delegation explicitly names PR6; PR17 changes main and may trigger production. No merge occurred. Exact head 1e33c0d8fbd4dd8c4792138414552719bd1ecb20 passed independent review and hosted CI38855097400; four ready Araven rows remain preview-only, live483. Need explicit human authorization for PR17 ordinary merge and existing Git production deployment. Do not bypass rejection or claim release complete.",
+            "fingerprint": "8b67ea5d81fd977ec3c4782d5b91ceca957ccc15be3846458f712b7277cd9e4d"
+          },
+          {
+            "key": "worker:social-readiness",
+            "severity": "warning",
+            "taskId": null,
+            "reason": "Expected worker has never reported: social-readiness",
+            "fingerprint": "4c68ff8f096b94acc8015e16500005b8edc1cb30512f848db2357adb4bc97d73"
+          }
+        ]
+      },
+      "at": "2026-10-16T10:20:05.119Z"
+    },
+    "scheduled-supervisor-20261016T103131Z:checkpoint": {
+      "fingerprint": "1192d4507c8819e12b0d2df9c748e0d4236b3dfd523161e5e6c95d7d0b534a2b",
+      "result": {
+        "results": [
+          {
+            "ok": true
+          },
+          {
+            "notify": [],
+            "issues": [
+              {
+                "key": "blocked:KS-SUPERVISOR-PARENT-ACK-20261015-01",
+                "severity": "warning",
+                "taskId": "KS-SUPERVISOR-PARENT-ACK-20261015-01",
+                "reason": "Report SHA256 aac9dece4f23f232d3b96c0cbb100a75a02a73d84da1f9dfaaedd6d5610d7f2c. MEDIA-018/020 files recovered; QA still pending. MEDIA-019/CLAIM-001 remain open. Current Queue/Sent/native evidence unavailable: no social read connector; failed laptop browser not retried. Social-readiness must refresh authenticated records; supervisor then reconcile coverage. Automatic-after-QA approval preserved.",
+                "fingerprint": "94dc7b6849c9830019287f81397dd30866a9863410cad0f1b853aa20ec5bc9b9"
+              },
+              {
+                "key": "blocked:KS-CATALOG-20261016-ARAVEN-01-RELEASE",
+                "severity": "approval",
+                "taskId": "KS-CATALOG-20261016-ARAVEN-01-RELEASE",
+                "reason": "Automatic approval review rejected PR17 merge: visible trusted delegation explicitly names PR6; PR17 changes main and may trigger production. No merge occurred. Exact head 1e33c0d8fbd4dd8c4792138414552719bd1ecb20 passed independent review and hosted CI38855097400; four ready Araven rows remain preview-only, live483. Need explicit human authorization for PR17 ordinary merge and existing Git production deployment. Do not bypass rejection or claim release complete.",
+                "fingerprint": "8b67ea5d81fd977ec3c4782d5b91ceca957ccc15be3846458f712b7277cd9e4d"
+              },
+              {
+                "key": "worker:social-readiness",
+                "severity": "warning",
+                "taskId": null,
+                "reason": "Expected worker has never reported: social-readiness",
+                "fingerprint": "4c68ff8f096b94acc8015e16500005b8edc1cb30512f848db2357adb4bc97d73"
+              }
+            ]
+          }
+        ]
+      },
+      "at": "2026-10-16T10:20:05.119Z"
     }
   },
   "receipts": {
@@ -1707,8 +1781,8 @@
   },
   "workers": {
     "supervisor": {
-      "at": "2026-10-16T09:25:12.316Z",
-      "runId": "scheduled-supervisor-20261016T093131Z",
+      "at": "2026-10-16T10:20:05.119Z",
+      "runId": "scheduled-supervisor-20261016T103131Z",
       "expectedEveryMs": 3600000,
       "graceMs": 3600000
     },
@@ -1732,7 +1806,7 @@
       "taskId": "KS-SUPERVISOR-PARENT-ACK-20261015-01",
       "reason": "Report SHA256 aac9dece4f23f232d3b96c0cbb100a75a02a73d84da1f9dfaaedd6d5610d7f2c. MEDIA-018/020 files recovered; QA still pending. MEDIA-019/CLAIM-001 remain open. Current Queue/Sent/native evidence unavailable: no social read connector; failed laptop browser not retried. Social-readiness must refresh authenticated records; supervisor then reconcile coverage. Automatic-after-QA approval preserved.",
       "fingerprint": "94dc7b6849c9830019287f81397dd30866a9863410cad0f1b853aa20ec5bc9b9",
-      "observedAt": "2026-10-16T09:25:12.316Z"
+      "observedAt": "2026-10-16T10:20:05.119Z"
     },
     "blocked:KS-CATALOG-20261016-ARAVEN-01-RELEASE": {
       "key": "blocked:KS-CATALOG-20261016-ARAVEN-01-RELEASE",
@@ -1740,7 +1814,7 @@
       "taskId": "KS-CATALOG-20261016-ARAVEN-01-RELEASE",
       "reason": "Automatic approval review rejected PR17 merge: visible trusted delegation explicitly names PR6; PR17 changes main and may trigger production. No merge occurred. Exact head 1e33c0d8fbd4dd8c4792138414552719bd1ecb20 passed independent review and hosted CI38855097400; four ready Araven rows remain preview-only, live483. Need explicit human authorization for PR17 ordinary merge and existing Git production deployment. Do not bypass rejection or claim release complete.",
       "fingerprint": "8b67ea5d81fd977ec3c4782d5b91ceca957ccc15be3846458f712b7277cd9e4d",
-      "observedAt": "2026-10-16T09:25:12.316Z"
+      "observedAt": "2026-10-16T10:20:05.119Z"
     },
     "worker:social-readiness": {
       "key": "worker:social-readiness",
@@ -1748,7 +1822,7 @@
       "taskId": null,
       "reason": "Expected worker has never reported: social-readiness",
       "fingerprint": "4c68ff8f096b94acc8015e16500005b8edc1cb30512f848db2357adb4bc97d73",
-      "observedAt": "2026-10-16T09:25:12.316Z"
+      "observedAt": "2026-10-16T10:20:05.119Z"
     }
   },
   "expectationsStartedAt": "2026-10-15T17:58:08.586Z"
