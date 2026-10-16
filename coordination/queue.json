@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": 62,
-  "updatedAt": "2026-10-16T05:13:24.074Z",
+  "revision": 63,
+  "updatedAt": "2026-10-16T05:19:33.239Z",
   "tasks": {
     "KS-COORDINATION-PILOT-20261015": {
       "id": "KS-COORDINATION-PILOT-20261015",
@@ -78,24 +78,16 @@
         "retrySafe": false,
         "resource": "catalogue-writer"
       },
-      "status": "leased",
+      "status": "awaiting_ack",
       "attempts": 1,
       "totalAttempts": 1,
       "generation": 1,
-      "lease": {
-        "worker": "catalog",
-        "runId": "catalog-local-recovery-20261016T050118Z",
-        "token": "fbd771a6-e8e9-491c-8d58-a20a8439f164",
-        "generation": 1,
-        "claimedAt": "2026-10-16T05:03:28.583Z",
-        "heartbeatAt": "2026-10-16T05:13:24.074Z",
-        "expiresAt": "2026-10-16T05:43:24.074Z"
-      },
+      "lease": null,
       "retryAt": null,
       "createdAt": "2026-10-15T19:20:18.441Z",
-      "updatedAt": "2026-10-16T05:13:24.074Z",
+      "updatedAt": "2026-10-16T05:19:33.239Z",
       "evidence": null,
-      "pendingReceipt": null
+      "pendingReceipt": "KS-CATALOG-PARENT-ACK-20261015-01:1:handoff"
     },
     "KS-SUPERVISOR-PARENT-ACK-20261015-01": {
       "id": "KS-SUPERVISOR-PARENT-ACK-20261015-01",
@@ -1085,6 +1077,13 @@
         ]
       },
       "at": "2026-10-16T05:13:24.074Z"
+    },
+    "catalog-local-recovery-20261016T050118Z:araven01-review-handoff": {
+      "fingerprint": "c607fa68fe30976ad8a8fd4f9f86048c5aca0dd3ad48da849d87b13ddc0729ed",
+      "result": {
+        "receiptId": "KS-CATALOG-PARENT-ACK-20261015-01:1:handoff"
+      },
+      "at": "2026-10-16T05:19:33.239Z"
     }
   },
   "receipts": {
@@ -1139,6 +1138,29 @@
         "worker": "reviewer",
         "runId": "manual-activation-20261015-reviewer"
       }
+    },
+    "KS-CATALOG-PARENT-ACK-20261015-01:1:handoff": {
+      "id": "KS-CATALOG-PARENT-ACK-20261015-01:1:handoff",
+      "taskId": "KS-CATALOG-PARENT-ACK-20261015-01",
+      "from": "catalog",
+      "to": "reviewer",
+      "summary": "Exact-head review of PR17 four manufacturer-verified Araven records at1e33c0d8fbd4dd8c4792138414552719bd1ecb20; local readiness/preservation/build pass,hostedCIpending. Review does not authorize dashboardrelease.",
+      "evidence": {
+        "outcome": "pass",
+        "refs": [
+          "https://github.com/uroshdxb-svg/kitchen-studio/pull/17",
+          "https://github.com/uroshdxb-svg/kitchen-studio/commit/1e33c0d8fbd4dd8c4792138414552719bd1ecb20"
+        ],
+        "scope": "ready_batch_preparation_checks_only",
+        "models": 4,
+        "sourceCount": 487,
+        "liveCount": 483,
+        "releaseOccurred": false
+      },
+      "createdAt": "2026-10-16T05:19:33.239Z",
+      "ackDueAt": "2026-10-16T06:19:33.239Z",
+      "acceptedAt": null,
+      "acceptedBy": null
     }
   },
   "workers": {
