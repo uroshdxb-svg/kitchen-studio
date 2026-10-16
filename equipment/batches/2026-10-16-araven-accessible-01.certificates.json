@@ -1,0 +1,42 @@
+{
+  "batch": "2026-10-16-araven-accessible-01",
+  "reviewed_at": "2026-10-16T05:11:03.230Z",
+  "certificates": [
+    {
+      "schema_version": 1,
+      "passed": true,
+      "key": "araven|918",
+      "row_hash": "29ef355bb642434fda4c08edab439bd497f6bf032aa60f7d829259322bf300c7",
+      "evidence_hash": "50337e113046aa6bc7a5e046f27060ac59bc62acd02d88642387e0413ddcf998",
+      "reviewed_at": "2026-10-16T05:11:03.230Z",
+      "errors": []
+    },
+    {
+      "schema_version": 1,
+      "passed": true,
+      "key": "araven|09144",
+      "row_hash": "61f6a3d3abb74729cb49ce21a3330ff9c8731de6af56060a1f6009dc8917e1a2",
+      "evidence_hash": "aed3cbd80ec935254cb7ef510b0e8e9163182b36674357522cf1541f4fb51048",
+      "reviewed_at": "2026-10-16T05:11:03.230Z",
+      "errors": []
+    },
+    {
+      "schema_version": 1,
+      "passed": true,
+      "key": "araven|09145",
+      "row_hash": "fc44ed9889714a015a556a137e4aa437a6dc0ab103dc2daf0eeccdf8aaeac38a",
+      "evidence_hash": "441006c5833b09b92d2e84fbe659e057d48fd66b067246df02b0c448ec736aa7",
+      "reviewed_at": "2026-10-16T05:11:03.230Z",
+      "errors": []
+    },
+    {
+      "schema_version": 1,
+      "passed": true,
+      "key": "araven|09146",
+      "row_hash": "b73d1707204c009474e4230c0f142ae24d1adbc133288bdfdfa75cd1a18f4a40",
+      "evidence_hash": "12d13256845b0ae5b22e1f5c8e4562f2da620e3cdbdd2f5a095634b9baa9af58",
+      "reviewed_at": "2026-10-16T05:11:03.230Z",
+      "errors": []
+    }
+  ]
+}

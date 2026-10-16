@@ -10,7 +10,7 @@
     "build:standalone": "node build.mjs standalone",
     "dev": "node build.mjs && npx --yes serve dist -l 5173",
     "test": "node site.test.mjs && node mcp.test.mjs",
-    "test:ci": "npm run test:coordination && npm run build && npm run audit:discovery && npm test",
+    "test:ci": "npm run test:coordination && npm run build && npm run audit:discovery && npm test && node equipment/check-latest-batch.mjs",
     "test:coordination": "node --test coordination/*.test.mjs",
     "audit:discovery": "node scripts/discovery-audit.mjs"
   },
