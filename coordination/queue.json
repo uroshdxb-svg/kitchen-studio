@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": 51,
-  "updatedAt": "2026-10-16T03:53:56.191Z",
+  "revision": 54,
+  "updatedAt": "2026-10-16T04:45:22.988Z",
   "tasks": {
     "KS-COORDINATION-PILOT-20261015": {
       "id": "KS-COORDINATION-PILOT-20261015",
@@ -936,6 +936,52 @@
         ]
       },
       "at": "2026-10-16T03:53:56.191Z"
+    },
+    "scheduled-supervisor-20261016T043131Z:tick": {
+      "fingerprint": "264791dd8eb61c45b6a6f554c54bf92d2c8c3d607e69a8dd994c1dc3d38c7754",
+      "result": {
+        "ok": true
+      },
+      "at": "2026-10-16T04:45:22.988Z"
+    },
+    "scheduled-supervisor-20261016T043131Z:scan": {
+      "fingerprint": "f6a4efd729fdb3a2b52ea5e87a4aa039ec85ddea32a2d209c48b43158e8a5896",
+      "result": {
+        "notify": [],
+        "issues": [
+          {
+            "key": "blocked:KS-SUPERVISOR-PARENT-ACK-20261015-01",
+            "severity": "warning",
+            "taskId": "KS-SUPERVISOR-PARENT-ACK-20261015-01",
+            "reason": "Report SHA256 aac9dece4f23f232d3b96c0cbb100a75a02a73d84da1f9dfaaedd6d5610d7f2c. MEDIA-018/020 files recovered; QA still pending. MEDIA-019/CLAIM-001 remain open. Current Queue/Sent/native evidence unavailable: no social read connector; failed laptop browser not retried. Social-readiness must refresh authenticated records; supervisor then reconcile coverage. Automatic-after-QA approval preserved.",
+            "fingerprint": "94dc7b6849c9830019287f81397dd30866a9863410cad0f1b853aa20ec5bc9b9"
+          }
+        ]
+      },
+      "at": "2026-10-16T04:45:22.988Z"
+    },
+    "scheduled-supervisor-20261016T043131Z:checkpoint": {
+      "fingerprint": "49db884b4a179cb9d7d5d35dbf814e555a83e104ecb57a5c6f1b0abb6c475b0f",
+      "result": {
+        "results": [
+          {
+            "ok": true
+          },
+          {
+            "notify": [],
+            "issues": [
+              {
+                "key": "blocked:KS-SUPERVISOR-PARENT-ACK-20261015-01",
+                "severity": "warning",
+                "taskId": "KS-SUPERVISOR-PARENT-ACK-20261015-01",
+                "reason": "Report SHA256 aac9dece4f23f232d3b96c0cbb100a75a02a73d84da1f9dfaaedd6d5610d7f2c. MEDIA-018/020 files recovered; QA still pending. MEDIA-019/CLAIM-001 remain open. Current Queue/Sent/native evidence unavailable: no social read connector; failed laptop browser not retried. Social-readiness must refresh authenticated records; supervisor then reconcile coverage. Automatic-after-QA approval preserved.",
+                "fingerprint": "94dc7b6849c9830019287f81397dd30866a9863410cad0f1b853aa20ec5bc9b9"
+              }
+            ]
+          }
+        ]
+      },
+      "at": "2026-10-16T04:45:22.988Z"
     }
   },
   "receipts": {
@@ -994,8 +1040,8 @@
   },
   "workers": {
     "supervisor": {
-      "at": "2026-10-16T03:53:56.191Z",
-      "runId": "scheduled-supervisor-20261016T033131Z",
+      "at": "2026-10-16T04:45:22.988Z",
+      "runId": "scheduled-supervisor-20261016T043131Z",
       "expectedEveryMs": 3600000,
       "graceMs": 3600000
     },
@@ -1013,7 +1059,7 @@
       "taskId": "KS-SUPERVISOR-PARENT-ACK-20261015-01",
       "reason": "Report SHA256 aac9dece4f23f232d3b96c0cbb100a75a02a73d84da1f9dfaaedd6d5610d7f2c. MEDIA-018/020 files recovered; QA still pending. MEDIA-019/CLAIM-001 remain open. Current Queue/Sent/native evidence unavailable: no social read connector; failed laptop browser not retried. Social-readiness must refresh authenticated records; supervisor then reconcile coverage. Automatic-after-QA approval preserved.",
       "fingerprint": "94dc7b6849c9830019287f81397dd30866a9863410cad0f1b853aa20ec5bc9b9",
-      "observedAt": "2026-10-16T03:53:56.191Z"
+      "observedAt": "2026-10-16T04:45:22.988Z"
     }
   },
   "expectationsStartedAt": "2026-10-15T17:58:08.586Z"
