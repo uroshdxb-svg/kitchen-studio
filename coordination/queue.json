@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": 67,
-  "updatedAt": "2026-10-16T05:23:34.514Z",
+  "revision": 70,
+  "updatedAt": "2026-10-16T05:24:45.465Z",
   "tasks": {
     "KS-COORDINATION-PILOT-20261015": {
       "id": "KS-COORDINATION-PILOT-20261015",
@@ -314,6 +314,54 @@
       },
       "pendingReceipt": "KS-COORD-ACTIVATION-20261015:1:handoff",
       "completedAt": "2026-10-15T19:22:24.094Z"
+    },
+    "KS-CATALOG-20261016-ARAVEN-01-RELEASE": {
+      "id": "KS-CATALOG-20261016-ARAVEN-01-RELEASE",
+      "owner": "catalog",
+      "kind": "release",
+      "title": "Release four verified Araven accessible ingredient bins and verify production",
+      "dependencies": [
+        "KS-CATALOG-PARENT-ACK-20261015-01"
+      ],
+      "maxAttempts": 3,
+      "maxTotalAttempts": 12,
+      "deadline": null,
+      "dedupeKey": "2026-10-16-araven-accessible-01-release",
+      "retrySafe": false,
+      "resource": "catalogue-writer",
+      "specification": {
+        "id": "KS-CATALOG-20261016-ARAVEN-01-RELEASE",
+        "owner": "catalog",
+        "kind": "release",
+        "title": "Release four verified Araven accessible ingredient bins and verify production",
+        "dependencies": [
+          "KS-CATALOG-PARENT-ACK-20261015-01"
+        ],
+        "maxAttempts": 3,
+        "maxTotalAttempts": 12,
+        "deadline": null,
+        "dedupeKey": "2026-10-16-araven-accessible-01-release",
+        "retrySafe": false,
+        "resource": "catalogue-writer"
+      },
+      "status": "leased",
+      "attempts": 1,
+      "totalAttempts": 1,
+      "generation": 1,
+      "lease": {
+        "worker": "catalog",
+        "runId": "catalog-local-recovery-20261016T050118Z",
+        "token": "19ee1f7d-14ee-4c97-906b-80ce2eac376d",
+        "generation": 1,
+        "claimedAt": "2026-10-16T05:24:45.465Z",
+        "heartbeatAt": "2026-10-16T05:24:45.465Z",
+        "expiresAt": "2026-10-16T05:54:45.465Z"
+      },
+      "retryAt": null,
+      "createdAt": "2026-10-16T05:24:45.465Z",
+      "updatedAt": "2026-10-16T05:24:45.465Z",
+      "evidence": null,
+      "pendingReceipt": null
     }
   },
   "operations": {
@@ -1155,6 +1203,38 @@
         "ok": true
       },
       "at": "2026-10-16T05:23:34.514Z"
+    },
+    "catalog-local-recovery-20261016T050118Z:araven01-release-enqueue": {
+      "fingerprint": "d73fac000e261a31300abf3be6770e75f8fb7383babe7eb0dd9960822dd91bb3",
+      "result": {
+        "taskId": "KS-CATALOG-20261016-ARAVEN-01-RELEASE"
+      },
+      "at": "2026-10-16T05:24:45.465Z"
+    },
+    "catalog-local-recovery-20261016T050118Z:araven01-release-claim": {
+      "fingerprint": "9e6449ebb35f40375d7598c52005b6879279137fc09a2dcdca72393cfdba74c7",
+      "result": {
+        "taskId": "KS-CATALOG-20261016-ARAVEN-01-RELEASE",
+        "token": "19ee1f7d-14ee-4c97-906b-80ce2eac376d",
+        "generation": 1
+      },
+      "at": "2026-10-16T05:24:45.465Z"
+    },
+    "catalog-local-recovery-20261016T050118Z:araven01-release-admit": {
+      "fingerprint": "da121845999c60f06265d40c7b0eb4b31978dd93574d8431868503dae53f4246",
+      "result": {
+        "results": [
+          {
+            "taskId": "KS-CATALOG-20261016-ARAVEN-01-RELEASE"
+          },
+          {
+            "taskId": "KS-CATALOG-20261016-ARAVEN-01-RELEASE",
+            "token": "19ee1f7d-14ee-4c97-906b-80ce2eac376d",
+            "generation": 1
+          }
+        ]
+      },
+      "at": "2026-10-16T05:24:45.465Z"
     }
   },
   "receipts": {
