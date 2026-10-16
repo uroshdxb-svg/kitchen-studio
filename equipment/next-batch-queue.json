@@ -250,5 +250,28 @@
       "instruction": "Historical candidate CSV, not the missing source for 455 held candidates (457 original rows before two were imported in PR #5). Deduplicate against current main, then independently verify exact manufacturer variants before use."
     }
   ],
-  "research_checkpoint": "https://github.com/uroshdxb-svg/kitchen-studio/tree/codex/equipment-research-checkpoint-2026-10-15/equipment/pending-research"
+  "research_checkpoint": "https://github.com/uroshdxb-svg/kitchen-studio/tree/codex/equipment-research-checkpoint-2026-10-15/equipment/pending-research",
+  "current_recovery": {
+    "date": "2026-10-16",
+    "batch": "2026-10-16-araven-accessible-01",
+    "status": "prepared",
+    "ready_models": [
+      "00918",
+      "09144",
+      "09145",
+      "09146"
+    ],
+    "held_cambro": [
+      "CD160",
+      "CD400",
+      "CD100H"
+    ],
+    "cambro_note": "All remain unverified;CD400 metric/inch depth conflict unresolved; no import",
+    "next_action": "Review,test and release the four ready Araven records,then exact live/readiness readback. Continue original held/manufacturer pipeline without duplicateworkers.",
+    "target_today": [
+      35,
+      40
+    ],
+    "minimum_pace": 33
+  }
 }
