@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": 118,
-  "updatedAt": "2026-10-18T14:51:06.760Z",
+  "revision": 121,
+  "updatedAt": "2026-10-18T15:24:16.891Z",
   "tasks": {
     "KS-COORDINATION-PILOT-20261015": {
       "id": "KS-COORDINATION-PILOT-20261015",
@@ -2652,6 +2652,150 @@
         ]
       },
       "at": "2026-10-18T14:51:06.760Z"
+    },
+    "scheduled-supervisor-20261018T153131Z:tick": {
+      "fingerprint": "2dc497eb1c6fce0b89dcf335ed69758cc2b38a26f0dd55cf8d9f54fabfba8569",
+      "result": {
+        "ok": true
+      },
+      "at": "2026-10-18T15:24:16.891Z"
+    },
+    "scheduled-supervisor-20261018T153131Z:scan": {
+      "fingerprint": "ea9f8097ea2f08b13f110b68156a104638a44bc82160cb4bdb1b76347ef70462",
+      "result": {
+        "notify": [],
+        "issues": [
+          {
+            "key": "blocked:KS-SUPERVISOR-PARENT-ACK-20261015-01",
+            "severity": "warning",
+            "taskId": "KS-SUPERVISOR-PARENT-ACK-20261015-01",
+            "reason": "Report SHA256 aac9dece4f23f232d3b96c0cbb100a75a02a73d84da1f9dfaaedd6d5610d7f2c. MEDIA-018/020 files recovered; QA still pending. MEDIA-019/CLAIM-001 remain open. Current Queue/Sent/native evidence unavailable: no social read connector; failed laptop browser not retried. Social-readiness must refresh authenticated records; supervisor then reconcile coverage. Automatic-after-QA approval preserved.",
+            "fingerprint": "94dc7b6849c9830019287f81397dd30866a9863410cad0f1b853aa20ec5bc9b9"
+          },
+          {
+            "key": "blocked:KS-CATALOG-20261016-ARAVEN-01-RELEASE",
+            "severity": "approval",
+            "taskId": "KS-CATALOG-20261016-ARAVEN-01-RELEASE",
+            "reason": "Automatic approval review rejected PR17 merge: visible trusted delegation explicitly names PR6; PR17 changes main and may trigger production. No merge occurred. Exact head 1e33c0d8fbd4dd8c4792138414552719bd1ecb20 passed independent review and hosted CI38855097400; four ready Araven rows remain preview-only, live483. Need explicit human authorization for PR17 ordinary merge and existing Git production deployment. Do not bypass rejection or claim release complete.",
+            "fingerprint": "8b67ea5d81fd977ec3c4782d5b91ceca957ccc15be3846458f712b7277cd9e4d"
+          },
+          {
+            "key": "blocked:KS-SOC-S16-SILENT-20261016-2200",
+            "severity": "warning",
+            "taskId": "KS-SOC-S16-SILENT-20261016-2200",
+            "reason": "Credential-protection guard stopped the browser before file selection. No Schedule click or successful file upload is confirmed; caption text may remain in an unsaved composer. No scheduled/delivered receipt exists. Native draft/queue reconciliation is required before any future action. Fresh-runtime recovery exhausted; do not retry or use an alternate route to bypass the guard.",
+            "fingerprint": "f136609e8ee4763a0ba5060ce5a75d0c243643b040d48eee47db895f9e637d1e"
+          },
+          {
+            "key": "deadline:KS-SOC-S16-SILENT-20261016-2200",
+            "severity": "critical",
+            "taskId": "KS-SOC-S16-SILENT-20261016-2200",
+            "reason": "Task deadline passed without verified completion",
+            "fingerprint": "b456720fa4674a0b2e9a73029975227b0f71aab0d365c25ab419e19f07c9cb2b"
+          },
+          {
+            "key": "worker:catalog",
+            "severity": "warning",
+            "taskId": null,
+            "reason": "Expected worker receipt overdue: catalog",
+            "fingerprint": "ded85b810dad6e898d47934f814a325a9056043deb2ea172a68eab0612eee84d"
+          },
+          {
+            "key": "worker:discovery",
+            "severity": "warning",
+            "taskId": null,
+            "reason": "Expected worker has never reported: discovery",
+            "fingerprint": "ade90983a6ab4c767d9c4a5cf28911f0ace66b56fe02240706192ef24955f781"
+          },
+          {
+            "key": "worker:content-qa",
+            "severity": "warning",
+            "taskId": null,
+            "reason": "Expected worker has never reported: content-qa",
+            "fingerprint": "2fb96ebcaf752a0f3edcad06d30e4226b401f3897424c6bf72bf39c77f127f4a"
+          },
+          {
+            "key": "worker:social-readiness",
+            "severity": "warning",
+            "taskId": null,
+            "reason": "Expected worker has never reported: social-readiness",
+            "fingerprint": "4c68ff8f096b94acc8015e16500005b8edc1cb30512f848db2357adb4bc97d73"
+          }
+        ]
+      },
+      "at": "2026-10-18T15:24:16.891Z"
+    },
+    "scheduled-supervisor-20261018T153131Z:checkpoint": {
+      "fingerprint": "4eda443f0414c4fcc8d34c5ea9125469470e0f8d9025fc84eba0a7575124bb15",
+      "result": {
+        "results": [
+          {
+            "ok": true
+          },
+          {
+            "notify": [],
+            "issues": [
+              {
+                "key": "blocked:KS-SUPERVISOR-PARENT-ACK-20261015-01",
+                "severity": "warning",
+                "taskId": "KS-SUPERVISOR-PARENT-ACK-20261015-01",
+                "reason": "Report SHA256 aac9dece4f23f232d3b96c0cbb100a75a02a73d84da1f9dfaaedd6d5610d7f2c. MEDIA-018/020 files recovered; QA still pending. MEDIA-019/CLAIM-001 remain open. Current Queue/Sent/native evidence unavailable: no social read connector; failed laptop browser not retried. Social-readiness must refresh authenticated records; supervisor then reconcile coverage. Automatic-after-QA approval preserved.",
+                "fingerprint": "94dc7b6849c9830019287f81397dd30866a9863410cad0f1b853aa20ec5bc9b9"
+              },
+              {
+                "key": "blocked:KS-CATALOG-20261016-ARAVEN-01-RELEASE",
+                "severity": "approval",
+                "taskId": "KS-CATALOG-20261016-ARAVEN-01-RELEASE",
+                "reason": "Automatic approval review rejected PR17 merge: visible trusted delegation explicitly names PR6; PR17 changes main and may trigger production. No merge occurred. Exact head 1e33c0d8fbd4dd8c4792138414552719bd1ecb20 passed independent review and hosted CI38855097400; four ready Araven rows remain preview-only, live483. Need explicit human authorization for PR17 ordinary merge and existing Git production deployment. Do not bypass rejection or claim release complete.",
+                "fingerprint": "8b67ea5d81fd977ec3c4782d5b91ceca957ccc15be3846458f712b7277cd9e4d"
+              },
+              {
+                "key": "blocked:KS-SOC-S16-SILENT-20261016-2200",
+                "severity": "warning",
+                "taskId": "KS-SOC-S16-SILENT-20261016-2200",
+                "reason": "Credential-protection guard stopped the browser before file selection. No Schedule click or successful file upload is confirmed; caption text may remain in an unsaved composer. No scheduled/delivered receipt exists. Native draft/queue reconciliation is required before any future action. Fresh-runtime recovery exhausted; do not retry or use an alternate route to bypass the guard.",
+                "fingerprint": "f136609e8ee4763a0ba5060ce5a75d0c243643b040d48eee47db895f9e637d1e"
+              },
+              {
+                "key": "deadline:KS-SOC-S16-SILENT-20261016-2200",
+                "severity": "critical",
+                "taskId": "KS-SOC-S16-SILENT-20261016-2200",
+                "reason": "Task deadline passed without verified completion",
+                "fingerprint": "b456720fa4674a0b2e9a73029975227b0f71aab0d365c25ab419e19f07c9cb2b"
+              },
+              {
+                "key": "worker:catalog",
+                "severity": "warning",
+                "taskId": null,
+                "reason": "Expected worker receipt overdue: catalog",
+                "fingerprint": "ded85b810dad6e898d47934f814a325a9056043deb2ea172a68eab0612eee84d"
+              },
+              {
+                "key": "worker:discovery",
+                "severity": "warning",
+                "taskId": null,
+                "reason": "Expected worker has never reported: discovery",
+                "fingerprint": "ade90983a6ab4c767d9c4a5cf28911f0ace66b56fe02240706192ef24955f781"
+              },
+              {
+                "key": "worker:content-qa",
+                "severity": "warning",
+                "taskId": null,
+                "reason": "Expected worker has never reported: content-qa",
+                "fingerprint": "2fb96ebcaf752a0f3edcad06d30e4226b401f3897424c6bf72bf39c77f127f4a"
+              },
+              {
+                "key": "worker:social-readiness",
+                "severity": "warning",
+                "taskId": null,
+                "reason": "Expected worker has never reported: social-readiness",
+                "fingerprint": "4c68ff8f096b94acc8015e16500005b8edc1cb30512f848db2357adb4bc97d73"
+              }
+            ]
+          }
+        ]
+      },
+      "at": "2026-10-18T15:24:16.891Z"
     }
   },
   "receipts": {
@@ -2736,8 +2880,8 @@
   },
   "workers": {
     "supervisor": {
-      "at": "2026-10-18T14:51:06.760Z",
-      "runId": "scheduled-supervisor-20261018T143131Z",
+      "at": "2026-10-18T15:24:16.891Z",
+      "runId": "scheduled-supervisor-20261018T153131Z",
       "expectedEveryMs": 3600000,
       "graceMs": 3600000
     },
@@ -2761,7 +2905,7 @@
       "taskId": "KS-SUPERVISOR-PARENT-ACK-20261015-01",
       "reason": "Report SHA256 aac9dece4f23f232d3b96c0cbb100a75a02a73d84da1f9dfaaedd6d5610d7f2c. MEDIA-018/020 files recovered; QA still pending. MEDIA-019/CLAIM-001 remain open. Current Queue/Sent/native evidence unavailable: no social read connector; failed laptop browser not retried. Social-readiness must refresh authenticated records; supervisor then reconcile coverage. Automatic-after-QA approval preserved.",
       "fingerprint": "94dc7b6849c9830019287f81397dd30866a9863410cad0f1b853aa20ec5bc9b9",
-      "observedAt": "2026-10-18T14:51:06.760Z"
+      "observedAt": "2026-10-18T15:24:16.891Z"
     },
     "blocked:KS-CATALOG-20261016-ARAVEN-01-RELEASE": {
       "key": "blocked:KS-CATALOG-20261016-ARAVEN-01-RELEASE",
@@ -2769,7 +2913,7 @@
       "taskId": "KS-CATALOG-20261016-ARAVEN-01-RELEASE",
       "reason": "Automatic approval review rejected PR17 merge: visible trusted delegation explicitly names PR6; PR17 changes main and may trigger production. No merge occurred. Exact head 1e33c0d8fbd4dd8c4792138414552719bd1ecb20 passed independent review and hosted CI38855097400; four ready Araven rows remain preview-only, live483. Need explicit human authorization for PR17 ordinary merge and existing Git production deployment. Do not bypass rejection or claim release complete.",
       "fingerprint": "8b67ea5d81fd977ec3c4782d5b91ceca957ccc15be3846458f712b7277cd9e4d",
-      "observedAt": "2026-10-18T14:51:06.760Z"
+      "observedAt": "2026-10-18T15:24:16.891Z"
     },
     "worker:social-readiness": {
       "key": "worker:social-readiness",
@@ -2777,7 +2921,7 @@
       "taskId": null,
       "reason": "Expected worker has never reported: social-readiness",
       "fingerprint": "4c68ff8f096b94acc8015e16500005b8edc1cb30512f848db2357adb4bc97d73",
-      "observedAt": "2026-10-18T14:51:06.760Z"
+      "observedAt": "2026-10-18T15:24:16.891Z"
     },
     "blocked:KS-SOC-S16-SILENT-20261016-2200": {
       "key": "blocked:KS-SOC-S16-SILENT-20261016-2200",
@@ -2785,7 +2929,7 @@
       "taskId": "KS-SOC-S16-SILENT-20261016-2200",
       "reason": "Credential-protection guard stopped the browser before file selection. No Schedule click or successful file upload is confirmed; caption text may remain in an unsaved composer. No scheduled/delivered receipt exists. Native draft/queue reconciliation is required before any future action. Fresh-runtime recovery exhausted; do not retry or use an alternate route to bypass the guard.",
       "fingerprint": "f136609e8ee4763a0ba5060ce5a75d0c243643b040d48eee47db895f9e637d1e",
-      "observedAt": "2026-10-18T14:51:06.760Z"
+      "observedAt": "2026-10-18T15:24:16.891Z"
     },
     "deadline:KS-SOC-S16-SILENT-20261016-2200": {
       "key": "deadline:KS-SOC-S16-SILENT-20261016-2200",
@@ -2793,7 +2937,7 @@
       "taskId": "KS-SOC-S16-SILENT-20261016-2200",
       "reason": "Task deadline passed without verified completion",
       "fingerprint": "b456720fa4674a0b2e9a73029975227b0f71aab0d365c25ab419e19f07c9cb2b",
-      "observedAt": "2026-10-18T14:51:06.760Z"
+      "observedAt": "2026-10-18T15:24:16.891Z"
     },
     "worker:catalog": {
       "key": "worker:catalog",
@@ -2801,7 +2945,7 @@
       "taskId": null,
       "reason": "Expected worker receipt overdue: catalog",
       "fingerprint": "ded85b810dad6e898d47934f814a325a9056043deb2ea172a68eab0612eee84d",
-      "observedAt": "2026-10-18T14:51:06.760Z"
+      "observedAt": "2026-10-18T15:24:16.891Z"
     },
     "worker:discovery": {
       "key": "worker:discovery",
@@ -2809,7 +2953,7 @@
       "taskId": null,
       "reason": "Expected worker has never reported: discovery",
       "fingerprint": "ade90983a6ab4c767d9c4a5cf28911f0ace66b56fe02240706192ef24955f781",
-      "observedAt": "2026-10-18T14:51:06.760Z"
+      "observedAt": "2026-10-18T15:24:16.891Z"
     },
     "worker:content-qa": {
       "key": "worker:content-qa",
@@ -2817,7 +2961,7 @@
       "taskId": null,
       "reason": "Expected worker has never reported: content-qa",
       "fingerprint": "2fb96ebcaf752a0f3edcad06d30e4226b401f3897424c6bf72bf39c77f127f4a",
-      "observedAt": "2026-10-18T14:51:06.760Z"
+      "observedAt": "2026-10-18T15:24:16.891Z"
     }
   },
   "expectationsStartedAt": "2026-10-15T17:58:08.586Z"
