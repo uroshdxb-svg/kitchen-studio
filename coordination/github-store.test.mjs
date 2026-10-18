@@ -36,7 +36,7 @@ test('Contents conflict replay preserves the competing fresh worker receipt',asy
   let queue=emptyQueue(),sha=SHA_A,reads=0,updates=0;
   const other={opId:'other-tick',type:'worker_tick',worker:'reviewer',runId:'other-run'};
   const store=githubContentsStore({
-    readFile:async()=>{reads++;return {content:JSON.stringify(queue),sha};},
+    readFile:async()=>{reads++;return {content:JSON.stringify(queue,null,2)+'\n',sha};},
     updateFile:async args=>{
       updates++;
       if(updates===1){queue=applyCommand(queue,other,NOW).queue;sha=SHA_B;return {conflict:true};}
@@ -46,7 +46,7 @@ test('Contents conflict replay preserves the competing fresh worker receipt',asy
     },
   });
   await transact(store,tick,NOW);
-  assert.equal(reads,2);assert.equal(updates,2);
+  assert.equal(reads,3);assert.equal(updates,2);
   assert.equal(queue.workers.reviewer.runId,'other-run');
   assert.equal(queue.workers.supervisor.runId,'run-1');
 });
@@ -78,4 +78,36 @@ test('non-conflict adapter errors propagate for explicit reconciliation',async()
   const store=githubContentsStore({readFile:async()=>{throw error;},updateFile:async()=>{throw error;}});
   await assert.rejects(store.read(),e=>e===error);
   await assert.rejects(store.compareAndSwap(SHA_A,emptyQueue()),e=>e===error);
+});
+
+test('successful writes require exact content and blob readback at the returned commit',async()=>{
+ const next=applyCommand(emptyQueue(),tick,NOW).queue,content=JSON.stringify(next,null,2)+'\n',reads=[];
+ const store=githubContentsStore({readFile:async args=>{reads.push(args);return {content,sha:SHA_C};},updateFile:async()=>({commit_sha:SHA_B,content_sha:SHA_C})});
+ assert.equal(await store.compareAndSwap(SHA_A,next),true);
+ assert.equal(reads[0].ref,SHA_B,'read immutable commit, never moving branch');
+});
+
+test('a stale, wrong-blob, missing or uncertain committed readback never reports success',async()=>{
+ const next=applyCommand(emptyQueue(),tick,NOW).queue,content=JSON.stringify(next,null,2)+'\n';
+ for(const reply of [null,{sha:SHA_A,content},{sha:SHA_C,content:JSON.stringify(emptyQueue())}]){
+  const store=githubContentsStore({readFile:async()=>reply,updateFile:async()=>({commit_sha:SHA_B,content_sha:SHA_C})});
+  await assert.rejects(store.compareAndSwap(SHA_A,next),/Unconfirmed committed queue readback/);
+ }
+ const store=githubContentsStore({readFile:async()=>{throw Error('read response lost');},updateFile:async()=>({commit_sha:SHA_B,content_sha:SHA_C})});
+ await assert.rejects(store.compareAndSwap(SHA_A,next),/read response lost/);
+ for(const receipt of [{commit_sha:'not-a-commit',content_sha:SHA_C},{commit_sha:SHA_B,content_sha:'not-a-blob'}]){
+  const invalid=githubContentsStore({readFile:async()=>assert.fail('invalid receipt must not read'),updateFile:async()=>receipt});
+  await assert.rejects(invalid.compareAndSwap(SHA_A,next),/Unconfirmed queue write/);
+ }
+});
+
+test('lost readback after a real write recovers by same-op receipt without another write',async()=>{
+ let queue=emptyQueue(),sha=SHA_A,updates=0,lost=true;
+ const store=githubContentsStore({
+  readFile:async args=>{if(args.ref===SHA_B&&lost){lost=false;throw Error('readback unavailable');}return {content:JSON.stringify(queue,null,2)+'\n',sha};},
+  updateFile:async args=>{updates++;queue=JSON.parse(args.content);sha=SHA_C;return {commit_sha:SHA_B,content_sha:SHA_C};},
+ });
+ await assert.rejects(transact(store,tick,NOW),/readback unavailable/);
+ const recovered=await transact(store,tick,NOW+1);
+ assert.equal(recovered.queue.workers.supervisor.runId,'run-1');assert.equal(updates,1);
 });

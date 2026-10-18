@@ -1,6 +1,7 @@
 // Coordination metadata only. This module never publishes, deploys, or calls an AI service.
 import {createHash, randomUUID} from 'node:crypto';
 import registry from './workers.json' with {type:'json'};
+import {validateApprovalState,requestApproval,resumeApproved,approvalForClaim,assertApprovalAction} from './approvals.mjs';
 const hash=x=>createHash('sha256').update(stable(x)).digest('hex');
 const stable=x=>JSON.stringify(x,(_,v)=>v&&typeof v==='object'&&!Array.isArray(v)?Object.fromEntries(Object.entries(v).sort(([a],[b])=>a.localeCompare(b))):v);
 const copy=x=>structuredClone(x);
@@ -54,9 +55,12 @@ export function validateQueue(q){
   if(t.status==='retry_wait')requireThat(Number.isFinite(Date.parse(t.retryAt)),'Missing retry time '+id);
   if(t.resolution!==undefined)resolutionMetadata(t.resolution);
   if(t.retirement!==undefined){resolutionMetadata(t.retirement,true);requireThat(t.status==='cancelled'&&text(t.reason),'Corrupt retired task '+id);boundedMetadata({summary:t.reason,...t.retirement},'Corrupt retirement metadata');}
+  validateApprovalState(t);
  }
  requireThat(q.updatedAt===null||timestamp(q.updatedAt),'Corrupt queue timestamp');
  expectedWorkers(q);
+ const approvals=Object.values(q.tasks).flatMap(t=>(t.approvalHistory??[]).map(a=>a.id));
+ requireThat(new Set(approvals).size===approvals.length,'Corrupt duplicate approval receipt ID');
  requireThat(q.expectationsStartedAt===undefined||q.expectationsStartedAt===null||(timestamp(q.expectationsStartedAt)&&(q.updatedAt===null?q.revision===0:Date.parse(q.expectationsStartedAt)<=Date.parse(q.updatedAt))),'Corrupt expectation startup anchor');
  for(const [id,r] of Object.entries(q.receipts))requireThat(r&&r.id===id&&q.tasks[r.taskId]&&text(r.from)&&text(r.to)&&Number.isFinite(Date.parse(r.ackDueAt))&&Number.isFinite(Date.parse(r.createdAt)),'Corrupt handoff receipt '+id);
  for(const [id,w] of Object.entries(q.workers))requireThat(w&&validId(id)&&validId(w.runId)&&Number.isFinite(Date.parse(w.at))&&(w.expectedEveryMs===null||(Number.isSafeInteger(w.expectedEveryMs)&&w.expectedEveryMs>=3600000))&&(w.graceMs===undefined||(Number.isSafeInteger(w.graceMs)&&w.graceMs>=0&&w.graceMs<=86400000)),'Corrupt worker receipt '+id);
@@ -72,16 +76,19 @@ function lease(q,c,now){
 function acquire(t,c,now){
  requireThat(c.worker===t.owner,'Task belongs to another role');
  requireThat(validId(c.runId),'Invalid run ID');
- const ms=c.leaseMs??900000;requireThat(Number.isInteger(ms)&&ms>=1000&&ms<=1800000,'Lease must be 1 second to 30 minutes');
+ const approval=c.type==='claim'?approvalForClaim(t,c,now):null;
+ let ms=c.leaseMs??900000;requireThat(Number.isInteger(ms)&&ms>=1000&&ms<=1800000,'Lease must be 1 second to 30 minutes');
+ if(approval){ms=Math.min(ms,Date.parse(approval.expiresAt)-now,t.deadline?Date.parse(t.deadline)-now:Infinity);requireThat(ms>=1000,'Task deadline expired before claim');}
  requireThat(t.totalAttempts<t.maxTotalAttempts,'Total acquisition limit reached');
  t.generation++;t.attempts++;t.totalAttempts++;t.status='leased';t.retryAt=null;
  t.lease={worker:c.worker,runId:c.runId,token:randomUUID(),generation:t.generation,claimedAt:iso(now),heartbeatAt:iso(now),expiresAt:iso(now+ms)};
+ if(approval)t.approvalGrant.claimedGeneration=t.generation;
  return {taskId:t.id,token:t.lease.token,generation:t.generation};
 }
 function availableResource(q,t){
  if(!t.resource)return;
  const occupied=new Set(['leased','awaiting_ack','retry_wait','blocked','needs_approval']);
- requireThat(!Object.values(q.tasks).some(other=>other.id!==t.id&&other.resource===t.resource&&occupied.has(other.status)),'Exclusive resource requires reconciliation or completion: '+t.resource);
+ requireThat(!Object.values(q.tasks).some(other=>other.id!==t.id&&other.resource===t.resource&&(occupied.has(other.status)||(other.status==='ready'&&other.approvalGrant))),'Exclusive resource requires reconciliation or completion: '+t.resource);
 }
 function evidence(e,kind){
  requireThat(e?.outcome==='pass','Passing evidence references required');
@@ -105,6 +112,10 @@ export function inspectQueue(input,now=Date.now()){
   if(t.status==='leased'&&Date.parse(t.lease.expiresAt)<=now)add('lease:'+t.id,'warning',t.id,'Lease expired; reconcile side effects before retry');
   if(t.status==='awaiting_ack'&&Date.parse(q.receipts[t.pendingReceipt].ackDueAt)<=now)add('handoff:'+t.id,'warning',t.id,'Handoff acknowledgment overdue');
   if(['blocked','needs_approval'].includes(t.status))add('blocked:'+t.id,t.status==='needs_approval'?'approval':'warning',t.id,t.reason);
+  if(t.status==='ready'&&t.approvalGrant?.claimedGeneration===null){
+   const a=t.approvalHistory.find(a=>a.id===t.approvalGrant.approvalId);
+   if(Date.parse(a.expiresAt)<=now)add('approval:'+t.id,'approval',t.id,'Approval expired before claim; a fresh scoped decision is required');
+  }
   if(t.deadline&&!terminal.has(t.status)&&Date.parse(t.deadline)<=now)add('deadline:'+t.id,'critical',t.id,'Task deadline passed without verified completion');
   if(!terminal.has(t.status)&&t.dependencies.some(id=>['blocked','needs_approval','cancelled'].includes(q.tasks[id]?.status)))add('dependency:'+t.id,'warning',t.id,'Dependency requires attention');
  }
@@ -119,7 +130,11 @@ export function inspectQueue(input,now=Date.now()){
  for(const [id,w] of Object.entries(q.workers))if(!Object.hasOwn(expected,id)&&w.expectedEveryMs&&now-Date.parse(w.at)>w.expectedEveryMs+(w.graceMs??3600000))add('worker:'+id,'warning',null,'Expected worker receipt overdue: '+id);
  return issues;
 }
-export function applyCommand(input,c,now=Date.now()){
+export function assertApprovedAction(input,c,now=Date.now()){
+ validateQueue(input);requireThat(Number.isFinite(now),'Invalid clock');
+ return assertApprovalAction(lease(input,c,now),c.approvalScope,now);
+}
+export function applyCommand(input,c,now=Date.now(),{authorizeApproval}={}){
  validateQueue(input);requireThat(Number.isFinite(now),'Invalid clock');requireThat(validId(c?.opId),'Stable opId required');
  const fingerprint=hash(c),prior=input.operations[c.opId];
  if(prior){requireThat(prior.fingerprint===fingerprint,'opId reused with different command');return {queue:copy(input),result:copy(prior.result)};}
@@ -133,7 +148,7 @@ export function applyCommand(input,c,now=Date.now()){
  switch(c.type){
  case 'batch':{
   requireThat(Array.isArray(c.commands)&&c.commands.length>0&&c.commands.length<=10&&c.commands.every(x=>x.type!=='batch'&&x.opId!==c.opId),'Invalid bounded command batch');
-  const results=[];for(const command of c.commands){const step=applyCommand(q,command,now);Object.assign(q,step.queue);results.push(step.result);}result={results};break;
+  const results=[];for(const command of c.commands){const step=applyCommand(q,command,now,{authorizeApproval});Object.assign(q,step.queue);results.push(step.result);}result={results};break;
  }
  case 'enqueue':{
   const s=c.task;requireThat(s&&validId(s.id)&&text(s.owner,120)&&text(s.title,200),'Invalid task');
@@ -159,7 +174,8 @@ export function applyCommand(input,c,now=Date.now()){
  }
  case 'heartbeat':{
   const t=lease(q,c,now),ms=c.leaseMs??900000;requireThat(Number.isInteger(ms)&&ms>=1000&&ms<=1800000,'Invalid lease extension');
-  t.lease.heartbeatAt=iso(now);t.lease.expiresAt=iso(now+ms);break;
+  const approval=t.approvalGrant?.claimedGeneration===t.generation?assertApprovalAction(t,c.approvalScope,now):null;
+  t.lease.heartbeatAt=iso(now);t.lease.expiresAt=iso(approval?Math.min(now+ms,Date.parse(approval.expiresAt),t.deadline?Date.parse(t.deadline):Infinity):now+ms);break;
  }
  case 'handoff':{
   const t=lease(q,c,now);requireThat(text(c.to,120)&&c.to!==t.owner&&text(c.summary,500),'Invalid handoff');requireThat(t.totalAttempts<t.maxTotalAttempts,'Total acquisition limit reached; record blocked work');
@@ -169,7 +185,7 @@ export function applyCommand(input,c,now=Date.now()){
  }
  case 'accept':{
   const t=q.tasks[c.taskId],r=q.receipts[c.receiptId];requireThat(t&&r&&t.status==='awaiting_ack'&&t.pendingReceipt===r.id&&r.taskId===t.id&&!r.acceptedAt&&r.to===c.worker,'Handoff cannot be accepted');
-  t.owner=r.to;t.attempts=0;result=acquire(t,c,now);r.acceptedAt=iso(now);r.acceptedBy={worker:c.worker,runId:c.runId};break;
+  t.owner=r.to;t.attempts=0;delete t.approvalGrant;result=acquire(t,c,now);r.acceptedAt=iso(now);r.acceptedBy={worker:c.worker,runId:c.runId};break;
  }
  case 'complete':{
   const t=lease(q,c,now);t.evidence=evidence(c.evidence,t.kind);t.status='done';t.completedAt=iso(now);t.lease=null;break;
@@ -185,6 +201,8 @@ export function applyCommand(input,c,now=Date.now()){
   // A supervisor may queue a fresh bounded attempt only after recording new evidence.
   requireThat(c.resolution!==t.reason,'New resolution evidence required');t.status='ready';t.reason=null;t.attempts=0;t.retryAt=null;t.resolution=resolutionMetadata({summary:c.resolution,refs:c.refs,at:iso(now)});break;
  }
+ case 'request_approval':result=requestApproval(q,c,now);break;
+ case 'resume_approved':result=resumeApproved(q,c,now,authorizeApproval);break;
  case 'retire':{
   const t=q.tasks[c.taskId];requireThat(c.worker==='supervisor'&&t&&['blocked','needs_approval','ready','retry_wait'].includes(t.status)&&text(c.resolution),'Only supervisor may retire inactive work with resolution evidence');
   if(t.status==='needs_approval'||c.humanDecision!==undefined)humanDecision(c.humanDecision);
@@ -216,13 +234,19 @@ export function applyCommand(input,c,now=Date.now()){
 
 // CAS backend is injected. For Git: read exact ref; commit with that single parent;
 // update the ref with force=false. A sibling commit must fail fast-forward checks.
-export async function transact(store,command,now=()=>Date.now(),{maxRetries=5}={}){
+export async function transact(store,command,now=()=>Date.now(),{maxRetries=5,authorizeApproval}={}){
  for(let n=0;n<maxRetries;n++){
   const {queue,revision}=await store.read();
   const at=typeof now==='function'?now():now;
-  const outcome=applyCommand(queue,command,at);
+  const pending=[];
+  const outcome=applyCommand(queue,command,at,{authorizeApproval:proof=>{
+   if(typeof authorizeApproval!=='function')return false;
+   pending.push(proof);return true;
+  }});
   if(outcome.queue.revision===queue.revision)return outcome;
+  for(const proof of pending)requireThat(await authorizeApproval(copy(proof))===true,'Trusted host rejected approval provenance');
   const beforeCas=typeof now==='function'?now():now;
+  for(const proof of pending)requireThat(Date.parse(proof.approval.expiresAt)>beforeCas&&(!outcome.queue.tasks[proof.taskId].deadline||Date.parse(outcome.queue.tasks[proof.taskId].deadline)>beforeCas),'Approval expired before CAS');
   const commands=command.type==='batch'?command.commands:[command];
   for(const part of commands){
    const existing=part.taskId&&queue.tasks[part.taskId]?.lease;
