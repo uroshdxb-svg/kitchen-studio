@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": 121,
-  "updatedAt": "2026-10-18T15:24:16.891Z",
+  "revision": 124,
+  "updatedAt": "2026-10-18T15:48:20.018Z",
   "tasks": {
     "KS-COORDINATION-PILOT-20261015": {
       "id": "KS-COORDINATION-PILOT-20261015",
@@ -344,17 +344,28 @@
         "retrySafe": false,
         "resource": "catalogue-writer"
       },
-      "status": "needs_approval",
+      "status": "cancelled",
       "attempts": 1,
       "totalAttempts": 1,
       "generation": 1,
       "lease": null,
       "retryAt": null,
       "createdAt": "2026-10-16T05:24:45.465Z",
-      "updatedAt": "2026-10-16T05:29:27.494Z",
+      "updatedAt": "2026-10-18T15:48:20.018Z",
       "evidence": null,
       "pendingReceipt": null,
-      "reason": "Automatic approval review rejected PR17 merge: visible trusted delegation explicitly names PR6; PR17 changes main and may trigger production. No merge occurred. Exact head 1e33c0d8fbd4dd8c4792138414552719bd1ecb20 passed independent review and hosted CI38855097400; four ready Araven rows remain preview-only, live483. Need explicit human authorization for PR17 ordinary merge and existing Git production deployment. Do not bypass rejection or claim release complete."
+      "reason": "Direct human approval for exact PR17 head1e33c0d8fbd4dd8c4792138414552719bd1ecb20. Continue only via linked successor KS-CATALOG-20261018-PR17-APPROVED-RELEASE-01; preserve this original history. Retirement is not delivery.",
+      "retirement": {
+        "at": "2026-10-18T15:48:20.018Z",
+        "refs": [
+          "https://github.com/uroshdxb-svg/kitchen-studio/pull/17",
+          "task:KS-CATALOG-20261018-PR17-APPROVED-RELEASE-01"
+        ],
+        "humanDecision": {
+          "decision": "approved",
+          "reference": "human-message:Sentinel_73a191bfd8c08191abd91d5b5c8e1b99; 18 October 2026 15:35 UTC; explicit PR17 merge and existing Git production deployment"
+        }
+      }
     },
     "KS-SOC-S16-SILENT-20261016-2200": {
       "id": "KS-SOC-S16-SILENT-20261016-2200",
@@ -392,6 +403,46 @@
       "evidence": null,
       "pendingReceipt": null,
       "reason": "Credential-protection guard stopped the browser before file selection. No Schedule click or successful file upload is confirmed; caption text may remain in an unsaved composer. No scheduled/delivered receipt exists. Native draft/queue reconciliation is required before any future action. Fresh-runtime recovery exhausted; do not retry or use an alternate route to bypass the guard."
+    },
+    "KS-CATALOG-20261018-PR17-APPROVED-RELEASE-01": {
+      "id": "KS-CATALOG-20261018-PR17-APPROVED-RELEASE-01",
+      "owner": "catalog",
+      "kind": "release",
+      "title": "PR17-only approved release; successor to KS-CATALOG-20261016-ARAVEN-01-RELEASE",
+      "dependencies": [
+        "KS-CATALOG-PARENT-ACK-20261015-01"
+      ],
+      "maxAttempts": 1,
+      "maxTotalAttempts": 1,
+      "deadline": null,
+      "dedupeKey": "pr17-approved-head-1e33c0d8-20261018-release-01",
+      "retrySafe": false,
+      "resource": "catalogue-writer",
+      "specification": {
+        "id": "KS-CATALOG-20261018-PR17-APPROVED-RELEASE-01",
+        "owner": "catalog",
+        "kind": "release",
+        "title": "PR17-only approved release; successor to KS-CATALOG-20261016-ARAVEN-01-RELEASE",
+        "dependencies": [
+          "KS-CATALOG-PARENT-ACK-20261015-01"
+        ],
+        "maxAttempts": 1,
+        "maxTotalAttempts": 1,
+        "deadline": null,
+        "dedupeKey": "pr17-approved-head-1e33c0d8-20261018-release-01",
+        "retrySafe": false,
+        "resource": "catalogue-writer"
+      },
+      "status": "ready",
+      "attempts": 0,
+      "totalAttempts": 0,
+      "generation": 0,
+      "lease": null,
+      "retryAt": null,
+      "createdAt": "2026-10-18T15:48:20.018Z",
+      "updatedAt": "2026-10-18T15:48:20.018Z",
+      "evidence": null,
+      "pendingReceipt": null
     }
   },
   "operations": {
@@ -2796,6 +2847,34 @@
         ]
       },
       "at": "2026-10-18T15:24:16.891Z"
+    },
+    "pr17-approved-successor-20261018:retire-v1": {
+      "fingerprint": "3bce474741fbc1d7bf6a2c7e0178622471d083ffc307d1c502c493043bfdb9a6",
+      "result": {
+        "ok": true
+      },
+      "at": "2026-10-18T15:48:20.018Z"
+    },
+    "pr17-approved-successor-20261018:enqueue-v1": {
+      "fingerprint": "c98b2041944038788532b759a803d59916600c68c99ac9051e04821b88336c9e",
+      "result": {
+        "taskId": "KS-CATALOG-20261018-PR17-APPROVED-RELEASE-01"
+      },
+      "at": "2026-10-18T15:48:20.018Z"
+    },
+    "pr17-approved-successor-20261018:transition-v1": {
+      "fingerprint": "a5cc0044b153b77cc406ed3c0ad34ac9ddc79879411426d4d55a08796f0deb62",
+      "result": {
+        "results": [
+          {
+            "ok": true
+          },
+          {
+            "taskId": "KS-CATALOG-20261018-PR17-APPROVED-RELEASE-01"
+          }
+        ]
+      },
+      "at": "2026-10-18T15:48:20.018Z"
     }
   },
   "receipts": {
