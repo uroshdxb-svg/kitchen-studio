@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-15",
+  "updated_at": "2026-10-16",
   "target": {
     "minimum_live_count": 1001,
     "deadline": "2026-10-31",
@@ -268,6 +268,50 @@
       "live_verified_at": "2026-10-15T17:17:25Z",
       "production_verification_ref": "production_verification",
       "historical_pre_deployment_release_receipt": "origin/main readback confirmed 483 entries and all six final-batch exact CODs after merge. Live remains last verified by parent at 444; delivered additions remain zero."
+    },
+    {
+      "id": "2026-10-16-araven-accessible-01",
+      "manufacturer": "Araven",
+      "models": [
+        "918",
+        "09144",
+        "09145",
+        "09146"
+      ],
+      "manufacturer_skus": [
+        "00918",
+        "09144",
+        "09145",
+        "09146"
+      ],
+      "state": "prepared",
+      "source_before": 483,
+      "source_before_sha": "2180eb77091ea5cc1cd48dbe81c5fecdc4b9993c",
+      "source_after": 487,
+      "verified_additions": 4,
+      "merged_additions": 0,
+      "live_verified_additions": 0,
+      "pr_url": null,
+      "merge_sha": null,
+      "deployment_url": null,
+      "evidence": "catalogue-evidence.json",
+      "csv": "equipment/batches/2026-10-16-araven-accessible-01.csv",
+      "certificates": "equipment/batches/2026-10-16-araven-accessible-01.certificates.json",
+      "limitations": [
+        "Brochure is undated; PDF creation metadata2024-05-03; current manufacturer index links same document.",
+        "Closed-lid portable-bin envelope only; access clearance not quantified or invented.",
+        "Today4prepared records are not delivered until merge,production deployment and live identity/value and app search/add readback."
+      ],
+      "validation": {
+        "readiness": "4passing exact-row certificates",
+        "visual": "Official brochure PDFpage2 locally rendered and inspected; exactSKU/footprint/height graphics",
+        "alias_dedup": "Araven00920 excluded as existing Ingredient bin100L;00919 alreadypresent;00918 legacyheld candidate completed,not duplicated"
+      },
+      "execution": {
+        "role": "catalog",
+        "run_id": "catalog-local-recovery-20261016T050118Z",
+        "scope": "Authorized local recovery after original/replacement durable admission failures; no newworkerorschedule"
+      }
     }
   ],
   "current_merged": {
@@ -277,17 +321,16 @@
     "live_count": 483
   },
   "daily_totals": {
-    "date": "2026-10-15",
-    "verified_additions": 39,
-    "merged_additions": 39,
-    "live_verified_additions": 39,
+    "date": "2026-10-16",
+    "verified_additions": 4,
+    "prepared_additions": 4,
+    "merged_additions": 0,
+    "live_verified_additions": 0,
     "catalogue_count": 483,
+    "prepared_count": 487,
     "last_verified_live_count": 483,
-    "deployment_blocker": null,
-    "remaining_to_target_from_merged": 518,
     "remaining_to_target_from_last_verified_live": 518,
-    "historical_deployment_blocker": "Authenticated operator must inspect/retry existing connected Cloudflare production build. No Cloudflare credentials available in execution environment; parent browser signed out.",
-    "production_browser_qa": "untested"
+    "production_browser_qa": "pending newbatchrelease"
   },
   "production_verification": {
     "verified_at": "2026-10-15T17:17:25Z",
@@ -310,5 +353,20 @@
     "manual_deployment": false,
     "configuration_change": false,
     "interactive_browser_qa": "untested in production; earlier local browser checks are preserved separately"
-  }
+  },
+  "daily_history": [
+    {
+      "date": "2026-10-15",
+      "verified_additions": 39,
+      "merged_additions": 39,
+      "live_verified_additions": 39,
+      "catalogue_count": 483,
+      "last_verified_live_count": 483,
+      "deployment_blocker": null,
+      "remaining_to_target_from_merged": 518,
+      "remaining_to_target_from_last_verified_live": 518,
+      "historical_deployment_blocker": "Authenticated operator must inspect/retry existing connected Cloudflare production build. No Cloudflare credentials available in execution environment; parent browser signed out.",
+      "production_browser_qa": "untested"
+    }
+  ]
 }

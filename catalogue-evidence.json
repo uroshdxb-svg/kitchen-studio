@@ -5,6 +5,10 @@
     "araven|919": {
       "name": "Mobile ingredient bin 80 L with window (SKU 00919)",
       "reason": "Append the manufacturer SKU to the searchable runtime name while preserving the exact certified Sheet row and queue model 919. Manufacturer SKU 00919 is evidenced in this record."
+    },
+    "araven|918": {
+      "name": "Accessible ingredient bin 50 L GN1/1 (SKU 00918), closed lid",
+      "reason": "Preserve legacy numeric model918 while exposing full manufacturerSKU00918 for search; exact certified row retained."
     }
   },
   "records": {
@@ -11982,6 +11986,1238 @@
       "reviewed_at": "2026-10-15",
       "integration_review": "Integration owner independently read all six exact manufacturer PDFs, confirming COD/alias, labelled overall dimensions, complete passive construction and revision dates; delegated researcher also read every current product page and linked PDF. No visual review or binary archival claim.",
       "source_row_hash": "4cc2549933b5b0cc8218883d604389756e107c5f5d7ce5380a840c1d4b30d676"
+    },
+    "araven|918": {
+      "schema_version": 1,
+      "key": "araven|918",
+      "brand": "Araven",
+      "model": "918",
+      "manufacturer_sku": "00918",
+      "manufacturer_ean": "8411777009189",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-16T05:11:03.230Z",
+      "source_row_hash": "29ef355bb642434fda4c08edab439bd497f6bf032aa60f7d829259322bf300c7",
+      "proposed_queue_row": [
+        "Araven",
+        "918",
+        "Storage",
+        "Accessible ingredient bin 50 L GN1/1 (SKU 00918), closed lid",
+        "340",
+        "565",
+        "400",
+        "top",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://araven.com/en/accessible-containers/ingredient-bin-50-l-13-gal/",
+        "Global (unpowered)",
+        "Portable polypropylene dry-food bin; closed-lid envelope; allow manual lid access; manufacturer metric axes normalized to width x depth. SKU 00918.",
+        "2026-10-16"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://araven.com/en/accessible-containers/ingredient-bin-50-l-13-gal/",
+          "revision": "Current exact product page; no issue date displayed",
+          "retrieved_at": "2026-10-16T05:11:03.230Z",
+          "retrieval_method": "web reader opened exact official page; technical metric table and full product construction read"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://araven.com/wp-content/uploads/2024/05/Folleto-contenedores-accesibles-EN.pdf",
+          "revision": "Undated brochure linked by current index; PDF CreationDate2024-05-03",
+          "retrieved_at": "2026-10-16T05:11:03.230Z",
+          "document_sha256": "e859060d4667698f066314a3f8373be48c8cc39ec3ee4cf90d3e2b70ca033e7e",
+          "retrieval_method": "Official See file link followed in web reader; identical official www host downloaded locally after bare-host DNS failure; PDF page2 rendered with pdfplumber/PDFium and visually inspected",
+          "locator": "PDF pages1-2, especially page2 SKU/footprint/height graphics"
+        },
+        {
+          "id": "S3",
+          "kind": "manufacturer-product-page",
+          "url": "https://araven.com/en/solutions/preservation/ingredient-bins/accessible-containers/",
+          "revision": "Current family index and technical table",
+          "retrieved_at": "2026-10-16T05:11:03.230Z"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Current exact product page lists SKU00918,EAN8411777009189,capacity50L and GN1/1. Model918 retains the existing numeric legacy representation where applicable; full manufacturer SKU is searchable in the name. No separate color variants admitted."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Exact SKU 00918/EAN 8411777009189: product table gives 565x340x400 mm, distinct from shipping carton. Brochure PDF page2 graphics pair the footprint and SKU with 400mm closed-body height. Normalize second footprint axis to app width340, first to depth565, matching existing Araven orientation; rectangle preserved and rotatable. This is the closed-lid planning envelope, not the raised-lid access envelope."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Portable non-wheeled bin shown standing on a horizontal support/stacked; use app top mounting for shelf/counter placement. A suitable level support is required; this is not a floor appliance."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Brochure pages1-2 and product description require a dry, well-ventilated location away from heat/moisture; manual lid opening and safe supporting surface/stacking access required. No quantified lid-open clearance/load rating is published here; none is invented. No hardwired/plumbed/gas installation."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Opened the current exact manufacturer product page and family index on2026-10-16; its See file link still points to this brochure. PDF is undated, metadata CreationDate2024-05-03 and officialURL2024/05. No newer document link/revision was exposed by the current index; old creation date alone is not treated as obsolescence."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Storage/top/none are supported vocabulary, dimensions normalized to mm, exact numeric dimensions and explicit water/drain0; power/supply blanks are sourced nonapplicability. Region/note/date and EAN retained in sidecar."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Araven",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Current exact product page lists SKU00918,EAN8411777009189,capacity50L and GN1/1. Model918 retains the existing numeric legacy representation where applicable; full manufacturer SKU is searchable in the name. No separate color variants admitted."
+        },
+        "model": {
+          "value": "918",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Current exact product page lists SKU00918,EAN8411777009189,capacity50L and GN1/1. Model918 retains the existing numeric legacy representation where applicable; full manufacturer SKU is searchable in the name. No separate color variants admitted."
+        },
+        "w": {
+          "value": "340",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 technical/logistic metric table exact00918;S2 PDFpage2 SKU/footprint/height graphics",
+          "reason": "Exact SKU 00918/EAN 8411777009189: product table gives 565x340x400 mm, distinct from shipping carton. Brochure PDF page2 graphics pair the footprint and SKU with 400mm closed-body height. Normalize second footprint axis to app width340, first to depth565, matching existing Araven orientation; rectangle preserved and rotatable. This is the closed-lid planning envelope, not the raised-lid access envelope.",
+          "original_value": 340,
+          "original_unit": "mm",
+          "original_metric_tuple": "565x340x400"
+        },
+        "d": {
+          "value": "565",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 technical/logistic metric table exact00918;S2 PDFpage2 SKU/footprint/height graphics",
+          "reason": "Exact SKU 00918/EAN 8411777009189: product table gives 565x340x400 mm, distinct from shipping carton. Brochure PDF page2 graphics pair the footprint and SKU with 400mm closed-body height. Normalize second footprint axis to app width340, first to depth565, matching existing Araven orientation; rectangle preserved and rotatable. This is the closed-lid planning envelope, not the raised-lid access envelope.",
+          "original_value": 565,
+          "original_unit": "mm",
+          "original_metric_tuple": "565x340x400"
+        },
+        "h": {
+          "value": "400",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 technical/logistic metric table exact00918;S2 PDFpage2 SKU/footprint/height graphics",
+          "reason": "Exact SKU 00918/EAN 8411777009189: product table gives 565x340x400 mm, distinct from shipping carton. Brochure PDF page2 graphics pair the footprint and SKU with 400mm closed-body height. Normalize second footprint axis to app width340, first to depth565, matching existing Araven orientation; rectangle preserved and rotatable. This is the closed-lid planning envelope, not the raised-lid access envelope.",
+          "original_value": 400,
+          "original_unit": "mm",
+          "original_metric_tuple": "565x340x400"
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Portable non-wheeled bin shown standing on a horizontal support/stacked; use app top mounting for shelf/counter placement. A suitable level support is required; this is not a floor appliance."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        }
+      },
+      "installation_details": {
+        "configuration": "Closed lids, complete bin; no optional dispensers, rack or platform included",
+        "support": "Stable shelf or countertop; support/stacking suitability is the operator responsibility",
+        "access": "Allow lid opening/removal and cleaning; no numerical clearance invented",
+        "environment": "Dry ventilated location away from heat and moisture",
+        "utilities": "Passive complete polymer container, no installed utilities",
+        "catalogue_orientation": "app width340 x depth565 x height400mm; manufacturer tuple 565x340x400mm",
+        "capacity_l": 50,
+        "gn_size": "1/1"
+      },
+      "genuine_photo_source": {
+        "url": "https://araven.com/en/accessible-containers/ingredient-bin-50-l-13-gal/",
+        "description": "Manufacturer product photography and brochure page2; no copied or generated photo"
+      },
+      "candidate_runtime_row": [
+        "Araven",
+        "918",
+        "Storage",
+        "Accessible ingredient bin 50 L GN1/1 (SKU 00918), closed lid",
+        340,
+        565,
+        400,
+        "top",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://araven.com/en/accessible-containers/ingredient-bin-50-l-13-gal/"
+      ],
+      "visual_review": {
+        "pdf_page": 2,
+        "performed": true,
+        "scope": "Complete passive bin photographs, exact SKU/footprint mapping and200/400mm height graphics; not a technical installation certification"
+      }
+    },
+    "araven|09144": {
+      "schema_version": 1,
+      "key": "araven|09144",
+      "brand": "Araven",
+      "model": "09144",
+      "manufacturer_sku": "09144",
+      "manufacturer_ean": "8411777091443",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-16T05:11:03.230Z",
+      "source_row_hash": "61f6a3d3abb74729cb49ce21a3330ff9c8731de6af56060a1f6009dc8917e1a2",
+      "proposed_queue_row": [
+        "Araven",
+        "09144",
+        "Storage",
+        "Accessible ingredient bin 22.65 L GN1/1 (SKU 09144), closed lid",
+        "340",
+        "565",
+        "200",
+        "top",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://araven.com/en/accessible-containers/ingredient-bin-22-65-l-6-gal/",
+        "Global (unpowered)",
+        "Portable polypropylene dry-food bin; closed-lid envelope; allow manual lid access; manufacturer metric axes normalized to width x depth. SKU 09144.",
+        "2026-10-16"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://araven.com/en/accessible-containers/ingredient-bin-22-65-l-6-gal/",
+          "revision": "Current exact product page; no issue date displayed",
+          "retrieved_at": "2026-10-16T05:11:03.230Z",
+          "retrieval_method": "web reader opened exact official page; technical metric table and full product construction read"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://araven.com/wp-content/uploads/2024/05/Folleto-contenedores-accesibles-EN.pdf",
+          "revision": "Undated brochure linked by current index; PDF CreationDate2024-05-03",
+          "retrieved_at": "2026-10-16T05:11:03.230Z",
+          "document_sha256": "e859060d4667698f066314a3f8373be48c8cc39ec3ee4cf90d3e2b70ca033e7e",
+          "retrieval_method": "Official See file link followed in web reader; identical official www host downloaded locally after bare-host DNS failure; PDF page2 rendered with pdfplumber/PDFium and visually inspected",
+          "locator": "PDF pages1-2, especially page2 SKU/footprint/height graphics"
+        },
+        {
+          "id": "S3",
+          "kind": "manufacturer-product-page",
+          "url": "https://araven.com/en/solutions/preservation/ingredient-bins/accessible-containers/",
+          "revision": "Current family index and technical table",
+          "retrieved_at": "2026-10-16T05:11:03.230Z"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Current exact product page lists SKU09144,EAN8411777091443,capacity22.65L and GN1/1. Model09144 retains the existing numeric legacy representation where applicable; full manufacturer SKU is searchable in the name. No separate color variants admitted."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Exact SKU 09144/EAN 8411777091443: product table gives 565x340x200 mm, distinct from shipping carton. Brochure PDF page2 graphics pair the footprint and SKU with 200mm closed-body height. Normalize second footprint axis to app width340, first to depth565, matching existing Araven orientation; rectangle preserved and rotatable. This is the closed-lid planning envelope, not the raised-lid access envelope."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Portable non-wheeled bin shown standing on a horizontal support/stacked; use app top mounting for shelf/counter placement. A suitable level support is required; this is not a floor appliance."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Brochure pages1-2 and product description require a dry, well-ventilated location away from heat/moisture; manual lid opening and safe supporting surface/stacking access required. No quantified lid-open clearance/load rating is published here; none is invented. No hardwired/plumbed/gas installation."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Opened the current exact manufacturer product page and family index on2026-10-16; its See file link still points to this brochure. PDF is undated, metadata CreationDate2024-05-03 and officialURL2024/05. No newer document link/revision was exposed by the current index; old creation date alone is not treated as obsolescence."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Storage/top/none are supported vocabulary, dimensions normalized to mm, exact numeric dimensions and explicit water/drain0; power/supply blanks are sourced nonapplicability. Region/note/date and EAN retained in sidecar."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Araven",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Current exact product page lists SKU09144,EAN8411777091443,capacity22.65L and GN1/1. Model09144 retains the existing numeric legacy representation where applicable; full manufacturer SKU is searchable in the name. No separate color variants admitted."
+        },
+        "model": {
+          "value": "09144",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Current exact product page lists SKU09144,EAN8411777091443,capacity22.65L and GN1/1. Model09144 retains the existing numeric legacy representation where applicable; full manufacturer SKU is searchable in the name. No separate color variants admitted."
+        },
+        "w": {
+          "value": "340",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 technical/logistic metric table exact09144;S2 PDFpage2 SKU/footprint/height graphics",
+          "reason": "Exact SKU 09144/EAN 8411777091443: product table gives 565x340x200 mm, distinct from shipping carton. Brochure PDF page2 graphics pair the footprint and SKU with 200mm closed-body height. Normalize second footprint axis to app width340, first to depth565, matching existing Araven orientation; rectangle preserved and rotatable. This is the closed-lid planning envelope, not the raised-lid access envelope.",
+          "original_value": 340,
+          "original_unit": "mm",
+          "original_metric_tuple": "565x340x200"
+        },
+        "d": {
+          "value": "565",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 technical/logistic metric table exact09144;S2 PDFpage2 SKU/footprint/height graphics",
+          "reason": "Exact SKU 09144/EAN 8411777091443: product table gives 565x340x200 mm, distinct from shipping carton. Brochure PDF page2 graphics pair the footprint and SKU with 200mm closed-body height. Normalize second footprint axis to app width340, first to depth565, matching existing Araven orientation; rectangle preserved and rotatable. This is the closed-lid planning envelope, not the raised-lid access envelope.",
+          "original_value": 565,
+          "original_unit": "mm",
+          "original_metric_tuple": "565x340x200"
+        },
+        "h": {
+          "value": "200",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 technical/logistic metric table exact09144;S2 PDFpage2 SKU/footprint/height graphics",
+          "reason": "Exact SKU 09144/EAN 8411777091443: product table gives 565x340x200 mm, distinct from shipping carton. Brochure PDF page2 graphics pair the footprint and SKU with 200mm closed-body height. Normalize second footprint axis to app width340, first to depth565, matching existing Araven orientation; rectangle preserved and rotatable. This is the closed-lid planning envelope, not the raised-lid access envelope.",
+          "original_value": 200,
+          "original_unit": "mm",
+          "original_metric_tuple": "565x340x200"
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Portable non-wheeled bin shown standing on a horizontal support/stacked; use app top mounting for shelf/counter placement. A suitable level support is required; this is not a floor appliance."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        }
+      },
+      "installation_details": {
+        "configuration": "Closed lids, complete bin; no optional dispensers, rack or platform included",
+        "support": "Stable shelf or countertop; support/stacking suitability is the operator responsibility",
+        "access": "Allow lid opening/removal and cleaning; no numerical clearance invented",
+        "environment": "Dry ventilated location away from heat and moisture",
+        "utilities": "Passive complete polymer container, no installed utilities",
+        "catalogue_orientation": "app width340 x depth565 x height200mm; manufacturer tuple 565x340x200mm",
+        "capacity_l": 22.65,
+        "gn_size": "1/1"
+      },
+      "genuine_photo_source": {
+        "url": "https://araven.com/en/accessible-containers/ingredient-bin-22-65-l-6-gal/",
+        "description": "Manufacturer product photography and brochure page2; no copied or generated photo"
+      },
+      "candidate_runtime_row": [
+        "Araven",
+        "09144",
+        "Storage",
+        "Accessible ingredient bin 22.65 L GN1/1 (SKU 09144), closed lid",
+        340,
+        565,
+        200,
+        "top",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://araven.com/en/accessible-containers/ingredient-bin-22-65-l-6-gal/"
+      ],
+      "visual_review": {
+        "pdf_page": 2,
+        "performed": true,
+        "scope": "Complete passive bin photographs, exact SKU/footprint mapping and200/400mm height graphics; not a technical installation certification"
+      }
+    },
+    "araven|09145": {
+      "schema_version": 1,
+      "key": "araven|09145",
+      "brand": "Araven",
+      "model": "09145",
+      "manufacturer_sku": "09145",
+      "manufacturer_ean": "8411777091450",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-16T05:11:03.230Z",
+      "source_row_hash": "fc44ed9889714a015a556a137e4aa437a6dc0ab103dc2daf0eeccdf8aaeac38a",
+      "proposed_queue_row": [
+        "Araven",
+        "09145",
+        "Storage",
+        "Accessible ingredient bin 16 L GN2/3 (SKU 09145), closed lid",
+        "340",
+        "415",
+        "200",
+        "top",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://araven.com/en/accessible-containers/ingredient-bin-16-l-4-gal/",
+        "Global (unpowered)",
+        "Portable polypropylene dry-food bin; closed-lid envelope; allow manual lid access; manufacturer metric axes normalized to width x depth. SKU 09145.",
+        "2026-10-16"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://araven.com/en/accessible-containers/ingredient-bin-16-l-4-gal/",
+          "revision": "Current exact product page; no issue date displayed",
+          "retrieved_at": "2026-10-16T05:11:03.230Z",
+          "retrieval_method": "web reader opened exact official page; technical metric table and full product construction read"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://araven.com/wp-content/uploads/2024/05/Folleto-contenedores-accesibles-EN.pdf",
+          "revision": "Undated brochure linked by current index; PDF CreationDate2024-05-03",
+          "retrieved_at": "2026-10-16T05:11:03.230Z",
+          "document_sha256": "e859060d4667698f066314a3f8373be48c8cc39ec3ee4cf90d3e2b70ca033e7e",
+          "retrieval_method": "Official See file link followed in web reader; identical official www host downloaded locally after bare-host DNS failure; PDF page2 rendered with pdfplumber/PDFium and visually inspected",
+          "locator": "PDF pages1-2, especially page2 SKU/footprint/height graphics"
+        },
+        {
+          "id": "S3",
+          "kind": "manufacturer-product-page",
+          "url": "https://araven.com/en/solutions/preservation/ingredient-bins/accessible-containers/",
+          "revision": "Current family index and technical table",
+          "retrieved_at": "2026-10-16T05:11:03.230Z"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Current exact product page lists SKU09145,EAN8411777091450,capacity16L and GN2/3. Model09145 retains the existing numeric legacy representation where applicable; full manufacturer SKU is searchable in the name. No separate color variants admitted."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Exact SKU 09145/EAN 8411777091450: product table gives 415x340x200 mm, distinct from shipping carton. Brochure PDF page2 graphics pair the footprint and SKU with 200mm closed-body height. Normalize second footprint axis to app width340, first to depth415, matching existing Araven orientation; rectangle preserved and rotatable. This is the closed-lid planning envelope, not the raised-lid access envelope."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Portable non-wheeled bin shown standing on a horizontal support/stacked; use app top mounting for shelf/counter placement. A suitable level support is required; this is not a floor appliance."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Brochure pages1-2 and product description require a dry, well-ventilated location away from heat/moisture; manual lid opening and safe supporting surface/stacking access required. No quantified lid-open clearance/load rating is published here; none is invented. No hardwired/plumbed/gas installation."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Opened the current exact manufacturer product page and family index on2026-10-16; its See file link still points to this brochure. PDF is undated, metadata CreationDate2024-05-03 and officialURL2024/05. No newer document link/revision was exposed by the current index; old creation date alone is not treated as obsolescence."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Storage/top/none are supported vocabulary, dimensions normalized to mm, exact numeric dimensions and explicit water/drain0; power/supply blanks are sourced nonapplicability. Region/note/date and EAN retained in sidecar."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Araven",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Current exact product page lists SKU09145,EAN8411777091450,capacity16L and GN2/3. Model09145 retains the existing numeric legacy representation where applicable; full manufacturer SKU is searchable in the name. No separate color variants admitted."
+        },
+        "model": {
+          "value": "09145",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Current exact product page lists SKU09145,EAN8411777091450,capacity16L and GN2/3. Model09145 retains the existing numeric legacy representation where applicable; full manufacturer SKU is searchable in the name. No separate color variants admitted."
+        },
+        "w": {
+          "value": "340",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 technical/logistic metric table exact09145;S2 PDFpage2 SKU/footprint/height graphics",
+          "reason": "Exact SKU 09145/EAN 8411777091450: product table gives 415x340x200 mm, distinct from shipping carton. Brochure PDF page2 graphics pair the footprint and SKU with 200mm closed-body height. Normalize second footprint axis to app width340, first to depth415, matching existing Araven orientation; rectangle preserved and rotatable. This is the closed-lid planning envelope, not the raised-lid access envelope.",
+          "original_value": 340,
+          "original_unit": "mm",
+          "original_metric_tuple": "415x340x200"
+        },
+        "d": {
+          "value": "415",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 technical/logistic metric table exact09145;S2 PDFpage2 SKU/footprint/height graphics",
+          "reason": "Exact SKU 09145/EAN 8411777091450: product table gives 415x340x200 mm, distinct from shipping carton. Brochure PDF page2 graphics pair the footprint and SKU with 200mm closed-body height. Normalize second footprint axis to app width340, first to depth415, matching existing Araven orientation; rectangle preserved and rotatable. This is the closed-lid planning envelope, not the raised-lid access envelope.",
+          "original_value": 415,
+          "original_unit": "mm",
+          "original_metric_tuple": "415x340x200"
+        },
+        "h": {
+          "value": "200",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 technical/logistic metric table exact09145;S2 PDFpage2 SKU/footprint/height graphics",
+          "reason": "Exact SKU 09145/EAN 8411777091450: product table gives 415x340x200 mm, distinct from shipping carton. Brochure PDF page2 graphics pair the footprint and SKU with 200mm closed-body height. Normalize second footprint axis to app width340, first to depth415, matching existing Araven orientation; rectangle preserved and rotatable. This is the closed-lid planning envelope, not the raised-lid access envelope.",
+          "original_value": 200,
+          "original_unit": "mm",
+          "original_metric_tuple": "415x340x200"
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Portable non-wheeled bin shown standing on a horizontal support/stacked; use app top mounting for shelf/counter placement. A suitable level support is required; this is not a floor appliance."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        }
+      },
+      "installation_details": {
+        "configuration": "Closed lids, complete bin; no optional dispensers, rack or platform included",
+        "support": "Stable shelf or countertop; support/stacking suitability is the operator responsibility",
+        "access": "Allow lid opening/removal and cleaning; no numerical clearance invented",
+        "environment": "Dry ventilated location away from heat and moisture",
+        "utilities": "Passive complete polymer container, no installed utilities",
+        "catalogue_orientation": "app width340 x depth415 x height200mm; manufacturer tuple 415x340x200mm",
+        "capacity_l": 16,
+        "gn_size": "2/3"
+      },
+      "genuine_photo_source": {
+        "url": "https://araven.com/en/accessible-containers/ingredient-bin-16-l-4-gal/",
+        "description": "Manufacturer product photography and brochure page2; no copied or generated photo"
+      },
+      "candidate_runtime_row": [
+        "Araven",
+        "09145",
+        "Storage",
+        "Accessible ingredient bin 16 L GN2/3 (SKU 09145), closed lid",
+        340,
+        415,
+        200,
+        "top",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://araven.com/en/accessible-containers/ingredient-bin-16-l-4-gal/"
+      ],
+      "visual_review": {
+        "pdf_page": 2,
+        "performed": true,
+        "scope": "Complete passive bin photographs, exact SKU/footprint mapping and200/400mm height graphics; not a technical installation certification"
+      }
+    },
+    "araven|09146": {
+      "schema_version": 1,
+      "key": "araven|09146",
+      "brand": "Araven",
+      "model": "09146",
+      "manufacturer_sku": "09146",
+      "manufacturer_ean": "8411777091467",
+      "market": "Global (unpowered)",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-16T05:11:03.230Z",
+      "source_row_hash": "b73d1707204c009474e4230c0f142ae24d1adbc133288bdfdfa75cd1a18f4a40",
+      "proposed_queue_row": [
+        "Araven",
+        "09146",
+        "Storage",
+        "Accessible ingredient bin 7 L GN1/3 (SKU 09146), closed lid",
+        "200",
+        "395",
+        "200",
+        "top",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://araven.com/en/accessible-containers/ingredient-bin-7-l-7-3qt/",
+        "Global (unpowered)",
+        "Portable polypropylene dry-food bin; closed-lid envelope; allow manual lid access; manufacturer metric axes normalized to width x depth. SKU 09146.",
+        "2026-10-16"
+      ],
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://araven.com/en/accessible-containers/ingredient-bin-7-l-7-3qt/",
+          "revision": "Current exact product page; no issue date displayed",
+          "retrieved_at": "2026-10-16T05:11:03.230Z",
+          "retrieval_method": "web reader opened exact official page; technical metric table and full product construction read"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://araven.com/wp-content/uploads/2024/05/Folleto-contenedores-accesibles-EN.pdf",
+          "revision": "Undated brochure linked by current index; PDF CreationDate2024-05-03",
+          "retrieved_at": "2026-10-16T05:11:03.230Z",
+          "document_sha256": "e859060d4667698f066314a3f8373be48c8cc39ec3ee4cf90d3e2b70ca033e7e",
+          "retrieval_method": "Official See file link followed in web reader; identical official www host downloaded locally after bare-host DNS failure; PDF page2 rendered with pdfplumber/PDFium and visually inspected",
+          "locator": "PDF pages1-2, especially page2 SKU/footprint/height graphics"
+        },
+        {
+          "id": "S3",
+          "kind": "manufacturer-product-page",
+          "url": "https://araven.com/en/solutions/preservation/ingredient-bins/accessible-containers/",
+          "revision": "Current family index and technical table",
+          "retrieved_at": "2026-10-16T05:11:03.230Z"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Current exact product page lists SKU09146,EAN8411777091467,capacity7L and GN1/3. Model09146 retains the existing numeric legacy representation where applicable; full manufacturer SKU is searchable in the name. No separate color variants admitted."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Exact SKU 09146/EAN 8411777091467: product table gives 395x200x200 mm, distinct from shipping carton. Brochure PDF page2 graphics pair the footprint and SKU with 200mm closed-body height. Normalize second footprint axis to app width200, first to depth395, matching existing Araven orientation; rectangle preserved and rotatable. This is the closed-lid planning envelope, not the raised-lid access envelope."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Portable non-wheeled bin shown standing on a horizontal support/stacked; use app top mounting for shelf/counter placement. A suitable level support is required; this is not a floor appliance."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Brochure pages1-2 and product description require a dry, well-ventilated location away from heat/moisture; manual lid opening and safe supporting surface/stacking access required. No quantified lid-open clearance/load rating is published here; none is invented. No hardwired/plumbed/gas installation."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Opened the current exact manufacturer product page and family index on2026-10-16; its See file link still points to this brochure. PDF is undated, metadata CreationDate2024-05-03 and officialURL2024/05. No newer document link/revision was exposed by the current index; old creation date alone is not treated as obsolescence."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Storage/top/none are supported vocabulary, dimensions normalized to mm, exact numeric dimensions and explicit water/drain0; power/supply blanks are sourced nonapplicability. Region/note/date and EAN retained in sidecar."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Araven",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Current exact product page lists SKU09146,EAN8411777091467,capacity7L and GN1/3. Model09146 retains the existing numeric legacy representation where applicable; full manufacturer SKU is searchable in the name. No separate color variants admitted."
+        },
+        "model": {
+          "value": "09146",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Current exact product page lists SKU09146,EAN8411777091467,capacity7L and GN1/3. Model09146 retains the existing numeric legacy representation where applicable; full manufacturer SKU is searchable in the name. No separate color variants admitted."
+        },
+        "w": {
+          "value": "200",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 technical/logistic metric table exact09146;S2 PDFpage2 SKU/footprint/height graphics",
+          "reason": "Exact SKU 09146/EAN 8411777091467: product table gives 395x200x200 mm, distinct from shipping carton. Brochure PDF page2 graphics pair the footprint and SKU with 200mm closed-body height. Normalize second footprint axis to app width200, first to depth395, matching existing Araven orientation; rectangle preserved and rotatable. This is the closed-lid planning envelope, not the raised-lid access envelope.",
+          "original_value": 200,
+          "original_unit": "mm",
+          "original_metric_tuple": "395x200x200"
+        },
+        "d": {
+          "value": "395",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 technical/logistic metric table exact09146;S2 PDFpage2 SKU/footprint/height graphics",
+          "reason": "Exact SKU 09146/EAN 8411777091467: product table gives 395x200x200 mm, distinct from shipping carton. Brochure PDF page2 graphics pair the footprint and SKU with 200mm closed-body height. Normalize second footprint axis to app width200, first to depth395, matching existing Araven orientation; rectangle preserved and rotatable. This is the closed-lid planning envelope, not the raised-lid access envelope.",
+          "original_value": 395,
+          "original_unit": "mm",
+          "original_metric_tuple": "395x200x200"
+        },
+        "h": {
+          "value": "200",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 technical/logistic metric table exact09146;S2 PDFpage2 SKU/footprint/height graphics",
+          "reason": "Exact SKU 09146/EAN 8411777091467: product table gives 395x200x200 mm, distinct from shipping carton. Brochure PDF page2 graphics pair the footprint and SKU with 200mm closed-body height. Normalize second footprint axis to app width200, first to depth395, matching existing Araven orientation; rectangle preserved and rotatable. This is the closed-lid planning envelope, not the raised-lid access envelope.",
+          "original_value": 200,
+          "original_unit": "mm",
+          "original_metric_tuple": "395x200x200"
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Portable non-wheeled bin shown standing on a horizontal support/stacked; use app top mounting for shelf/counter placement. A suitable level support is required; this is not a floor appliance."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "kw": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "elec": {
+          "value": "",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "water": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        },
+        "drain": {
+          "value": "0",
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 exact identity/full construction and S2 PDFpages1-2",
+          "reason": "Official product description and brochure show a complete portable polypropylene dry-food container with manually operated lid(s), side handles and label; no motor, heater, pump, plumbed outlet or installed service. Nonapplicability is a reviewer inference from complete passive construction, not from a blank specification. Off-board washing is not an installed water/drain service."
+        }
+      },
+      "installation_details": {
+        "configuration": "Closed lids, complete bin; no optional dispensers, rack or platform included",
+        "support": "Stable shelf or countertop; support/stacking suitability is the operator responsibility",
+        "access": "Allow lid opening/removal and cleaning; no numerical clearance invented",
+        "environment": "Dry ventilated location away from heat and moisture",
+        "utilities": "Passive complete polymer container, no installed utilities",
+        "catalogue_orientation": "app width200 x depth395 x height200mm; manufacturer tuple 395x200x200mm",
+        "capacity_l": 7,
+        "gn_size": "1/3"
+      },
+      "genuine_photo_source": {
+        "url": "https://araven.com/en/accessible-containers/ingredient-bin-7-l-7-3qt/",
+        "description": "Manufacturer product photography and brochure page2; no copied or generated photo"
+      },
+      "candidate_runtime_row": [
+        "Araven",
+        "09146",
+        "Storage",
+        "Accessible ingredient bin 7 L GN1/3 (SKU 09146), closed lid",
+        200,
+        395,
+        200,
+        "top",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://araven.com/en/accessible-containers/ingredient-bin-7-l-7-3qt/"
+      ],
+      "visual_review": {
+        "pdf_page": 2,
+        "performed": true,
+        "scope": "Complete passive bin photographs, exact SKU/footprint mapping and200/400mm height graphics; not a technical installation certification"
+      }
     }
   }
 }

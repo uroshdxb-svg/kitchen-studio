@@ -482,5 +482,9 @@ const CATALOGUE_ROWS = [
 ["Electrolux Professional","361214","Storage","Three Tier Service Trolley 600 mm",695,695,816,"floor","none",null,null,0,0,"https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-600-mm-361214/"],
 ["Electrolux Professional","361218","Storage","Three Tier Service Trolley 900 mm",995,695,816,"floor","none",null,null,0,0,"https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-900-mm-361218/"],
 ["Electrolux Professional","361222","Storage","Three Tier Service Trolley 1200 mm",1295,695,816,"floor","none",null,null,0,0,"https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-three-tier-service-trolley-1200-mm-361222/"],
-["Electrolux Professional","361230","Storage","Platform Trolley 600 mm",670,600,900,"floor","none",null,null,0,0,"https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-platform-trolley-600-mm-361230/"]
+["Electrolux Professional","361230","Storage","Platform Trolley 600 mm",670,600,900,"floor","none",null,null,0,0,"https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-platform-trolley-600-mm-361230/"],
+["Araven","918","Storage","Accessible ingredient bin 50 L GN1/1 (SKU 00918), closed lid",340,565,400,"top","none",null,null,0,0,"https://araven.com/en/accessible-containers/ingredient-bin-50-l-13-gal/"],
+["Araven","09144","Storage","Accessible ingredient bin 22.65 L GN1/1 (SKU 09144), closed lid",340,565,200,"top","none",null,null,0,0,"https://araven.com/en/accessible-containers/ingredient-bin-22-65-l-6-gal/"],
+["Araven","09145","Storage","Accessible ingredient bin 16 L GN2/3 (SKU 09145), closed lid",340,415,200,"top","none",null,null,0,0,"https://araven.com/en/accessible-containers/ingredient-bin-16-l-4-gal/"],
+["Araven","09146","Storage","Accessible ingredient bin 7 L GN1/3 (SKU 09146), closed lid",200,395,200,"top","none",null,null,0,0,"https://araven.com/en/accessible-containers/ingredient-bin-7-l-7-3qt/"]
 ];
