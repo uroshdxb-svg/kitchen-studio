@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": 128,
-  "updatedAt": "2026-10-18T15:54:28.909Z",
+  "revision": 129,
+  "updatedAt": "2026-10-18T15:59:53.710Z",
   "tasks": {
     "KS-COORDINATION-PILOT-20261015": {
       "id": "KS-COORDINATION-PILOT-20261015",
@@ -433,24 +433,17 @@
         "retrySafe": false,
         "resource": "catalogue-writer"
       },
-      "status": "leased",
+      "status": "blocked",
       "attempts": 1,
       "totalAttempts": 1,
       "generation": 1,
-      "lease": {
-        "worker": "catalog",
-        "runId": "catalog-pr17-approved-20261018-release01",
-        "token": "0e06ba52-4a3b-4836-93aa-7a2a7a9c4ef0",
-        "generation": 1,
-        "claimedAt": "2026-10-18T15:51:10.973Z",
-        "heartbeatAt": "2026-10-18T15:54:28.909Z",
-        "expiresAt": "2026-10-18T16:24:28.909Z"
-      },
+      "lease": null,
       "retryAt": null,
       "createdAt": "2026-10-18T15:48:20.018Z",
-      "updatedAt": "2026-10-18T15:54:28.909Z",
+      "updatedAt": "2026-10-18T15:59:53.710Z",
       "evidence": null,
-      "pendingReceipt": null
+      "pendingReceipt": null,
+      "reason": "PR17 merged7430efade28578a6e2311492f2d58b8f7bafe537; production build0646897a-5f00-4444-9afc-3bcf23d9132a and CI39142393550 pass. Live487/count+4 exact rows/UI verified only; full487 equality, live483 baseline preservation and global dedup unproved. Proxy CONNECT403 blocked production/artifact reads; headers/body unavailable, policy cause unknown. Active deployment/version/commit/traffic unavailable. Reconcile actual production before completion; no remerge/deploy. Attempts1/1."
     }
   },
   "operations": {
@@ -2922,6 +2915,13 @@
         "ok": true
       },
       "at": "2026-10-18T15:54:28.909Z"
+    },
+    "KS-PR17-20261018-release01:block-reconciliation": {
+      "fingerprint": "62db2e42f1322efc0a882b2ccc835020a9974c1b1f9cb66a00f27f59ae1da4cb",
+      "result": {
+        "ok": true
+      },
+      "at": "2026-10-18T15:59:53.710Z"
     }
   },
   "receipts": {
