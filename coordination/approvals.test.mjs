@@ -134,6 +134,54 @@ test('a later reconciled attempt needs a new hold and new exact decision, retain
  assert.equal(resumed.queue.tasks.one.totalAttempts,2);assert.equal(resumed.queue.tasks.one.attempts,2);
  const next=step(resumed.queue,claim('new-approved-attempt'),NOW+70);assert.equal(next.queue.tasks.one.generation,3);
 });
+
+test('a consumed approval in retry backoff can request a reconciled fresh decision without skipping backoff',()=>{
+ const first=bound(),ready=step(first.queue,resume(first.request),NOW+20),leased=step(ready.queue,claim(),NOW+30);
+ const failed=step(leased.queue,{opId:'safe-failure',type:'fail',taskId:'one',worker:'catalog',runId:'release',...leased.result,reason:'Confirmed action not invoked',retryable:true},NOW+40).queue;
+ assert.equal(failed.tasks.one.status,'retry_wait');const retryAt=failed.tasks.one.retryAt;
+ const requestCommand={opId:'retry-approval-request',type:'request_approval',taskId:'one',worker:'supervisor',expectedGeneration:2,expectedUpdatedAt:failed.tasks.one.updatedAt,scope};
+ for(const extra of [{},{resolution:'Confirmed action not invoked',refs:['https://example.test/receipt']},{resolution:'External outcome reconciled',refs:[{}]}]){
+  assert.throws(()=>step(failed,{...requestCommand,...extra},NOW+50));
+ }
+ const requested=step(failed,{...requestCommand,resolution:'External outcome read back; no merge occurred',refs:['https://example.test/no-merge-receipt']},NOW+50);
+ assert.equal(requested.result.request.retryNotBefore,retryAt);assert.equal(requested.queue.tasks.one.retryAt,retryAt);
+ assert.equal(requested.result.request.reconciliation.summary,'External outcome read back; no merge occurred');
+ const a={...decision(requested.result.request),reference:'trusted-surface:new-retry-decision',issuedAt:new Date(NOW+50).toISOString(),expiresAt:new Date(NOW+180_000).toISOString()};
+ const resumed=step(requested.queue,resume(requested.result.request,{approval:a}),NOW+60);
+ assert.equal(resumed.result.status,'retry_wait');assert.equal(resumed.queue.tasks.one.retryAt,retryAt);
+ assert.equal(resumed.queue.tasks.one.attempts,2);assert.equal(resumed.queue.tasks.one.totalAttempts,2);assert.equal(resumed.queue.tasks.one.approvalHistory.length,2);
+ assert.throws(()=>step(resumed.queue,claim('too-early'),NOW+70),/backoff/);
+ const next=step(resumed.queue,claim('after-backoff'),Date.parse(retryAt)+1);
+ assert.equal(next.queue.tasks.one.totalAttempts,3);assert.equal(next.queue.tasks.one.generation,3);
+ assert.equal(assertApprovedAction(next.queue,{...claim('after-backoff'),...next.result},Date.parse(retryAt)+2).id,a.id);
+});
+
+test('backoff expiry is still visible and persisted reconciliation cannot be malformed',()=>{
+ const first=bound(),ready=step(first.queue,resume(first.request),NOW+20),leased=step(ready.queue,claim(),NOW+30);
+ const failed=step(leased.queue,{opId:'backoff-failure',type:'fail',taskId:'one',worker:'catalog',runId:'release',...leased.result,reason:'Confirmed safe retry',retryable:true},NOW+40).queue;
+ const requested=step(failed,{opId:'backoff-request',type:'request_approval',taskId:'one',worker:'supervisor',expectedGeneration:2,expectedUpdatedAt:failed.tasks.one.updatedAt,scope,resolution:'Confirmed external state via receipt',refs:['https://example.test/receipt']},NOW+50);
+ const a={...decision(requested.result.request),issuedAt:new Date(NOW+50).toISOString()};
+ const resumed=step(requested.queue,resume(requested.result.request,{approval:a}),NOW+60).queue;
+ assert.equal(inspectQueue(resumed,NOW+60_000).find(x=>x.key==='approval:one')?.severity,'approval');
+ assert.throws(()=>step(resumed,claim('expired-backoff'),Date.parse(resumed.tasks.one.retryAt)+1),/expired/);
+ for(const mutate of [r=>r.retryNotBefore='invalid',r=>r.reconciliation.refs=[{}],r=>r.reconciliation.rawNotes='private',r=>delete r.reconciliation]){
+  const q=clone(requested.queue);mutate(q.tasks.one.approvalRequests.at(-1));assert.throws(()=>validateQueue(q));
+ }
+});
+
+test('expired approved safe work can reconcile without replaying the old lease or bypassing backoff',()=>{
+ const first=bound('one',{kind:'work',retrySafe:true}),ready=step(first.queue,resume(first.request),NOW+20),leased=step(ready.queue,claim(),NOW+30);
+ const swept=step(leased.queue,{opId:'sweep-approved-expiry',type:'sweep'},NOW+31_000).queue;
+ assert.equal(swept.tasks.one.status,'retry_wait');const retryAt=swept.tasks.one.retryAt;
+ const requested=step(swept,{opId:'expired-work-decision',type:'request_approval',taskId:'one',worker:'supervisor',expectedGeneration:2,expectedUpdatedAt:swept.tasks.one.updatedAt,scope,resolution:'Expired worker effect reconciled through actual service receipt',refs:['https://example.test/reconciled-service-receipt']},NOW+31_010);
+ const a={...decision(requested.result.request),issuedAt:new Date(NOW+31_010).toISOString(),expiresAt:new Date(NOW+180_000).toISOString()};
+ const resumed=step(requested.queue,resume(requested.result.request,{approval:a}),NOW+31_020).queue;
+ assert.throws(()=>step(resumed,claim('premature-expired-retry'),NOW+31_030),/backoff/);
+ assert.throws(()=>assertApprovedAction(resumed,{...claim(),...leased.result},NOW+31_030),/fence/);
+ const next=step(resumed,claim('reconciled-expiry'),Date.parse(retryAt)+1);
+ assert.equal(next.queue.tasks.one.generation,3);assert.equal(next.queue.tasks.one.totalAttempts,3);
+ assert.equal(next.queue.tasks.one.approvalHistory.length,2);assert.equal(next.queue.tasks.one.approvalRequests.at(-1).retryNotBefore,retryAt);
+});
 test('handoff acknowledgement retains approval history but cannot transfer action authority',()=>{
  const {queue,request}=bound(),ready=step(queue,resume(request),NOW+20),leased=step(ready.queue,claim(),NOW+30);
  const fence={taskId:'one',worker:'catalog',runId:'release',...leased.result};

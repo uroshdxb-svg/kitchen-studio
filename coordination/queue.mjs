@@ -112,7 +112,7 @@ export function inspectQueue(input,now=Date.now()){
   if(t.status==='leased'&&Date.parse(t.lease.expiresAt)<=now)add('lease:'+t.id,'warning',t.id,'Lease expired; reconcile side effects before retry');
   if(t.status==='awaiting_ack'&&Date.parse(q.receipts[t.pendingReceipt].ackDueAt)<=now)add('handoff:'+t.id,'warning',t.id,'Handoff acknowledgment overdue');
   if(['blocked','needs_approval'].includes(t.status))add('blocked:'+t.id,t.status==='needs_approval'?'approval':'warning',t.id,t.reason);
-  if(t.status==='ready'&&t.approvalGrant?.claimedGeneration===null){
+  if(['ready','retry_wait'].includes(t.status)&&t.approvalGrant?.claimedGeneration===null){
    const a=t.approvalHistory.find(a=>a.id===t.approvalGrant.approvalId);
    if(Date.parse(a.expiresAt)<=now)add('approval:'+t.id,'approval',t.id,'Approval expired before claim; a fresh scoped decision is required');
   }
@@ -201,7 +201,14 @@ export function applyCommand(input,c,now=Date.now(),{authorizeApproval}={}){
   // A supervisor may queue a fresh bounded attempt only after recording new evidence.
   requireThat(c.resolution!==t.reason,'New resolution evidence required');t.status='ready';t.reason=null;t.attempts=0;t.retryAt=null;t.resolution=resolutionMetadata({summary:c.resolution,refs:c.refs,at:iso(now)});break;
  }
- case 'request_approval':result=requestApproval(q,c,now);break;
+ case 'request_approval':{
+  const t=q.tasks[c.taskId];
+  if(t?.status==='retry_wait'&&t.approvalGrant?.claimedGeneration!==null){
+   requireThat(text(c.resolution)&&c.resolution!==t.reason,'New reconciliation evidence required for retry approval');
+   t.resolution=resolutionMetadata({summary:c.resolution,refs:c.refs,at:iso(now)});
+  }
+  result=requestApproval(q,c,now);break;
+ }
  case 'resume_approved':result=resumeApproved(q,c,now,authorizeApproval);break;
  case 'retire':{
   const t=q.tasks[c.taskId];requireThat(c.worker==='supervisor'&&t&&['blocked','needs_approval','ready','retry_wait'].includes(t.status)&&text(c.resolution),'Only supervisor may retire inactive work with resolution evidence');

@@ -17,7 +17,11 @@ function scope(s){
  return copy(s);
 }
 function request(r){
- need(keys(r,['id','scope','taskHash','generation','heldAt','requestedAt'])&&id(r.id)&&/^[a-f0-9]{64}$/.test(r.taskHash??'')&&Number.isInteger(r.generation)&&r.generation>=0&&date(r.heldAt)&&date(r.requestedAt)&&Date.parse(r.heldAt)<=Date.parse(r.requestedAt),'Corrupt approval request');scope(r.scope);
+ need(keys(r,['id','scope','taskHash','generation','heldAt','requestedAt','retryNotBefore','reconciliation'])&&id(r.id)&&/^[a-f0-9]{64}$/.test(r.taskHash??'')&&Number.isInteger(r.generation)&&r.generation>=0&&date(r.heldAt)&&date(r.requestedAt)&&Date.parse(r.heldAt)<=Date.parse(r.requestedAt)&&(r.retryNotBefore==null||date(r.retryNotBefore)),'Corrupt approval request');scope(r.scope);
+ if(r.reconciliation!==undefined){
+  const e=r.reconciliation;need(keys(e,['summary','refs','at'])&&text(e.summary)&&date(e.at)&&Array.isArray(e.refs)&&e.refs.length>0&&e.refs.every(x=>text(x,1000))&&stable(e).length<=10000,'Corrupt approval reconciliation');
+ }
+ if(r.retryNotBefore)need(r.reconciliation,'Retry approval requires recorded reconciliation');
 }
 function approval(a,persisted=false){
  const allowed=['id','decision','reference','requestId','scope','taskHash','generation','issuedAt','expiresAt',...(persisted?['recordedAt']:[])];
@@ -42,7 +46,7 @@ export function validateApprovalState(t){
 }
 export function requestApproval(q,c,now){
  const t=q.tasks[c.taskId];
- need(c.worker==='supervisor'&&t&&['ready','needs_approval'].includes(t.status),'Only supervisor may bind inactive approval work');
+ need(c.worker==='supervisor'&&t&&['ready','needs_approval','retry_wait'].includes(t.status),'Only supervisor may bind inactive approval work');
  need(c.expectedGeneration===t.generation&&c.expectedUpdatedAt===t.updatedAt,'Stale approval hold snapshot');
  const s=scope(c.scope),previous=t.approvalRequests?.at(-1),grant=t.approvalGrant&&t.approvalHistory?.find(a=>a.id===t.approvalGrant.approvalId);
  if(previous&&t.status==='needs_approval'&&previous.generation===t.generation&&!(t.approvalHistory??[]).some(a=>a.requestId===previous.id)){
@@ -52,9 +56,10 @@ export function requestApproval(q,c,now){
  if(grant&&t.approvalGrant.claimedGeneration===null&&grant.taskHash===taskApprovalHash(t)&&grant.generation===t.generation&&Date.parse(grant.expiresAt)>now&&stable(grant.scope)===stable(s))return {taskId:t.id,approvalId:grant.id,status:t.status,alreadyApproved:true};
  // A legacy needs_approval hold can be bound after its human decision. Issuance
  // must still be after the original hold, not merely after this metadata bind.
- const r={id:c.opId,scope:s,taskHash:taskApprovalHash(t),generation:t.generation,heldAt:t.status==='needs_approval'?t.updatedAt:iso(now),requestedAt:iso(now)};
+ const retryNotBefore=t.status==='retry_wait'?t.retryAt:null;
+ const r={id:c.opId,scope:s,taskHash:taskApprovalHash(t),generation:t.generation,heldAt:t.status==='ready'?iso(now):t.updatedAt,requestedAt:iso(now),retryNotBefore,...(retryNotBefore?{reconciliation:copy(t.resolution)}:{})};
  request(r);(t.approvalRequests??=[]).push(r);delete t.approvalGrant;
- t.status='needs_approval';t.reason='Awaiting scoped approval: '+s.action;t.retryAt=null;
+ t.status='needs_approval';t.reason='Awaiting scoped approval: '+s.action;t.retryAt=retryNotBefore;
  return {taskId:t.id,request:copy(r)};
 }
 export function resumeApproved(q,c,now,authorizeApproval){
@@ -76,8 +81,8 @@ export function resumeApproved(q,c,now,authorizeApproval){
  need(t.attempts<t.maxAttempts&&t.totalAttempts<t.maxTotalAttempts,'Approval cannot reset acquisition limits');
  need(typeof authorizeApproval==='function'&&authorizeApproval(copy({taskId:t.id,request:r,approval:a}))===true,'Trusted host approval verifier required; forwarded text is not authorization');
  (t.approvalHistory??=[]).push({...copy(a),recordedAt:iso(now)});
- t.approvalGrant={approvalId:a.id,claimedGeneration:null};t.status='ready';t.reason=null;t.retryAt=null;
- return {taskId:t.id,approvalId:a.id,requestId:r.id,status:'ready'};
+ t.approvalGrant={approvalId:a.id,claimedGeneration:null};t.status=r.retryNotBefore&&Date.parse(r.retryNotBefore)>now?'retry_wait':'ready';t.reason=null;t.retryAt=r.retryNotBefore??null;
+ return {taskId:t.id,approvalId:a.id,requestId:r.id,status:t.status};
 }
 export function approvalForClaim(t,c,now){
  if(!t.approvalGrant)return null;
