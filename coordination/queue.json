@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": 124,
-  "updatedAt": "2026-10-18T15:48:20.018Z",
+  "revision": 127,
+  "updatedAt": "2026-10-18T15:51:10.973Z",
   "tasks": {
     "KS-COORDINATION-PILOT-20261015": {
       "id": "KS-COORDINATION-PILOT-20261015",
@@ -433,14 +433,22 @@
         "retrySafe": false,
         "resource": "catalogue-writer"
       },
-      "status": "ready",
-      "attempts": 0,
-      "totalAttempts": 0,
-      "generation": 0,
-      "lease": null,
+      "status": "leased",
+      "attempts": 1,
+      "totalAttempts": 1,
+      "generation": 1,
+      "lease": {
+        "worker": "catalog",
+        "runId": "catalog-pr17-approved-20261018-release01",
+        "token": "0e06ba52-4a3b-4836-93aa-7a2a7a9c4ef0",
+        "generation": 1,
+        "claimedAt": "2026-10-18T15:51:10.973Z",
+        "heartbeatAt": "2026-10-18T15:51:10.973Z",
+        "expiresAt": "2026-10-18T16:21:10.973Z"
+      },
       "retryAt": null,
       "createdAt": "2026-10-18T15:48:20.018Z",
-      "updatedAt": "2026-10-18T15:48:20.018Z",
+      "updatedAt": "2026-10-18T15:51:10.973Z",
       "evidence": null,
       "pendingReceipt": null
     }
@@ -2875,6 +2883,38 @@
         ]
       },
       "at": "2026-10-18T15:48:20.018Z"
+    },
+    "KS-PR17-20261018-release01:tick": {
+      "fingerprint": "01075f01bf2c8b9e1618ea3d0462d81a03dc63462d5bce850146627f38ae5fc7",
+      "result": {
+        "ok": true
+      },
+      "at": "2026-10-18T15:51:10.973Z"
+    },
+    "KS-PR17-20261018-release01:claim": {
+      "fingerprint": "8342292ad5d54f5fe7df4d7b3bf775b2762ea32d9f5f3cc8551b1dfabf8d5e04",
+      "result": {
+        "taskId": "KS-CATALOG-20261018-PR17-APPROVED-RELEASE-01",
+        "token": "0e06ba52-4a3b-4836-93aa-7a2a7a9c4ef0",
+        "generation": 1
+      },
+      "at": "2026-10-18T15:51:10.973Z"
+    },
+    "KS-PR17-20261018-release01:tick-claim": {
+      "fingerprint": "7dacb3c90c3e5cad543f5452c1535a8f66f65eb9a15b37e3df942ba5cb178436",
+      "result": {
+        "results": [
+          {
+            "ok": true
+          },
+          {
+            "taskId": "KS-CATALOG-20261018-PR17-APPROVED-RELEASE-01",
+            "token": "0e06ba52-4a3b-4836-93aa-7a2a7a9c4ef0",
+            "generation": 1
+          }
+        ]
+      },
+      "at": "2026-10-18T15:51:10.973Z"
     }
   },
   "receipts": {
@@ -2971,8 +3011,8 @@
       "graceMs": 3600000
     },
     "catalog": {
-      "at": "2026-10-16T05:03:28.583Z",
-      "runId": "catalog-local-recovery-20261016T050118Z",
+      "at": "2026-10-18T15:51:10.973Z",
+      "runId": "catalog-pr17-approved-20261018-release01",
       "expectedEveryMs": 86400000,
       "graceMs": 3600000
     }
