@@ -2,6 +2,7 @@
 import {createHash, randomUUID} from 'node:crypto';
 import registry from './workers.json' with {type:'json'};
 import {validateApprovalState,requestApproval,resumeApproved,approvalForClaim,assertApprovalAction} from './approvals.mjs';
+import {DELIVERY_POLICY,validateDeliveryState,recordProgress,progressAge,scheduleImprovementReview,finishImprovementReview} from './delivery-policy.mjs';
 const hash=x=>createHash('sha256').update(stable(x)).digest('hex');
 const stable=x=>JSON.stringify(x,(_,v)=>v&&typeof v==='object'&&!Array.isArray(v)?Object.fromEntries(Object.entries(v).sort(([a],[b])=>a.localeCompare(b))):v);
 const copy=x=>structuredClone(x);
@@ -41,6 +42,7 @@ export const emptyQueue=()=>({schemaVersion:1,revision:0,updatedAt:null,expectat
 export function validateQueue(q){
  requireThat(q?.schemaVersion===1&&Number.isInteger(q.revision),'Unknown/corrupt queue schema');
  for(const k of ['tasks','operations','receipts','workers','alerts'])requireThat(q[k]&&typeof q[k]==='object'&&!Array.isArray(q[k]),'Missing queue collection: '+k);
+ if(q.alertChannels!==undefined)requireThat(record(q.alertChannels)&&Object.keys(q.alertChannels).every(k=>k==='cloud-watchdog'&&record(q.alertChannels[k])),'Corrupt monitor alert channel');
  const statuses=new Set(['ready','leased','awaiting_ack','retry_wait','blocked','needs_approval','done','cancelled']);
  for(const [id,t] of Object.entries(q.tasks)){
   requireThat(t.id===id&&validId(id)&&text(t.owner)&&Array.isArray(t.dependencies)&&Number.isInteger(t.generation)&&t.generation>=0&&statuses.has(t.status),'Corrupt task '+id);
@@ -65,6 +67,7 @@ export function validateQueue(q){
  for(const [id,r] of Object.entries(q.receipts))requireThat(r&&r.id===id&&q.tasks[r.taskId]&&text(r.from)&&text(r.to)&&Number.isFinite(Date.parse(r.ackDueAt))&&Number.isFinite(Date.parse(r.createdAt)),'Corrupt handoff receipt '+id);
  for(const [id,w] of Object.entries(q.workers))requireThat(w&&validId(id)&&validId(w.runId)&&Number.isFinite(Date.parse(w.at))&&(w.expectedEveryMs===null||(Number.isSafeInteger(w.expectedEveryMs)&&w.expectedEveryMs>=3600000))&&(w.graceMs===undefined||(Number.isSafeInteger(w.graceMs)&&w.graceMs>=0&&w.graceMs<=86400000)),'Corrupt worker receipt '+id);
  for(const [id,o] of Object.entries(q.operations))requireThat(validId(id)&&o&&/^[a-f0-9]{64}$/.test(o.fingerprint??'')&&o.result&&typeof o.result==='object'&&Number.isFinite(Date.parse(o.at)),'Corrupt operation receipt '+id);
+ validateDeliveryState(q);
  return q;
 }
 function lease(q,c,now){
@@ -118,7 +121,14 @@ export function inspectQueue(input,now=Date.now()){
   }
   if(t.deadline&&!terminal.has(t.status)&&Date.parse(t.deadline)<=now)add('deadline:'+t.id,'critical',t.id,'Task deadline passed without verified completion');
   if(!terminal.has(t.status)&&t.dependencies.some(id=>['blocked','needs_approval','cancelled'].includes(q.tasks[id]?.status)))add('dependency:'+t.id,'warning',t.id,'Dependency requires attention');
+  if(!terminal.has(t.status)){
+   const age=progressAge(t,now);
+   if(age===null)add('progress-unknown:'+t.id,'warning',t.id,'Delivery progress timestamp unavailable; reconcile original evidence');
+   else if(age>=DELIVERY_POLICY.criticalMs)add('stalled:'+t.id,'critical',t.id,'No verified task progress for at least 48 hours; owner recovery action required');
+   else if(age>=DELIVERY_POLICY.warningMs)add('stalled:'+t.id,'warning',t.id,'No verified task progress for at least 24 hours; investigate before the next delivery deadline');
+  }
  }
+ if(q.improvementCycle&&Date.parse(q.improvementCycle.nextDueAt)<=now&&(!q.improvementCycle.taskId||terminal.has(q.tasks[q.improvementCycle.taskId]?.status)))add('improvement-review','warning',q.improvementCycle.taskId,'Improvement review due; record a tested change or explicit keep/revert/blocked decision');
  const expected=expectedWorkers(q),anchor=Object.hasOwn(q,'expectationsStartedAt')?(q.expectationsStartedAt===null?null:Date.parse(q.expectationsStartedAt)):earliestOperation(q);
  for(const [id,e] of Object.entries(expected)){
   const w=q.workers[id];
@@ -188,7 +198,10 @@ export function applyCommand(input,c,now=Date.now(),{authorizeApproval}={}){
   t.owner=r.to;t.attempts=0;delete t.approvalGrant;result=acquire(t,c,now);r.acceptedAt=iso(now);r.acceptedBy={worker:c.worker,runId:c.runId};break;
  }
  case 'complete':{
-  const t=lease(q,c,now);t.evidence=evidence(c.evidence,t.kind);t.status='done';t.completedAt=iso(now);t.lease=null;break;
+  const t=lease(q,c,now);t.evidence=evidence(c.evidence,t.kind);finishImprovementReview(q,t,t.evidence,now);t.status='done';t.completedAt=iso(now);t.lease=null;break;
+ }
+ case 'progress':{
+  const t=lease(q,c,now);recordProgress(t,c,now);break;
  }
  case 'fail':{
   const t=lease(q,c,now);requireThat(text(c.reason),'Failure reason required');defer(t,now,c.reason,c.retryable===true);break;
@@ -227,10 +240,23 @@ export function applyCommand(input,c,now=Date.now(),{authorizeApproval}={}){
   result={issues:inspectQueue(q,now)};break;
  }
  case 'scan':{
+  requireThat(c.channel===undefined||c.channel==='cloud-watchdog','Unknown monitor alert channel');
+  const review=scheduleImprovementReview(q,now);
+  if(review){
+   const next=applyCommand(q,{type:'enqueue',opId:'review-enqueue:'+hash(review.id).slice(0,32),task:review},now,{authorizeApproval});
+   Object.assign(q,next.queue);q.improvementCycle.taskId=review.id;
+  }
+  const alerts=c.channel?((q.alertChannels??={})[c.channel]??={}):q.alerts;
   const issues=inspectQueue(q,now),current=new Set(issues.map(x=>x.key)),notify=[];
-  for(const i of issues){if(q.alerts[i.key]?.fingerprint!==i.fingerprint)notify.push(i);q.alerts[i.key]={...i,observedAt:iso(now)};}
-  for(const key of Object.keys(q.alerts))if(!current.has(key))delete q.alerts[key];
-  result={notify,issues};break;
+  for(const i of issues){
+   const old=alerts[i.key],changed=old?.fingerprint!==i.fingerprint;
+   const last=timestamp(old?.lastEmittedAt)?Date.parse(old.lastEmittedAt):null;
+   const emit=changed||last===null||now-last>=DELIVERY_POLICY.reminderMs;
+   if(emit)notify.push({...i,notificationReason:!old?'new':changed?'changed':last===null?'legacy-unconfirmed':'reminder'});
+   alerts[i.key]={...i,firstSeenAt:old?.firstSeenAt??old?.observedAt??iso(now),observedAt:iso(now),lastEmittedAt:emit?iso(now):old.lastEmittedAt};
+  }
+  for(const key of Object.keys(alerts))if(!current.has(key))delete alerts[key];
+  result={notify,issues,improvementTaskId:q.improvementCycle.taskId};break;
  }
  default:throw new Error('Unknown command');
  }
