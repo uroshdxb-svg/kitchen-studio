@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": 208,
-  "updatedAt": "2026-10-19T17:03:12.641Z",
+  "revision": 211,
+  "updatedAt": "2026-10-19T17:47:38.008Z",
   "tasks": {
     "KS-COORDINATION-PILOT-20261015": {
       "id": "KS-COORDINATION-PILOT-20261015",
@@ -6514,6 +6514,108 @@
         ]
       },
       "at": "2026-10-19T17:03:12.641Z"
+    },
+    "scheduled-supervisor-20261019T173131Z:tick": {
+      "fingerprint": "766aa888dbae094e1c8e3e667ea26a912af472514737e2b5a3f5ba9f1bfec599",
+      "result": {
+        "ok": true
+      },
+      "at": "2026-10-19T17:47:38.008Z"
+    },
+    "scheduled-supervisor-20261019T173131Z:scan": {
+      "fingerprint": "c22f9352b0385d1aeee175921fbd4edcfd992a7d7712d44f5bfa6926e2a15ee8",
+      "result": {
+        "notify": [],
+        "issues": [
+          {
+            "key": "blocked:KS-SUPERVISOR-PARENT-ACK-20261015-01",
+            "severity": "warning",
+            "taskId": "KS-SUPERVISOR-PARENT-ACK-20261015-01",
+            "reason": "Report SHA256 aac9dece4f23f232d3b96c0cbb100a75a02a73d84da1f9dfaaedd6d5610d7f2c. MEDIA-018/020 files recovered; QA still pending. MEDIA-019/CLAIM-001 remain open. Current Queue/Sent/native evidence unavailable: no social read connector; failed laptop browser not retried. Social-readiness must refresh authenticated records; supervisor then reconcile coverage. Automatic-after-QA approval preserved.",
+            "fingerprint": "94dc7b6849c9830019287f81397dd30866a9863410cad0f1b853aa20ec5bc9b9"
+          },
+          {
+            "key": "worker:discovery",
+            "severity": "warning",
+            "taskId": null,
+            "reason": "Expected worker has never reported: discovery",
+            "fingerprint": "ade90983a6ab4c767d9c4a5cf28911f0ace66b56fe02240706192ef24955f781"
+          },
+          {
+            "key": "worker:reliability",
+            "severity": "warning",
+            "taskId": null,
+            "reason": "Expected worker has never reported: reliability",
+            "fingerprint": "9945def440f18cd9cc4a8e4a3866df01ecb132dd721fcccb3da03d2bed23139d"
+          },
+          {
+            "key": "worker:content-qa",
+            "severity": "warning",
+            "taskId": null,
+            "reason": "Expected worker has never reported: content-qa",
+            "fingerprint": "2fb96ebcaf752a0f3edcad06d30e4226b401f3897424c6bf72bf39c77f127f4a"
+          },
+          {
+            "key": "worker:social-readiness",
+            "severity": "warning",
+            "taskId": null,
+            "reason": "Expected worker has never reported: social-readiness",
+            "fingerprint": "4c68ff8f096b94acc8015e16500005b8edc1cb30512f848db2357adb4bc97d73"
+          }
+        ]
+      },
+      "at": "2026-10-19T17:47:38.008Z"
+    },
+    "scheduled-supervisor-20261019T173131Z:checkpoint": {
+      "fingerprint": "ea8ba41222bafdd2970ebc08af0c90969b9e0412f5403129784795d1c2cd4d2f",
+      "result": {
+        "results": [
+          {
+            "ok": true
+          },
+          {
+            "notify": [],
+            "issues": [
+              {
+                "key": "blocked:KS-SUPERVISOR-PARENT-ACK-20261015-01",
+                "severity": "warning",
+                "taskId": "KS-SUPERVISOR-PARENT-ACK-20261015-01",
+                "reason": "Report SHA256 aac9dece4f23f232d3b96c0cbb100a75a02a73d84da1f9dfaaedd6d5610d7f2c. MEDIA-018/020 files recovered; QA still pending. MEDIA-019/CLAIM-001 remain open. Current Queue/Sent/native evidence unavailable: no social read connector; failed laptop browser not retried. Social-readiness must refresh authenticated records; supervisor then reconcile coverage. Automatic-after-QA approval preserved.",
+                "fingerprint": "94dc7b6849c9830019287f81397dd30866a9863410cad0f1b853aa20ec5bc9b9"
+              },
+              {
+                "key": "worker:discovery",
+                "severity": "warning",
+                "taskId": null,
+                "reason": "Expected worker has never reported: discovery",
+                "fingerprint": "ade90983a6ab4c767d9c4a5cf28911f0ace66b56fe02240706192ef24955f781"
+              },
+              {
+                "key": "worker:reliability",
+                "severity": "warning",
+                "taskId": null,
+                "reason": "Expected worker has never reported: reliability",
+                "fingerprint": "9945def440f18cd9cc4a8e4a3866df01ecb132dd721fcccb3da03d2bed23139d"
+              },
+              {
+                "key": "worker:content-qa",
+                "severity": "warning",
+                "taskId": null,
+                "reason": "Expected worker has never reported: content-qa",
+                "fingerprint": "2fb96ebcaf752a0f3edcad06d30e4226b401f3897424c6bf72bf39c77f127f4a"
+              },
+              {
+                "key": "worker:social-readiness",
+                "severity": "warning",
+                "taskId": null,
+                "reason": "Expected worker has never reported: social-readiness",
+                "fingerprint": "4c68ff8f096b94acc8015e16500005b8edc1cb30512f848db2357adb4bc97d73"
+              }
+            ]
+          }
+        ]
+      },
+      "at": "2026-10-19T17:47:38.008Z"
     }
   },
   "receipts": {
@@ -6598,8 +6700,8 @@
   },
   "workers": {
     "supervisor": {
-      "at": "2026-10-19T17:03:12.641Z",
-      "runId": "scheduled-supervisor-20261019T163131Z",
+      "at": "2026-10-19T17:47:38.008Z",
+      "runId": "scheduled-supervisor-20261019T173131Z",
       "expectedEveryMs": 3600000,
       "graceMs": 3600000
     },
@@ -6623,7 +6725,7 @@
       "taskId": "KS-SUPERVISOR-PARENT-ACK-20261015-01",
       "reason": "Report SHA256 aac9dece4f23f232d3b96c0cbb100a75a02a73d84da1f9dfaaedd6d5610d7f2c. MEDIA-018/020 files recovered; QA still pending. MEDIA-019/CLAIM-001 remain open. Current Queue/Sent/native evidence unavailable: no social read connector; failed laptop browser not retried. Social-readiness must refresh authenticated records; supervisor then reconcile coverage. Automatic-after-QA approval preserved.",
       "fingerprint": "94dc7b6849c9830019287f81397dd30866a9863410cad0f1b853aa20ec5bc9b9",
-      "observedAt": "2026-10-19T17:03:12.641Z"
+      "observedAt": "2026-10-19T17:47:38.008Z"
     },
     "worker:social-readiness": {
       "key": "worker:social-readiness",
@@ -6631,7 +6733,7 @@
       "taskId": null,
       "reason": "Expected worker has never reported: social-readiness",
       "fingerprint": "4c68ff8f096b94acc8015e16500005b8edc1cb30512f848db2357adb4bc97d73",
-      "observedAt": "2026-10-19T17:03:12.641Z"
+      "observedAt": "2026-10-19T17:47:38.008Z"
     },
     "worker:discovery": {
       "key": "worker:discovery",
@@ -6639,7 +6741,7 @@
       "taskId": null,
       "reason": "Expected worker has never reported: discovery",
       "fingerprint": "ade90983a6ab4c767d9c4a5cf28911f0ace66b56fe02240706192ef24955f781",
-      "observedAt": "2026-10-19T17:03:12.641Z"
+      "observedAt": "2026-10-19T17:47:38.008Z"
     },
     "worker:content-qa": {
       "key": "worker:content-qa",
@@ -6647,7 +6749,7 @@
       "taskId": null,
       "reason": "Expected worker has never reported: content-qa",
       "fingerprint": "2fb96ebcaf752a0f3edcad06d30e4226b401f3897424c6bf72bf39c77f127f4a",
-      "observedAt": "2026-10-19T17:03:12.641Z"
+      "observedAt": "2026-10-19T17:47:38.008Z"
     },
     "worker:reliability": {
       "key": "worker:reliability",
@@ -6655,7 +6757,7 @@
       "taskId": null,
       "reason": "Expected worker has never reported: reliability",
       "fingerprint": "9945def440f18cd9cc4a8e4a3866df01ecb132dd721fcccb3da03d2bed23139d",
-      "observedAt": "2026-10-19T17:03:12.641Z"
+      "observedAt": "2026-10-19T17:47:38.008Z"
     }
   },
   "expectationsStartedAt": "2026-10-15T17:58:08.586Z"
