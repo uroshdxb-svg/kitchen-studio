@@ -104,3 +104,16 @@ test('cloud watchdog notification history is independent of the primary supervis
   assert.ok(!h.send({type: 'scan'}, START + 24 * H + 3).notify.some(x => x.key === 'stalled:work'));
   assert.throws(() => h.send({type: 'scan', channel: 'arbitrary-channel'}, START + 24 * H + 4), /Unknown monitor/);
 });
+
+test('retiring a review preserves the attempt and queues one distinct follow-up even in the same second', () => {
+  const h = fixture(); const first = h.send({type: 'scan'}).improvementTaskId;
+  h.send({type: 'retire', taskId: first, worker: 'supervisor', resolution: 'Failed review attempt reconciled; narrower follow-up is required', refs});
+  assert.equal(h.q.tasks[first].status, 'cancelled');
+  assert.equal(h.q.improvementCycle.lastReviewAt, null);
+  assert.equal(h.q.improvementCycle.history.length, 0);
+  assert.equal(h.q.improvementCycle.retirements[0].taskId, first);
+  const followup = h.send({type: 'scan'}).improvementTaskId;
+  assert.notEqual(followup, first);
+  assert.equal(h.send({type: 'scan'}).improvementTaskId, followup);
+  assert.equal(Object.values(h.q.tasks).filter(x => x.status === 'ready').length, 1);
+});

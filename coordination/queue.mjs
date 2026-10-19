@@ -2,7 +2,7 @@
 import {createHash, randomUUID} from 'node:crypto';
 import registry from './workers.json' with {type:'json'};
 import {validateApprovalState,requestApproval,resumeApproved,approvalForClaim,assertApprovalAction} from './approvals.mjs';
-import {DELIVERY_POLICY,validateDeliveryState,recordProgress,progressAge,scheduleImprovementReview,finishImprovementReview} from './delivery-policy.mjs';
+import {DELIVERY_POLICY,validateDeliveryState,recordProgress,progressAge,scheduleImprovementReview,finishImprovementReview,retireImprovementReview} from './delivery-policy.mjs';
 const hash=x=>createHash('sha256').update(stable(x)).digest('hex');
 const stable=x=>JSON.stringify(x,(_,v)=>v&&typeof v==='object'&&!Array.isArray(v)?Object.fromEntries(Object.entries(v).sort(([a],[b])=>a.localeCompare(b))):v);
 const copy=x=>structuredClone(x);
@@ -228,7 +228,7 @@ export function applyCommand(input,c,now=Date.now(),{authorizeApproval}={}){
   if(t.status==='needs_approval'||c.humanDecision!==undefined)humanDecision(c.humanDecision);
   const retirement=resolutionMetadata({at:iso(now),refs:c.refs,humanDecision:c.humanDecision??null},true);
   boundedMetadata({summary:c.resolution,...retirement},'Evidence is metadata, not raw notes');
-  t.status='cancelled';t.reason=c.resolution;t.retryAt=null;t.lease=null;t.retirement=retirement;break;
+  t.status='cancelled';t.reason=c.resolution;t.retryAt=null;t.lease=null;t.retirement=retirement;retireImprovementReview(q,t,now);break;
  }
  case 'worker_tick':{
   requireThat(validId(c.worker)&&validId(c.runId),'Worker identity required');

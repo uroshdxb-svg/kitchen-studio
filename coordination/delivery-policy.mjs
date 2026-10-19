@@ -34,6 +34,7 @@ export function validateDeliveryState(queue) {
   requireThat(cycle.lastReviewAt === null || time(cycle.lastReviewAt), 'Corrupt review time');
   requireThat(cycle.taskId === null || queue.tasks[cycle.taskId]?.owner === 'supervisor', 'Missing improvement review task');
   requireThat(Array.isArray(cycle.history), 'Corrupt review history');
+  requireThat(cycle.sequence === undefined || (Number.isSafeInteger(cycle.sequence) && cycle.sequence >= 0), 'Corrupt review sequence');
 }
 
 export function recordProgress(task, command, now) {
@@ -62,13 +63,23 @@ export function scheduleImprovementReview(queue, now) {
   };
   const cycle = queue.improvementCycle;
   if (cycle.taskId || now < Date.parse(cycle.nextDueAt)) return null;
-  const id = 'KS-IMPROVE-' + cycle.nextDueAt.replace(/[^0-9]/g, '').slice(0, 14);
+  cycle.sequence = (cycle.sequence ?? 0) + 1;
+  const id = 'KS-IMPROVE-' + cycle.nextDueAt.replace(/[^0-9]/g, '').slice(0, 14) + '-' + cycle.sequence;
   requireThat(!queue.tasks[id], 'Improvement cycle task identity collision');
   return {id, owner: 'supervisor', kind: 'work',
     title: 'Review delivery failures, test one improvement and record an evidence-based decision',
     dependencies: [], maxAttempts: 3, maxTotalAttempts: 12,
     deadline: iso(Date.parse(cycle.nextDueAt) + DELIVERY_POLICY.warningMs),
     dedupeKey: id, retrySafe: true, resource: 'improvement-review'};
+}
+
+export function retireImprovementReview(queue, task, now) {
+  const cycle = queue.improvementCycle;
+  if (cycle?.taskId !== task.id) return;
+  (cycle.retirements ??= []).push({taskId: task.id, at: iso(now), refs: [...task.retirement.refs]});
+  cycle.taskId = null;
+  cycle.nextDueAt = iso(now);
+  // Retiring an attempt does not mean a review succeeded or cancel the ongoing policy.
 }
 
 export function finishImprovementReview(queue, task, evidence, now) {
