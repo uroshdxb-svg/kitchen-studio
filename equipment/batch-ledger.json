@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-27T16:25:49.670578+00:00",
+  "updated_at": "2026-10-27T19:47:14.600055+00:00",
   "target": {
     "minimum_live_count": 1001,
     "deadline": "2026-10-31",
@@ -484,13 +484,13 @@
         "371178",
         "371179"
       ],
-      "state": "validated",
+      "state": "live-verified",
       "source_before_sha": "186f8f912ba906d043166fae3ca339236219b949",
       "source_before": 507,
       "source_after": 607,
       "verified_additions": 100,
-      "merged_additions": 0,
-      "live_verified_additions": 0,
+      "merged_additions": 100,
+      "live_verified_additions": 100,
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-27-electrolux-next-100.csv",
       "review": "equipment/batches/2026-10-27-electrolux-next-100.review.json",
@@ -518,42 +518,56 @@
         "regressions": "npm run test:ci passed: 79 coordination tests, build, discovery audit, existing app/browser and MCP suites, latest-batch exact search/add",
         "local_browser": "pass: all 100 SKUs return one result and add exact dimensions and utility values; zero page errors and zero customer writes",
         "browser_environment": "Chromium 153.0.8010.0 substituted via temporary PLAYWRIGHT_BROWSERS_PATH; pinned Playwright download unavailable in this host. CI retains its pinned browser.",
-        "completed_at": "2026-10-27T16:25:49.670578+00:00"
-      }
+        "completed_at": "2026-10-27T16:25:49.670578+00:00",
+        "pr_ci": "pass: https://github.com/uroshdxb-svg/kitchen-studio/actions/runs/40570902429",
+        "review": "Automated Codex review completed at PR head with no unresolved findings.",
+        "production_catalogue": "pass: HTTP 200; exact 607-row source match",
+        "production_catalogue_sha256": "10354c25c69937f155140bc38a7d2b10c2fd276c674c98edaaa577c2b6263e7d",
+        "production_catalogue_verified_at": "2026-10-27T19:46:44.338Z",
+        "production_browser": "pass: 100 exact SKU searches and additions with exact dimensions and utilities; zero page errors and customer writes",
+        "production_browser_verified_at": "2026-10-27T19:47:14.600055+00:00",
+        "production_browser_environment": "Chromium 153.0.8010.0, fresh disposable context with backend-write guard; host proxy, proxy certificate accommodation, blocked external font requests and DOMContentLoaded readiness. App readiness and exact field assertions unchanged.",
+        "preview": "Cloudflare preview build and deployment succeeded for 39b780a (deployment 68cb1695-0374-438a-815a-8b512a818d39). Existing Worker redirects all workers.dev previews to production (301), so independent preview interaction was unavailable. Exact PR-head local tests and post-merge production tests passed."
+      },
+      "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/22",
+      "merge_sha": "c1abac24dc668702466e89fc360662bbec4b5849",
+      "deployment_url": "https://kitchenstudio.design/app/catalogue.json",
+      "live_verified_at": "2026-10-27T19:47:14.600055+00:00",
+      "release_receipt": "Ordinary expected-head merge; all 607 production catalogue rows exactly match source. All 100 new SKUs searched and added with exact dimensions/utilities in a fresh production browser context; zero page errors and zero customer writes."
     }
   ],
   "current_merged": {
-    "sha": "153ec9e24fbc42d1d2dc0f22e800fe2ecaa119f1",
-    "count": 507,
-    "as_of": "2026-10-27T15:40:27.152Z",
-    "live_count": 507
+    "sha": "c1abac24dc668702466e89fc360662bbec4b5849",
+    "count": 607,
+    "as_of": "2026-10-27T19:47:14.600055+00:00",
+    "live_count": 607
   },
   "daily_totals": {
     "date": "2026-10-27",
     "verified_additions": 120,
     "prepared_additions": 120,
-    "merged_additions": 20,
-    "live_verified_additions": 20,
-    "catalogue_count": 507,
+    "merged_additions": 120,
+    "live_verified_additions": 120,
+    "catalogue_count": 607,
     "prepared_count": 607,
-    "last_verified_live_count": 507,
-    "remaining_to_target_from_last_verified_live": 494,
-    "production_browser_qa": "pass: 20/20 exact-SKU search/add checks",
+    "last_verified_live_count": 607,
+    "remaining_to_target_from_last_verified_live": 394,
+    "production_browser_qa": "pass: latest 100/100 exact-SKU search/add checks; prior 20/20 receipt retained",
     "deployment_blocker": null
   },
   "production_verification": {
-    "verified_at": "2026-10-27T15:40:27.152Z",
-    "reported_by": "Direct public JSON readback and disposable production browser search/add verification",
-    "source_sha": "153ec9e24fbc42d1d2dc0f22e800fe2ecaa119f1",
-    "catalogue_count": 507,
-    "verified_additions": 20,
-    "batch_id": "2026-10-27-electrolux-cooking-20",
+    "verified_at": "2026-10-27T19:47:14.600055+00:00",
+    "source_sha": "c1abac24dc668702466e89fc360662bbec4b5849",
+    "catalogue_count": 607,
+    "verified_additions": 100,
     "catalogue_urls": [
       "https://kitchenstudio.design/app/catalogue.json"
     ],
-    "result": "HTTP 200; full 507-row catalogue exactly matches released source. Every new SKU appears once and adds to a plan with exact dimensions and utilities.",
-    "catalogue_sha256": "88f679eb840674cc75b91f2ff2a33b2f2716fbabcc432cf6fcafefc4559a979b",
-    "interactive_browser_qa": "pass: 20/20 exact-SKU search/add checks; zero page errors; zero customer writes",
+    "http_status": 200,
+    "sha256": "10354c25c69937f155140bc38a7d2b10c2fd276c674c98edaaa577c2b6263e7d",
+    "result": "All 607 rows exactly match released source; all 100 additions are present once.",
+    "interactive_browser_qa": "pass: 100/100 exact-SKU search/add, dimensions and utilities; zero page errors and zero customer writes",
+    "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/22",
     "manual_deployment": false,
     "configuration_change": false
   },
@@ -607,6 +621,22 @@
       "manual_deployment": false,
       "configuration_change": false,
       "interactive_browser_qa": "untested in production; earlier local browser checks are preserved separately"
+    },
+    {
+      "verified_at": "2026-10-27T15:40:27.152Z",
+      "reported_by": "Direct public JSON readback and disposable production browser search/add verification",
+      "source_sha": "153ec9e24fbc42d1d2dc0f22e800fe2ecaa119f1",
+      "catalogue_count": 507,
+      "verified_additions": 20,
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "catalogue_urls": [
+        "https://kitchenstudio.design/app/catalogue.json"
+      ],
+      "result": "HTTP 200; full 507-row catalogue exactly matches released source. Every new SKU appears once and adds to a plan with exact dimensions and utilities.",
+      "catalogue_sha256": "88f679eb840674cc75b91f2ff2a33b2f2716fbabcc432cf6fcafefc4559a979b",
+      "interactive_browser_qa": "pass: 20/20 exact-SKU search/add checks; zero page errors; zero customer writes",
+      "manual_deployment": false,
+      "configuration_change": false
     }
   ]
 }
