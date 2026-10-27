@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "reviewed_at": "2026-10-13T07:46:41.467Z",
+  "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
   "runtime_projections": {
     "araven|919": {
       "name": "Mobile ingredient bin 80 L with window (SKU 00919)",
@@ -13218,6 +13218,4226 @@
         "performed": true,
         "scope": "Complete passive bin photographs, exact SKU/footprint mapping and200/400mm height graphics; not a technical installation certification"
       }
+    },
+    "electroluxprofessional|371014": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|371014",
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "brand": "Electrolux Professional",
+      "model": "371014",
+      "manufacturer_sku": "371014",
+      "manufacturer_type": "E7ECED2R00",
+      "aliases": [
+        "371014",
+        "E7ECED2R00",
+        "9PDX371014"
+      ],
+      "market": "Middle East catalogue; 380-400 V/3 ph/50-60 Hz",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/e-xp-700-900-modular-cooking/modular-cooking-range-line-700xp-2-hot-plates-electric-boiling-top-range-371014/",
+          "retrieved_at": "2026-10-27T15:11:57.505610+00:00",
+          "revision": "Current COD 371014",
+          "document_sha256": "6dd8ddbc8b805076ed2f2c30e5e6eaf345f3508b24f9ae9157d991d30514df6a"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux%20Professional/English%20Middle%20East/700XP%202-%20Hot%20Plates%20El.%20Boiling%20Top_371014-371126_English%20Middle%20East.pdf?version=1787077914",
+          "retrieved_at": "2026-10-27",
+          "revision": "2026.07.13",
+          "pages": 2,
+          "visual_review": "Final technical-data page and dimensional/connection drawing inspected",
+          "document_sha256": "d27400a2bca141342c9ca91e49ec38616dbf71bfa5a9a052b163feb27b899439"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact COD/type agree; deduplicated by SKU and type against existing catalogue."
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors."
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation."
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact 5.2 kW input documented."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "380-400 V/3 ph/50-60 Hz"
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified."
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Electric-only model; no gas connection."
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Nominal dimensions exclude installation clearances. Read exact drawing. Approximately 150 mm gap or thermal insulation next to temperature-sensitive furniture is specified."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Official pages fetched 27 October 2026; PDF revision and hash retained."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Existing 14-column runtime schema and Cooking category; release requires exact-SKU search/add browser validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "reason": "Official manufacturer identity.",
+          "locator": "Product heading; PDF title",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "model": {
+          "value": "371014",
+          "status": "checked",
+          "reason": "Exact COD 371014; manufacturer type E7ECED2R00.",
+          "locator": "Product COD; PDF model list",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "w": {
+          "value": 400,
+          "status": "checked",
+          "reason": "Labelled nominal external width in mm; drawing corroboration.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "d": {
+          "value": 730,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "h": {
+          "value": 250,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation.",
+          "locator": "PDF p.1 features and final-page side drawing",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "reason": "Exact electric variant.",
+          "locator": "Electric specifications",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "kw": {
+          "value": 5.2,
+          "status": "checked",
+          "reason": "Exact SKU total electrical input, not extrapolated from another variant.",
+          "locator": "PDF final-page Total Watts / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "elec": {
+          "value": "380-400 V/3 ph/50-60 Hz",
+          "status": "checked",
+          "reason": "Exact voltage, phase and frequency; 3 versus 3N preserved.",
+          "locator": "PDF final-page Supply voltage / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "371014",
+        "Cooking",
+        "700XP 2 round hot plates (H250 body height; guards/upstand extra)",
+        400,
+        730,
+        250,
+        "top",
+        "electric",
+        5.2,
+        "380-400 V/3 ph/50-60 Hz",
+        0,
+        0,
+        "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/e-xp-700-900-modular-cooking/modular-cooking-range-line-700xp-2-hot-plates-electric-boiling-top-range-371014/"
+      ],
+      "installation_notes": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+      "regional_availability": "Supplier stock, local approval and project electrical suitability are not asserted."
+    },
+    "electroluxprofessional|371015": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|371015",
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "brand": "Electrolux Professional",
+      "model": "371015",
+      "manufacturer_sku": "371015",
+      "manufacturer_type": "E7ECEH4R00",
+      "aliases": [
+        "371015",
+        "E7ECEH4R00",
+        "9PDX371015"
+      ],
+      "market": "Middle East catalogue; 380-400 V/3 ph/50-60 Hz",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/e-xp-700-900-modular-cooking/modular-cooking-range-line-700xp-4-hot-plates-electric-boiling-top-range-371015/",
+          "retrieved_at": "2026-10-27T15:11:57.505610+00:00",
+          "revision": "Current COD 371015",
+          "document_sha256": "a1547475c81a0dd1053eddcc9396eaaae5f162978d2a576967d84090e05d471d"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux%20Professional/English%20Middle%20East/700XP%204-%20Hot%20Plates%20El.%20Boiling%20Top_371015-371127_English%20Middle%20East.pdf?version=1789544133",
+          "retrieved_at": "2026-10-27",
+          "revision": "2026.10.05",
+          "pages": 2,
+          "visual_review": "Final technical-data page and dimensional/connection drawing inspected",
+          "document_sha256": "c12421ef2828a07a8a165501fe67edb03934a0e43839c2269ce34e2bea9dacc1"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact COD/type agree; deduplicated by SKU and type against existing catalogue."
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors."
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation."
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact 10.4 kW input documented."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "380-400 V/3 ph/50-60 Hz"
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified."
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Electric-only model; no gas connection."
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Nominal dimensions exclude installation clearances. Read exact drawing. Approximately 150 mm gap or thermal insulation next to temperature-sensitive furniture is specified."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Official pages fetched 27 October 2026; PDF revision and hash retained."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Existing 14-column runtime schema and Cooking category; release requires exact-SKU search/add browser validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "reason": "Official manufacturer identity.",
+          "locator": "Product heading; PDF title",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "model": {
+          "value": "371015",
+          "status": "checked",
+          "reason": "Exact COD 371015; manufacturer type E7ECEH4R00.",
+          "locator": "Product COD; PDF model list",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "w": {
+          "value": 800,
+          "status": "checked",
+          "reason": "Labelled nominal external width in mm; drawing corroboration.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "d": {
+          "value": 730,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "h": {
+          "value": 250,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation.",
+          "locator": "PDF p.1 features and final-page side drawing",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "reason": "Exact electric variant.",
+          "locator": "Electric specifications",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "kw": {
+          "value": 10.4,
+          "status": "checked",
+          "reason": "Exact SKU total electrical input, not extrapolated from another variant.",
+          "locator": "PDF final-page Total Watts / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "elec": {
+          "value": "380-400 V/3 ph/50-60 Hz",
+          "status": "checked",
+          "reason": "Exact voltage, phase and frequency; 3 versus 3N preserved.",
+          "locator": "PDF final-page Supply voltage / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "371015",
+        "Cooking",
+        "700XP 4 round hot plates (H250 body height; guards/upstand extra)",
+        800,
+        730,
+        250,
+        "top",
+        "electric",
+        10.4,
+        "380-400 V/3 ph/50-60 Hz",
+        0,
+        0,
+        "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/e-xp-700-900-modular-cooking/modular-cooking-range-line-700xp-4-hot-plates-electric-boiling-top-range-371015/"
+      ],
+      "installation_notes": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+      "regional_availability": "Supplier stock, local approval and project electrical suitability are not asserted."
+    },
+    "electroluxprofessional|371016": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|371016",
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "brand": "Electrolux Professional",
+      "model": "371016",
+      "manufacturer_sku": "371016",
+      "manufacturer_type": "E7ECEH4RE0",
+      "aliases": [
+        "371016",
+        "E7ECEH4RE0",
+        "9PDX371016"
+      ],
+      "market": "Middle East catalogue; 380-400 V/3 ph/50-60 Hz",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/e-xp-700-900-modular-cooking/modular-cooking-range-line-700xp-4-hot-plates-electric-boiling-top-range-on-electric-oven-371016/",
+          "retrieved_at": "2026-10-27T15:11:57.505610+00:00",
+          "revision": "Current COD 371016",
+          "document_sha256": "ddfc96791d49483a5d508220e1cd2fd993a479675a18d0c5be381806a2283149"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux%20Professional/English%20Middle%20East/700XP%204-%20Hot%20Plates%20El.%20Boiling%20Top%20El.%20Oven_371016-371128_English%20Middle%20East.pdf?version=1793112877",
+          "retrieved_at": "2026-10-27",
+          "revision": "2026.10.06",
+          "pages": 3,
+          "visual_review": "Final technical-data page and dimensional/connection drawing inspected",
+          "document_sha256": "e658abff6c3ee0153b6a07474cd830718a30a39d78afc3b9208822e7ac94b42b"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact COD/type agree; deduplicated by SKU and type against existing catalogue."
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing gives 908 mm height with upstand and 1110 mm open-door depth."
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Floor range on legs with integrated oven."
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact 16.4 kW input documented."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "380-400 V/3 ph/50-60 Hz"
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified."
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Electric-only model; no gas connection."
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Nominal dimensions exclude installation clearances. Read exact drawing. Approximately 150 mm gap or thermal insulation next to temperature-sensitive furniture is specified."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Official pages fetched 27 October 2026; PDF revision and hash retained."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Existing 14-column runtime schema and Cooking category; release requires exact-SKU search/add browser validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "reason": "Official manufacturer identity.",
+          "locator": "Product heading; PDF title",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "model": {
+          "value": "371016",
+          "status": "checked",
+          "reason": "Exact COD 371016; manufacturer type E7ECEH4RE0.",
+          "locator": "Product COD; PDF model list",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "w": {
+          "value": 800,
+          "status": "checked",
+          "reason": "Labelled nominal external width in mm; drawing corroboration.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "d": {
+          "value": 730,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing gives 908 mm height with upstand and 1110 mm open-door depth.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "h": {
+          "value": 850,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing gives 908 mm height with upstand and 1110 mm open-door depth.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "reason": "Floor range on legs with integrated oven.",
+          "locator": "PDF p.1 features and final-page side drawing",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "reason": "Exact electric variant.",
+          "locator": "Electric specifications",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "kw": {
+          "value": 16.4,
+          "status": "checked",
+          "reason": "Exact SKU total electrical input, not extrapolated from another variant.",
+          "locator": "PDF final-page Total Watts / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "elec": {
+          "value": "380-400 V/3 ph/50-60 Hz",
+          "status": "checked",
+          "reason": "Exact voltage, phase and frequency; 3 versus 3N preserved.",
+          "locator": "PDF final-page Supply voltage / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "371016",
+        "Cooking",
+        "700XP 4 round hot plates on electric oven (H850 working height; upstand extra)",
+        800,
+        730,
+        850,
+        "floor",
+        "electric",
+        16.4,
+        "380-400 V/3 ph/50-60 Hz",
+        0,
+        0,
+        "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/e-xp-700-900-modular-cooking/modular-cooking-range-line-700xp-4-hot-plates-electric-boiling-top-range-on-electric-oven-371016/"
+      ],
+      "installation_notes": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing gives 908 mm height with upstand and 1110 mm open-door depth.",
+      "regional_availability": "Supplier stock, local approval and project electrical suitability are not asserted."
+    },
+    "electroluxprofessional|371017": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|371017",
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "brand": "Electrolux Professional",
+      "model": "371017",
+      "manufacturer_sku": "371017",
+      "manufacturer_type": "E7ECEH4Q00",
+      "aliases": [
+        "371017",
+        "E7ECEH4Q00",
+        "9PDX371017"
+      ],
+      "market": "Middle East catalogue; 380-400 V/3 ph/50-60 Hz",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/e-xp-700-900-modular-cooking/modular-cooking-range-line-700xp-4-hot-square-plates-electric-boiling-top-range-371017/",
+          "retrieved_at": "2026-10-27T15:11:57.505610+00:00",
+          "revision": "Current COD 371017",
+          "document_sha256": "0e0d4666391e8ef82846abd1d970bec9bb63f97e4d1f2a423cce810c2f753211"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux%20Professional/English%20Middle%20East/700XP%204-%20Hot%20Square%20Plates%20El.%20Boiling%20Top_371017-371130_English%20Middle%20East.pdf?version=1790275331",
+          "retrieved_at": "2026-10-27",
+          "revision": "2026.10.05",
+          "pages": 2,
+          "visual_review": "Final technical-data page and dimensional/connection drawing inspected",
+          "document_sha256": "f83fc04751a37d1d21e1a83c8a478624b20648ebd4543fbcdcb3ffaf4bf3740d"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact COD/type agree; deduplicated by SKU and type against existing catalogue."
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors."
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation."
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact 10.4 kW input documented."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "380-400 V/3 ph/50-60 Hz"
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified."
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Electric-only model; no gas connection."
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Nominal dimensions exclude installation clearances. Read exact drawing. Approximately 150 mm gap or thermal insulation next to temperature-sensitive furniture is specified."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Official pages fetched 27 October 2026; PDF revision and hash retained."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Existing 14-column runtime schema and Cooking category; release requires exact-SKU search/add browser validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "reason": "Official manufacturer identity.",
+          "locator": "Product heading; PDF title",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "model": {
+          "value": "371017",
+          "status": "checked",
+          "reason": "Exact COD 371017; manufacturer type E7ECEH4Q00.",
+          "locator": "Product COD; PDF model list",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "w": {
+          "value": 800,
+          "status": "checked",
+          "reason": "Labelled nominal external width in mm; drawing corroboration.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "d": {
+          "value": 730,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "h": {
+          "value": 250,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation.",
+          "locator": "PDF p.1 features and final-page side drawing",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "reason": "Exact electric variant.",
+          "locator": "Electric specifications",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "kw": {
+          "value": 10.4,
+          "status": "checked",
+          "reason": "Exact SKU total electrical input, not extrapolated from another variant.",
+          "locator": "PDF final-page Total Watts / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "elec": {
+          "value": "380-400 V/3 ph/50-60 Hz",
+          "status": "checked",
+          "reason": "Exact voltage, phase and frequency; 3 versus 3N preserved.",
+          "locator": "PDF final-page Supply voltage / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "371017",
+        "Cooking",
+        "700XP 4 square hot plates (H250 body height; guards/upstand extra)",
+        800,
+        730,
+        250,
+        "top",
+        "electric",
+        10.4,
+        "380-400 V/3 ph/50-60 Hz",
+        0,
+        0,
+        "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/e-xp-700-900-modular-cooking/modular-cooking-range-line-700xp-4-hot-square-plates-electric-boiling-top-range-371017/"
+      ],
+      "installation_notes": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+      "regional_availability": "Supplier stock, local approval and project electrical suitability are not asserted."
+    },
+    "electroluxprofessional|371018": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|371018",
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "brand": "Electrolux Professional",
+      "model": "371018",
+      "manufacturer_sku": "371018",
+      "manufacturer_type": "E7ECEH4QE0",
+      "aliases": [
+        "371018",
+        "E7ECEH4QE0",
+        "9PDX371018"
+      ],
+      "market": "Middle East catalogue; 380-400 V/3 ph/50-60 Hz",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/e-xp-700-900-modular-cooking/modular-cooking-range-line-700xp-4-hot-square-plates-electric-boiling-top-range-on-electric-oven-371018/",
+          "retrieved_at": "2026-10-27T15:11:57.505610+00:00",
+          "revision": "Current COD 371018",
+          "document_sha256": "91fe129acf16cc189f821242dc71d789ea0dd7c9b1fa9191120d5e43b0f339ad"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux%20Professional/English%20Middle%20East/700XP%204-%20Hot%20Square%20Plates%20El.%20Boiling%20Top%20El.%20Oven_371018-371129_English%20Middle%20East.pdf?version=1788343138",
+          "retrieved_at": "2026-10-27",
+          "revision": "2026.08.26",
+          "pages": 3,
+          "visual_review": "Final technical-data page and dimensional/connection drawing inspected",
+          "document_sha256": "0d8a73d09ef4fd30d26c9262a349e43ca44ed6d19b7389e5f63257b62e5919a2"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact COD/type agree; deduplicated by SKU and type against existing catalogue."
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing gives 908 mm height with upstand and 1110 mm open-door depth."
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Floor range on legs with integrated oven."
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact 16.4 kW input documented."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "380-400 V/3 ph/50-60 Hz"
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified."
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Electric-only model; no gas connection."
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Nominal dimensions exclude installation clearances. Read exact drawing. Approximately 150 mm gap or thermal insulation next to temperature-sensitive furniture is specified."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Official pages fetched 27 October 2026; PDF revision and hash retained."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Existing 14-column runtime schema and Cooking category; release requires exact-SKU search/add browser validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "reason": "Official manufacturer identity.",
+          "locator": "Product heading; PDF title",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "model": {
+          "value": "371018",
+          "status": "checked",
+          "reason": "Exact COD 371018; manufacturer type E7ECEH4QE0.",
+          "locator": "Product COD; PDF model list",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "w": {
+          "value": 800,
+          "status": "checked",
+          "reason": "Labelled nominal external width in mm; drawing corroboration.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "d": {
+          "value": 730,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing gives 908 mm height with upstand and 1110 mm open-door depth.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "h": {
+          "value": 850,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing gives 908 mm height with upstand and 1110 mm open-door depth.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "reason": "Floor range on legs with integrated oven.",
+          "locator": "PDF p.1 features and final-page side drawing",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "reason": "Exact electric variant.",
+          "locator": "Electric specifications",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "kw": {
+          "value": 16.4,
+          "status": "checked",
+          "reason": "Exact SKU total electrical input, not extrapolated from another variant.",
+          "locator": "PDF final-page Total Watts / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "elec": {
+          "value": "380-400 V/3 ph/50-60 Hz",
+          "status": "checked",
+          "reason": "Exact voltage, phase and frequency; 3 versus 3N preserved.",
+          "locator": "PDF final-page Supply voltage / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "371018",
+        "Cooking",
+        "700XP 4 square hot plates on electric oven (H850 working height; upstand extra)",
+        800,
+        730,
+        850,
+        "floor",
+        "electric",
+        16.4,
+        "380-400 V/3 ph/50-60 Hz",
+        0,
+        0,
+        "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/e-xp-700-900-modular-cooking/modular-cooking-range-line-700xp-4-hot-square-plates-electric-boiling-top-range-on-electric-oven-371018/"
+      ],
+      "installation_notes": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing gives 908 mm height with upstand and 1110 mm open-door depth.",
+      "regional_availability": "Supplier stock, local approval and project electrical suitability are not asserted."
+    },
+    "electroluxprofessional|371019": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|371019",
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "brand": "Electrolux Professional",
+      "model": "371019",
+      "manufacturer_sku": "371019",
+      "manufacturer_type": "E7ECEL6R00",
+      "aliases": [
+        "371019",
+        "E7ECEL6R00",
+        "9PDX371019"
+      ],
+      "market": "Middle East catalogue; 380-400 V/3 ph/50-60 Hz",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/e-xp-700-900-modular-cooking/modular-cooking-range-line-700xp-6-hot-plates-electric-boiling-top-range-371019/",
+          "retrieved_at": "2026-10-27T15:11:57.505610+00:00",
+          "revision": "Current COD 371019",
+          "document_sha256": "6b01dac9ec4071f1a3343e93548eef6ba773f1debff6382153a80dcbe2cef965"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux%20Professional/English%20Middle%20East/700XP%206-%20Hot%20Plates%20El.%20Boiling%20Top_371019_English%20Middle%20East.pdf?version=1791984978",
+          "retrieved_at": "2026-10-27",
+          "revision": "2026.10.23",
+          "pages": 2,
+          "visual_review": "Final technical-data page and dimensional/connection drawing inspected",
+          "document_sha256": "a9c642c69b5282dda503b641c2b8da29bae16af649e46530eb0112cd112ba507"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact COD/type agree; deduplicated by SKU and type against existing catalogue."
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors."
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation."
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact 15.6 kW input documented."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "380-400 V/3 ph/50-60 Hz"
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified."
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Electric-only model; no gas connection."
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Nominal dimensions exclude installation clearances. Read exact drawing. Approximately 150 mm gap or thermal insulation next to temperature-sensitive furniture is specified."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Official pages fetched 27 October 2026; PDF revision and hash retained."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Existing 14-column runtime schema and Cooking category; release requires exact-SKU search/add browser validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "reason": "Official manufacturer identity.",
+          "locator": "Product heading; PDF title",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "model": {
+          "value": "371019",
+          "status": "checked",
+          "reason": "Exact COD 371019; manufacturer type E7ECEL6R00.",
+          "locator": "Product COD; PDF model list",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "w": {
+          "value": 1200,
+          "status": "checked",
+          "reason": "Labelled nominal external width in mm; drawing corroboration.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "d": {
+          "value": 730,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "h": {
+          "value": 250,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation.",
+          "locator": "PDF p.1 features and final-page side drawing",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "reason": "Exact electric variant.",
+          "locator": "Electric specifications",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "kw": {
+          "value": 15.6,
+          "status": "checked",
+          "reason": "Exact SKU total electrical input, not extrapolated from another variant.",
+          "locator": "PDF final-page Total Watts / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "elec": {
+          "value": "380-400 V/3 ph/50-60 Hz",
+          "status": "checked",
+          "reason": "Exact voltage, phase and frequency; 3 versus 3N preserved.",
+          "locator": "PDF final-page Supply voltage / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "371019",
+        "Cooking",
+        "700XP 6 round hot plates (H250 body height; guards/upstand extra)",
+        1200,
+        730,
+        250,
+        "top",
+        "electric",
+        15.6,
+        "380-400 V/3 ph/50-60 Hz",
+        0,
+        0,
+        "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/e-xp-700-900-modular-cooking/modular-cooking-range-line-700xp-6-hot-plates-electric-boiling-top-range-371019/"
+      ],
+      "installation_notes": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+      "regional_availability": "Supplier stock, local approval and project electrical suitability are not asserted."
+    },
+    "electroluxprofessional|371021": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|371021",
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "brand": "Electrolux Professional",
+      "model": "371021",
+      "manufacturer_sku": "371021",
+      "manufacturer_type": "E7INEH4000",
+      "aliases": [
+        "371021",
+        "E7INEH4000",
+        "9PDX371021"
+      ],
+      "market": "Middle East catalogue; 380-415 V/3 ph/50/60 Hz",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-4-hot-plate-electric-induction-cooking-top-range-371021/",
+          "retrieved_at": "2026-10-27T15:11:57.505610+00:00",
+          "revision": "Current COD 371021",
+          "document_sha256": "6d7db178d54a76979810b419eb0085f63e0507154f66ce482547303cc3e5aec4"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux%20Professional/English%20Middle%20East/700XP%204%20Zone%20El.%20Induction%20cooking%20top_371021-371132_English%20Middle%20East.pdf?version=1792533456",
+          "retrieved_at": "2026-10-27",
+          "revision": "2026.10.08",
+          "pages": 3,
+          "visual_review": "Final technical-data page and dimensional/connection drawing inspected",
+          "document_sha256": "944078737376c7dd3e27bf27919e88a91bd1e5a62b61c7b5f1bd44aa799c7aa4"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact COD/type agree; deduplicated by SKU and type against existing catalogue."
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors."
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation."
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact 14 kW input documented."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "380-415 V/3 ph/50/60 Hz"
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified."
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Electric-only model; no gas connection."
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Nominal dimensions exclude installation clearances. Read exact drawing. Approximately 150 mm gap or thermal insulation next to temperature-sensitive furniture is specified."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Official pages fetched 27 October 2026; PDF revision and hash retained."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Existing 14-column runtime schema and Cooking category; release requires exact-SKU search/add browser validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "reason": "Official manufacturer identity.",
+          "locator": "Product heading; PDF title",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "model": {
+          "value": "371021",
+          "status": "checked",
+          "reason": "Exact COD 371021; manufacturer type E7INEH4000.",
+          "locator": "Product COD; PDF model list",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "w": {
+          "value": 800,
+          "status": "checked",
+          "reason": "Labelled nominal external width in mm; drawing corroboration.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "d": {
+          "value": 730,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "h": {
+          "value": 250,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation.",
+          "locator": "PDF p.1 features and final-page side drawing",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "reason": "Exact electric variant.",
+          "locator": "Electric specifications",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "kw": {
+          "value": 14,
+          "status": "checked",
+          "reason": "Exact SKU total electrical input, not extrapolated from another variant.",
+          "locator": "PDF final-page Total Watts / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "elec": {
+          "value": "380-415 V/3 ph/50/60 Hz",
+          "status": "checked",
+          "reason": "Exact voltage, phase and frequency; 3 versus 3N preserved.",
+          "locator": "PDF final-page Supply voltage / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "371021",
+        "Cooking",
+        "700XP 4-zone induction top, 3.5 kW per zone (H250 body height; guards/upstand extra)",
+        800,
+        730,
+        250,
+        "top",
+        "electric",
+        14,
+        "380-415 V/3 ph/50/60 Hz",
+        0,
+        0,
+        "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-4-hot-plate-electric-induction-cooking-top-range-371021/"
+      ],
+      "installation_notes": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+      "regional_availability": "Supplier stock, local approval and project electrical suitability are not asserted."
+    },
+    "electroluxprofessional|371024": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|371024",
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "brand": "Electrolux Professional",
+      "model": "371024",
+      "manufacturer_sku": "371024",
+      "manufacturer_type": "E7IRED2000",
+      "aliases": [
+        "371024",
+        "E7IRED2000",
+        "9PDX371024"
+      ],
+      "market": "Middle East catalogue; 380-400 V/3N ph/50/60 Hz",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/e-xp-700-900-modular-cooking/modular-cooking-range-line-700xp-2-hot-plate-electric-infrared-cooking-top-range-371024/",
+          "retrieved_at": "2026-10-27T15:11:57.505610+00:00",
+          "revision": "Current COD 371024",
+          "document_sha256": "6418d366a670c2e5db5b44d4cc51850046a081780a65deff7d9de8e65b25b080"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux%20Professional/English%20Middle%20East/700XP%202%20Zone%20El.%20Infrared%20cooking%20top_371024-371133_English%20Middle%20East.pdf?version=1786506961",
+          "retrieved_at": "2026-10-27",
+          "revision": "2026.06.17",
+          "pages": 3,
+          "visual_review": "Final technical-data page and dimensional/connection drawing inspected",
+          "document_sha256": "af7dec691510797504597190b2d9c465aa3f50bad4a50559db0f6b21d6b15e18"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact COD/type agree; deduplicated by SKU and type against existing catalogue."
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors."
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation."
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact 4.4 kW input documented."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "380-400 V/3N ph/50/60 Hz"
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified."
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Electric-only model; no gas connection."
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Nominal dimensions exclude installation clearances. Read exact drawing. Approximately 150 mm gap or thermal insulation next to temperature-sensitive furniture is specified."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Official pages fetched 27 October 2026; PDF revision and hash retained."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Existing 14-column runtime schema and Cooking category; release requires exact-SKU search/add browser validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "reason": "Official manufacturer identity.",
+          "locator": "Product heading; PDF title",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "model": {
+          "value": "371024",
+          "status": "checked",
+          "reason": "Exact COD 371024; manufacturer type E7IRED2000.",
+          "locator": "Product COD; PDF model list",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "w": {
+          "value": 400,
+          "status": "checked",
+          "reason": "Labelled nominal external width in mm; drawing corroboration.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "d": {
+          "value": 730,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "h": {
+          "value": 250,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation.",
+          "locator": "PDF p.1 features and final-page side drawing",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "reason": "Exact electric variant.",
+          "locator": "Electric specifications",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "kw": {
+          "value": 4.4,
+          "status": "checked",
+          "reason": "Exact SKU total electrical input, not extrapolated from another variant.",
+          "locator": "PDF final-page Total Watts / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "elec": {
+          "value": "380-400 V/3N ph/50/60 Hz",
+          "status": "checked",
+          "reason": "Exact voltage, phase and frequency; 3 versus 3N preserved.",
+          "locator": "PDF final-page Supply voltage / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "371024",
+        "Cooking",
+        "700XP 2-zone infrared top (H250 body height; guards/upstand extra)",
+        400,
+        730,
+        250,
+        "top",
+        "electric",
+        4.4,
+        "380-400 V/3N ph/50/60 Hz",
+        0,
+        0,
+        "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/e-xp-700-900-modular-cooking/modular-cooking-range-line-700xp-2-hot-plate-electric-infrared-cooking-top-range-371024/"
+      ],
+      "installation_notes": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+      "regional_availability": "Supplier stock, local approval and project electrical suitability are not asserted."
+    },
+    "electroluxprofessional|371025": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|371025",
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "brand": "Electrolux Professional",
+      "model": "371025",
+      "manufacturer_sku": "371025",
+      "manufacturer_type": "E7IREH4000",
+      "aliases": [
+        "371025",
+        "E7IREH4000",
+        "9PDX371025"
+      ],
+      "market": "Middle East catalogue; 380-400 V/3N ph/50/60 Hz",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/food-preparation-knead-whip-sheet/modular-cooking-range-line-700xp-4-zone-electric-infrared-cooking-top-range-371025/",
+          "retrieved_at": "2026-10-27T15:11:57.505610+00:00",
+          "revision": "Current COD 371025",
+          "document_sha256": "88983dd5aa7634fd1d9825cc9bcb0f45682913a58cdee8ca5f969424454918c5"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux%20Professional/English%20Middle%20East/700XP%204%20Zone%20El.%20Infrared%20cooking%20top_371025-371134_English%20Middle%20East.pdf?version=1793113210",
+          "retrieved_at": "2026-10-27",
+          "revision": "2026.06.17",
+          "pages": 3,
+          "visual_review": "Final technical-data page and dimensional/connection drawing inspected",
+          "document_sha256": "cefeba27fa24ecdafa5e4cb87031e0045c5db19831fb73dfc7ffadc3334e01aa"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact COD/type agree; deduplicated by SKU and type against existing catalogue."
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors."
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation."
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact 8.8 kW input documented."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "380-400 V/3N ph/50/60 Hz"
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified."
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Electric-only model; no gas connection."
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Nominal dimensions exclude installation clearances. Read exact drawing. Approximately 150 mm gap or thermal insulation next to temperature-sensitive furniture is specified."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Official pages fetched 27 October 2026; PDF revision and hash retained."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Existing 14-column runtime schema and Cooking category; release requires exact-SKU search/add browser validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "reason": "Official manufacturer identity.",
+          "locator": "Product heading; PDF title",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "model": {
+          "value": "371025",
+          "status": "checked",
+          "reason": "Exact COD 371025; manufacturer type E7IREH4000.",
+          "locator": "Product COD; PDF model list",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "w": {
+          "value": 800,
+          "status": "checked",
+          "reason": "Labelled nominal external width in mm; drawing corroboration.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "d": {
+          "value": 730,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "h": {
+          "value": 250,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation.",
+          "locator": "PDF p.1 features and final-page side drawing",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "reason": "Exact electric variant.",
+          "locator": "Electric specifications",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "kw": {
+          "value": 8.8,
+          "status": "checked",
+          "reason": "Exact SKU total electrical input, not extrapolated from another variant.",
+          "locator": "PDF final-page Total Watts / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "elec": {
+          "value": "380-400 V/3N ph/50/60 Hz",
+          "status": "checked",
+          "reason": "Exact voltage, phase and frequency; 3 versus 3N preserved.",
+          "locator": "PDF final-page Supply voltage / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "371025",
+        "Cooking",
+        "700XP 4-zone infrared top (H250 body height; guards/upstand extra)",
+        800,
+        730,
+        250,
+        "top",
+        "electric",
+        8.8,
+        "380-400 V/3N ph/50/60 Hz",
+        0,
+        0,
+        "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/food-preparation-knead-whip-sheet/modular-cooking-range-line-700xp-4-zone-electric-infrared-cooking-top-range-371025/"
+      ],
+      "installation_notes": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+      "regional_availability": "Supplier stock, local approval and project electrical suitability are not asserted."
+    },
+    "electroluxprofessional|371026": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|371026",
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "brand": "Electrolux Professional",
+      "model": "371026",
+      "manufacturer_sku": "371026",
+      "manufacturer_type": "E7IREH40E0",
+      "aliases": [
+        "371026",
+        "E7IREH40E0",
+        "9PDX371026"
+      ],
+      "market": "Middle East catalogue; 380-400 V/3N ph/50/60 Hz",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/food-preparation-knead-whip-sheet/modular-cooking-range-line-700xp-4-zone-electric-infrared-cooking-top-range-on-electric-oven-371026/",
+          "retrieved_at": "2026-10-27T15:11:57.505610+00:00",
+          "revision": "Current COD 371026",
+          "document_sha256": "64f6b506a9c7165e78da3dbcbcae60312856a0defbb605d66c9dfe241678a71c"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux%20Professional/English%20Middle%20East/700XP%204%20Zone%20El.%20Infrared%20cooking%20top%20-%20El.%20Oven_371026_English%20Middle%20East.pdf?version=1793113209",
+          "retrieved_at": "2026-10-27",
+          "revision": "2026.10.16",
+          "pages": 3,
+          "visual_review": "Final technical-data page and dimensional/connection drawing inspected",
+          "document_sha256": "aaefbd4c565eee1bec97f4ebbb65e372bda1eb52d2b82a5967d1acd60e83a4ec"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact COD/type agree; deduplicated by SKU and type against existing catalogue."
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors."
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Floor range on legs with integrated oven."
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact 14.8 kW input documented."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "380-400 V/3N ph/50/60 Hz"
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified."
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Electric-only model; no gas connection."
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Nominal dimensions exclude installation clearances. Read exact drawing. Approximately 150 mm gap or thermal insulation next to temperature-sensitive furniture is specified."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Official pages fetched 27 October 2026; PDF revision and hash retained."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Existing 14-column runtime schema and Cooking category; release requires exact-SKU search/add browser validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "reason": "Official manufacturer identity.",
+          "locator": "Product heading; PDF title",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "model": {
+          "value": "371026",
+          "status": "checked",
+          "reason": "Exact COD 371026; manufacturer type E7IREH40E0.",
+          "locator": "Product COD; PDF model list",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "w": {
+          "value": 800,
+          "status": "checked",
+          "reason": "Labelled nominal external width in mm; drawing corroboration.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "d": {
+          "value": 730,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "h": {
+          "value": 850,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "reason": "Floor range on legs with integrated oven.",
+          "locator": "PDF p.1 features and final-page side drawing",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "reason": "Exact electric variant.",
+          "locator": "Electric specifications",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "kw": {
+          "value": 14.8,
+          "status": "checked",
+          "reason": "Exact SKU total electrical input, not extrapolated from another variant.",
+          "locator": "PDF final-page Total Watts / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "elec": {
+          "value": "380-400 V/3N ph/50/60 Hz",
+          "status": "checked",
+          "reason": "Exact voltage, phase and frequency; 3 versus 3N preserved.",
+          "locator": "PDF final-page Supply voltage / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "371026",
+        "Cooking",
+        "700XP 4-zone infrared range on electric oven (H850 working height; upstand extra)",
+        800,
+        730,
+        850,
+        "floor",
+        "electric",
+        14.8,
+        "380-400 V/3N ph/50/60 Hz",
+        0,
+        0,
+        "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/food-preparation-knead-whip-sheet/modular-cooking-range-line-700xp-4-zone-electric-infrared-cooking-top-range-on-electric-oven-371026/"
+      ],
+      "installation_notes": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+      "regional_availability": "Supplier stock, local approval and project electrical suitability are not asserted."
+    },
+    "electroluxprofessional|371152": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|371152",
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "brand": "Electrolux Professional",
+      "model": "371152",
+      "manufacturer_sku": "371152",
+      "manufacturer_type": "E7ECML6Q25",
+      "aliases": [
+        "371152",
+        "E7ECML6Q25",
+        "9PDX371152"
+      ],
+      "market": "Middle East catalogue, marine variant; 400 V/3 ph/50/60 Hz",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/e-xp-700-900-modular-cooking/modular-cooking-line-700xp-6-hot-square-plates-electric-boiling-top-range-on-electric-oven-371152/",
+          "retrieved_at": "2026-10-27T15:11:57.505610+00:00",
+          "revision": "Current COD 371152",
+          "document_sha256": "3643dfa1ab316f1c4c3fa8292fc103c099db43960ebf1caa3f02b6e68c0d4ca3"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/371152_700xp_6_hot_square_plates_electric_boiling_top_range_on_electric_oven.pdf?version=1786516142",
+          "retrieved_at": "2026-10-27",
+          "revision": "2026/10/21",
+          "pages": 3,
+          "visual_review": "Final technical-data page and dimensional/connection drawing inspected",
+          "document_sha256": "de454b8f1d13eb7d1d486eb44ef24afd4b80eb670894fff2aa812a840316d2b8"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact COD/type agree; deduplicated by SKU and type against existing catalogue."
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing gives 908 mm height with upstand and 1110 mm open-door depth."
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Floor range on legs with integrated oven."
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact 21.6 kW input documented."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "400 V/3 ph/50/60 Hz"
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified."
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Electric-only model; no gas connection."
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Nominal dimensions exclude installation clearances. Read exact drawing. Use the manufacturer installation manual for clearances."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Official pages fetched 27 October 2026; PDF revision and hash retained."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Existing 14-column runtime schema and Cooking category; release requires exact-SKU search/add browser validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "reason": "Official manufacturer identity.",
+          "locator": "Product heading; PDF title",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "model": {
+          "value": "371152",
+          "status": "checked",
+          "reason": "Exact COD 371152; manufacturer type E7ECML6Q25.",
+          "locator": "Product COD; PDF model list",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "w": {
+          "value": 1200,
+          "status": "checked",
+          "reason": "Labelled nominal external width in mm; drawing corroboration.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "d": {
+          "value": 730,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing gives 908 mm height with upstand and 1110 mm open-door depth.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "h": {
+          "value": 850,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing gives 908 mm height with upstand and 1110 mm open-door depth.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "reason": "Floor range on legs with integrated oven.",
+          "locator": "PDF p.1 features and final-page side drawing",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "reason": "Exact electric variant.",
+          "locator": "Electric specifications",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "kw": {
+          "value": 21.6,
+          "status": "checked",
+          "reason": "Exact SKU total electrical input, not extrapolated from another variant.",
+          "locator": "PDF final-page Total Watts / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "elec": {
+          "value": "400 V/3 ph/50/60 Hz",
+          "status": "checked",
+          "reason": "Exact voltage, phase and frequency; 3 versus 3N preserved.",
+          "locator": "PDF final-page Supply voltage / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "371152",
+        "Cooking",
+        "700XP 6 square hot plates on electric oven, marine variant (H850 working height; upstand extra)",
+        1200,
+        730,
+        850,
+        "floor",
+        "electric",
+        21.6,
+        "400 V/3 ph/50/60 Hz",
+        0,
+        0,
+        "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/e-xp-700-900-modular-cooking/modular-cooking-line-700xp-6-hot-square-plates-electric-boiling-top-range-on-electric-oven-371152/"
+      ],
+      "installation_notes": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing gives 908 mm height with upstand and 1110 mm open-door depth.",
+      "regional_availability": "Supplier stock, local approval and project electrical suitability are not asserted."
+    },
+    "electroluxprofessional|371175": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|371175",
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "brand": "Electrolux Professional",
+      "model": "371175",
+      "manufacturer_sku": "371175",
+      "manufacturer_type": "E7INED200P",
+      "aliases": [
+        "371175",
+        "E7INED200P",
+        "9PDX371175"
+      ],
+      "market": "Middle East catalogue; 380-415 V/3 ph/50/60 Hz",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/thermaline-cooking-ranges/modular-cooking-range-line-700xp-2-hot-plate-electric-induction-cooking-top-hp-371175/",
+          "retrieved_at": "2026-10-27T15:11:57.505610+00:00",
+          "revision": "Current COD 371175",
+          "document_sha256": "210d926fc9770141a1203a6238c7dc11d53e32cf2dff96ce0d2d698581aca7a1"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/371175_700xp_2_hot_plate_electric_induction_cooking_top_hp.pdf?version=1790341051",
+          "retrieved_at": "2026-10-27",
+          "revision": "2026/10/16",
+          "pages": 3,
+          "visual_review": "Final technical-data page and dimensional/connection drawing inspected",
+          "document_sha256": "6f00ae8d25e3fabeed20316ab87190d0a783b81803c6b58fcd8757afafc2645e"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact COD/type agree; deduplicated by SKU and type against existing catalogue."
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors."
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation."
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact 10 kW input documented."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "380-415 V/3 ph/50/60 Hz"
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified."
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Electric-only model; no gas connection."
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Nominal dimensions exclude installation clearances. Read exact drawing. Approximately 150 mm gap or thermal insulation next to temperature-sensitive furniture is specified."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Official pages fetched 27 October 2026; PDF revision and hash retained."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Existing 14-column runtime schema and Cooking category; release requires exact-SKU search/add browser validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "reason": "Official manufacturer identity.",
+          "locator": "Product heading; PDF title",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "model": {
+          "value": "371175",
+          "status": "checked",
+          "reason": "Exact COD 371175; manufacturer type E7INED200P.",
+          "locator": "Product COD; PDF model list",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "w": {
+          "value": 400,
+          "status": "checked",
+          "reason": "Labelled nominal external width in mm; drawing corroboration.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "d": {
+          "value": 730,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "h": {
+          "value": 250,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation.",
+          "locator": "PDF p.1 features and final-page side drawing",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "reason": "Exact electric variant.",
+          "locator": "Electric specifications",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "kw": {
+          "value": 10,
+          "status": "checked",
+          "reason": "Exact SKU total electrical input, not extrapolated from another variant.",
+          "locator": "PDF final-page Total Watts / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "elec": {
+          "value": "380-415 V/3 ph/50/60 Hz",
+          "status": "checked",
+          "reason": "Exact voltage, phase and frequency; 3 versus 3N preserved.",
+          "locator": "PDF final-page Supply voltage / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "371175",
+        "Cooking",
+        "700XP 2-zone induction HP top, 5 kW per zone (H250 body height; guards/upstand extra)",
+        400,
+        730,
+        250,
+        "top",
+        "electric",
+        10,
+        "380-415 V/3 ph/50/60 Hz",
+        0,
+        0,
+        "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/thermaline-cooking-ranges/modular-cooking-range-line-700xp-2-hot-plate-electric-induction-cooking-top-hp-371175/"
+      ],
+      "installation_notes": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+      "regional_availability": "Supplier stock, local approval and project electrical suitability are not asserted."
+    },
+    "electroluxprofessional|371176": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|371176",
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "brand": "Electrolux Professional",
+      "model": "371176",
+      "manufacturer_sku": "371176",
+      "manufacturer_type": "E7INEH400P",
+      "aliases": [
+        "371176",
+        "E7INEH400P",
+        "9PDX371176"
+      ],
+      "market": "Middle East catalogue; 380-415 V/3 ph/50/60 Hz",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/thermaline-cooking-ranges/modular-cooking-range-line-700xp-4-hot-plate-electric-induction-cooking-top-hp-371176/",
+          "retrieved_at": "2026-10-27T15:11:57.505610+00:00",
+          "revision": "Current COD 371176",
+          "document_sha256": "bf4b56908daf3302cf6d2cdc48249663b0d06856f7b1276da2d471ed6944ed8b"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux%20Professional/English%20UK/700XP%204%20Zone%20El.%20Induction%20Cooking%20Top%20HP_371176_English%20UK.pdf?version=1788856945",
+          "retrieved_at": "2026-10-27",
+          "revision": "2026.06.24",
+          "pages": 2,
+          "visual_review": "Final technical-data page and dimensional/connection drawing inspected",
+          "document_sha256": "2d12a8391dac70a43b920a9bf4da8088ee72365c3c7feb266f6af822d921719e"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact COD/type agree; deduplicated by SKU and type against existing catalogue."
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors."
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation."
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact 20 kW input documented."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "380-415 V/3 ph/50/60 Hz"
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified."
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Electric-only model; no gas connection."
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Nominal dimensions exclude installation clearances. Read exact drawing. Approximately 150 mm gap or thermal insulation next to temperature-sensitive furniture is specified."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Official pages fetched 27 October 2026; PDF revision and hash retained."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Existing 14-column runtime schema and Cooking category; release requires exact-SKU search/add browser validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "reason": "Official manufacturer identity.",
+          "locator": "Product heading; PDF title",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "model": {
+          "value": "371176",
+          "status": "checked",
+          "reason": "Exact COD 371176; manufacturer type E7INEH400P.",
+          "locator": "Product COD; PDF model list",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "w": {
+          "value": 800,
+          "status": "checked",
+          "reason": "Labelled nominal external width in mm; drawing corroboration.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "d": {
+          "value": 730,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "h": {
+          "value": 250,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation.",
+          "locator": "PDF p.1 features and final-page side drawing",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "reason": "Exact electric variant.",
+          "locator": "Electric specifications",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "kw": {
+          "value": 20,
+          "status": "checked",
+          "reason": "Exact SKU total electrical input, not extrapolated from another variant.",
+          "locator": "PDF final-page Total Watts / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "elec": {
+          "value": "380-415 V/3 ph/50/60 Hz",
+          "status": "checked",
+          "reason": "Exact voltage, phase and frequency; 3 versus 3N preserved.",
+          "locator": "PDF final-page Supply voltage / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified.",
+          "locator": "PDF p.2, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "371176",
+        "Cooking",
+        "700XP 4-zone induction HP top, 5 kW per zone (H250 body height; guards/upstand extra)",
+        800,
+        730,
+        250,
+        "top",
+        "electric",
+        20,
+        "380-415 V/3 ph/50/60 Hz",
+        0,
+        0,
+        "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/thermaline-cooking-ranges/modular-cooking-range-line-700xp-4-hot-plate-electric-induction-cooking-top-hp-371176/"
+      ],
+      "installation_notes": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors.",
+      "regional_availability": "Supplier stock, local approval and project electrical suitability are not asserted."
+    },
+    "electroluxprofessional|371193": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|371193",
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "brand": "Electrolux Professional",
+      "model": "371193",
+      "manufacturer_sku": "371193",
+      "manufacturer_type": "E7FTEDCSI0",
+      "aliases": [
+        "371193",
+        "E7FTEDCSI0",
+        "9PDX371193"
+      ],
+      "market": "Middle East catalogue; 400 V/3 ph/50-60 Hz",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/food-preparation-knead-whip-sheet/modular-cooking-range-line-700xp-half-module-electric-fry-top-chromium-steel-371193/",
+          "retrieved_at": "2026-10-27T15:11:57.505610+00:00",
+          "revision": "Current COD 371193",
+          "document_sha256": "20d05a3f149d52536dd5e31ae950692cff6b8d17b126109230024a4828eb8ac9"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux%20Professional/English%20Middle%20East/700XP%201_2%20Module%20El.%20Fry%20Top%20-Chrome_371193_English%20Middle%20East.pdf?version=1793113181",
+          "retrieved_at": "2026-10-27",
+          "revision": "2026.10.08",
+          "pages": 3,
+          "visual_review": "Final technical-data page and dimensional/connection drawing inspected",
+          "document_sha256": "8b55b9d071c6285a5416af5542c469f820c4a9f6ebb73709f20b249d55513e16"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact COD/type agree; deduplicated by SKU and type against existing catalogue."
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height."
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation."
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact 4.2 kW input documented."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "400 V/3 ph/50-60 Hz"
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage."
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Electric-only model; no gas connection."
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Nominal dimensions exclude installation clearances. Read exact drawing. Approximately 150 mm gap or thermal insulation next to temperature-sensitive furniture is specified."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Official pages fetched 27 October 2026; PDF revision and hash retained."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Existing 14-column runtime schema and Cooking category; release requires exact-SKU search/add browser validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "reason": "Official manufacturer identity.",
+          "locator": "Product heading; PDF title",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "model": {
+          "value": "371193",
+          "status": "checked",
+          "reason": "Exact COD 371193; manufacturer type E7FTEDCSI0.",
+          "locator": "Product COD; PDF model list",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "w": {
+          "value": 400,
+          "status": "checked",
+          "reason": "Labelled nominal external width in mm; drawing corroboration.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "d": {
+          "value": 730,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "h": {
+          "value": 250,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation.",
+          "locator": "PDF p.1 features and final-page side drawing",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "reason": "Exact electric variant.",
+          "locator": "Electric specifications",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "kw": {
+          "value": 4.2,
+          "status": "checked",
+          "reason": "Exact SKU total electrical input, not extrapolated from another variant.",
+          "locator": "PDF final-page Total Watts / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "elec": {
+          "value": "400 V/3 ph/50-60 Hz",
+          "status": "checked",
+          "reason": "Exact voltage, phase and frequency; 3 versus 3N preserved.",
+          "locator": "PDF final-page Supply voltage / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "371193",
+        "Cooking",
+        "700XP 400mm griddle, smooth polished chrome, sloped (H250 body height; guards/upstand extra)",
+        400,
+        730,
+        250,
+        "top",
+        "electric",
+        4.2,
+        "400 V/3 ph/50-60 Hz",
+        0,
+        0,
+        "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/food-preparation-knead-whip-sheet/modular-cooking-range-line-700xp-half-module-electric-fry-top-chromium-steel-371193/"
+      ],
+      "installation_notes": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+      "regional_availability": "Supplier stock, local approval and project electrical suitability are not asserted."
+    },
+    "electroluxprofessional|371194": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|371194",
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "brand": "Electrolux Professional",
+      "model": "371194",
+      "manufacturer_sku": "371194",
+      "manufacturer_type": "E7FTEHCSI0",
+      "aliases": [
+        "371194",
+        "E7FTEHCSI0",
+        "9PDX371194"
+      ],
+      "market": "Middle East catalogue; 400 V/3 ph/50-60 Hz",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/food-preparation-knead-whip-sheet/modular-cooking-range-line-700xp-full-module-electric-fry-top-chromium-plated-371194/",
+          "retrieved_at": "2026-10-27T15:11:57.505610+00:00",
+          "revision": "Current COD 371194",
+          "document_sha256": "5526f876dad34226352513e51c18d7be364f89beb1f830157ed58287751f76db"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux%20Professional/English%20Middle%20East/700XP%20Full%20Module%20El.%20Fry%20Top%20-Chrome_371194-371197-371201_English%20Middle%20East.pdf?version=1773915687",
+          "retrieved_at": "2026-10-27",
+          "revision": "2026.10.16",
+          "pages": 3,
+          "visual_review": "Final technical-data page and dimensional/connection drawing inspected",
+          "document_sha256": "bddac7939caa54ba79004bdc904e8d8505725f0e0b029908adfde3aa48ced459"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact COD/type agree; deduplicated by SKU and type against existing catalogue."
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height."
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation."
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact 8.4 kW input documented."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "400 V/3 ph/50-60 Hz"
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage."
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Electric-only model; no gas connection."
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Nominal dimensions exclude installation clearances. Read exact drawing. Approximately 150 mm gap or thermal insulation next to temperature-sensitive furniture is specified."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Official pages fetched 27 October 2026; PDF revision and hash retained."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Existing 14-column runtime schema and Cooking category; release requires exact-SKU search/add browser validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "reason": "Official manufacturer identity.",
+          "locator": "Product heading; PDF title",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "model": {
+          "value": "371194",
+          "status": "checked",
+          "reason": "Exact COD 371194; manufacturer type E7FTEHCSI0.",
+          "locator": "Product COD; PDF model list",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "w": {
+          "value": 800,
+          "status": "checked",
+          "reason": "Labelled nominal external width in mm; drawing corroboration.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "d": {
+          "value": 730,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "h": {
+          "value": 250,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation.",
+          "locator": "PDF p.1 features and final-page side drawing",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "reason": "Exact electric variant.",
+          "locator": "Electric specifications",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "kw": {
+          "value": 8.4,
+          "status": "checked",
+          "reason": "Exact SKU total electrical input, not extrapolated from another variant.",
+          "locator": "PDF final-page Total Watts / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "elec": {
+          "value": "400 V/3 ph/50-60 Hz",
+          "status": "checked",
+          "reason": "Exact voltage, phase and frequency; 3 versus 3N preserved.",
+          "locator": "PDF final-page Supply voltage / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "371194",
+        "Cooking",
+        "700XP 800mm griddle, smooth polished chrome, sloped (H250 body height; guards/upstand extra)",
+        800,
+        730,
+        250,
+        "top",
+        "electric",
+        8.4,
+        "400 V/3 ph/50-60 Hz",
+        0,
+        0,
+        "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/food-preparation-knead-whip-sheet/modular-cooking-range-line-700xp-full-module-electric-fry-top-chromium-plated-371194/"
+      ],
+      "installation_notes": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+      "regional_availability": "Supplier stock, local approval and project electrical suitability are not asserted."
+    },
+    "electroluxprofessional|371197": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|371197",
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "brand": "Electrolux Professional",
+      "model": "371197",
+      "manufacturer_sku": "371197",
+      "manufacturer_type": "E7FTEHCPI0",
+      "aliases": [
+        "371197",
+        "E7FTEHCPI0",
+        "9PDX371197"
+      ],
+      "market": "Middle East catalogue; 400 V/3 ph/50-60 Hz",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/food-preparation-knead-whip-sheet/modular-cooking-range-line-700xp-full-module-electric-fry-top-chromium-plated-371197/",
+          "retrieved_at": "2026-10-27T15:11:57.505610+00:00",
+          "revision": "Current COD 371197",
+          "document_sha256": "40eead8904bffccb2ed48b655b85e16f5f8ea5886cf8043237324b98cee2b956"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux%20Professional/English%20Middle%20East/700XP%20Full%20Module%20El.%20Fry%20Top%20-Chrome_371194-371197-371201_English%20Middle%20East.pdf?version=1773915687",
+          "retrieved_at": "2026-10-27",
+          "revision": "2026.10.16",
+          "pages": 3,
+          "visual_review": "Final technical-data page and dimensional/connection drawing inspected",
+          "document_sha256": "bddac7939caa54ba79004bdc904e8d8505725f0e0b029908adfde3aa48ced459"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact COD/type agree; deduplicated by SKU and type against existing catalogue."
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height."
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation."
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact 8.4 kW input documented."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "400 V/3 ph/50-60 Hz"
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage."
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Electric-only model; no gas connection."
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Nominal dimensions exclude installation clearances. Read exact drawing. Approximately 150 mm gap or thermal insulation next to temperature-sensitive furniture is specified."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Official pages fetched 27 October 2026; PDF revision and hash retained."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Existing 14-column runtime schema and Cooking category; release requires exact-SKU search/add browser validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "reason": "Official manufacturer identity.",
+          "locator": "Product heading; PDF title",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "model": {
+          "value": "371197",
+          "status": "checked",
+          "reason": "Exact COD 371197; manufacturer type E7FTEHCPI0.",
+          "locator": "Product COD; PDF model list",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "w": {
+          "value": 800,
+          "status": "checked",
+          "reason": "Labelled nominal external width in mm; drawing corroboration.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "d": {
+          "value": 730,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "h": {
+          "value": 250,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation.",
+          "locator": "PDF p.1 features and final-page side drawing",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "reason": "Exact electric variant.",
+          "locator": "Electric specifications",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "kw": {
+          "value": 8.4,
+          "status": "checked",
+          "reason": "Exact SKU total electrical input, not extrapolated from another variant.",
+          "locator": "PDF final-page Total Watts / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "elec": {
+          "value": "400 V/3 ph/50-60 Hz",
+          "status": "checked",
+          "reason": "Exact voltage, phase and frequency; 3 versus 3N preserved.",
+          "locator": "PDF final-page Supply voltage / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage.",
+          "locator": "PDF p.3, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "371197",
+        "Cooking",
+        "700XP 800mm griddle, 2/3 smooth + 1/3 ribbed polished chrome (H250 body height; guards/upstand extra)",
+        800,
+        730,
+        250,
+        "top",
+        "electric",
+        8.4,
+        "400 V/3 ph/50-60 Hz",
+        0,
+        0,
+        "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/food-preparation-knead-whip-sheet/modular-cooking-range-line-700xp-full-module-electric-fry-top-chromium-plated-371197/"
+      ],
+      "installation_notes": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+      "regional_availability": "Supplier stock, local approval and project electrical suitability are not asserted."
+    },
+    "electroluxprofessional|371325": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|371325",
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "brand": "Electrolux Professional",
+      "model": "371325",
+      "manufacturer_sku": "371325",
+      "manufacturer_type": "E7IIKDAOMCA",
+      "aliases": [
+        "371325",
+        "E7IIKDAOMCA",
+        "9PDX371325"
+      ],
+      "market": "Middle East catalogue; 400 V/3 ph/50-60 Hz",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/food-preparation-knead-whip-sheet/modular-cooking-line-700xp-400mm-electric-fry-top-smooth-brushed-chrome-plate-371325/",
+          "retrieved_at": "2026-10-27T15:11:57.505610+00:00",
+          "revision": "Current COD 371325",
+          "document_sha256": "d038db647a53e0b16d3f576411d873275a6b5700013d51f576282b03d50d5ead"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/371321_371325_700xp_400mm_electric_fry_top_smooth_brushed_chrome_plate.pdf?version=1793113778",
+          "retrieved_at": "2026-10-27",
+          "revision": "2026/10/26",
+          "pages": 4,
+          "visual_review": "Final technical-data page and dimensional/connection drawing inspected",
+          "document_sha256": "e26936ec9b808c428d62d5eb8ff1230e7c238db60b3d843e4efe36f4da92f09a"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact COD/type agree; deduplicated by SKU and type against existing catalogue."
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height."
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation."
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact 4.2 kW input documented."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "400 V/3 ph/50-60 Hz"
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage."
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Electric-only model; no gas connection."
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Nominal dimensions exclude installation clearances. Read exact drawing. Use the manufacturer installation manual for clearances."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Official pages fetched 27 October 2026; PDF revision and hash retained."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Existing 14-column runtime schema and Cooking category; release requires exact-SKU search/add browser validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "reason": "Official manufacturer identity.",
+          "locator": "Product heading; PDF title",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "model": {
+          "value": "371325",
+          "status": "checked",
+          "reason": "Exact COD 371325; manufacturer type E7IIKDAOMCA.",
+          "locator": "Product COD; PDF model list",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "w": {
+          "value": 400,
+          "status": "checked",
+          "reason": "Labelled nominal external width in mm; drawing corroboration.",
+          "locator": "PDF p.4, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "d": {
+          "value": 730,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+          "locator": "PDF p.4, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "h": {
+          "value": 250,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+          "locator": "PDF p.4, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation.",
+          "locator": "PDF p.1 features and final-page side drawing",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "reason": "Exact electric variant.",
+          "locator": "Electric specifications",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "kw": {
+          "value": 4.2,
+          "status": "checked",
+          "reason": "Exact SKU total electrical input, not extrapolated from another variant.",
+          "locator": "PDF final-page Total Watts / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "elec": {
+          "value": "400 V/3 ph/50-60 Hz",
+          "status": "checked",
+          "reason": "Exact voltage, phase and frequency; 3 versus 3N preserved.",
+          "locator": "PDF final-page Supply voltage / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage.",
+          "locator": "PDF p.4, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage.",
+          "locator": "PDF p.4, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "371325",
+        "Cooking",
+        "700XP 400mm griddle, smooth brushed chrome, sloped (H250 body height; guards/upstand extra)",
+        400,
+        730,
+        250,
+        "top",
+        "electric",
+        4.2,
+        "400 V/3 ph/50-60 Hz",
+        0,
+        0,
+        "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/food-preparation-knead-whip-sheet/modular-cooking-line-700xp-400mm-electric-fry-top-smooth-brushed-chrome-plate-371325/"
+      ],
+      "installation_notes": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+      "regional_availability": "Supplier stock, local approval and project electrical suitability are not asserted."
+    },
+    "electroluxprofessional|371328": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|371328",
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "brand": "Electrolux Professional",
+      "model": "371328",
+      "manufacturer_sku": "371328",
+      "manufacturer_type": "E7IINDAOMCA",
+      "aliases": [
+        "371328",
+        "E7IINDAOMCA",
+        "9PDX371328"
+      ],
+      "market": "Middle East catalogue; 400 V/3 ph/50/60 Hz",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/food-preparation-knead-whip-sheet/modular-cooking-line-700xp-400mm-electric-fry-top-smooth-brushed-chrome-horizontal-plate-371328/",
+          "retrieved_at": "2026-10-27T15:11:57.505610+00:00",
+          "revision": "Current COD 371328",
+          "document_sha256": "cb18b7c3d26e23fdb09fc7260da08ace247447c7f7abf82910478f509e93c7a5"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/371328_700xp_400mm_electric_fry_top_smooth_brushed_chrome_horizontal_plate.pdf?version=1793113722",
+          "retrieved_at": "2026-10-27",
+          "revision": "2026/10/21",
+          "pages": 4,
+          "visual_review": "Final technical-data page and dimensional/connection drawing inspected",
+          "document_sha256": "883387f18125c60c50250450399625b0ef76f192d41facd7186d0a44d5d35e97"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact COD/type agree; deduplicated by SKU and type against existing catalogue."
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height."
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation."
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact 4.2 kW input documented."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "400 V/3 ph/50/60 Hz"
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage."
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Electric-only model; no gas connection."
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Nominal dimensions exclude installation clearances. Read exact drawing. Use the manufacturer installation manual for clearances."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Official pages fetched 27 October 2026; PDF revision and hash retained."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Existing 14-column runtime schema and Cooking category; release requires exact-SKU search/add browser validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "reason": "Official manufacturer identity.",
+          "locator": "Product heading; PDF title",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "model": {
+          "value": "371328",
+          "status": "checked",
+          "reason": "Exact COD 371328; manufacturer type E7IINDAOMCA.",
+          "locator": "Product COD; PDF model list",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "w": {
+          "value": 400,
+          "status": "checked",
+          "reason": "Labelled nominal external width in mm; drawing corroboration.",
+          "locator": "PDF p.4, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "d": {
+          "value": 730,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+          "locator": "PDF p.4, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "h": {
+          "value": 250,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+          "locator": "PDF p.4, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation.",
+          "locator": "PDF p.1 features and final-page side drawing",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "reason": "Exact electric variant.",
+          "locator": "Electric specifications",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "kw": {
+          "value": 4.2,
+          "status": "checked",
+          "reason": "Exact SKU total electrical input, not extrapolated from another variant.",
+          "locator": "PDF final-page Total Watts / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "elec": {
+          "value": "400 V/3 ph/50/60 Hz",
+          "status": "checked",
+          "reason": "Exact voltage, phase and frequency; 3 versus 3N preserved.",
+          "locator": "PDF final-page Supply voltage / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage.",
+          "locator": "PDF p.4, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage.",
+          "locator": "PDF p.4, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "371328",
+        "Cooking",
+        "700XP 400mm griddle, smooth brushed chrome, horizontal (H250 body height; guards/upstand extra)",
+        400,
+        730,
+        250,
+        "top",
+        "electric",
+        4.2,
+        "400 V/3 ph/50/60 Hz",
+        0,
+        0,
+        "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/food-preparation-knead-whip-sheet/modular-cooking-line-700xp-400mm-electric-fry-top-smooth-brushed-chrome-horizontal-plate-371328/"
+      ],
+      "installation_notes": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+      "regional_availability": "Supplier stock, local approval and project electrical suitability are not asserted."
+    },
+    "electroluxprofessional|371340": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|371340",
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "brand": "Electrolux Professional",
+      "model": "371340",
+      "manufacturer_sku": "371340",
+      "manufacturer_type": "E7IIKDAOMEA",
+      "aliases": [
+        "371340",
+        "E7IIKDAOMEA",
+        "9PDX371340"
+      ],
+      "market": "Middle East catalogue; 400 V/3 ph/50-60 Hz",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/food-preparation-knead-whip-sheet/modular-cooking-line-700xp-800mm-electric-fry-top-smooth-brushed-chrome-plate-371340/",
+          "retrieved_at": "2026-10-27T15:11:57.505610+00:00",
+          "revision": "Current COD 371340",
+          "document_sha256": "6d79cad85f7952bbd63852751916675df0e5b181f5a0de165da6e5b2304dc981"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/371322_371340_700xp_800mm_electric_fry_top_smooth_brushed_chrome_plate.pdf?version=1793113721",
+          "retrieved_at": "2026-10-27",
+          "revision": "2026/10/21",
+          "pages": 4,
+          "visual_review": "Final technical-data page and dimensional/connection drawing inspected",
+          "document_sha256": "9ce8fa2dd69a9b39ba80ef36bb133f3dac99b4f23cd52a808702e7e290d72af9"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact COD/type agree; deduplicated by SKU and type against existing catalogue."
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height."
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation."
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact 8.4 kW input documented."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "400 V/3 ph/50-60 Hz"
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage."
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Electric-only model; no gas connection."
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Nominal dimensions exclude installation clearances. Read exact drawing. Use the manufacturer installation manual for clearances."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Official pages fetched 27 October 2026; PDF revision and hash retained."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Existing 14-column runtime schema and Cooking category; release requires exact-SKU search/add browser validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "reason": "Official manufacturer identity.",
+          "locator": "Product heading; PDF title",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "model": {
+          "value": "371340",
+          "status": "checked",
+          "reason": "Exact COD 371340; manufacturer type E7IIKDAOMEA.",
+          "locator": "Product COD; PDF model list",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "w": {
+          "value": 800,
+          "status": "checked",
+          "reason": "Labelled nominal external width in mm; drawing corroboration.",
+          "locator": "PDF p.4, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "d": {
+          "value": 730,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+          "locator": "PDF p.4, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "h": {
+          "value": 250,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+          "locator": "PDF p.4, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation.",
+          "locator": "PDF p.1 features and final-page side drawing",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "reason": "Exact electric variant.",
+          "locator": "Electric specifications",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "kw": {
+          "value": 8.4,
+          "status": "checked",
+          "reason": "Exact SKU total electrical input, not extrapolated from another variant.",
+          "locator": "PDF final-page Total Watts / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "elec": {
+          "value": "400 V/3 ph/50-60 Hz",
+          "status": "checked",
+          "reason": "Exact voltage, phase and frequency; 3 versus 3N preserved.",
+          "locator": "PDF final-page Supply voltage / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage.",
+          "locator": "PDF p.4, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage.",
+          "locator": "PDF p.4, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "371340",
+        "Cooking",
+        "700XP 800mm griddle, smooth brushed chrome, sloped (H250 body height; guards/upstand extra)",
+        800,
+        730,
+        250,
+        "top",
+        "electric",
+        8.4,
+        "400 V/3 ph/50-60 Hz",
+        0,
+        0,
+        "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/food-preparation-knead-whip-sheet/modular-cooking-line-700xp-800mm-electric-fry-top-smooth-brushed-chrome-plate-371340/"
+      ],
+      "installation_notes": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+      "regional_availability": "Supplier stock, local approval and project electrical suitability are not asserted."
+    },
+    "electroluxprofessional|371347": {
+      "schema_version": 1,
+      "key": "electroluxprofessional|371347",
+      "batch_id": "2026-10-27-electrolux-cooking-20",
+      "brand": "Electrolux Professional",
+      "model": "371347",
+      "manufacturer_sku": "371347",
+      "manufacturer_type": "E7IIMDAOMEA",
+      "aliases": [
+        "371347",
+        "E7IIMDAOMEA",
+        "9PDX371347"
+      ],
+      "market": "Middle East catalogue; 400 V/3 ph/50-60 Hz",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-27T15:11:57.505610+00:00",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/food-preparation-knead-whip-sheet/modular-cooking-line-700xp-800mm-electric-fry-top-smooth-and-ribbed-brushed-chrome-plate-371347/",
+          "retrieved_at": "2026-10-27T15:11:57.505610+00:00",
+          "revision": "Current COD 371347",
+          "document_sha256": "7675235c1f04deea9d70ca003a372ecd9aac0012b6ad9eb2289aa946a81db38e"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux%20Professional/English/371329_371347_700xp_800mm_electric_fry_top_smooth_and_ribbed_brushed_chrome_plate.pdf?version=1793113722",
+          "retrieved_at": "2026-10-27",
+          "revision": "2026/10/26",
+          "pages": 4,
+          "visual_review": "Final technical-data page and dimensional/connection drawing inspected",
+          "document_sha256": "d5bfa28aa85397e4310218e8e6d339d775e20a1c8d8f0d3265c10f554e8ec1e0"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact COD/type agree; deduplicated by SKU and type against existing catalogue."
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height."
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation."
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact 8.4 kW input documented."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "400 V/3 ph/50-60 Hz"
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage."
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Electric-only model; no gas connection."
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Nominal dimensions exclude installation clearances. Read exact drawing. Use the manufacturer installation manual for clearances."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Official pages fetched 27 October 2026; PDF revision and hash retained."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Existing 14-column runtime schema and Cooking category; release requires exact-SKU search/add browser validation."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Electrolux Professional",
+          "status": "checked",
+          "reason": "Official manufacturer identity.",
+          "locator": "Product heading; PDF title",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "model": {
+          "value": "371347",
+          "status": "checked",
+          "reason": "Exact COD 371347; manufacturer type E7IIMDAOMEA.",
+          "locator": "Product COD; PDF model list",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "w": {
+          "value": 800,
+          "status": "checked",
+          "reason": "Labelled nominal external width in mm; drawing corroboration.",
+          "locator": "PDF p.4, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "d": {
+          "value": 730,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+          "locator": "PDF p.4, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "h": {
+          "value": 250,
+          "status": "checked",
+          "reason": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+          "locator": "PDF p.4, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "reason": "Manufacturer specifies countertop/open-base/bridge installation.",
+          "locator": "PDF p.1 features and final-page side drawing",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "reason": "Exact electric variant.",
+          "locator": "Electric specifications",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "kw": {
+          "value": 8.4,
+          "status": "checked",
+          "reason": "Exact SKU total electrical input, not extrapolated from another variant.",
+          "locator": "PDF final-page Total Watts / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "elec": {
+          "value": "400 V/3 ph/50-60 Hz",
+          "status": "checked",
+          "reason": "Exact voltage, phase and frequency; 3 versus 3N preserved.",
+          "locator": "PDF final-page Supply voltage / exact SKU column",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage.",
+          "locator": "PDF p.4, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "reason": "Electric dry-cooking appliance. Exact connection drawing identifies EI electrical inlet and EQ equipotential screw; no water, gas or building drain connection is specified. Surface fat drains into a removable collector, not building drainage.",
+          "locator": "PDF p.4, technical data and connection drawing; product Specifications / Key Information",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "candidate_runtime_row": [
+        "Electrolux Professional",
+        "371347",
+        "Cooking",
+        "700XP 800mm griddle, 2/3 smooth + 1/3 ribbed brushed chrome (H250 body height; guards/upstand extra)",
+        800,
+        730,
+        250,
+        "top",
+        "electric",
+        8.4,
+        "400 V/3 ph/50-60 Hz",
+        0,
+        0,
+        "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/food-preparation-knead-whip-sheet/modular-cooking-line-700xp-800mm-electric-fry-top-smooth-and-ribbed-brushed-chrome-plate-371347/"
+      ],
+      "installation_notes": "Manufacturer nominal W/D and body/working height; not the full protrusion or installation envelope. Use the linked drawing for upstands, controls, feet and open doors. Drawing shows 782 mm overall depth and 355 mm overall height; runtime uses nominal 730 mm depth and 250 mm body height.",
+      "regional_availability": "Supplier stock, local approval and project electrical suitability are not asserted."
     }
   }
 }
