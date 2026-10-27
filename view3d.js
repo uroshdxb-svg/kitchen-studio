@@ -14,6 +14,7 @@ const KS3D=(function(){
     if(kind==="steel")for(let y=0;y<256;y++){const a=.012+rnd()*.045;x.fillStyle=`rgba(40,45,48,${a})`;x.fillRect(0,y,256,1);}
     else for(let i=0;i<4500;i++){const a=rnd()*.045;x.fillStyle=`rgba(60,65,60,${a})`;x.fillRect(rnd()*256,rnd()*256,1+rnd()*2,1+rnd()*2);}
     if(kind==="floor"){x.strokeStyle="#90918b";x.lineWidth=2;x.strokeRect(1,1,254,254);}
+    if(kind==="wall"){x.strokeStyle="#c9ceca";x.lineWidth=2;x.strokeRect(1,1,254,254);}
     const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.encoding=THREE.sRGBEncoding;t.anisotropy=Math.min(4,R.capabilities.getMaxAnisotropy());return t;
   }
   // A neutral studio environment provides broad reflections on stainless steel.
@@ -168,14 +169,15 @@ const KS3D=(function(){
     const fl=new THREE.Mesh(new THREE.PlaneGeometry(room.w,room.d),new THREE.MeshStandardMaterial({map:tex,roughness:.85,metalness:0}));fl.userData.roomResource=true;fl.rotation.x=-Math.PI/2;fl.position.set(room.w/2,0,room.d/2);fl.receiveShadow=true;root.add(fl);
     poly=Array.isArray(state.room.poly)&&state.room.poly.length>2?state.room.poly.map(p=>[p[0]/1000,p[1]/1000]):null;
     const wallMat=new THREE.MeshStandardMaterial({color:0xe5e5df,roughness:.95,metalness:0});
-    if(!poly){const geo=new THREE.BoxGeometry(room.w,room.h,room.d);geo.clearGroups();for(let i=0;i<6;i++)if(i!==3)geo.addGroup(i*6,6,0);
-      const shell=new THREE.Mesh(geo,[new THREE.MeshStandardMaterial({color:0xe5e5df,roughness:.95,metalness:0,side:THREE.BackSide})]);shell.userData.roomResource=true;shell.position.set(room.w/2,room.h/2+.001,room.d/2);shell.receiveShadow=true;root.add(shell);wallMat.dispose();}
+    const tileWall=(length,side)=>{const map=surface("wall");map.repeat.set(length/.6,room.h/.3);return new THREE.MeshStandardMaterial({map,roughness:.92,metalness:0,side:side||THREE.FrontSide});};
+    if(!poly){const geo=new THREE.BoxGeometry(room.w,room.h,room.d);geo.clearGroups();for(let i=0;i<6;i++)if(i!==3)geo.addGroup(i*6,6,i);
+      const shell=new THREE.Mesh(geo,[tileWall(room.d,THREE.BackSide),tileWall(room.d,THREE.BackSide),new THREE.MeshStandardMaterial({color:0xe5e5df,side:THREE.BackSide}),new THREE.MeshBasicMaterial({visible:false}),tileWall(room.w,THREE.BackSide),tileWall(room.w,THREE.BackSide)]);shell.userData.roomResource=true;shell.position.set(room.w/2,room.h/2+.001,room.d/2);shell.receiveShadow=true;root.add(shell);wallMat.dispose();}
     else{fl.visible=false;const sh=new THREE.Shape();poly.forEach((p,i)=>i?sh.lineTo(p[0],p[1]):sh.moveTo(p[0],p[1]));const sg=new THREE.ShapeGeometry(sh);
       const tex2=tex.clone();tex2.needsUpdate=true;tex2.repeat.set(1/.3,1/.3);const f2=new THREE.Mesh(sg,new THREE.MeshStandardMaterial({map:tex2,roughness:.85,metalness:0,side:THREE.DoubleSide}));f2.userData.roomResource=true;f2.rotation.x=Math.PI/2;f2.receiveShadow=true;root.add(f2);
       const ce=new THREE.Mesh(sg,wallMat);ce.userData.roomResource=true;ce.rotation.x=Math.PI/2;ce.position.y=room.h;root.add(ce);
       for(let i=0;i<poly.length;i++){const a=poly[i],b=poly[(i+1)%poly.length],dx=b[0]-a[0],dz=b[1]-a[1],L=Math.hypot(dx,dz);if(L<.01)continue;
         let th=Math.atan2(-dz,dx);const mx=(a[0]+b[0])/2,mz=(a[1]+b[1])/2;if(!inPoly(mx-dz/L*.05,mz+dx/L*.05))th+=Math.PI;
-        const w=new THREE.Mesh(new THREE.PlaneGeometry(L,room.h),wallMat);w.userData.roomResource=true;w.position.set(mx,room.h/2,mz);w.rotation.y=th;w.receiveShadow=true;root.add(w);}}
+        const w=new THREE.Mesh(new THREE.PlaneGeometry(L,room.h),tileWall(L));w.userData.roomResource=true;w.position.set(mx,room.h/2,mz);w.rotation.y=th;w.receiveShadow=true;root.add(w);}}
     blocks=[];
     for(const it of state.items){
       const g=build(it,symOf(it)),W=fw(it)/1000,D=fd(it)/1000,z=zOf(it)/1000;
