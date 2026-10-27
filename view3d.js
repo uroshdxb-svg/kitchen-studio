@@ -27,7 +27,10 @@ const KS3D=(function(){
   function roundedBox(w,h,d){
     const r=Math.min(4,w*.08,h*.08,d*.08),geo=new THREE.BoxGeometry(w,h,d,4,4,4),p=geo.attributes.position,n=geo.attributes.normal;
     for(let i=0;i<p.count;i++){
-      const x=p.getX(i),y=p.getY(i),z=p.getZ(i),cx=THREE.MathUtils.clamp(x,-w/2+r,w/2-r),cy=THREE.MathUtils.clamp(y,-h/2+r,h/2-r),cz=THREE.MathUtils.clamp(z,-d/2+r,d/2-r);
+      // Place intermediate vertices at the bevel, rather than across the face;
+      // otherwise the normals make large flat panels look swollen.
+      const near=(v,size)=>Math.abs(v)>size*.1&&Math.abs(v)<size*.4?Math.sign(v)*(size/2-r):v;
+      const x=near(p.getX(i),w),y=near(p.getY(i),h),z=near(p.getZ(i),d),cx=THREE.MathUtils.clamp(x,-w/2+r,w/2-r),cy=THREE.MathUtils.clamp(y,-h/2+r,h/2-r),cz=THREE.MathUtils.clamp(z,-d/2+r,d/2-r);
       const v=new THREE.Vector3(x-cx,y-cy,z-cz).normalize();p.setXYZ(i,cx+v.x*r,cy+v.y*r,cz+v.z*r);n.setXYZ(i,v.x,v.y,v.z);
     }
     p.needsUpdate=n.needsUpdate=true;geo.userData.ownedByScene=true;return geo;
@@ -50,8 +53,8 @@ const KS3D=(function(){
   function B(g,x,y,z,w,h,d,m,edge){if(!(w>0&&h>0&&d>0))return;const o=new THREE.Mesh(edge?roundedBox(w,h,d):UNIT,m);if(!edge)o.scale.set(w,h,d);o.position.set(x+w/2,y+h/2,z+d/2);o.castShadow=o.receiveShadow=true;g.add(o);return o;}
   function Cy(g,cx,y,cz,r,h,m,axis){const o=new THREE.Mesh(UCYL,m);o.scale.set(r,h,r);o.position.set(cx,y+h/2,cz);if(axis==="z"){o.rotation.x=Math.PI/2;o.position.set(cx,y,cz);}if(axis==="x"){o.rotation.z=Math.PI/2;o.position.set(cx,y,cz);}o.castShadow=true;g.add(o);return o;}
   const feet=(g,w,d,fh)=>{for(const [x,z] of [[50,50],[w-100,50],[50,d-110],[w-100,d-110]])B(g,x,0,z,50,fh,50,M.steel2);};
-  const handleH=(g,x,y,z,len)=>{B(g,x,y,z,len,22,40,M.steel2);};
-  const handleV=(g,x,y,z,len)=>{B(g,x,y,z,22,len,40,M.steel2);};
+  const handleH=(g,x,y,z,len)=>{if(len<=0)return;const r=Math.min(10,len/10);B(g,x,y,z,2*r,2*r,32,M.steel2);B(g,x+len-2*r,y,z,2*r,2*r,32,M.steel2);Cy(g,x+len/2,y+r,z+32,r,len,M.steel2,"x");};
+  const handleV=(g,x,y,z,len)=>{if(len<=0)return;const r=Math.min(10,len/10);B(g,x,y,z,2*r,2*r,32,M.steel2);B(g,x,y+len-2*r,z,2*r,2*r,32,M.steel2);Cy(g,x+r,y,z+32,r,len,M.steel2);};
   const knobRow=(g,n,w,y,z)=>{for(let i=0;i<n;i++)Cy(g,w*(i+.5)/n,y,z+12,Math.min(24,w/n*.2),24,M.dark,"z");};
   function tap(g,cx,y,cz){Cy(g,cx,y,cz,14,260,M.water);B(g,cx-10,y+250,cz,20,20,190,M.water);}
 
@@ -77,7 +80,8 @@ const KS3D=(function(){
       case "hsoven":case "salamander":body();B(g,w*.06,h*.08,F,w*.88,h*.62,14,M.steel2,true);B(g,w*.12,h*.16,F+14,w*.76,h*.4,4,M.glass);handleH(g,w*.2,h*.62,F+14,w*.6);B(g,w*.3,h*.78,F,w*.4,h*.14,5,M.screen);break;
       case "tiltpan":B(g,0,0,0,w*.1,h*.9,d,M.steel,true);B(g,w*.9,0,0,w*.1,h*.9,d,M.steel,true);B(g,w*.1,h*.38,60,w*.8,h*.4,d-120,M.steel,true);B(g,w*.08,h*.78,40,w*.84,h*.08,d-80,M.steel2,true);B(g,w*.91,h*.62,F,w*.08,h*.18,6,M.screen);break;
       case "fridge":{feet(g,w,d,fh);body();const n=w>1000?2:1,dw=w/n,gr=Math.min(190,h*.1);B(g,w*.06,h-gr+25,F,w*.88,gr-50,8,M.dark);
-        for(let i=0;i<n;i++){B(g,dw*i+10,fh+10,F,dw-20,h-fh-gr-20,28,M.steel,true);const hx=n===2?(i?dw+50:dw-72):50;handleV(g,hx,fh+(h-fh)*.4,F+28,(h-fh)*.22);}break;}
+        for(let y=h-gr+35;y<h-30;y+=21)B(g,w*.09,y,F+8,w*.82,5,4,M.steel2);
+        for(let i=0;i<n;i++){B(g,dw*i+7,fh+7,F,dw-14,h-fh-gr-14,10,M.dark);B(g,dw*i+13,fh+13,F+10,dw-26,h-fh-gr-26,20,M.steel,true);const hx=n===2?(i?dw+50:dw-72):50;handleV(g,hx,fh+(h-fh)*.4,F+30,(h-fh)*.22);}break;}
       case "counter":{feet(g,w,d,fh);B(g,0,fh,0,w,h-fh-40,d,M.steel,true);B(g,-10,h-40,-5,w+20,40,d+20,M.steel2,true);const comp=Math.min(420,w*.26),n=Math.max(1,Math.round((w-comp)/460)),dw=(w-comp)/n;
         for(let y=fh+60;y<h-130;y+=50)B(g,40,y,F,comp-80,22,6,M.dark);
         const nd=KS_drawerSecs(it,n),dh=(h-fh-90)/2;for(let i=0;i<n;i++){const x0=comp+dw*i;if(i<nd)for(let j=0;j<2;j++){const y0=fh+20+j*(dh+10);B(g,x0+8,y0,F,dw-16,dh,24,M.steel,true);handleH(g,x0+dw*.3,y0+dh-50,F+24,dw*.4);}else{B(g,x0+8,fh+20,F,dw-16,h-fh-80,24,M.steel,true);handleH(g,x0+dw*.3,h-120,F+24,dw*.4);}}
@@ -111,12 +115,17 @@ const KS3D=(function(){
       case "arch:water":Cy(g,w/2,0,d/2,16,550,M.waterb);B(g,w/2-35,480,d/2-35,70,70,70,M.waterb);break;
       case "arch:power":B(g,w/2-150,1300,d/2-40,300,400,80,M.powr,true);break;
       case "ss:table":case "ss:landing":case "ss:sink1":case "ss:sink2":case "ss:sink3":{
-        const cast=o.includes("Castors"),lb=cast?110:0;B(g,0,h-40,0,w,40,d,M.steel,true);for(const [x,z] of [[30,30],[w-70,30],[30,d-70],[w-70,d-70]]){B(g,x,lb,z,40,h-40-lb,40,M.steel2);if(cast){Cy(g,x+20,55,z+20,55,30,M.rubber,"x");}}
+        const cast=o.includes("Castors"),lb=cast?110:0;const n=({"ss:sink1":1,"ss:sink2":2,"ss:sink3":3})[sym]||0;
+        const Ld=o.includes("Left drainer"),Rd=o.includes("Right drainer"),x0=Ld?w*.32:60,x1=Rd?w*.68:w-60,bw=Math.min(600,(x1-x0-50*(n-1))/Math.max(n,1)),bd=Math.min(520,d-210),tot=n*bw+50*(n-1),sx=x0+(x1-x0-tot)/2,bz=(d-bd)/2+25;
+        if(n&&bw>20&&bd>20&&sx>=0&&sx+tot<=w&&bz>=0&&bz+bd<=d){
+          B(g,0,h-40,0,w,40,bz,M.steel,true);B(g,0,h-40,bz+bd,w,40,d-bz-bd,M.steel,true);
+          let edge=0;for(let i=0;i<n;i++){const bx=sx+i*(bw+50);B(g,edge,h-40,bz,bx-edge,40,bd,M.steel,true);edge=bx+bw;}B(g,edge,h-40,bz,w-edge,40,bd,M.steel,true);
+        }else B(g,0,h-40,0,w,40,d,M.steel,true);
+        for(const [x,z] of [[30,30],[w-70,30],[30,d-70],[w-70,d-70]]){B(g,x,lb,z,40,h-40-lb,40,M.steel2);if(cast){Cy(g,x+20,55,z+20,55,30,M.rubber,"x");}}
         if(o.includes("Undershelf"))B(g,30,220,30,w-60,30,d-60,M.steel,true);if(o.some(x=>x.startsWith("Upstand")))B(g,0,h,0,w,100,20,M.steel,true);
         if(o.includes("Drawer"))B(g,w*.1,h-190,d-420,w*.3,150,425,M.steel2,true);
-        const n=({"ss:sink1":1,"ss:sink2":2,"ss:sink3":3})[sym]||0;
-        if(n){const Ld=o.includes("Left drainer"),Rd=o.includes("Right drainer"),x0=Ld?w*.32:60,x1=Rd?w*.68:w-60,bw=Math.min(600,(x1-x0-50*(n-1))/n),bd=Math.min(520,d-210),tot=n*bw+50*(n-1),sx=x0+(x1-x0-tot)/2,bz=(d-bd)/2+25;
-          for(let i=0;i<n;i++){const bx=sx+i*(bw+50);B(g,bx,h-300,bz,bw,260,bd,M.steel2,true);B(g,bx+8,h,bz+8,bw-16,2,bd-16,M.dark);tap(g,bx+bw/2,h,bz-50);}}
+        if(n&&bw>20&&bd>20&&sx>=0&&sx+tot<=w&&bz>=0&&bz+bd<=d){
+          for(let i=0;i<n;i++){const bx=sx+i*(bw+50),bottom=h-260;B(g,bx,bottom,bz,bw,10,bd,M.steel2,true);B(g,bx,bottom,bz,10,260,bd,M.steel2);B(g,bx+bw-10,bottom,bz,10,260,bd,M.steel2);B(g,bx,bottom,bz,bw,260,10,M.steel2);B(g,bx,bottom,bz+bd-10,bw,260,10,M.steel2);Cy(g,bx+bw/2,bottom+10,bz+bd/2,22,2,M.dark);tap(g,bx+bw/2,h,bz-50);}}
         if(o.includes("Pre-rinse sink")){B(g,w-560,h-300,(d-450)/2,480,260,450,M.steel2,true);B(g,w-552,h,(d-450)/2+8,464,2,434,M.dark);Cy(g,w-320,h,55,14,900,M.water);}
         break;}
       case "ss:hand":B(g,0,h-200,0,w,200,d,M.steel,true);B(g,w*.12,h,d*.3,w*.76,2,d*.58,M.dark);tap(g,w/2,h,50);Cy(g,w/2,h*.45,d*.4,22,h*.55-200,M.steel2);break;
@@ -146,7 +155,7 @@ const KS3D=(function(){
 
   function rebuild(state,selId,C,zOf,symOf,fw,fd){
     if(!inited)return;
-    root.traverse(o=>{if(o.userData.selectionMaterial)o.material.dispose();if(o.geometry&&o.geometry.userData.ownedByScene)o.geometry.dispose();if(o.userData.roomResource){if(o.geometry)o.geometry.dispose();if(o.material){if(o.material.map)o.material.map.dispose();o.material.dispose();}}});
+    root.traverse(o=>{if(o.userData.selectionMaterial)o.material.dispose();if(o.geometry&&o.geometry.userData.ownedByScene)o.geometry.dispose();if(o.userData.roomResource){if(o.geometry)o.geometry.dispose();if(o.material){for(const m of (Array.isArray(o.material)?o.material:[o.material])){if(m.map)m.map.dispose();m.dispose();}}}});
     while(root.children.length)root.remove(root.children[0]);
     room={w:state.room.w/1000,d:state.room.d/1000,h:state.room.h/1000};
     scene.background=new THREE.Color(C.sunk||"#dde3e8");
@@ -159,7 +168,8 @@ const KS3D=(function(){
     const fl=new THREE.Mesh(new THREE.PlaneGeometry(room.w,room.d),new THREE.MeshStandardMaterial({map:tex,roughness:.85,metalness:0}));fl.userData.roomResource=true;fl.rotation.x=-Math.PI/2;fl.position.set(room.w/2,0,room.d/2);fl.receiveShadow=true;root.add(fl);
     poly=Array.isArray(state.room.poly)&&state.room.poly.length>2?state.room.poly.map(p=>[p[0]/1000,p[1]/1000]):null;
     const wallMat=new THREE.MeshStandardMaterial({color:0xe5e5df,roughness:.95,metalness:0});
-    if(!poly){const shell=new THREE.Mesh(new THREE.BoxGeometry(room.w,room.h,room.d),new THREE.MeshStandardMaterial({color:0xe5e5df,roughness:.95,metalness:0,side:THREE.BackSide}));shell.userData.roomResource=true;shell.position.set(room.w/2,room.h/2+.001,room.d/2);shell.receiveShadow=true;root.add(shell);wallMat.dispose();}
+    if(!poly){const geo=new THREE.BoxGeometry(room.w,room.h,room.d);geo.clearGroups();for(let i=0;i<6;i++)if(i!==3)geo.addGroup(i*6,6,0);
+      const shell=new THREE.Mesh(geo,[new THREE.MeshStandardMaterial({color:0xe5e5df,roughness:.95,metalness:0,side:THREE.BackSide})]);shell.userData.roomResource=true;shell.position.set(room.w/2,room.h/2+.001,room.d/2);shell.receiveShadow=true;root.add(shell);wallMat.dispose();}
     else{fl.visible=false;const sh=new THREE.Shape();poly.forEach((p,i)=>i?sh.lineTo(p[0],p[1]):sh.moveTo(p[0],p[1]));const sg=new THREE.ShapeGeometry(sh);
       const tex2=tex.clone();tex2.needsUpdate=true;tex2.repeat.set(1/.3,1/.3);const f2=new THREE.Mesh(sg,new THREE.MeshStandardMaterial({map:tex2,roughness:.85,metalness:0,side:THREE.DoubleSide}));f2.userData.roomResource=true;f2.rotation.x=Math.PI/2;f2.receiveShadow=true;root.add(f2);
       const ce=new THREE.Mesh(sg,wallMat);ce.userData.roomResource=true;ce.rotation.x=Math.PI/2;ce.position.y=room.h;root.add(ce);
