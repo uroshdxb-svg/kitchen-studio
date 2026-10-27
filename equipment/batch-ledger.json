@@ -1,13 +1,14 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-16",
+  "updated_at": "2026-10-27T15:11:57.505610+00:00",
   "target": {
     "minimum_live_count": 1001,
     "deadline": "2026-10-31",
     "daily_aim": [
       35,
       40
-    ]
+    ],
+    "deadline_status": "Historical target; no autonomous execution or delivery date commitment"
   },
   "baseline": {
     "main_sha": "f44cb7cf826ba4a62de0652728b52c1783919597",
@@ -312,6 +313,59 @@
         "run_id": "catalog-local-recovery-20261016T050118Z",
         "scope": "Authorized local recovery after original/replacement durable admission failures; no newworkerorschedule"
       }
+    },
+    {
+      "id": "2026-10-27-electrolux-cooking-20",
+      "manufacturer": "Electrolux Professional",
+      "models": [
+        "371014",
+        "371015",
+        "371016",
+        "371017",
+        "371018",
+        "371019",
+        "371021",
+        "371024",
+        "371025",
+        "371026",
+        "371152",
+        "371175",
+        "371176",
+        "371193",
+        "371194",
+        "371197",
+        "371325",
+        "371328",
+        "371340",
+        "371347"
+      ],
+      "state": "validated-awaiting-release",
+      "source_before_sha": "8e8167cb3a3920e6b534afdba1c3a7201e6f6374",
+      "source_before": 487,
+      "source_after": 507,
+      "verified_additions": 20,
+      "merged_additions": 0,
+      "live_verified_additions": 0,
+      "evidence": "catalogue-evidence.json",
+      "csv": "equipment/batches/2026-10-27-electrolux-cooking-20.csv",
+      "limitations": [
+        "Nominal footprint and body/working heights; full installation envelope and clearances remain in linked exact-model drawings.",
+        "Supplier stock and local compliance not asserted.",
+        "371152 is the marine variant."
+      ],
+      "validation": {
+        "build": "pass",
+        "discovery_audit": "pass",
+        "mcp_regressions": "pass",
+        "structural_evidence": "pass",
+        "prior_rows_preserved": 487,
+        "normalized_duplicates": 0,
+        "repeat_import_additions": 0,
+        "browser": "pass: 20 exact-SKU search/add checks, dimensions and all utility fields; zero page errors and zero customer writes",
+        "local_browser": "Chromium 153.0.8010.0 via @sparticuz/chromium; pinned Playwright download returned invalid archives in this host; CI retains pinned browser",
+        "app_regressions": "pass: desktop/mobile, mock save/share, A3/A4 PDF, SVG, undo/redo",
+        "completed_at": "2026-10-27T15:17:06.485276+00:00"
+      }
     }
   ],
   "current_merged": {
@@ -368,5 +422,6 @@
       "historical_deployment_blocker": "Authenticated operator must inspect/retry existing connected Cloudflare production build. No Cloudflare credentials available in execution environment; parent browser signed out.",
       "production_browser_qa": "untested"
     }
-  ]
+  ],
+  "mode": "manual-task-by-task"
 }
