@@ -1,0 +1,2889 @@
+{
+  "batch_id": "2026-10-27-electrolux-next-100",
+  "reviewed_at": "2026-10-27T16:22:56.790073+00:00",
+  "source_before_sha": "186f8f912ba906d043166fae3ca339236219b949",
+  "discovered_candidates": 232,
+  "selected_count": 100,
+  "counts_by_power": {
+    "electric": 42,
+    "gas": 51,
+    "none": 7
+  },
+  "counts_by_category": {
+    "Holding": 2,
+    "Cooking": 74,
+    "Prep": 9,
+    "Fryers": 13,
+    "Storage": 2
+  },
+  "duplicate_aliases": {
+    "391353": "Manufacturer type E9INEDW00P already present as 391162",
+    "371282": "Manufacturer type E7INEDW00P already present as 371177"
+  },
+  "method": "Single-owner manual exact-SKU source and rendered PDF review. Automated extraction was only a shortlist aid. Aliases, physical dimensions, input ratings and connection legends were reviewed before import.",
+  "candidates": [
+    {
+      "sku": "371027",
+      "type_codes": [
+        "E7HOED2000"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-electric-hob-cooking-top-400-mm-371027/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP Electric Hob Cooking Top 400 mm_371027_English Middle East.pdf?version=1793116291",
+      "specification_sha256": "aeaa4600b81a7f71f03fa918dfa2fa6a5df7c87f9a6ad56a8528a5ad70ee150c",
+      "status": "held",
+      "reasons": [
+        "Technical input and heating element feature values differ; hold for reconciliation"
+      ]
+    },
+    {
+      "sku": "371074",
+      "type_codes": [
+        "E7FRED2A00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-two-wells-electric-fryer-top-5-liter-371074/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 2 Wells El. Fryer Top 5 liter_371074-371139_English Middle East.pdf?version=1793116291",
+      "specification_sha256": "85dfd58025ecc92c9d3aecdbbbc2284e335fc6377e0d43705b2f744bd755d9b7",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371077",
+      "type_codes": [
+        "E7FRED1BF0"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-one-well-freestanding-electric-fryer-7-liter-371077/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 1 Well Freestanding El. Fryer 7 liter_371077_English Middle East.pdf?version=1793116291",
+      "specification_sha256": "afa55b4039f4a3a0ccc74cebdb5a4bf7e920b109fa20bcb8df0cb019fd059a9e",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371086",
+      "type_codes": [
+        "E7CSEDC000"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-electric-chip-scuttle-371086/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP Electric Chip Scuttle_371086_English Middle East.pdf?version=1793116291",
+      "specification_sha256": "21bae6b6e95ba11a76ee3f2c9196255322fbced2a870fe3c1cc4ed0622077f5f",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371109",
+      "type_codes": [
+        "E7MFEDDD00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-11-lt.-electric-multifunctional-cooker-with-compound-bottom-371109/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 11 lt. El. Multifunctional Cooker - compound_371109_English Middle East.pdf?version=1793116291",
+      "specification_sha256": "94d580c70667b0aaf772c6432a643ba5a5ca1cc713dacf20b1f9a9eb0bd78c84",
+      "status": "held",
+      "reasons": [
+        "Wet cooking installation review needed"
+      ]
+    },
+    {
+      "sku": "371220",
+      "type_codes": [
+        "E7KKPTBAMCG"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-e-xp-700-fryer-2x5-liters-optioil-400mm-371220/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371220_e_xp_700_fryer_2x5_liters_optioil_400mm.pdf?version=1793116293",
+      "specification_sha256": "851a323f5b0c0855b3f626217a29104fad05370d7eca60746837100e7e32492b",
+      "status": "held",
+      "reasons": [
+        "Additional connection needs interpretation: [('EI', 'Electrical inlet (power)'), ('EQ', 'Equipotential screw'), ('DO', 'Overﬂow drain pipe')]"
+      ]
+    },
+    {
+      "sku": "391039",
+      "type_codes": [
+        "E9ECED2Q00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-2-hot-plates-electric-boiling-top-391039/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 2-Hot Plates El. Boiling Top_391039-391165_English Middle East.pdf?version=1793116293",
+      "specification_sha256": "e72f230f0258a54a38ad6e3b4be44786c4b092fe877970bcd97010271955c6fb",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391041",
+      "type_codes": [
+        "E9ECEH4QE0"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-4-electric-hot-plate-range-on-electric-oven-391041/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 4 El. Hot Plate on El. Oven_391041-391167_English Middle East.pdf?version=1793116293",
+      "specification_sha256": "ae8450280f33f96ead06f92cd1dd78c6a3734f4cb088840a8babcb40f511a9b4",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391044",
+      "type_codes": [
+        "E9IRED2000"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-2-hot-plate-electric-infrared-cooking-top-range-391044/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 2 Zone El. Infrared cooking top_391044_English Middle East.pdf?version=1793116293",
+      "specification_sha256": "502c0616e6202975a6904bbb31a821d00224c0d10702f874fad3501164aa6345",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391046",
+      "type_codes": [
+        "E9HOED2000"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-half-module-electric-hob-cooking-top-391046/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP Half Module Electric Hob Cooking Top_391046_English Middle East.pdf?version=1793116293",
+      "specification_sha256": "6d6c8e8545ffaf4f4173eb13b17df0b9dd7dd6db74a64365ad05e31858e63f78",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391660",
+      "type_codes": [
+        "E9KKRTBAMCG"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-e-xp-900-fryer-15-liters-optioil-400mm-391660/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391660_e_xp_900_fryer_15_liters_optioil_400mm.pdf?version=1793116294",
+      "specification_sha256": "396471bb899f5dd1d4398ab9859b0be2c3f41dff7359a13d4f2c2de6b6dc5788",
+      "status": "held",
+      "reasons": [
+        "Additional connection needs interpretation: [('EI', 'Electrical inlet (power)'), ('EQ', 'Equipotential screw'), ('DO', 'Overﬂow drain pipe')]"
+      ]
+    },
+    {
+      "sku": "391087",
+      "type_codes": [
+        "E9FRED1GF0"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-one-well-electric-fryer-15-liter-391087/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 1 Well Electric Fryer 15 liter_391087_English Middle East.pdf?version=1793116294",
+      "specification_sha256": "fdf43373067c30c75d39b275f766d9ec72efb46264fd5b906b7c46015be09820",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391098",
+      "type_codes": [
+        "E9CSPDC000"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-electric-chip-scuttle-391098/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP Electric Chip Scuttle_391098_English Middle East.pdf?version=1793116294",
+      "specification_sha256": "976a68fe2577fd2f07bb1a6dd52ee61dd290bf566e1535d0ac231e0a2894ee49",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391151",
+      "type_codes": [
+        "E9MFEHDIO0"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-electric-multifunctional-cooker-with-compound-bottom-391151/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP El. Multifunctional Cooker - compound_391151_English Middle East.pdf?version=1793116294",
+      "specification_sha256": "6b6cd2a6e194d3407416ca2d930368d84446c4a17eaf9de1e8d787f9333cc6af",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Wet cooking installation review needed"
+      ]
+    },
+    {
+      "sku": "391666",
+      "type_codes": [
+        "E9HHEDBAMCA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-e-xp-900-free-zone-induction-400mm-391666/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391666_e_xp_900_free_zone_induction_400mm.pdf?version=1793116294",
+      "specification_sha256": "5d068f97efd54e4b242aced66426cec30737e1792a0f6eaa6bfb197c517b895c",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371028",
+      "type_codes": [
+        "E7HOEH4000"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-electric-hob-cooking-top-800-mm-371028/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP Electric Hob Cooking Top 800 mm_371028_English Middle East.pdf?version=1793116296",
+      "specification_sha256": "0931cba3fbe7231f5452d6cf44ef15fccd8be1ec7eb49fe72c86b55e4d687680",
+      "status": "held",
+      "reasons": [
+        "Technical input and heating element feature values differ; hold for reconciliation"
+      ]
+    },
+    {
+      "sku": "371133",
+      "type_codes": [
+        "E7IRED200N"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-2-hot-plate-electric-infrared-cooking-top-range-371133/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 2 Zone El. Infrared cooking top_371024-371133_English Middle East.pdf?version=1793116296",
+      "specification_sha256": "af7dec691510797504597190b2d9c465aa3f50bad4a50559db0f6b21d6b15e18",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "371139",
+      "type_codes": [
+        "E7FRED2A0N"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-two-wells-electric-fryer-top-5-liter-371139/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 2 Wells El. Fryer Top 5 liter_371074-371139_English Middle East.pdf?version=1793116296",
+      "specification_sha256": "85dfd58025ecc92c9d3aecdbbbc2284e335fc6377e0d43705b2f744bd755d9b7",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "371110",
+      "type_codes": [
+        "E7MFEHDI00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-22-lt.-electric-multifunctional-cooker-with-compound-bottom-371110/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 22 lt. El. Multifunctional Cooker - compound_371110_English Middle East.pdf?version=1793116296",
+      "specification_sha256": "12e30ae2b9d181bd33393a253c3ae5b1598b5d0c11e2fed43aa2c414e1f869bf",
+      "status": "held",
+      "reasons": [
+        "Wet cooking installation review needed"
+      ]
+    },
+    {
+      "sku": "371221",
+      "type_codes": [
+        "E7KKQTBAMCG"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-e-xp-700-fryer-10-liters-optioil-400mm-371221/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371221_e_xp_700_fryer_10_liters_optioil_400mm.pdf?version=1793116296",
+      "specification_sha256": "51704283b38bbd03d9ea7fe4d3f79e5f8b48a5f85268d0f3478d190d9bb50cf8",
+      "status": "held",
+      "reasons": [
+        "Additional connection needs interpretation: [('EI', 'Electrical inlet (power)'), ('EQ', 'Equipotential screw'), ('DO', 'Overﬂow drain pipe')]"
+      ]
+    },
+    {
+      "sku": "391167",
+      "type_codes": [
+        "E9ECEH4QEN"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-4-electric-hot-plate-range-on-electric-oven-391167/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 4 El. Hot Plate on El. Oven_391041-391167_English Middle East.pdf?version=1793116297",
+      "specification_sha256": "ae8450280f33f96ead06f92cd1dd78c6a3734f4cb088840a8babcb40f511a9b4",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "391045",
+      "type_codes": [
+        "E9IREH4000"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-4-electric-infrared-cooking-top-391045/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 4 Zone El. Infrared cooking top_391045-391170_English Middle East.pdf?version=1793116297",
+      "specification_sha256": "9f1ba886e2428cceacf9cd9cf94a8184099f9a3344d20ed362c945f7612038ac",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391047",
+      "type_codes": [
+        "E9HOEH4000"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-full-module-electric-hob-cooking-top-391047/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391047_900xp_full_module_electric_hob_cooking_top.pdf?version=1793116297",
+      "specification_sha256": "517dadca7ad7a31d57c582ff8e03d723c9555899ff7f7f8e6172db9b2a6b7249",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391661",
+      "type_codes": [
+        "E9KKRTBAMEG"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-e-xp-900-fryer-2x15-liters-optioil-800mm-391661/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391661_e_xp_900_fryer_2x15_liters_optioil_800mm.pdf?version=1793116297",
+      "specification_sha256": "b7b6a3f43811d5a42716341cefdc82b8eb8cf56513e01ee2d68cd5041d01d75f",
+      "status": "held",
+      "reasons": [
+        "Additional connection needs interpretation: [('EI', 'Electrical inlet (power)'), ('EQ', 'Equipotential screw'), ('DO', 'Overﬂow drain pipe')]"
+      ]
+    },
+    {
+      "sku": "391353",
+      "type_codes": [
+        "E9INEDW00P"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-electric-induction-wok-400-mm-391353/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391353_900xp_electric_induction_wok_400_mm.pdf?version=1793116297",
+      "specification_sha256": "e2de62e009ff52099c894be14067570c691d5d88fa94b084bbcac8119444afd1",
+      "status": "duplicate-alias",
+      "reasons": [
+        "Manufacturer type E9INEDW00P already present as 391162"
+      ]
+    },
+    {
+      "sku": "391667",
+      "type_codes": [
+        "E9HHEDBAMEA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-e-xp-900-free-zone-induction-800mm-391667/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391667_e_xp_900_free_zone_induction_800mm.pdf?version=1793116299",
+      "specification_sha256": "8daae0d57a9fffc509a7feb291aa2bd5d70762ca8542318f511ffecead53f76d",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371131",
+      "type_codes": [
+        "E7INED200N"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-2-hot-plate-electric-induction-cooking-top-range-371131/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 2 Zone El. Induction cooking top_371020-371131_English Middle East.pdf?version=1793116299",
+      "specification_sha256": "0c82077a256a0fa9b86c86b548d7d6fb85a62d0e3e550bd8f915cbd1d9175488",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "371282",
+      "type_codes": [
+        "E7INEDW00P"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-electric-induction-wok-hp-371282/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371282_700xp_electric_induction_wok_hp.pdf?version=1793116299",
+      "specification_sha256": "9bebf390633d30c25f55ee0475f4fd049663a1e1e54755d226ffc722a24acf8e",
+      "status": "duplicate-alias",
+      "reasons": [
+        "Manufacturer type E7INEDW00P already present as 371177"
+      ]
+    },
+    {
+      "sku": "371023",
+      "type_codes": [
+        "E7INEH2F0P"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-2-frontal-hot-plate-electric-induction-cooking-top-range-371023/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 2 Front Zone El. Induction cooking top_371023_English Middle East.pdf?version=1793116299",
+      "specification_sha256": "3e3efb171d030fd9a42a9634c618789fdde9a5269e2c3d520fbb57abb850e8bb",
+      "status": "held",
+      "reasons": [
+        "Prior hold: DO marker on drawing requires exact drainage clarification"
+      ]
+    },
+    {
+      "sku": "371075",
+      "type_codes": [
+        "E7FRED1B00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-one-well-electric-fryer-top-7-liter-371075/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 1 Well El. Fryer Top 7 liter_371075-371140_English Middle East.pdf?version=1793116299",
+      "specification_sha256": "61ee100a354e5ac7d780dec9d5613fcba77ecc1a2886d176bc88cc5ba1dcc66d",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371222",
+      "type_codes": [
+        "E7KKQTBAMEG"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-e-xp-700-fryer-2x10-liters-optioil-800mm-371222/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371222_e_xp_700_fryer_2x10_liters_optioil_800mm.pdf?version=1793116300",
+      "specification_sha256": "816ba1c938e6e74cb864ad31353843601adee2f8da790cc15a046db4bfe28ed4",
+      "status": "held",
+      "reasons": [
+        "Additional connection needs interpretation: [('EI', 'Electrical inlet (power)'), ('EQ', 'Equipotential screw'), ('DO', 'Overﬂow drain pipe')]"
+      ]
+    },
+    {
+      "sku": "391170",
+      "type_codes": [
+        "E9IREH400N"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-4-electric-infrared-cooking-top-391170/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 4 Zone El. Infrared cooking top_391045-391170_English Middle East.pdf?version=1793116300",
+      "specification_sha256": "9f1ba886e2428cceacf9cd9cf94a8184099f9a3344d20ed362c945f7612038ac",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "391404",
+      "type_codes": [
+        "E9IIKDAOMIA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-1200mm-electric-fry-top-hp-smooth-scratch-resistant-chromium-plate-391404/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391404_900xp_1200mm_electric_fry_top_hp_smooth_scratch_resistant_chromium_plate.pdf?version=1793116300",
+      "specification_sha256": "2e7f09f77ec57f6bbab2c5ed94c18d112f297347206b492ba2b24d4c8baf29d7",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391145",
+      "type_codes": [
+        "E9BREHDOF0"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-electric-bratt-pan-80lt-with-duomat-bottom-391145/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP Electric Bratt Pan 80lt Duomat bottom_391145_English Middle East.pdf?version=1793116300",
+      "specification_sha256": "0a767e134f605e7302f405da0c3c15955fb466a348e837d1c1c686fac5bcfd15",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Additional connection needs interpretation: [('CWI1', 'Cold Water inlet 1                                                                                                                                 139 mm'), ('EI', 'Electrical 2inlet')]",
+        "Wet cooking installation review needed"
+      ]
+    },
+    {
+      "sku": "371126",
+      "type_codes": [
+        "E7ECED2R0N"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-2-hot-plates-electric-boiling-top-range-371126/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 2- Hot Plates El. Boiling Top_371014-371126_English Middle East.pdf?version=1793116300",
+      "specification_sha256": "d27400a2bca141342c9ca91e49ec38616dbf71bfa5a9a052b163feb27b899439",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "371128",
+      "type_codes": [
+        "E7ECEH4REN"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-4-hot-plates-electric-boiling-top-range-on-electric-oven-371128/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 4- Hot Plates El. Boiling Top El. Oven_371016-371128_English Middle East.pdf?version=1793116301",
+      "specification_sha256": "e658abff6c3ee0153b6a07474cd830718a30a39d78afc3b9208822e7ac94b42b",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "371132",
+      "type_codes": [
+        "E7INEH400N"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-4-hot-plate-electric-induction-cooking-top-range-371132/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 4 Zone El. Induction cooking top_371021-371132_English Middle East.pdf?version=1793116302",
+      "specification_sha256": "944078737376c7dd3e27bf27919e88a91bd1e5a62b61c7b5f1bd44aa799c7aa4",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "371134",
+      "type_codes": [
+        "E7IREH400N"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-4-zone-electric-infrared-cooking-top-range-371134/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 4 Zone El. Infrared cooking top_371025-371134_English Middle East.pdf?version=1793116302",
+      "specification_sha256": "cefeba27fa24ecdafa5e4cb87031e0045c5db19831fb73dfc7ffadc3334e01aa",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "371140",
+      "type_codes": [
+        "E7FRED120N"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-one-well-electric-fryer-top-7-liter-371140/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 1 Well El. Fryer Top 7 liter_371075-371140_English Middle East.pdf?version=1793116302",
+      "specification_sha256": "61ee100a354e5ac7d780dec9d5613fcba77ecc1a2886d176bc88cc5ba1dcc66d",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "391165",
+      "type_codes": [
+        "E9ECED2Q0N"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-2-hot-plates-electric-boiling-top-391165/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 2-Hot Plates El. Boiling Top_391039-391165_English Middle East.pdf?version=1793116302",
+      "specification_sha256": "e72f230f0258a54a38ad6e3b4be44786c4b092fe877970bcd97010271955c6fb",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "391405",
+      "type_codes": [
+        "E9IIMDAOMIA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-1200mm-electric-fry-top-hp-smooth-and-ribbed-scratch-resistant-chromium-plate-391405/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391405_900xp_1200mm_electric_fry_top_hp_smooth_and_ribbed_scratch_resistant_chromium_plate.pdf?version=1793116302",
+      "specification_sha256": "df92280f1c863c5d6751c51747d202dfdfd6bbf13312fef97df4628306664737",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391146",
+      "type_codes": [
+        "E9BREHDOFM"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-electric-bratt-pan-80lt-with-duomat-bottom-auto-tilting-391146/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP Electric Bratt Pan 80lt Duomat bottom -auto tilt_391146_English Middle East.pdf?version=1793116303",
+      "specification_sha256": "5e6fd0b1a042aa1eba16f80b01a57a42ad2f8e75e7276cef0d711ad2c36c1d40",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Additional connection needs interpretation: [('CWI1', 'Cold Water inlet 1'), ('EI', 'Electrical inlet (power)')]",
+        "Wet cooking installation review needed"
+      ]
+    },
+    {
+      "sku": "391095",
+      "type_codes": [
+        "E9FREH2HF0"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-two-wells-electric-fryer-18-liter-391095/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 2 Wells Electric Fryer 18 liter_391095-391179_English Middle East.pdf?version=1793116303",
+      "specification_sha256": "f34439e18cb3994a75005aeffecb48db7afd0b21e5aff192da1c04a410aefbb5",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371084",
+      "type_codes": [
+        "E7FRED1FF0"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-one-well-freestanding-electric-fryer-14-liter-371084/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 1 Well Freestanding El. Fryer 14 liter_371084_English Middle East.pdf?version=1793116303",
+      "specification_sha256": "6bc94757acb6db0f85c2f07015d35945e6c0c591c8d0961e25d55703cbbf513d",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391040",
+      "type_codes": [
+        "E9ECEH4Q00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-4-hot-plates-electric-boiling-top-391040/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 4-Hot Plates El. Boiling Top_391040-391166_English Middle East.pdf?version=1793116303",
+      "specification_sha256": "bf3bbc22faaefa4475fb79d4628bf55c8956169a4ce2291dab1330e2b85b4b96",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391072",
+      "type_codes": [
+        "E9FTEDCS00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-half-module-electric-fry-top-chromium-plated-391072/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 1_2 Module El. Fry Top -Chrome_391072-391175_English Middle East.pdf?version=1793116304",
+      "specification_sha256": "d26a3775a7e2f80fd34447fab98b2151b52c557747d607640a9cc2f655e7209b",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391416",
+      "type_codes": [
+        "E9PPBDBAME"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-electric-bratt-pan-80lt-with-duomat-bottom-391416/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391416_900xp_electric_bratt_pan_80lt_with_duomat_bottom.pdf?version=1793116304",
+      "specification_sha256": "2660f9403ca267835e48d136daadcbf12cbae0385fd0dc938983401fc606b052",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Additional connection needs interpretation: [('CWI1', 'Cold Water inlet 1 (cleaning)'), ('EI', 'Electrical inlet (power)')]",
+        "Wet cooking installation review needed"
+      ]
+    },
+    {
+      "sku": "371127",
+      "type_codes": [
+        "E7ECEH4R0N"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-4-hot-plates-electric-boiling-top-range-371127/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 4- Hot Plates El. Boiling Top_371015-371127_English Middle East.pdf?version=1793116304",
+      "specification_sha256": "c12421ef2828a07a8a165501fe67edb03934a0e43839c2269ce34e2bea9dacc1",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "371079",
+      "type_codes": [
+        "E7FRED1E00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-one-well-electric-fryer-top-12-liter-371079/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 1 Well El. Fryer Top 12 liter_371079-371142_English Middle East.pdf?version=1793116305",
+      "specification_sha256": "03a07a6abf6cf11947a64b7324c166d56ea420fa7bd765c62987b61fafc5c912",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371083",
+      "type_codes": [
+        "E7FRED1GFP"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-one-well-freestanding-electronic-fryer-15-liter-371083/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 1 Well Freest. Electronic Fryer 15 liter_371083_English Middle East.pdf?version=1793116305",
+      "specification_sha256": "6369fee41b4168bfae4b420df631712d34e1fe2abe804bd71875f736ba593d6f",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391166",
+      "type_codes": [
+        "E9ECEH4Q0N"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-4-hot-plates-electric-boiling-top-391166/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 4-Hot Plates El. Boiling Top_391040-391166_English Middle East.pdf?version=1793116305",
+      "specification_sha256": "bf3bbc22faaefa4475fb79d4628bf55c8956169a4ce2291dab1330e2b85b4b96",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "391073",
+      "type_codes": [
+        "E9FTEHCS00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-full-module-electric-fry-top-chromium-plated-391073/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP Full Module El. Fry Top -Chrome_391073-391176-391074-391177_English Middle East.pdf?version=1793116306",
+      "specification_sha256": "a5b22238d96a0180cbf111f21ddaccd35d6bd2a4e4a7994eee42f0407b366760",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391417",
+      "type_codes": [
+        "E9PPBDBAMED"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-electric-bratt-pan-80lt-with-duomat-bottom-auto-tilting-391417/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391417_900xp_electric_bratt_pan_80lt_with_duomat_bottom_auto_tilting.pdf?version=1793116306",
+      "specification_sha256": "a41acaa51d3aeb73ce19f2331d6e6116c849fc84717e4544dafbaed9fedaf2ef",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Additional connection needs interpretation: [('CWI1', 'Cold Water inlet 1 (cleaning)'), ('EI', 'Electrical inlet (power)')]",
+        "Wet cooking installation review needed"
+      ]
+    },
+    {
+      "sku": "371142",
+      "type_codes": [
+        "E7FRED1E0N"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-one-well-electric-fryer-top-12-liter-371142/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 1 Well El. Fryer Top 12 liter_371079-371142_English Middle East.pdf?version=1793116306",
+      "specification_sha256": "03a07a6abf6cf11947a64b7324c166d56ea420fa7bd765c62987b61fafc5c912",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "371141",
+      "type_codes": [
+        "E7FREH22FN"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-two-wells-freestanding-electric-fryer-7-liter-371141/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 2 Wells Freestanding El. Fryer 7 liter_371078 - 371141_English Middle East.pdf?version=1793116306",
+      "specification_sha256": "df556e05b43fe784eba2ecc5b9577ebbada96a1bd84ce41cbba870cf4412af57",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "391074",
+      "type_codes": [
+        "E9FTEHCP00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-full-module-electric-fry-top-chromium-plated-391074/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP Full Module El. Fry Top -Chrome_391073-391176-391074-391177_English Middle East.pdf?version=1793116307",
+      "specification_sha256": "a5b22238d96a0180cbf111f21ddaccd35d6bd2a4e4a7994eee42f0407b366760",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371130",
+      "type_codes": [
+        "E7ECEH4Q0N"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-4-hot-square-plates-electric-boiling-top-range-371130/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 4- Hot Square Plates El. Boiling Top_371017-371130_English Middle East.pdf?version=1793116307",
+      "specification_sha256": "f83fc04751a37d1d21e1a83c8a478624b20648ebd4543fbcdcb3ffaf4bf3740d",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "371076",
+      "type_codes": [
+        "E7FREH2B00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-two-wells-electric-fryer-top-7-liter-371076/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 2 Wells El. Fryer Top 7 liter_371076_English Middle East.pdf?version=1793116307",
+      "specification_sha256": "341f70ca811fa05a12400ecc2fbacefe065ba58b653ecf7f0a894eb5721eeb52",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371078",
+      "type_codes": [
+        "E7FREH2BF0"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-two-wells-freestanding-electric-fryer-7-liter-371078/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 2 Wells Freestanding El. Fryer 7 liter_371078 - 371141_English Middle East.pdf?version=1793116308",
+      "specification_sha256": "df556e05b43fe784eba2ecc5b9577ebbada96a1bd84ce41cbba870cf4412af57",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371129",
+      "type_codes": [
+        "E7ECEH4QEN"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-4-hot-square-plates-electric-boiling-top-range-on-electric-oven-371129/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 4- Hot Square Plates El. Boiling Top El. Oven_371018-371129_English Middle East.pdf?version=1793116307",
+      "specification_sha256": "0d8a73d09ef4fd30d26c9262a349e43ca44ed6d19b7389e5f63257b62e5919a2",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "371085",
+      "type_codes": [
+        "E7FREH2FF0"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-two-wells-freestanding-electric-fryer-14-liter-371085/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 2 Wells Freestanding El. Fryer 14 liter_371085-371144_English Middle East.pdf?version=1793116308",
+      "specification_sha256": "f8485126b3f6ffd17706db4d113f6f6bffd0c8f6c5fd4dd0ca7b8fb14f98d977",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391149",
+      "type_codes": [
+        "E9BREJDPF0"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-electric-bratt-pan-100lt-with-duomat-bottom-391149/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP Electric Bratt Pan 100lt Duomat bottom_391149_English Middle East.pdf?version=1793116308",
+      "specification_sha256": "714a8cbeaeb1f5f5476a4bab61499d5a9c3a103c4e30f964d0b738b79302fba4",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Additional connection needs interpretation: [('CWI1', 'Cold Water inlet 1'), ('EI', 'Electrical inlet (power)')]",
+        "Wet cooking installation review needed"
+      ]
+    },
+    {
+      "sku": "371080",
+      "type_codes": [
+        "E7FREH2E00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-two-wells-electric-fryer-top-12-liter-371080/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 2 Wells El. Fryer Top 12 liter_371080-371143_English Middle East.pdf?version=1793116309",
+      "specification_sha256": "11e4332500f73d9206e144781138e19648c8e917275391059286e92429e8d5a7",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391175",
+      "type_codes": [
+        "E9FTEDCS0N"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-half-module-electric-fry-top-chromium-plated-391175/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 1_2 Module El. Fry Top -Chrome_391072-391175_English Middle East.pdf?version=1793116309",
+      "specification_sha256": "d26a3775a7e2f80fd34447fab98b2151b52c557747d607640a9cc2f655e7209b",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "391150",
+      "type_codes": [
+        "E9BREJDPFM"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-electric-bratt-pan-100lt-with-duomat-bottom-auto-tilting-391150/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP Electric Bratt Pan 100lt Duomat bottom auto tilt_391150_English Middle East.pdf?version=1793116309",
+      "specification_sha256": "6dea18c3eb86477d9b646bc450c377054a2e565bfca991c014774685c9a468e3",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Additional connection needs interpretation: [('CWI1', 'Cold Water inlet 1'), ('EI', 'Electrical inlet (power)')]",
+        "Wet cooking installation review needed"
+      ]
+    },
+    {
+      "sku": "391178",
+      "type_codes": [
+        "E9FRED1HFN"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-one-well-electric-fryer-18-liter-391178/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 1 Well Electric Fryer 18 liter_391094-391178_English Middle East.pdf?version=1793116310",
+      "specification_sha256": "102489326190d6ced7d1f2e97d6858f051a85b674675e7cf7ae8b9bfa779d245",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "371143",
+      "type_codes": [
+        "E7FREH2E0N"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-two-wells-electric-fryer-top-12-liter-371143/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 2 Wells El. Fryer Top 12 liter_371080-371143_English Middle East.pdf?version=1793116310",
+      "specification_sha256": "11e4332500f73d9206e144781138e19648c8e917275391059286e92429e8d5a7",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "391420",
+      "type_codes": [
+        "E9PPCDBAMG"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-electric-bratt-pan-100lt-with-duomat-bottom-391420/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391420_900xp_electric_bratt_pan_100lt_with_duomat_bottom.pdf?version=1793116310",
+      "specification_sha256": "5df5d0f7f8ddf110a6b4869bd08ccc945da80f730bead75dc85c651cb64d5ddb",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Additional connection needs interpretation: [('CWI1', 'Cold Water inlet 1 (cleaning)'), ('EI', 'Electrical inlet (power)')]",
+        "Wet cooking installation review needed"
+      ]
+    },
+    {
+      "sku": "391179",
+      "type_codes": [
+        "E9FREH2HFN"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-two-wells-electric-fryer-18-liter-391179/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 2 Wells Electric Fryer 18 liter_391095-391179_English Middle East.pdf?version=1793116310",
+      "specification_sha256": "f34439e18cb3994a75005aeffecb48db7afd0b21e5aff192da1c04a410aefbb5",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "371144",
+      "type_codes": [
+        "E7FREH2FFN"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-two-wells-freestanding-electric-fryer-14-liter-371144/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 2 Wells Freestanding El. Fryer 14 liter_371085-371144_English Middle East.pdf?version=1793116310",
+      "specification_sha256": "f8485126b3f6ffd17706db4d113f6f6bffd0c8f6c5fd4dd0ca7b8fb14f98d977",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "391421",
+      "type_codes": [
+        "E9PPCDBAMGD"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-electric-bratt-pan-100lt-with-duomat-bottom-auto-tilting-391421/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391421_900xp_electric_bratt_pan_100lt_with_duomat_bottom_auto_tilting.pdf?version=1793116311",
+      "specification_sha256": "40501c1778b4cb4cf11dbf37fda70b9a4f8939f0819a0f6da3aa960d0df47973",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Additional connection needs interpretation: [('CWI1', 'Cold Water inlet 1 (cleaning)'), ('EI', 'Electrical inlet (power)')]",
+        "Wet cooking installation review needed"
+      ]
+    },
+    {
+      "sku": "391311",
+      "type_codes": [
+        "E9FRED1HFG"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-one-well-electric-fryer-18-liter-391311/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391311_900xp_one_well_electric_fryer_18_liter.pdf?version=1793116311",
+      "specification_sha256": "e1b6f9c2114714028846c20501febebec8a7db5edb8220b1715afca7786a150a",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Additional connection needs interpretation: [('EI', 'Electrical inlet (power)'), ('EQ', 'Equipotential screw'), ('DO', 'Overﬂow drain pipe')]"
+      ]
+    },
+    {
+      "sku": "371082",
+      "type_codes": [
+        "E7FREH2GF0"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-two-wells-freestanding-electric-fryer-15-liter-371082/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 2 Wells Freestanding El. Fryer 15 liter_371082_English Middle East.pdf?version=1793116311",
+      "specification_sha256": "1ec5379eabe4fef8a6ab0eaaeb22f2d79761528f6514ba66b8005cde93871386",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391176",
+      "type_codes": [
+        "E9FTEHCS0N"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-full-module-electric-fry-top-chromium-plated-391176/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP Full Module El. Fry Top -Chrome_391073-391176-391074-391177_English Middle East.pdf?version=1793116312",
+      "specification_sha256": "a5b22238d96a0180cbf111f21ddaccd35d6bd2a4e4a7994eee42f0407b366760",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "391177",
+      "type_codes": [
+        "E9FTEHCP0N"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-full-module-electric-fry-top-chromium-plated-391177/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP Full Module El. Fry Top -Chrome_391073-391176-391074-391177_English Middle East.pdf?version=1793116311",
+      "specification_sha256": "a5b22238d96a0180cbf111f21ddaccd35d6bd2a4e4a7994eee42f0407b366760",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "371201",
+      "type_codes": [
+        "E7FTEHCPIN"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-full-module-electric-fry-top-chromium-plated-371201/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP Full Module El. Fry Top -Chrome_371194-371197-371201_English Middle East.pdf?version=1793116312",
+      "specification_sha256": "bddac7939caa54ba79004bdc904e8d8505725f0e0b029908adfde3aa48ced459",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "391357",
+      "type_codes": [
+        "E9IINDAOMCA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-400mm-electric-fry-top-smooth-brushed-chrome-plate-391357/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391357_391398_900xp_400mm_electric_fry_top_smooth_brushed_chrome_plate.pdf?version=1793116313",
+      "specification_sha256": "286083b5b84591d89c7a0556c1795e5441f43a400e231bb8bf221b04e28069cc",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391395",
+      "type_codes": [
+        "E9IILIAOMCA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-400mm-electric-fry-top-ribbed-brushed-chrome-plate-391395/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391395_900xp_400mm_electric_fry_top_ribbed_brushed_chrome_plate.pdf?version=1793116313",
+      "specification_sha256": "3e9d5f8feed3ee1cefa0840de88dea661fedea84b438e1dc097d7a2886dae665",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "391398",
+      "type_codes": [
+        "E9IINIAOMCA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-400mm-electric-fry-top-smooth-brushed-chrome-plate-391398/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391357_391398_900xp_400mm_electric_fry_top_smooth_brushed_chrome_plate.pdf?version=1793116313",
+      "specification_sha256": "286083b5b84591d89c7a0556c1795e5441f43a400e231bb8bf221b04e28069cc",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "391356",
+      "type_codes": [
+        "E9IILDAOMCA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-400mm-electric-fry-top-ribbed-brushed-chrome-plate-391356/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391356_900xp_400mm_electric_fry_top_ribbed_brushed_chrome_plate.pdf?version=1793116313",
+      "specification_sha256": "6077dca18bad0fe991e00e9c0183921d7e3a869899f6ef789daedaea105f74c0",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391345",
+      "type_codes": [
+        "E9KKLDBAMCG"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-one-well-programmable-electric-fryer-23-liter-hp-391345/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391345_900xp_one_well_programmable_electric_fryer_23_liter_hp.pdf?version=1793116316",
+      "specification_sha256": "f12104b502280a78dd2d70294224a747685d055dc62f79f7ca6ebfa7d81ad050",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Additional connection needs interpretation: [('EI', 'Electrical inlet (power)'), ('EQ', 'Equipotential screw'), ('DO', 'Overﬂow drain pipe')]"
+      ]
+    },
+    {
+      "sku": "391358",
+      "type_codes": [
+        "E9IIMDAOMEA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-800mm-electric-fry-top-smooth-and-ribbed-brushed-chrome-plate-391358/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391358_391359_900xp_800mm_electric_fry_top_smooth_and_ribbed_brushed_chrome_plate.pdf?version=1793116316",
+      "specification_sha256": "202126d0c5b1fda70d0370145fa575d48f1514e1b04d9b06e4547a6a6a850ae3",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391380",
+      "type_codes": [
+        "E9KKGHBAMCA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-one-well-electric-fryer-23-liter-391380/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391380_391381_900xp_one_well_electric_fryer_23_liter.pdf?version=1793116316",
+      "specification_sha256": "84df62c43b3714edf977fb434366a6dc70d34bfbdcafb44cdf20dc5a232ce406",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Additional connection needs interpretation: [('EI', 'Electrical inlet (power)'), ('EQ', 'Equipotential screw'), ('DO', 'Overﬂow drain pipe')]"
+      ]
+    },
+    {
+      "sku": "391359",
+      "type_codes": [
+        "E9IIMIAOMEA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-800mm-electric-fry-top-smooth-and-ribbed-brushed-chrome-plate-391359/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391358_391359_900xp_800mm_electric_fry_top_smooth_and_ribbed_brushed_chrome_plate.pdf?version=1793116316",
+      "specification_sha256": "202126d0c5b1fda70d0370145fa575d48f1514e1b04d9b06e4547a6a6a850ae3",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "391381",
+      "type_codes": [
+        "E9KKGJBAMCA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-one-well-electric-fryer-23-liter-391381/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391380_391381_900xp_one_well_electric_fryer_23_liter.pdf?version=1793116316",
+      "specification_sha256": "84df62c43b3714edf977fb434366a6dc70d34bfbdcafb44cdf20dc5a232ce406",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz",
+        "Additional connection needs interpretation: [('EI', 'Electrical inlet (power)'), ('EQ', 'Equipotential screw'), ('DO', 'Overﬂow drain pipe')]"
+      ]
+    },
+    {
+      "sku": "391382",
+      "type_codes": [
+        "E9KKGJBAMCA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-two-wells-electric-fryer-23-liter-391382/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391382_391383_900xp_two_wells_electric_fryer_23_liter.pdf?version=1793116319",
+      "specification_sha256": "872d1397f0912a8a5b3480c7de6966e4b4288c7d9931180f832a529ffe09fe13",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Additional connection needs interpretation: [('EI', 'Electrical inlet (power)'), ('EQ', 'Equipotential screw'), ('DO', 'Overﬂow drain pipe')]"
+      ]
+    },
+    {
+      "sku": "391383",
+      "type_codes": [
+        "E9KKGHBAMEA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-two-wells-electric-fryer-23-liter-391383/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391382_391383_900xp_two_wells_electric_fryer_23_liter.pdf?version=1793116319",
+      "specification_sha256": "872d1397f0912a8a5b3480c7de6966e4b4288c7d9931180f832a529ffe09fe13",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz",
+        "Additional connection needs interpretation: [('EI', 'Electrical inlet (power)'), ('EQ', 'Equipotential screw'), ('DO', 'Overﬂow drain pipe')]"
+      ]
+    },
+    {
+      "sku": "391190",
+      "type_codes": [
+        "E9FRMD1HF5"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-one-well-and-2-half-size-basket-electric-fryer-18-liter-400v-391190/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391190_900xp_one_well_and_2_half_size_basket_electric_fryer_18_liter_400v.pdf?version=1793116319",
+      "specification_sha256": "e50379509a5cf496ea5d6f7831eaff464e22693dd916c0cb3d22915765ee8e1a",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Additional connection needs interpretation: [('EI', 'Electrical inlet (power)'), ('EQ', 'Equipotential screw'), ('DO', 'Overﬂow drain pipe')]"
+      ]
+    },
+    {
+      "sku": "371321",
+      "type_codes": [
+        "E7IIKIAOMCA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-400mm-electric-fry-top-smooth-brushed-chrome-plate-371321/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371321_371325_700xp_400mm_electric_fry_top_smooth_brushed_chrome_plate.pdf?version=1793116319",
+      "specification_sha256": "e26936ec9b808c428d62d5eb8ff1230e7c238db60b3d843e4efe36f4da92f09a",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "371332",
+      "type_codes": [
+        "E7IILDAOMCA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-400mm-electric-fry-top-ribbed-brushed-chrome-plate-371332/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371332_700xp_400mm_electric_fry_top_ribbed_brushed_chrome_plate.pdf?version=1793116319",
+      "specification_sha256": "6c7b2eab19c33706a5c36901c1b5c59010a39f762e6ddd399869b38a66347821",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371322",
+      "type_codes": [
+        "E7IIKIAOMEA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-800mm-electric-fry-top-smooth-brushed-chrome-plate-371322/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371322_371340_700xp_800mm_electric_fry_top_smooth_brushed_chrome_plate.pdf?version=1793116320",
+      "specification_sha256": "9ce8fa2dd69a9b39ba80ef36bb133f3dac99b4f23cd52a808702e7e290d72af9",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "371329",
+      "type_codes": [
+        "E7IIMIAOMEA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-800mm-electric-fry-top-smooth-and-ribbed-brushed-chrome-plate-371329/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371329_371347_700xp_800mm_electric_fry_top_smooth_and_ribbed_brushed_chrome_plate.pdf?version=1793116320",
+      "specification_sha256": "d5bfa28aa85397e4310218e8e6d339d775e20a1c8d8f0d3265c10f554e8ec1e0",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz"
+      ]
+    },
+    {
+      "sku": "602152",
+      "type_codes": [
+        "COM26D"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vegetable-slicer-trinitypro-combined-vegetable-slicer-cutter-mixer-26-lt-single-speed-602152/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/602152_trinitypro_combined_vegetable_slicer_cutter_mixer_2_6_lt_single_speed.pdf?version=1793116320",
+      "specification_sha256": "0bef06bcb14647fa81ff1de1e568521f371ec07fb4b0d6bd0501d60640964b04",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600084",
+      "type_codes": [
+        "K120S2"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-processor-stainless-steel-cutter-mixer-11.5-lt-2-speeds-with-microtoothed-blade-bowl-and-scraper-600084/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/SS Cutter Mixer-11.5 LT-2 Speed-Microtoothed Blade-Bowl-Scraper_600084_English Middle East.pdf?version=1793116320",
+      "specification_sha256": "c66536eaf99c319867d4ba2013b580adb5395f4a19de3ca10e7a86bd7acf38cf",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "600086",
+      "type_codes": [
+        "K180S2"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-processor-stainless-steel-cutter-mixer-17.5-lt-2-speeds-with-microtoothed-blade-bowl-and-scraper-600086/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/SS Cutter Mixer-17.5 LT-2 Speed-Microtoothed Blade+Bowl+Scraper_600086_English Middle East.pdf?version=1793116320",
+      "specification_sha256": "e50f04db9beacbb1449492b5c3eeeb016554b4832fa14291175b5d4b60979bba",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "601134",
+      "type_codes": [
+        "MSG30G"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-slicers-300-mm-gravity-slicer-gear-transmission-601134/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/300 mm Gravity Slicer - gear transmission_601134_English Middle East.pdf?version=1793116322",
+      "specification_sha256": "f133eaee1e7998a8bac08bf99f96d5ae93cd6bf84107e12ad1eeb4dba3162d00",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "603265",
+      "type_codes": [
+        "CPXF215"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/bread-slicers-stainless-steel-electric-bread-slicer-603265/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/Stainless Steel Electric Bread Slicer_603265_English Middle East.pdf?version=1793116322",
+      "specification_sha256": "934c411f558373894987a0d5441b0ca3a8e5d92b8c5d9cd0f3744bc04ea33b64",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "602153",
+      "type_codes": [
+        "COM26P"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vegetable-slicer-trinitypro-combined-vegetable-slicer-cutter-mixer-26-lt-copolyester-single-speed-602153/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/602153_trinitypro_combined_vegetable_slicer_cutter_mixer_2_6_lt_copolyester_single_speed.pdf?version=1793116322",
+      "specification_sha256": "f7c00dd0662e9df05d9b9710379c65a5888971f516a0e071f515989968e0b96e",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "601135",
+      "type_codes": [
+        "MSG35G"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-slicers-350-mm-gravity-slicer-gear-transmission-601135/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/350 mm Gravity Slicer - gear transmission_601135_English Middle East.pdf?version=1793116322",
+      "specification_sha256": "f2222076e1e2fdfe169b22b12ae89808e5ea90fbad977e64d7a4495d8a52d93a",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "600088",
+      "type_codes": [
+        "KE120S"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-processor-stainless-steel-cutter-mixer-11.5-lt-variable-speed-with-microtoothed-blade-bowl-and-scraper-600088/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/SS Cutter Mixer-11.5 LT-Variable Speed+Microtoothed Blade+Bowl+Scraper_600088_English Middle East.pdf?version=1793116322",
+      "specification_sha256": "4f56839d6c434befddeb76c6d7373694d4d45d354de370376154fa9a73ad7165",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "600089",
+      "type_codes": [
+        "KE180S"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-processor-stainless-steel-cutter-mixer-17.5-lt-variable-speed-with-microtoothed-blade-bowl-and-scraper-600089/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/SS Cutter Mixer-17.5 LT-Variable Speed+Microtoothed Blade+Bowl+Scraper_600089_English Middle East.pdf?version=1793116323",
+      "specification_sha256": "c2eef9f0e5a30c8ac561e0dc7952f16dfc59915fa942ead43225880913c818dd",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "601139",
+      "type_codes": [
+        "MSV30B"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-slicers-300-mm-vertical-slicer-belt-transmission-601139/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/300 mm Vertical Slicer - belt transmission_601139-601115_English Middle East.pdf?version=1793116323",
+      "specification_sha256": "e453f9536f0e64c606277e8f31809658af45d2fef3bcb89f9dc5831193199e43",
+      "status": "held",
+      "reasons": [
+        "Table 650x630x540 disagrees with shared drawing 550 / 520-590 / 450-500"
+      ]
+    },
+    {
+      "sku": "602178",
+      "type_codes": [
+        "EVP08D"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vacuum-packers-vacuum-packer-8m3-h-table-top-602178/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/602178_vacuum_packer_8m3_h_table_top.pdf?version=1793116323",
+      "specification_sha256": "1d1f0f14733e11b4f28eb33a111e49a83317eb7aea448baa5bb591accc16ae69",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "601130",
+      "type_codes": [
+        "MSG25B"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-slicers-250-mm-gravity-slicer-belt-transmission-601130/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/250 mm Gravity Slicer - belt transmission_601130_English Middle East.pdf?version=1793116323",
+      "specification_sha256": "8127439a3906a5a42537269546e3adc3c160a201b49782adaa5ae3baf3c2bb9d",
+      "status": "held",
+      "reasons": [
+        "Table depth 420 differs from drawing depth 390 / 510; exact variant unresolved"
+      ]
+    },
+    {
+      "sku": "602179",
+      "type_codes": [
+        "EVP12D"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vacuum-packers-vacuum-packer-12m3-h-table-top-602179/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/602179_vacuum_packer_12m3_h_table_top.pdf?version=1793116323",
+      "specification_sha256": "ada2abd289a8364b93b2510521dbe84af502952f26d4b302b1281a3cf8268c0c",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "601009",
+      "type_codes": [
+        "MSGA30G"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-slicers-300-mm-gravity-slicer-gear-transmission-semi-automatic-601009/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/300 mm Gravity Slicer - gear transmission - semi-automatic_601009_English Middle East.pdf?version=1793116324",
+      "specification_sha256": "5e9e1eefaa61c6a38b1cd2f2bb37404056a8bc6a97bd0a67fc5a95c8dc3d561d",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "601140",
+      "type_codes": [
+        "MSV35B"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-slicers-350-mm-vertical-slicer-belt-transmission-601140/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/350 mm Vertical Slicer - belt transmission_601140_English Middle East.pdf?version=1793116325",
+      "specification_sha256": "d9c055e92b5a07fe8c943ec555a5a49127fe63e6092c97b23af12e989261e46e",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "602180",
+      "type_codes": [
+        "EVP16D"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vacuum-packers-vacuum-packer-16m3-h-table-top-602180/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/602180_vacuum_packer_16m3_h_table_top.pdf?version=1793116325",
+      "specification_sha256": "dc03e93ce8109704bc316aaa8d3108438a72c115cab7f32e23ba46838786b93c",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "602181",
+      "type_codes": [
+        "EVP20T"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vacuum-packers-vacuum-packer-20m3-h-table-top-602181/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/602181_vacuum_packer_20m3_h_table_top.pdf?version=1793116325",
+      "specification_sha256": "8f0e0d89fdcb3c097401f7fb96d3deaf119c005b6b2cd8e97838a182f5272357",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "603330",
+      "type_codes": [
+        "LUX300BS"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-slicers-300-mm-vertical-slicer-belt-transmission-with-tightening-arm-603330/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/300 mm Vertical Slicer - belt transmission with tight. arm_603330_English Middle East.pdf?version=1793116325",
+      "specification_sha256": "6259c655d737aa8b51a00d7bb36be144d79436924eb7dab46c9c03e7da3a9bf0",
+      "status": "held",
+      "reasons": [
+        "Table depth 570 differs from shared drawing 550"
+      ]
+    },
+    {
+      "sku": "602158",
+      "type_codes": [
+        "COM26VS"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vegetable-slicer-trinitypro-combined-vegetable-slicer-cutter-mixer-26-lt-variable-speed-602158/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/602158_trinitypro_combined_vegetable_slicer_cutter_mixer_2_6_lt_variable_speed.pdf?version=1793116326",
+      "specification_sha256": "d465158c4507aff0bcb799e4ffe27e1b2c260d65f3d2ee1ce9ab15b0ea421e66",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "603331",
+      "type_codes": [
+        "LUX350BS"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-slicers-350-mm-vertical-slicer-belt-transmission-with-tightening-arm-603331/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/350 mm Vertical Slicer - belt transmission with tight. arm_603331_English Middle East.pdf?version=1793116326",
+      "specification_sha256": "15a048eff0a1f7e281a0085e17a9e805df1fe632b638b07aa509dc170e1ef7b0",
+      "status": "held",
+      "reasons": [
+        "Table width 740 differs from shared drawing 700 / 715"
+      ]
+    },
+    {
+      "sku": "602338",
+      "type_codes": [
+        "EVP25D"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vacuum-packers-vacuum-packer-25m3-h-on-wheels-602338/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/602338_vacuum_packer_25m3_h_on_wheels.pdf?version=1793116326",
+      "specification_sha256": "d44edf19b338c79e15a505d3a8245d0fa6377ec2c0f0910896d46e8159d84d0c",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600481",
+      "type_codes": [
+        "TRK45Y"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vegetable-slicer-trk45-cutter-slicer-4.5-lt-variable-speed-600481/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600481_trk45_cutter_slicer_4_5_lt_variable_speed.pdf?version=1793116326",
+      "specification_sha256": "8ed18e1246a81b1b13b5ea6c9a402186f892563c55e1d3cd1935f9f9a0c02e13",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600485",
+      "type_codes": [
+        "TRK55Y"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vegetable-slicer-trk55-cutter-slicer-5.5-lt-variable-speed-600485/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600485_trk55_cutter_slicer_5_5_lt_variable_speed.pdf?version=1793116326",
+      "specification_sha256": "e64b43af4a7a9b8bf258e82961ccd851dd4395a67401e634aeb9480d56cabcca",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600489",
+      "type_codes": [
+        "TRK70Y"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vegetable-slicer-trk70-cutter-slicer-7-lt-variable-speed-600489/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600489_trk70_cutter_slicer_7_lt_variable_speed.pdf?version=1793116327",
+      "specification_sha256": "349e5b6652c6659499ea6d5b7946afdb6840182a3d9605305e56e4616529c23f",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600513",
+      "type_codes": [
+        "K70YVV"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-processor-cutter-mixer-7-lt-variable-speed-600513/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600513_cutter_mixer_7_lt_variable_speed.pdf?version=1793116327",
+      "specification_sha256": "53761caceb297a429e944b98d20f81278cbab45d54a035c2040907c6f59b66a3",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "602339",
+      "type_codes": [
+        "EVP60D"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vacuum-packers-vacuum-packer-60m3-h-on-wheels-602339/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/602339_vacuum_packer_60m3_h_on_wheels.pdf?version=1793116327",
+      "specification_sha256": "35e3072adb37dfa14fadb54abdf268b185280a3a9c8cd1c47cd0fda2cb1f6b57",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600482",
+      "type_codes": [
+        "TRK45YI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vegetable-slicer-trk45-cutter-slicer-4.5-lt-variable-speed-600482/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600482_trk45_cutter_slicer_4_5_lt_variable_speed.pdf?version=1793116327",
+      "specification_sha256": "528a0c2cdf3cb1d92d749fd649cef9fe9594d2043180fd59717bf2bec24bada4",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600486",
+      "type_codes": [
+        "TRK55YI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vegetable-slicer-trk55-cutter-slicer-5.5-lt-variable-speed-600486/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600486_trk55_cutter_slicer_5_5_lt_variable_speed.pdf?version=1793116328",
+      "specification_sha256": "2831fdcf8c981d71429b32fa91a5833a9e5871510d9f29eaddea687ea580b974",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600490",
+      "type_codes": [
+        "TRK70YI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vegetable-slicer-trk70-cutter-slicer-7-lt-variable-speed-600490/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600490_trk70_cutter_slicer_7_lt_variable_speed.pdf?version=1793116328",
+      "specification_sha256": "3ee23197fa7b5cc8a1e7edb28bb5c225bf7b364a66e2a016bf571e993bfe51e1",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "602160",
+      "type_codes": [
+        "COM36"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vegetable-slicer-trinitypro-combined-vegetable-slicer-cutter-mixer-36-lt-single-speed-602160/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/602160_trinitypro_combined_vegetable_slicer_cutter_mixer_3_6_lt_single_speed.pdf?version=1793116329",
+      "specification_sha256": "ce122c507aedba15e1fe9a61259c67dda96a59785dc0e9b4482c21bf3acddc1b",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600514",
+      "type_codes": [
+        "K70YVVI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-processor-cutter-mixer-7-lt-variable-speed-cb-certification-600514/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600514_cutter_mixer_7_lt_variable_speed_cb_certification.pdf?version=1793116329",
+      "specification_sha256": "ad3d193d9f835dcb8236cce46ced3b8b7670159345fbffc760ae0b092c5243ab",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "603329",
+      "type_codes": [
+        "FM33B"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-slicers-330-mm-gravity-slicer-belt-transmission-automatic-603329/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/330 mm Gravity Slicer - belt transmission - automatic_603329_English Middle East.pdf?version=1793116329",
+      "specification_sha256": "f485ccc51049aba08beb8ba246a9395717e005b7701ff4860d79324a41132614",
+      "status": "held",
+      "reasons": [
+        "Table height 531 differs from drawing 631"
+      ]
+    },
+    {
+      "sku": "600484",
+      "type_codes": [
+        "TRK45YA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vegetable-slicer-trk45-cutter-slicer-4.5-lt-variable-speed-600484/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600484_trk45_cutter_slicer_4_5_lt_variable_speed.pdf?version=1793116329",
+      "specification_sha256": "9a2c4da30f0ad5285ed2b12051c175d84a212be10ea561997210d088e25acef9",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600488",
+      "type_codes": [
+        "TRK55YA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vegetable-slicer-trk55-cutter-slicer-5.5-lt-variable-speed-600488/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600488_trk55_cutter_slicer_5_5_lt_variable_speed.pdf?version=1793116329",
+      "specification_sha256": "2ee2099cf4c7cba01d6a078144829b9c4f71b5ae23b454a59646726d294c913b",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600510",
+      "type_codes": [
+        "K55YVV"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-processor-cutter-mixer-5.5-lt-variable-speed-600510/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600510_cutter_mixer_5_5_lt_variable_speed.pdf?version=1793116331",
+      "specification_sha256": "02f27bf5e9312020b3fd1b2731dac9ccb1f7da992c3627a3fcbee37879fba33c",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600493",
+      "type_codes": [
+        "TRK45YU"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vegetable-slicer-trk45-cutter-slicer-4.5-lt-variable-speed-600493/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600493_trk45_cutter_slicer_4_5_lt_variable_speed.pdf?version=1793116330",
+      "specification_sha256": "e74f46c5a44e6ec155a2bc6ae67c41c78c150a2a481923d0bd77620d7e2395a7",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz",
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600494",
+      "type_codes": [
+        "TRK55YU"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vegetable-slicer-trk55-cutter-slicer-5.5-lt-variable-speed-600494/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600494_trk55_cutter_slicer_5_5_lt_variable_speed.pdf?version=1793116330",
+      "specification_sha256": "8f34cda5fa41a79b503bab27d6d823bf7e787c7943397c1ed007c3ffb192f835",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz",
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600495",
+      "type_codes": [
+        "TRK70YU"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vegetable-slicer-trk70-cutter-slicer-7-lt-variable-speed-600495/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600495_trk70_cutter_slicer_7_lt_variable_speed.pdf?version=1793116330",
+      "specification_sha256": "251a81b469aba2146fe77b4c9bbcc0b2b0d8f9d02d7bde5349994f939fa2095b",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz",
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600511",
+      "type_codes": [
+        "K55YVVI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-processor-cutter-mixer-5.5-lt-variable-speed-cb-certification-600511/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600511_cutter_mixer_5_5_lt_variable_speed_cb_certification.pdf?version=1793116330",
+      "specification_sha256": "21ade062fa061eb55212f5afd848d792114595c3d3fc991fe1d4c38bb2bbeabf",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600505",
+      "type_codes": [
+        "K45Y1V6I"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-processor-cutter-mixer-4.5-lt-single-speed-cb-certification-600505/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600505_cutter_mixer_4_5_lt_single_speed_cb_certification.pdf?version=1793116332",
+      "specification_sha256": "62e212df8746ded0acc4deb9af2c3fbef56a2074ae3f3b29896b3881a3721d86",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz",
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600503",
+      "type_codes": [
+        "K70Y2V"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-processor-cutter-mixer-7-lt-2-speed-600503/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600503_cutter_mixer_7_lt_2_speed.pdf?version=1793116332",
+      "specification_sha256": "b1ff72c3ea2827d6d348eff19724997207aa71da281c627eccc0ed148e49dfe7",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600506",
+      "type_codes": [
+        "K45YVV"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-processor-cutter-mixer-4.5-lt-variable-speed-600506/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600506_cutter_mixer_4_5_lt_variable_speed.pdf?version=1793116332",
+      "specification_sha256": "f1dd06b1f4ee06451958b79eb66180f7e66bcb19c72a7f6c6dde52f9e9a962b3",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600501",
+      "type_codes": [
+        "K45Y2V"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-processor-cutter-mixer-4.5-lt-2-speed-600501/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600501_cutter_mixer_4_5_lt_2_speed.pdf?version=1793116332",
+      "specification_sha256": "818b4527db8209f25a883c6175b63d36e6415ec66068926715e37f3cbd9b3705",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600498",
+      "type_codes": [
+        "K55YVVK"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-processor-cutter-mixer-5.5-lt-variable-speed-korea-600498/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600498_cutter_mixer_5_5_lt_variable_speed_korea.pdf?version=1793116332",
+      "specification_sha256": "d5e17ca96ae642b2c453ac86a83472ddff8e0443bf00a6713bbd422970b1c367",
+      "status": "held",
+      "reasons": [
+        "Electrical variant outside target 230V single / 400V three phase at 50Hz",
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "602229",
+      "type_codes": [
+        "COM36SVS"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/vegetable-slicer-trinitypro-combined-vegetable-slicer-cutter-mixer-36-lt-with-sealed-lid-variable-speed-602229/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/602229_trinitypro_combined_vegetable_slicer_cutter_mixer_3_6_lt_with_sealed_lid_variable_speed.pdf?version=1793116333",
+      "specification_sha256": "08a1df660b970f990cc747947dc447d8154dba967a8da086cf8bc7fcb1cf3af7",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600500",
+      "type_codes": [
+        "K45Y1V"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-processor-cutter-mixer-4.5-lt-single-speed-600500/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600500_cutter_mixer_4_5_lt_single_speed.pdf?version=1793116333",
+      "specification_sha256": "f8a24e85a49557cd0057451784664442a3044a21dcdcc7858607eb8f40ceacb9",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600502",
+      "type_codes": [
+        "K55Y2V"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-processor-cutter-mixer-5.5-lt-2-speed-600502/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600502_cutter_mixer_5_5_lt_2_speed.pdf?version=1793116333",
+      "specification_sha256": "7fcf0f178159374f1f420050bf26f80513a00896fa957ff316cd4ce58e56954e",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "600507",
+      "type_codes": [
+        "K45YVVI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/food-preparation/cut-mix-slice/food-processor-cutter-mixer-4.5-lt-variable-speed-cb-certification-600507/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/600507_cutter_mixer_4_5_lt_variable_speed_cb_certification.pdf?version=1793116333",
+      "specification_sha256": "7136227a3495fb21582ebc911eeca96c69365445139a249660db756ceefd3dc9",
+      "status": "held",
+      "reasons": [
+        "Electrical input kW not published in page technical table"
+      ]
+    },
+    {
+      "sku": "371000",
+      "type_codes": [
+        "E7GCGD2C00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-2-burner-gas-boiling-top-371000/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 2-Burner Gas Boiling Top_371000_English Middle East.pdf?version=1793116448",
+      "specification_sha256": "a0b994fe41b57d4c4437642fad86dfecff8607771bf7fb99fdaf5155730f42f5",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371007",
+      "type_codes": [
+        "E7STGH1000"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-gas-solid-top-371007/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP Gas Solid Top_371007_English Middle East.pdf?version=1793116448",
+      "specification_sha256": "79e49f44060231f37afbc8f4a9b91fa5cf24cd858f2a3dd38223fd9937d6d9a0",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391000",
+      "type_codes": [
+        "E9GCGD2C00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-2-burner-gas-boiling-top-391000/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 2-Burner Gas Boiling Top_391000_English Middle East.pdf?version=1793116448",
+      "specification_sha256": "1a44846a03dc1f45c80e71ca2e1896aa2b1949fda37203a53805d9f73c015704",
+      "status": "held",
+      "reasons": [
+        "17.4mbar natural gas field conflicts with G20 20mbar delivery"
+      ]
+    },
+    {
+      "sku": "391002",
+      "type_codes": [
+        "E9GCGH4C00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-4-burner-gas-boiling-top-391002/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 4-Burner Gas Boiling Top_391002_English Middle East.pdf?version=1793116447",
+      "specification_sha256": "1bec5b7e56c1210c9f3a8ef704fc9b4963011db9deb31464bbc8cece0275c6de",
+      "status": "held",
+      "reasons": [
+        "17.4mbar natural gas field conflicts with G20 20mbar delivery"
+      ]
+    },
+    {
+      "sku": "371400",
+      "type_codes": [
+        "E7AAITAOMCI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-2-burner-gas-boiling-top-371400/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371400_700xp_2_burner_gas_boiling_top.pdf?version=1793116447",
+      "specification_sha256": "58d87ae7890f797b3285f561064cb49757c278aff646282c6fd4204423a63df9",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371011",
+      "type_codes": [
+        "E7STGH3000"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-gas-solid-top-with-2-burners-371011/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP Gas Solid Top - 2 Burners_371011_English Middle East.pdf?version=1793116450",
+      "specification_sha256": "9a123f863e41da311ff5b04df0ba6830475898edd750c6ed089f405d29cea407",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391053",
+      "type_codes": [
+        "E9FTGDCS00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-half-module-gas-fry-top-chromium-plated-391053/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 1_2 Module Gas Fry Top -Chrome_391053_English Middle East.pdf?version=1793116450",
+      "specification_sha256": "771888b326e69d25fdee04cf71df854e49c98d8cc875b3f69d6844970e611ed9",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391011",
+      "type_codes": [
+        "E9GCGL6C00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-6-burner-gas-boiling-top-391011/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 6-Burner Gas Boiling Top_391011_English Middle East.pdf?version=1793116450",
+      "specification_sha256": "523d37037d26f7fcda72627e13d04d1c3a8a51ae6dd529d4d0799b3a316009ce",
+      "status": "held",
+      "reasons": [
+        "17.4mbar natural gas field conflicts with G20 20mbar delivery",
+        "No extracted connection legend"
+      ]
+    },
+    {
+      "sku": "371001",
+      "type_codes": [
+        "E7GCGH4C00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-4-burner-gas-boiling-top-371001/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 4-Burner Gas Boiling Top_371001_English Middle East.pdf?version=1793116451",
+      "specification_sha256": "ada0aaead43ee1b5cb3e75a1f0a02a84ee4d924d7793f0513a94e6119c15ab28",
+      "status": "held",
+      "reasons": [
+        "17.4mbar natural gas field conflicts with G20 20mbar delivery"
+      ]
+    },
+    {
+      "sku": "391450",
+      "type_codes": [
+        "E9AAIAAOMCE"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-2-burner-gas-boiling-top-with-3mm-worktop-391450/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391450_900xp_2_burner_gas_boiling_top_with_3mm_worktop.pdf?version=1793116451",
+      "specification_sha256": "fcec5070579fdf851eb20775ace2114c51c797fcaf5049901313e0cc8d3f6e8e",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371012",
+      "type_codes": [
+        "E7STGL5000"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-gas-solid-top-with-4-burners-371012/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP Gas Solid Top - 4 Burners_371012_English Middle East.pdf?version=1793116451",
+      "specification_sha256": "9cfeeb76a2a26d8a51da4b1526bb763af39f35fd401acb3bbceb3ac72ace68ce",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391452",
+      "type_codes": [
+        "E9AAMAAOMEE"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-4-burner-gas-boiling-top-with-3mm-worktop-391452/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391452_900xp_4_burner_gas_boiling_top_with_3mm_worktop.pdf?version=1793116451",
+      "specification_sha256": "1c991703e84ddade36cd8c4b6e609db68496f0c68b517a521c27d8e72425cb32",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371401",
+      "type_codes": [
+        "E7AAKTAOMEI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-4-burner-gas-boiling-top-371401/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371401_700xp_4_burner_gas_boiling_top.pdf?version=1793116452",
+      "specification_sha256": "38ce25d17b30199c55786ac23c18d953a7f5f975b2ece3c827f8d31e08d94c49",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391459",
+      "type_codes": [
+        "E9AANAAOMIE"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-6-burner-gas-boiling-top-with-3mm-worktop-391459/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391459_900xp_6_burner_gas_boiling_top_with_3mm_worktop.pdf?version=1793116452",
+      "specification_sha256": "6fc7813f766abe4394cdaae7346db7ff7ba2cd3d8eef81330809cf5404f4c2e5",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371004",
+      "type_codes": [
+        "E7GCGL6C00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-6-burner-gas-boiling-top-371004/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 6-Burner Gas Boiling Top_371004_English Middle East.pdf?version=1793116453",
+      "specification_sha256": "eb7d4e294fcd207bfc1d63325c7b14d039ba07f469be9396b5f23907e0449609",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371041",
+      "type_codes": [
+        "E7FTGHCP00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-full-module-gas-fry-top-chromium-plated-371041/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP Full Module Gas Fry Top -Chrome_371038-371041_English Middle East.pdf?version=1793116452",
+      "specification_sha256": "945a34d5ca875750dffe3ad1cbe46def385df23e93b9226ce43721ddea58574a",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371320",
+      "type_codes": [
+        "E7IIKAAOMCA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-400mm-gas-fry-top-smooth-brushed-chrome-plate-371320/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371320_700xp_400mm_gas_fry_top_smooth_brushed_chrome_plate.pdf?version=1793116453",
+      "specification_sha256": "54299a0328588ed1364bc20e56be5235389b7b1adab048692c480f28bb2a7ebf",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371405",
+      "type_codes": [
+        "E7AANTAOMII"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-6-burner-gas-boiling-top-371405/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371405_700xp_6_burner_gas_boiling_top.pdf?version=1793116453",
+      "specification_sha256": "28f818b95242c9873053ea3be052b9d7ce841579821d50e0580050c36e70a6b9",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371323",
+      "type_codes": [
+        "E7IILAAOMCA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-400mm-gas-fry-top-ribbed-brushed-chrome-plate-371323/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371323_371412_700xp_400mm_gas_fry_top_ribbed_brushed_chrome_plate.pdf?version=1793116454",
+      "specification_sha256": "429dd05a34aedd1a92be19ab645f85a511cdec9d7fd718ec3edf435056fb0f0c",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391054",
+      "type_codes": [
+        "E9FTGHCS00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-full-module-gas-fry-top-chromium-plated-391054/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP Full Module Gas Fry Top -Chrome_391054-391055_English Middle East.pdf?version=1793116454",
+      "specification_sha256": "76da4823d2ce3ab1660a11ded73a44077e4fcbf7f32a869cef05998f8113c20e",
+      "status": "held",
+      "reasons": [
+        "17.4mbar natural gas field conflicts with G20 20mbar delivery"
+      ]
+    },
+    {
+      "sku": "371178",
+      "type_codes": [
+        "E7GCGH4CO0"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-4-burner-gas-boiling-top-on-open-base-800mm-371178/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371178_700xp_4_burner_gas_boiling_top_on_open_base_800mm.pdf?version=1793116454",
+      "specification_sha256": "c63a21915dc1ce23cf88a54b6d48966a999fcd1d37506479748d719d454c73b2",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371330",
+      "type_codes": [
+        "E7IIKAAOMEA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-800mm-gas-fry-top-smooth-brushed-chrome-plate-371330/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371330_700xp_800mm_gas_fry_top_smooth_brushed_chrome_plate.pdf?version=1793116458",
+      "specification_sha256": "c930a9e90cd3c8a9ac1f593af997938c8ea875cb0071032cd80eb4fff28e7448",
+      "status": "held",
+      "reasons": [
+        "Gas configuration/inlet incomplete"
+      ]
+    },
+    {
+      "sku": "391586",
+      "type_codes": [
+        "E9IIDTAOMEI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-full-module-gas-fry-top-smooth-polished-chrome-plate-391586/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391586_900xp_full_module_gas_fry_top_smooth_polished_chrome_plate.pdf?version=1793116459",
+      "specification_sha256": "a35d029d7974dfc0ad6d694e2ca7d715bf11f9be267a05ac0ce6018778fbac4e",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371179",
+      "type_codes": [
+        "E7GCGL6CO0"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-6-burner-gas-boiling-top-on-open-base-1200mm-371179/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371179_700xp_6_burner_gas_boiling_top_on_open_base_1200mm.pdf?version=1793116465",
+      "specification_sha256": "5bc4f6272dc27322f35bf027f6c4733c3ccc23eaae7ba09bc305b0da07f64284",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371335",
+      "type_codes": [
+        "E7IIMAAOMEA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-800mm-gas-fry-top-smooth-and-ribbed-brushed-chrome-plate-371335/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371335_700xp_800mm_gas_fry_top_smooth_and_ribbed_brushed_chrome_plate.pdf?version=1793116466",
+      "specification_sha256": "45566ca65184e9fa71de50b45629875c32b343cdc44aba8724844d41e0a23da3",
+      "status": "held",
+      "reasons": [
+        "Gas configuration/inlet incomplete"
+      ]
+    },
+    {
+      "sku": "391570",
+      "type_codes": [
+        "E9AAITAOMCI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-2-burner-gas-boiling-top-391570/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391570_900xp_2_burner_gas_boiling_top.pdf?version=1793116466",
+      "specification_sha256": "dc529d9b7b6aad9b8fd4f18fa01a0c9600ccce7b04ecf0bf41bde640e85a2396",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371408",
+      "type_codes": [
+        "E7IIDTAOMCI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-400mm-gas-fry-top-smooth-polished-chrome-plate-371408/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371408_700xp_400mm_gas_fry_top_smooth_polished_chrome_plate.pdf?version=1793116466",
+      "specification_sha256": "1aac68d4f0c26d196c6e9755ede0e99adbcacbd3732bd654697a6b245f09ce8b",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391055",
+      "type_codes": [
+        "E9FTGHCP00"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-full-module-gas-fry-top-chromium-plated-391055/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP Full Module Gas Fry Top -Chrome_391054-391055_English Middle East.pdf?version=1793116466",
+      "specification_sha256": "76da4823d2ce3ab1660a11ded73a44077e4fcbf7f32a869cef05998f8113c20e",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391572",
+      "type_codes": [
+        "E9AAMTAOMEI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-4-burner-gas-boiling-top-391572/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391572_900xp_4_burner_gas_boiling_top.pdf?version=1793116474",
+      "specification_sha256": "07237800b07b4a388744006defc8688980a9951ec2cbb5ee8520394229d11d2c",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371409",
+      "type_codes": [
+        "E7IIDTAOMEI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-800mm-gas-fry-top-smooth-polished-chrome-plate-371409/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371409_700xp_800mm_gas_fry_top_smooth_polished_chrome_plate.pdf?version=1793116474",
+      "specification_sha256": "23ad02510d4d5a6a66e335abd705da424390f06eb7c4b321e7d19d1e9649b1a7",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391579",
+      "type_codes": [
+        "E9AANTAOMII"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-6-burner-gas-boiling-top-391579/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391579_900xp_6_burner_gas_boiling_top.pdf?version=1793116474",
+      "specification_sha256": "362cf381b26aed5d9a934e2f5ab57e4e661358233bd2eac74eacd8cfb97b39ed",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371410",
+      "type_codes": [
+        "E7IIETAOMEI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-800mm-gas-fry-top-smooth-and-ribbed-polished-chrome-plate-371410/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371410_700xp_800mm_gas_fry_top_smooth_and_ribbed_polished_chrome_plate.pdf?version=1793116475",
+      "specification_sha256": "2e04c9dd3999ae0573bf933c15cb9c3d99672b23f141602973ace630bbe9d048",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391587",
+      "type_codes": [
+        "E9IIETAOMEI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-full-module-gas-fry-top-smooth-and-ribbed-polished-chrome-plate-391587/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391587_900xp_full_module_gas_fry_top_smooth_and_ribbed_polished_chrome_plate.pdf?version=1793116475",
+      "specification_sha256": "5bf411002c693be39a5c151b82004319c7f20c23802e6855f03eeb857f782837",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371411",
+      "type_codes": [
+        "E7IIKTAOMCI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-400mm-gas-fry-top-smooth-brushed-chrome-plate-371411/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371411_700xp_400mm_gas_fry_top_smooth_brushed_chrome_plate.pdf?version=1793116481",
+      "specification_sha256": "52c806e61ae16de32acefdb4d1700d34260e351cd4dc8b27c948cab260cd41a4",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371412",
+      "type_codes": [
+        "E7IILTAOMCI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-400mm-gas-fry-top-ribbed-brushed-chrome-plate-371412/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371323_371412_700xp_400mm_gas_fry_top_ribbed_brushed_chrome_plate.pdf?version=1793116481",
+      "specification_sha256": "429dd05a34aedd1a92be19ab645f85a511cdec9d7fd718ec3edf435056fb0f0c",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391354",
+      "type_codes": [
+        "E9IILAAOMCA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-400mm-gas-fry-top-ribbed-brushed-chrome-plate-391354/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391354_900xp_400mm_gas_fry_top_ribbed_brushed_chrome_plate.pdf?version=1793116481",
+      "specification_sha256": "0e27c105d36074f1183bb700cf139416f12b5f426e1cf27d93a6d1a19f9bf595",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371413",
+      "type_codes": [
+        "E7IIKTAOMEI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-800mm-gas-fry-top-smooth-brushed-chrome-plate-371413/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371413_700xp_800mm_gas_fry_top_smooth_brushed_chrome_plate.pdf?version=1793116481",
+      "specification_sha256": "095c3a4fd29bc240dca6e054e85914d8ef02183289232d39a1bb6e3029790ad5",
+      "status": "held",
+      "reasons": [
+        "Gas configuration/inlet incomplete"
+      ]
+    },
+    {
+      "sku": "391402",
+      "type_codes": [
+        "E9IINAAOMCA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-400mm-gas-fry-top-smooth-brushed-chrome-plate-391402/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391402_900xp_400mm_gas_fry_top_smooth_brushed_chrome_plate.pdf?version=1793116481",
+      "specification_sha256": "a1635a635cf68e6a434193ee37394cf876ce778a114501e3d645fe74867a5480",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371414",
+      "type_codes": [
+        "E7IIMTAOMEI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-800mm-gas-fry-top-smooth-and-ribbed-brushed-chrome-plate-371414/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371414_700xp_800mm_gas_fry_top_smooth_and_ribbed_brushed_chrome_plate.pdf?version=1793116483",
+      "specification_sha256": "632e01752d7721a8340944593a6eda25f1edf20036771bf8733636b4bee37e2d",
+      "status": "held",
+      "reasons": [
+        "Gas configuration/inlet incomplete"
+      ]
+    },
+    {
+      "sku": "391401",
+      "type_codes": [
+        "E9IINAAOMEA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-800mm-gas-fry-top-smooth-brushed-chrome-plate-391401/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391401_900xp_800mm_gas_fry_top_smooth_brushed_chrome_plate.pdf?version=1793116483",
+      "specification_sha256": "1c87fa58468d363e891ac9f9363429dbda640b8eba469ed71cffd3fbb1ff6740",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391590",
+      "type_codes": [
+        "E9IINTAOMEI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-800mm-gas-fry-top-smooth-brushed-chrome-plate-391590/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391590_900xp_800mm_gas_fry_top_smooth_brushed_chrome_plate.pdf?version=1793116483",
+      "specification_sha256": "2ed8c46c57bac3d15d3753b4c7a8ae0d709ad3f8b01f8e32eb45c5ac60d95675",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391403",
+      "type_codes": [
+        "E9IIMAAOMEA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-800mm-gas-fry-top-smooth-and-ribbed-brushed-chrome-plate-391403/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391403_900xp_800mm_gas_fry_top_smooth_and_ribbed_brushed_chrome_plate.pdf?version=1793116483",
+      "specification_sha256": "d4d633eca377c57e1a0f225447bc70446866c06dccf5c1898a14e6b0ceb11ffd",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391591",
+      "type_codes": [
+        "E9IIMTAOMEI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-800mm-gas-fry-top-smooth-and-ribbed-brushed-chrome-plate-391591/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391591_900xp_800mm_gas_fry_top_smooth_and_ribbed_brushed_chrome_plate.pdf?version=1793116483",
+      "specification_sha256": "eee0155a1f6d08ac8d198c8ae7e7273fe564f5698e6c48a720164874cc650f4f",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391004",
+      "type_codes": [
+        "E9GCGH4CGL"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-4-burner-gas-range-6-kw-on-gas-oven-391004/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 4-Burner Gas 6 kW on Gas Oven_391004_English Middle East.pdf?version=1793116591",
+      "specification_sha256": "b8e6cf1ba27b98d84ed2105a53f110ac4950bac43d33df88201e022abfe447e7",
+      "status": "held",
+      "reasons": [
+        "17.4mbar natural gas field conflicts with G20 20mbar delivery"
+      ]
+    },
+    {
+      "sku": "391005",
+      "type_codes": [
+        "E9GCGH4CG0"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-4-burner-gas-range-on-gas-oven-391005/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 4-Burner Gas on Gas Oven_391005_English Middle East.pdf?version=1793116591",
+      "specification_sha256": "b6d1828265628ae6abd11475809d6de6fdf14fddd984de97adc9f8edbf30fe30",
+      "status": "held",
+      "reasons": [
+        "17.4mbar natural gas field conflicts with G20 20mbar delivery"
+      ]
+    },
+    {
+      "sku": "371403",
+      "type_codes": [
+        "E7AAKTBBMEI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-4-burner-gas-range-on-gas-oven-371403/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371403_700xp_4_burner_gas_range_on_gas_oven.pdf?version=1793116591",
+      "specification_sha256": "3824fc599a8d9d3128cb44bb627a3e3bfa6b97627717b8b1cbe0efd6277a1cbd",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391259",
+      "type_codes": [
+        "E9GCGHTCGA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-4-burner-gas-range-10-kw-on-gas-oven-391259/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391259_900xp_4_burner_gas_range_10_kw_on_gas_oven.pdf?version=1793116591",
+      "specification_sha256": "db22fa8532703174c895c256b4a6af66b8d87758c66a684ba493d5ca7cba5887",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Australian AGA variant; exact gas delivery pressure absent, plus inconsistent family feature text."
+      ]
+    },
+    {
+      "sku": "391642",
+      "type_codes": [
+        "E9AARABBME"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-4-eco-burner-gas-range-10-kw-on-gas-oven-391642/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391642_900xp_4_eco_burner_gas_range_10_kw_on_gas_oven.pdf?version=1793116591",
+      "specification_sha256": "0b1d5b173b29e1b7454112be3eacdcac8dd26d6c6c6a1b0bde155e73c5178112",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371215",
+      "type_codes": [
+        "E7GCGI6CL0"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-6-burner-gas-range-on-large-gas-oven-371215/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 6-Burner Gas Range on Large Oven_371215_English Middle East.pdf?version=1793116593",
+      "specification_sha256": "241d60ddc71a4b03c3066b2c3b2b526326976465fe12641a6deaa56406c0e1a0",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391189",
+      "type_codes": [
+        "E9AARSBBME"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-4-eco-burner-gas-range-10-kw-on-gas-oven-391189/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391189_900xp_4_eco_burner_gas_range_10_kw_on_gas_oven.pdf?version=1793116593",
+      "specification_sha256": "3c36ca3db5f0dfe4f037ffd229308762d80b85b45ee005ec6c5f60c85ada200a",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391260",
+      "type_codes": [
+        "E9GCGHTCGB"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-4-burner-gas-range-10-kw-on-oven-391260/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391260_900xp_4_burner_gas_range_10_kw_on_oven.pdf?version=1793116593",
+      "specification_sha256": "d0a3cb8347b236d73bcb39bf9e2250ca5ece1e4b68605621cda7f967c99b11dc",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Australian AGA variant; exact gas delivery pressure absent, plus inconsistent family feature text."
+      ]
+    },
+    {
+      "sku": "371404",
+      "type_codes": [
+        "E7AANTBJMFI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-6-burner-gas-range-on-large-gas-oven-371404/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371404_700xp_6_burner_gas_range_on_large_gas_oven.pdf?version=1793116592",
+      "specification_sha256": "02b7af0e6c301669d37800128b787143c6b59b235775873babd95dc359287519",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391262",
+      "type_codes": [
+        "E9GCGLTC1A"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-6-burner-gas-range-on-oven-with-cupboard-391262/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391262_900xp_6_burner_gas_range_on_oven_with_cupboard.pdf?version=1793116593",
+      "specification_sha256": "bfaaf52edb3f512504a8dc77e9d63e3bad3747cde28152362e5854fc3007a8ee",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Australian AGA variant; exact gas delivery pressure absent, plus inconsistent family feature text."
+      ]
+    },
+    {
+      "sku": "391263",
+      "type_codes": [
+        "E9GCGLTC1B"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-6-burner-gas-range-10-kw-on-oven-with-cupboard-391263/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391263_900xp_6_burner_gas_range_10_kw_on_oven_with_cupboard.pdf?version=1793116594",
+      "specification_sha256": "de86108ed67d2cc15d87a3a593600b350509fed6fb69ead1d0c70cdb5e17358d",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Australian AGA variant; exact gas delivery pressure absent, plus inconsistent family feature text."
+      ]
+    },
+    {
+      "sku": "371407",
+      "type_codes": [
+        "E7AANTBFMII"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-700xp-6-burner-gas-range-on-gas-oven-with-cupboard-371407/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/371407_700xp_6_burner_gas_range_on_gas_oven_with_cupboard.pdf?version=1793116594",
+      "specification_sha256": "a3604d776e20ef3d1b66683f29a3bcd1abfa93153169d9500ab2bfee626ad371",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391014",
+      "type_codes": [
+        "E9GCGL6C1M"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-6-burner-gas-range-10-kw-on-gas-oven-with-cupboard-391014/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 6-Burner Gas 10kW on Gas Oven Cupboard_391014_English Middle East.pdf?version=1793116594",
+      "specification_sha256": "0511af70fc46f47308f6bc27422f98c9e31b9e1d84c9a3b54e3cdb08e6781475",
+      "status": "held",
+      "reasons": [
+        "17.4mbar natural gas field conflicts with G20 20mbar delivery"
+      ]
+    },
+    {
+      "sku": "391015",
+      "type_codes": [
+        "E9GCGL6CL0"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-6-burner-gas-range-on-large-gas-oven-391015/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 6-Burner Gas on Gas Oven_391015_English Middle East.pdf?version=1793116594",
+      "specification_sha256": "c859f04e0c829bbf066052deccc178c45c3825be92c63a8ee44fd19b14d96929",
+      "status": "held",
+      "reasons": [
+        "17.4mbar natural gas field conflicts with G20 20mbar delivery",
+        "No extracted connection legend"
+      ]
+    },
+    {
+      "sku": "391016",
+      "type_codes": [
+        "E9GCGL6CLM"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-6-burner-gas-range-10-kw-on-large-gas-oven-391016/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 6-Burner Gas 10kW Large Gas Oven_391016_English Middle East.pdf?version=1793116594",
+      "specification_sha256": "922fcc7b22d098062c0466c2c9a4dbf4d494f9782bcc9595f55fac54f823b422",
+      "status": "held",
+      "reasons": [
+        "17.4mbar natural gas field conflicts with G20 20mbar delivery"
+      ]
+    },
+    {
+      "sku": "391013",
+      "type_codes": [
+        "E9GCGL6C10"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-6-burner-gas-range-on-gas-oven-with-cupboard-391013/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 6-Burner Gas on Gas Oven Cupboard_391013_English Middle East.pdf?version=1793116595",
+      "specification_sha256": "8e2fd00fc83892a25ee425901ad4ce8115a74c25e8195cc4d4255c1e7eba4ddb",
+      "status": "held",
+      "reasons": [
+        "17.4mbar natural gas field conflicts with G20 20mbar delivery"
+      ]
+    },
+    {
+      "sku": "391272",
+      "type_codes": [
+        "E9GCGP8CGA"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-8-burner-gas-range-on-2-gas-ovens-391272/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391272_900xp_8_burner_gas_range_on_2_gas_ovens.pdf?version=1793116596",
+      "specification_sha256": "3d958c2ea50f67fc7121f891a7c768ed0331b535311db3b9a8e299ae8059cdf9",
+      "status": "held",
+      "reasons": [
+        "Page omits external dimensions; drawing review required",
+        "Australian AGA variant; exact gas delivery pressure absent, plus inconsistent family feature text."
+      ]
+    },
+    {
+      "sku": "391299",
+      "type_codes": [
+        "E9GCGH4CGW"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-4-burner-6-kw-each-gas-range-on-gas-oven-85-kw-tunisia-391299/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391299_4_burner_6_kw_each_gas_range_on_gas_oven_8_5_kw_tunisia.pdf?version=1793116596",
+      "specification_sha256": "d75170835e58789bb05ee7e0d8339a6a3b0ae3f07e27385e183a200b417aa370",
+      "status": "held",
+      "reasons": [
+        "Gas configuration/inlet incomplete",
+        "Market-specific Tunisia configuration outside target"
+      ]
+    },
+    {
+      "sku": "391461",
+      "type_codes": [
+        "E9AAKABBMEE"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-4-burner-gas-range-6-kw-on-gas-oven-with-3mm-worktop-391461/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391461_900xp_4_burner_gas_range_6_kw_on_gas_oven_with_3mm_worktop.pdf?version=1793116596",
+      "specification_sha256": "26178eeb5bc909e7f50932874e8cc0e1e59904de703f73c5d4c1ddaf5f8df235",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391462",
+      "type_codes": [
+        "E9AANABFMIE"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-6-burner-gas-range-on-gas-oven-with-cupboard-with-3mm-worktop-391462/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391462_900xp_6_burner_gas_range_on_gas_oven_with_cupboard_with_3mm_worktop.pdf?version=1793116596",
+      "specification_sha256": "cb7854381c4a26a12b5bbfcf20a0d4ce8843fd3fb78526d900959a4cd9d96fbe",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391463",
+      "type_codes": [
+        "E9AANABJMIE"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-6-burner-gas-range-on-large-gas-oven-with-3mm-worktop-391463/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391463_900xp_6_burner_gas_range_on_large_gas_oven_with_3mm_worktop.pdf?version=1793116597",
+      "specification_sha256": "f04e2d4dfe4691f8621155072da582f4e860db244611a92ae22f20d31076633e",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391465",
+      "type_codes": [
+        "E9AAOABFMIE"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-6-burner-gas-range-10-kw-on-gas-oven-with-cupboard-with-3mm-worktop-391465/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391465_900xp_6_burner_gas_range_10_kw_on_gas_oven_with_cupboard_with_3mm_worktop.pdf?version=1793116597",
+      "specification_sha256": "fb72fccd76727dfedcd25917c6077ad2349e111fbee335e018369b47cadf52f3",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391466",
+      "type_codes": [
+        "E9AAOABJMIE"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-6-burner-gas-range-10-kw-on-large-gas-oven-with-3mm-worktop-391466/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391466_900xp_6_burner_gas_range_10_kw_on_large_gas_oven_with_3mm_worktop.pdf?version=1793116597",
+      "specification_sha256": "77f447425ffc6ecb7b6ec691cb4258834417928b10e3c2b18cd92b8bcf90f945",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391577",
+      "type_codes": [
+        "E9AALTBBMEI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-4-burner-gas-range-10-kw-on-gas-oven-391577/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391577_900xp_4_burner_gas_range_10_kw_on_gas_oven.pdf?version=1793116597",
+      "specification_sha256": "c0217f99b0fca3dbaa6866c89ff637be9597db784969f4ca1661d50c34416897",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391575",
+      "type_codes": [
+        "E9AAKTBBMEI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-4-burner-gas-range-6-kw-on-gas-oven-391575/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391575_900xp_4_burner_gas_range_6_kw_on_gas_oven.pdf?version=1793116597",
+      "specification_sha256": "75f4637a028598f169547e14ae9ecda0c3d91cd42bf6773c845a0c644614a564",
+      "status": "held",
+      "reasons": [
+        "Current manufacturer PDF omits dimensional drawings; hold pending complete installation evidence"
+      ]
+    },
+    {
+      "sku": "391576",
+      "type_codes": [
+        "E9AAMTBBMEI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-4-burner-gas-range-on-gas-oven-391576/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391576_900xp_4_burner_gas_range_on_gas_oven.pdf?version=1793116598",
+      "specification_sha256": "398ceb8dfe1a1af9e68ac9904546d18e9163e422dad9d6236742a0a1f622428e",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391581",
+      "type_codes": [
+        "E9AAOTBJMII"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-6-burner-gas-range-10-kw-on-large-gas-oven-391581/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391581_900xp_6_burner_gas_range_10_kw_on_large_gas_oven.pdf?version=1793116599",
+      "specification_sha256": "cff090331a03d928c86179e181350f557ded31a1241b229c0da807badfb96bb7",
+      "status": "held",
+      "reasons": [
+        "Current manufacturer PDF omits dimensional drawings; hold pending complete installation evidence"
+      ]
+    },
+    {
+      "sku": "391580",
+      "type_codes": [
+        "E9AANTBJMII"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-6-burner-gas-range-on-large-gas-oven-391580/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391580_900xp_6_burner_gas_range_on_large_gas_oven.pdf?version=1793116598",
+      "specification_sha256": "043be1f29369939e6db87817ba7d914787ddaf34e502f36466e57f3067e845a3",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391583",
+      "type_codes": [
+        "E9AAOTBFMII"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-6-burner-gas-range-10-kw-on-gas-oven-with-cupboard-391583/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391583_900xp_6_burner_gas_range_10_kw_on_gas_oven_with_cupboard.pdf?version=1793116599",
+      "specification_sha256": "9ba38223c54993f5ebb93bd63b50d73ff8000fba3f2148ab4c24018554241357",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391582",
+      "type_codes": [
+        "E9AANTBFMII"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-6-burner-gas-range-on-gas-oven-with-cupboard-391582/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391582_900xp_6_burner_gas_range_on_gas_oven_with_cupboard.pdf?version=1793116599",
+      "specification_sha256": "43883e9d8ec789647b0ad59e965a6879011bf4c60e465a5cb0d2cfd812fcf41f",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391584",
+      "type_codes": [
+        "E9AAPTBBMKI"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-8-burner-gas-range-on-2-gas-ovens-391584/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391584_900xp_8_burner_gas_range_on_2_gas_ovens.pdf?version=1793116600",
+      "specification_sha256": "29cfb50637bba5bcb4eda704844879cbfa2e386c5d95efe2e5c79d07b1a2a62d",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391017",
+      "type_codes": [
+        "E9GCGP8CG0"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-8-burner-gas-range-on-2-gas-ovens-391017/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 8-Burner Gas 2 Gas Oven_391017_English Middle East.pdf?version=1793116600",
+      "specification_sha256": "41c93f45a45dfc93560b5a6d88b5ec6ad1ee6143502841579043e53d2295354b",
+      "status": "held",
+      "reasons": [
+        "17.4mbar natural gas field conflicts with G20 20mbar delivery"
+      ]
+    },
+    {
+      "sku": "361258",
+      "type_codes": [
+        "CTR172"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-17-gn-2-1-container-trolley-361258/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/361258_17_gn_2_1_container_trolley.pdf?version=1793117193",
+      "specification_sha256": "90ab7dad9ed04a7abdc7adff5c195329e2640d2475594586b075a55329134197",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "361260",
+      "type_codes": [
+        "CTR172SS"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/en-my/commercial-kitchen-equipment/trolleys/service-trolleys-17-gn-2-1-container-trolley-space-saving-361260/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/361260_17_gn_2_1_container_trolley_space_saving.pdf?version=1793117193",
+      "specification_sha256": "7a463f5f451dfc7e13b23400e6bac43a45affd191768665253f65b450b22c38a",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "371115",
+      "type_codes": [
+        "E7WTNBN000"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-1-4-module-ambient-worktop-with-closed-front-371115/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 1_4 Module Ambient Worktop closed front_371115_English Middle East.pdf?version=1793117830",
+      "specification_sha256": "55bd2e72b3d817e8b26f77a05728f63ddcc90a1e7c8f35f9999bffba6ebe4fd2",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391156",
+      "type_codes": [
+        "E9WTNBN000"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-1-4-module-ambient-worktop-391156/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 1_4 Module Ambient Worktop_391156_English Middle East.pdf?version=1793117830",
+      "specification_sha256": "30cb6c8df1c269e092999571d8b6bd45b4538b127bedbf5b171a3cda90194cdd",
+      "status": "not-selected",
+      "reasons": [
+        "Extra discovered passive candidate; complete construction and visual review deferred to a later authorized batch."
+      ]
+    },
+    {
+      "sku": "391157",
+      "type_codes": [
+        "E9WTNBN00E"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-1-4-module-ambient-worktop-with-drawer-391157/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 1_4 Module Ambient Worktop with drawer_391157_English Middle East.pdf?version=1793117830",
+      "specification_sha256": "5faf2d3c05d02bcc96729ca2e546825d7eac7553f7be9f731b421e25366d75e4",
+      "status": "not-selected",
+      "reasons": [
+        "Extra discovered passive candidate; complete construction and visual review deferred to a later authorized batch."
+      ]
+    },
+    {
+      "sku": "371117",
+      "type_codes": [
+        "E7WTNDN00E"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-1-2-module-ambient-worktop-with-drawer-371117/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP 1_2 Module Ambient Worktop -drawer_371117_English Middle East.pdf?version=1793117830",
+      "specification_sha256": "e532143446b60304c15a88facdbb832ac25dc17c36762645e52ac45dcfd1b981",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391158",
+      "type_codes": [
+        "E9WTNDN000"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-1-2-module-ambient-worktop-391158/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 1_2 Module Ambient Worktop_391158_English Middle East.pdf?version=1793117830",
+      "specification_sha256": "f0d9f27c39a7ada93245e2e9acdb2b0091238deb6d7b854f84fefbd6083fc847",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391159",
+      "type_codes": [
+        "E9WTNDN00E"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-1-2-module-ambient-worktop-with-drawer-391159/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP 1_2 Module Ambient Worktop with drawer_391159_English Middle East.pdf?version=1793117832",
+      "specification_sha256": "112bb3ddfcc21b784af9aa1272aef4c2d469c40eead23e72fcbef68d6867879e",
+      "status": "not-selected",
+      "reasons": [
+        "Extra discovered passive candidate; complete construction and visual review deferred to a later authorized batch."
+      ]
+    },
+    {
+      "sku": "371119",
+      "type_codes": [
+        "E7WTNHN00E"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-700xp-full-module-ambient-worktop-with-drawer-371119/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/700XP Full Module Ambient Worktop -drawer_371119_English Middle East.pdf?version=1793117832",
+      "specification_sha256": "84f125607a3da887a341788bb029c7f1506ea9ac3c356c59283a4bdda15a1301",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391160",
+      "type_codes": [
+        "E9WTNHN000"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-full-module-ambient-worktop-391160/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP Full Module Ambient Worktop_391160_English Middle East.pdf?version=1793117832",
+      "specification_sha256": "4d286e6ca9fbc40cf3eaa6f88409c879121f0772151ea98500866204f5b9d6b2",
+      "status": "selected",
+      "reasons": []
+    },
+    {
+      "sku": "391161",
+      "type_codes": [
+        "E9WTNHN00E"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-range-line-900xp-full-module-ambient-worktop-with-drawer-391161/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD2/Electrolux Professional/English Middle East/900XP Full Module Ambient Worktop with drawer_391161_English Middle East.pdf?version=1793117832",
+      "specification_sha256": "30157c472186effd30c89c7898f5189cbeb2e0d729f221fef6046a0baebbbb37",
+      "status": "not-selected",
+      "reasons": [
+        "Extra discovered passive candidate; complete construction and visual review deferred to a later authorized batch."
+      ]
+    },
+    {
+      "sku": "391543",
+      "type_codes": [
+        "E9SSAGAOMAE"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-1-4-module-ambient-worktop-3mm-391543/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391543_900xp_1_4_module_ambient_worktop_3mm.pdf?version=1793117832",
+      "specification_sha256": "82b6818f2e27b29b7869066ab29732e541acc9cee8dc4857d2f631b47f9fccb4",
+      "status": "not-selected",
+      "reasons": [
+        "Extra discovered passive candidate; complete construction and visual review deferred to a later authorized batch."
+      ]
+    },
+    {
+      "sku": "391544",
+      "type_codes": [
+        "E9SSBGAOMAE"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-1-4-module-ambient-worktop-with-drawer-3mm-391544/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391544_900xp_1_4_module_ambient_worktop_with_drawer_3mm.pdf?version=1793117834",
+      "specification_sha256": "a7dbf4a02a3bc607565d85cf5f84ecb41f7de27cf410fa8f0ce00bd6916b8609",
+      "status": "not-selected",
+      "reasons": [
+        "Extra discovered passive candidate; complete construction and visual review deferred to a later authorized batch."
+      ]
+    },
+    {
+      "sku": "391545",
+      "type_codes": [
+        "E9SSAGAOMCE"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-1-2-module-ambient-worktop-3mm-391545/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391545_900xp_1_2_module_ambient_worktop_3mm.pdf?version=1793117834",
+      "specification_sha256": "ad1feb19493b7e5ef16071f6d3cace0bfa836beee2be8d9225af949bd62cb592",
+      "status": "not-selected",
+      "reasons": [
+        "Extra discovered passive candidate; complete construction and visual review deferred to a later authorized batch."
+      ]
+    },
+    {
+      "sku": "391546",
+      "type_codes": [
+        "E9SSBGAOMCE"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-1-2-module-ambient-3mm-worktop-with-drawer-391546/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391546_900xp_1_2_module_ambient_3mm_worktop_with_drawer.pdf?version=1793117834",
+      "specification_sha256": "6f805eb766d33395aa070cb718ad79aef169ecd90d7e8fab6860f03cb4995588",
+      "status": "not-selected",
+      "reasons": [
+        "Extra discovered passive candidate; complete construction and visual review deferred to a later authorized batch."
+      ]
+    },
+    {
+      "sku": "391547",
+      "type_codes": [
+        "E9SSAGAOMEE"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-full-module-ambient-worktop-3mm-391547/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391547_900xp_full_module_ambient_worktop_3mm.pdf?version=1793117834",
+      "specification_sha256": "ca64d4360c3234281394489791bdeeac1bbf5ed1856324f62536d522063e4f7e",
+      "status": "not-selected",
+      "reasons": [
+        "Extra discovered passive candidate; complete construction and visual review deferred to a later authorized batch."
+      ]
+    },
+    {
+      "sku": "391548",
+      "type_codes": [
+        "E9SSBGAOMEE"
+      ],
+      "product_url": "https://www.electroluxprofessional.com/me/commercial-kitchen-equipment/cooking-ranges/900xp-700xp-cooking-ranges/modular-cooking-line-900xp-full-module-ambient-worktop-with-drawer-3mm-391548/",
+      "specification_url": "https://tools.electroluxprofessional.com/Mirror/Doc/MAD3/Food/Electrolux Professional/English/391548_900xp_full_module_ambient_worktop_with_drawer_3mm.pdf?version=1793117834",
+      "specification_sha256": "d5fa910f4142d0410b8534e1f9285c0412614a558ff1565665e308726eb9e2d6",
+      "status": "not-selected",
+      "reasons": [
+        "Extra discovered passive candidate; complete construction and visual review deferred to a later authorized batch."
+      ]
+    }
+  ]
+}
