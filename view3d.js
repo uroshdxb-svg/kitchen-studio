@@ -135,9 +135,15 @@ const KS3D=(function(){
       case "ss:trolley":for(const [x,z] of [[0,0],[w-30,0],[0,d-30],[w-30,d-30]]){B(g,x,120,z,30,h-120,30,M.steel2);Cy(g,x+15,55,z+15,55,30,M.rubber,"x");}B(g,0,h-30,0,w,30,d,M.steel,true);B(g,0,120,0,w,30,d,M.steel,true);for(let y=220;y<h-80;y+=75){B(g,30,y,0,25,12,d,M.steel2);B(g,w-55,y,0,25,12,d,M.steel2);}break;
       case "ss:wshelf":B(g,0,0,0,w,Math.max(h,30),d,M.steel,true);for(const x of [w*.15,w*.85]){B(g,x-15,-200,0,30,200,20,M.steel2);B(g,x-15,-30,0,30,30,d*.85,M.steel2);}if(o.includes("Double tier"))B(g,0,380,0,w,30,d,M.steel,true);break;
       case "ss:wcab":B(g,0,0,0,w,h,d,M.steel,true);B(g,8,8,F,w/2-10,h-16,10,M.steel2,true);B(g,w/2+2,8,F,w/2-10,h-16,10,M.steel2,true);break;
-      case "ss:hood":B(g,0,h*.65,0,w,h*.35,d,M.steel,true);B(g,0,0,0,w,h*.65,30,M.steel,true);B(g,0,0,d-30,w,h*.65,30,M.steel,true);B(g,0,0,0,30,h*.65,d,M.steel,true);B(g,w-30,0,0,30,h*.65,d,M.steel,true);
-        {const f=new THREE.Mesh(UNIT,M.steel2);f.scale.set(w-60,20,d*.55);f.position.set(w/2,h*.33,d*.3);f.rotation.x=-.6;g.add(f);}B(g,w*.42,h,d*.2,w*.16,Math.min(500,1e3),w*.16,M.steel2,true);
-        if(o.includes("Lights"))for(let i=0;i<Math.max(2,Math.round(w/900));i++)B(g,w*(i+.5)/Math.max(2,Math.round(w/900))-150,h*.62,d*.7,300,15,80,M.lamp);break;
+      case "ss:hood":{
+        // Angled canopy face and lower rim distinguish the hood from a cabinet.
+        const inset=Math.min(100,w*.12),sh=new THREE.Shape();sh.moveTo(0,0);sh.lineTo(w,0);sh.lineTo(w-inset,h*.7);sh.lineTo(inset,h*.7);sh.closePath();
+        const geo=new THREE.ExtrudeGeometry(sh,{depth:d,bevelEnabled:false});geo.userData.ownedByScene=true;const hood=new THREE.Mesh(geo,M.steel);hood.castShadow=hood.receiveShadow=true;g.add(hood);
+        B(g,0,0,d-28,w,45,28,M.steel2,true);B(g,inset,h*.7,0,w-2*inset,h*.3,d,M.steel,true);
+        for(let x=40;x<w-40;x+=65)B(g,x,-8,d*.2,12,8,d*.6,M.dark);
+        B(g,w*.42,h,d*.2,w*.16,Math.min(500,1e3),w*.16,M.steel2,true);
+        if(o.includes("Lights"))for(let i=0;i<Math.max(2,Math.round(w/900));i++)B(g,w*(i+.5)/Math.max(2,Math.round(w/900))-150,-12,d*.7,300,12,80,M.lamp);break;
+      }
       case "ss:gantry":B(g,30,0,d/2-20,40,h,40,M.steel2);B(g,w-70,0,d/2-20,40,h,40,M.steel2);B(g,0,h-35,0,w,35,d,M.steel,true);if(o.includes("Double tier"))B(g,0,h*.5,0,w,30,d,M.steel,true);
         if(o.includes("Heat lamps")){const n=Math.max(2,Math.round(w/600));for(let i=0;i<n;i++){const x=w*(i+.5)/n;Cy(g,x,h-95,d/2,8,60,M.dark);Cy(g,x,h-150,d/2,70,55,M.lamp);}}break;
       case "stand":{const s=KS_standOf(it),L=40,ch=s.castors?110:0,top=36;
