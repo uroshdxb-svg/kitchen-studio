@@ -25,7 +25,7 @@ for(const [key,file] of Object.entries(assetFiles)){
  assetURLs[key]=mode==='standalone'||mode==='artifact'?'data:'+(key==='chef'?'model/gltf-binary':key==='environment'?'application/octet-stream':'image/jpeg')+';base64,'+bytes.toString('base64'):'/app/assets/'+name;
 }
 const renderingLibs=['libs/meshopt_decoder.js','loaders/GLTFLoader.js','utils/BufferGeometryUtils.js','loaders/RGBELoader.js','math/SimplexNoise.js','shaders/CopyShader.js','shaders/SSAOShader.js','postprocessing/Pass.js','postprocessing/SSAOPass.js'].map(f=>read('node_modules/three/examples/js/'+f)).join('\n');
-const rendererJs=renderingLibs+'\nwindow.KS_3D_URLS='+JSON.stringify({chef:assetURLs.chef,environment:assetURLs.environment,floor:{diffuse:assetURLs.diffuse,normal:assetURLs.normal,rough:assetURLs.rough}})+';\n'+['view3d-assets.js','view3d-details.js','view3d-effects.js','view3d.js'].map(read).join('\n');
+const rendererJs=renderingLibs+'\nwindow.KS_3D_URLS='+JSON.stringify({chef:assetURLs.chef,environment:assetURLs.environment,floor:{diffuse:assetURLs.diffuse,normal:assetURLs.normal,rough:assetURLs.rough}})+';\n'+['view3d-assets.js','view3d-equipment.js','view3d-details.js','view3d-effects.js','view3d.js'].map(read).join('\n');
 const appJs=['brand.js','fab.js','cat.js','symbols.js'].map(read).join('\n')+'\n'+rendererJs+'\n'+read('app.js');
 const META='<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">';
 const ver=Date.now().toString(36);
@@ -40,7 +40,7 @@ if(mode==="artifact"){
   const inl=(id,f)=>`<script type="text/plain" id="${id}">\n${read(f)}\n</script>`;
   const html=`<!DOCTYPE html><html lang="en"><head>${META}\n${headPart}\n</head><body style="margin:0">\n${bodyPart}\n<script>\n${read(LIBS["three.min.js"])}\n</script>\n${inl("jspdf-src",LIBS["jspdf.min.js"])}\n${inl("svg2pdf-src",LIBS["svg2pdf.min.js"])}\n${inl("pdfjs-src",LIBS["pdf.min.js"])}\n${inl("pdfjs-worker-src",LIBS["pdf.worker.min.js"])}\n<script>\n${appJs}\n</script></body></html>`;
   out("dist-standalone","Kitchen_Studio.html",html);
-  const showcase=read("showcase.html").replace('src="/logo-icon.svg"','src="data:image/svg+xml,'+encodeURIComponent(brand.iconSVG())+'"').replace('href="/app/"','href="https://kitchenstudio.design/app/"').replace('<script src="/app/vendor/three.min.js"></script>',()=>'<script>'+read(LIBS['three.min.js'])+'</script>').replace('<script src="/app/renderer.js"></script>',()=>'<script>'+rendererJs+'</script>');
+  const showcase=read("showcase.html").replace('href="/equipment/"','href="https://codex-3d-materials-preview-kitchen-studio.urosh-dxb.workers.dev/equipment/"').replace('src="/logo-icon.svg"','src="data:image/svg+xml,'+encodeURIComponent(brand.iconSVG())+'"').replace('href="/app/"','href="https://kitchenstudio.design/app/"').replace('<script src="/app/vendor/three.min.js"></script>',()=>'<script>'+read(LIBS['three.min.js'])+'</script>').replace('<script src="/app/renderer.js"></script>',()=>'<script>'+rendererJs+'</script>');
   out("dist-standalone","Kitchen_Studio_3D_Showcase.html",showcase);
   console.log("dist-standalone/Kitchen_Studio.html",(html.length/1e6).toFixed(2),"MB");
 }else{
@@ -62,6 +62,9 @@ if(mode==="artifact"){
   for(const [key,file] of Object.entries(assetFiles))copy("assets/3d/"+file,D,"app/assets/"+assetNames[key]);
   out(D,"app/renderer.js",rendererJs);
   out(D,"showcase/index.html",read("showcase.html").replace("/app/renderer.js",`/app/renderer.js?v=${ver}`));
+  out(D,"equipment/index.html",read("equipment-review.html").replace("/app/renderer.js",`/app/renderer.js?v=${ver}`));
+  {const rows=new Function(read('cat.js')+';return CATALOGUE_ROWS')(),entries=new Function(read('view3d-equipment.js')+';return KS3DEquipment.entries')(),refs=JSON.parse(read('equipment-model-references.json'));
+   const models=entries.map(e=>{const r=rows.find(r=>r[0]===e.brand&&r[1]===e.model);if(!r||!refs[e.id])throw new Error('Missing catalogue row or reference for '+e.id);const ref=refs[e.id];copy('assets/equipment-reference/'+ref.file,D,'equipment/reference/'+ref.file);return {kind:'eq',brand:r[0],model:r[1],cat:r[2],name:r[3],w:r[4],d:r[5],h:r[6],mount:r[7],image:'/equipment/reference/'+ref.file,source:ref.source};});out(D,'equipment/models.json',JSON.stringify(models));}
   copy("cloud.js",D,"app/cloud.js");
   for(const [name,src] of Object.entries(LIBS))copy(src,D,"app/vendor/"+name);
   out(D,"connect/index.html",branded(read("connect.html")));

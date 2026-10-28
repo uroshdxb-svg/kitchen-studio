@@ -1,7 +1,7 @@
 /* 3D view: orbit + first-person walkthrough. Needs THREE (r128). Local item coords in mm: x width, y up, z depth (0 = back). */
 const KS3D=(function(){
   let R,scene,cam,root,host,canvas,inited=false,M={},UNIT,UCYL,UEDGE,EMAT,raf=0,onSelect=null,environmentTarget=null,scheduled=0,viewDirty=false,effects;
-  let mode="orbit",orb={th:.55,ph:.95,r:10,tx:0,ty:1,tz:0},walk={x:0,z:0,yaw:0,pitch:0},joy={f:0,s:0},keys={},room={w:9,d:6,h:3},blocks=[],poly=null;
+  let mode="orbit",orb={th:.55,ph:.95,r:10,tx:0,ty:1,tz:0},walk={x:0,z:0,yaw:0,pitch:0},joy={f:0,s:0},keys={},room={w:9,d:6,h:3},blocks=[],poly=null,studio=false;
   function inPoly(x,z){let c=false;for(let i=0,j=poly.length-1;i<poly.length;j=i++){const a=poly[i],b=poly[j];if((a[1]>z)!==(b[1]>z)&&x<(b[0]-a[0])*(z-a[1])/(b[1]-a[1])+a[0])c=!c;}return c;}
   const ok=()=>typeof THREE!=="undefined";
   function mat(c,o){return new THREE.MeshStandardMaterial(Object.assign({color:KS3DAssets.linear(c),metalness:.25,roughness:.45},o||{}));}
@@ -60,6 +60,7 @@ const KS3D=(function(){
 
   function build(it,sym){
     if(sym==='arch:person')return KS3DAssets.chef(it);
+    const equipment=KS3DEquipment.build(it,{M});if(equipment)return KS3DAssets.compact(equipment);
     const detail=KS3DDetails.build(it,sym,{B,Cy,M,feet,handleH,handleV,knobRow});if(detail)return KS3DAssets.compact(detail);
     const g=new THREE.Group(),w=it.w,d=it.d,h=it.h,o=it.opts||[],cols=Math.max(1,Math.round(w/400));
     const floorEq=it.mount==="floor"&&h>500,fh=floorEq?110:0,F=d;/* front plane z */
@@ -93,6 +94,7 @@ const KS3D=(function(){
       case "dishhood":{feet(g,w,d,fh);const top=h*.58,gap=h*.44;B(g,0,fh,0,w,gap-fh,d,M.steel,true);B(g,0,top,0,w,h-top,d,M.steel,true);for(const [x,z] of [[0,0],[w-50,0]])B(g,x,gap,z,50,top-gap,50,M.steel2);
         B(g,(w-500)/2,gap,(d-500)/2,500,20,500,M.dark);B(g,-40,top+40,F+30,w+80,30,30,M.steel2);B(g,-40,top+40,F-60,30,30,120,M.steel2);B(g,w+10,top+40,F-60,30,30,120,M.steel2);B(g,w*.6,h-110,F,w*.32,70,5,M.screen);B(g,20,fh+40,F,w-40,gap-fh-80,12,M.steel2,true);break;}
       case "dishconv":feet(g,w,d,fh);B(g,0,fh,0,w,(h-fh)*.42,d,M.steel,true);B(g,0,fh+(h-fh)*.56,0,w,(h-fh)*.44,d,M.steel,true);B(g,0,fh+(h-fh)*.42,0,w,(h-fh)*.14,60,M.steel2);B(g,w*.08,fh+(h-fh)*.6,F,w*.38,(h-fh)*.34,14,M.steel2,true);B(g,w*.54,fh+(h-fh)*.6,F,w*.38,(h-fh)*.34,14,M.steel2,true);break;
+      case "sheeter":{const y=h*.65;B(g,w*.42,0,d*.12,w*.16,h,d*.75,M.white,true);B(g,0,y,d*.22,w,40,d*.5,M.steel,true);B(g,0,y+40,d*.24,w,4,d*.46,M.white);Cy(g,w/2,y+h*.16,d*.5,w*.04,d*.5,M.steel2,'z');break;}
       case "mixer":B(g,w*.08,0,d*.1,w*.84,h*.1,d*.85,M.white,true);B(g,w*.25,h*.1,d*.05,w*.5,h*.68,d*.3,M.white,true);B(g,w*.2,h*.76,d*.05,w*.6,h*.24,d*.85,M.white,true);Cy(g,w/2,h*.16,d*.62,Math.min(w,d)*.3,h*.36,M.steel);Cy(g,w/2,h*.52,d*.62,18,h*.24,M.steel2);break;
       case "bowl":{const r=Math.min(w,d)*.36;if(/round|rice/i.test(it.name||"")){Cy(g,w/2,0,d/2,Math.min(w,d)*.49,h*.85,M.steel);Cy(g,w/2,h*.85,d/2,Math.min(w,d)*.44,h*.15,M.dark);}
         else{B(g,w*.12,0,d*.12,w*.76,h*.45,d*.76,M.white,true);Cy(g,w/2,h*.45,d/2,r,h*.5,M.steel);Cy(g,w/2,h*.95,d/2,r*.85,h*.05,M.dark);}break;}
@@ -159,18 +161,20 @@ const KS3D=(function(){
     root.traverse(o=>{if(o.shadow&&o.shadow.map)o.shadow.map.dispose();if(o.userData.selectionMaterial)o.material.dispose();if(o.geometry&&o.geometry.userData.ownedByScene)o.geometry.dispose();if(o.userData.roomResource){if(o.geometry)o.geometry.dispose();if(o.material){for(const m of (Array.isArray(o.material)?o.material:[o.material])){for(const key of ["map","normalMap","roughnessMap"])if(m[key]&&!KS3DAssets.isShared(m[key]))m[key].dispose();m.dispose();}}}});
     while(root.children.length)root.remove(root.children[0]);
     room={w:state.room.w/1000,d:state.room.d/1000,h:state.room.h/1000};
+    studio=state.room.studio===true;
     scene.background=new THREE.Color(C.sunk||"#dde3e8");
     root.add(new THREE.HemisphereLight(0xe7efff,0x7b7469,.36));
     const fill=new THREE.DirectionalLight(0xd8e7f5,.25);fill.position.set(-room.w,room.h,room.d);root.add(fill);
     const sun=new THREE.DirectionalLight(0xfff7ed,1.1);sun.position.set(room.w*.75,room.h*2.2,room.d*1.3);sun.target.position.set(room.w/2,0,room.d/2);sun.castShadow=true;
     const sc=sun.shadow.camera,ext=Math.max(room.w,room.d);sc.left=-ext;sc.right=ext;sc.top=ext;sc.bottom=-ext;sc.far=ext*5;sun.shadow.mapSize.set(2048,2048);sun.shadow.bias=-.0002;sun.shadow.normalBias=.004;sun.shadow.radius=3;root.add(sun,sun.target);
     // floor with 300 mm tiles
-    const floorMat=KS3DAssets.floor(room.w,room.d);
+    const floorMat=studio?new THREE.MeshStandardMaterial({color:KS3DAssets.linear(0xe0e2df),roughness:.9,metalness:0}):KS3DAssets.floor(room.w,room.d);
     const fl=new THREE.Mesh(new THREE.PlaneGeometry(room.w,room.d),floorMat);fl.userData.roomResource=true;fl.rotation.x=-Math.PI/2;fl.position.set(room.w/2,0,room.d/2);fl.receiveShadow=true;root.add(fl);
     poly=Array.isArray(state.room.poly)&&state.room.poly.length>2?state.room.poly.map(p=>[p[0]/1000,p[1]/1000]):null;
     const wallMat=new THREE.MeshStandardMaterial({color:0xe5e5df,roughness:.95,metalness:0});
     const tileWall=(length,side)=>{const map=surface("wall");map.repeat.set(length/.6,room.h/.3);return new THREE.MeshStandardMaterial({map,bumpMap:map,bumpScale:.001,roughness:.7,metalness:0,side:side||THREE.FrontSide});};
-    if(!poly){
+    if(studio){wallMat.dispose();}
+    else if(!poly){
       const wall=(w,h,x,y,z,rx,ry)=>{const o=new THREE.Mesh(new THREE.PlaneGeometry(w,h),tileWall(w));o.userData.roomResource=true;o.position.set(x,y,z);o.rotation.set(rx,ry,0);o.receiveShadow=true;root.add(o);};
       wall(room.w,room.h,room.w/2,room.h/2,0,0,0);wall(room.w,room.h,room.w/2,room.h/2,room.d,0,Math.PI);
       wall(room.d,room.h,0,room.h/2,room.d/2,0,Math.PI/2);wall(room.d,room.h,room.w,room.h/2,room.d/2,0,-Math.PI/2);
@@ -219,7 +223,7 @@ const KS3D=(function(){
     canvas.addEventListener("pointerdown",e=>{pts.set(e.pointerId,[e.clientX,e.clientY]);moved=0;try{canvas.setPointerCapture(e.pointerId);}catch(_){}
       if(pts.size===2){const a=[...pts.values()];pinch=Math.hypot(a[0][0]-a[1][0],a[0][1]-a[1][1]);}});
     canvas.addEventListener("pointermove",e=>{const p=pts.get(e.pointerId);if(!p)return;const dx=e.clientX-p[0],dy=e.clientY-p[1];moved+=Math.abs(dx)+Math.abs(dy);pts.set(e.pointerId,[e.clientX,e.clientY]);
-      if(pts.size===2&&mode==="orbit"){const a=[...pts.values()],dd=Math.hypot(a[0][0]-a[1][0],a[0][1]-a[1][1]);if(pinch)orb.r=Math.max(1.2,Math.min(80,orb.r*pinch/dd));pinch=dd;
+      if(pts.size===2&&mode==="orbit"){const a=[...pts.values()],dd=Math.hypot(a[0][0]-a[1][0],a[0][1]-a[1][1]);if(pinch)orb.r=Math.max(studio?.18:1.2,Math.min(80,orb.r*pinch/dd));pinch=dd;
         const k=orb.r*.0012;orb.tx-=(Math.cos(orb.th)*dx*.5)*k;orb.tz+=(Math.sin(orb.th)*dx*.5)*k;orb.ty=Math.max(0,Math.min(room.h,orb.ty+dy*.5*k));}
       else if(mode==="orbit"){if(e.shiftKey||e.buttons===2){const k=orb.r*.0015;orb.tx-=Math.cos(orb.th)*dx*k;orb.tz+=Math.sin(orb.th)*dx*k;orb.ty=Math.max(0,orb.ty+dy*k);}else{orb.th-=dx*.006;orb.ph=Math.max(.08,Math.min(1.52,orb.ph-dy*.006));}}
       else{viewDirty=true;walk.yaw+=dx*.004;walk.pitch=Math.max(-1.2,Math.min(1.2,walk.pitch+dy*.004));}
@@ -227,7 +231,7 @@ const KS3D=(function(){
     const up=e=>{const had=pts.delete(e.pointerId);pinch=0;if(had&&moved<6&&onSelect){const r=canvas.getBoundingClientRect(),v=new THREE.Vector2((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height*2-1)),rc=new THREE.Raycaster();rc.setFromCamera(v,cam);
         const hits=rc.intersectObjects(root.children,true);let id=null;for(const hi of hits){let o=hi.object;while(o&&!o.userData.id)o=o.parent;if(o){id=o.userData.id;break;}if(hi.object.type==="Mesh")break;}onSelect(id);}};
     canvas.addEventListener("pointerup",up);canvas.addEventListener("pointercancel",e=>{pts.delete(e.pointerId);});
-    canvas.addEventListener("wheel",e=>{if(mode!=="orbit")return;e.preventDefault();orb.r=Math.max(1.2,Math.min(80,orb.r*(e.deltaY>0?1.1:.9)));draw();},{passive:false});
+    canvas.addEventListener("wheel",e=>{if(mode!=="orbit")return;e.preventDefault();orb.r=Math.max(studio?.18:1.2,Math.min(80,orb.r*(e.deltaY>0?1.1:.9)));draw();},{passive:false});
     canvas.addEventListener("contextmenu",e=>e.preventDefault());
     window.addEventListener("keydown",e=>{if(mode!=="walk"||/input|select|textarea/i.test(e.target.tagName))return;const k=e.key.toLowerCase();if(["w","a","s","d","arrowup","arrowdown","arrowleft","arrowright"].includes(k)){keys[k]=1;e.preventDefault();}});
     window.addEventListener("keyup",e=>{keys[e.key.toLowerCase()]=0;});
@@ -250,6 +254,12 @@ const KS3D=(function(){
     scene.background=keep;scene.environment=keepEnv;if(exportEffects)exportEffects.dispose();exportEnv.dispose();r2.dispose();try{r2.forceContextLoss();}catch(_){}
     return out;
   }
-  return {ok,init,rebuild,resize,draw,setMode,resetOrbit,bindJoy,snapshot,ready:()=>KS3DAssets.ready(),get assetStatus(){return KS3DAssets.chefState;},focus:v=>{Object.assign(orb,{tx:v.x,ty:v.y,tz:v.z,r:v.r,th:v.th,ph:v.ph});draw();},stats:()=>({calls:R.info.render.calls,triangles:R.info.render.triangles,geometries:R.info.memory.geometries,textures:R.info.memory.textures,chef:KS3DAssets.chefState}),zoom:f=>{orb.r=Math.max(1.2,Math.min(80,orb.r*f));draw();},get mode(){return mode;},stop:()=>{mode="orbit";joy.f=joy.s=0;}};
+  function inspect(it,angle='perspective'){
+    const span=Math.max(it.w,it.d,it.h)*4,item={...it,id:'inspection',x:(span-it.w)/2,y:(span-it.d)/2,rot:0};
+    mode='orbit';rebuild({room:{w:span,d:span,h:span,studio:true},items:[item]},null,{sunk:'#e7e9e6'},()=>0,()=> 'generic',i=>i.w,i=>i.d);
+    const views={perspective:[.48,1.15],front:[0,1.48],side:[Math.PI/2,1.4],rear:[Math.PI,1.35],top:[0,.09]},v=views[angle]||views.perspective;
+    Object.assign(orb,{tx:span/2000,ty:it.h/2200,tz:span/2000,r:Math.max(it.h,it.w/cam.aspect,it.d)*1.95/1000,th:v[0],ph:v[1]});draw();
+  }
+  return {ok,init,rebuild,inspect,resize,draw,setMode,resetOrbit,bindJoy,snapshot,ready:()=>KS3DAssets.ready(),get assetStatus(){return KS3DAssets.chefState;},focus:v=>{Object.assign(orb,{tx:v.x,ty:v.y,tz:v.z,r:v.r,th:v.th,ph:v.ph});draw();},stats:()=>({calls:R.info.render.calls,triangles:R.info.render.triangles,geometries:R.info.memory.geometries,textures:R.info.memory.textures,chef:KS3DAssets.chefState}),zoom:f=>{orb.r=Math.max(studio?.18:1.2,Math.min(80,orb.r*f));draw();},get mode(){return mode;},stop:()=>{mode="orbit";joy.f=joy.s=0;}};
 })();
 
