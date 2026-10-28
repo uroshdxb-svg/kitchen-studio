@@ -5,8 +5,8 @@ const CANONICAL = "kitchenstudio.design";
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    // www. and the *.workers.dev address redirect to the main domain (keeps one URL in the wild)
-    if (url.hostname !== CANONICAL && (url.hostname === "www." + CANONICAL || url.hostname.endsWith(".workers.dev"))) {
+    // Keep production aliases canonical while letting branch previews serve their own build.
+    if (url.hostname === "www." + CANONICAL || url.hostname === "kitchen-studio.urosh-dxb.workers.dev") {
       url.hostname = CANONICAL; url.protocol = "https:";
       return Response.redirect(url.toString(), 301);
     }

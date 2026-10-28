@@ -1,10 +1,11 @@
 /* Shared 3D assets. Textures/models are requested only when the 3D view opens. */
 const KS3DAssets=(()=>{
-  let renderer,redraw,chefModel,chefTask,floorTask,chefState='idle';
+  let renderer,redraw,chefModel,chefTask,floorTask,environmentTask,hdr,chefState='idle';
   const floorMaps={},shared=new Set(),labels=new Map();
   const linear=c=>new THREE.Color(c).convertSRGBToLinear();
   function configure(r){r.outputEncoding=THREE.sRGBEncoding;r.toneMapping=THREE.ACESFilmicToneMapping;r.toneMappingExposure=.95;r.shadowMap.enabled=true;r.shadowMap.type=THREE.PCFSoftShadowMap;}
   function environment(r){
+    if(hdr){const p=new THREE.PMREMGenerator(r),t=p.fromEquirectangular(hdr);p.dispose();return t;}
     const s=new THREE.Scene(),resources=[];s.background=new THREE.Color(0x202631);
     const panel=(x,y,z,w,h,rx,ry,color,intensity)=>{const geo=new THREE.PlaneGeometry(w,h),m=new THREE.MeshBasicMaterial({color,side:THREE.DoubleSide});m.color.multiplyScalar(intensity);const o=new THREE.Mesh(geo,m);o.position.set(x,y,z);o.rotation.set(rx,ry,0);s.add(o);resources.push(geo,m);};
     panel(0,5,0,14,10,Math.PI/2,0,0xc3ceda,.45);panel(0,-3,0,16,12,Math.PI/2,0,0x555148,.3);
@@ -14,8 +15,9 @@ const KS3DAssets=(()=>{
     panel(-5.9,1.5,0,4,3,0,Math.PI/2,0xd9eaff,2);
     const pmrem=new THREE.PMREMGenerator(r),target=pmrem.fromScene(s,.04,.1,40);pmrem.dispose();resources.forEach(o=>o.dispose());return target;
   }
-  function init(r,onReady){
+  function init(r,onReady,onEnvironment){
     renderer=r;redraw=onReady;
+    environmentTask=new Promise(resolve=>new THREE.RGBELoader().setDataType(THREE.HalfFloatType).load(window.KS_3D_URLS.environment,t=>{hdr=t;onEnvironment(environment(r));redraw();resolve();},undefined,()=>resolve()));
     floorTask=Promise.all(Object.entries(window.KS_3D_URLS.floor).map(([key,url])=>new Promise(resolve=>{
       const c=document.createElement('canvas');c.width=c.height=2;const x=c.getContext('2d');x.fillStyle=key==='normal'?'#8080ff':key==='rough'?'#dddddd':'#a8a79e';x.fillRect(0,0,2,2);
       const t=new THREE.TextureLoader().load(url,()=>{redraw();resolve();},undefined,()=>{t.image=c;t.needsUpdate=true;resolve();});
@@ -52,7 +54,7 @@ const KS3DAssets=(()=>{
     const batches=new Map(),old=[],disposed=new Set();g.updateMatrixWorld(true);
     g.traverse(o=>{if(!o.isMesh||Array.isArray(o.material))return;const geo=o.geometry.index?o.geometry.toNonIndexed():o.geometry.clone();geo.applyMatrix4(o.matrixWorld);if(!batches.has(o.material))batches.set(o.material,[]);batches.get(o.material).push(geo);old.push(o);});
     old.forEach(o=>{o.parent.remove(o);if(o.geometry.userData.ownedByScene&&!disposed.has(o.geometry)){o.geometry.dispose();disposed.add(o.geometry);}});
-    for(const [m,list] of batches){const geo=THREE.BufferGeometryUtils.mergeBufferGeometries(list,false);list.forEach(x=>x.dispose());if(!geo)throw new Error('Incompatible equipment geometry');geo.userData.ownedByScene=true;const o=new THREE.Mesh(geo,m);o.castShadow=o.receiveShadow=true;g.add(o);}return g;
+    for(const [m,list] of batches){const geo=THREE.BufferGeometryUtils.mergeBufferGeometries(list,false);list.forEach(x=>x.dispose());if(!geo)throw new Error('Incompatible equipment geometry');geo.userData.ownedByScene=true;const o=new THREE.Mesh(geo,m);o.castShadow=!m.transparent;o.receiveShadow=true;g.add(o);}return g;
   }
-  return {configure,environment,init,floor,chef,compact,label,display,linear,isShared:t=>shared.has(t),ready:()=>Promise.all([floorTask,chefTask]),get chefState(){return chefState;}};
+  return {configure,environment,init,floor,chef,compact,label,display,linear,isShared:t=>shared.has(t),ready:()=>Promise.all([floorTask,chefTask,environmentTask]),get chefState(){return chefState;}};
 })();

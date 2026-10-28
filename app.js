@@ -947,7 +947,7 @@ async function exportPDF(){
     EXPORT_3D={imgs:[]};
     if($("pdf3d")?.checked!==false){try{
       if(!threeReady){threeReady=KS3D.init($("v3d"),$("cv3d"),id=>{sel=id;render();});if(threeReady)KS3D.bindJoy($("joy"),$("joyNub"));}
-      if(threeReady){KS3D.rebuild(state,null,C,zOf,KS_symOf,fw,fd);const pxw=Math.round((PW-2*10-(PW>400?96:74)-16)*8),pxh=Math.round(((PH-2*10-26-6)/2)*8);
+      if(threeReady){KS3D.rebuild(state,null,C,zOf,KS_symOf,fw,fd);await KS3D.ready();const pxw=Math.round((PW-2*10-(PW>400?96:74)-16)*8),pxh=Math.round(((PH-2*10-26-6)/2)*8);
         EXPORT_3D.imgs=KS3D.snapshot([{th:.6,ph:.98},{th:-.6,ph:.98}],pxw,pxh,"#FFFFFF");}
     }catch(e){console.warn("3D views skipped",e);EXPORT_3D.imgs=[];}}
     try{svgs=buildSheets(PW,PH,{project:$("pdfProject").value.trim()||"Kitchen layout",by:$("pdfBy").value.trim(),date:new Date().toISOString().slice(0,10),paper:fmt.toUpperCase()+" landscape"});}

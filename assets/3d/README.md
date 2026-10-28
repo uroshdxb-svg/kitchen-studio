@@ -19,3 +19,7 @@ Interior Tiles by Charlotte Baglioni / Poly Haven, CC0. Source: https://polyhave
 ## Equipment
 
 Original dimension-driven geometry in this repository. These are visual approximations, not manufacturer CAD. No catalogue dimensions, installation requirements or verification statuses are changed. Rational iCombi panel arrangement follows the manufacturer's product images at https://www.rational-online.com/en_xx/icombi-pro/ .
+
+## Lighting
+
+Studio Small 09 by Sergej Majboroda / Poly Haven, CC0. Source: https://polyhaven.com/a/studio_small_09 ; licence: https://polyhaven.com/license . `studio-small-09.hdr` is the unmodified 1K HDR environment downloaded on 28 October 2026 from https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/studio_small_09_1k.hdr . It lights reflections without displaying a studio background. Hosted locally, with a procedural environment fallback.
