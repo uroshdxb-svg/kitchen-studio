@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-28T04:22:29.078203+00:00",
+  "updated_at": "2026-10-28T04:44:22.409Z",
   "target": {
     "minimum_live_count": 1001,
     "deadline": "2026-10-31",
@@ -796,13 +796,13 @@
         "134103",
         "133244"
       ],
-      "state": "prepared",
+      "state": "live-verified",
       "source_before_sha": "9de59ae870c0f070b6ed5c8899ce2024ecc1742a",
       "source_before": 707,
       "source_after": 807,
       "verified_additions": 100,
-      "merged_additions": 0,
-      "live_verified_additions": 0,
+      "merged_additions": 100,
+      "live_verified_additions": 100,
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-28-electrolux-prep-storage-100.csv",
       "review": "equipment/batches/2026-10-28-electrolux-prep-storage-100.review.json",
@@ -829,43 +829,58 @@
         "structural_evidence": "pass: all 100 exact-SKU rows and required field/check evidence",
         "regressions": "npm run test:ci passed: 79 coordination tests, build, discovery audit, app/browser, MCP and all 100 latest-batch exact search/add checks",
         "local_browser": "pass: 100/100 exact SKU searches/additions, exact dimensions/utilities; zero page errors and customer writes",
-        "browser_environment": "Temporary cached Chromium 134.0.6998.35 substitution via PLAYWRIGHT_BROWSERS_PATH because pinned browser download failed on this host. Same tests/assertions retained; CI uses normal pinned Playwright browser.",
-        "completed_at": "2026-10-28T04:23:34.357588+00:00"
-      }
+        "browser_environment": "Temporary cached Chromium 134.0.6998.35 substitution via PLAYWRIGHT_BROWSERS_PATH because pinned browser download failed on this host. Same tests/assertions retained; CI uses normal pinned Playwright browser. GitHub CI installed its normal pinned Chromium and passed.",
+        "completed_at": "2026-10-28T04:23:34.357588+00:00",
+        "pr_ci": "pass: https://github.com/uroshdxb-svg/kitchen-studio/actions/runs/40633735370",
+        "review": "Codex review completed at exact PR head 40458aebc91603d06e2f843d3c81eb2bbc92c696 with no findings or unresolved threads; completed 2026-10-28T04:42:24.605562Z.",
+        "preview": "Cloudflare preview build/deployment succeeded for exact PR head (deployment 8257bba2-a079-45f9-a435-27cdf1b5d6f0). Preview /app/ returned 301 to production under existing Worker routing, so independent preview interaction was unavailable. Exact-head local checks and post-merge production checks passed.",
+        "production_catalogue": "pass: HTTP 200; all 807 rows exactly match source",
+        "production_catalogue_sha256": "fae9458a079f33d5a02142ac9f36cb67e26440ede855451b3b9a1c12ff22fabb",
+        "production_catalogue_verified_at": "2026-10-28T04:43:55.505Z",
+        "production_browser": "pass: 100/100 exact SKU searches and additions with exact dimensions/utilities; zero page errors and customer writes",
+        "production_browser_verified_at": "2026-10-28T04:44:22.409Z",
+        "production_browser_environment": "Chromium 134.0.6998.35; fresh disposable browser context with backend stand-in/write guard, host proxy certificate accommodation, external fonts blocked and DOMContentLoaded readiness. App-ready and exact-field assertions unchanged."
+      },
+      "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/24",
+      "head_sha": "40458aebc91603d06e2f843d3c81eb2bbc92c696",
+      "merge_sha": "5db8e287b8ae209b39c0f842217301e3c915790f",
+      "deployment_url": "https://kitchenstudio.design/app/catalogue.json",
+      "live_verified_at": "2026-10-28T04:44:22.409Z",
+      "release_receipt": "Ordinary expected-head merge after successful CI and automated review. All 807 public catalogue rows exactly match source; all 100 new SKUs searched and added with exact dimensions/utilities in a fresh production browser context. Zero page errors and zero customer writes."
     }
   ],
   "current_merged": {
-    "sha": "a6ca61fc20f04b70082d096b38d7b50a595e8221",
-    "count": 707,
-    "as_of": "2026-10-28T01:33:27.067208+00:00",
-    "live_count": 707
+    "sha": "5db8e287b8ae209b39c0f842217301e3c915790f",
+    "count": 807,
+    "as_of": "2026-10-28T04:44:22.409Z",
+    "live_count": 807
   },
   "daily_totals": {
     "date": "2026-10-28",
     "verified_additions": 200,
     "prepared_additions": 200,
-    "merged_additions": 100,
-    "live_verified_additions": 100,
-    "catalogue_count": 707,
+    "merged_additions": 200,
+    "live_verified_additions": 200,
+    "catalogue_count": 807,
     "prepared_count": 807,
-    "last_verified_live_count": 707,
-    "remaining_to_target_from_last_verified_live": 294,
-    "production_browser_qa": "pass: 100/100 exact-SKU search/add, exact dimensions/utilities; zero page errors and customer writes",
+    "last_verified_live_count": 807,
+    "remaining_to_target_from_last_verified_live": 194,
+    "production_browser_qa": "pass: latest 100/100 exact-SKU search/add, exact dimensions/utilities; earlier 100/100 receipt retained; zero page errors and customer writes",
     "deployment_blocker": null
   },
   "production_verification": {
-    "verified_at": "2026-10-28T01:33:27.067208+00:00",
-    "source_sha": "a6ca61fc20f04b70082d096b38d7b50a595e8221",
-    "catalogue_count": 707,
+    "verified_at": "2026-10-28T04:44:22.409Z",
+    "source_sha": "5db8e287b8ae209b39c0f842217301e3c915790f",
+    "catalogue_count": 807,
     "verified_additions": 100,
     "catalogue_urls": [
       "https://kitchenstudio.design/app/catalogue.json"
     ],
     "http_status": 200,
-    "sha256": "3a4bc1e0a86a7a47314eb04d82c2c40c7ce8af5e94b28b04805264d4597ba53d",
-    "result": "All 707 rows exactly match released source; every one of the 100 additions occurs once.",
+    "sha256": "fae9458a079f33d5a02142ac9f36cb67e26440ede855451b3b9a1c12ff22fabb",
+    "result": "All 807 rows exactly match released source; every one of the 100 additions occurs once.",
     "interactive_browser_qa": "pass: 100/100 exact-SKU search/add, dimensions and utilities; zero page errors and zero customer writes",
-    "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/23",
+    "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/24",
     "manual_deployment": false,
     "configuration_change": false
   },
@@ -962,6 +977,22 @@
       "result": "All 607 rows exactly match released source; all 100 additions are present once.",
       "interactive_browser_qa": "pass: 100/100 exact-SKU search/add, dimensions and utilities; zero page errors and zero customer writes",
       "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/22",
+      "manual_deployment": false,
+      "configuration_change": false
+    },
+    {
+      "verified_at": "2026-10-28T01:33:27.067208+00:00",
+      "source_sha": "a6ca61fc20f04b70082d096b38d7b50a595e8221",
+      "catalogue_count": 707,
+      "verified_additions": 100,
+      "catalogue_urls": [
+        "https://kitchenstudio.design/app/catalogue.json"
+      ],
+      "http_status": 200,
+      "sha256": "3a4bc1e0a86a7a47314eb04d82c2c40c7ce8af5e94b28b04805264d4597ba53d",
+      "result": "All 707 rows exactly match released source; every one of the 100 additions occurs once.",
+      "interactive_browser_qa": "pass: 100/100 exact-SKU search/add, dimensions and utilities; zero page errors and zero customer writes",
+      "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/23",
       "manual_deployment": false,
       "configuration_change": false
     }
