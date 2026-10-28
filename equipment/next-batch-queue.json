@@ -14,7 +14,7 @@
   "next_batch": {
     "id": "2026-10-28-electrolux-next-100",
     "manufacturer": "Electrolux Professional",
-    "state": "prepared",
+    "state": "live-verified",
     "models": [
       "371066",
       "371068",
@@ -120,8 +120,13 @@
     "source_before_sha": "0bacb2955850b14019eba95614b2d5b83c94c219",
     "source_before": 607,
     "source_after": 707,
-    "next_action": "Run import/build/app/evidence checks; scoped PR, CI and review, ordinary merge, then verify all 100 exact additions in production.",
-    "review": "equipment/batches/2026-10-28-electrolux-next-100.review.json"
+    "next_action": "Batch complete. Continue further equipment work only when requested; held and unreviewed candidates remain in the research register. No autonomous schedule created.",
+    "review": "equipment/batches/2026-10-28-electrolux-next-100.review.json",
+    "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/23",
+    "merge_sha": "a6ca61fc20f04b70082d096b38d7b50a595e8221",
+    "live_verified_at": "2026-10-28T01:33:27.067208+00:00",
+    "live_count": 707,
+    "live_verified_additions": 100
   },
   "previous_queue": {
     "id": "2026-10-27-electrolux-next-100",
@@ -433,7 +438,7 @@
   "current_recovery": {
     "date": "2026-10-28",
     "batch": "2026-10-28-electrolux-next-100",
-    "status": "prepared",
+    "status": "live-verified",
     "ready_models": [
       "371066",
       "371068",
@@ -542,10 +547,15 @@
       "CD100H"
     ],
     "cambro_note": "Prior unresolved dimensional conflicts remain held; not imported or re-certified in this batch.",
-    "next_action": "Run import/build/app/evidence checks; scoped PR, CI and review, ordinary merge, then verify all 100 exact additions in production.",
-    "legacy_queue": "held-source-unavailable"
+    "next_action": "Batch complete. Continue further equipment work only when requested; held and unreviewed candidates remain in the research register. No autonomous schedule created.",
+    "legacy_queue": "held-source-unavailable",
+    "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/23",
+    "merge_sha": "a6ca61fc20f04b70082d096b38d7b50a595e8221",
+    "live_verified_at": "2026-10-28T01:33:27.067208+00:00",
+    "live_count": 707,
+    "live_verified_additions": 100
   },
-  "updated_at": "2026-10-28T01:03:44.884727+00:00",
+  "updated_at": "2026-10-28T01:33:27.067208+00:00",
   "resolved_candidates": [
     {
       "brand": "Electrolux Professional",

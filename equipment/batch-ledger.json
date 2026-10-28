@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-28T01:03:44.884727+00:00",
+  "updated_at": "2026-10-28T01:33:27.067208+00:00",
   "target": {
     "minimum_live_count": 1001,
     "deadline": "2026-10-31",
@@ -640,13 +640,13 @@
         "602066",
         "602067"
       ],
-      "state": "prepared",
+      "state": "live-verified",
       "source_before_sha": "0bacb2955850b14019eba95614b2d5b83c94c219",
       "source_before": 607,
       "source_after": 707,
       "verified_additions": 100,
-      "merged_additions": 0,
-      "live_verified_additions": 0,
+      "merged_additions": 100,
+      "live_verified_additions": 100,
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-28-electrolux-next-100.csv",
       "review": "equipment/batches/2026-10-28-electrolux-next-100.review.json",
@@ -655,41 +655,75 @@
         "Water/drain flags distinguish fixed supply and wastewater provision from manual filling and local cooking-oil/juice collection; connection counts and air-break details remain in evidence.",
         "Gas configurations are named explicitly. No conversion, stock or local approval is implied.",
         "Original 455-row queue remains unavailable; no claim that these additions are outside it."
-      ]
+      ],
+      "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/23",
+      "head_sha": "12ffb72274199cd8913349a58aee7c9190149906",
+      "merge_sha": "a6ca61fc20f04b70082d096b38d7b50a595e8221",
+      "deployment_url": "https://kitchenstudio.design/app/catalogue.json",
+      "live_verified_at": "2026-10-28T01:33:27.067208+00:00",
+      "release_receipt": "Ordinary expected-head merge after successful CI and automated review. All 707 public catalogue rows exactly match source; all 100 new SKUs searched and added with exact dimensions/utilities in a fresh production browser context. Zero page errors and zero customer writes.",
+      "validation": {
+        "import_first_run": {
+          "added": 100,
+          "duplicates": 0,
+          "skipped": 0
+        },
+        "import_repeat_dry_run": {
+          "added": 0,
+          "duplicates": 100
+        },
+        "prior_rows_preserved": 607,
+        "prior_evidence_preserved": true,
+        "normalized_duplicates": 0,
+        "manufacturer_type_alias_duplicates": 0,
+        "structural_evidence": "pass: all 100 exact-SKU rows and required field/check evidence",
+        "regressions": "npm run test:ci passed: 79 coordination tests, build, discovery audit, app/browser, MCP and all 100 latest-batch exact search/add checks",
+        "local_browser": "pass: 100 exact SKU searches/additions, exact dimensions/utilities; zero page errors and customer writes",
+        "browser_environment": "Temporary Chromium 153.0.8010.0 substitution on this host because the pinned download was unavailable. CI installed its normal pinned Playwright Chromium and passed.",
+        "pr_ci": "pass: https://github.com/uroshdxb-svg/kitchen-studio/actions/runs/40615243160",
+        "review": "Codex review completed at exact PR head 12ffb72274199cd8913349a58aee7c9190149906 with no findings or unresolved threads; completed 2026-10-28T01:29:44.914049Z.",
+        "preview": "Cloudflare preview build/deployment succeeded for exact PR head (deployment 0aa88871-9a2c-4ca2-891e-0f93136145fb). Preview /app/ returned 301 to production under the existing Worker routing, so independent preview interaction was unavailable. Exact-head local checks and post-merge production checks passed.",
+        "production_catalogue": "pass: HTTP 200; all 707 rows exactly match source",
+        "production_catalogue_sha256": "3a4bc1e0a86a7a47314eb04d82c2c40c7ce8af5e94b28b04805264d4597ba53d",
+        "production_catalogue_verified_at": "2026-10-28T01:31:50.490Z",
+        "production_browser": "pass: 100/100 exact SKU searches and additions with exact dimensions/utilities; zero page errors and customer writes",
+        "production_browser_verified_at": "2026-10-28T01:33:27.067208+00:00",
+        "production_browser_environment": "Chromium 153.0.8010.0; fresh disposable browser context with backend stand-in/write guard, host proxy certificate accommodation, external fonts blocked and DOMContentLoaded readiness. App-ready and exact-field assertions unchanged."
+      }
     }
   ],
   "current_merged": {
-    "sha": "c1abac24dc668702466e89fc360662bbec4b5849",
-    "count": 607,
-    "as_of": "2026-10-27T19:47:14.600055+00:00",
-    "live_count": 607
+    "sha": "a6ca61fc20f04b70082d096b38d7b50a595e8221",
+    "count": 707,
+    "as_of": "2026-10-28T01:33:27.067208+00:00",
+    "live_count": 707
   },
   "daily_totals": {
     "date": "2026-10-28",
     "verified_additions": 100,
     "prepared_additions": 100,
-    "merged_additions": 0,
-    "live_verified_additions": 0,
-    "catalogue_count": 607,
+    "merged_additions": 100,
+    "live_verified_additions": 100,
+    "catalogue_count": 707,
     "prepared_count": 707,
-    "last_verified_live_count": 607,
-    "remaining_to_target_from_last_verified_live": 394,
-    "production_browser_qa": "pending new batch release",
+    "last_verified_live_count": 707,
+    "remaining_to_target_from_last_verified_live": 294,
+    "production_browser_qa": "pass: 100/100 exact-SKU search/add, exact dimensions/utilities; zero page errors and customer writes",
     "deployment_blocker": null
   },
   "production_verification": {
-    "verified_at": "2026-10-27T19:47:14.600055+00:00",
-    "source_sha": "c1abac24dc668702466e89fc360662bbec4b5849",
-    "catalogue_count": 607,
+    "verified_at": "2026-10-28T01:33:27.067208+00:00",
+    "source_sha": "a6ca61fc20f04b70082d096b38d7b50a595e8221",
+    "catalogue_count": 707,
     "verified_additions": 100,
     "catalogue_urls": [
       "https://kitchenstudio.design/app/catalogue.json"
     ],
     "http_status": 200,
-    "sha256": "10354c25c69937f155140bc38a7d2b10c2fd276c674c98edaaa577c2b6263e7d",
-    "result": "All 607 rows exactly match released source; all 100 additions are present once.",
+    "sha256": "3a4bc1e0a86a7a47314eb04d82c2c40c7ce8af5e94b28b04805264d4597ba53d",
+    "result": "All 707 rows exactly match released source; every one of the 100 additions occurs once.",
     "interactive_browser_qa": "pass: 100/100 exact-SKU search/add, dimensions and utilities; zero page errors and zero customer writes",
-    "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/22",
+    "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/23",
     "manual_deployment": false,
     "configuration_change": false
   },
@@ -770,6 +804,22 @@
       "result": "HTTP 200; full 507-row catalogue exactly matches released source. Every new SKU appears once and adds to a plan with exact dimensions and utilities.",
       "catalogue_sha256": "88f679eb840674cc75b91f2ff2a33b2f2716fbabcc432cf6fcafefc4559a979b",
       "interactive_browser_qa": "pass: 20/20 exact-SKU search/add checks; zero page errors; zero customer writes",
+      "manual_deployment": false,
+      "configuration_change": false
+    },
+    {
+      "verified_at": "2026-10-27T19:47:14.600055+00:00",
+      "source_sha": "c1abac24dc668702466e89fc360662bbec4b5849",
+      "catalogue_count": 607,
+      "verified_additions": 100,
+      "catalogue_urls": [
+        "https://kitchenstudio.design/app/catalogue.json"
+      ],
+      "http_status": 200,
+      "sha256": "10354c25c69937f155140bc38a7d2b10c2fd276c674c98edaaa577c2b6263e7d",
+      "result": "All 607 rows exactly match released source; all 100 additions are present once.",
+      "interactive_browser_qa": "pass: 100/100 exact-SKU search/add, dimensions and utilities; zero page errors and zero customer writes",
+      "pr_url": "https://github.com/uroshdxb-svg/kitchen-studio/pull/22",
       "manual_deployment": false,
       "configuration_change": false
     }
