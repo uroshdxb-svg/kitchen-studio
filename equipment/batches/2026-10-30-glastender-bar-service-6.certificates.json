@@ -1,0 +1,56 @@
+[
+  {
+    "schema_version": 1,
+    "passed": true,
+    "key": "glastender|mxs60cp10",
+    "row_hash": "6cec400ffd16d489c17a9664c89f21f1fa6e9f4c70b98fe7ba697eaa7e80b167",
+    "evidence_hash": "718a51124e2834ecddb6466d2ea04ff38739fe794942ec6fdef1968e65e82911",
+    "reviewed_at": "2026-10-29T21:36:21.972Z",
+    "errors": []
+  },
+  {
+    "schema_version": 1,
+    "passed": true,
+    "key": "glastender|mxs72cp10",
+    "row_hash": "c55a3a5f5fe3f93133784bfd1013d558a43f9eeffe73377bd893029b4e823e99",
+    "evidence_hash": "9acdef1f864b8cad01891757239122c703ffc693a695aba526a7166fcc305eb6",
+    "reviewed_at": "2026-10-29T21:36:21.972Z",
+    "errors": []
+  },
+  {
+    "schema_version": 1,
+    "passed": true,
+    "key": "glastender|dwb14c",
+    "row_hash": "4e69400b79e508fd263748cf4147c0d2ac413ab3191cc3c9d6f5d330cc933899",
+    "evidence_hash": "8d49c77d2cb08d0a2852ce6ef0a7203cbe6f5dd479a50b44129c893aab73c4c2",
+    "reviewed_at": "2026-10-29T21:36:21.972Z",
+    "errors": []
+  },
+  {
+    "schema_version": 1,
+    "passed": true,
+    "key": "glastender|swb18db",
+    "row_hash": "24885f7420621670d48fea534a26323f3ddb7b991534ad1d62a92fc0a1cbffcc",
+    "evidence_hash": "6b397173adfc0023d4c6d197b1327aa3efe7cc447e5123ba84b82ec53060f9b7",
+    "reviewed_at": "2026-10-29T21:36:21.972Z",
+    "errors": []
+  },
+  {
+    "schema_version": 1,
+    "passed": true,
+    "key": "glastender|swb24lc",
+    "row_hash": "d3fcd3d5f27520c8b7e157c3fc38ce8fccfb5c17ac02ecbd3ebc604ce5169e61",
+    "evidence_hash": "3472dc12bd2ce2d31ef39ee94b46c9776e07810a7944619789f42b5cb77e7a43",
+    "reviewed_at": "2026-10-29T21:36:21.972Z",
+    "errors": []
+  },
+  {
+    "schema_version": 1,
+    "passed": true,
+    "key": "glastender|swb24rc",
+    "row_hash": "41efa59a34668a02501420b7ad435edb5d4d62cbc87f7c46511419fc86ad0ba7",
+    "evidence_hash": "8d726668954c2252e00e80e6ba68bc2903e5577154c268e353651d8a3c7de8fa",
+    "reviewed_at": "2026-10-29T21:36:21.972Z",
+    "errors": []
+  }
+]

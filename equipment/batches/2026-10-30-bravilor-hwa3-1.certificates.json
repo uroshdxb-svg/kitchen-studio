@@ -1,0 +1,11 @@
+[
+  {
+    "schema_version": 1,
+    "passed": true,
+    "key": "bravilorbonamat|8.060.350.31002",
+    "row_hash": "9fa71466b2c36fe02d9a0e1aa4c8fb80cfae144edb4611b957979348476d144f",
+    "evidence_hash": "afd141efe65e49b990226e7d05e753dc46958e1a1e538a342e0e3675e8dbe6be",
+    "reviewed_at": "2026-10-29T21:25:20.561Z",
+    "errors": []
+  }
+]

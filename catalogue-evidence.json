@@ -98018,6 +98018,1996 @@
         "2026-10-30"
       ],
       "source_row_hash": "b3e4f276475c0859112e8a2c63d8eadc87612749f64470ab19d1237c5792f67b"
+    },
+    "bravilorbonamat|8.060.350.31002": {
+      "schema_version": 1,
+      "key": "bravilorbonamat|8.060.350.31002",
+      "brand": "Bravilor Bonamat",
+      "model": "8.060.350.31002",
+      "manufacturer_sku": "8.060.350.31002",
+      "manufacturer_type": "HWA 3",
+      "aliases": [
+        "HWA 3",
+        "HWA03-001"
+      ],
+      "market": "International 230 V 50/60 Hz configuration",
+      "batch_id": "2026-10-30-bravilor-hwa3-1",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-29T21:25:20.561Z",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.bravilor.com/products/hot-water-and-milk-in/hwa-series-in/hwa-3/",
+          "reviewed_at": "2026-10-29T21:25:20.561Z",
+          "locator": "Product details and standard contents: exact article, W x D x H, rated power/supply and included drip tray; current instructions link"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-installation-manual",
+          "url": "https://admin.b2b.bravilor.com/files/591085",
+          "reviewed_at": "2026-10-29T21:25:20.561Z",
+          "revision": "700.403.857 C, 09-2021",
+          "recovered_text_sha256": "436fb33ca61e266051a55cbef3910f7c8d0caea2ccdb0e0743539b1f2e536e5c",
+          "locator": "English pp.1-3; HWA03-001 model table, installation, automatic/manual mode and emptying instructions"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Current official international product explicitly identifies article 8.060.350.31002 as HWA3. Linked manual identifies HWA03-001.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Exact article lists 240 x 375 x 395 mm W x D x H. Standard product includes drip tray; nominal closed overall unit, with removable lid access additional.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manual pp.1-2 specifies a dry level heat-resistant support, countertop use.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Product and exact manual model table give 2000 W electrical input, normalized to 2 kW.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "Product 230 V~ 50/60 Hz single phase; manual HWA03-001 220-240 V~50/60 Hz compatible with selected article. Accessible earthed outlet required.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Manual pp.2-3 documents automatic fixed-water hose connection, manual cap alternative and tap/tilt emptying. Selected automatic mode water=true, fixed drain=false. Pressure is to be checked on rating plate; no numeric range in this linked manual.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Complete manual installation and model table describe an electric water heater with no fuel-gas connection.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Automatic fixed-water mode selected; manual-fill option is not a separate row. Use supplied food-approved inlet hose and check the water pressure on the appliance identification plate; numerical range/connector size are not published in the linked HWA3 instructions. Empty via tap and tilt only after cooling; drip tray is manually emptied, no fixed waste connection. Install on dry, level, heat-resistant support near an accessible earthed outlet, indoors at 0-40 C. Retain lid, tap, cable and hose access; no numerical clearance stated. Published overall dimensions include supplied drip tray; no optional pedestal.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Current official exact product and linked manual opened 2026-10-30 Dubai. The current download remains 700.403.857 C, September2021, and explicitly names HWA03-001.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Beverage/top/electric supported; normalized mm/kW and explicit utilities. Market, mode selection and source notes preserved.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Bravilor Bonamat",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manual English pp.1-3 and exact article",
+          "reason": "Current official international product explicitly identifies article 8.060.350.31002 as HWA3. Linked manual identifies HWA03-001."
+        },
+        "model": {
+          "value": "8.060.350.31002",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manual English pp.1-3 and exact article",
+          "reason": "Current official international product explicitly identifies article 8.060.350.31002 as HWA3. Linked manual identifies HWA03-001."
+        },
+        "w": {
+          "value": 240,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact article Product details, W x D x H",
+          "reason": "Exact article lists 240 x 375 x 395 mm W x D x H. Standard product includes drip tray; nominal closed overall unit, with removable lid access additional.",
+          "original_value": 240,
+          "original_unit": "mm"
+        },
+        "d": {
+          "value": 375,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact article Product details, W x D x H",
+          "reason": "Exact article lists 240 x 375 x 395 mm W x D x H. Standard product includes drip tray; nominal closed overall unit, with removable lid access additional.",
+          "original_value": 375,
+          "original_unit": "mm"
+        },
+        "h": {
+          "value": 395,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact article Product details, W x D x H",
+          "reason": "Exact article lists 240 x 375 x 395 mm W x D x H. Standard product includes drip tray; nominal closed overall unit, with removable lid access additional.",
+          "original_value": 395,
+          "original_unit": "mm"
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manual English pp.1-3 and exact article",
+          "reason": "Manual pp.1-2 specifies a dry level heat-resistant support, countertop use."
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manual English pp.1-3 and exact article",
+          "reason": "Product and exact manual model table give 2000 W electrical input, normalized to 2 kW."
+        },
+        "kw": {
+          "value": 2,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manual English pp.1-3 and exact article",
+          "reason": "Product and exact manual model table give 2000 W electrical input, normalized to 2 kW.",
+          "original_value": 2000,
+          "original_unit": "W"
+        },
+        "elec": {
+          "value": "230 V/1 ph/50-60 Hz",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manual English pp.1-3 and exact article",
+          "reason": "Product 230 V~ 50/60 Hz single phase; manual HWA03-001 220-240 V~50/60 Hz compatible with selected article. Accessible earthed outlet required."
+        },
+        "water": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manual English pp.1-3 and exact article",
+          "reason": "Manual pp.2-3 documents automatic fixed-water hose connection, manual cap alternative and tap/tilt emptying. Selected automatic mode water=true, fixed drain=false. Pressure is to be checked on rating plate; no numeric range in this linked manual."
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Manual English pp.1-3 and exact article",
+          "reason": "Manual pp.2-3 documents automatic fixed-water hose connection, manual cap alternative and tap/tilt emptying. Selected automatic mode water=true, fixed drain=false. Pressure is to be checked on rating plate; no numeric range in this linked manual."
+        }
+      },
+      "candidate_runtime_row": [
+        "Bravilor Bonamat",
+        "8.060.350.31002",
+        "Beverage",
+        "HWA 3 hot-water boiler, automatic-fill, 230 V",
+        240,
+        375,
+        395,
+        "top",
+        "electric",
+        2,
+        "230 V/1 ph/50-60 Hz",
+        1,
+        0,
+        "https://www.bravilor.com/products/hot-water-and-milk-in/hwa-series-in/hwa-3/"
+      ],
+      "installation_notes": "Automatic fixed-water mode selected; manual-fill option is not a separate row. Use supplied food-approved inlet hose and check the water pressure on the appliance identification plate; numerical range/connector size are not published in the linked HWA3 instructions. Empty via tap and tilt only after cooling; drip tray is manually emptied, no fixed waste connection. Install on dry, level, heat-resistant support near an accessible earthed outlet, indoors at 0-40 C. Retain lid, tap, cable and hose access; no numerical clearance stated. Published overall dimensions include supplied drip tray; no optional pedestal.",
+      "installation_details": {
+        "manual_source_id": "S2",
+        "manual_locator": "English pp.1-3",
+        "notes": "Automatic fixed-water mode selected; manual-fill option is not a separate row. Use supplied food-approved inlet hose and check the water pressure on the appliance identification plate; numerical range/connector size are not published in the linked HWA3 instructions. Empty via tap and tilt only after cooling; drip tray is manually emptied, no fixed waste connection. Install on dry, level, heat-resistant support near an accessible earthed outlet, indoors at 0-40 C. Retain lid, tap, cable and hose access; no numerical clearance stated. Published overall dimensions include supplied drip tray; no optional pedestal."
+      },
+      "proposed_queue_row": [
+        "Bravilor Bonamat",
+        "8.060.350.31002",
+        "Beverage",
+        "HWA 3 hot-water boiler, automatic-fill, 230 V",
+        "240",
+        "375",
+        "395",
+        "top",
+        "electric",
+        "2",
+        "230 V/1 ph/50-60 Hz",
+        "1",
+        "0",
+        "https://www.bravilor.com/products/hot-water-and-milk-in/hwa-series-in/hwa-3/",
+        "International 230 V 50/60 Hz configuration",
+        "Automatic fixed-water mode selected; manual-fill option is not a separate row. Use supplied food-approved inlet hose and check the water pressure on the appliance identification plate; numerical range/connector size are not published in the linked HWA3 instructions. Empty via tap and tilt only after cooling; drip tray is manually emptied, no fixed waste connection. Install on dry, level, heat-resistant support near an accessible earthed outlet, indoors at 0-40 C. Retain lid, tap, cable and hose access; no numerical clearance stated. Published overall dimensions include supplied drip tray; no optional pedestal.",
+        "2026-10-30"
+      ],
+      "source_row_hash": "9fa71466b2c36fe02d9a0e1aa4c8fb80cfae144edb4611b957979348476d144f"
+    },
+    "glastender|mxs60cp10": {
+      "schema_version": 1,
+      "key": "glastender|mxs60cp10",
+      "brand": "Glastender",
+      "model": "MXS60-CP10",
+      "manufacturer_sku": "MXS60-CP10",
+      "market": "US standard Signature underbar configuration; inch dimensions",
+      "batch_id": "2026-10-30-glastender-bar-service-6",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-29T21:36:21.972Z",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-specification",
+          "url": "https://www.glastender.com/assets/spec-sheets/MXS.pdf",
+          "revision": "02-23-26",
+          "retrieved_at": "2026-10-28T13:24:00Z",
+          "reviewed_at": "2026-10-29T21:36:21.972Z",
+          "sha256": "3fa97e3b7b4a626d23798ab370ac73dae3c667e93f872c03630843b2cea63c94",
+          "locator": "Page 1 exact model list, complete standard features and connections; page 2 dimension drawings visually reviewed locally",
+          "recovery": "Existing manufacturer PDF recovered from approved research archive; original retrieval date preserved."
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-installation-manual",
+          "url": "https://www.glastender.com/assets/manuals/F-750-165%20Underbar%20Installation%20Instructions.pdf",
+          "revision": "F-750-165 Rev 2.2, 02-23-26",
+          "sha256": "2907c81a50ab6455a6e47d51bbc5892956c8af9a8cd092500317e619d9bc9261",
+          "reviewed_at": "2026-10-29T21:36:21.972Z",
+          "locator": "Complete single-page installation instructions, steps 1-5"
+        },
+        {
+          "id": "S3",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.glastender.com/categories/bar-fabrication-signature-mixology-units/",
+          "reviewed_at": "2026-10-29T21:36:21.972Z",
+          "locator": "Current exact model listing and specification document family; individual product dimensions where available"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Exact full model is listed in the current official product/category page and matching specification. Selected standard US dimensional configuration; no optional side splashes or separate equipment."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "60 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. No elixir bottle well on this model."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete legged underbar assembly; floor mounting on installed and leveled manufacturer legs."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete passive stainless fixture specification, connection schedule and construction drawing contain no powered component. Cold-plate variants cool from stored ice without a compressor. Electrical input is not applicable."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "No electrical component or electrical supply terminal in complete assembly/connection specification; external beverage machines and pumps are excluded."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. No elixir bottle well on this model."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete assembly uses stainless construction and water plumbing; no fuel-gas burner, gas inlet or gas consuming component. Soda/beverage lines on cold plates are external beverage circuits, not fuel-gas supply."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. No elixir bottle well on this model. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Current manufacturer exact product/category listing was opened on 2026-10-30 Dubai and matches the model family and dimensions in the official PDF recovered from 2026-10-28. Reviewed 2026 specification revision 02-23-26 and currently indexed Underbar Installation Instructions Rev 2.2. No conflicting revision identified."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Beverage/floor/none supported; mm and explicit water/drain booleans with sourced nonapplicability for null electrical fields. Standard configurations and installation detail retained."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Glastender",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Exact full model is listed in the current official product/category page and matching specification. Selected standard US dimensional configuration; no optional side splashes or separate equipment."
+        },
+        "model": {
+          "value": "MXS60-CP10",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Exact full model is listed in the current official product/category page and matching specification. Selected standard US dimensional configuration; no optional side splashes or separate equipment."
+        },
+        "w": {
+          "value": 1524,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p2 exact model plan/front/side elevations",
+          "reason": "60 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. No elixir bottle well on this model.",
+          "original_value": 60,
+          "original_unit": "in"
+        },
+        "d": {
+          "value": 610,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p2 exact model plan/front/side elevations",
+          "reason": "60 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. No elixir bottle well on this model.",
+          "original_value": 24,
+          "original_unit": "in"
+        },
+        "h": {
+          "value": 940,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p2 exact model plan/front/side elevations",
+          "reason": "60 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. No elixir bottle well on this model.",
+          "original_value": 37,
+          "original_unit": "in"
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete legged underbar assembly; floor mounting on installed and leveled manufacturer legs."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete passive stainless fixture specification, connection schedule and construction drawing contain no powered component. Cold-plate variants cool from stored ice without a compressor. Electrical input is not applicable."
+        },
+        "kw": {
+          "value": null,
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete passive stainless fixture specification, connection schedule and construction drawing contain no powered component. Cold-plate variants cool from stored ice without a compressor. Electrical input is not applicable."
+        },
+        "elec": {
+          "value": null,
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "No electrical component or electrical supply terminal in complete assembly/connection specification; external beverage machines and pumps are excluded."
+        },
+        "water": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. No elixir bottle well on this model."
+        },
+        "drain": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. No elixir bottle well on this model."
+        }
+      },
+      "candidate_runtime_row": [
+        "Glastender",
+        "MXS60-CP10",
+        "Beverage",
+        "60-inch mixology cocktail station with 10-circuit cold plate",
+        1524,
+        610,
+        940,
+        "floor",
+        "none",
+        null,
+        null,
+        1,
+        1,
+        "https://www.glastender.com/assets/spec-sheets/MXS.pdf"
+      ],
+      "installation_notes": "Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. No elixir bottle well on this model. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances.",
+      "installation_details": {
+        "manual_source_id": "S2",
+        "manual_locator": "Steps 1-5; S1 full specifications and dimensional drawings",
+        "notes": "Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. No elixir bottle well on this model. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances."
+      },
+      "proposed_queue_row": [
+        "Glastender",
+        "MXS60-CP10",
+        "Beverage",
+        "60-inch mixology cocktail station with 10-circuit cold plate",
+        "1524",
+        "610",
+        "940",
+        "floor",
+        "none",
+        "",
+        "",
+        "1",
+        "1",
+        "https://www.glastender.com/assets/spec-sheets/MXS.pdf",
+        "US standard Signature underbar configuration; inch dimensions",
+        "Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. No elixir bottle well on this model. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances.",
+        "2026-10-30"
+      ],
+      "source_row_hash": "6cec400ffd16d489c17a9664c89f21f1fa6e9f4c70b98fe7ba697eaa7e80b167"
+    },
+    "glastender|mxs72cp10": {
+      "schema_version": 1,
+      "key": "glastender|mxs72cp10",
+      "brand": "Glastender",
+      "model": "MXS72-CP10",
+      "manufacturer_sku": "MXS72-CP10",
+      "market": "US standard Signature underbar configuration; inch dimensions",
+      "batch_id": "2026-10-30-glastender-bar-service-6",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-29T21:36:21.972Z",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-specification",
+          "url": "https://www.glastender.com/assets/spec-sheets/MXS.pdf",
+          "revision": "02-23-26",
+          "retrieved_at": "2026-10-28T13:24:00Z",
+          "reviewed_at": "2026-10-29T21:36:21.972Z",
+          "sha256": "3fa97e3b7b4a626d23798ab370ac73dae3c667e93f872c03630843b2cea63c94",
+          "locator": "Page 1 exact model list, complete standard features and connections; page 2 dimension drawings visually reviewed locally",
+          "recovery": "Existing manufacturer PDF recovered from approved research archive; original retrieval date preserved."
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-installation-manual",
+          "url": "https://www.glastender.com/assets/manuals/F-750-165%20Underbar%20Installation%20Instructions.pdf",
+          "revision": "F-750-165 Rev 2.2, 02-23-26",
+          "sha256": "2907c81a50ab6455a6e47d51bbc5892956c8af9a8cd092500317e619d9bc9261",
+          "reviewed_at": "2026-10-29T21:36:21.972Z",
+          "locator": "Complete single-page installation instructions, steps 1-5"
+        },
+        {
+          "id": "S3",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.glastender.com/products/mxs72-cp10/",
+          "reviewed_at": "2026-10-29T21:36:21.972Z",
+          "locator": "Current exact model listing and specification document family; individual product dimensions where available"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Exact full model is listed in the current official product/category page and matching specification. Selected standard US dimensional configuration; no optional side splashes or separate equipment."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "72 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. Includes elixir bottle well and BRM15 rack; bottle well adds a 1-1/2-inch tailpiece drain."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete legged underbar assembly; floor mounting on installed and leveled manufacturer legs."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete passive stainless fixture specification, connection schedule and construction drawing contain no powered component. Cold-plate variants cool from stored ice without a compressor. Electrical input is not applicable."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "No electrical component or electrical supply terminal in complete assembly/connection specification; external beverage machines and pumps are excluded."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. Includes elixir bottle well and BRM15 rack; bottle well adds a 1-1/2-inch tailpiece drain."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete assembly uses stainless construction and water plumbing; no fuel-gas burner, gas inlet or gas consuming component. Soda/beverage lines on cold plates are external beverage circuits, not fuel-gas supply."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. Includes elixir bottle well and BRM15 rack; bottle well adds a 1-1/2-inch tailpiece drain. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Current manufacturer exact product/category listing was opened on 2026-10-30 Dubai and matches the model family and dimensions in the official PDF recovered from 2026-10-28. Reviewed 2026 specification revision 02-23-26 and currently indexed Underbar Installation Instructions Rev 2.2. No conflicting revision identified."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Beverage/floor/none supported; mm and explicit water/drain booleans with sourced nonapplicability for null electrical fields. Standard configurations and installation detail retained."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Glastender",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Exact full model is listed in the current official product/category page and matching specification. Selected standard US dimensional configuration; no optional side splashes or separate equipment."
+        },
+        "model": {
+          "value": "MXS72-CP10",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Exact full model is listed in the current official product/category page and matching specification. Selected standard US dimensional configuration; no optional side splashes or separate equipment."
+        },
+        "w": {
+          "value": 1829,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p2 exact model plan/front/side elevations",
+          "reason": "72 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. Includes elixir bottle well and BRM15 rack; bottle well adds a 1-1/2-inch tailpiece drain.",
+          "original_value": 72,
+          "original_unit": "in"
+        },
+        "d": {
+          "value": 610,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p2 exact model plan/front/side elevations",
+          "reason": "72 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. Includes elixir bottle well and BRM15 rack; bottle well adds a 1-1/2-inch tailpiece drain.",
+          "original_value": 24,
+          "original_unit": "in"
+        },
+        "h": {
+          "value": 940,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p2 exact model plan/front/side elevations",
+          "reason": "72 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. Includes elixir bottle well and BRM15 rack; bottle well adds a 1-1/2-inch tailpiece drain.",
+          "original_value": 37,
+          "original_unit": "in"
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete legged underbar assembly; floor mounting on installed and leveled manufacturer legs."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete passive stainless fixture specification, connection schedule and construction drawing contain no powered component. Cold-plate variants cool from stored ice without a compressor. Electrical input is not applicable."
+        },
+        "kw": {
+          "value": null,
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete passive stainless fixture specification, connection schedule and construction drawing contain no powered component. Cold-plate variants cool from stored ice without a compressor. Electrical input is not applicable."
+        },
+        "elec": {
+          "value": null,
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "No electrical component or electrical supply terminal in complete assembly/connection specification; external beverage machines and pumps are excluded."
+        },
+        "water": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. Includes elixir bottle well and BRM15 rack; bottle well adds a 1-1/2-inch tailpiece drain."
+        },
+        "drain": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. Includes elixir bottle well and BRM15 rack; bottle well adds a 1-1/2-inch tailpiece drain."
+        }
+      },
+      "candidate_runtime_row": [
+        "Glastender",
+        "MXS72-CP10",
+        "Beverage",
+        "72-inch mixology cocktail station with 10-circuit cold plate",
+        1829,
+        610,
+        940,
+        "floor",
+        "none",
+        null,
+        null,
+        1,
+        1,
+        "https://www.glastender.com/assets/spec-sheets/MXS.pdf"
+      ],
+      "installation_notes": "Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. Includes elixir bottle well and BRM15 rack; bottle well adds a 1-1/2-inch tailpiece drain. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances.",
+      "installation_details": {
+        "manual_source_id": "S2",
+        "manual_locator": "Steps 1-5; S1 full specifications and dimensional drawings",
+        "notes": "Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. Includes elixir bottle well and BRM15 rack; bottle well adds a 1-1/2-inch tailpiece drain. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances."
+      },
+      "proposed_queue_row": [
+        "Glastender",
+        "MXS72-CP10",
+        "Beverage",
+        "72-inch mixology cocktail station with 10-circuit cold plate",
+        "1829",
+        "610",
+        "940",
+        "floor",
+        "none",
+        "",
+        "",
+        "1",
+        "1",
+        "https://www.glastender.com/assets/spec-sheets/MXS.pdf",
+        "US standard Signature underbar configuration; inch dimensions",
+        "Complete passive cocktail/mixology station with 10-circuit ice-cooled cold plate; no powered chiller, soda gun or external beverage supply system included. Ice-bin drain 3/4 inch MPT; garnish drain 1-1/2 inch tailpiece; sink/dipper drains 1-1/2 inch IPS. Hot/cold backsplash faucet accepts 3/8 inch sink leads; dipper and rinser accept 3/8 inch cold leads. Rinser 1.2 gpm with included 30 psi regulator; install regulator and external backflow prevention because rinser lacks a 1-inch air gap; separate shutoff recommended. Full assembly is 24 inches deep including speed rail; highest overall envelope 37 inches, work surface 30 inches and soda housing 34 inches. Standard bullet feet at drawing nominal position; adjustment adds height. Lift-off garnish and sliding ice covers require access. Includes elixir bottle well and BRM15 rack; bottle well adds a 1-1/2-inch tailpiece drain. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances.",
+        "2026-10-30"
+      ],
+      "source_row_hash": "c55a3a5f5fe3f93133784bfd1013d558a43f9eeffe73377bd893029b4e823e99"
+    },
+    "glastender|dwb14c": {
+      "schema_version": 1,
+      "key": "glastender|dwb14c",
+      "brand": "Glastender",
+      "model": "DWB-14-C",
+      "manufacturer_sku": "DWB-14-C",
+      "market": "US standard Signature underbar configuration; inch dimensions",
+      "batch_id": "2026-10-30-glastender-bar-service-6",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-29T21:36:21.972Z",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-specification",
+          "url": "https://www.glastender.com/assets/spec-sheets/DW.pdf",
+          "revision": "07-23-26",
+          "retrieved_at": "2026-10-28T13:24:00Z",
+          "reviewed_at": "2026-10-29T21:36:21.972Z",
+          "sha256": "783a274af8923360cd7876aa32b2e8fa2f7767d240c33b30a82a50d35b75231e",
+          "locator": "Page 1 exact model list, complete standard features and connections; page 2 dimension drawings visually reviewed locally",
+          "recovery": "Existing manufacturer PDF recovered from approved research archive; original retrieval date preserved."
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-installation-manual",
+          "url": "https://www.glastender.com/assets/manuals/F-750-165%20Underbar%20Installation%20Instructions.pdf",
+          "revision": "F-750-165 Rev 2.2, 02-23-26",
+          "sha256": "2907c81a50ab6455a6e47d51bbc5892956c8af9a8cd092500317e619d9bc9261",
+          "reviewed_at": "2026-10-29T21:36:21.972Z",
+          "locator": "Complete single-page installation instructions, steps 1-5"
+        },
+        {
+          "id": "S3",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.glastender.com/products/dwb-14-c/",
+          "reviewed_at": "2026-10-29T21:36:21.972Z",
+          "locator": "Current exact model listing and specification document family; individual product dimensions where available"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Exact full model is listed in the current official product/category page and matching specification. Selected standard US dimensional configuration; no optional side splashes or separate equipment."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "14 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Complete passive dry-waste cabinet: stainless shell, removable lid, hinged access door, 6-inch chute and four legs. No plumbing fittings, fuel or electrical components in the complete manufacturer construction/connection specification and drawings. Trash receptacle is excluded. Nominal 6-inch legs selected (adjustable to 7-1/4 inches), 30-inch work surface and 37-inch overall backsplash height. Retain door swing and lift-off lid access; no numeric clearance specified."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete legged underbar assembly; floor mounting on installed and leveled manufacturer legs."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete passive stainless fixture specification, connection schedule and construction drawing contain no powered component. Cold-plate variants cool from stored ice without a compressor. Electrical input is not applicable."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "No electrical component or electrical supply terminal in complete assembly/connection specification; external beverage machines and pumps are excluded."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete passive dry-waste cabinet: stainless shell, removable lid, hinged access door, 6-inch chute and four legs. No plumbing fittings, fuel or electrical components in the complete manufacturer construction/connection specification and drawings. Trash receptacle is excluded. Nominal 6-inch legs selected (adjustable to 7-1/4 inches), 30-inch work surface and 37-inch overall backsplash height. Retain door swing and lift-off lid access; no numeric clearance specified."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete assembly uses stainless construction and dry waste chute; no fuel-gas burner, gas inlet or gas consuming component. Soda/beverage lines on cold plates are external beverage circuits, not fuel-gas supply."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete passive dry-waste cabinet: stainless shell, removable lid, hinged access door, 6-inch chute and four legs. No plumbing fittings, fuel or electrical components in the complete manufacturer construction/connection specification and drawings. Trash receptacle is excluded. Nominal 6-inch legs selected (adjustable to 7-1/4 inches), 30-inch work surface and 37-inch overall backsplash height. Retain door swing and lift-off lid access; no numeric clearance specified. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Current manufacturer exact product/category listing was opened on 2026-10-30 Dubai and matches the model family and dimensions in the official PDF recovered from 2026-10-28. Reviewed 2026 specification revision 07-23-26 and currently indexed Underbar Installation Instructions Rev 2.2. No conflicting revision identified."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Beverage/floor/none supported; mm and explicit water/drain booleans with sourced nonapplicability for null electrical fields. Standard configurations and installation detail retained."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Glastender",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Exact full model is listed in the current official product/category page and matching specification. Selected standard US dimensional configuration; no optional side splashes or separate equipment."
+        },
+        "model": {
+          "value": "DWB-14-C",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Exact full model is listed in the current official product/category page and matching specification. Selected standard US dimensional configuration; no optional side splashes or separate equipment."
+        },
+        "w": {
+          "value": 356,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p2 exact model plan/front/side elevations",
+          "reason": "14 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Complete passive dry-waste cabinet: stainless shell, removable lid, hinged access door, 6-inch chute and four legs. No plumbing fittings, fuel or electrical components in the complete manufacturer construction/connection specification and drawings. Trash receptacle is excluded. Nominal 6-inch legs selected (adjustable to 7-1/4 inches), 30-inch work surface and 37-inch overall backsplash height. Retain door swing and lift-off lid access; no numeric clearance specified.",
+          "original_value": 14,
+          "original_unit": "in"
+        },
+        "d": {
+          "value": 610,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p2 exact model plan/front/side elevations",
+          "reason": "14 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Complete passive dry-waste cabinet: stainless shell, removable lid, hinged access door, 6-inch chute and four legs. No plumbing fittings, fuel or electrical components in the complete manufacturer construction/connection specification and drawings. Trash receptacle is excluded. Nominal 6-inch legs selected (adjustable to 7-1/4 inches), 30-inch work surface and 37-inch overall backsplash height. Retain door swing and lift-off lid access; no numeric clearance specified.",
+          "original_value": 24,
+          "original_unit": "in"
+        },
+        "h": {
+          "value": 940,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p2 exact model plan/front/side elevations",
+          "reason": "14 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Complete passive dry-waste cabinet: stainless shell, removable lid, hinged access door, 6-inch chute and four legs. No plumbing fittings, fuel or electrical components in the complete manufacturer construction/connection specification and drawings. Trash receptacle is excluded. Nominal 6-inch legs selected (adjustable to 7-1/4 inches), 30-inch work surface and 37-inch overall backsplash height. Retain door swing and lift-off lid access; no numeric clearance specified.",
+          "original_value": 37,
+          "original_unit": "in"
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete legged underbar assembly; floor mounting on installed and leveled manufacturer legs."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete passive stainless fixture specification, connection schedule and construction drawing contain no powered component. Cold-plate variants cool from stored ice without a compressor. Electrical input is not applicable."
+        },
+        "kw": {
+          "value": null,
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete passive stainless fixture specification, connection schedule and construction drawing contain no powered component. Cold-plate variants cool from stored ice without a compressor. Electrical input is not applicable."
+        },
+        "elec": {
+          "value": null,
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "No electrical component or electrical supply terminal in complete assembly/connection specification; external beverage machines and pumps are excluded."
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete passive dry-waste cabinet: stainless shell, removable lid, hinged access door, 6-inch chute and four legs. No plumbing fittings, fuel or electrical components in the complete manufacturer construction/connection specification and drawings. Trash receptacle is excluded. Nominal 6-inch legs selected (adjustable to 7-1/4 inches), 30-inch work surface and 37-inch overall backsplash height. Retain door swing and lift-off lid access; no numeric clearance specified."
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete passive dry-waste cabinet: stainless shell, removable lid, hinged access door, 6-inch chute and four legs. No plumbing fittings, fuel or electrical components in the complete manufacturer construction/connection specification and drawings. Trash receptacle is excluded. Nominal 6-inch legs selected (adjustable to 7-1/4 inches), 30-inch work surface and 37-inch overall backsplash height. Retain door swing and lift-off lid access; no numeric clearance specified."
+        }
+      },
+      "candidate_runtime_row": [
+        "Glastender",
+        "DWB-14-C",
+        "Beverage",
+        "14-inch freestanding dry-waste bar cabinet",
+        356,
+        610,
+        940,
+        "floor",
+        "none",
+        null,
+        null,
+        0,
+        0,
+        "https://www.glastender.com/assets/spec-sheets/DW.pdf"
+      ],
+      "installation_notes": "Complete passive dry-waste cabinet: stainless shell, removable lid, hinged access door, 6-inch chute and four legs. No plumbing fittings, fuel or electrical components in the complete manufacturer construction/connection specification and drawings. Trash receptacle is excluded. Nominal 6-inch legs selected (adjustable to 7-1/4 inches), 30-inch work surface and 37-inch overall backsplash height. Retain door swing and lift-off lid access; no numeric clearance specified. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances.",
+      "installation_details": {
+        "manual_source_id": "S2",
+        "manual_locator": "Steps 1-5; S1 full specifications and dimensional drawings",
+        "notes": "Complete passive dry-waste cabinet: stainless shell, removable lid, hinged access door, 6-inch chute and four legs. No plumbing fittings, fuel or electrical components in the complete manufacturer construction/connection specification and drawings. Trash receptacle is excluded. Nominal 6-inch legs selected (adjustable to 7-1/4 inches), 30-inch work surface and 37-inch overall backsplash height. Retain door swing and lift-off lid access; no numeric clearance specified. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances."
+      },
+      "proposed_queue_row": [
+        "Glastender",
+        "DWB-14-C",
+        "Beverage",
+        "14-inch freestanding dry-waste bar cabinet",
+        "356",
+        "610",
+        "940",
+        "floor",
+        "none",
+        "",
+        "",
+        "0",
+        "0",
+        "https://www.glastender.com/assets/spec-sheets/DW.pdf",
+        "US standard Signature underbar configuration; inch dimensions",
+        "Complete passive dry-waste cabinet: stainless shell, removable lid, hinged access door, 6-inch chute and four legs. No plumbing fittings, fuel or electrical components in the complete manufacturer construction/connection specification and drawings. Trash receptacle is excluded. Nominal 6-inch legs selected (adjustable to 7-1/4 inches), 30-inch work surface and 37-inch overall backsplash height. Retain door swing and lift-off lid access; no numeric clearance specified. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances.",
+        "2026-10-30"
+      ],
+      "source_row_hash": "4e69400b79e508fd263748cf4147c0d2ac413ab3191cc3c9d6f5d330cc933899"
+    },
+    "glastender|swb18db": {
+      "schema_version": 1,
+      "key": "glastender|swb18db",
+      "brand": "Glastender",
+      "model": "SWB-18-DB",
+      "manufacturer_sku": "SWB-18-DB",
+      "market": "US standard Signature underbar configuration; inch dimensions",
+      "batch_id": "2026-10-30-glastender-bar-service-6",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-29T21:36:21.972Z",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-specification",
+          "url": "https://www.glastender.com/assets/spec-sheets/SW_Cabinets.pdf",
+          "revision": "05-28-26",
+          "retrieved_at": "2026-10-28T13:24:00Z",
+          "reviewed_at": "2026-10-29T21:36:21.972Z",
+          "sha256": "4e6d764c9cb7652c14a73bded59e1a4ace56e650a6e27f012100698ca87b38ff",
+          "locator": "Page 1 exact model list, complete standard features and connections; page 2 dimension drawings visually reviewed locally",
+          "recovery": "Existing manufacturer PDF recovered from approved research archive; original retrieval date preserved."
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-installation-manual",
+          "url": "https://www.glastender.com/assets/manuals/F-750-165%20Underbar%20Installation%20Instructions.pdf",
+          "revision": "F-750-165 Rev 2.2, 02-23-26",
+          "sha256": "2907c81a50ab6455a6e47d51bbc5892956c8af9a8cd092500317e619d9bc9261",
+          "reviewed_at": "2026-10-29T21:36:21.972Z",
+          "locator": "Complete single-page installation instructions, steps 1-5"
+        },
+        {
+          "id": "S3",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.glastender.com/products/swb-18-db/",
+          "reviewed_at": "2026-10-29T21:36:21.972Z",
+          "locator": "Current exact model listing and specification document family; individual product dimensions where available"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Exact full model is listed in the current official product/category page and matching specification. Selected standard US dimensional configuration; no optional side splashes or separate equipment."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "18 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Drawing confirms 24-inch total depth; 19 inches denotes upper drainboard only. Worktop is 30 inches high with a lower recessed sink and extended front."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete legged underbar assembly; floor mounting on installed and leveled manufacturer legs."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete passive stainless fixture specification, connection schedule and construction drawing contain no powered component. Cold-plate variants cool from stored ice without a compressor. Electrical input is not applicable."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "No electrical component or electrical supply terminal in complete assembly/connection specification; external beverage machines and pumps are excluded."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Drawing confirms 24-inch total depth; 19 inches denotes upper drainboard only. Worktop is 30 inches high with a lower recessed sink and extended front."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete assembly uses stainless construction and water plumbing; no fuel-gas burner, gas inlet or gas consuming component. Soda/beverage lines on cold plates are external beverage circuits, not fuel-gas supply."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Drawing confirms 24-inch total depth; 19 inches denotes upper drainboard only. Worktop is 30 inches high with a lower recessed sink and extended front. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Current manufacturer exact product/category listing was opened on 2026-10-30 Dubai and matches the model family and dimensions in the official PDF recovered from 2026-10-28. Reviewed 2026 specification revision 05-28-26 and currently indexed Underbar Installation Instructions Rev 2.2. No conflicting revision identified."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Beverage/floor/none supported; mm and explicit water/drain booleans with sourced nonapplicability for null electrical fields. Standard configurations and installation detail retained."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Glastender",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Exact full model is listed in the current official product/category page and matching specification. Selected standard US dimensional configuration; no optional side splashes or separate equipment."
+        },
+        "model": {
+          "value": "SWB-18-DB",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Exact full model is listed in the current official product/category page and matching specification. Selected standard US dimensional configuration; no optional side splashes or separate equipment."
+        },
+        "w": {
+          "value": 457,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p2 exact model plan/front/side elevations",
+          "reason": "18 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Drawing confirms 24-inch total depth; 19 inches denotes upper drainboard only. Worktop is 30 inches high with a lower recessed sink and extended front.",
+          "original_value": 18,
+          "original_unit": "in"
+        },
+        "d": {
+          "value": 610,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p2 exact model plan/front/side elevations",
+          "reason": "18 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Drawing confirms 24-inch total depth; 19 inches denotes upper drainboard only. Worktop is 30 inches high with a lower recessed sink and extended front.",
+          "original_value": 24,
+          "original_unit": "in"
+        },
+        "h": {
+          "value": 940,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p2 exact model plan/front/side elevations",
+          "reason": "18 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Drawing confirms 24-inch total depth; 19 inches denotes upper drainboard only. Worktop is 30 inches high with a lower recessed sink and extended front.",
+          "original_value": 37,
+          "original_unit": "in"
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete legged underbar assembly; floor mounting on installed and leveled manufacturer legs."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete passive stainless fixture specification, connection schedule and construction drawing contain no powered component. Cold-plate variants cool from stored ice without a compressor. Electrical input is not applicable."
+        },
+        "kw": {
+          "value": null,
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete passive stainless fixture specification, connection schedule and construction drawing contain no powered component. Cold-plate variants cool from stored ice without a compressor. Electrical input is not applicable."
+        },
+        "elec": {
+          "value": null,
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "No electrical component or electrical supply terminal in complete assembly/connection specification; external beverage machines and pumps are excluded."
+        },
+        "water": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Drawing confirms 24-inch total depth; 19 inches denotes upper drainboard only. Worktop is 30 inches high with a lower recessed sink and extended front."
+        },
+        "drain": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Drawing confirms 24-inch total depth; 19 inches denotes upper drainboard only. Worktop is 30 inches high with a lower recessed sink and extended front."
+        }
+      },
+      "candidate_runtime_row": [
+        "Glastender",
+        "SWB-18-DB",
+        "Beverage",
+        "18-inch bar drainboard with recessed wet-waste sink",
+        457,
+        610,
+        940,
+        "floor",
+        "none",
+        null,
+        null,
+        1,
+        1,
+        "https://www.glastender.com/assets/spec-sheets/SW_Cabinets.pdf"
+      ],
+      "installation_notes": "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Drawing confirms 24-inch total depth; 19 inches denotes upper drainboard only. Worktop is 30 inches high with a lower recessed sink and extended front. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances.",
+      "installation_details": {
+        "manual_source_id": "S2",
+        "manual_locator": "Steps 1-5; S1 full specifications and dimensional drawings",
+        "notes": "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Drawing confirms 24-inch total depth; 19 inches denotes upper drainboard only. Worktop is 30 inches high with a lower recessed sink and extended front. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances."
+      },
+      "proposed_queue_row": [
+        "Glastender",
+        "SWB-18-DB",
+        "Beverage",
+        "18-inch bar drainboard with recessed wet-waste sink",
+        "457",
+        "610",
+        "940",
+        "floor",
+        "none",
+        "",
+        "",
+        "1",
+        "1",
+        "https://www.glastender.com/assets/spec-sheets/SW_Cabinets.pdf",
+        "US standard Signature underbar configuration; inch dimensions",
+        "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Drawing confirms 24-inch total depth; 19 inches denotes upper drainboard only. Worktop is 30 inches high with a lower recessed sink and extended front. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances.",
+        "2026-10-30"
+      ],
+      "source_row_hash": "24885f7420621670d48fea534a26323f3ddb7b991534ad1d62a92fc0a1cbffcc"
+    },
+    "glastender|swb24lc": {
+      "schema_version": 1,
+      "key": "glastender|swb24lc",
+      "brand": "Glastender",
+      "model": "SWB-24L-C",
+      "manufacturer_sku": "SWB-24L-C",
+      "market": "US standard Signature underbar configuration; inch dimensions",
+      "batch_id": "2026-10-30-glastender-bar-service-6",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-29T21:36:21.972Z",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-specification",
+          "url": "https://www.glastender.com/assets/spec-sheets/SW_Cabinets.pdf",
+          "revision": "05-28-26",
+          "retrieved_at": "2026-10-28T13:24:00Z",
+          "reviewed_at": "2026-10-29T21:36:21.972Z",
+          "sha256": "4e6d764c9cb7652c14a73bded59e1a4ace56e650a6e27f012100698ca87b38ff",
+          "locator": "Page 1 exact model list, complete standard features and connections; page 2 dimension drawings visually reviewed locally",
+          "recovery": "Existing manufacturer PDF recovered from approved research archive; original retrieval date preserved."
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-installation-manual",
+          "url": "https://www.glastender.com/assets/manuals/F-750-165%20Underbar%20Installation%20Instructions.pdf",
+          "revision": "F-750-165 Rev 2.2, 02-23-26",
+          "sha256": "2907c81a50ab6455a6e47d51bbc5892956c8af9a8cd092500317e619d9bc9261",
+          "reviewed_at": "2026-10-29T21:36:21.972Z",
+          "locator": "Complete single-page installation instructions, steps 1-5"
+        },
+        {
+          "id": "S3",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.glastender.com/categories/bar-fabrication-signature-wet-waste-sinks/",
+          "reviewed_at": "2026-10-29T21:36:21.972Z",
+          "locator": "Current exact model listing and specification document family; individual product dimensions where available"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Exact full model is listed in the current official product/category page and matching specification. Selected standard US dimensional configuration; no optional side splashes or separate equipment."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "24 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Left sink, 12-inch right drainboard and open vertically divided storage selected. Work surface 30 inches. No hinged cabinet door claimed; specification explicitly gives open storage."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete legged underbar assembly; floor mounting on installed and leveled manufacturer legs."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete passive stainless fixture specification, connection schedule and construction drawing contain no powered component. Cold-plate variants cool from stored ice without a compressor. Electrical input is not applicable."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "No electrical component or electrical supply terminal in complete assembly/connection specification; external beverage machines and pumps are excluded."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Left sink, 12-inch right drainboard and open vertically divided storage selected. Work surface 30 inches. No hinged cabinet door claimed; specification explicitly gives open storage."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete assembly uses stainless construction and water plumbing; no fuel-gas burner, gas inlet or gas consuming component. Soda/beverage lines on cold plates are external beverage circuits, not fuel-gas supply."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Left sink, 12-inch right drainboard and open vertically divided storage selected. Work surface 30 inches. No hinged cabinet door claimed; specification explicitly gives open storage. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Current manufacturer exact product/category listing was opened on 2026-10-30 Dubai and matches the model family and dimensions in the official PDF recovered from 2026-10-28. Reviewed 2026 specification revision 05-28-26 and currently indexed Underbar Installation Instructions Rev 2.2. No conflicting revision identified."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Beverage/floor/none supported; mm and explicit water/drain booleans with sourced nonapplicability for null electrical fields. Standard configurations and installation detail retained."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Glastender",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Exact full model is listed in the current official product/category page and matching specification. Selected standard US dimensional configuration; no optional side splashes or separate equipment."
+        },
+        "model": {
+          "value": "SWB-24L-C",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Exact full model is listed in the current official product/category page and matching specification. Selected standard US dimensional configuration; no optional side splashes or separate equipment."
+        },
+        "w": {
+          "value": 610,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p2 exact model plan/front/side elevations",
+          "reason": "24 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Left sink, 12-inch right drainboard and open vertically divided storage selected. Work surface 30 inches. No hinged cabinet door claimed; specification explicitly gives open storage.",
+          "original_value": 24,
+          "original_unit": "in"
+        },
+        "d": {
+          "value": 610,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p2 exact model plan/front/side elevations",
+          "reason": "24 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Left sink, 12-inch right drainboard and open vertically divided storage selected. Work surface 30 inches. No hinged cabinet door claimed; specification explicitly gives open storage.",
+          "original_value": 24,
+          "original_unit": "in"
+        },
+        "h": {
+          "value": 940,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p2 exact model plan/front/side elevations",
+          "reason": "24 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Left sink, 12-inch right drainboard and open vertically divided storage selected. Work surface 30 inches. No hinged cabinet door claimed; specification explicitly gives open storage.",
+          "original_value": 37,
+          "original_unit": "in"
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete legged underbar assembly; floor mounting on installed and leveled manufacturer legs."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete passive stainless fixture specification, connection schedule and construction drawing contain no powered component. Cold-plate variants cool from stored ice without a compressor. Electrical input is not applicable."
+        },
+        "kw": {
+          "value": null,
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete passive stainless fixture specification, connection schedule and construction drawing contain no powered component. Cold-plate variants cool from stored ice without a compressor. Electrical input is not applicable."
+        },
+        "elec": {
+          "value": null,
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "No electrical component or electrical supply terminal in complete assembly/connection specification; external beverage machines and pumps are excluded."
+        },
+        "water": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Left sink, 12-inch right drainboard and open vertically divided storage selected. Work surface 30 inches. No hinged cabinet door claimed; specification explicitly gives open storage."
+        },
+        "drain": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Left sink, 12-inch right drainboard and open vertically divided storage selected. Work surface 30 inches. No hinged cabinet door claimed; specification explicitly gives open storage."
+        }
+      },
+      "candidate_runtime_row": [
+        "Glastender",
+        "SWB-24L-C",
+        "Beverage",
+        "24-inch bar wet-waste sink cabinet, left sink",
+        610,
+        610,
+        940,
+        "floor",
+        "none",
+        null,
+        null,
+        1,
+        1,
+        "https://www.glastender.com/assets/spec-sheets/SW_Cabinets.pdf"
+      ],
+      "installation_notes": "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Left sink, 12-inch right drainboard and open vertically divided storage selected. Work surface 30 inches. No hinged cabinet door claimed; specification explicitly gives open storage. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances.",
+      "installation_details": {
+        "manual_source_id": "S2",
+        "manual_locator": "Steps 1-5; S1 full specifications and dimensional drawings",
+        "notes": "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Left sink, 12-inch right drainboard and open vertically divided storage selected. Work surface 30 inches. No hinged cabinet door claimed; specification explicitly gives open storage. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances."
+      },
+      "proposed_queue_row": [
+        "Glastender",
+        "SWB-24L-C",
+        "Beverage",
+        "24-inch bar wet-waste sink cabinet, left sink",
+        "610",
+        "610",
+        "940",
+        "floor",
+        "none",
+        "",
+        "",
+        "1",
+        "1",
+        "https://www.glastender.com/assets/spec-sheets/SW_Cabinets.pdf",
+        "US standard Signature underbar configuration; inch dimensions",
+        "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Left sink, 12-inch right drainboard and open vertically divided storage selected. Work surface 30 inches. No hinged cabinet door claimed; specification explicitly gives open storage. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances.",
+        "2026-10-30"
+      ],
+      "source_row_hash": "d3fcd3d5f27520c8b7e157c3fc38ce8fccfb5c17ac02ecbd3ebc604ce5169e61"
+    },
+    "glastender|swb24rc": {
+      "schema_version": 1,
+      "key": "glastender|swb24rc",
+      "brand": "Glastender",
+      "model": "SWB-24R-C",
+      "manufacturer_sku": "SWB-24R-C",
+      "market": "US standard Signature underbar configuration; inch dimensions",
+      "batch_id": "2026-10-30-glastender-bar-service-6",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-29T21:36:21.972Z",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-specification",
+          "url": "https://www.glastender.com/assets/spec-sheets/SW_Cabinets.pdf",
+          "revision": "05-28-26",
+          "retrieved_at": "2026-10-28T13:24:00Z",
+          "reviewed_at": "2026-10-29T21:36:21.972Z",
+          "sha256": "4e6d764c9cb7652c14a73bded59e1a4ace56e650a6e27f012100698ca87b38ff",
+          "locator": "Page 1 exact model list, complete standard features and connections; page 2 dimension drawings visually reviewed locally",
+          "recovery": "Existing manufacturer PDF recovered from approved research archive; original retrieval date preserved."
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-installation-manual",
+          "url": "https://www.glastender.com/assets/manuals/F-750-165%20Underbar%20Installation%20Instructions.pdf",
+          "revision": "F-750-165 Rev 2.2, 02-23-26",
+          "sha256": "2907c81a50ab6455a6e47d51bbc5892956c8af9a8cd092500317e619d9bc9261",
+          "reviewed_at": "2026-10-29T21:36:21.972Z",
+          "locator": "Complete single-page installation instructions, steps 1-5"
+        },
+        {
+          "id": "S3",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.glastender.com/categories/bar-fabrication-signature-wet-waste-sinks/",
+          "reviewed_at": "2026-10-29T21:36:21.972Z",
+          "locator": "Current exact model listing and specification document family; individual product dimensions where available"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Exact full model is listed in the current official product/category page and matching specification. Selected standard US dimensional configuration; no optional side splashes or separate equipment."
+        },
+        "dimensions": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "24 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Right sink, 12-inch left drainboard and open vertically divided storage selected. Model suffix explicitly selects right sink; same 24 x 24 x 37-inch envelope as the left illustration. Work surface 30 inches."
+        },
+        "mounting": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete legged underbar assembly; floor mounting on installed and leveled manufacturer legs."
+        },
+        "power_input": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete passive stainless fixture specification, connection schedule and construction drawing contain no powered component. Cold-plate variants cool from stored ice without a compressor. Electrical input is not applicable."
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "No electrical component or electrical supply terminal in complete assembly/connection specification; external beverage machines and pumps are excluded."
+        },
+        "water_drain": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Right sink, 12-inch left drainboard and open vertically divided storage selected. Model suffix explicitly selects right sink; same 24 x 24 x 37-inch envelope as the left illustration. Work surface 30 inches."
+        },
+        "gas": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Complete assembly uses stainless construction and water plumbing; no fuel-gas burner, gas inlet or gas consuming component. Soda/beverage lines on cold plates are external beverage circuits, not fuel-gas supply."
+        },
+        "installation": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Right sink, 12-inch left drainboard and open vertically divided storage selected. Model suffix explicitly selects right sink; same 24 x 24 x 37-inch envelope as the left illustration. Work surface 30 inches. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances."
+        },
+        "source_freshness": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "reason": "Current manufacturer exact product/category listing was opened on 2026-10-30 Dubai and matches the model family and dimensions in the official PDF recovered from 2026-10-28. Reviewed 2026 specification revision 05-28-26 and currently indexed Underbar Installation Instructions Rev 2.2. No conflicting revision identified."
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "reason": "Beverage/floor/none supported; mm and explicit water/drain booleans with sourced nonapplicability for null electrical fields. Standard configurations and installation detail retained."
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Glastender",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Exact full model is listed in the current official product/category page and matching specification. Selected standard US dimensional configuration; no optional side splashes or separate equipment."
+        },
+        "model": {
+          "value": "SWB-24R-C",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Exact full model is listed in the current official product/category page and matching specification. Selected standard US dimensional configuration; no optional side splashes or separate equipment."
+        },
+        "w": {
+          "value": 610,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p2 exact model plan/front/side elevations",
+          "reason": "24 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Right sink, 12-inch left drainboard and open vertically divided storage selected. Model suffix explicitly selects right sink; same 24 x 24 x 37-inch envelope as the left illustration. Work surface 30 inches.",
+          "original_value": 24,
+          "original_unit": "in"
+        },
+        "d": {
+          "value": 610,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p2 exact model plan/front/side elevations",
+          "reason": "24 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Right sink, 12-inch left drainboard and open vertically divided storage selected. Model suffix explicitly selects right sink; same 24 x 24 x 37-inch envelope as the left illustration. Work surface 30 inches.",
+          "original_value": 24,
+          "original_unit": "in"
+        },
+        "h": {
+          "value": 940,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p2 exact model plan/front/side elevations",
+          "reason": "24 x 24 x 37 inches W/D/H from exact drawing, converted at 25.4 mm/inch and rounded to nearest mm. Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Right sink, 12-inch left drainboard and open vertically divided storage selected. Model suffix explicitly selects right sink; same 24 x 24 x 37-inch envelope as the left illustration. Work surface 30 inches.",
+          "original_value": 37,
+          "original_unit": "in"
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete legged underbar assembly; floor mounting on installed and leveled manufacturer legs."
+        },
+        "power": {
+          "value": "none",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete passive stainless fixture specification, connection schedule and construction drawing contain no powered component. Cold-plate variants cool from stored ice without a compressor. Electrical input is not applicable."
+        },
+        "kw": {
+          "value": null,
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Complete passive stainless fixture specification, connection schedule and construction drawing contain no powered component. Cold-plate variants cool from stored ice without a compressor. Electrical input is not applicable."
+        },
+        "elec": {
+          "value": null,
+          "status": "not-applicable",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "No electrical component or electrical supply terminal in complete assembly/connection specification; external beverage machines and pumps are excluded."
+        },
+        "water": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Right sink, 12-inch left drainboard and open vertically divided storage selected. Model suffix explicitly selects right sink; same 24 x 24 x 37-inch envelope as the left illustration. Work surface 30 inches."
+        },
+        "drain": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "S1 p1 full component and connection specification; S2 steps 1-5",
+          "reason": "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Right sink, 12-inch left drainboard and open vertically divided storage selected. Model suffix explicitly selects right sink; same 24 x 24 x 37-inch envelope as the left illustration. Work surface 30 inches."
+        }
+      },
+      "candidate_runtime_row": [
+        "Glastender",
+        "SWB-24R-C",
+        "Beverage",
+        "24-inch bar wet-waste sink cabinet, right sink",
+        610,
+        610,
+        940,
+        "floor",
+        "none",
+        null,
+        null,
+        1,
+        1,
+        "https://www.glastender.com/assets/spec-sheets/SW_Cabinets.pdf"
+      ],
+      "installation_notes": "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Right sink, 12-inch left drainboard and open vertically divided storage selected. Model suffix explicitly selects right sink; same 24 x 24 x 37-inch envelope as the left illustration. Work surface 30 inches. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances.",
+      "installation_details": {
+        "manual_source_id": "S2",
+        "manual_locator": "Steps 1-5; S1 full specifications and dimensional drawings",
+        "notes": "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Right sink, 12-inch left drainboard and open vertically divided storage selected. Model suffix explicitly selects right sink; same 24 x 24 x 37-inch envelope as the left illustration. Work surface 30 inches. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances."
+      },
+      "proposed_queue_row": [
+        "Glastender",
+        "SWB-24R-C",
+        "Beverage",
+        "24-inch bar wet-waste sink cabinet, right sink",
+        "610",
+        "610",
+        "940",
+        "floor",
+        "none",
+        "",
+        "",
+        "1",
+        "1",
+        "https://www.glastender.com/assets/spec-sheets/SW_Cabinets.pdf",
+        "US standard Signature underbar configuration; inch dimensions",
+        "Standard manual deck faucet on 4-inch centers with 3/8-inch hot/cold leads; 1-1/2-inch IPS drain. Optional foot faucet and side splashes excluded. Select nominal 6-inch legs (adjustable to 7-1/4 inches); quoted 37-inch overall height includes back/faucet envelope. Lift-out wet-waste strainer and plumbing remain accessible. Right sink, 12-inch left drainboard and open vertically divided storage selected. Model suffix explicitly selects right sink; same 24 x 24 x 37-inch envelope as the left illustration. Work surface 30 inches. Thread legs fully into sockets and level with bullet feet. Remove exposed Signature cam locks unless sealed against a wall; align and seal field joints with approved sealant. Install drains to applicable plumbing requirements. Maintain operational, cleaning and connection access; manufacturer gives no numerical installation clearances.",
+        "2026-10-30"
+      ],
+      "source_row_hash": "41efa59a34668a02501420b7ad435edb5d4d62cbc87f7c46511419fc86ad0ba7"
     }
   }
 }
