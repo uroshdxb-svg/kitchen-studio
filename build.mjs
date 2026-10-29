@@ -7,6 +7,7 @@ import fs from "node:fs";
 import path from "node:path";
 import {createHash} from "node:crypto";
 import {fileURLToPath} from "node:url";
+import {visualCoverage} from "./equipment-visual-coverage.mjs";
 import {buildDiscovery} from "./discovery.mjs";
 
 const ROOT=path.dirname(fileURLToPath(import.meta.url));
@@ -63,8 +64,8 @@ if(mode==="artifact"){
   out(D,"app/renderer.js",rendererJs);
   out(D,"showcase/index.html",read("showcase.html").replace("/app/renderer.js",`/app/renderer.js?v=${ver}`));
   out(D,"equipment/index.html",read("equipment-review.html").replace("/app/renderer.js",`/app/renderer.js?v=${ver}`));
-  {const rows=new Function(read('cat.js')+';return CATALOGUE_ROWS')(),entries=new Function(read('view3d-equipment.js')+';return KS3DEquipment.entries')(),refs=JSON.parse(read('equipment-model-references.json'));
-   const models=entries.map(e=>{const r=rows.find(r=>r[0]===e.brand&&r[1]===e.model);if(!r||!refs[e.id])throw new Error('Missing catalogue row or reference for '+e.id);const ref=refs[e.id];copy('assets/equipment-reference/'+ref.file,D,'equipment/reference/'+ref.file);return {kind:'eq',brand:r[0],model:r[1],cat:r[2],name:r[3],w:r[4],d:r[5],h:r[6],mount:r[7],image:'/equipment/reference/'+ref.file,source:ref.source};});out(D,'equipment/models.json',JSON.stringify(models));}
+  {const rows=new Function(read('cat.js')+';return CATALOGUE_ROWS')(),registry=new Function(read('view3d-equipment.js')+';return KS3DEquipment')(),entries=registry.entries,refs=JSON.parse(read('equipment-model-references.json'));
+   const models=entries.map(e=>{const r=rows.find(r=>r[0]===e.brand&&r[1]===e.model);if(!r||!refs[e.id])throw new Error('Missing catalogue row or reference for '+e.id);const ref=refs[e.id];copy('assets/equipment-reference/'+ref.file,D,'equipment/reference/'+ref.file);return {kind:'eq',brand:r[0],model:r[1],cat:r[2],name:r[3],w:r[4],d:r[5],h:r[6],mount:r[7],image:'/equipment/reference/'+ref.file,source:ref.source};});out(D,'equipment/models.json',JSON.stringify(models));const symbolOf=new Function(read('symbols.js')+';return KS_symOf')();out(D,'equipment/coverage.json',JSON.stringify(visualCoverage(rows,registry,symbolOf,refs)));}
   copy("cloud.js",D,"app/cloud.js");
   for(const [name,src] of Object.entries(LIBS))copy(src,D,"app/vendor/"+name);
   out(D,"connect/index.html",branded(read("connect.html")));

@@ -3,6 +3,17 @@
  * be reviewed against their own reference before adding them to this registry. */
 const KS3DEquipment=(()=>{
  const entries=[
+  {id:'hobart-hsm20',brand:'Hobart',model:'HSM20',family:'planetary',hobart:true,bowlDiameter:355,bowlHeight:310,features:['Cast metal head and column','Wire bowl guard','Suspended stainless bowl','Bowl lift lever and speed selector'],configuration:'Standard bench mixer with bowl and wire guard fitted.'},
+  ...[[10,279,236],[20,333,296],[30,380,340],[40,422,367]].map(([size,bowlDiameter,bowlHeight])=>({id:'sammic-bp'+size,brand:'Sammic',model:'BP-'+size,family:'planetary',bowlDiameter,bowlHeight,features:[size+' L stainless bowl','Wire safety guard','Front keypad and display','Bowl lift and open stainless legs'],configuration:'Current BP housing and keypad; standard column, without the optional attachment drive.'})),
+  {id:'sammic-gsm300',brand:'Sammic',model:'GSM-300',family:'slicer',features:['300 mm circular blade','Sliding ribbed carriage','Thickness adjustment dial','Blade guard and top sharpener']},
+  {id:'vitamix-vitaprep3',brand:'Vitamix',model:'Vita-Prep 3',family:'blender',features:['Clear tapered 2 L container','Moulded handle and lid plug','Red fascia and variable-speed dial','Vented motor base']},
+  {id:'vitamix-quietone',brand:'Vitamix',model:'The Quiet One',family:'blender',quiet:true,features:['Clear sound enclosure','Advance container and handle','Digital preset keypad','Hinged enclosure and broad grip'],configuration:'Sound enclosure closed. The planner retains the catalogue height for the closed machine.'},
+  {id:'mahlkonig-ek43',brand:'Mahlkonig',model:'EK43',family:'grinder',ek:true,features:['Horizontal grinding chamber','Large adjustment wheel','Clear tapered bean hopper','Bag clamp and open pedestal'],configuration:'Standard black finish and full-size hopper.'},
+  {id:'mahlkonig-e65s',brand:'Mahlkonig',model:'E65S',family:'grinder',features:['Clear bean hopper','Cylindrical motor housing','Front display and grind adjustment','Portafilter fork and grounds tray'],configuration:'Standard black finish and hopper; catalogue envelope retained.'},
+  {id:'rc-j80',brand:'Robot Coupe',model:'J 80',family:'juicer',features:['Stainless centrifugal body','Wide feed tube','Rear pulp container','Juice spout and removable drip tray']},
+  ...[[2,'Linea PB 2-group'],[3,'Linea PB 3 group']].map(([groups,model])=>({id:'lm-pb'+groups,brand:'La Marzocco',model,family:'espresso',groups,features:[groups+' separate brew groups','Portafilters and twin steam wands','Cup rail and slotted drip tray','Group buttons and pressure gauge'],configuration:'Brushed stainless Linea PB AV with high legs, matching the reference configuration.'})),
+  ...[['35','Boxer 35'],['42','Boxer 42'],['52','Boxer 52'],['jumbo','Jumbo 30']].map(([size,model])=>({id:size==='jumbo'?'henkelman-jumbo30':'henkelman-boxer'+size,brand:'Henkelman',model,family:'vacuum',jumbo:size==='jumbo',twin:size==='52',features:['Transparent domed lid','Recessed stainless chamber',size==='52'?'Twin side sealing bars':'Front sealing bar','Membrane controls and vacuum gauge'],configuration:'Shown with lid closed; the manufacturer photo shows it open.'+(size==='42'?' Catalogue envelope retained; the current manufacturer lists 490 × 530 × 440 mm.':'' )})),
+
   {id:'rc-r301',brand:'Robot Coupe',model:'R 301 Ultra',family:'veg',plastic:true,features:['Composite motor base','Twin feed hoppers','Pusher lever','Side discharge chute'],configuration:'Vegetable-prep head fitted; the separate cutter bowl is not shown.'},
   {id:'rc-cl50',brand:'Robot Coupe',model:'CL 50 Ultra',family:'veg',features:['Stainless motor base','Metal feed head','Twin feed hoppers','Side discharge chute']},
   {id:'rc-r2',brand:'Robot Coupe',model:'R 2',family:'cutter',composite:true,litres:'2.9 L',features:['Brushed steel bowl','Clear domed lid','Front bowl handle','Composite motor base']},
@@ -20,7 +31,7 @@ const KS3DEquipment=(()=>{
  function materials(M){
   if(cache.has(M))return cache.get(M);
   const mat=(color,roughness=.5,metalness=0,extra={})=>new THREE.MeshStandardMaterial({color:KS3DAssets.linear(color),roughness,metalness,...extra});
-  const m={...M,composite:mat(0x4d5559,.47),cast:mat(0xb7bcc0,.44,.52),paint:mat(0xdadbd7,.43),ivory:mat(0xe5e5de,.39),teal:mat(0x22505c,.48),belt:mat(0xe2e3d5,.93),red:mat(0xb82825,.38),green:mat(0x178851,.42),yellow:mat(0xe8ba35,.5),clear:mat(0xdce9e8,.1,.02,{transparent:true,opacity:.25,depthWrite:false,side:THREE.DoubleSide}),clearEdge:mat(0xc1d5d5,.17,.12,{transparent:true,opacity:.65,depthWrite:false})};
+  const m={...M,composite:mat(0x4d5559,.47),cast:mat(0xb7bcc0,.44,.52),paint:mat(0xdadbd7,.43),ivory:mat(0xe5e5de,.39),teal:mat(0x22505c,.48),belt:mat(0xe2e3d5,.93),red:mat(0xb82825,.38),green:mat(0x178851,.42),yellow:mat(0xe8ba35,.5),coffee:mat(0x342016,.9),seal:mat(0xb18a58,.7),cover:mat(0xc6d7db,.16,.06,{transparent:true,opacity:.42,depthWrite:false,side:THREE.DoubleSide}),clear:mat(0xdce9e8,.1,.02,{transparent:true,opacity:.25,depthWrite:false,side:THREE.DoubleSide}),clearEdge:mat(0xc1d5d5,.17,.12,{transparent:true,opacity:.65,depthWrite:false})};
   m.steel=M.steel.clone();m.steel.metalness=.78;m.steel.roughness=.34;m.steel.envMapIntensity=1.4;
   m.steel2=M.steel2.clone();m.steel2.metalness=.80;m.steel2.envMapIntensity=1.3;
   // Fine woven PVC belt texture. Shared across machines and scene rebuilds.
@@ -49,7 +60,7 @@ const KS3DEquipment=(()=>{
   function tube(pts,r,mat){return mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts.map(p=>new THREE.Vector3(...p)),false,'centripetal'),Math.max(8,pts.length*5),r,10,false),mat);}
   function ring(x,y,z,r,thick,mat,axis='y'){const o=mesh(new THREE.TorusGeometry(r,thick,10,64),mat,x,y,z);if(axis==='y')o.rotation.x=Math.PI/2;if(axis==='x')o.rotation.y=Math.PI/2;return o;}
   function text(x,y,z,ww,words){
-   const k='mark:'+words;if(!panels.has(k)){const c=document.createElement('canvas');c.width=512;c.height=100;const t=c.getContext('2d');t.font='700 70px Arial';t.fillStyle=words==='SINMAG'?'#b9e0ed':'#26383b';t.textAlign='center';t.textBaseline='middle';t.fillText(words,256,53,490);const map=new THREE.CanvasTexture(c);map.encoding=THREE.sRGBEncoding;panels.set(k,new THREE.MeshBasicMaterial({map,transparent:true,depthWrite:false}));}
+   const k='mark:'+words;if(!panels.has(k)){const c=document.createElement('canvas');c.width=512;c.height=100;const t=c.getContext('2d');t.font='700 70px Arial';t.fillStyle=words==='SINMAG'?'#b9e0ed':words==='Vitamix'?'#ffffff':words==='LA MARZOCCO'?'#b63a32':'#26383b';t.textAlign='center';t.textBaseline='middle';t.fillText(words,256,53,490);const map=new THREE.CanvasTexture(c);map.encoding=THREE.sRGBEncoding;panels.set(k,new THREE.MeshBasicMaterial({map,transparent:true,depthWrite:false}));}
    return mesh(new THREE.PlaneGeometry(ww,ww/5),panels.get(k),x,y,z);
   }
   function motor(cx,bw,bh,bd,mat){
@@ -148,7 +159,161 @@ const KS3DEquipment=(()=>{
    if(!floor){text(cx,beltY-34,front+8,cw*.56,'RONDO');cy(cx+cw*.2,beltY+headH*.70,front-d*.10,13,24,m.dark);cy(cx+cw*.2,beltY+headH*.73,front-d*.10,20,10,m.red);}
    else{for(const z of [z0,z0+beltD])box(w*.88,beltY,z,12,110,12,m.steel2,2);cy(w*.886,beltY+108,z0+beltD/2,16,beltD,m.belt,'z');}
   }
-  if(e.family==='cutter')cutter();else if(e.family==='veg')veg();else sheeter();
+  // Shared construction primitives; each family keeps its own silhouette and
+  // mechanical layout. No model-name substring matching or generic reskins.
+  function feet4(y=8){for(const x of [w*.14,w*.86])for(const z of [d*.13,d*.85])cy(x,y,z,Math.min(w*.045,18),y*2,m.rubber);}
+  function button(x,y,z,r,mat=m.dark){cy(x,y,z,r+2,3,m.steel2,'z');cy(x,y,z+3,r,6,mat,'z');}
+  function arc(cx,cyy,cz,rx,rz,start,end,mat=m.steel2,thick=2.5){tube(Array.from({length:33},(_,i)=>{const a=start+(end-start)*i/32;return [cx+rx*Math.cos(a),cyy,cz+rz*Math.sin(a)];}),thick,mat);}
+  // Rounded-rectangle loft. Open ends allow real cavities and transparent shells.
+  function outline(cx,cz,ww,dd,r){const out=[];for(const [xx,zz,a] of [[cx+ww/2-r,cz+dd/2-r,0],[cx-ww/2+r,cz+dd/2-r,Math.PI/2],[cx-ww/2+r,cz-dd/2+r,Math.PI],[cx+ww/2-r,cz-dd/2+r,Math.PI*1.5]])for(let i=0;i<8;i++){const t=a+i*Math.PI/14;out.push([xx+Math.cos(t)*r,zz+Math.sin(t)*r]);}return out;}
+  function loft(cx,cz,levels,mat){const v=[],idx=[],uv=[];for(let j=0;j<levels.length;j++)for(let i=0;i<32;i++)uv.push(i/32,j/(levels.length-1));for(const [y,ww,dd,r] of levels)for(const [x,z] of outline(cx,cz,ww,dd,r))v.push(x,y,z);const n=32;for(let j=0;j<levels.length-1;j++)for(let i=0;i<n;i++){const a=j*n+i,b=j*n+(i+1)%n,c=a+n,dd=b+n;idx.push(a,c,b,b,c,dd);}const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(v,3));geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));geo.setIndex(idx);geo.computeVertexNormals();return mesh(geo,mat);}
+  function plate(cx,y,cz,ww,dd,r,mat){const pts=outline(cx,cz,ww,dd,r),v=[cx,y,cz],uv=[.5,.5],idx=[];for(const [x,z] of pts){v.push(x,y,z);uv.push((x-cx)/ww+.5,(z-cz)/dd+.5);}for(let i=0;i<32;i++)idx.push(0,(i+1)%32+1,i+1);const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(v,3));geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));geo.setIndex(idx);geo.computeVertexNormals();return mesh(geo,mat);}
+  function trim(cx,y,cz,ww,dd,r,mat=m.steel2,thick=2){const p=outline(cx,cz,ww,dd,r).map(([x,z])=>[x,y,z]);p.push(p[0]);tube(p,thick,mat);}
+  function fascia(x,y,z,ww,hh,kind){
+   const k='fascia:'+e.id+':'+kind;if(!panels.has(k)){const c=document.createElement('canvas');c.width=512;c.height=200;const ctx=c.getContext('2d');ctx.fillStyle=kind==='vacuum'?'#d4e2df':'#202b30';ctx.fillRect(0,0,512,200);
+    if(kind==='vacuum'){ctx.strokeStyle='#75b8ad';ctx.lineWidth=13;for(let i=0;i<4;i++){ctx.beginPath();ctx.moveTo(20,190-i*16);ctx.quadraticCurveTo(280,240,490,50+i*20);ctx.stroke();}}
+    ctx.fillStyle=kind==='vacuum'?'#24413f':'#d2dada';ctx.font='600 23px Arial';ctx.fillText(e.brand,20,30);ctx.fillStyle='#111b1c';ctx.fillRect(170,47,170,57);ctx.fillStyle=kind==='vacuum'?'#d9504c':'#a6cfda';ctx.font='33px monospace';ctx.fillText(kind==='vacuum'?'99.9':'00:00',184,87);ctx.strokeStyle=kind==='vacuum'?'#263c3c':'#778e95';ctx.lineWidth=2;for(let i=0;i<6;i++){ctx.strokeRect(40+i*71,137,42,36);ctx.font='18px Arial';ctx.fillStyle=ctx.strokeStyle;ctx.fillText(String(i+1),54+i*71,162);}const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;panels.set(k,new THREE.MeshStandardMaterial({map:t,roughness:.5,metalness:.1}));}
+   return mesh(new THREE.PlaneGeometry(ww,hh),panels.get(k),x,y,z);
+  }
+  function planetary(){
+   const hob=!!e.hobart,cx=w/2,cz=d*.63,r=e.bowlDiameter/2,bh=e.bowlHeight,by=h*(hob?.22:it.mount==='top'?.20:.30),rim=by+bh,headY=h*.73,coat=hob?m.cast:m.steel;
+   // Two separated feet and a rear column leave space below and behind the bowl.
+   for(const x of [w*.08,w*.85]){box(x,it.mount==='floor'?h*.06:12,d*.12,w*.075,h*.045,d*.80,coat,5);box(x+2,0,d*.82,w*.065,it.mount==='floor'?h*.065:20,d*.08,m.rubber,3);}
+   box(w*.20,h*.06,d*.07,w*.60,h*.72,d*.27,coat,18);
+   box(w*.24,h*.76,d*.09,w*.52,h*.19,d*.35,coat,18);
+   if(!hob){
+    // The sloped graphite cap is characteristic of the current Sammic BP range.
+    loft(cx,d*.44,[[h*.90,w*.73,d*.75,w*.26],[h*.94,w*.73,d*.75,w*.26],[h*.985,w*.65,d*.63,w*.22]],m.dark);plate(cx,h*.985,d*.44,w*.65,d*.63,w*.22,m.dark);
+    const p=fascia(cx,h*.99,d*.48,w*.37,h*.075,'bp');p.rotation.x=-Math.PI/2;
+    cy(cx,h*.795,cz,r*.97,h*.25,m.steel);
+    cy(cx,h*.79,cz+r*.98,w*.045,3,m.composite,'z');text(cx,h*.72,cz+r+1,w*.23,'SAMMIC');
+   }else{
+    box(w*.17,h*.855,d*.09,w*.66,h*.10,d*.66,m.cast,12);box(w*.17,h*.95,d*.09,w*.66,5,d*.66,m.steel2,3);cy(cx,h*.78,cz,r*.65,h*.20,m.cast);ring(cx,h*.69,cz,r*.65,2,m.steel2);
+    text(cx,h*.89,d*.765,w*.31,'HOBART');button(w*.26,h*.87,d*.75,11,m.dark);button(w*.77,h*.88,d*.75,9,m.red);button(w*.77,h*.835,d*.75,9,m.green);
+    box(w*.36,headY-8,cz-r*.5,w*.28,20,r,m.cast,6);cy(cx,headY-5,cz,r*.45,25,m.steel2);
+   }
+   lathe(cx,by,cz,[[0,0],[r*.38,0],[r*.68,bh*.08],[r*.87,bh*.25],[r*.98,bh*.65],[r,bh],[r-3,bh],[r*.96,bh*.65],[r*.84,bh*.26],[r*.64,bh*.10],[0,6]],m.steel);ring(cx,rim,cz,r,3,m.steel2);
+   for(const side of [-1,1]){tube([[cx+side*r*.92,rim-25,cz],[cx+side*(r+22),rim-25,cz],[cx+side*(r+22),rim-65,cz],[cx+side*r*.94,rim-65,cz]],5,m.steel2);box(cx+side*r-10,by+bh*.52,d*.27,20,25,cz-d*.27,m.cast,3);}
+   cy(cx,headY-h*.035,cz,12,h*.16,m.steel2);
+   // Wire whisk remains visible inside the safety cage and bowl.
+   for(let i=0;i<6;i++){const a=i*Math.PI/3,xx=Math.cos(a),zz=Math.sin(a);tube([[cx,headY-h*.08,cz],[cx+xx*r*.36,rim-15,cz+zz*r*.36],[cx+xx*r*.24,by+bh*.22,cz+zz*r*.24],[cx,by+bh*.17,cz]],1.6,m.steel2);}
+   const gy=hob?Math.max(rim+30,headY-h*.14):h*.67,gr=r*1.04;
+   for(let j=0;j<4;j++)arc(cx,rim+8+j*(gy-rim)/3,cz,gr,gr,-.10,Math.PI+.10,m.steel2,2);
+   for(let i=0;i<=14;i++){const a=Math.PI*i/14;tube([[cx+Math.cos(a)*gr,rim+5,cz+Math.sin(a)*gr],[cx+Math.cos(a)*gr,gy,cz+Math.sin(a)*gr],[cx+Math.cos(a)*(hob?r*.50:gr),hob?headY-4:gy+5,cz+Math.sin(a)*(hob?r*.50:gr)]],2,m.steel2);}
+   tube([[w*.82,h*.68,d*.25],[w*.95,h*.66,d*.28],[w*.94,h*.51,d*.44]],5,m.steel2);cy(w*.94,h*.51,d*.44,9,h*.10,m.dark);
+   for(let i=0;i<6;i++)box(w*.806,h*.42+i*9,d*.14,2,3,d*.12,m.dark,1);
+  }
+  function blender(){
+   const q=!!e.quiet,cx=w*.5,cz=d*.46,base=h*(q?.31:.28),jtop=h*(q?.86:.87),jb=base+h*.04,jarW=w*(q?.53:.62),jarD=d*(q?.51:.55);
+   feet4(5);box(w*.03,10,d*.03,w*.94,base-10,d*.87,m.dark,14);box(w*.08,base-7,d*.1,w*.84,8,d*.73,m.rubber,3);
+   for(const side of [.025,.963])for(let i=0;i<7;i++)box(w*side,22+i*5,d*.24,2,2,d*.45,m.composite,1);
+   if(q){fascia(cx,base*.61,d*.906,w*.76,base*.43,'quiet');}
+   else{box(w*.05,base*.44,d*.902,w*.90,base*.24,4,m.red,3);text(cx,base*.53,d*.93,w*.55,'Vitamix');cy(cx,base*.80,d*.925,w*.088,4,m.steel2,'z');cy(cx,base*.80,d*.95,w*.075,10,m.dark,'z');box(cx-1.5,base*.80,d*.98,3,w*.055,2,m.white,1);for(let i=0;i<11;i++){const a=Math.PI*i/10;box(cx+Math.cos(a)*w*.11,base*.80+Math.sin(a)*w*.11,d*.916,1.5,3,2,m.white,0);}for(const x of [w*.19,w*.81]){box(x-10,base*.73,d*.91,20,24,3,m.steel2,2);box(x-7,base*.75,d*.916,14,15,4,m.dark,1);}}
+   cy(cx,jb-6,cz,jarW*.42,16,m.composite);ring(cx,jb,cz,jarW*.39,3,m.steel2);
+   loft(cx,cz,[[jb,jarW*.68,jarD*.68,12],[jb+15,jarW*.73,jarD*.73,14],[jtop,jarW,jarD,18]],m.clear);
+   trim(cx,jtop,cz,jarW,jarD,18,m.clearEdge,2);
+   for(const [xx,zz] of [[-1,-1],[-1,1],[1,-1],[1,1]])tube([[cx+xx*jarW*.30,jb+8,cz+zz*jarD*.30],[cx+xx*jarW*.45,jtop-8,cz+zz*jarD*.45]],1.7,m.clearEdge);
+   for(let i=0;i<7;i++)box(cx-jarW*.13,jb+28+(jtop-jb-45)*i/7,cz+jarD*(.38+i*.014),jarW*(i%2?.15:.23),1,1,m.composite,0);
+   const hx=cx-jarW*.5; tube([[hx,jtop-18,cz],[hx-w*.13,jtop-26,cz],[hx-w*.15,jb+(jtop-jb)*.28,cz],[hx+w*.03,jb+(jtop-jb)*.20,cz]],q?6:7,m.clearEdge);
+   cy(cx,jb+8,cz,6,18,m.steel2);for(const a of [0,Math.PI/2]){const blade=box(cx-jarW*.26,jb+8,cz-4,jarW*.52,2,8,m.steel2,1);blade.rotation.y=a;}
+   if(q)box(cx-jarW*.55,jtop,cz-jarD*.55,jarW*1.10,16,jarD*1.10,m.rubber,12);else{cy(cx,jtop+9,cz,jarW*.58,23,m.rubber);ring(cx,jtop-1,cz,jarW*.58,3,m.clearEdge);}cy(cx,jtop+22,cz,jarW*.24,20,m.clearEdge);cy(cx,jtop+31,cz,jarW*.25,4,m.composite);
+   if(q){const z=d*.42,ww=w*.88,dd=d*.76;loft(cx,z,[[base,ww,dd,10],[h*.94,ww,dd,14],[h*.978,ww*.93,dd*.94,16]],m.clear);box(cx-ww*.465,h*.978,z-dd*.47,ww*.93,3,dd*.94,m.clear,10);trim(cx,h*.985,z,ww*.93,dd*.94,14,m.composite,3);for(const x of [w*.06,w*.94])tube([[x,base,z-dd/2],[x,h*.96,z-dd/2],[x,h*.98,z+dd*.45],[x,base+12,z+dd/2]],3,m.clearEdge);box(w*.12,base+25,z+dd/2-4,w*.76,20,14,m.cast,7);for(const x of [w*.16,w*.84])cy(x,h*.88,z-dd/2,8,25,m.composite,'x');}
+  }
+  function grinder(){
+   const ek=!!e.ek,cx=w/2,cz=d*(ek?.40:.43),hopperBase=h*(ek?.62:.60),hr=w*(ek?.34:.43),top=h*.98;
+   if(ek){for(const x of [w*.04,w*.80])box(x,6,d*.08,w*.16,h*.035,d*.85,m.dark,6);box(w*.04,6,d*.08,w*.92,h*.035,d*.17,m.dark,6);arc(cx,h*.04,d*.68,w*.30,d*.19,0,Math.PI,m.steel2,2);}else box(w*.04,6,d*.08,w*.92,h*.045,d*.85,m.dark,11);feet4(5);
+   if(ek){
+    // Tall, tapered pedestal and horizontal burr chamber identify the EK43.
+    loft(cx,d*.25,[[h*.05,w*.46,d*.29,6],[h*.48,w*.31,d*.25,7]],m.dark);
+    cy(cx,h*.51,d*.40,w*.245,d*.52,m.dark,'z');ring(cx,h*.51,d*.68,w*.246,2,m.composite,'z');
+    cy(cx,h*.51,d*.68,w*.21,16,m.composite,'z');cy(cx,h*.51,d*.73,w*.14,18,m.dark,'z');
+    for(let i=0;i<16;i++){const a=i*Math.PI/8;cy(cx+Math.sin(a)*w*.18,h*.51+Math.cos(a)*w*.18,d*.699,1.6,2,m.white,'z');}
+    box(cx-3,h*.51,d*.78,6,w*.12,3,m.white,1);box(cx-w*.09,h*.35,d*.63,w*.18,h*.11,d*.14,m.dark,6);
+    tube([[cx-w*.09,h*.42,d*.66],[cx-w*.14,h*.40,d*.81],[cx+w*.14,h*.40,d*.81],[cx+w*.09,h*.42,d*.66]],3,m.steel2);box(cx-6,h*.33,d*.80,12,h*.07,10,m.dark,3);
+    button(w*.68,h*.27,d*.40,6,m.red);text(cx,h*.14,d*.40,w*.18,'EK43');
+    for(let i=0;i<9;i++)box(w*.738,h*.47+i*6,d*.21,1,3,d*.18,m.composite,1);
+   }else{
+    cy(cx,h*.32,cz,w*.39,h*.53,m.dark);cy(cx,h*.58,cz,w*.40,h*.035,m.steel2);
+    box(w*.19,h*.31,d*.57,w*.62,h*.22,d*.16,m.dark,10);fascia(cx,h*.47,d*.738,w*.52,h*.10,'grind');
+    cy(cx,h*.36,d*.76,w*.08,14,m.steel2,'z');box(w*.43,h*.26,d*.68,w*.14,h*.07,d*.11,m.steel2,4);
+    for(const x of [w*.36,w*.64])tube([[x,h*.19,d*.61],[x,h*.19,d*.86]],4,m.steel2);
+    tube([[w*.32,h*.19,d*.64],[w*.32,h*.28,d*.68]],3,m.steel2);button(w*.73,h*.47,d*.735,5,m.composite);
+    cy(cx,h*.08,d*.73,w*.31,7,m.composite);for(let i=0;i<5;i++)box(w*.33+i*w*.08,h*.09,d*.60,3,2,d*.26,m.dark,0);
+   }
+   cy(cx,hopperBase,cz,hr*.36,h*.05,m.dark);lathe(cx,hopperBase,cz,[[hr*.36,0],[hr*.46,h*.05],[hr*.88,(top-hopperBase)*.68],[hr,top-hopperBase],[hr-2,top-hopperBase],[hr*.86,(top-hopperBase)*.68],[hr*.43,h*.05],[hr*.34,0]],m.clear);
+   cy(cx,top,cz,hr+2,8,m.dark);ring(cx,top-5,cz,hr,2,m.clearEdge);
+   // A deterministic small bean bed gives scale through the hopper, without a texture download.
+   const coffee=m.coffee;cy(cx,hopperBase+h*.05,cz,hr*.44,h*.07,coffee,'y',hr*.60);for(let i=0;i<35;i++){const a=i*2.39996,rr=Math.sqrt((i+.5)/35)*hr*.53;const o=mesh(new THREE.SphereGeometry(hr*.055,6,4),coffee,cx+Math.cos(a)*rr,hopperBase+h*.092+Math.sin(i*4)*2,cz+Math.sin(a)*rr);o.scale.set(1,.6,1.5);o.rotation.y=a;}
+  }
+  function juicer(){
+   const cx=w*.48,cz=d*.50,r=w*.42;for(const x of [w*.20,w*.76])for(const z of [d*.34,d*.64])cy(x,12,z,10,24,m.rubber);
+   box(w*.17,h*.06,d*.03,w*.66,h*.55,d*.26,m.composite,22);box(w*.16,h*.59,d*.02,w*.68,h*.045,d*.27,m.composite,14);
+   cy(cx,h*.31,cz,r,h*.53,m.steel);cy(cx,h*.065,cz,r*1.02,18,m.composite);ring(cx,h*.46,cz,r,2,m.steel2);
+   lathe(cx,h*.57,cz,[[r,0],[r*1.03,18],[r*.95,32],[r*.57,h*.11]],m.composite);
+   cy(cx,h*.76,cz,r*.58,h*.20,m.steel);cy(cx,h*.88,cz,r*.77,9,m.dark);cy(cx,h*.93,cz,r*.40,h*.08,m.composite);cy(cx,h*.975,cz,r*.46,6,m.dark);
+   for(const side of [-1,1])tube([[cx+side*r*.92,h*.24,cz],[cx+side*r*1.03,h*.25,cz],[cx+side*r*1.03,h*.60,cz],[cx+side*r*.81,h*.64,cz]],3,m.steel2);
+   tube([[cx,h*.36,cz+r*.95],[cx,h*.34,cz+r*1.24],[cx,h*.28,cz+r*1.39]],9,m.steel2);cy(cx,h*.275,cz+r*1.39,10,8,m.dark);
+   box(w*.05,5,d*.66,w*.86,10,d*.33,m.dark,7);for(const x of [w*.05,w*.88])box(x,12,d*.66,w*.03,13,d*.33,m.dark,3);box(w*.05,12,d*.96,w*.86,13,d*.03,m.dark,3);for(let i=0;i<10;i++)box(w*.09+i*w*.078,16,d*.75,2,2,d*.21,m.steel2,1);
+   button(cx+r*.70,h*.24,cz+r*.74,7,m.green);button(cx+r*.70,h*.18,cz+r*.74,7,m.red);text(cx,h*.23,cz+r+2,w*.48,'robot coupe');text(cx,h*.16,cz+r+2,w*.24,'J 80');
+  }
+  function slicer(){
+   feet4(10);box(w*.08,22,d*.07,w*.77,h*.18,d*.76,m.cast,18);box(w*.10,h*.12,d*.23,w*.45,h*.20,d*.55,m.cast,17);
+   const cx=w*.49,yy=h*.58,zz=d*.34,rad=150;
+   // The blade, cover and carriage are separate, leaving an unmistakable cutting plane.
+   const start=g.children.length;cy(cx,yy,zz,rad,9,m.steel2,'z');ring(cx,yy,zz+6,rad,3,m.steel2,'z');cy(cx,yy,zz+8,rad*.87,6,m.steel,'z');ring(cx,yy,zz+13,rad*.82,1,m.steel2,'z');cy(cx,yy,zz+14,14,5,m.cast,'z');
+   box(cx-rad*.38,yy+rad-12,zz-24,rad*.76,35,55,m.cast,11);button(cx,yy+rad+16,zz+10,8,m.dark);
+   // Tilt blade assembly about its own centre, as on the gravity-feed machine.
+   const q=new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1,0,0),-.22),origin=new THREE.Vector3(cx,yy,zz);for(const o of g.children.slice(start)){o.position.sub(origin).applyQuaternion(q).add(origin);o.quaternion.premultiply(q);}
+   cy(w*.56,h*.25,d*.79,9,w*.69,m.steel2,'x');box(w*.54,h*.24,d*.72,w*.10,h*.27,d*.12,m.cast,7);
+   const tray=box(w*.20,h*.42,d*.43,w*.53,8,d*.42,m.steel2,5);tray.rotation.x=-.16;tray.rotation.z=-.13;
+   // Raised ribbed fence on the sliding product carriage.
+   const fence=box(w*.18,h*.43,d*.78,w*.46,h*.34,10,m.cast,6);fence.rotation.z=-.16;
+   for(let i=0;i<11;i++){const o=box(w*.19,h*.45+i*h*.025,d*.815,w*.44,2,3,m.steel2,1);o.rotation.z=-.16;}
+   tube([[w*.65,h*.57,d*.67],[w*.83,h*.57,d*.67],[w*.87,h*.44,d*.67]],5,m.steel2);cy(w*.84,h*.57,d*.67,12,w*.10,m.dark,'x');
+   cy(w*.29,h*.18,d*.87,30,22,m.dark,'z');ring(w*.29,h*.18,d*.884,24,2,m.steel2,'z');button(w*.15,h*.18,d*.856,8,m.green);button(w*.20,h*.18,d*.856,8,m.red);button(w*.75,h*.25,d*.84,11,m.dark);
+  }
+  function espresso(){
+   const leg=h*.13,deck=h*.25,upper=h*.70,front=d*.69,groups=e.groups;
+   for(const x of [w*.06,w*.91])for(const z of [d*.12,d*.80]){box(x,3,z,w*.035,leg,d*.07,m.dark,4);box(x,leg-12,z,w*.035,14,d*.07,m.steel2,2);}
+   box(w*.025,leg,d*.05,w*.95,h*.12,d*.86,m.steel,8);box(w*.03,deck,d*.05,w*.94,upper-deck,d*.30,m.steel,5);
+   // Sloping side cheeks enclose the boiler; the entire work area stays open.
+   for(const x of [w*.025,w*.95]){const sh=new THREE.Shape();sh.moveTo(d*.04,deck);sh.lineTo(d*.37,deck);sh.lineTo(d*.72,h*.91);sh.lineTo(d*.04,h*.95);sh.closePath();const side=mesh(new THREE.ExtrudeGeometry(sh,{depth:w*.025,bevelEnabled:true,bevelSize:2,bevelThickness:2,bevelSegments:2}),m.steel,x,0,0);side.rotation.y=-Math.PI/2;side.position.x+=w*.025;}
+   box(w*.03,upper,d*.08,w*.94,h*.21,d*.61,m.steel,5);box(w*.03,upper-3,front-8,w*.94,6,14,m.dark,1);
+   // Top cup tray and three open retaining rails.
+   box(w*.05,h*.912,d*.08,w*.90,4,d*.57,m.steel2,2);for(const z of [d*.09,d*.65])for(const x of [w*.07,w*.93])cy(x,h*.953,z,3,h*.08,m.steel2);
+   for(const y of [h*.935,h*.98])tube([[w*.07,y,d*.65],[w*.07,y,d*.09],[w*.93,y,d*.09],[w*.93,y,d*.65]],3,m.steel2);
+   for(let i=0;i<16;i++)box(w*.08+i*w*.054,h*.917,d*.13,2,1,d*.45,m.dark,0);
+   box(w*.06,deck,d*.40,w*.88,10,d*.48,m.steel2,4);for(let i=0;i<Math.round(w/16);i++)box(w*.08+i*(w*.84/Math.round(w/16)),deck+10,d*.43,3,1,d*.40,m.dark,1);
+   for(let i=0;i<groups;i++){
+    const x=w*(.22+i*.56/(groups-1));box(x-34,upper-36,d*.49,68,48,95,m.steel2,8);cy(x,upper-43,d*.61,31,24,m.steel2);cy(x,upper-58,d*.61,29,12,m.dark);cy(x,upper-65,d*.61,27,8,m.steel2);
+    tube([[x,upper-68,d*.62],[x+10,upper-76,d*.74],[x+20,upper-90,d*.87]],8,m.dark);tube([[x-8,upper-72,d*.60],[x-11,upper-88,d*.61]],3,m.steel2);tube([[x+8,upper-72,d*.60],[x+11,upper-88,d*.61]],3,m.steel2);
+    for(let j=0;j<3;j++)button(x+(j-1)*18,h*.79,front+1,5,m.steel2);
+   }
+   for(const x of [w*.09,w*.91]){cy(x,h*.80,front+8,19,24,m.dark,'z');cy(x,h*.80,front+23,12,8,m.composite,'z');tube([[x,h*.72,front-4],[x,h*.55,front+9],[x+(x<w/2?-12:12),h*.49,d*.80],[x+(x<w/2?-10:10),deck+26,d*.82]],4,m.steel2);cy(x,h*.58,front+9,7,h*.10,m.dark);}
+   cy(w*(groups===3?.36:.5),h*.80,front+3,16,4,m.steel2,'z');cy(w*(groups===3?.36:.5),h*.80,front+6,13,1,m.white,'z');const needle=box(w*(groups===3?.36:.5)-1,h*.80-1,front+8,2,11,1,m.red,0);needle.rotation.z=.65;
+   box(w*.5-23,h*.87,front+1,46,12,1,m.dark,1);text(w*.5,h*.18,d*.914,w*.14,'LA MARZOCCO');text(w*.5,h*.60,d*.045,w*.28,'LA MARZOCCO').rotation.y=Math.PI;
+  }
+  function vacuum(){
+   const cx=w/2,cz=d*.47,body=h*.70,ww=w*.94,dd=d*.88;feet4(6);
+   box(w*.03,12,d*.03,ww,body-37,dd,m.steel,10);
+   // A chamber liner sits above the motor cabinet, with visible recessed floor.
+   box(w*.08,body-20,d*.08,w*.84,5,d*.76,m.steel2,8);
+   for(const x of [w*.03,w*.95])box(x,body-20,d*.03,w*.02,35,dd,m.steel2,3);
+   for(const z of [d*.03,d*.88])box(w*.03,body-20,z,ww,35,d*.03,m.steel2,3);
+   trim(cx,body+14,cz,ww-8,dd-8,12,m.rubber,3);
+   if(e.twin)for(const x of [w*.15,w*.85])box(x-7,body-9,d*.14,14,15,d*.66,m.seal,3);
+   else box(w*.13,body-9,d*.76,w*.74,15,14,m.seal,3);
+   loft(cx,cz,[[body+16,ww,dd,13],[body+30,ww*.98,dd*.97,19],[h*.96,ww*.79,dd*.74,28],[h*.98,ww*.73,dd*.69,27]],m.cover);
+   plate(cx,h*.98,cz,ww*.73,dd*.69,27,m.cover);trim(cx,body+17,cz,ww,dd,13,m.clearEdge,3);trim(cx,h*.975,cz,ww*.74,dd*.70,26,m.clearEdge,2);
+   for(const x of [w*.18,w*.82]){cy(x,body+14,d*.045,8,w*.11,m.steel2,'x');tube([[x,body-5,d*.055],[x,body+26,d*.10]],5,m.steel2);}
+   tube([[w*.22,body+25,d*.875],[w*.22,body+38,d*.935],[w*.78,body+38,d*.935],[w*.78,body+25,d*.875]],5,m.steel2);
+   box(w*.14,h*.16,d*.914,w*.72,h*.38,3,m.dark,4);fascia(cx,h*.35,d*.921,w*.65,h*.30,'vacuum');
+   cy(w*.73,h*.40,d*.927,w*.045,4,m.steel2,'z');cy(w*.73,h*.40,d*.931,w*.039,2,m.white,'z');const needle=box(w*.73-1,h*.40,d*.934,2,w*.029,1,m.dark,0);needle.rotation.z=-.7;
+   text(cx,h*.62,d*.916,w*.28,'Henkelman');for(let i=0;i<9;i++)box(w*.974,h*.16+i*7,d*.23,1,3,d*.36,m.dark,1);
+  }
+
+  const builders={cutter,veg,sheeter,planetary,blender,grinder,juicer,slicer,espresso,vacuum};
+  if(!builders[e.family])throw new Error('Unknown equipment family: '+e.family);builders[e.family]();
   // Preserve the planner's authoritative catalogue envelope. Do not silently
   // replace dimensions with dimensions from another model year or attachment.
   g.updateMatrixWorld(true);const b=new THREE.Box3().setFromObject(g),s=b.getSize(new THREE.Vector3()),k=Math.min(1,w/s.x,h/s.y,d/s.z);
