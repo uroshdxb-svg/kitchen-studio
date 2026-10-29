@@ -9,6 +9,7 @@ const KS3DFamilies=(()=>{
   if(has(/^(?:cocktail bar station|bar (?:mixology station|wet-waste sink|fusion hand-wash|drainboard blender station|hand sink|blender station))/))return 'bar-station';
   if(has(/^\d+-inch (?:mixology cocktail station|freestanding dry-waste bar cabinet|bar (?:drainboard with recessed wet-waste sink|wet-waste sink cabinet))/))return 'bar-station';
   if(has(/^\d+-inch underbar ice bin/))return 'bar-station';
+  if(has(/^\d+-inch bar (?:corner drainboard|drainboard|liquor display)/))return 'bar-station';
   if(has(/ingredient bin/))return 'ingredient-bin';
   if(has(/waste container|round container/))return 'waste-bin';
   if(has(/dish caddy|plate dispenser/))return 'plate-cart';
@@ -143,6 +144,14 @@ const KS3DFamilies=(()=>{
    if(family==='bar-station'){
     // Illustrative fixture construction, not manufacturer CAD or a working envelope.
     // Blender shelves and empty outlet boxes do not imply an included appliance.
+    if(/bar liquor display/.test(n)){
+     const steps=+(n.match(/(\d)-step/)||[])[1]||4;legs(.43);box(.03,.43,.06,.94,.025,.84);
+     box(.03,.43,.025,.94,.55,.025);
+     for(let i=0;i<steps;i++){const y=.48+i*.32/(steps-1),z=.82-i*.72/steps;box(.05,y,z,.90,.025,.72/steps);box(.05,y-.07,z+.72/steps-.018,.90,.09,.018);}
+     for(const x of [.03,.95])box(x,.45,.05,.02,.36,.84);
+     if(/locking cover/.test(n)){box(.04,.82,.05,.92,.018,.84);box(.04,.48,.89,.92,.36,.018);cy(.5,.60,.914,.015,.008,m.dark,'z');}
+     return;
+    }
     const mixology=/mixology cocktail station/.test(n),cocktail=/cocktail bar station/.test(n)||mixology,sink=/sink/.test(n)||mixology,rinser=/rinser/.test(n)||mixology,dry=/dry-waste/.test(n),ice=/underbar ice bin/.test(n),top=.80;
     legs(top-.03);box(.03,.64,.03,.94,.15,.018);box(.03,.64,.90,.94,.15,.018);
     box(.03,top,.025,.94,.18,.025);box(.03,top,.05,.94,.025,.10,m.polished);
@@ -157,14 +166,16 @@ const KS3DFamilies=(()=>{
     else if(cocktail){well(.08,.18,.24,.61);well(.38,.18,.54,.61);box(.06,.56,.84,.88,.018,.13);box(.06,.56,.955,.88,.12,.018);}
     else if(sink){well(.14,.18,.72,.61);box(.03,top,.15,.11,.025,.67);box(.86,top,.15,.11,.025,.67);}
     else if(dry){box(.04,top,.16,.92,.025,.63);cy(.5,top+.028,.46,.20,.008,m.dark);ring(.5,top+.036,.46,.20,m.polished);}
-    else{tray(.04,top,.16,.92,.63);grid(.07,top+.02,.19,.86,.57);}
+    else{tray(.04,top,.16,.92,.63);if(!/bar (?:corner )?drainboard/.test(n))grid(.07,top+.02,.19,.86,.57);else for(let i=0;i<7;i++)box(.08+i*.13,top+.018,.19,.006,.004,.57,m.steel2);}
+    if(/bar corner drainboard/.test(n))box(/left return/.test(n)?.03:.945,top,.05,.025,.18,.86);
     if(sink){const x=cocktail?.20:.52;tube([[x,.81,.12],[x,.96,.12],[x,.97,.25],[x,.91,.34]],.009);for(const xx of [x-.09,x+.09])cy(xx,.84,.12,.018,.035,m.polished);}
     if(rinser){cy(.75,top+.04,.56,.075,.02,m.dark);cy(.75,top+.065,.56,.035,.025,m.steel2);}
     if(/dipper well/.test(n))bowl(.22,top-.07,.35,.075,.09);
     if(/cutting board/.test(n))box(.15,top+.035,.48,.68,.016,.30,m.plastic);
     if(/blender/.test(n))box(.11,.51,.35,.78,.025,.48,m.polished);
     if(/cabinet/.test(n)){
-     if(/bar wet-waste sink cabinet/.test(n)){box(.05,.15,.06,.90,.02,.78);for(const x of [.05,.49,.93])box(x,.17,.06,.02,.47,.78);box(.05,.17,.06,.90,.47,.02);}
+     if(/open front/.test(n)){box(.05,.15,.06,.90,.02,.78);for(const x of [.05,.93])box(x,.17,.06,.02,.61,.78);box(.05,.17,.06,.90,.61,.02);}
+     else if(/bar wet-waste sink cabinet/.test(n)){box(.05,.15,.06,.90,.02,.78);for(const x of [.05,.49,.93])box(x,.17,.06,.02,.47,.78);box(.05,.17,.06,.90,.47,.02);}
      else{box(.05,.15,.06,.90,.48,.78);door(.07,.17,.86,.43,.91);}
     }
     if(/towel and soap/.test(n)){box(.20,.50,.90,.60,.15,.06);box(.27,.515,.965,.46,.025,.012,m.dark);cy(.83,.86,.17,.03,.08,m.plastic);}
