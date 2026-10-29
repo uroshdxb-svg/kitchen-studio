@@ -96132,6 +96132,572 @@
         "2026-10-30"
       ],
       "source_row_hash": "4528fdfacf0dc1e9d447c234fc4495624d699dc4b0073d9fe381791b66faea69"
+    },
+    "bravilorbonamat|8.060.320.31002": {
+      "schema_version": 1,
+      "key": "bravilorbonamat|8.060.320.31002",
+      "brand": "Bravilor Bonamat",
+      "model": "8.060.320.31002",
+      "manufacturer_sku": "8.060.320.31002",
+      "manufacturer_type": "HWA 12",
+      "aliases": [
+        "HWA 12"
+      ],
+      "market": "International 230 V 50/60 Hz configuration",
+      "batch_id": "2026-10-30-bravilor-hwa-2",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-29T21:02:06.168Z",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.bravilor.com/products/hot-water-and-milk-in/hwa-12/",
+          "reviewed_at": "2026-10-29T21:02:06.168Z",
+          "recovered_text_sha256": "1a6cca19d9184507fab76033afe4c24e23984e71564add6e52dfcc90fe6d34f0",
+          "locator": "Product details: exact article number, rated power and dimensions W x D x H; overview and current manual link"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-installation-manual",
+          "url": "https://admin.b2b.bravilor.com/files/1086927",
+          "retrieved_at": "2026-10-29T16:58:23.761Z",
+          "recovered_text_sha256": "60068c11e5c9c8423764e5bf2682d53d1986323b93faacd4afcb3e64eca7c665",
+          "revision": "700.403.818C, 06-2025 VHH",
+          "locator": "English pp. 1-2: Installation, manual/automatic operation, cleaning/emptying and model technical table explicitly covers HWA 8-001 and HWA 12-001"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact current international article 8.060.320.31002 for HWA 12. Manual covers the HWA 8-001 and HWA 12-001 family. One automatic-fill configuration, no duplicate manual-fill entry.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Current product details explicitly state W x D x H 317 x 407 x 540 mm; nominal closed unit without optional separate drip tray.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manual p. 1 requires a flat stable dry horizontal heat-resistant supporting surface; countertop unit.",
+          "source_ids": [
+            "S2"
+          ]
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact product article rated input 2500 W; manual model table agrees. Normalized to 2.5 kW.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "Exact product article 230 V~ 50/60 Hz, single-phase AC. Manual states 220-240 V~ and requires earthing, compatible with selected 230 V article.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Manual p. 1 AUTO mode connects the supplied hose to fixed water supply; p. 2 pressure is 0.1-1 MPa. Cleaning/emptying uses tap and tilting, so no fixed waste connection is part of installation. Manual-fill mode is excluded from selected plumbing flag.",
+          "source_ids": [
+            "S2"
+          ]
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Complete installation and model technical table describe electric hot-water kettle; no combustion or gas connection.",
+          "source_ids": [
+            "S2"
+          ]
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Selected fixed-water AUTO configuration; supplied food-safe inlet hose, 0.1-1 MPa water pressure. Manual-fill mode is available by capping the inlet, but is not a second catalogue row. No fixed drain: empty through dispensing tap and tilt after cooling per maintenance instructions. Grounded electrical outlet; flat stable dry heat-resistant support. Keep lid/filling and tap access clear; no numerical access clearance specified. Nominal closed dimensions, optional drip tray excluded. Manufacturer international 230 V offer; local stock not asserted.",
+          "source_ids": [
+            "S2"
+          ]
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Current official product pages opened 2026-10-30 Dubai; exact article specs match recovered text and current downloads list operating instructions. Recovered manual 700.403.818C is June 2025 and explicitly covers both types. Current manual links reopened successfully for both HWA 8 and HWA 12 and both return 700.403.818C; original retrieval and recovered text hash preserved.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Beverage/top/electric with mm and kW, explicit fixed-water configuration and drain=false; source, region and manual-fill option retained in sidecar.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Bravilor Bonamat",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Current exact article product details",
+          "reason": "Exact current international article 8.060.320.31002 for HWA 12. Manual covers the HWA 8-001 and HWA 12-001 family. One automatic-fill configuration, no duplicate manual-fill entry."
+        },
+        "model": {
+          "value": "8.060.320.31002",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Current exact article product details",
+          "reason": "Exact current international article 8.060.320.31002 for HWA 12. Manual covers the HWA 8-001 and HWA 12-001 family. One automatic-fill configuration, no duplicate manual-fill entry."
+        },
+        "w": {
+          "value": 317,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Current exact article product details",
+          "reason": "Current product details explicitly state W x D x H 317 x 407 x 540 mm; nominal closed unit without optional separate drip tray.",
+          "original_value": 317,
+          "original_unit": "mm"
+        },
+        "d": {
+          "value": 407,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Current exact article product details",
+          "reason": "Current product details explicitly state W x D x H 317 x 407 x 540 mm; nominal closed unit without optional separate drip tray.",
+          "original_value": 407,
+          "original_unit": "mm"
+        },
+        "h": {
+          "value": 540,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Current exact article product details",
+          "reason": "Current product details explicitly state W x D x H 317 x 407 x 540 mm; nominal closed unit without optional separate drip tray.",
+          "original_value": 540,
+          "original_unit": "mm"
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "source_ids": [
+            "S2"
+          ],
+          "locator": "Manual English pp. 1-2",
+          "reason": "Manual p. 1 requires a flat stable dry horizontal heat-resistant supporting surface; countertop unit."
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Current exact article product details",
+          "reason": "Exact product article rated input 2500 W; manual model table agrees. Normalized to 2.5 kW."
+        },
+        "kw": {
+          "value": 2.5,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Current exact article product details",
+          "reason": "Exact product article rated input 2500 W; manual model table agrees. Normalized to 2.5 kW.",
+          "original_value": 2500,
+          "original_unit": "W"
+        },
+        "elec": {
+          "value": "230 V/1 ph/50-60 Hz",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Current exact article product details",
+          "reason": "Exact product article 230 V~ 50/60 Hz, single-phase AC. Manual states 220-240 V~ and requires earthing, compatible with selected 230 V article."
+        },
+        "water": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S2"
+          ],
+          "locator": "Manual English pp. 1-2",
+          "reason": "Manual p. 1 AUTO mode connects the supplied hose to fixed water supply; p. 2 pressure is 0.1-1 MPa. Cleaning/emptying uses tap and tilting, so no fixed waste connection is part of installation. Manual-fill mode is excluded from selected plumbing flag."
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "source_ids": [
+            "S2"
+          ],
+          "locator": "Manual English pp. 1-2",
+          "reason": "Manual p. 1 AUTO mode connects the supplied hose to fixed water supply; p. 2 pressure is 0.1-1 MPa. Cleaning/emptying uses tap and tilting, so no fixed waste connection is part of installation. Manual-fill mode is excluded from selected plumbing flag."
+        }
+      },
+      "candidate_runtime_row": [
+        "Bravilor Bonamat",
+        "8.060.320.31002",
+        "Beverage",
+        "HWA 12 hot-water dispenser, automatic-fill configuration, 230 V",
+        317,
+        407,
+        540,
+        "top",
+        "electric",
+        2.5,
+        "230 V/1 ph/50-60 Hz",
+        1,
+        0,
+        "https://www.bravilor.com/products/hot-water-and-milk-in/hwa-12/"
+      ],
+      "installation_notes": "Selected fixed-water AUTO configuration; supplied food-safe inlet hose, 0.1-1 MPa water pressure. Manual-fill mode is available by capping the inlet, but is not a second catalogue row. No fixed drain: empty through dispensing tap and tilt after cooling per maintenance instructions. Grounded electrical outlet; flat stable dry heat-resistant support. Keep lid/filling and tap access clear; no numerical access clearance specified. Nominal closed dimensions, optional drip tray excluded. Manufacturer international 230 V offer; local stock not asserted.",
+      "installation_details": {
+        "manual_source_id": "S2",
+        "manual_locator": "English pp. 1-2",
+        "notes": "Selected fixed-water AUTO configuration; supplied food-safe inlet hose, 0.1-1 MPa water pressure. Manual-fill mode is available by capping the inlet, but is not a second catalogue row. No fixed drain: empty through dispensing tap and tilt after cooling per maintenance instructions. Grounded electrical outlet; flat stable dry heat-resistant support. Keep lid/filling and tap access clear; no numerical access clearance specified. Nominal closed dimensions, optional drip tray excluded. Manufacturer international 230 V offer; local stock not asserted.",
+        "water_pressure_MPa": [
+          0.1,
+          1
+        ],
+        "water_connection": "Supplied hose; connector size not specified in these instructions",
+        "drain": "No fixed waste connection; manual emptying procedure",
+        "operating_envelope": "Closed body; removable lid and tap access required, optional separate drip tray excluded"
+      },
+      "recovery": {
+        "bundle_sha256": "bd4593a7227d188ba12c66ffeada10ee6272a79cf0fb7b93652540f943419416"
+      },
+      "proposed_queue_row": [
+        "Bravilor Bonamat",
+        "8.060.320.31002",
+        "Beverage",
+        "HWA 12 hot-water dispenser, automatic-fill configuration, 230 V",
+        "317",
+        "407",
+        "540",
+        "top",
+        "electric",
+        "2.5",
+        "230 V/1 ph/50-60 Hz",
+        "1",
+        "0",
+        "https://www.bravilor.com/products/hot-water-and-milk-in/hwa-12/",
+        "International 230 V 50/60 Hz configuration",
+        "Selected fixed-water AUTO configuration; supplied food-safe inlet hose, 0.1-1 MPa water pressure. Manual-fill mode is available by capping the inlet, but is not a second catalogue row. No fixed drain: empty through dispensing tap and tilt after cooling per maintenance instructions. Grounded electrical outlet; flat stable dry heat-resistant support. Keep lid/filling and tap access clear; no numerical access clearance specified. Nominal closed dimensions, optional drip tray excluded. Manufacturer international 230 V offer; local stock not asserted.",
+        "2026-10-30"
+      ],
+      "source_row_hash": "18441110ecbb6aad2ab48112391d09414e8d421a993c240e51d822e628977228"
+    },
+    "bravilorbonamat|8.060.310.31002": {
+      "schema_version": 1,
+      "key": "bravilorbonamat|8.060.310.31002",
+      "brand": "Bravilor Bonamat",
+      "model": "8.060.310.31002",
+      "manufacturer_sku": "8.060.310.31002",
+      "manufacturer_type": "HWA 8",
+      "aliases": [
+        "HWA 8"
+      ],
+      "market": "International 230 V 50/60 Hz configuration",
+      "batch_id": "2026-10-30-bravilor-hwa-2",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-29T21:02:06.170Z",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.bravilor.com/products/hot-water-and-milk-in/hwa-8/",
+          "reviewed_at": "2026-10-29T21:02:06.170Z",
+          "recovered_text_sha256": "747bebed4df55a1ea2d6404c4bf7c7cd719e90dab1ce9fea217a0f5f6ff5f47e",
+          "locator": "Product details: exact article number, rated power and dimensions W x D x H; overview and current manual link"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-installation-manual",
+          "url": "https://admin.b2b.bravilor.com/files/1086927",
+          "retrieved_at": "2026-10-29T16:58:23.761Z",
+          "recovered_text_sha256": "60068c11e5c9c8423764e5bf2682d53d1986323b93faacd4afcb3e64eca7c665",
+          "revision": "700.403.818C, 06-2025 VHH",
+          "locator": "English pp. 1-2: Installation, manual/automatic operation, cleaning/emptying and model technical table explicitly covers HWA 8-001 and HWA 12-001"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact current international article 8.060.310.31002 for HWA 8. Manual covers the HWA 8-001 and HWA 12-001 family. One automatic-fill configuration, no duplicate manual-fill entry.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Current product details explicitly state W x D x H 317 x 407 x 456 mm; nominal closed unit without optional separate drip tray.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manual p. 1 requires a flat stable dry horizontal heat-resistant supporting surface; countertop unit.",
+          "source_ids": [
+            "S2"
+          ]
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact product article rated input 2500 W; manual model table agrees. Normalized to 2.5 kW.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "Exact product article 230 V~ 50/60 Hz, single-phase AC. Manual states 220-240 V~ and requires earthing, compatible with selected 230 V article.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Manual p. 1 AUTO mode connects the supplied hose to fixed water supply; p. 2 pressure is 0.1-1 MPa. Cleaning/emptying uses tap and tilting, so no fixed waste connection is part of installation. Manual-fill mode is excluded from selected plumbing flag.",
+          "source_ids": [
+            "S2"
+          ]
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Complete installation and model technical table describe electric hot-water kettle; no combustion or gas connection.",
+          "source_ids": [
+            "S2"
+          ]
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Selected fixed-water AUTO configuration; supplied food-safe inlet hose, 0.1-1 MPa water pressure. Manual-fill mode is available by capping the inlet, but is not a second catalogue row. No fixed drain: empty through dispensing tap and tilt after cooling per maintenance instructions. Grounded electrical outlet; flat stable dry heat-resistant support. Keep lid/filling and tap access clear; no numerical access clearance specified. Nominal closed dimensions, optional drip tray excluded. Manufacturer international 230 V offer; local stock not asserted.",
+          "source_ids": [
+            "S2"
+          ]
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Current official product pages opened 2026-10-30 Dubai; exact article specs match recovered text and current downloads list operating instructions. Recovered manual 700.403.818C is June 2025 and explicitly covers both types. Current manual links reopened successfully for both HWA 8 and HWA 12 and both return 700.403.818C; original retrieval and recovered text hash preserved.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Beverage/top/electric with mm and kW, explicit fixed-water configuration and drain=false; source, region and manual-fill option retained in sidecar.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Bravilor Bonamat",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Current exact article product details",
+          "reason": "Exact current international article 8.060.310.31002 for HWA 8. Manual covers the HWA 8-001 and HWA 12-001 family. One automatic-fill configuration, no duplicate manual-fill entry."
+        },
+        "model": {
+          "value": "8.060.310.31002",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Current exact article product details",
+          "reason": "Exact current international article 8.060.310.31002 for HWA 8. Manual covers the HWA 8-001 and HWA 12-001 family. One automatic-fill configuration, no duplicate manual-fill entry."
+        },
+        "w": {
+          "value": 317,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Current exact article product details",
+          "reason": "Current product details explicitly state W x D x H 317 x 407 x 456 mm; nominal closed unit without optional separate drip tray.",
+          "original_value": 317,
+          "original_unit": "mm"
+        },
+        "d": {
+          "value": 407,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Current exact article product details",
+          "reason": "Current product details explicitly state W x D x H 317 x 407 x 456 mm; nominal closed unit without optional separate drip tray.",
+          "original_value": 407,
+          "original_unit": "mm"
+        },
+        "h": {
+          "value": 456,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Current exact article product details",
+          "reason": "Current product details explicitly state W x D x H 317 x 407 x 456 mm; nominal closed unit without optional separate drip tray.",
+          "original_value": 456,
+          "original_unit": "mm"
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "source_ids": [
+            "S2"
+          ],
+          "locator": "Manual English pp. 1-2",
+          "reason": "Manual p. 1 requires a flat stable dry horizontal heat-resistant supporting surface; countertop unit."
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Current exact article product details",
+          "reason": "Exact product article rated input 2500 W; manual model table agrees. Normalized to 2.5 kW."
+        },
+        "kw": {
+          "value": 2.5,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Current exact article product details",
+          "reason": "Exact product article rated input 2500 W; manual model table agrees. Normalized to 2.5 kW.",
+          "original_value": 2500,
+          "original_unit": "W"
+        },
+        "elec": {
+          "value": "230 V/1 ph/50-60 Hz",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Current exact article product details",
+          "reason": "Exact product article 230 V~ 50/60 Hz, single-phase AC. Manual states 220-240 V~ and requires earthing, compatible with selected 230 V article."
+        },
+        "water": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S2"
+          ],
+          "locator": "Manual English pp. 1-2",
+          "reason": "Manual p. 1 AUTO mode connects the supplied hose to fixed water supply; p. 2 pressure is 0.1-1 MPa. Cleaning/emptying uses tap and tilting, so no fixed waste connection is part of installation. Manual-fill mode is excluded from selected plumbing flag."
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "source_ids": [
+            "S2"
+          ],
+          "locator": "Manual English pp. 1-2",
+          "reason": "Manual p. 1 AUTO mode connects the supplied hose to fixed water supply; p. 2 pressure is 0.1-1 MPa. Cleaning/emptying uses tap and tilting, so no fixed waste connection is part of installation. Manual-fill mode is excluded from selected plumbing flag."
+        }
+      },
+      "candidate_runtime_row": [
+        "Bravilor Bonamat",
+        "8.060.310.31002",
+        "Beverage",
+        "HWA 8 hot-water dispenser, automatic-fill configuration, 230 V",
+        317,
+        407,
+        456,
+        "top",
+        "electric",
+        2.5,
+        "230 V/1 ph/50-60 Hz",
+        1,
+        0,
+        "https://www.bravilor.com/products/hot-water-and-milk-in/hwa-8/"
+      ],
+      "installation_notes": "Selected fixed-water AUTO configuration; supplied food-safe inlet hose, 0.1-1 MPa water pressure. Manual-fill mode is available by capping the inlet, but is not a second catalogue row. No fixed drain: empty through dispensing tap and tilt after cooling per maintenance instructions. Grounded electrical outlet; flat stable dry heat-resistant support. Keep lid/filling and tap access clear; no numerical access clearance specified. Nominal closed dimensions, optional drip tray excluded. Manufacturer international 230 V offer; local stock not asserted.",
+      "installation_details": {
+        "manual_source_id": "S2",
+        "manual_locator": "English pp. 1-2",
+        "notes": "Selected fixed-water AUTO configuration; supplied food-safe inlet hose, 0.1-1 MPa water pressure. Manual-fill mode is available by capping the inlet, but is not a second catalogue row. No fixed drain: empty through dispensing tap and tilt after cooling per maintenance instructions. Grounded electrical outlet; flat stable dry heat-resistant support. Keep lid/filling and tap access clear; no numerical access clearance specified. Nominal closed dimensions, optional drip tray excluded. Manufacturer international 230 V offer; local stock not asserted.",
+        "water_pressure_MPa": [
+          0.1,
+          1
+        ],
+        "water_connection": "Supplied hose; connector size not specified in these instructions",
+        "drain": "No fixed waste connection; manual emptying procedure",
+        "operating_envelope": "Closed body; removable lid and tap access required, optional separate drip tray excluded"
+      },
+      "recovery": {
+        "bundle_sha256": "bd4593a7227d188ba12c66ffeada10ee6272a79cf0fb7b93652540f943419416"
+      },
+      "proposed_queue_row": [
+        "Bravilor Bonamat",
+        "8.060.310.31002",
+        "Beverage",
+        "HWA 8 hot-water dispenser, automatic-fill configuration, 230 V",
+        "317",
+        "407",
+        "456",
+        "top",
+        "electric",
+        "2.5",
+        "230 V/1 ph/50-60 Hz",
+        "1",
+        "0",
+        "https://www.bravilor.com/products/hot-water-and-milk-in/hwa-8/",
+        "International 230 V 50/60 Hz configuration",
+        "Selected fixed-water AUTO configuration; supplied food-safe inlet hose, 0.1-1 MPa water pressure. Manual-fill mode is available by capping the inlet, but is not a second catalogue row. No fixed drain: empty through dispensing tap and tilt after cooling per maintenance instructions. Grounded electrical outlet; flat stable dry heat-resistant support. Keep lid/filling and tap access clear; no numerical access clearance specified. Nominal closed dimensions, optional drip tray excluded. Manufacturer international 230 V offer; local stock not asserted.",
+        "2026-10-30"
+      ],
+      "source_row_hash": "63e7ad7cbed1c09de94e92ba7e095e0a26d1bf8816b86bc1a9b6b95a1b40e42c"
     }
   }
 }

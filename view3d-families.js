@@ -82,6 +82,7 @@ const KS3DFamilies=(()=>{
   if(has(/soft serve/))return 'soft-serve';
   if(has(/granita|slush/))return 'slush';
   if(has(/milkshake|drink mixer/))return 'drink-mixer';
+  if(has(/hot[- ]water dispenser/))return 'water-urn';
   if(has(/batch.*brewer/))return 'batch-brewer';
   if(has(/super.automatic|bean.to.cup/))return 'automatic-coffee';
   if(has(/espresso machine/))return 'espresso';
@@ -325,6 +326,11 @@ const KS3DFamilies=(()=>{
    cy(.43,.61,.43,.29,.46,m.steel);cy(.43,.86,.43,.30,.05,m.clear);cy(.43,.94,.43,.09,.14,m.dark);box(.74,.06,.15,.22,.61,.55,m.plastic);tube([[.43,.48,.71],[.43,.43,.92]],.027);tray(.19,.06,.67,.48,.30);
   }
   function beverage(){
+   if(family==='water-urn'){
+    cy(.5,.07,.43,.38,.10,m.plastic);cy(.5,.49,.43,.37,.74,m.steel);cy(.5,.88,.43,.39,.045,m.dark);cy(.5,.93,.43,.055,.075,m.dark);
+    for(const x of [.08,.92])box(x-.035,.65,.30,.07,.12,.24,m.dark);
+    tube([[.5,.30,.70],[.5,.30,.92],[.5,.23,.92]],.024,m.dark);box(.44,.32,.86,.12,.04,.08,m.dark);box(.34,.12,.735,.32,.13,.018,m.dark);button(.41,.18,.76,m.green,.018);button(.59,.18,.76,m.orange,.018);return;
+   }
    if(family==='drink-mixer'){
     box(.03,.02,.04,.94,.07,.88,m.plastic);const count=/triple/.test(n)?3:1;
     for(let i=0;i<count;i++){const x=(i+.5)/count;box(x-.06,.09,.12,.12,.70,.18);cy(x,.83,.31,.12,.20,m.steel2);cy(x,.49,.50,.012,.52,m.steel2);bowl(x,.10,.50,Math.min(.14,.4/count),.35);};return;
@@ -403,7 +409,7 @@ const KS3DFamilies=(()=>{
    box(.04,.03,.06,.92,.22,.87,m.paint);const blade=cy(.62,.61,.38,.31,.025,m.polished,'x');ring(.64,.61,.38,.30,m.steel2,'x');cy(.65,.61,.38,.25,.02,m.steel2,'x');box(.1,.26,.08,.25,.04,.78,m.steel2);const carriage=box(.16,.32,.20,.24,.25,.57,m.polished);carriage.rotation.z=-.2;tube([[.12,.40,.76],[.12,.56,.83],[.28,.56,.83]],.025,m.dark);box(.52,.86,.28,.24,.10,.20,m.dark);button(.3,.16,.95,m.dark,.055);
   }
   const groups={cooking:['griddle','chargrill','hob','solid-top','combination-range'],table:['work-table','oven-stand','open-base','storage-cabinet','neutral-top','sink-top'],refrigerated:['coldroom','refrigerated-counter','prep-counter','display-fridge'],ice:['ice-machine','ice-head','ice-bin','ice-dispenser'],washer:['front-washer','hood-washer','conveyor-washer'],oven:['speed-oven','deck-oven','conveyor-oven','conveyor-toaster','salamander'],pan:['bratt-pan','kettle'],trolley:['tray-trolley','plate-cart','utility-cart','dolly'],bin:['ingredient-bin','waste-bin','insulated-carrier'],smallCook:['rice-soup','water-bath','circulator','basket-lift','crepe','contact-grill','bun-toaster'],prep:['mincer','bone-saw','bread-slicer','peeler','spinner','sieve','liquidiser','cutter','heated-processor','frozen-processor','veg-processor','blender','coffee-grinder','juicer'],beverage:['espresso','automatic-coffee','batch-brewer','soft-serve','slush','drink-mixer','citrus-juicer'],vacuum:['vacuum'],slicer:['slicer']};
-  groups.oven.push('multi-oven');groups.refrigerated.push('chest-freezer');groups.table.push('dunnage-rack','bar-station');groups.holding=['holding-station','holding-cubbies','heated-display','hot-cabinet','heated-shelf'];groups.specialty=['oil-filter','spit-grill','tandoor','charcoal-oven','stockpot-range'];
+  groups.beverage.push('water-urn');groups.oven.push('multi-oven');groups.refrigerated.push('chest-freezer');groups.table.push('dunnage-rack','bar-station');groups.holding=['holding-station','holding-cubbies','heated-display','hot-cabinet','heated-shelf'];groups.specialty=['oil-filter','spit-grill','tandoor','charcoal-oven','stockpot-range'];
   const builders={cooking,table,refrigerated,ice,washer,oven,pan,trolley,bin,smallCook,prep,beverage,vacuum,slicer,holding,specialty},key=Object.keys(groups).find(k=>groups[k].includes(family));
   if(!key)throw new Error('Missing equipment family builder: '+family);builders[key]();
   g.updateMatrixWorld(true);const b=new THREE.Box3().setFromObject(g),s=b.getSize(new THREE.Vector3()),k=Math.min(w/s.x,h/s.y,d/s.z,1),offset=new THREE.Vector3(b.min.x,b.min.y,b.min.z);

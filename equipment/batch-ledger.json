@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-29T20:59:15.671Z",
+  "updated_at": "2026-10-29T21:02:18.955Z",
   "target": {
     "minimum_live_count": 1001,
     "deadline": "2026-10-31",
@@ -943,6 +943,32 @@
       "recovery": {
         "bundle_sha256": "6060a7a1b391734bd7fe3f259b96b7b8e7be06115b4f659cd1eda593ea247c13",
         "original_source_retrieved_at": "2026-10-29T15:31:36Z"
+      }
+    },
+    {
+      "id": "2026-10-30-bravilor-hwa-2",
+      "manufacturer": "Bravilor Bonamat",
+      "models": [
+        "8.060.320.31002",
+        "8.060.310.31002"
+      ],
+      "state": "prepared",
+      "source_before_sha": "fec16003f5eb6ea0fd8da6f12e14a606e5b787f7",
+      "source_before": 852,
+      "source_after": 854,
+      "verified_additions": 2,
+      "merged_additions": 0,
+      "live_verified_additions": 0,
+      "evidence": "catalogue-evidence.json",
+      "csv": "equipment/batches/2026-10-30-bravilor-hwa-2.csv",
+      "queue_range": "Untitled!A504:Q505",
+      "validation": {
+        "readiness": "2/2 exact-row certificates passed again on shared Sheet readback",
+        "regressions": "pending",
+        "production": "pending"
+      },
+      "recovery": {
+        "bundle_sha256": "bd4593a7227d188ba12c66ffeada10ee6272a79cf0fb7b93652540f943419416"
       }
     }
   ],

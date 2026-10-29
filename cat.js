@@ -854,4 +854,7 @@ const CATALOGUE_ROWS = [
 ,
 ["Mahlkonig","705935","Beverage","E65W-GbS commercial espresso grinder, black, 220-240V, Type F",195,283,620,"top","electric",0.44,"220-240 V/1 ph/50-60 Hz",0,0,"https://www.mahlkoenig.com/en-de/products/e65w-grind-by-sync"],
 ["Mahlkonig","706202","Beverage","E65T-GbS commercial espresso grinder, black, 220-240V, Type F",195,283,620,"top","electric",0.44,"220-240 V/1 ph/50-60 Hz",0,0,"https://www.mahlkoenig.com/en-de/products/e65t-grind-by-sync"]
+,
+["Bravilor Bonamat","8.060.320.31002","Beverage","HWA 12 hot-water dispenser, automatic-fill configuration, 230 V",317,407,540,"top","electric",2.5,"230 V/1 ph/50-60 Hz",1,0,"https://www.bravilor.com/products/hot-water-and-milk-in/hwa-12/"],
+["Bravilor Bonamat","8.060.310.31002","Beverage","HWA 8 hot-water dispenser, automatic-fill configuration, 230 V",317,407,456,"top","electric",2.5,"230 V/1 ph/50-60 Hz",1,0,"https://www.bravilor.com/products/hot-water-and-milk-in/hwa-8/"]
 ];
