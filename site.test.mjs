@@ -2,7 +2,7 @@
 import {chromium} from "playwright";import fs from "node:fs";import path from "node:path";import {fileURLToPath} from "node:url";import {serve} from "./serve.mjs";
 const HERE=path.dirname(fileURLToPath(import.meta.url)),SHOTS=path.join(HERE,"test-results");fs.mkdirSync(SHOTS,{recursive:true});
 const PORT=5177,BASE=`http://localhost:${PORT}`;const server=await serve(PORT);
-const browser=await chromium.launch({...(process.env.KS_TEST_BROWSER?{channel:process.env.KS_TEST_BROWSER}:{}),args:["--use-gl=swiftshader","--enable-unsafe-swiftshader","--ignore-gpu-blocklist"]});
+const browser=await chromium.launch({executablePath:process.env.KS_TEST_EXECUTABLE,...(process.env.KS_TEST_BROWSER?{channel:process.env.KS_TEST_BROWSER}:{}),args:["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader","--ignore-gpu-blocklist"]});
 const mock=fs.readFileSync(path.join(HERE,"mock-backend.js"),"utf8");
 const errors=[];let fails=0;const check=(ok,msg)=>{console.log((ok?"  ok   ":"  FAIL ")+msg);if(!ok)fails++;};
 const ctx=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:2,isMobile:true,hasTouch:true,colorScheme:"light"});

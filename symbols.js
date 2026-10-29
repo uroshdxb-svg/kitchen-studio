@@ -3,6 +3,7 @@ function KS_symOf(it){
   if(it.kind==="arch")return "arch:"+it.archType;
   if(it.kind==="ss")return "ss:"+it.ssType;
   const t=((it.cat||"")+" "+(it.name||"")+" "+(it.model||"")).toLowerCase(),has=(...k)=>k.some(x=>t.includes(x));
+  if(has("dough sheeter"))return "sheeter";
   if(has("oven stand"))return "stand";
   if(has("cold room","freezer room","walk-in"))return "coldroom";
   if(has("shelving","dunnage"))return "ss:rack";
@@ -23,7 +24,7 @@ function KS_symOf(it){
   if(has("lowboy","low boy","chef base","chefbase","refrigerated base","freezer base"))return "counter";
   if(has("counter","undercounter","saladette"))if(has("fridge","refrigerat","freezer","prep counter","salad"))return "counter";
   if(has("fridge","refrigerator","freezer","blast","chiller","reach-in","bottle cooler","multideck","display"))return "fridge";
-  if(has("combi","oven","cook & hold","cook and hold","holding cabinet","cvap","hold"))return "oven";
+  if(/\bcombi\b/.test(t)||has("oven","cook & hold","cook and hold","holding cabinet","cvap","hold"))return "oven";
   if(has("spiral","planetary","stand mixer","dough mixer"))return "mixer";
   if(has("vacuum"))return "vacuum";
   if(has("sous-vide","water bath","bain marie","bain-marie"))return "bath";
@@ -75,6 +76,7 @@ function KS_planSym(it,upp,C,ink){
     case "dishuc":s+=R((w-500)/2,Math.max(20,(d-500)/2),500,Math.min(500,d-40),0,"none",1)+R(0,d-40,w,40,0,ink)+R(0,d,w,Math.min(420,it.h*.5),0,"none",1,C.muted);break;
     case "dishhood":s+=R((w-500)/2,Math.max(30,(d-500)/2),500,Math.min(500,d-60),0,"none",1)+P(`M${(w-500)/2} ${d/2}h500M${w/2} ${Math.max(30,(d-500)/2)}v${Math.min(500,d-60)}`,1,C.muted)+R(0,0,70,70,0,C.sunk)+R(w-70,0,70,70,0,C.sunk)+P(`M40 ${d+45}H${w-40}M40 ${d}v45M${w-40} ${d}v45`);break;
     case "dishconv":{const n=Math.max(1,Math.floor((w-100)/520));for(let i=0;i<n;i++)s+=R(50+(w-100-n*500)/(n+1)*(i+1)+500*i,(d-500)/2,500,500,0,"none",1);s+=P(`M${w*.2} ${d-60}H${w*.8}l-60 -35m60 35l-60 35`);break;}
+    case "sheeter":s+=R(w*.04,d*.18,w*.92,d*.55,8)+R(w*.42,d*.08,w*.16,d*.82,10,C.sunk)+P(`M${w*.1} ${d*.3}H${w*.4}M${w*.6} ${d*.3}H${w*.9}M${w*.1} ${d*.6}H${w*.4}M${w*.6} ${d*.6}H${w*.9}`);break;
     case "mixer":s+=R(w*.25,20,w*.5,d*.34,10,C.sunk)+Ci(w/2,d*.64,Math.min(w,d)*.31)+Ci(w/2,d*.64,Math.min(w,d)*.24);break;
     case "bowl":{const r=Math.min(w,d)*(/round|rice/i.test(it.name||"")?.49:.36);s+=Ci(w/2,d/2,r)+Ci(w/2,d/2,r*.62)+Ci(w/2,d/2,r*.12,ink);break;}
     case "vacuum":s+=R(25,25,w-50,d-105,38)+P(`M60 ${d-130}H${w-60}`)+R(w*.2,d-60,w*.6,35,4,C.sunk);break;
@@ -180,6 +182,7 @@ function KS_elevSym(it,W,front,upp,C,ink,sw){
     case "dishhood":{const top=h*.42,gap=h*.56;s+=hit+R(0,0,W,top,0,body,1)+R(W*.62,30,W*.3,70,4,C.sunk)+P(`M-45 ${top-45}H${W+45}M-45 ${top-45}v-90M${W+45} ${top-45}v-90`)+R(0,top,50,gap-top,0,body)+R(W-50,top,50,gap-top,0,body)+R(W/2-250,gap-70,500,70,0,"none")+R(0,gap,W,hb-gap,0,body,1)+feet(hb)+R(20,gap+60,W-40,hb-gap-90,6);break;}
     case "dishconv":s+=R(0,0,W,hb,0,body,1)+feet(hb)+P(`M0 ${hb*.45}H${W}M0 ${hb*.58}H${W}`)+R(W*.08,hb*.08,W*.38,hb*.32,8)+R(W*.54,hb*.08,W*.38,hb*.32,8)+R(W*.35,hb*.64,W*.3,hb*.12,4,C.sunk);break;
     case "mixer":s+=hit+R(W*.08,h*.88,W*.84,h*.12,8,body,1)+R(W*.58,h*.2,W*.3,h*.68,6,body,1)+R(W*.05,0,W*.85,h*.24,24,body,1)+P(`M${W*.12} ${h*.5}H${W*.56}L${W*.5} ${h*.84}H${W*.18}Z`,0,steel)+P(`M${W*.34} ${h*.24}V${h*.5}`)+Ci(W*.73,h*.12,Math.min(28,W*.06),C.sunk);break;
+    case "sheeter":{const by=it.mount==='floor'?h*.32:h*.62;s+=hit+R(W*.03,by,W*.94,h*.06,5,steel)+R(W*.42,0,W*.16,by+h*.08,12,body,1);if(it.mount==='floor')s+=R(W*.43,by+h*.08,W*.14,h*.55,4,body,1)+feet(h-60);s+=Ci(W*.5,by*.45,Math.min(W*.045,h*.09),steel)+P(`M${W*.5} ${by*.45}L${W*.54} ${by*.9}`);break;}
     case "bowl":case "slicer":s+=hit+R(W*.12,h*.55,W*.76,h*.45,10,body,1)+P(`M${W*.2} ${h*.06}H${W*.8}L${W*.7} ${h*.55}H${W*.3}Z`,0,steel)+R(W*.26,0,W*.48,h*.06,4,C.sunk)+Ci(W*.5,h*.78,Math.min(30,W*.09),C.sunk);break;
     case "espresso":{s+=hit+R(0,0,W,h*.5,10,body,1)+R(W*.04,h*.5,W*.92,h*.32,0,C.sunk)+R(0,h*.82,W,h*.12,4,body,1)+R(40,h*.94,40,h*.06,0,C.sunk)+R(W-80,h*.94,40,h*.06,0,C.sunk);const n=W>600?2:1;for(let i=0;i<n;i++){const x=W*(i+1)/(n+1);s+=R(x-45,h*.5,90,h*.1,6,body)+P(`M${x} ${h*.6}v${h*.06}`);}break;}
     case "stand":{const v=KS_standOf(it),L=40,ch=v.castors?110:0,top=36;s+=hit;
