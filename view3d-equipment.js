@@ -27,6 +27,15 @@ const KS3DEquipment=(()=>{
  ];
  const key=s=>String(s||'').toLowerCase().replace(/[^a-z0-9]/g,''),index=new Map(entries.map(e=>[key(e.brand)+'/'+key(e.model),e]));
  const identify=it=>it.kind&&it.kind!=='eq'?null:index.get(key(it.brand)+'/'+key(it.model))||null;
+ // Family geometry is deliberately separate from the reference-reviewed registry.
+ // It improves unreviewed mixers without presenting them as exact replicas.
+ function mixerFamily(it){
+  if(it.kind&&it.kind!=='eq')return null;
+  const name=String(it.name||'').toLowerCase();
+  if(/spiral.*mixer|mixer.*spiral/.test(name))return 'spiral';
+  if(/planetary.*mixer|mixer.*planetary|stand mixer|bowl-lift.*mixer|dough mixer/.test(name))return 'planetary';
+  return null;
+ }
  const cache=new WeakMap(),panels=new Map();
  function materials(M){
   if(cache.has(M))return cache.get(M);
@@ -34,6 +43,7 @@ const KS3DEquipment=(()=>{
   const m={...M,composite:mat(0x4d5559,.47),cast:mat(0xb7bcc0,.44,.52),paint:mat(0xdadbd7,.43),ivory:mat(0xe5e5de,.39),teal:mat(0x22505c,.48),belt:mat(0xe2e3d5,.93),red:mat(0xb82825,.38),green:mat(0x178851,.42),yellow:mat(0xe8ba35,.5),coffee:mat(0x342016,.9),seal:mat(0xb18a58,.7),cover:mat(0xc6d7db,.16,.06,{transparent:true,opacity:.42,depthWrite:false,side:THREE.DoubleSide}),clear:mat(0xdce9e8,.1,.02,{transparent:true,opacity:.25,depthWrite:false,side:THREE.DoubleSide}),clearEdge:mat(0xc1d5d5,.17,.12,{transparent:true,opacity:.65,depthWrite:false})};
   m.steel=M.steel.clone();m.steel.metalness=.78;m.steel.roughness=.34;m.steel.envMapIntensity=1.4;
   m.steel2=M.steel2.clone();m.steel2.metalness=.80;m.steel2.envMapIntensity=1.3;
+  m.bowl=m.steel.clone();m.bowl.metalness=1;m.bowl.roughness=.21;m.bowl.envMapIntensity=1.25;
   // Fine woven PVC belt texture. Shared across machines and scene rebuilds.
   const c=document.createElement('canvas');c.width=c.height=128;const x=c.getContext('2d');x.fillStyle='#dedfd4';x.fillRect(0,0,128,128);x.strokeStyle='#d2d3c9';x.lineWidth=.5;for(let i=0;i<128;i+=4){x.beginPath();x.moveTo(i,0);x.lineTo(i,128);x.moveTo(0,i);x.lineTo(128,i);x.stroke();}const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(4,3);m.belt.map=t;cache.set(M,m);return m;
  }
@@ -47,8 +57,8 @@ const KS3DEquipment=(()=>{
   const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;const m=new THREE.MeshStandardMaterial({map:t,roughness:.6,metalness:.12});panels.set(e.id,m);return m;
  }
  function build(it,a){
-  const e=identify(it);if(!e)return null;const m=materials(a.M),g=new THREE.Group(),{w,d,h}=it;
-  g.userData.equipmentModel=e.id;g.userData.features=e.features.slice();
+  const exact=identify(it),family=mixerFamily(it),e=exact||(family?{family:'mixer',mixerType:family,features:[]}:null);if(!e)return null;const m=materials(a.M),g=new THREE.Group(),{w,d,h}=it;
+  g.userData.equipmentModel=exact?.id||null;g.userData.modelFamily=e.mixerType||e.family;g.userData.features=e.features.slice();
   function mesh(geo,mat,x=0,y=0,z=0){geo.userData.ownedByScene=true;const o=new THREE.Mesh(geo,mat);o.position.set(x,y,z);o.castShadow=!mat.transparent;o.receiveShadow=true;g.add(o);return o;}
   function box(x,y,z,ww,hh,dd,mat,r=5){
    if(Math.min(ww,hh,dd)<=0)return null;r=Math.min(r,ww/3,hh/3,dd/3);const geo=new THREE.BoxGeometry(ww,hh,dd,4,4,4),p=geo.attributes.position,n=geo.attributes.normal;
@@ -114,6 +124,63 @@ const KS3DEquipment=(()=>{
    const arch=new THREE.Shape();arch.moveTo(hx-hr-17,py-25);arch.quadraticCurveTo(hx-hr-12,py+45,hx+8,py+40);arch.lineTo(hx+8,py+23);arch.quadraticCurveTo(hx-hr+13,py+30,hx-hr+5,py-25);arch.closePath();
    mesh(new THREE.ExtrudeGeometry(arch,{depth:14,bevelEnabled:true,bevelSize:3,bevelThickness:2,bevelSegments:3,curveSegments:16}),head,0,0,hz-7);
    cy(hx,py+h*.096,hz,16,24,m.dark, 'y',19);cy(hx-hr-10,hy+12,hz,11,18,m.steel2,'z');
+  }
+  function mixer(){
+   const spiral=e.mixerType==='spiral',cx=w/2,cz=d*(spiral?.65:.63),r=Math.min(w*(spiral?.47:.40),d*.31),bottom=h*(spiral?.34:.20),top=h*(spiral?.67:.55),bh=top-bottom;
+   const coat=m.paint,rod=Math.max(2,w*.009);
+   // A lathed shell gives the bowl a rounded base, real wall thickness and an
+   // open interior. No solid cap hides the beater or the spiral inside it.
+   lathe(cx,bottom,cz,[[0,0],[r*.26,0],[r*.52,bh*.07],[r*.77,bh*.23],[r*.93,bh*.46],[r,bh*.76],[r,bh],[r-3,bh+2],[r-5,bh],[r-5,bh*.76],[r*.90,bh*.46],[r*.74,bh*.24],[r*.48,bh*.10],[r*.24,6],[0,6]],m.bowl);
+   ring(cx,top,cz,r-1,3,m.steel2);
+   if(spiral){
+    box(w*.12,h*.04,d*.035,w*.76,h*.18,d*.86,coat,18);
+    box(w*.17,h*.16,d*.025,w*.66,h*.65,d*.30,coat,18);
+    box(w*.13,h*.79,d*.025,w*.74,h*.17,d*.64,coat,22);
+    box(w*.15,h*.775,d*.035,w*.70,5,d*.60,m.dark,2);
+    cy(cx,(h*.22+bottom)/2,cz,r*.57,bottom-h*.22,m.steel2);
+    // Continuous helical dough hook and the separate straight breaker bar.
+    const pts=[],sx=cx-r*.25,sz=cz-r*.12,turns=1.6;
+    for(let i=0;i<=64;i++){const t=i/64,angle=t*Math.PI*2*turns;pts.push([sx+Math.sin(angle)*r*.28,bottom+bh*.18+t*bh*.94,sz+Math.cos(angle)*r*.28]);}
+    tube(pts,rod*1.6,m.steel2);cy(sx,top+(h*.80-top)/2,sz+r*.28,rod*1.6,h*.80-top,m.steel2);
+    cy(cx+r*.34,bottom+bh*.58,cz,rod*1.8,bh*.95,m.steel2);
+    // Closed horizontal wire grid, with the mixing tools visible underneath.
+    const gy=top+h*.035;ring(cx,gy,cz,r*.98,rod,m.steel2);
+    for(let i=-7;i<=7;i++){const dx=r*i/8,dz=Math.sqrt(r*r*.94-dx*dx);tube([[cx+dx,gy,cz-dz],[cx+dx,gy,cz+dz]],rod*.55,m.steel2);}
+    for(const x of [cx-r*.7,cx+r*.7])tube([[x,gy,cz-r*.7],[x,h*.81,d*.30]],rod,m.steel2);
+    box(cx-w*.24,h*.815,d*.668,w*.48,h*.105,5,m.dark,5);
+    cy(cx-w*.13,h*.865,d*.68,w*.035,8,m.green,'z');cy(cx+w*.14,h*.865,d*.68,w*.045,9,m.red,'z');cy(cx,h*.865,d*.68,w*.045,8,m.dark,'z');
+    for(const x of [w*.22,w*.78])for(const z of [d*.15,d*.76])cy(x,h*.025,z,w*.055,h*.05,m.rubber);
+   }else{
+    // Raised four-legged base and cast rear column, leaving daylight below
+    // the bowl. A separate head, gearbox seam and drive hub break up the body.
+    for(const x of [w*.12,w*.82])for(const z of [d*.13,d*.84]){const foot=box(x-w*.045,h*.025,z-d*.035,w*.09,h*.15,d*.075,coat,4);foot.rotation.z=x<cx?-.10:.10;box(x-w*.055,0,z-d*.04,w*.11,h*.026,d*.085,m.rubber,3);}
+    for(const z of [d*.13,d*.82])box(w*.09,h*.13,z,w*.82,h*.055,d*.06,coat,4);
+    box(w*.20,h*.16,d*.045,w*.60,h*.65,d*.29,coat,14);
+    box(w*.14,h*.79,d*.04,w*.72,h*.19,d*.70,coat,25);
+    box(w*.145,h*.785,d*.05,w*.71,5,d*.68,m.steel2,2);
+    cy(cx,h*.77,cz,r*.70,h*.12,coat);
+    cy(cx,h*.70,cz,r*.66,h*.035,m.steel2);
+    cy(cx,h*.615,cz,rod*2.7,h*.16,m.steel2);
+    // Flat beater: hollow perimeter and crossbars, rather than a solid block.
+    const by=bottom+bh*.22;
+    tube([[cx,top+h*.07,cz],[cx+r*.50,top-h*.03,cz],[cx+r*.35,by,cz],[cx-r*.35,by,cz],[cx-r*.50,top-h*.03,cz],[cx,top+h*.07,cz]],rod,m.steel2);
+    tube([[cx,top+h*.07,cz],[cx,by,cz]],rod,m.steel2);tube([[cx-r*.4,by+bh*.25,cz],[cx+r*.4,by+bh*.25,cz]],rod,m.steel2);
+    // Bowl-lift cradle, guide rods, mounts and the side operating handle.
+    for(const side of [-1,1]){const x=cx+side*r*.94;cy(cx+side*w*.20,h*.44,d*.36,rod*1.8,h*.43,m.steel2);tube([[cx+side*w*.22,bottom+bh*.55,d*.30],[x,bottom+bh*.55,cz-r*.3],[x,bottom+bh*.65,cz]],rod*3,coat);box(x-rod*2,top-bh*.40,cz-rod*3,rod*4,bh*.17,rod*6,m.steel2,2);}
+    tube([[w*.81,h*.63,d*.22],[w*.93,h*.63,d*.26],[w*.93,h*.39,d*.26]],rod*1.3,m.steel2);cy(w*.93,h*.385,d*.26,rod*2,h*.07,m.dark);
+    const gh=h*.145,gr=r*1.02;
+    lathe(cx,top+4,cz,[[gr,0],[gr*.94,gh*.30],[gr*.76,gh*.78],[gr*.58,gh],[gr*.57,gh]],m.clear);
+    ring(cx,top+5,cz,gr,rod,m.steel2);ring(cx,top+gh+4,cz,gr*.58,rod*.8,m.steel2);
+    for(const side of [-1,1])tube([[cx+side*gr,top+5,cz],[cx+side*gr*.88,top+gh*.5,cz],[cx+side*gr*.58,top+gh+4,cz]],rod,m.steel2);
+    // Front attachment hub and separate start/stop controls on the head.
+    cy(cx,h*.845,d*.75,w*.055,12,m.steel2,'z');cy(cx,h*.845,d*.765,w*.028,6,m.dark,'z');
+    box(w*.64,h*.90,d*.74,w*.11,h*.055,5,m.dark,4);cy(w*.695,h*.936,d*.75,w*.022,4,m.green,'z');cy(w*.695,h*.91,d*.75,w*.022,4,m.red,'z');
+    cy(w*.80,h*.77,d*.20,w*.04,8,m.dark,'x');tube([[w*.81,h*.77,d*.20],[w*.86,h*.83,d*.20]],rod,m.steel2);
+   }
+   // Small seams, rear service panel and ventilation also read from the back.
+   box(w*.30,h*.29,d*.022,w*.40,h*.34,3,coat,5);
+   for(let i=0;i<6;i++)box(w*.35,h*(.33+i*.035),d*.018,w*.30,Math.max(2,h*.006),3,m.dark,1);
+   for(const x of [w*.32,w*.68])for(const y of [h*.31,h*.60])cy(x,y,d*.014,rod*.75,3,m.steel2,'z');
   }
   function sheeter(){
    const floor=!!e.floor,cx=w/2,beltY=h*(floor?.69:.34),beltD=d*.51,z0=d*.18,cw=w*(floor?.155:.215),headH=h*(floor?.28:.61),bodyZ=d*.08,front=d*.82,coat=floor?m.ivory:m.paint;
@@ -312,7 +379,7 @@ const KS3DEquipment=(()=>{
    text(cx,h*.62,d*.916,w*.28,'Henkelman');for(let i=0;i<9;i++)box(w*.974,h*.16+i*7,d*.23,1,3,d*.36,m.dark,1);
   }
 
-  const builders={cutter,veg,sheeter,planetary,blender,grinder,juicer,slicer,espresso,vacuum};
+  const builders={mixer,cutter,veg,sheeter,planetary,blender,grinder,juicer,slicer,espresso,vacuum};
   if(!builders[e.family])throw new Error('Unknown equipment family: '+e.family);builders[e.family]();
   // Preserve the planner's authoritative catalogue envelope. Do not silently
   // replace dimensions with dimensions from another model year or attachment.
@@ -320,5 +387,5 @@ const KS3DEquipment=(()=>{
   for(const o of g.children){o.position.sub(new THREE.Vector3(b.min.x,b.min.y,b.min.z)).multiplyScalar(k);o.scale.multiplyScalar(k);o.position.x+=(w-s.x*k)/2;o.position.z+=(d-s.z*k)/2;}
   return g;
  }
- return {entries,identify,build};
+ return {entries,identify,mixerFamily,build};
 })();

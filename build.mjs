@@ -8,6 +8,7 @@ import path from "node:path";
 import {createHash} from "node:crypto";
 import {fileURLToPath} from "node:url";
 import {visualCoverage} from "./equipment-visual-coverage.mjs";
+import {catalogueProfiles} from "./equipment-profiles.mjs";
 import {buildDiscovery} from "./discovery.mjs";
 
 const ROOT=path.dirname(fileURLToPath(import.meta.url));
@@ -26,7 +27,10 @@ for(const [key,file] of Object.entries(assetFiles)){
  assetURLs[key]=mode==='standalone'||mode==='artifact'?'data:'+(key==='chef'?'model/gltf-binary':key==='environment'?'application/octet-stream':'image/jpeg')+';base64,'+bytes.toString('base64'):'/app/assets/'+name;
 }
 const renderingLibs=['libs/meshopt_decoder.js','loaders/GLTFLoader.js','utils/BufferGeometryUtils.js','loaders/RGBELoader.js','math/SimplexNoise.js','shaders/CopyShader.js','shaders/SSAOShader.js','postprocessing/Pass.js','postprocessing/SSAOPass.js'].map(f=>read('node_modules/three/examples/js/'+f)).join('\n');
-const rendererJs=renderingLibs+'\nwindow.KS_3D_URLS='+JSON.stringify({chef:assetURLs.chef,environment:assetURLs.environment,floor:{diffuse:assetURLs.diffuse,normal:assetURLs.normal,rough:assetURLs.rough}})+';\n'+['view3d-assets.js','view3d-equipment.js','view3d-details.js','view3d-effects.js','view3d.js'].map(read).join('\n');
+const catalogueRows=new Function(read('cat.js')+';return CATALOGUE_ROWS')();
+const exactRegistry=new Function(read('view3d-equipment.js')+';return KS3DEquipment')();
+const profiles=catalogueProfiles(catalogueRows,exactRegistry);
+const rendererJs=renderingLibs+'\nwindow.KS_3D_URLS='+JSON.stringify({chef:assetURLs.chef,environment:assetURLs.environment,floor:{diffuse:assetURLs.diffuse,normal:assetURLs.normal,rough:assetURLs.rough}})+';\nconst KS3DProfiles='+JSON.stringify(profiles)+';\n'+['view3d-assets.js','view3d-equipment.js','view3d-families.js','view3d-details.js','view3d-effects.js','view3d.js'].map(read).join('\n');
 const appJs=['brand.js','fab.js','cat.js','symbols.js'].map(read).join('\n')+'\n'+rendererJs+'\n'+read('app.js');
 const META='<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">';
 const ver=Date.now().toString(36);
@@ -65,7 +69,9 @@ if(mode==="artifact"){
   out(D,"showcase/index.html",read("showcase.html").replace("/app/renderer.js",`/app/renderer.js?v=${ver}`));
   out(D,"equipment/index.html",read("equipment-review.html").replace("/app/renderer.js",`/app/renderer.js?v=${ver}`));
   {const rows=new Function(read('cat.js')+';return CATALOGUE_ROWS')(),registry=new Function(read('view3d-equipment.js')+';return KS3DEquipment')(),entries=registry.entries,refs=JSON.parse(read('equipment-model-references.json'));
-   const models=entries.map(e=>{const r=rows.find(r=>r[0]===e.brand&&r[1]===e.model);if(!r||!refs[e.id])throw new Error('Missing catalogue row or reference for '+e.id);const ref=refs[e.id];copy('assets/equipment-reference/'+ref.file,D,'equipment/reference/'+ref.file);return {kind:'eq',brand:r[0],model:r[1],cat:r[2],name:r[3],w:r[4],d:r[5],h:r[6],mount:r[7],image:'/equipment/reference/'+ref.file,source:ref.source};});out(D,'equipment/models.json',JSON.stringify(models));const symbolOf=new Function(read('symbols.js')+';return KS_symOf')();out(D,'equipment/coverage.json',JSON.stringify(visualCoverage(rows,registry,symbolOf,refs)));}
+   const models=entries.map(e=>{const r=rows.find(r=>r[0]===e.brand&&r[1]===e.model);if(!r||!refs[e.id])throw new Error('Missing catalogue row or reference for '+e.id);const ref=refs[e.id];copy('assets/equipment-reference/'+ref.file,D,'equipment/reference/'+ref.file);return {kind:'eq',brand:r[0],model:r[1],cat:r[2],name:r[3],w:r[4],d:r[5],h:r[6],mount:r[7],image:'/equipment/reference/'+ref.file,source:ref.source};});out(D,'equipment/models.json',JSON.stringify(models));
+   const collection=rows.map(r=>models.find(m=>m.brand===r[0]&&m.model===r[1])||{kind:'eq',brand:r[0],model:r[1],cat:r[2],name:r[3],w:r[4],d:r[5],h:r[6],mount:r[7],image:null,source:r[13]});out(D,'equipment/catalogue-models.json',JSON.stringify(collection));
+   const symbolOf=new Function(read('symbols.js')+';return KS_symOf')();out(D,'equipment/coverage.json',JSON.stringify(visualCoverage(rows,registry,symbolOf,refs,profiles)));}
   copy("cloud.js",D,"app/cloud.js");
   for(const [name,src] of Object.entries(LIBS))copy(src,D,"app/vendor/"+name);
   out(D,"connect/index.html",branded(read("connect.html")));
