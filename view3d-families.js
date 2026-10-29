@@ -10,6 +10,8 @@ const KS3DFamilies=(()=>{
   if(has(/^\d+-inch (?:mixology cocktail station|freestanding dry-waste bar cabinet|bar (?:drainboard with recessed wet-waste sink|wet-waste sink cabinet))/))return 'bar-station';
   if(has(/^\d+-inch underbar ice bin/))return 'bar-station';
   if(has(/^\d+-inch bar (?:corner drainboard|drainboard|liquor display)/))return 'bar-station';
+  if(has(/^\d+-inch bar (?:sink,|coffee stand|pos support cabinet|glass storage cabinet|blender station|frozen-drink machine stand)/))return 'bar-station';
+  if(has(/insulated beverage server/))return 'insulated-beverage';
   if(has(/ingredient bin/))return 'ingredient-bin';
   if(has(/waste container|round container/))return 'waste-bin';
   if(has(/dish caddy|plate dispenser/))return 'plate-cart';
@@ -144,6 +146,24 @@ const KS3DFamilies=(()=>{
    if(family==='bar-station'){
     // Illustrative fixture construction, not manufacturer CAD or a working envelope.
     // Blender shelves and empty outlet boxes do not imply an included appliance.
+    if(/bar (?:coffee stand|pos support cabinet|frozen-drink machine stand)/.test(n)){
+     const pos=/pos support/.test(n),frozen=/frozen-drink/.test(n),top=pos?.71:frozen?.63:.82;
+     legs(pos||frozen?.17:top);box(.03,top,.03,.94,.025,.89);box(.03,top,.025,.94,.98-top,.025);
+     if(pos||frozen){box(.04,.17,.04,.92,.02,.85);for(const x of [.04,.94])box(x,.19,.04,.02,top-.19,.85);box(.04,.19,.04,.92,top-.19,.02);}
+     if(pos){door(.07,.19,.86,top-.23,.91);vents(.15,.35,.93,.70,.14,5);for(const x of [.03,.95])box(x,top,.04,.02,.11,.86);}
+     if(frozen){for(const x of [.03,.95])box(x,top,.04,.02,.04,.86);box(.03,top,.90,.94,.04,.02);cy(.5,top+.027,.13,.025,.008,m.dark);}
+     return;
+    }
+    if(/flat top and lowered shelf/.test(n)){
+     for(const x of [.08,.92])for(const z of [.08,.90]){box(x-.02,.02,z-.02,.04,z<.5?.80:.54,.04,m.steel2);cy(x,.015,z,.028,.03,m.rubber);}
+     box(.04,.82,.03,.92,.025,.54);box(.04,.82,.03,.92,.16,.025);box(.04,.56,.55,.92,.26,.02);box(.04,.56,.57,.92,.025,.35);box(.04,.56,.90,.92,.08,.02);return;
+    }
+    if(/bar glass storage cabinet/.test(n)){
+     legs(.16);box(.03,.17,.04,.94,.02,.86);for(const x of [.03,.95])box(x,.19,.04,.02,.62,.86);box(.03,.19,.04,.94,.79,.02);tray(.04,.82,.08,.92,.82);
+     if(/three glass-rack slides/.test(n))for(const y of [.22,.42,.62])for(const x of [.06,.89])box(x,y,.08,.05,.018,.78);else box(.05,.48,.08,.90,.018,.78);
+     if(/cutting board/.test(n)){grid(.07,.85,.11,.86,.72);box(.22,.85,.60,.56,.018,.24,m.plastic);}else for(let i=0;i<6;i++)box(.10+i*.14,.849,.12,.005,.003,.70,m.steel2);
+     return;
+    }
     if(/bar liquor display/.test(n)){
      const steps=+(n.match(/(\d)-step/)||[])[1]||4;legs(.43);box(.03,.43,.06,.94,.025,.84);
      box(.03,.43,.025,.94,.55,.025);
@@ -164,6 +184,11 @@ const KS3DFamilies=(()=>{
     }
     if(ice){well(.08,.16,.84,.66,/15-inch liner/.test(n)?.40:.32);box(.04,top,.15,.04,.025,.67);box(.92,top,.15,.04,.025,.67);}
     else if(cocktail){well(.08,.18,.24,.61);well(.38,.18,.54,.61);box(.06,.56,.84,.88,.018,.13);box(.06,.56,.955,.88,.12,.018);}
+    else if(sink&&/bar sink,/.test(n)){
+     const count=+(n.match(/(\d)-compartment/)||[])[1]||1,span=Math.min(.90,count*12*25.4/w*.94),start=/left bowls/.test(n)?.05:/right bowls/.test(n)?.95-span:(1-span)/2;
+     if(start>.06)tray(.04,top,.16,start-.04,.63);if(start+span<.94)tray(start+span,top,.16,.96-start-span,.63);
+     for(let i=0;i<count;i++)well(start+i*span/count+.012,.18,span/count-.024,.61,.26);
+    }
     else if(sink){well(.14,.18,.72,.61);box(.03,top,.15,.11,.025,.67);box(.86,top,.15,.11,.025,.67);}
     else if(dry){box(.04,top,.16,.92,.025,.63);cy(.5,top+.028,.46,.20,.008,m.dark);ring(.5,top+.036,.46,.20,m.polished);}
     else{tray(.04,top,.16,.92,.63);if(!/bar (?:corner )?drainboard/.test(n))grid(.07,top+.02,.19,.86,.57);else for(let i=0;i<7;i++)box(.08+i*.13,top+.018,.19,.006,.004,.57,m.steel2);}
@@ -172,7 +197,7 @@ const KS3DFamilies=(()=>{
     if(rinser){cy(.75,top+.04,.56,.075,.02,m.dark);cy(.75,top+.065,.56,.035,.025,m.steel2);}
     if(/dipper well/.test(n))bowl(.22,top-.07,.35,.075,.09);
     if(/cutting board/.test(n))box(.15,top+.035,.48,.68,.016,.30,m.plastic);
-    if(/blender/.test(n))box(.11,.51,.35,.78,.025,.48,m.polished);
+    if(/blender/.test(n)&&!/flat top and lowered shelf/.test(n))box(.11,.51,.35,.78,.025,.48,m.polished);
     if(/cabinet/.test(n)){
      if(/open front/.test(n)){box(.05,.15,.06,.90,.02,.78);for(const x of [.05,.93])box(x,.17,.06,.02,.61,.78);box(.05,.17,.06,.90,.61,.02);}
      else if(/bar wet-waste sink cabinet/.test(n)){box(.05,.15,.06,.90,.02,.78);for(const x of [.05,.49,.93])box(x,.17,.06,.02,.47,.78);box(.05,.17,.06,.90,.47,.02);}
@@ -345,6 +370,12 @@ const KS3DFamilies=(()=>{
    cy(.43,.61,.43,.29,.46,m.steel);cy(.43,.86,.43,.30,.05,m.clear);cy(.43,.94,.43,.09,.14,m.dark);box(.74,.06,.15,.22,.61,.55,m.plastic);tube([[.43,.48,.71],[.43,.43,.92]],.027);tray(.19,.06,.67,.48,.30);
   }
   function beverage(){
+   if(family==='insulated-beverage'){
+    const server=/^csr/.test(n);for(const x of server?[.22,.68]:[.10,.80])for(const z of server?[.23,.62]:[.10,.78])box(x,.02,z,.10,.17,.12,m.plastic);
+    if(server){cy(.5,.52,.47,.42,.70,m.plastic);cy(.5,.89,.47,.43,.045,m.dark);cy(.5,.94,.47,.17,.06,m.plastic);box(.32,.65,.884,.36,.10,.01,m.cream);}
+    else{box(.05,.16,.06,.90,.67,.82,m.plastic);box(.04,.84,.05,.92,.055,.84,m.dark);for(const z of [.12,.75])tube([[.23,.89,z],[.23,.98,z],[.77,.98,z],[.77,.89,z]],.025,m.plastic);for(const x of [.03,.95])box(x,.75,.36,.02,.13,.16,m.dark);cy(.5,.91,.32,.04,.025,m.dark);}
+    tube([[.5,.28,.80],[.5,.28,.94],[.5,.20,.94]],.025,m.dark);box(.45,.32,.88,.10,.05,.08,m.dark);return;
+   }
    if(family==='water-boiler'){
     box(.05,.04,.04,.90,.81,.66);box(.04,.85,.03,.92,.08,.68,m.dark);box(.08,.93,.06,.84,.025,.62,m.steel2);
     box(.35,.73,.705,.30,.11,.018,m.dark);button(.42,.78,.73,m.green,.02);button(.60,.78,.73,m.orange,.02);
@@ -434,7 +465,7 @@ const KS3DFamilies=(()=>{
    box(.04,.03,.06,.92,.22,.87,m.paint);const blade=cy(.62,.61,.38,.31,.025,m.polished,'x');ring(.64,.61,.38,.30,m.steel2,'x');cy(.65,.61,.38,.25,.02,m.steel2,'x');box(.1,.26,.08,.25,.04,.78,m.steel2);const carriage=box(.16,.32,.20,.24,.25,.57,m.polished);carriage.rotation.z=-.2;tube([[.12,.40,.76],[.12,.56,.83],[.28,.56,.83]],.025,m.dark);box(.52,.86,.28,.24,.10,.20,m.dark);button(.3,.16,.95,m.dark,.055);
   }
   const groups={cooking:['griddle','chargrill','hob','solid-top','combination-range'],table:['work-table','oven-stand','open-base','storage-cabinet','neutral-top','sink-top'],refrigerated:['coldroom','refrigerated-counter','prep-counter','display-fridge'],ice:['ice-machine','ice-head','ice-bin','ice-dispenser'],washer:['front-washer','hood-washer','conveyor-washer'],oven:['speed-oven','deck-oven','conveyor-oven','conveyor-toaster','salamander'],pan:['bratt-pan','kettle'],trolley:['tray-trolley','plate-cart','utility-cart','dolly'],bin:['ingredient-bin','waste-bin','insulated-carrier'],smallCook:['rice-soup','water-bath','circulator','basket-lift','crepe','contact-grill','bun-toaster'],prep:['mincer','bone-saw','bread-slicer','peeler','spinner','sieve','liquidiser','cutter','heated-processor','frozen-processor','veg-processor','blender','coffee-grinder','juicer'],beverage:['espresso','automatic-coffee','batch-brewer','soft-serve','slush','drink-mixer','citrus-juicer'],vacuum:['vacuum'],slicer:['slicer']};
-  groups.beverage.push('water-urn','water-boiler');groups.oven.push('multi-oven');groups.refrigerated.push('chest-freezer');groups.table.push('dunnage-rack','bar-station');groups.holding=['holding-station','holding-cubbies','heated-display','hot-cabinet','heated-shelf'];groups.specialty=['oil-filter','spit-grill','tandoor','charcoal-oven','stockpot-range'];
+  groups.beverage.push('water-urn','water-boiler','insulated-beverage');groups.oven.push('multi-oven');groups.refrigerated.push('chest-freezer');groups.table.push('dunnage-rack','bar-station');groups.holding=['holding-station','holding-cubbies','heated-display','hot-cabinet','heated-shelf'];groups.specialty=['oil-filter','spit-grill','tandoor','charcoal-oven','stockpot-range'];
   const builders={cooking,table,refrigerated,ice,washer,oven,pan,trolley,bin,smallCook,prep,beverage,vacuum,slicer,holding,specialty},key=Object.keys(groups).find(k=>groups[k].includes(family));
   if(!key)throw new Error('Missing equipment family builder: '+family);builders[key]();
   g.updateMatrixWorld(true);const b=new THREE.Box3().setFromObject(g),s=b.getSize(new THREE.Vector3()),k=Math.min(w/s.x,h/s.y,d/s.z,1),offset=new THREE.Vector3(b.min.x,b.min.y,b.min.z);

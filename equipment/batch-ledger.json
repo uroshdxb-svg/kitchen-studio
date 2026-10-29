@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-29T22:03:46.712Z",
+  "updated_at": "2026-10-29T22:25:11.757Z",
   "target": {
     "minimum_live_count": 1001,
     "deadline": "2026-10-31",
@@ -925,24 +925,35 @@
         "705935",
         "706202"
       ],
-      "state": "prepared",
+      "state": "live_verified",
       "source_before_sha": "7af09789e811f9ad2cbe5cefe75e3bbd0df383cf",
       "source_before": 850,
       "source_after": 852,
       "verified_additions": 2,
-      "merged_additions": 0,
-      "live_verified_additions": 0,
+      "merged_additions": 2,
+      "live_verified_additions": 2,
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-30-mahlkonig-sync-2.csv",
       "queue_range": "Untitled!A502:Q503",
       "validation": {
         "readiness": "2/2 exact-row certificates passed again on shared Sheet readback",
-        "regressions": "pending",
-        "production": "pending"
+        "regressions": "Release-head CI and local model checks passed",
+        "production": "Exact-row production search/Add passed; zero customer writes"
       },
       "recovery": {
         "bundle_sha256": "6060a7a1b391734bd7fe3f259b96b7b8e7be06115b4f659cd1eda593ea247c13",
         "original_source_retrieved_at": "2026-10-29T15:31:36Z"
+      },
+      "release": {
+        "pr": 28,
+        "merge_sha": "80b9d63422d3d8cae6176f4630b24c9dc1159862",
+        "catalogue_rows": 854,
+        "live_sha256": "dbbe894ae0919aeac0bc601fb27fa228e3ec5e2fcc4bb41aebe68af6823a71f7",
+        "verified_at": "2026-10-29T21:17:34.905Z",
+        "reports": [
+          "grinders-production-report.json",
+          "hwa-production-report.json"
+        ]
       }
     },
     {
@@ -952,23 +963,34 @@
         "8.060.320.31002",
         "8.060.310.31002"
       ],
-      "state": "prepared",
+      "state": "live_verified",
       "source_before_sha": "fec16003f5eb6ea0fd8da6f12e14a606e5b787f7",
       "source_before": 852,
       "source_after": 854,
       "verified_additions": 2,
-      "merged_additions": 0,
-      "live_verified_additions": 0,
+      "merged_additions": 2,
+      "live_verified_additions": 2,
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-30-bravilor-hwa-2.csv",
       "queue_range": "Untitled!A504:Q505",
       "validation": {
         "readiness": "2/2 exact-row certificates passed again on shared Sheet readback",
-        "regressions": "pending",
-        "production": "pending"
+        "regressions": "Release-head CI and local model checks passed",
+        "production": "Exact-row production search/Add passed; zero customer writes"
       },
       "recovery": {
         "bundle_sha256": "bd4593a7227d188ba12c66ffeada10ee6272a79cf0fb7b93652540f943419416"
+      },
+      "release": {
+        "pr": 28,
+        "merge_sha": "80b9d63422d3d8cae6176f4630b24c9dc1159862",
+        "catalogue_rows": 854,
+        "live_sha256": "dbbe894ae0919aeac0bc601fb27fa228e3ec5e2fcc4bb41aebe68af6823a71f7",
+        "verified_at": "2026-10-29T21:17:34.905Z",
+        "reports": [
+          "grinders-production-report.json",
+          "hwa-production-report.json"
+        ]
       }
     },
     {
@@ -980,26 +1002,36 @@
         "FM-120KE-HCN",
         "FM-80KE-HCN"
       ],
-      "state": "prepared",
+      "state": "live_verified",
       "source_before_sha": "80b9d63422d3d8cae6176f4630b24c9dc1159862",
       "source_before": 854,
       "source_after": 858,
       "verified_additions": 4,
-      "merged_additions": 0,
-      "live_verified_additions": 0,
+      "merged_additions": 4,
+      "live_verified_additions": 4,
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-30-hoshizaki-ice-4.csv",
       "queue_range": "Untitled!A506:Q509",
       "validation": {
         "readiness": "4/4 exact-row certificates passed again on shared Sheet readback",
-        "regressions": "pending",
-        "production": "pending"
+        "regressions": "Release-head CI and local model checks passed",
+        "production": "Exact-row production search/Add passed; zero customer writes"
       },
       "recovery": {
         "original_source_hashes_preserved": true,
         "clearance_image": "hoshi-page6.png",
         "clearance_image_sha256": "19156352bf4a7b620d915b204b6f77fd76c9281633db669b5e554e95b4fdcdfc",
         "drawing_review": "Inherited exact-model manufacturer drawing review; clearance diagram independently inspected locally"
+      },
+      "release": {
+        "pr": 29,
+        "merge_sha": "b55bf664717c7868adc49574bce403034a584ee2",
+        "catalogue_rows": 858,
+        "live_sha256": "d42fa2cbc0f4c752adf6aa3ccf96726463f936aff8e1ecf8dbdb30e2e2be2c24",
+        "verified_at": "2026-10-29T21:30:10.941Z",
+        "reports": [
+          "ice-production-report.json"
+        ]
       }
     },
     {
@@ -1008,20 +1040,33 @@
       "models": [
         "8.060.350.31002"
       ],
-      "state": "prepared",
+      "state": "live_verified",
       "source_before_sha": "b55bf664717c7868adc49574bce403034a584ee2",
       "source_before": 858,
       "source_after": 859,
       "verified_additions": 1,
-      "merged_additions": 0,
-      "live_verified_additions": 0,
+      "merged_additions": 1,
+      "live_verified_additions": 1,
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-30-bravilor-hwa3-1.csv",
       "queue_range": "Untitled!A510:Q510",
       "validation": {
         "readiness": "1/1 exact-row certificates passed again on shared Sheet readback",
-        "regressions": "pending",
-        "production": "pending"
+        "regressions": "Release-head CI and local model checks passed",
+        "production": "Exact-row production search/Add passed; zero customer writes"
+      },
+      "release": {
+        "pr": 30,
+        "merge_sha": "2c3acf79977f45c1bec297e580adcee28387fc53",
+        "catalogue_rows": 887,
+        "live_sha256": "2f77f5112317e05ee8e4824cc9b7ab40e993c55f1ee17a843a87834af7b98da5",
+        "verified_at": "2026-10-29T22:13:13.853Z",
+        "reports": [
+          "hwa3-production-report.json",
+          "bar6-production-report.json",
+          "hwa4-production-report.json",
+          "krowne18-production-report.json"
+        ]
       }
     },
     {
@@ -1035,20 +1080,34 @@
         "SWB-24L-C",
         "SWB-24R-C"
       ],
-      "state": "prepared",
+      "state": "live_verified",
       "source_before_sha": "b55bf664717c7868adc49574bce403034a584ee2",
-      "source_before": 859,
+      "source_before": 858,
       "source_after": 865,
       "verified_additions": 6,
-      "merged_additions": 0,
-      "live_verified_additions": 0,
+      "merged_additions": 6,
+      "live_verified_additions": 6,
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-30-glastender-bar-service-6.csv",
       "queue_range": "Untitled!A511:Q516",
       "validation": {
         "readiness": "6/6 exact-row certificates passed again on shared Sheet readback",
-        "regressions": "pending",
-        "production": "pending"
+        "regressions": "Release-head CI and local model checks passed",
+        "production": "Exact-row production search/Add passed; zero customer writes"
+      },
+      "pre_group_count": 859,
+      "release": {
+        "pr": 30,
+        "merge_sha": "2c3acf79977f45c1bec297e580adcee28387fc53",
+        "catalogue_rows": 887,
+        "live_sha256": "2f77f5112317e05ee8e4824cc9b7ab40e993c55f1ee17a843a87834af7b98da5",
+        "verified_at": "2026-10-29T22:13:13.853Z",
+        "reports": [
+          "hwa3-production-report.json",
+          "bar6-production-report.json",
+          "hwa4-production-report.json",
+          "krowne18-production-report.json"
+        ]
       }
     },
     {
@@ -1060,20 +1119,33 @@
         "8.060.170.31002",
         "8.060.190.31002"
       ],
-      "state": "prepared",
+      "state": "live_verified",
       "source_before_sha": "c1348c1728e849fab0bcc017113feea1c833728c",
       "source_before": 865,
       "source_after": 869,
       "verified_additions": 4,
-      "merged_additions": 0,
-      "live_verified_additions": 0,
+      "merged_additions": 4,
+      "live_verified_additions": 4,
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-30-bravilor-hwa-4.csv",
       "queue_range": "Untitled!A517:Q520",
       "validation": {
         "readiness": "4/4 exact-row certificates passed on shared Sheet readback",
-        "regressions": "pending",
-        "production": "pending"
+        "regressions": "Release-head CI and local model checks passed",
+        "production": "Exact-row production search/Add passed; zero customer writes"
+      },
+      "release": {
+        "pr": 30,
+        "merge_sha": "2c3acf79977f45c1bec297e580adcee28387fc53",
+        "catalogue_rows": 887,
+        "live_sha256": "2f77f5112317e05ee8e4824cc9b7ab40e993c55f1ee17a843a87834af7b98da5",
+        "verified_at": "2026-10-29T22:13:13.853Z",
+        "reports": [
+          "hwa3-production-report.json",
+          "bar6-production-report.json",
+          "hwa4-production-report.json",
+          "krowne18-production-report.json"
+        ]
       }
     },
     {
@@ -1099,20 +1171,34 @@
         "KR24-42",
         "KR24-48"
       ],
-      "state": "prepared",
+      "state": "live_verified",
       "source_before_sha": "c1348c1728e849fab0bcc017113feea1c833728c",
-      "source_before": 869,
+      "source_before": 865,
       "source_after": 887,
       "verified_additions": 18,
-      "merged_additions": 0,
-      "live_verified_additions": 0,
+      "merged_additions": 18,
+      "live_verified_additions": 18,
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-30-krowne-ice-bins-18.csv",
       "queue_range": "Untitled!A521:Q538",
       "validation": {
         "readiness": "18/18 exact-row certificates passed on shared Sheet readback",
-        "regressions": "pending",
-        "production": "pending"
+        "regressions": "Release-head CI and local model checks passed",
+        "production": "Exact-row production search/Add passed; zero customer writes"
+      },
+      "pre_group_count": 869,
+      "release": {
+        "pr": 30,
+        "merge_sha": "2c3acf79977f45c1bec297e580adcee28387fc53",
+        "catalogue_rows": 887,
+        "live_sha256": "2f77f5112317e05ee8e4824cc9b7ab40e993c55f1ee17a843a87834af7b98da5",
+        "verified_at": "2026-10-29T22:13:13.853Z",
+        "reports": [
+          "hwa3-production-report.json",
+          "bar6-production-report.json",
+          "hwa4-production-report.json",
+          "krowne18-production-report.json"
+        ]
       }
     },
     {
@@ -1158,20 +1244,32 @@
         "KR24-C48L",
         "KR24-C48R"
       ],
-      "state": "prepared",
+      "state": "live_verified",
       "source_before_sha": "594f483fa5add01045522aa6fbb24a8361b777c5",
       "source_before": 887,
       "source_after": 925,
       "verified_additions": 38,
-      "merged_additions": 0,
-      "live_verified_additions": 0,
+      "merged_additions": 38,
+      "live_verified_additions": 38,
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-30-krowne-drain-38.csv",
       "queue_range": "Untitled!A539:Q576",
       "validation": {
         "readiness": "38/38 exact-row certificates passed on shared Sheet readback",
-        "regressions": "pending",
-        "production": "pending"
+        "regressions": "Release-head CI and local model checks passed",
+        "production": "Exact-row production search/Add passed; zero customer writes"
+      },
+      "release": {
+        "pr": 31,
+        "merge_sha": "8661067f5c879ec6b92dc863f8927f796edd72ce",
+        "catalogue_rows": 957,
+        "live_sha256": "faa977439c6a7166dfb6d98a2c5c82d075ee429a5e032b95c2dda3b397e4aa28",
+        "verified_at": "2026-10-29T22:24:42.907Z",
+        "reports": [
+          "krowne-drain-38-production-report.json",
+          "krowne-cabinet-14-production-report.json",
+          "krowne-display-18-production-report.json"
+        ]
       }
     },
     {
@@ -1193,20 +1291,33 @@
         "KR24-S48",
         "KR24-SD48"
       ],
-      "state": "prepared",
+      "state": "live_verified",
       "source_before_sha": "594f483fa5add01045522aa6fbb24a8361b777c5",
-      "source_before": 925,
+      "source_before": 887,
       "source_after": 939,
       "verified_additions": 14,
-      "merged_additions": 0,
-      "live_verified_additions": 0,
+      "merged_additions": 14,
+      "live_verified_additions": 14,
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-30-krowne-cabinet-14.csv",
       "queue_range": "Untitled!A577:Q590",
       "validation": {
         "readiness": "14/14 exact-row certificates passed on shared Sheet readback",
-        "regressions": "pending",
-        "production": "pending"
+        "regressions": "Release-head CI and local model checks passed",
+        "production": "Exact-row production search/Add passed; zero customer writes"
+      },
+      "pre_group_count": 925,
+      "release": {
+        "pr": 31,
+        "merge_sha": "8661067f5c879ec6b92dc863f8927f796edd72ce",
+        "catalogue_rows": 957,
+        "live_sha256": "faa977439c6a7166dfb6d98a2c5c82d075ee429a5e032b95c2dda3b397e4aa28",
+        "verified_at": "2026-10-29T22:24:42.907Z",
+        "reports": [
+          "krowne-drain-38-production-report.json",
+          "krowne-cabinet-14-production-report.json",
+          "krowne-display-18-production-report.json"
+        ]
       }
     },
     {
@@ -1232,19 +1343,198 @@
         "KR24-18RD-LC",
         "KR24-24RD-LC"
       ],
-      "state": "prepared",
+      "state": "live_verified",
       "source_before_sha": "594f483fa5add01045522aa6fbb24a8361b777c5",
-      "source_before": 939,
+      "source_before": 887,
       "source_after": 957,
       "verified_additions": 18,
-      "merged_additions": 0,
-      "live_verified_additions": 0,
+      "merged_additions": 18,
+      "live_verified_additions": 18,
       "evidence": "catalogue-evidence.json",
       "csv": "equipment/batches/2026-10-30-krowne-display-18.csv",
       "queue_range": "Untitled!A591:Q608",
       "validation": {
         "readiness": "18/18 exact-row certificates passed on shared Sheet readback",
-        "regressions": "pending",
+        "regressions": "Release-head CI and local model checks passed",
+        "production": "Exact-row production search/Add passed; zero customer writes"
+      },
+      "pre_group_count": 939,
+      "release": {
+        "pr": 31,
+        "merge_sha": "8661067f5c879ec6b92dc863f8927f796edd72ce",
+        "catalogue_rows": 957,
+        "live_sha256": "faa977439c6a7166dfb6d98a2c5c82d075ee429a5e032b95c2dda3b397e4aa28",
+        "verified_at": "2026-10-29T22:24:42.907Z",
+        "reports": [
+          "krowne-drain-38-production-report.json",
+          "krowne-cabinet-14-production-report.json",
+          "krowne-display-18-production-report.json"
+        ]
+      }
+    },
+    {
+      "id": "2026-10-30-krowne-bar-sinks-29",
+      "manufacturer": "Krowne",
+      "models": [
+        "KR19-1C",
+        "KR19-31C",
+        "KR19-22C",
+        "KR19-32L",
+        "KR19-32R",
+        "KR19-42L",
+        "KR19-42R",
+        "KR19-42C",
+        "KR19-33C",
+        "KR19-43L",
+        "KR19-43R",
+        "KR19-53C",
+        "KR19-63C",
+        "KR19-73C",
+        "KR19-83C",
+        "KR24-1C",
+        "KR24-31C",
+        "KR24-22C",
+        "KR24-32L",
+        "KR24-32R",
+        "KR24-42L",
+        "KR24-42R",
+        "KR24-42C",
+        "KR24-33C",
+        "KR24-43L",
+        "KR24-43R",
+        "KR24-53C",
+        "KR24-63C",
+        "KR24-73C"
+      ],
+      "state": "prepared",
+      "source_before_sha": "5b510cacc30236adea3cef420ea6840917c012d5",
+      "source_before": 957,
+      "source_after": 1007,
+      "verified_additions": 29,
+      "merged_additions": 0,
+      "live_verified_additions": 0,
+      "evidence": "catalogue-evidence.json",
+      "csv": "equipment/batches/2026-10-30-krowne-bar-sinks-29.csv",
+      "queue_rows": [
+        609,
+        610,
+        611,
+        612,
+        613,
+        614,
+        615,
+        616,
+        617,
+        618,
+        619,
+        620,
+        621,
+        622,
+        623,
+        624,
+        625,
+        626,
+        627,
+        628,
+        629,
+        630,
+        631,
+        632,
+        633,
+        634,
+        635,
+        636,
+        637
+      ],
+      "validation": {
+        "readiness": "29/29 exact shared-row certificates passed",
+        "regressions": "App and standalone builds; 791 bounded family geometries;80 renders and GPU/inspection/mobile checks;50/50 exact-SKU search/Add passed",
+        "production": "pending"
+      }
+    },
+    {
+      "id": "2026-10-30-krowne-service-13",
+      "manufacturer": "Krowne",
+      "models": [
+        "KR19-RS18",
+        "KR19-RS24",
+        "KR24-RS18",
+        "KR24-RS24",
+        "KR24-PC18",
+        "KR24-PC24",
+        "KR24-GSB1",
+        "KR24-GSB3",
+        "KR24-GSB4",
+        "KR24-12BF",
+        "KR24-14BF",
+        "KR24-18BF",
+        "KR29-18FD"
+      ],
+      "state": "prepared",
+      "source_before_sha": "5b510cacc30236adea3cef420ea6840917c012d5",
+      "source_before": 957,
+      "source_after": 1007,
+      "verified_additions": 13,
+      "merged_additions": 0,
+      "live_verified_additions": 0,
+      "evidence": "catalogue-evidence.json",
+      "csv": "equipment/batches/2026-10-30-krowne-service-13.csv",
+      "queue_rows": [
+        638,
+        639,
+        640,
+        641,
+        642,
+        643,
+        644,
+        645,
+        646,
+        647,
+        648,
+        649,
+        650
+      ],
+      "validation": {
+        "readiness": "13/13 exact shared-row certificates passed",
+        "regressions": "App and standalone builds; 791 bounded family geometries;80 renders and GPU/inspection/mobile checks;50/50 exact-SKU search/Add passed",
+        "production": "pending"
+      }
+    },
+    {
+      "id": "2026-10-30-cambro-beverage-8",
+      "manufacturer": "Cambro",
+      "models": [
+        "100LCD110",
+        "250LCD110",
+        "500LCD110",
+        "UC250110",
+        "UC500110",
+        "UC1000110",
+        "CSR3110",
+        "CSR5110"
+      ],
+      "state": "prepared",
+      "source_before_sha": "5b510cacc30236adea3cef420ea6840917c012d5",
+      "source_before": 957,
+      "source_after": 1007,
+      "verified_additions": 8,
+      "merged_additions": 0,
+      "live_verified_additions": 0,
+      "evidence": "catalogue-evidence.json",
+      "csv": "equipment/batches/2026-10-30-cambro-beverage-8.csv",
+      "queue_rows": [
+        651,
+        652,
+        653,
+        654,
+        655,
+        204,
+        656,
+        657
+      ],
+      "validation": {
+        "readiness": "8/8 exact shared-row certificates passed",
+        "regressions": "App and standalone builds; 791 bounded family geometries;80 renders and GPU/inspection/mobile checks;50/50 exact-SKU search/Add passed",
         "production": "pending"
       }
     }
