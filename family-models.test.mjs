@@ -20,6 +20,7 @@ for(const it of coverage.items.filter(i=>i.brand==='Glastender'&&barModels.has(i
 const cases={'Pizza prep fridge':'prep-counter','Rice cooker':'rice-soup','Heated carving station':'holding-station','Hood dishwasher':'hood-washer','2 Drawer Ref-freezer Base':'refrigerated-counter','Fridge counter':'refrigerated-counter','Conveyor pizza oven':'conveyor-oven','2 zone induction top':'hob'};
 Object.assign(cases,{'Self-contained ice cuber 53kg/24h, 23kg bin':'ice-machine','Infrared strip heater 48in':'heated-shelf','Three Tier Service Trolley':'utility-cart','Gas doner/shawarma grill':'spit-grill','Chest freezer':'chest-freezer','Heated banquet cart':'hot-cabinet','Hot Square Plates Electric Boiling Top':'hob'});
 for(const [name,family] of Object.entries(cases))assert.equal(families.identify({kind:'eq',name}),family,name);
+for(const name of ['HWA 8 hot-water dispenser, automatic-fill configuration, 230 V','HWA 12 hot-water dispenser, automatic-fill configuration, 230 V'])assert.equal(families.identify({kind:'eq',name}),'water-urn');
 for(const name of ['Unknown machine','Standard combi oven','Fryer','Upright fridge'])assert.equal(families.identify({name,cat:'Coffee blender refrigeration'}),null);
 assert.equal(families.identify({kind:'ss',name:'Work table'}),null);
 for(const [brand,model,symbol] of [['Unox','XEVL-2011-YPRS','oven'],['Electrolux Professional','371178','range'],['Electrolux Professional','371179','range']]){
