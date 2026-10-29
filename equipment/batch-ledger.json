@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-29T21:17:03.324Z",
+  "updated_at": "2026-10-29T21:50:53.708Z",
   "target": {
     "minimum_live_count": 1001,
     "deadline": "2026-10-31",
@@ -1000,6 +1000,119 @@
         "clearance_image": "hoshi-page6.png",
         "clearance_image_sha256": "19156352bf4a7b620d915b204b6f77fd76c9281633db669b5e554e95b4fdcdfc",
         "drawing_review": "Inherited exact-model manufacturer drawing review; clearance diagram independently inspected locally"
+      }
+    },
+    {
+      "id": "2026-10-30-bravilor-hwa3-1",
+      "manufacturer": "Bravilor Bonamat",
+      "models": [
+        "8.060.350.31002"
+      ],
+      "state": "prepared",
+      "source_before_sha": "b55bf664717c7868adc49574bce403034a584ee2",
+      "source_before": 858,
+      "source_after": 859,
+      "verified_additions": 1,
+      "merged_additions": 0,
+      "live_verified_additions": 0,
+      "evidence": "catalogue-evidence.json",
+      "csv": "equipment/batches/2026-10-30-bravilor-hwa3-1.csv",
+      "queue_range": "Untitled!A510:Q510",
+      "validation": {
+        "readiness": "1/1 exact-row certificates passed again on shared Sheet readback",
+        "regressions": "pending",
+        "production": "pending"
+      }
+    },
+    {
+      "id": "2026-10-30-glastender-bar-service-6",
+      "manufacturer": "Glastender",
+      "models": [
+        "MXS60-CP10",
+        "MXS72-CP10",
+        "DWB-14-C",
+        "SWB-18-DB",
+        "SWB-24L-C",
+        "SWB-24R-C"
+      ],
+      "state": "prepared",
+      "source_before_sha": "b55bf664717c7868adc49574bce403034a584ee2",
+      "source_before": 859,
+      "source_after": 865,
+      "verified_additions": 6,
+      "merged_additions": 0,
+      "live_verified_additions": 0,
+      "evidence": "catalogue-evidence.json",
+      "csv": "equipment/batches/2026-10-30-glastender-bar-service-6.csv",
+      "queue_range": "Untitled!A511:Q516",
+      "validation": {
+        "readiness": "6/6 exact-row certificates passed again on shared Sheet readback",
+        "regressions": "pending",
+        "production": "pending"
+      }
+    },
+    {
+      "id": "2026-10-30-bravilor-hwa-4",
+      "manufacturer": "Bravilor Bonamat",
+      "models": [
+        "8.060.130.31002",
+        "8.060.150.31002",
+        "8.060.170.31002",
+        "8.060.190.31002"
+      ],
+      "state": "prepared",
+      "source_before_sha": "c1348c1728e849fab0bcc017113feea1c833728c",
+      "source_before": 865,
+      "source_after": 869,
+      "verified_additions": 4,
+      "merged_additions": 0,
+      "live_verified_additions": 0,
+      "evidence": "catalogue-evidence.json",
+      "csv": "equipment/batches/2026-10-30-bravilor-hwa-4.csv",
+      "queue_range": "Untitled!A517:Q520",
+      "validation": {
+        "readiness": "4/4 exact-row certificates passed on shared Sheet readback",
+        "regressions": "pending",
+        "production": "pending"
+      }
+    },
+    {
+      "id": "2026-10-30-krowne-ice-bins-18",
+      "manufacturer": "Krowne",
+      "models": [
+        "KR19-18",
+        "KR19-24",
+        "KR19-30",
+        "KR19-36",
+        "KR19-42",
+        "KR19-48",
+        "KR19-18DP",
+        "KR19-24DP",
+        "KR19-30DP",
+        "KR19-36DP",
+        "KR19-42DP",
+        "KR19-48DP",
+        "KR24-18",
+        "KR24-24",
+        "KR24-30",
+        "KR24-36",
+        "KR24-42",
+        "KR24-48"
+      ],
+      "state": "prepared",
+      "source_before_sha": "c1348c1728e849fab0bcc017113feea1c833728c",
+      "source_before": 869,
+      "source_after": 887,
+      "verified_additions": 18,
+      "merged_additions": 0,
+      "live_verified_additions": 0,
+      "evidence": "catalogue-evidence.json",
+      "csv": "equipment/batches/2026-10-30-krowne-ice-bins-18.csv",
+      "queue_range": "Untitled!A521:Q538",
+      "validation": {
+        "readiness": "18/18 exact-row certificates passed on shared Sheet readback",
+        "regressions": "pending",
+        "production": "pending"
       }
     }
   ],
