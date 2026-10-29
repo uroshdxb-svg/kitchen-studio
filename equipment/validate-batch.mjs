@@ -16,9 +16,11 @@ const key=r=>(r[0]+'|'+r[1]).toLowerCase().replace(/[\s-]+/g,'');
 assert.equal(new Set(rows.map(key)).size,rows.length,'Duplicate normalized brand/model');
 const evidence=JSON.parse(fs.readFileSync('catalogue-evidence.json','utf8')).records;
 for(const model of batch.models){
- const matches=rows.filter(r=>r[0]===batch.manufacturer && new RegExp('(^|[^0-9])'+model+'([^0-9]|$)').test(r[1]));
+ const e=evidence[key([batch.manufacturer,model])];
+ assert(e,model+' missing evidence');
+ const matches=rows.filter(r=>r[0]===e.brand && r[1]===e.model);
  assert.equal(matches.length,1,'Duplicate or missing exact SKU '+model);
- const row=matches[0],e=evidence[key(row)];
+ const row=matches[0];
  assert(e?.ready_to_import && e.status==='exact-variant-checked',model+' not ready');
  assert.deepEqual(e.blockers,[]);
  assert.deepEqual(row,e.candidate_runtime_row);

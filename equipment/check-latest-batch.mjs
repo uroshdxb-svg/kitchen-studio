@@ -14,9 +14,12 @@ async function verify(base,label){
   for(const e of expected){const matches=rows.filter(r=>r[0]===e.brand&&r[1]===e.model);assert.equal(matches.length,1);assert.deepEqual(matches[0],e.candidate_runtime_row);}
   await page.goto(base);await page.waitForFunction(()=>window.KS_ui&&document.querySelector('#q'),null,{timeout:20000});await page.locator('#t-eq').click();const start=await page.evaluate(()=>window.KS_ui.items().length);
   for(let i=0;i<expected.length;i++){
-   const e=expected[i];await page.fill('#q',e.brand+' '+e.manufacturer_sku);assert.equal(await page.locator('#results .row').count(),1);await page.getByRole('button',{name:'Add '+e.brand+' '+e.model,exact:true}).click();
+   const e=expected[i];await page.fill('#q',e.brand+' '+e.manufacturer_sku);
+   // Related suffix variants can legitimately share a search prefix (ALL-72/ALL-72A).
+   // Require one exact selectable model, then verify the selected item's full data.
+   const add=page.getByRole('button',{name:'Add '+e.brand+' '+e.model,exact:true});assert.equal(await add.count(),1);await add.click();
    const items=await page.evaluate(()=>window.KS_ui.items());assert.equal(items.length,start+i+1);const item=items.at(-1);for(const k of ['brand','model','w','d','h','mount','power','kw','elec'])assert.equal(item[k],({brand:e.brand,model:e.model,w:e.candidate_runtime_row[4],d:e.candidate_runtime_row[5],h:e.candidate_runtime_row[6],mount:e.candidate_runtime_row[7],power:e.candidate_runtime_row[8],kw:e.candidate_runtime_row[9],elec:e.candidate_runtime_row[10]})[k]);assert.equal(item.water,!!e.candidate_runtime_row[11]);assert.equal(item.drain,!!e.candidate_runtime_row[12]);
-   await page.locator('#t-eq').click();report.checks.push(label+': exactSKU '+e.manufacturer_sku+' has one result and adds exact dimensions/utilities');
+   await page.locator('#t-eq').click();report.checks.push(label+': exactSKU '+e.manufacturer_sku+' has one exact selectable result and adds exact dimensions/utilities');
   }
   await page.screenshot({path:path.join(dir,'equipment-'+label+'-search-add.png'),fullPage:true});assert.deepEqual(writes,[]);assert.deepEqual(errors,[]);return {status:'pass',catalogueRows:rows.length,models:expected.map(e=>e.manufacturer_sku),customerWrites:0};
  }finally{await context.close();}

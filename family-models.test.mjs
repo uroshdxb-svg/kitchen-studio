@@ -11,8 +11,12 @@ const registry=new Function(read('view3d-equipment.js')+';return KS3DEquipment')
 const rows=new Function(read('cat.js')+';return CATALOGUE_ROWS')();
 const symbols=new Function(read('symbols.js')+';return KS_symOf')();
 const coverage=visualCoverage(rows,registry,symbols,JSON.parse(read('equipment-model-references.json')),families);
-assert.equal(coverage.total,807);assert.equal(coverage.counts['model-specific'],27);
+assert.equal(coverage.total,rows.length);assert.equal(coverage.counts['model-specific'],27);
 assert.equal(coverage.counts.generic,0);assert.equal(coverage.counts['category-basic'],0);
+// A bar blender station is a passive fixture, not a motor appliance. All of
+// this manufacturer's new fixtures must reach the bounded station renderer.
+const barModels=new Set(JSON.parse(read('equipment/batch-ledger.json')).batches.find(b=>b.id==='2026-10-30-glastender-bar-43').models);
+for(const it of coverage.items.filter(i=>i.brand==='Glastender'&&barModels.has(i.model)))assert.equal(it.family,'bar-station',it.model);
 const cases={'Pizza prep fridge':'prep-counter','Rice cooker':'rice-soup','Heated carving station':'holding-station','Hood dishwasher':'hood-washer','2 Drawer Ref-freezer Base':'refrigerated-counter','Fridge counter':'refrigerated-counter','Conveyor pizza oven':'conveyor-oven','2 zone induction top':'hob'};
 Object.assign(cases,{'Self-contained ice cuber 53kg/24h, 23kg bin':'ice-machine','Infrared strip heater 48in':'heated-shelf','Three Tier Service Trolley':'utility-cart','Gas doner/shawarma grill':'spit-grill','Chest freezer':'chest-freezer','Heated banquet cart':'hot-cabinet','Hot Square Plates Electric Boiling Top':'hob'});
 for(const [name,family] of Object.entries(cases))assert.equal(families.identify({kind:'eq',name}),family,name);
