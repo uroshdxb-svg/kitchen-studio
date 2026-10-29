@@ -13,10 +13,10 @@ const KS3DFamilies=(()=>{
   if(has(/insulated.*(?:cart|carrier)|transport box/))return 'insulated-carrier';
   if(has(/shelf.*cart|utility cart|(?:two|three)[ -]tier.*trolley/))return 'utility-cart';
   if(has(/service trolley.*plates|plate and rack trolley/))return 'utility-cart';
-  if(has(/trolley/))return 'tray-trolley';
+  if(has(/trolley/)&&!has(/combi|oven/))return 'tray-trolley';
   if(has(/oven stand/))return 'oven-stand';
   if(has(/storage cabinet|base cupboard|closed base/))return 'storage-cabinet';
-  if(has(/open base/))return 'open-base';
+  if(has(/open base/)&&!has(/on\s+(?:an?\s+)?open base/))return 'open-base';
   if(has(/work table/))return 'work-table';
   if(has(/sink top|worktop with.*well/))return 'sink-top';
   if(has(/neutral worktop|ambient.*worktop/))return 'neutral-top';

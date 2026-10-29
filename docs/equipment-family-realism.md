@@ -3,7 +3,7 @@
 The preview now gives every one of the current 807 catalogue rows a detailed
 rendering path: 27 individual reference models and 780 illustrative family
 models. The former 296 basic family rows and 216 placeholders are covered.
-This increment introduces 76 active shared families used by 594 rows, including
+This increment introduces 76 active shared families used by 591 rows, including
 some items previously assigned to the wrong detailed family.
 
 `view3d-families.js` handles cooking tops, ovens, washing, ice machines,
@@ -42,7 +42,7 @@ Primary family-construction references reviewed on 29 October 2026:
 - Hatco toaster forms: https://www.hatcocorp.com/en/equipment/cooking-equipment/commercial-toasters
 
 Validation: `family-models.test.mjs` checks finite positions and normals,
-catalogue bounds and geometry budgets for all 594 newly rendered rows; renders
+catalogue bounds and geometry budgets for all 591 newly rendered rows; renders
 76 family representatives; exercises search, deep links, view changes, phone
 layout and repeated GPU rebuilds. The existing suites cover 27 individual
 models, 21 mixers, full-planner integration, shadows, walkthrough, exports,

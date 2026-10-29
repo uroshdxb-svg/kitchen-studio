@@ -18,6 +18,10 @@ Object.assign(cases,{'Self-contained ice cuber 53kg/24h, 23kg bin':'ice-machine'
 for(const [name,family] of Object.entries(cases))assert.equal(families.identify({kind:'eq',name}),family,name);
 for(const name of ['Unknown machine','Standard combi oven','Fryer','Upright fridge'])assert.equal(families.identify({name,cat:'Coffee blender refrigeration'}),null);
 assert.equal(families.identify({kind:'ss',name:'Work table'}),null);
+for(const [brand,model,symbol] of [['Unox','XEVL-2011-YPRS','oven'],['Electrolux Professional','371178','range'],['Electrolux Professional','371179','range']]){
+ const it=coverage.items.find(i=>i.brand===brand&&i.model===model);assert.ok(it,model);
+ assert.equal(families.identify(it),null,model+': the complete appliance keeps its cooking renderer');assert.equal(it.family,symbol,model);
+}
 const M=Object.fromEntries(['steel','steel2','dark','rubber','white','glass','iron','water','lamp'].map(k=>[k,new THREE.MeshStandardMaterial()]));
 const inputs=coverage.items.filter(i=>families.identify(i)&&!registry.identify(i)&&!registry.mixerFamily(i)),geometry=[];
 for(const it of inputs){
@@ -29,6 +33,7 @@ for(const it of inputs){
  geometry.push({brand:it.brand,model:it.model,family:it.family,triangles,size,limits});
 }
 console.log(`${inputs.length} family items: finite geometry/normals, bounded envelopes and no manufacturer model claims.`);
+if(process.argv.includes('--geometry-only'))process.exit(0);
 const samples=[...new Map(inputs.map(i=>[i.family,i])).values()];
 fs.mkdirSync('test-results/families',{recursive:true});
 const server=await serve(5186),browser=await chromium.launch({executablePath:process.env.KS_TEST_EXECUTABLE,args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
