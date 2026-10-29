@@ -61,6 +61,7 @@ const KS3D=(function(){
   function build(it,sym){
     if(sym==='arch:person')return KS3DAssets.chef(it);
     const equipment=KS3DEquipment.build(it,{M});if(equipment)return KS3DAssets.compact(equipment);
+    const family=KS3DFamilies.build(it,{M});if(family)return KS3DAssets.compact(family);
     const detail=KS3DDetails.build(it,sym,{B,Cy,M,feet,handleH,handleV,knobRow});if(detail)return KS3DAssets.compact(detail);
     const g=new THREE.Group(),w=it.w,d=it.d,h=it.h,o=it.opts||[],cols=Math.max(1,Math.round(w/400));
     const floorEq=it.mount==="floor"&&h>500,fh=floorEq?110:0,F=d;/* front plane z */
@@ -169,7 +170,7 @@ const KS3D=(function(){
     const sc=sun.shadow.camera,ext=Math.max(room.w,room.d);sc.left=-ext;sc.right=ext;sc.top=ext;sc.bottom=-ext;sc.far=ext*5;sun.shadow.mapSize.set(2048,2048);sun.shadow.bias=-.0002;sun.shadow.normalBias=.004;sun.shadow.radius=3;root.add(sun,sun.target);
     // floor with 300 mm tiles
     const floorMat=studio?new THREE.MeshStandardMaterial({color:KS3DAssets.linear(0xe0e2df),roughness:.9,metalness:0}):KS3DAssets.floor(room.w,room.d);
-    const fl=new THREE.Mesh(new THREE.PlaneGeometry(room.w,room.d),floorMat);fl.userData.roomResource=true;fl.rotation.x=-Math.PI/2;fl.position.set(room.w/2,0,room.d/2);fl.receiveShadow=true;root.add(fl);
+    const fl=new THREE.Mesh(new THREE.PlaneGeometry(room.w*(studio?8:1),room.d*(studio?8:1)),floorMat);fl.userData.roomResource=true;fl.rotation.x=-Math.PI/2;fl.position.set(room.w/2,0,room.d/2);fl.receiveShadow=true;root.add(fl);
     poly=Array.isArray(state.room.poly)&&state.room.poly.length>2?state.room.poly.map(p=>[p[0]/1000,p[1]/1000]):null;
     const wallMat=new THREE.MeshStandardMaterial({color:0xe5e5df,roughness:.95,metalness:0});
     const tileWall=(length,side)=>{const map=surface("wall");map.repeat.set(length/.6,room.h/.3);return new THREE.MeshStandardMaterial({map,bumpMap:map,bumpScale:.001,roughness:.7,metalness:0,side:side||THREE.FrontSide});};
@@ -256,7 +257,7 @@ const KS3D=(function(){
   }
   function inspect(it,angle='perspective'){
     const span=Math.max(it.w,it.d,it.h)*4,item={...it,id:'inspection',x:(span-it.w)/2,y:(span-it.d)/2,rot:0};
-    mode='orbit';rebuild({room:{w:span,d:span,h:span,studio:true},items:[item]},null,{sunk:'#e7e9e6'},()=>0,()=> 'generic',i=>i.w,i=>i.d);
+    mode='orbit';rebuild({room:{w:span,d:span,h:span,studio:true},items:[item]},null,{sunk:'#e7e9e6'},()=>0,i=>i.symbol||'generic',i=>i.w,i=>i.d);
     const views={perspective:[.48,1.15],front:[0,1.48],side:[Math.PI/2,1.4],rear:[Math.PI,1.35],top:[0,.09]},v=views[angle]||views.perspective;
     Object.assign(orb,{tx:span/2000,ty:it.h/2200,tz:span/2000,r:Math.max(it.h,it.w/cam.aspect,it.d)*1.95/1000,th:v[0],ph:v[1]});draw();
   }
