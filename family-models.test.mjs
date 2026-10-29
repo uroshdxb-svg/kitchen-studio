@@ -14,6 +14,7 @@ const coverage=visualCoverage(rows,registry,symbols,JSON.parse(read('equipment-m
 assert.equal(coverage.total,807);assert.equal(coverage.counts['model-specific'],27);
 assert.equal(coverage.counts.generic,0);assert.equal(coverage.counts['category-basic'],0);
 const cases={'Pizza prep fridge':'prep-counter','Rice cooker':'rice-soup','Heated carving station':'holding-station','Hood dishwasher':'hood-washer','2 Drawer Ref-freezer Base':'refrigerated-counter','Fridge counter':'refrigerated-counter','Conveyor pizza oven':'conveyor-oven','2 zone induction top':'hob'};
+Object.assign(cases,{'Self-contained ice cuber 53kg/24h, 23kg bin':'ice-machine','Infrared strip heater 48in':'heated-shelf','Three Tier Service Trolley':'utility-cart','Gas doner/shawarma grill':'spit-grill','Chest freezer':'chest-freezer','Heated banquet cart':'hot-cabinet','Hot Square Plates Electric Boiling Top':'hob'});
 for(const [name,family] of Object.entries(cases))assert.equal(families.identify({kind:'eq',name}),family,name);
 for(const name of ['Unknown machine','Standard combi oven','Fryer','Upright fridge'])assert.equal(families.identify({name,cat:'Coffee blender refrigeration'}),null);
 assert.equal(families.identify({kind:'ss',name:'Work table'}),null);
@@ -44,6 +45,9 @@ try{
  }
  const warm=await page.evaluate(()=>KS3D.stats());for(const it of samples)await page.evaluate(it=>showFamily(it),it);const end=await page.evaluate(()=>KS3D.stats());
  assert.ok(end.geometries<=warm.geometries+1,JSON.stringify({warm,end}));assert.ok(end.textures<=warm.textures+1);
+ console.log(`${samples.length} family renders and repeated GPU rebuilds passed.`);
+ // Begin the interaction checks with a fresh document after the GPU stress run.
+ await page.goto('http://localhost:5186/equipment/');await page.waitForFunction(()=>coverage&&document.getElementById('status').textContent==='');
  // Search -> family -> alternate view -> reload deep link -> exact model.
  const pizza=inputs.find(i=>i.family==='prep-counter');await page.click('summary');await page.fill('#catalogueSearch',pizza.model);await page.locator('#coverageRows a').filter({hasText:pizza.brand+' '+pizza.model}).click();
  assert.equal(await page.inputValue('#model'),'family');await page.click('[data-view="rear"]');assert.equal(await page.getAttribute('[data-view="rear"]','aria-pressed'),'true');

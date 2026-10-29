@@ -11,7 +11,8 @@ const KS3DFamilies=(()=>{
   if(has(/dish caddy|plate dispenser/))return 'plate-cart';
   if(has(/dolly|platform trolley/))return 'dolly';
   if(has(/insulated.*(?:cart|carrier)|transport box/))return 'insulated-carrier';
-  if(has(/shelf.*cart|utility cart|two-tier trolley/))return 'utility-cart';
+  if(has(/shelf.*cart|utility cart|(?:two|three)[ -]tier.*trolley/))return 'utility-cart';
+  if(has(/service trolley.*plates|plate and rack trolley/))return 'utility-cart';
   if(has(/trolley/))return 'tray-trolley';
   if(has(/oven stand/))return 'oven-stand';
   if(has(/storage cabinet|base cupboard|closed base/))return 'storage-cabinet';
@@ -20,18 +21,27 @@ const KS3DFamilies=(()=>{
   if(has(/sink top|worktop with.*well/))return 'sink-top';
   if(has(/neutral worktop|ambient.*worktop/))return 'neutral-top';
   if(has(/rice cooker|soup kettle/))return 'rice-soup';
+  if(has(/chest freezer/))return 'chest-freezer';
   if(has(/prep.*(?:fridge|table)|pizza prep|saladette|prep counter/))return 'prep-counter';
-  if(has(/refrigerated (?:counter|base)|undercounter.*(?:fridge|freezer)|counter.*(?:fridge|freezer)|fridge counter|freezer base|lowboy|chef base/))return 'refrigerated-counter';
-  if(has(/ice.*(?:bin|storage)/)&&!has(/maker|machine/))return 'ice-bin';
-  if(has(/ice maker|ice machine/))return has(/modular|head|bin separate/)?'ice-head':has(/dispenser/)?'ice-dispenser':'ice-machine';
+  if(has(/refrigerated (?:counter|base)|undercounter.*(?:fridge|freezer)|counter.*(?:fridge|freezer)|drawer.*fridge|fridge counter|freezer base|lowboy|chef base/))return 'refrigerated-counter';
+  if(has(/ice maker|ice machine|ice cuber|dice cuber/))return has(/head|bin separate/)?'ice-head':has(/dispenser/)?'ice-dispenser':'ice-machine';
+  if(has(/ice.*(?:bin|storage)/))return 'ice-bin';
   if(has(/cold room|freezer room|walk-in/))return 'coldroom';
-  if(has(/multideck|display.*(?:fridge|refrigerat)|bottle cooler/))return 'display-fridge';
+  if(has(/multideck|display.*(?:fridge|refrigerat|counter)|glass door upright fridge|bottle cooler/))return 'display-fridge';
   if(has(/conveyor.*(?:dishwash|warewash)/))return 'conveyor-washer';
   if(has(/hood.*(?:dishwash|utensil|washer)|pass-through.*washer/))return 'hood-washer';
   if(has(/dishwasher|glasswasher|utensil washer|pot washer/))return 'front-washer';
-  if(has(/carving station|fry holding station/))return 'holding-station';
-  if(has(/holding bin|pick-up locker/))return 'holding-cubbies';
+  if(has(/carving station|fry holding|chip scuttle/))return 'holding-station';
+  if(has(/holding bin|pick-up locker|product holding/))return 'holding-cubbies';
   if(has(/holding.*display cabinet|heated merchandiser/))return 'heated-display';
+  if(has(/holding.*(?:cabinet|cart)|banquet cart|cook & hold|hold & serve drawers|drawer warmer|hot cupboard/)&&!has(/bain.marie/))return 'hot-cabinet';
+  if(has(/strip heater|heated shelf/))return 'heated-shelf';
+  if(has(/oil filter/))return 'oil-filter';
+  if(has(/dunnage rack/))return 'dunnage-rack';
+  if(has(/doner|shawarma/))return 'spit-grill';
+  if(has(/tandoor/))return 'tandoor';
+  if(has(/charcoal oven/))return 'charcoal-oven';
+  if(has(/stock.?pot|wok range/))return 'stockpot-range';
   if(has(/steam kettle|boiling pan/))return 'kettle';
   if(has(/bratt|tilting pan|ivario|multifunctional cooker/))return 'bratt-pan';
   if(has(/basket lifting/))return 'basket-lift';
@@ -40,7 +50,7 @@ const KS3DFamilies=(()=>{
   if(has(/(?:range|burner).*(?:griddle)/))return 'combination-range';
   if(has(/fry top|griddle|plancha/))return 'griddle';
   if(has(/chargrill|charbroil|lava.*grill|powergrill/))return 'chargrill';
-  if(has(/induction|infrared|hot plates|hot plate|electric hob/))return 'hob';
+  if(has(/induction|infrared|hot (?:round |square )?plates?|electric hob/))return 'hob';
   if(has(/solid top/))return 'solid-top';
   if(has(/salamander/))return 'salamander';
   if(has(/conveyor.*pizza|conveyor.*oven/))return 'conveyor-oven';
@@ -50,7 +60,7 @@ const KS3DFamilies=(()=>{
   if(has(/conveyor toaster/))return 'conveyor-toaster';
   if(has(/bun toaster/))return 'bun-toaster';
   if(has(/immersion circulator/))return 'circulator';
-  if(has(/water bath|bain.marie|warmer.*steamer/))return 'water-bath';
+  if(has(/water bath|bain.marie|warmer.*steamer|rethermalizer/))return 'water-bath';
   if(has(/chamber vacuum/))return 'vacuum';
   if(has(/bread slicer/))return 'bread-slicer';
   if(has(/gravity slicer|vertical slicer|food slicer/))return 'slicer';
@@ -125,6 +135,7 @@ const KS3DFamilies=(()=>{
    }
   }
   function table(){
+   if(family==='dunnage-rack'){legs(.80);box(.03,.80,.03,.94,.10,.90,m.plastic);for(let i=0;i<7;i++)box(.08+i*.13,.91,.10,.07,.008,.76,m.dark);return;}
    if(family==='sink-top'){
     // The top and bowl are open geometry; a solid cabinet would fill the well.
     box(.02,.04,.02,.96,.025,.94);for(const x of [.02,.95])box(x,.065,.02,.03,.89,.94);for(const z of [.02,.93])box(.02,.065,z,.96,.89,.03);
@@ -149,6 +160,7 @@ const KS3DFamilies=(()=>{
    if(/upstand/.test(n))box(.02,top-.01,.02,.96,1-top,.02);
   }
   function refrigerated(){
+   if(family==='chest-freezer'){legs(.09);box(.03,.09,.03,.94,.79,.90,m.paint);box(.02,.89,.02,.96,.07,.92);handle(.3,.92,.96,.4);for(const x of [.15,.80])box(x,.85,.02,.06,.12,.035,m.steel2);vents(.08,.15,.94,.25,.17,7);return;}
    if(family==='coldroom'){
     box(.015,.01,.015,.97,.97,.93,m.paint);for(let x=.15;x<.95;x+=.15)box(x,.02,.947,.004,.94,.004,m.steel2);
     door(.24,.025,.49,.82,.95);box(.27,.86,.97,.30,.065,.02,m.dark);for(const y of [.15,.65])box(.22,y,.98,.035,.08,.02,m.steel2);return;
@@ -159,9 +171,9 @@ const KS3DFamilies=(()=>{
     box(.08,.21,.89,.84,.69,.008,m.clear);handle(.83,.56,.91,.03);vents(.08,.1,.93,.84,.08,5);return;
    }
    const prep=family==='prep-counter',top=prep?.76:.94;shell(top);
-   const cols=+(n.match(/(\d+)[ -]door/)||[])[1]||Math.max(1,Math.round(w/600)),comp=.20,ww=(.93-comp)/cols;
+   const drawers=+(n.match(/(\d+)[ -]drawer/)||[])[1]||(/single drawer/.test(n)?1:0),cols=+(n.match(/(\d+)[ -](?:door|section)/)||[])[1]||(drawers?Math.min(drawers,Math.max(1,Math.round(w/600))):Math.max(1,Math.round(w/600))),comp=.20,ww=(.93-comp)/cols;
    vents(.04,fy+.08,.956,.14,top-fy-.15,10);
-   for(let i=0;i<cols;i++){const nd=/drawer/.test(n)?2:1;for(let j=0;j<nd;j++)door(comp+i*ww,fy+.015+j*(top-fy-.03)/nd,ww-.012,(top-fy-.05)/nd);}
+   for(let i=0;i<cols;i++){const nd=drawers?Math.ceil(drawers/cols):1;for(let j=0;j<nd;j++)door(comp+i*ww,fy+.015+j*(top-fy-.03)/nd,ww-.012,(top-fy-.05)/nd);}
    if(prep){
     box(.025,top+.025,.03,.95,.15,.035);box(.025,top+.025,.03,.025,.15,.43);box(.95,top+.025,.03,.025,.15,.43);
     const count=Math.max(3,Math.min(8,Math.round(w/250)));for(let i=0;i<count;i++){const x=.06+i*.88/count;box(x,top-.03,.09,.83/count,.02,.30,m.polished);box(x,top-.03,.09,.008,.10,.30);box(x+.83/count,top-.03,.09,.008,.10,.30);box(x,top+.06,.09,.83/count,.008,.008);box(x,top+.06,.38,.83/count,.008,.008);}
@@ -211,7 +223,7 @@ const KS3DFamilies=(()=>{
    const dolly=family==='dolly',utility=family==='utility-cart',plate=family==='plate-cart';
    legs(dolly?.20:.96,true);
    if(dolly){box(.03,.14,.03,.94,/platform/.test(n)?.12:.72,.92,m.plastic);if(/platform/.test(n))tube([[.08,.21,.10],[.08,.95,.10],[.92,.95,.10],[.92,.21,.10]],.02);return;}
-   if(utility){for(const y of [.17,.52,.88])tray(.035,y,.035,.93,.90);tube([[.06,.8,.04],[.06,.97,.04],[.94,.97,.04],[.94,.8,.04]],.016);return;}
+   if(utility){for(const y of /two[ -]tier/.test(n)?[.17,.88]:[.17,.52,.88])tray(.035,y,.035,.93,.90);tube([[.06,.8,.04],[.06,.97,.04],[.94,.97,.04],[.94,.8,.04]],.016);return;}
    if(plate){
     box(.06,.14,.06,.88,.54,.86,m.plastic);for(const x of [.29,.71]){cy(x,.68,.49,.17,.07,m.steel2);for(let i=0;i<12;i++)cy(x,.73+i*.016,.49,.16,.012,m.white);for(const z of [.27,.71])box(x-.015,.68,z,.03,.28,.03,m.steel2);}return;
    }
@@ -299,7 +311,7 @@ const KS3DFamilies=(()=>{
     shell(.89);box(.10,.35,.956,.80,.47,.01,m.clear);for(const x of [.32,.68])cy(x,.61,.97,.12,.04,m.orange,'z');cy(.5,.35,.97,.04,.07,m.steel2,'z');tray(.17,.12,.79,.66,.18);bowl(.5,.90,.46,.30,.09,m.steel2);return;
    }
    if(family==='soft-serve'){
-    shell();vents(.06,.16,.956,.88,.18,9);box(.16,.52,.958,.68,.22,.018,m.plastic);for(const x of [.35,.65]){tube([[x,.67,.99],[x,.83,.99]],.015,m.dark);cy(x,.49,.97,.035,.12,m.white);}tray(.15,.36,.80,.7,.17);return;
+    shell();vents(.06,.16,.956,.88,.18,9);box(.16,.52,.958,.68,.22,.018,m.plastic);for(const x of /single/.test(n)?[.5]:[.35,.65]){tube([[x,.67,.99],[x,.83,.99]],.015,m.dark);cy(x,.49,.97,.035,.12,m.white);}tray(.15,.36,.80,.7,.17);return;
    }
    if(family==='batch-brewer'||family==='automatic-coffee'){
     box(.06,.04,.08,.88,.10,.84);box(.06,.14,.08,.88,.80,.38,m.plastic);box(.06,.74,.08,.88,.20,.72);box(.17,.80,.81,.45,.10,.012,m.dark);
@@ -316,6 +328,13 @@ const KS3DFamilies=(()=>{
    shell(.51);box(.07,.54,.07,.86,.025,.80,m.dark);box(.09,.55,.09,.82,.02,.76,m.polished);box(.08,.56,.10,.84,.26,.015,m.clear);box(.08,.56,.85,.84,.26,.015,m.clear);box(.08,.56,.10,.015,.26,.75,m.clear);box(.905,.56,.10,.015,.26,.75,m.clear);box(.08,.82,.10,.84,.018,.75,m.clear);handle(.23,.75,.87,.54);box(.16,.58,.73,.68,.015,.035,m.cream);controls(.33,.96,2);
   }
   function holding(){
+   if(family==='hot-cabinet'){
+    shell();const drawers=/drawer/.test(n),levels=drawers?(+(n.match(/(\d+)[ -]drawer/)||[])[1]||2):/double|2 compartment/.test(n)?2:1;
+    for(let i=0;i<levels;i++)door(.06,fy+.03+i*.73/levels,.88,.69/levels);controls(.89,.96,1);return;
+   }
+   if(family==='heated-shelf'){
+    const strip=/strip heater/.test(n);if(!strip)legs(.22);box(.02,strip?.04:.22,.02,.96,strip?.82:.65,.92);for(let i=0;i<4;i++)box(.04,strip?.025:.89,.12+i*.18,.92,.018,.06,strip?m.lamp:m.steel2);button(.92,.50,.96,m.dark,.02);return;
+   }
    if(family==='holding-station'){
     box(.03,.04,.05,.94,.08,.90);tray(.08,.12,.12,.84,.77);
     if(/carving/.test(n)){box(.10,.15,.16,.80,.035,.69,m.cream);tube([[.5,.12,.12],[.5,.92,.12],[.5,.95,.48]],.014);cy(.5,.87,.48,.14,.14,m.steel2,'y',.06);cy(.5,.80,.48,.12,.014,m.lamp);}
@@ -332,12 +351,34 @@ const KS3DFamilies=(()=>{
     for(const y of [.15,.54])for(const x of [.10,.54]){tray(x,y,.10,.36,.75);if(/locker/.test(n)){box(x,y,.91,.35,.31,.012,m.clear);handle(x+.10,y+.26,.93,.15);}}
    }
   }
+  function specialty(){
+   if(family==='oil-filter'){
+    tray(.03,.02,.03,.94,.91);box(.13,.09,.09,.74,.47,.78,m.steel2);box(.20,.56,.17,.60,.35,.48);vents(.25,.65,.66,.50,.15,6);handle(.28,.94,.36,.44);button(.69,.82,.67,m.green);return;
+   }
+   if(family==='spit-grill'){
+    tray(.02,.03,.02,.96,.93);box(.08,.10,.04,.84,.85,.20);const count=+(n.match(/(\d+) burners/)||[])[1]||3;
+    for(let i=0;i<count;i++){box(.17,.20+i*.65/count,.25,.66,.54/count,.025,m.cream);button(.91,.24+i*.65/count,.26);}
+    cy(.50,.53,.64,.009,.86,m.steel2);cy(.5,.16,.64,.19,.025,m.polished);box(.36,.92,.12,.28,.06,.53);cy(.5,.96,.63,.055,.06,m.dark);return;
+   }
+   if(family==='tandoor'){
+    legs(.12,/caster|castor/.test(n));for(const x of [.03,.94])box(x,.12,.03,.03,.82,.90);for(const z of [.03,.90])box(.03,.12,z,.94,.82,.03);
+    bowl(.5,.16,.48,.43,.76,m.cream);ring(.5,.93,.48,.44,m.steel2,'y',.025);box(.31,.15,.935,.38,.15,.018,m.dark);handle(.38,.25,.96,.24);return;
+   }
+   if(family==='charcoal-oven'){
+    const base=/on stand/.test(n)?.32:fy;legs(base);box(.03,base,.03,.94,.65-base,.86);door(.10,base+.05,.80,.52-base,.90);vents(.17,base+.05,.953,.66,.08,5);
+    cy(.5,.79,.33,.095,.30,m.dark);cy(.5,.95,.33,.16,.04,m.dark);box(.03,.65,.03,.94,.035,.88);return;
+   }
+   // Low stockpot and wok ranges have one row of large burners, not a full range.
+   legs(.20);box(.03,.20,.03,.94,.56,.89);const count=+(n.match(/(\d+)-chamber/)||[])[1]||1;
+   for(let i=0;i<count;i++){const x=(i+.5)/count,rr=Math.min(w/count,d)*.34/Math.min(w,d);ring(x,.79,.50,rr,m.iron,'y',.024);cy(x,.76,.50,rr*.55,.045,m.iron);for(const z of [.22,.78])box(x-.35/count,.83,z,.70/count,.025,.035,m.iron);button(x,.54,.94);}
+   box(.03,.76,.03,.94,.20,.025);return;
+  }
   function slicer(){
    box(.04,.03,.06,.92,.22,.87,m.paint);const blade=cy(.62,.61,.38,.31,.025,m.polished,'x');ring(.64,.61,.38,.30,m.steel2,'x');cy(.65,.61,.38,.25,.02,m.steel2,'x');box(.1,.26,.08,.25,.04,.78,m.steel2);const carriage=box(.16,.32,.20,.24,.25,.57,m.polished);carriage.rotation.z=-.2;tube([[.12,.40,.76],[.12,.56,.83],[.28,.56,.83]],.025,m.dark);box(.52,.86,.28,.24,.10,.20,m.dark);button(.3,.16,.95,m.dark,.055);
   }
   const groups={cooking:['griddle','chargrill','hob','solid-top','combination-range'],table:['work-table','oven-stand','open-base','storage-cabinet','neutral-top','sink-top'],refrigerated:['coldroom','refrigerated-counter','prep-counter','display-fridge'],ice:['ice-machine','ice-head','ice-bin','ice-dispenser'],washer:['front-washer','hood-washer','conveyor-washer'],oven:['speed-oven','deck-oven','conveyor-oven','conveyor-toaster','salamander'],pan:['bratt-pan','kettle'],trolley:['tray-trolley','plate-cart','utility-cart','dolly'],bin:['ingredient-bin','waste-bin','insulated-carrier'],smallCook:['rice-soup','water-bath','circulator','basket-lift','crepe','contact-grill','bun-toaster'],prep:['mincer','bone-saw','bread-slicer','peeler','spinner','sieve','liquidiser','cutter','heated-processor','frozen-processor','veg-processor','blender','coffee-grinder','juicer'],beverage:['espresso','automatic-coffee','batch-brewer','soft-serve','slush','drink-mixer','citrus-juicer'],vacuum:['vacuum'],slicer:['slicer']};
-  groups.oven.push('multi-oven');groups.holding=['holding-station','holding-cubbies','heated-display'];
-  const builders={cooking,table,refrigerated,ice,washer,oven,pan,trolley,bin,smallCook,prep,beverage,vacuum,slicer,holding},key=Object.keys(groups).find(k=>groups[k].includes(family));
+  groups.oven.push('multi-oven');groups.refrigerated.push('chest-freezer');groups.table.push('dunnage-rack');groups.holding=['holding-station','holding-cubbies','heated-display','hot-cabinet','heated-shelf'];groups.specialty=['oil-filter','spit-grill','tandoor','charcoal-oven','stockpot-range'];
+  const builders={cooking,table,refrigerated,ice,washer,oven,pan,trolley,bin,smallCook,prep,beverage,vacuum,slicer,holding,specialty},key=Object.keys(groups).find(k=>groups[k].includes(family));
   if(!key)throw new Error('Missing equipment family builder: '+family);builders[key]();
   g.updateMatrixWorld(true);const b=new THREE.Box3().setFromObject(g),s=b.getSize(new THREE.Vector3()),k=Math.min(w/s.x,h/s.y,d/s.z,1),offset=new THREE.Vector3(b.min.x,b.min.y,b.min.z);
   for(const o of g.children){o.position.sub(offset).multiplyScalar(k);o.scale.multiplyScalar(k);o.position.x+=(w-s.x*k)/2;o.position.z+=(d-s.z*k)/2;}
