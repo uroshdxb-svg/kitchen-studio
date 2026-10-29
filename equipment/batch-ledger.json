@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-29T20:39:39.261Z",
+  "updated_at": "2026-10-29T20:59:15.671Z",
   "target": {
     "minimum_live_count": 1001,
     "deadline": "2026-10-31",
@@ -916,6 +916,33 @@
         "bundle_sha256": "62c94b891e9ac6e22f0a2eab49ceff61def509c075d4ac4e060b184206fca066",
         "recovered_at": "2026-10-29T20:38:06.793Z",
         "method": "Recovered manufacturer review with source hashes and exact drawing observations; preserved original source retrieval dates. No fresh source retrieval is implied."
+      }
+    },
+    {
+      "id": "2026-10-30-mahlkonig-sync-2",
+      "manufacturer": "Mahlkonig",
+      "models": [
+        "705935",
+        "706202"
+      ],
+      "state": "prepared",
+      "source_before_sha": "7af09789e811f9ad2cbe5cefe75e3bbd0df383cf",
+      "source_before": 850,
+      "source_after": 852,
+      "verified_additions": 2,
+      "merged_additions": 0,
+      "live_verified_additions": 0,
+      "evidence": "catalogue-evidence.json",
+      "csv": "equipment/batches/2026-10-30-mahlkonig-sync-2.csv",
+      "queue_range": "Untitled!A502:Q503",
+      "validation": {
+        "readiness": "2/2 exact-row certificates passed again on shared Sheet readback",
+        "regressions": "pending",
+        "production": "pending"
+      },
+      "recovery": {
+        "bundle_sha256": "6060a7a1b391734bd7fe3f259b96b7b8e7be06115b4f659cd1eda593ea247c13",
+        "original_source_retrieved_at": "2026-10-29T15:31:36Z"
       }
     }
   ],

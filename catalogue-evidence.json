@@ -95550,6 +95550,588 @@
         "2026-10-30"
       ],
       "source_row_hash": "bee8bd578d7f3732c35bb3a3f1ff10133d483992c85d08524a98b2fdfe2dc97c"
+    },
+    "mahlkonig|705935": {
+      "schema_version": 1,
+      "key": "mahlkonig|705935",
+      "brand": "Mahlkonig",
+      "model": "705935",
+      "manufacturer_sku": "705935",
+      "manufacturer_type": "E65W-GbS",
+      "aliases": [
+        "E65W-GbS"
+      ],
+      "market": "EU manufacturer shop: 220-240 V Type F; no UAE availability assertion",
+      "batch_id": "2026-10-30-mahlkonig-sync-2",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-29T20:53:18.521Z",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.mahlkoenig.com/en-de/products/e65w-grind-by-sync",
+          "sha256": "91ead0afc68c8e6ac90eb799b9aea5f3a8f3f7dac82bf4d27a145e2066cb09c6",
+          "retrieved_at": "2026-10-29T15:31:36Z",
+          "locator": "Selected black 220-240 V Type F SKU and Technical Details",
+          "current_index_reviewed_at": "2026-10-29T20:53:18.521Z"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://downloads.mahlkoenig.de/Products/Mahlkoenig_E65W_Grind-by-Sync_Espresso_Grinder_Product_Sheet.pdf",
+          "sha256": "f0e94b8cc6b621f4278ecef754e4fcd3d1e832f10e9f559360f93997da96474e",
+          "retrieved_at": "2026-10-29T15:31:36Z",
+          "locator": "Page 2 Technical Details: nominal dimensions W x H x D and 220-240 V input",
+          "visual_review": "Rendered exact product sheet page 2: nominal dimension table explicitly W x H x D (19.5 x 62 x 28.3 cm), 440 W for 220-240 V single-phase 50/60 Hz, photo shows countertop grinder. Color and supply option matched exact manufacturer shop SKU.",
+          "revision": "06/2024, still linked by current product page"
+        },
+        {
+          "id": "S3",
+          "kind": "manufacturer-installation-manual",
+          "url": "https://downloads.mahlkoenig.de/Service/Mahlkoenig_E65W_GbS_Original_instructions_EN_WEB.pdf",
+          "sha256": "58d467327d8be81750e8af6a3077fffdf2d84f0a432f02a8fdf2e2add1f1481a",
+          "retrieved_at": "2026-10-29T15:31:36Z",
+          "locator": "Original instructions pp. 6, 9, 15-16; complete parts and installation",
+          "revision": "Current exact-model manual linked from manufacturer product page; no printed date located",
+          "current_index_reviewed_at": "2026-10-29T20:53:18.521Z"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Current manufacturer shop selects exact SKU 705935, E65W-GbS, black 220-240 V Type F; distinct grinding-control model, not a colour duplicate.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Rendered exact product sheet page 2: nominal dimension table explicitly W x H x D (19.5 x 62 x 28.3 cm), 440 W for 220-240 V single-phase 50/60 Hz, photo shows countertop grinder. Color and supply option matched exact manufacturer shop SKU.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Original instructions p. 15: stable level surface, with hopper fitted; countertop mounting.",
+          "source_ids": [
+            "S3"
+          ]
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Product Technical Details and specification p. 2: nominal electrical input 440 W for the selected 220-240 V configuration, converted to 0.44 kW.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "Product Technical Details: 220-240 V, single phase, 50/60 Hz. Exact shop selection Type F. Manual p. 15 requires grounded outlet.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Complete parts and setup instructions pp. 6 and 15-16 cover dry-bean hopper, spout, tray and electrical plug only; no plumbing assembly or connection. Intended use p. 9 is dry roasted coffee; water and drain are not applicable.",
+          "source_ids": [
+            "S3"
+          ]
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Complete manual parts and setup identify an electric dry-coffee grinder with no gas burner or gas connection.",
+          "source_ids": [
+            "S3"
+          ]
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Countertop dry-bean grinder; no water or drain connections on machine. Allow overhead clearance to refill/remove 1.2 kg hopper; confirm exact local plug and installation suitability. Type F plug is manufacturer EU offer, no UAE availability asserted. Fit the hopper and securing screw, spout and collection tray before use; place on a stable level non-vibrating surface and connect to a grounded socket. Use dry roasted coffee only. Standard 1.2 kg hopper; nominal closed height, overhead working clearance is separate and no numeric clearance is specified.",
+          "source_ids": [
+            "S3"
+          ]
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Current official product pages reopened 2026-10-30 Dubai time, exact SKU and technical table matched, and current downloads link these exact spec/manual URLs. Manuals reopened and installation sections checked. Recovered byte hashes retain their original retrieval timestamps.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Beverage/top/electric; mm dimensions, kW nominal input and resolved water/drain booleans. Manufacturer type and market configuration visible in name; source and installation details preserved.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Mahlkonig",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact SKU selection and Technical Details, specification p. 2",
+          "reason": "Current manufacturer shop selects exact SKU 705935, E65W-GbS, black 220-240 V Type F; distinct grinding-control model, not a colour duplicate."
+        },
+        "model": {
+          "value": "705935",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact SKU selection and Technical Details, specification p. 2",
+          "reason": "Current manufacturer shop selects exact SKU 705935, E65W-GbS, black 220-240 V Type F; distinct grinding-control model, not a colour duplicate."
+        },
+        "w": {
+          "value": 195,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact SKU selection and Technical Details, specification p. 2",
+          "reason": "Rendered exact product sheet page 2: nominal dimension table explicitly W x H x D (19.5 x 62 x 28.3 cm), 440 W for 220-240 V single-phase 50/60 Hz, photo shows countertop grinder. Color and supply option matched exact manufacturer shop SKU.",
+          "original_value": 19.5,
+          "original_unit": "cm"
+        },
+        "d": {
+          "value": 283,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact SKU selection and Technical Details, specification p. 2",
+          "reason": "Rendered exact product sheet page 2: nominal dimension table explicitly W x H x D (19.5 x 62 x 28.3 cm), 440 W for 220-240 V single-phase 50/60 Hz, photo shows countertop grinder. Color and supply option matched exact manufacturer shop SKU.",
+          "original_value": 28.3,
+          "original_unit": "cm"
+        },
+        "h": {
+          "value": 620,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact SKU selection and Technical Details, specification p. 2",
+          "reason": "Rendered exact product sheet page 2: nominal dimension table explicitly W x H x D (19.5 x 62 x 28.3 cm), 440 W for 220-240 V single-phase 50/60 Hz, photo shows countertop grinder. Color and supply option matched exact manufacturer shop SKU.",
+          "original_value": 62,
+          "original_unit": "cm"
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "source_ids": [
+            "S3"
+          ],
+          "locator": "Original instructions pp. 6, 9, 15-16",
+          "reason": "Original instructions p. 15: stable level surface, with hopper fitted; countertop mounting."
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact SKU selection and Technical Details, specification p. 2",
+          "reason": "Product Technical Details and specification p. 2: nominal electrical input 440 W for the selected 220-240 V configuration, converted to 0.44 kW."
+        },
+        "kw": {
+          "value": 0.44,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact SKU selection and Technical Details, specification p. 2",
+          "reason": "Product Technical Details and specification p. 2: nominal electrical input 440 W for the selected 220-240 V configuration, converted to 0.44 kW.",
+          "original_value": 440,
+          "original_unit": "W"
+        },
+        "elec": {
+          "value": "220-240 V/1 ph/50-60 Hz",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact SKU selection and Technical Details, specification p. 2",
+          "reason": "Product Technical Details: 220-240 V, single phase, 50/60 Hz. Exact shop selection Type F. Manual p. 15 requires grounded outlet."
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "source_ids": [
+            "S3"
+          ],
+          "locator": "Original instructions pp. 6, 9, 15-16",
+          "reason": "Complete parts and setup instructions pp. 6 and 15-16 cover dry-bean hopper, spout, tray and electrical plug only; no plumbing assembly or connection. Intended use p. 9 is dry roasted coffee; water and drain are not applicable."
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "source_ids": [
+            "S3"
+          ],
+          "locator": "Original instructions pp. 6, 9, 15-16",
+          "reason": "Complete parts and setup instructions pp. 6 and 15-16 cover dry-bean hopper, spout, tray and electrical plug only; no plumbing assembly or connection. Intended use p. 9 is dry roasted coffee; water and drain are not applicable."
+        }
+      },
+      "candidate_runtime_row": [
+        "Mahlkonig",
+        "705935",
+        "Beverage",
+        "E65W-GbS commercial espresso grinder, black, 220-240V, Type F",
+        195,
+        283,
+        620,
+        "top",
+        "electric",
+        0.44,
+        "220-240 V/1 ph/50-60 Hz",
+        0,
+        0,
+        "https://www.mahlkoenig.com/en-de/products/e65w-grind-by-sync"
+      ],
+      "installation_notes": "Countertop dry-bean grinder; no water or drain connections on machine. Allow overhead clearance to refill/remove 1.2 kg hopper; confirm exact local plug and installation suitability. Type F plug is manufacturer EU offer, no UAE availability asserted. Fit the hopper and securing screw, spout and collection tray before use; place on a stable level non-vibrating surface and connect to a grounded socket. Use dry roasted coffee only. Standard 1.2 kg hopper; nominal closed height, overhead working clearance is separate and no numeric clearance is specified.",
+      "installation_details": {
+        "manual_source_id": "S3",
+        "manual_locator": "pp. 6, 9, 15-16",
+        "notes": "Countertop dry-bean grinder; no water or drain connections on machine. Allow overhead clearance to refill/remove 1.2 kg hopper; confirm exact local plug and installation suitability. Type F plug is manufacturer EU offer, no UAE availability asserted. Fit the hopper and securing screw, spout and collection tray before use; place on a stable level non-vibrating surface and connect to a grounded socket. Use dry roasted coffee only. Standard 1.2 kg hopper; nominal closed height, overhead working clearance is separate and no numeric clearance is specified.",
+        "connection": "Grounded Type F electrical outlet; no gas, water or drain connections",
+        "operating_envelope": "Nominal closed height with standard hopper; hopper refill/removal access required above, no numerical manufacturer clearance specified"
+      },
+      "recovery": {
+        "bundle_sha256": "6060a7a1b391734bd7fe3f259b96b7b8e7be06115b4f659cd1eda593ea247c13",
+        "original_source_retrieved_at": "2026-10-29T15:31:36Z"
+      },
+      "proposed_queue_row": [
+        "Mahlkonig",
+        "705935",
+        "Beverage",
+        "E65W-GbS commercial espresso grinder, black, 220-240V, Type F",
+        "195",
+        "283",
+        "620",
+        "top",
+        "electric",
+        "0.44",
+        "220-240 V/1 ph/50-60 Hz",
+        "0",
+        "0",
+        "https://www.mahlkoenig.com/en-de/products/e65w-grind-by-sync",
+        "EU manufacturer shop: 220-240 V Type F; no UAE availability assertion",
+        "Countertop dry-bean grinder; no water or drain connections on machine. Allow overhead clearance to refill/remove 1.2 kg hopper; confirm exact local plug and installation suitability. Type F plug is manufacturer EU offer, no UAE availability asserted. Fit the hopper and securing screw, spout and collection tray before use; place on a stable level non-vibrating surface and connect to a grounded socket. Use dry roasted coffee only. Standard 1.2 kg hopper; nominal closed height, overhead working clearance is separate and no numeric clearance is specified.",
+        "2026-10-30"
+      ],
+      "source_row_hash": "c2884ac004d068269b6dffba8ec4ec5e5af3c045f5099e5dc357371d97a978b8"
+    },
+    "mahlkonig|706202": {
+      "schema_version": 1,
+      "key": "mahlkonig|706202",
+      "brand": "Mahlkonig",
+      "model": "706202",
+      "manufacturer_sku": "706202",
+      "manufacturer_type": "E65T-GbS",
+      "aliases": [
+        "E65T-GbS"
+      ],
+      "market": "EU manufacturer shop: 220-240 V Type F; no UAE availability assertion",
+      "batch_id": "2026-10-30-mahlkonig-sync-2",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-29T20:53:18.523Z",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://www.mahlkoenig.com/en-de/products/e65t-grind-by-sync",
+          "sha256": "2fbe2ad1a22028099a365ba354c7d2c18fd344566acd5e69fad7b65d97b7c50e",
+          "retrieved_at": "2026-10-29T15:31:36Z",
+          "locator": "Selected black 220-240 V Type F SKU and Technical Details",
+          "current_index_reviewed_at": "2026-10-29T20:53:18.523Z"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://downloads.mahlkoenig.de/Products/Mahlkoenig_E65T_GbS_Espresso_Grinder_Product_Sheet.pdf",
+          "sha256": "6a392c3f6eba40db36a9d667a00eae2e99e0ba971565152d17173c6ebd0defe1",
+          "retrieved_at": "2026-10-29T15:31:36Z",
+          "locator": "Page 2 Technical Details: nominal dimensions W x H x D and 220-240 V input",
+          "visual_review": "Rendered exact product sheet page 2: nominal dimension table explicitly W x H x D (19.5 x 62 x 28.3 cm), 440 W for 220-240 V single-phase 50/60 Hz, photo shows countertop grinder. Color and supply option matched exact manufacturer shop SKU.",
+          "revision": "Current product page links this exact recovered product sheet; visual review retained from 2026-10-29; fresh PDF fetch exceeded web size limit"
+        },
+        {
+          "id": "S3",
+          "kind": "manufacturer-installation-manual",
+          "url": "https://downloads.mahlkoenig.de/Service/Mahlkoenig_E65T_GbS_Original_instructions_EN_WEB.pdf",
+          "sha256": "bbac95a12bf5fb7fd0d352711474c07044837d83f417dffa4ae3b07bceb55751",
+          "retrieved_at": "2026-10-29T15:31:36Z",
+          "locator": "Original instructions pp. 6, 9, 15-16; complete parts and installation",
+          "revision": "Current exact-model manual linked from manufacturer product page; no printed date located",
+          "current_index_reviewed_at": "2026-10-29T20:53:18.523Z"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Current manufacturer shop selects exact SKU 706202, E65T-GbS, black 220-240 V Type F; distinct grinding-control model, not a colour duplicate.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Rendered exact product sheet page 2: nominal dimension table explicitly W x H x D (19.5 x 62 x 28.3 cm), 440 W for 220-240 V single-phase 50/60 Hz, photo shows countertop grinder. Color and supply option matched exact manufacturer shop SKU.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Original instructions p. 15: stable level surface, with hopper fitted; countertop mounting.",
+          "source_ids": [
+            "S3"
+          ]
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Product Technical Details and specification p. 2: nominal electrical input 440 W for the selected 220-240 V configuration, converted to 0.44 kW.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "Product Technical Details: 220-240 V, single phase, 50/60 Hz. Exact shop selection Type F. Manual p. 15 requires grounded outlet.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Complete parts and setup instructions pp. 6 and 15-16 cover dry-bean hopper, spout, tray and electrical plug only; no plumbing assembly or connection. Intended use p. 9 is dry roasted coffee; water and drain are not applicable.",
+          "source_ids": [
+            "S3"
+          ]
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Complete manual parts and setup identify an electric dry-coffee grinder with no gas burner or gas connection.",
+          "source_ids": [
+            "S3"
+          ]
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Countertop dry-bean grinder; no water or drain connections on machine. Allow overhead clearance to refill/remove 1.2 kg hopper; confirm exact local plug and installation suitability. Type F plug is manufacturer EU offer, no UAE availability asserted. Fit the hopper and securing screw, spout and collection tray before use; place on a stable level non-vibrating surface and connect to a grounded socket. Use dry roasted coffee only. Standard 1.2 kg hopper; nominal closed height, overhead working clearance is separate and no numeric clearance is specified.",
+          "source_ids": [
+            "S3"
+          ]
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Current official product pages reopened 2026-10-30 Dubai time, exact SKU and technical table matched, and current downloads link these exact spec/manual URLs. Manuals reopened and installation sections checked. Recovered byte hashes retain their original retrieval timestamps.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Beverage/top/electric; mm dimensions, kW nominal input and resolved water/drain booleans. Manufacturer type and market configuration visible in name; source and installation details preserved.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Mahlkonig",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact SKU selection and Technical Details, specification p. 2",
+          "reason": "Current manufacturer shop selects exact SKU 706202, E65T-GbS, black 220-240 V Type F; distinct grinding-control model, not a colour duplicate."
+        },
+        "model": {
+          "value": "706202",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact SKU selection and Technical Details, specification p. 2",
+          "reason": "Current manufacturer shop selects exact SKU 706202, E65T-GbS, black 220-240 V Type F; distinct grinding-control model, not a colour duplicate."
+        },
+        "w": {
+          "value": 195,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact SKU selection and Technical Details, specification p. 2",
+          "reason": "Rendered exact product sheet page 2: nominal dimension table explicitly W x H x D (19.5 x 62 x 28.3 cm), 440 W for 220-240 V single-phase 50/60 Hz, photo shows countertop grinder. Color and supply option matched exact manufacturer shop SKU.",
+          "original_value": 19.5,
+          "original_unit": "cm"
+        },
+        "d": {
+          "value": 283,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact SKU selection and Technical Details, specification p. 2",
+          "reason": "Rendered exact product sheet page 2: nominal dimension table explicitly W x H x D (19.5 x 62 x 28.3 cm), 440 W for 220-240 V single-phase 50/60 Hz, photo shows countertop grinder. Color and supply option matched exact manufacturer shop SKU.",
+          "original_value": 28.3,
+          "original_unit": "cm"
+        },
+        "h": {
+          "value": 620,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact SKU selection and Technical Details, specification p. 2",
+          "reason": "Rendered exact product sheet page 2: nominal dimension table explicitly W x H x D (19.5 x 62 x 28.3 cm), 440 W for 220-240 V single-phase 50/60 Hz, photo shows countertop grinder. Color and supply option matched exact manufacturer shop SKU.",
+          "original_value": 62,
+          "original_unit": "cm"
+        },
+        "mount": {
+          "value": "top",
+          "status": "checked",
+          "source_ids": [
+            "S3"
+          ],
+          "locator": "Original instructions pp. 6, 9, 15-16",
+          "reason": "Original instructions p. 15: stable level surface, with hopper fitted; countertop mounting."
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact SKU selection and Technical Details, specification p. 2",
+          "reason": "Product Technical Details and specification p. 2: nominal electrical input 440 W for the selected 220-240 V configuration, converted to 0.44 kW."
+        },
+        "kw": {
+          "value": 0.44,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact SKU selection and Technical Details, specification p. 2",
+          "reason": "Product Technical Details and specification p. 2: nominal electrical input 440 W for the selected 220-240 V configuration, converted to 0.44 kW.",
+          "original_value": 440,
+          "original_unit": "W"
+        },
+        "elec": {
+          "value": "220-240 V/1 ph/50-60 Hz",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact SKU selection and Technical Details, specification p. 2",
+          "reason": "Product Technical Details: 220-240 V, single phase, 50/60 Hz. Exact shop selection Type F. Manual p. 15 requires grounded outlet."
+        },
+        "water": {
+          "value": 0,
+          "status": "not-applicable",
+          "source_ids": [
+            "S3"
+          ],
+          "locator": "Original instructions pp. 6, 9, 15-16",
+          "reason": "Complete parts and setup instructions pp. 6 and 15-16 cover dry-bean hopper, spout, tray and electrical plug only; no plumbing assembly or connection. Intended use p. 9 is dry roasted coffee; water and drain are not applicable."
+        },
+        "drain": {
+          "value": 0,
+          "status": "not-applicable",
+          "source_ids": [
+            "S3"
+          ],
+          "locator": "Original instructions pp. 6, 9, 15-16",
+          "reason": "Complete parts and setup instructions pp. 6 and 15-16 cover dry-bean hopper, spout, tray and electrical plug only; no plumbing assembly or connection. Intended use p. 9 is dry roasted coffee; water and drain are not applicable."
+        }
+      },
+      "candidate_runtime_row": [
+        "Mahlkonig",
+        "706202",
+        "Beverage",
+        "E65T-GbS commercial espresso grinder, black, 220-240V, Type F",
+        195,
+        283,
+        620,
+        "top",
+        "electric",
+        0.44,
+        "220-240 V/1 ph/50-60 Hz",
+        0,
+        0,
+        "https://www.mahlkoenig.com/en-de/products/e65t-grind-by-sync"
+      ],
+      "installation_notes": "Countertop dry-bean grinder; no water or drain connections on machine. Allow overhead clearance to refill/remove 1.2 kg hopper; confirm exact local plug and installation suitability. Type F plug is manufacturer EU offer, no UAE availability asserted. Fit the hopper and securing screw, spout and collection tray before use; place on a stable level non-vibrating surface and connect to a grounded socket. Use dry roasted coffee only. Standard 1.2 kg hopper; nominal closed height, overhead working clearance is separate and no numeric clearance is specified.",
+      "installation_details": {
+        "manual_source_id": "S3",
+        "manual_locator": "pp. 6, 9, 15-16",
+        "notes": "Countertop dry-bean grinder; no water or drain connections on machine. Allow overhead clearance to refill/remove 1.2 kg hopper; confirm exact local plug and installation suitability. Type F plug is manufacturer EU offer, no UAE availability asserted. Fit the hopper and securing screw, spout and collection tray before use; place on a stable level non-vibrating surface and connect to a grounded socket. Use dry roasted coffee only. Standard 1.2 kg hopper; nominal closed height, overhead working clearance is separate and no numeric clearance is specified.",
+        "connection": "Grounded Type F electrical outlet; no gas, water or drain connections",
+        "operating_envelope": "Nominal closed height with standard hopper; hopper refill/removal access required above, no numerical manufacturer clearance specified"
+      },
+      "recovery": {
+        "bundle_sha256": "6060a7a1b391734bd7fe3f259b96b7b8e7be06115b4f659cd1eda593ea247c13",
+        "original_source_retrieved_at": "2026-10-29T15:31:36Z"
+      },
+      "proposed_queue_row": [
+        "Mahlkonig",
+        "706202",
+        "Beverage",
+        "E65T-GbS commercial espresso grinder, black, 220-240V, Type F",
+        "195",
+        "283",
+        "620",
+        "top",
+        "electric",
+        "0.44",
+        "220-240 V/1 ph/50-60 Hz",
+        "0",
+        "0",
+        "https://www.mahlkoenig.com/en-de/products/e65t-grind-by-sync",
+        "EU manufacturer shop: 220-240 V Type F; no UAE availability assertion",
+        "Countertop dry-bean grinder; no water or drain connections on machine. Allow overhead clearance to refill/remove 1.2 kg hopper; confirm exact local plug and installation suitability. Type F plug is manufacturer EU offer, no UAE availability asserted. Fit the hopper and securing screw, spout and collection tray before use; place on a stable level non-vibrating surface and connect to a grounded socket. Use dry roasted coffee only. Standard 1.2 kg hopper; nominal closed height, overhead working clearance is separate and no numeric clearance is specified.",
+        "2026-10-30"
+      ],
+      "source_row_hash": "4528fdfacf0dc1e9d447c234fc4495624d699dc4b0073d9fe381791b66faea69"
     }
   }
 }
