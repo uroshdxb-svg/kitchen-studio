@@ -13,7 +13,7 @@
     "test:ci": "npm run test:coordination && npm run build && npm run audit:discovery && npm test && node equipment/check-latest-batch.mjs && npm run test:3d",
     "test:coordination": "node --test coordination/*.test.mjs",
     "audit:discovery": "node scripts/discovery-audit.mjs",
-    "test:3d": "node build.mjs standalone && node realism.test.mjs && node equipment-models.test.mjs && node mixer-models.test.mjs"
+    "test:3d": "node build.mjs standalone && node realism.test.mjs && node equipment-models.test.mjs && node mixer-models.test.mjs && node family-models.test.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2",

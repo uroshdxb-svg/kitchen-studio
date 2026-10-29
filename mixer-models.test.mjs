@@ -6,6 +6,7 @@ import {visualCoverage} from './equipment-visual-coverage.mjs';
 
 const read=f=>fs.readFileSync(new URL(f,import.meta.url),'utf8');
 const models=new Function(read('view3d-equipment.js')+';return KS3DEquipment')();
+const families=new Function(read('view3d-families.js')+';return KS3DFamilies')();
 const rows=new Function(read('cat.js')+';return CATALOGUE_ROWS')();
 const mixers=rows.map(r=>({kind:'eq',brand:r[0],model:r[1],name:r[3],w:r[4],d:r[5],h:r[6],mount:r[7]})).filter(models.mixerFamily);
 assert.equal(mixers.length,21);
@@ -15,7 +16,7 @@ for(const name of ['Blender-mixer 8 L','Cutter mixer','Spiral slicer','Spiral fr
 assert.equal(models.mixerFamily({kind:'ss',name:'Stand mixer'}),null);
 assert.equal(models.identify({kind:'eq',brand:'Other',model:'HSM20',name:'Planetary mixer'}),null);
 const symbolOf=new Function(read('symbols.js')+';return KS_symOf')();
-const coverage=visualCoverage(rows,models,symbolOf,JSON.parse(read('equipment-model-references.json')));
+const coverage=visualCoverage(rows,models,symbolOf,JSON.parse(read('equipment-model-references.json')),families);
 for(const it of mixers){const row=coverage.items.find(r=>r.brand===it.brand&&r.model===it.model);assert.equal(row.status,models.identify(it)?'model-specific':'category-detailed');}
 assert.equal(coverage.counts['model-specific'],27);
 

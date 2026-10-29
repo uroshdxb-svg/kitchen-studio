@@ -61,6 +61,7 @@ const KS3D=(function(){
   function build(it,sym){
     if(sym==='arch:person')return KS3DAssets.chef(it);
     const equipment=KS3DEquipment.build(it,{M});if(equipment)return KS3DAssets.compact(equipment);
+    const family=KS3DFamilies.build(it,{M});if(family)return KS3DAssets.compact(family);
     const detail=KS3DDetails.build(it,sym,{B,Cy,M,feet,handleH,handleV,knobRow});if(detail)return KS3DAssets.compact(detail);
     const g=new THREE.Group(),w=it.w,d=it.d,h=it.h,o=it.opts||[],cols=Math.max(1,Math.round(w/400));
     const floorEq=it.mount==="floor"&&h>500,fh=floorEq?110:0,F=d;/* front plane z */
@@ -256,7 +257,7 @@ const KS3D=(function(){
   }
   function inspect(it,angle='perspective'){
     const span=Math.max(it.w,it.d,it.h)*4,item={...it,id:'inspection',x:(span-it.w)/2,y:(span-it.d)/2,rot:0};
-    mode='orbit';rebuild({room:{w:span,d:span,h:span,studio:true},items:[item]},null,{sunk:'#e7e9e6'},()=>0,()=> 'generic',i=>i.w,i=>i.d);
+    mode='orbit';rebuild({room:{w:span,d:span,h:span,studio:true},items:[item]},null,{sunk:'#e7e9e6'},()=>0,i=>i.symbol||'generic',i=>i.w,i=>i.d);
     const views={perspective:[.48,1.15],front:[0,1.48],side:[Math.PI/2,1.4],rear:[Math.PI,1.35],top:[0,.09]},v=views[angle]||views.perspective;
     Object.assign(orb,{tx:span/2000,ty:it.h/2200,tz:span/2000,r:Math.max(it.h,it.w/cam.aspect,it.d)*1.95/1000,th:v[0],ph:v[1]});draw();
   }

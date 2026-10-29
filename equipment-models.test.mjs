@@ -5,6 +5,7 @@ import {chromium} from 'playwright';
 import {serve} from './serve.mjs';
 
 const read=f=>fs.readFileSync(new URL(f,import.meta.url),'utf8');
+const families=new Function(read('view3d-families.js')+';return KS3DFamilies')();
 const rows=new Function(read('cat.js')+';return CATALOGUE_ROWS')();
 const symbols=new Function(read('symbols.js')+';return {sym:KS_symOf,plan:KS_planSym,elev:KS_elevSym}')();
 const models=new Function(read('view3d-equipment.js')+';return KS3DEquipment')();
@@ -18,7 +19,7 @@ assert.equal(models.identify({...r301,model:'R 301 Ultra Plus'}),null);
 assert.equal(models.identify({...r301,kind:'ss'}),null);
 assert.equal(models.identify({...r301,brand:'Robot-Coupe',model:'R301 ULTRA'}).id,'rc-r301');
 for(const e of models.entries)assert.equal(items.filter(i=>models.identify(i)?.id===e.id).length,1,e.id);
-const coverage=visualCoverage(rows,models,symbols.sym,JSON.parse(read('equipment-model-references.json')));assert.equal(coverage.total,rows.length);assert.equal(coverage.counts['model-specific'],models.entries.length);assert.equal(Object.values(coverage.counts).reduce((a,b)=>a+b,0),rows.length);assert.equal(visualCoverage([...rows,['Unknown','Future model','Other','unidentified machine',100,100,100,'top']],models,symbols.sym,JSON.parse(read('equipment-model-references.json'))).counts.generic,coverage.counts.generic+1);
+const coverage=visualCoverage(rows,models,symbols.sym,JSON.parse(read('equipment-model-references.json')),families);assert.equal(coverage.total,rows.length);assert.equal(coverage.counts['model-specific'],models.entries.length);assert.equal(Object.values(coverage.counts).reduce((a,b)=>a+b,0),rows.length);assert.equal(visualCoverage([...rows,['Unknown','Future model','Other','unidentified machine',100,100,100,'top']],models,symbols.sym,JSON.parse(read('equipment-model-references.json')),families).counts.generic,coverage.counts.generic+1);
 console.log('Exact model mapping, unknown-model fallback and oven/sheeter classification pass.');
 
 const server=await serve(5184),browser=await chromium.launch({executablePath:process.env.KS_TEST_EXECUTABLE,args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
