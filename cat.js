@@ -871,4 +871,28 @@ const CATALOGUE_ROWS = [
 ["Glastender","SWB-18-DB","Beverage","18-inch bar drainboard with recessed wet-waste sink",457,610,940,"floor","none",null,null,1,1,"https://www.glastender.com/assets/spec-sheets/SW_Cabinets-spec.pdf"],
 ["Glastender","SWB-24L-C","Beverage","24-inch bar wet-waste sink cabinet, left sink",610,610,940,"floor","none",null,null,1,1,"https://www.glastender.com/assets/spec-sheets/SW_Cabinets-spec.pdf"],
 ["Glastender","SWB-24R-C","Beverage","24-inch bar wet-waste sink cabinet, right sink",610,610,940,"floor","none",null,null,1,1,"https://www.glastender.com/assets/spec-sheets/SW_Cabinets-spec.pdf"]
+,
+["Bravilor Bonamat","8.060.130.31002","Beverage","HWA 6 hot-water boiler, free-flow tap, 230 V",242,443,435,"top","electric",2.83,"230 V/1 ph/50-60 Hz",1,0,"https://www.bravilor.com/products/hot-water-and-milk-in/hwa-series-in/hwa-6/"],
+["Bravilor Bonamat","8.060.150.31002","Beverage","HWA 14 hot-water boiler, free-flow tap, 230 V",242,568,501,"top","electric",2.83,"230 V/1 ph/50-60 Hz",1,0,"https://www.bravilor.com/products/hot-water-and-milk-in/hwa-14/"],
+["Bravilor Bonamat","8.060.170.31002","Beverage","HWA 14D hot-water boiler, portion buttons, 230 V",242,568,501,"top","electric",2.83,"230 V/1 ph/50-60 Hz",1,0,"https://www.bravilor.com/products/hot-water-and-milk-in/hwa-14d/"],
+["Bravilor Bonamat","8.060.190.31002","Beverage","HWA 21 hot-water boiler, free-flow tap, 230 V",242,568,635,"top","electric",2.83,"230 V/1 ph/50-60 Hz",1,0,"https://www.bravilor.com/products/hot-water-and-milk-in/hwa-21/"]
+,
+["Krowne","KR19-18","Beverage","18-inch underbar ice bin, 19-inch depth, 12-inch liner, no cold plate",457,483,927,"floor","none",null,null,0,1,"https://krowne.com/files/5-6-standard-ice-bins-no-cold-plate-spec-sheet_001.pdf"],
+["Krowne","KR19-24","Beverage","24-inch underbar ice bin, 19-inch depth, 12-inch liner, no cold plate",610,483,927,"floor","none",null,null,0,1,"https://krowne.com/files/5-6-standard-ice-bins-no-cold-plate-spec-sheet_001.pdf"],
+["Krowne","KR19-30","Beverage","30-inch underbar ice bin, 19-inch depth, 12-inch liner, no cold plate",762,483,927,"floor","none",null,null,0,1,"https://krowne.com/files/5-6-standard-ice-bins-no-cold-plate-spec-sheet_001.pdf"],
+["Krowne","KR19-36","Beverage","36-inch underbar ice bin, 19-inch depth, 12-inch liner, no cold plate",914,483,927,"floor","none",null,null,0,1,"https://krowne.com/files/5-6-standard-ice-bins-no-cold-plate-spec-sheet_001.pdf"],
+["Krowne","KR19-42","Beverage","42-inch underbar ice bin, 19-inch depth, 12-inch liner, no cold plate",1067,483,927,"floor","none",null,null,0,1,"https://krowne.com/files/5-6-standard-ice-bins-no-cold-plate-spec-sheet_001.pdf"],
+["Krowne","KR19-48","Beverage","48-inch underbar ice bin, 19-inch depth, 12-inch liner, no cold plate",1219,483,927,"floor","none",null,null,0,1,"https://krowne.com/files/5-6-standard-ice-bins-no-cold-plate-spec-sheet_001.pdf"],
+["Krowne","KR19-18DP","Beverage","18-inch underbar ice bin, 19-inch depth, 15-inch liner, no cold plate",457,483,927,"floor","none",null,null,0,1,"https://krowne.com/files/5-6-standard-ice-bins-no-cold-plate-spec-sheet_001.pdf"],
+["Krowne","KR19-24DP","Beverage","24-inch underbar ice bin, 19-inch depth, 15-inch liner, no cold plate",610,483,927,"floor","none",null,null,0,1,"https://krowne.com/files/5-6-standard-ice-bins-no-cold-plate-spec-sheet_001.pdf"],
+["Krowne","KR19-30DP","Beverage","30-inch underbar ice bin, 19-inch depth, 15-inch liner, no cold plate",762,483,927,"floor","none",null,null,0,1,"https://krowne.com/files/5-6-standard-ice-bins-no-cold-plate-spec-sheet_001.pdf"],
+["Krowne","KR19-36DP","Beverage","36-inch underbar ice bin, 19-inch depth, 15-inch liner, no cold plate",914,483,927,"floor","none",null,null,0,1,"https://krowne.com/files/5-6-standard-ice-bins-no-cold-plate-spec-sheet_001.pdf"],
+["Krowne","KR19-42DP","Beverage","42-inch underbar ice bin, 19-inch depth, 15-inch liner, no cold plate",1067,483,927,"floor","none",null,null,0,1,"https://krowne.com/files/5-6-standard-ice-bins-no-cold-plate-spec-sheet_001.pdf"],
+["Krowne","KR19-48DP","Beverage","48-inch underbar ice bin, 19-inch depth, 15-inch liner, no cold plate",1219,483,927,"floor","none",null,null,0,1,"https://krowne.com/files/5-6-standard-ice-bins-no-cold-plate-spec-sheet_001.pdf"],
+["Krowne","KR24-18","Beverage","18-inch underbar ice bin, 24-inch depth, 12-inch liner, no cold plate",457,610,927,"floor","none",null,null,0,1,"https://krowne.com/files/5-6-standard-ice-bins-no-cold-plate-spec-sheet_001.pdf"],
+["Krowne","KR24-24","Beverage","24-inch underbar ice bin, 24-inch depth, 12-inch liner, no cold plate",610,610,927,"floor","none",null,null,0,1,"https://krowne.com/files/5-6-standard-ice-bins-no-cold-plate-spec-sheet_001.pdf"],
+["Krowne","KR24-30","Beverage","30-inch underbar ice bin, 24-inch depth, 12-inch liner, no cold plate",762,610,927,"floor","none",null,null,0,1,"https://krowne.com/files/5-6-standard-ice-bins-no-cold-plate-spec-sheet_001.pdf"],
+["Krowne","KR24-36","Beverage","36-inch underbar ice bin, 24-inch depth, 12-inch liner, no cold plate",914,610,927,"floor","none",null,null,0,1,"https://krowne.com/files/5-6-standard-ice-bins-no-cold-plate-spec-sheet_001.pdf"],
+["Krowne","KR24-42","Beverage","42-inch underbar ice bin, 24-inch depth, 12-inch liner, no cold plate",1067,610,927,"floor","none",null,null,0,1,"https://krowne.com/files/5-6-standard-ice-bins-no-cold-plate-spec-sheet_001.pdf"],
+["Krowne","KR24-48","Beverage","48-inch underbar ice bin, 24-inch depth, 12-inch liner, no cold plate",1219,610,927,"floor","none",null,null,0,1,"https://krowne.com/files/5-6-standard-ice-bins-no-cold-plate-spec-sheet_001.pdf"]
 ];

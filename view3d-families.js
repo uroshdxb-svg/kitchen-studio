@@ -8,6 +8,7 @@ const KS3DFamilies=(()=>{
   const has=re=>re.test(n);
   if(has(/^(?:cocktail bar station|bar (?:mixology station|wet-waste sink|fusion hand-wash|drainboard blender station|hand sink|blender station))/))return 'bar-station';
   if(has(/^\d+-inch (?:mixology cocktail station|freestanding dry-waste bar cabinet|bar (?:drainboard with recessed wet-waste sink|wet-waste sink cabinet))/))return 'bar-station';
+  if(has(/^\d+-inch underbar ice bin/))return 'bar-station';
   if(has(/ingredient bin/))return 'ingredient-bin';
   if(has(/waste container|round container/))return 'waste-bin';
   if(has(/dish caddy|plate dispenser/))return 'plate-cart';
@@ -142,17 +143,18 @@ const KS3DFamilies=(()=>{
    if(family==='bar-station'){
     // Illustrative fixture construction, not manufacturer CAD or a working envelope.
     // Blender shelves and empty outlet boxes do not imply an included appliance.
-    const mixology=/mixology cocktail station/.test(n),cocktail=/cocktail bar station/.test(n)||mixology,sink=/sink/.test(n)||mixology,rinser=/rinser/.test(n)||mixology,dry=/dry-waste/.test(n),top=.80;
+    const mixology=/mixology cocktail station/.test(n),cocktail=/cocktail bar station/.test(n)||mixology,sink=/sink/.test(n)||mixology,rinser=/rinser/.test(n)||mixology,dry=/dry-waste/.test(n),ice=/underbar ice bin/.test(n),top=.80;
     legs(top-.03);box(.03,.64,.03,.94,.15,.018);box(.03,.64,.90,.94,.15,.018);
     box(.03,top,.025,.94,.18,.025);box(.03,top,.05,.94,.025,.10,m.polished);
     box(.03,top,.82,.94,.025,.10,m.polished);
-    function well(x,z,ww,dd){
-     box(x,top-.14,z,ww,.012,dd,m.polished);
-     for(const xx of [x,x+ww-.012])box(xx,top-.14,z,.012,.16,dd,m.polished);
-     for(const zz of [z,z+dd-.012])box(x,top-.14,zz,ww,.16,.012,m.polished);
-     cy(x+ww/2,top-.12,z+dd/2,.025,.008,m.dark);
+    function well(x,z,ww,dd,depth=.14){
+     box(x,top-depth,z,ww,.012,dd,m.polished);
+     for(const xx of [x,x+ww-.012])box(xx,top-depth,z,.012,depth+.02,dd,m.polished);
+     for(const zz of [z,z+dd-.012])box(x,top-depth,zz,ww,depth+.02,.012,m.polished);
+     cy(x+ww/2,top-depth+.02,z+dd/2,.025,.008,m.dark);
     }
-    if(cocktail){well(.08,.18,.24,.61);well(.38,.18,.54,.61);box(.06,.56,.84,.88,.018,.13);box(.06,.56,.955,.88,.12,.018);}
+    if(ice){well(.08,.16,.84,.66,/15-inch liner/.test(n)?.40:.32);box(.04,top,.15,.04,.025,.67);box(.92,top,.15,.04,.025,.67);}
+    else if(cocktail){well(.08,.18,.24,.61);well(.38,.18,.54,.61);box(.06,.56,.84,.88,.018,.13);box(.06,.56,.955,.88,.12,.018);}
     else if(sink){well(.14,.18,.72,.61);box(.03,top,.15,.11,.025,.67);box(.86,top,.15,.11,.025,.67);}
     else if(dry){box(.04,top,.16,.92,.025,.63);cy(.5,top+.028,.46,.20,.008,m.dark);ring(.5,top+.036,.46,.20,m.polished);}
     else{tray(.04,top,.16,.92,.63);grid(.07,top+.02,.19,.86,.57);}
@@ -335,7 +337,7 @@ const KS3DFamilies=(()=>{
    if(family==='water-boiler'){
     box(.05,.04,.04,.90,.81,.66);box(.04,.85,.03,.92,.08,.68,m.dark);box(.08,.93,.06,.84,.025,.62,m.steel2);
     box(.35,.73,.705,.30,.11,.018,m.dark);button(.42,.78,.73,m.green,.02);button(.60,.78,.73,m.orange,.02);
-    tube([[.5,.52,.70],[.5,.52,.87],[.5,.43,.87]],.026,m.dark);box(.44,.55,.77,.12,.04,.12,m.dark);
+    tube([[.5,.52,.70],[.5,.52,.87],[.5,.43,.87]],.026,m.dark);if(!/portion buttons/.test(n))box(.44,.55,.77,.12,.04,.12,m.dark);
     tray(.10,.06,.71,.80,.25);grid(.13,.09,.73,.74,.20);return;
    }
    if(family==='water-urn'){

@@ -1,0 +1,38 @@
+[
+  {
+    "schema_version": 1,
+    "passed": true,
+    "key": "bravilorbonamat|8.060.130.31002",
+    "row_hash": "ad7c9bb105231ef4c1efb2f8381f9f36189cce7a002d2d1f6fe273f7db34c767",
+    "evidence_hash": "f610062ddd4fabb5a8e444ce15b8f56fdf74d39f8052305e89559486b77a74c7",
+    "reviewed_at": "2026-10-29T21:44:45.792Z",
+    "errors": []
+  },
+  {
+    "schema_version": 1,
+    "passed": true,
+    "key": "bravilorbonamat|8.060.150.31002",
+    "row_hash": "357448e77187e0afb412ff5372bb3277e599e2706b70e5fd451aa6e3de1285f4",
+    "evidence_hash": "a330fb177036d795e8b40693c998a9d27ee32e6b71bbbc83c7677cb55be684d5",
+    "reviewed_at": "2026-10-29T21:44:45.792Z",
+    "errors": []
+  },
+  {
+    "schema_version": 1,
+    "passed": true,
+    "key": "bravilorbonamat|8.060.170.31002",
+    "row_hash": "9e776f92b06d1796700c285f40dae94046a3937556f15ed5eb824d9ed44ef001",
+    "evidence_hash": "4be9aad045bbb1302dc4f478bd2a7e70f196f712d7823a1d979ebd50c14a3394",
+    "reviewed_at": "2026-10-29T21:44:45.792Z",
+    "errors": []
+  },
+  {
+    "schema_version": 1,
+    "passed": true,
+    "key": "bravilorbonamat|8.060.190.31002",
+    "row_hash": "9776c52c0d2c10a62c51636c44f94a36fc1ed9f08dad07e3acf318d520f8cc5e",
+    "evidence_hash": "e1d55b4d39b949123c565755fc2ffc699491aba28634d0d781874c0127d058ca",
+    "reviewed_at": "2026-10-29T21:44:45.792Z",
+    "errors": []
+  }
+]
