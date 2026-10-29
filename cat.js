@@ -857,4 +857,9 @@ const CATALOGUE_ROWS = [
 ,
 ["Bravilor Bonamat","8.060.320.31002","Beverage","HWA 12 hot-water dispenser, automatic-fill configuration, 230 V",317,407,540,"top","electric",2.5,"230 V/1 ph/50-60 Hz",1,0,"https://www.bravilor.com/products/hot-water-and-milk-in/hwa-12/"],
 ["Bravilor Bonamat","8.060.310.31002","Beverage","HWA 8 hot-water dispenser, automatic-fill configuration, 230 V",317,407,456,"top","electric",2.5,"230 V/1 ph/50-60 Hz",1,0,"https://www.bravilor.com/products/hot-water-and-milk-in/hwa-8/"]
+,
+["Hoshizaki","FM-120KE-50-HC","Ice","Self-contained flake ice maker (H800 incl. legs)",940,600,800,"floor","electric",0.355,"220-240 V/1 ph/50 Hz",1,1,"https://hoshizaki-europe.com/middleeast/product/fm-120ke-50-hc-flaker-self-contained/"],
+["Hoshizaki","FM-120KE-50-HCN","Ice","Self-contained nugget ice maker (H800 incl. legs)",940,600,800,"floor","electric",0.355,"220-240 V/1 ph/50 Hz",1,1,"https://hoshizaki-europe.com/middleeast/product/fm-120ke-50-hcn-nugget-ice-maker-self-contained/"],
+["Hoshizaki","FM-120KE-HCN","Ice","Self-contained nugget ice maker (H800 incl. legs)",640,600,800,"floor","electric",0.355,"220-240 V/1 ph/50 Hz",1,1,"https://hoshizaki-europe.com/middleeast/product/fm-120ke-hcn-nugget-ice-maker-self-contained/"],
+["Hoshizaki","FM-80KE-HCN","Ice","Self-contained nugget ice maker (H800 incl. legs)",640,600,800,"floor","electric",0.27,"220-240 V/1 ph/50 Hz",1,1,"https://hoshizaki-europe.com/middleeast/product/fm-80ke-hcn-nugget-ice-maker-self-contained/"]
 ];

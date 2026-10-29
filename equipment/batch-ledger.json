@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-29T21:02:18.955Z",
+  "updated_at": "2026-10-29T21:17:03.324Z",
   "target": {
     "minimum_live_count": 1001,
     "deadline": "2026-10-31",
@@ -969,6 +969,37 @@
       },
       "recovery": {
         "bundle_sha256": "bd4593a7227d188ba12c66ffeada10ee6272a79cf0fb7b93652540f943419416"
+      }
+    },
+    {
+      "id": "2026-10-30-hoshizaki-ice-4",
+      "manufacturer": "Hoshizaki",
+      "models": [
+        "FM-120KE-50-HC",
+        "FM-120KE-50-HCN",
+        "FM-120KE-HCN",
+        "FM-80KE-HCN"
+      ],
+      "state": "prepared",
+      "source_before_sha": "80b9d63422d3d8cae6176f4630b24c9dc1159862",
+      "source_before": 854,
+      "source_after": 858,
+      "verified_additions": 4,
+      "merged_additions": 0,
+      "live_verified_additions": 0,
+      "evidence": "catalogue-evidence.json",
+      "csv": "equipment/batches/2026-10-30-hoshizaki-ice-4.csv",
+      "queue_range": "Untitled!A506:Q509",
+      "validation": {
+        "readiness": "4/4 exact-row certificates passed again on shared Sheet readback",
+        "regressions": "pending",
+        "production": "pending"
+      },
+      "recovery": {
+        "original_source_hashes_preserved": true,
+        "clearance_image": "hoshi-page6.png",
+        "clearance_image_sha256": "19156352bf4a7b620d915b204b6f77fd76c9281633db669b5e554e95b4fdcdfc",
+        "drawing_review": "Inherited exact-model manufacturer drawing review; clearance diagram independently inspected locally"
       }
     }
   ],
