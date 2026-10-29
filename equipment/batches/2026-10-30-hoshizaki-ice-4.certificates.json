@@ -1,0 +1,38 @@
+[
+  {
+    "schema_version": 1,
+    "passed": true,
+    "key": "hoshizaki|fm120ke50hc",
+    "row_hash": "8a7ad8faaaee66e7414c701dc968b078d679c4b339b291403fe218cbd533cbc9",
+    "evidence_hash": "52fdd7a75ba774e48a4faba8f92a994cb0070c94a1cc6c6a05985090f41ff112",
+    "reviewed_at": "2026-10-29T21:16:42.416Z",
+    "errors": []
+  },
+  {
+    "schema_version": 1,
+    "passed": true,
+    "key": "hoshizaki|fm120ke50hcn",
+    "row_hash": "9139139ee6a793db71875841bb4c444be8a8925cd0e5783b6985c763da3b21dd",
+    "evidence_hash": "5935bc45801a0874536d91eda9109eeeaef587d1bf62af7480bf6cbb9bb9e686",
+    "reviewed_at": "2026-10-29T21:16:42.418Z",
+    "errors": []
+  },
+  {
+    "schema_version": 1,
+    "passed": true,
+    "key": "hoshizaki|fm120kehcn",
+    "row_hash": "3ff3b643b904c338f78fbf338443a37290ac30d0e5a8a4d353b27bc9a80466ac",
+    "evidence_hash": "bf91db97ebe383d97cec870e1dddc192390bd310997d8ca171cc1e6ec77549c6",
+    "reviewed_at": "2026-10-29T21:16:42.419Z",
+    "errors": []
+  },
+  {
+    "schema_version": 1,
+    "passed": true,
+    "key": "hoshizaki|fm80kehcn",
+    "row_hash": "b3e4f276475c0859112e8a2c63d8eadc87612749f64470ab19d1237c5792f67b",
+    "evidence_hash": "dca5d448c4b532fa90e93f8b453df5e9a11c7082c66acb88c0fff0ffb0404d85",
+    "reviewed_at": "2026-10-29T21:16:42.419Z",
+    "errors": []
+  }
+]

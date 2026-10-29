@@ -96698,6 +96698,1326 @@
         "2026-10-30"
       ],
       "source_row_hash": "63e7ad7cbed1c09de94e92ba7e095e0a26d1bf8816b86bc1a9b6b95a1b40e42c"
+    },
+    "hoshizaki|fm120ke50hc": {
+      "schema_version": 1,
+      "key": "hoshizaki|fm120ke50hc",
+      "brand": "Hoshizaki",
+      "model": "FM-120KE-50-HC",
+      "manufacturer_sku": "FM-120KE-50-HC",
+      "manufacturer_item_number": "F115-C127",
+      "market": "Manufacturer Middle East exact item; supplier availability and local approval not asserted.",
+      "batch_id": "2026-10-30-hoshizaki-ice-4",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-29T21:16:42.416Z",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://hoshizaki-europe.com/middleeast/product/fm-120ke-50-hc-flaker-self-contained/",
+          "retrieved_at": "2026-10-28T17:58:49.432Z",
+          "document_sha256": "062fc4bbf0c03f2e857768f589671f359522136231d11ef347b79a9f6bae1bb1",
+          "reviewed_at": "2026-10-29T21:16:42.416Z"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://spec-sheets.hoshizaki-europe.com/pdf.php?lang=be_FR&sku=F115-C127",
+          "retrieved_at": "2026-10-29T15:32:59.755Z",
+          "document_sha256": "71c1253dea3e44a54a5e81630e8065fd1bf9a53b630c5c137d2181fc9915b4e3",
+          "pages": 2,
+          "drawing_page": 2,
+          "reviewed_at": "2026-10-29T21:16:42.416Z",
+          "visual_review": "Exact model French manufacturer sheet p.2 visually inspected: W/D/H, leg convention, water/drain callouts and open door envelope. Exact Middle East product page and English manufacturer installation manual also checked.",
+          "review_basis": "Recovered exact-model drawing review with original retrieval and document hash preserved"
+        },
+        {
+          "id": "S3",
+          "kind": "manufacturer-installation-manual",
+          "url": "https://pim-docs.hoshizaki-europe.com/production/Ice/Ice_Makers/Flakers/F115-C127/Installation_manual/l2f114202.pdf",
+          "retrieved_at": "2026-10-29T15:30:54.337Z",
+          "document_sha256": "ac0ddc5dcf999dd1f2ed970a9958fe990ad75adaaa3507d3559b11d577fdfe23",
+          "reviewed_at": "2026-10-29T21:16:42.416Z",
+          "revision": "L2F114202 (031522), 2022-03-15",
+          "locator": "English printed pp. 1-7; cover explicitly lists all five selected models",
+          "visual_review": "English printed p.4 (PDF page6) visually reviewed locally: 15 cm left/right/rear/top, no numerical front clearance"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact Middle East product FM-120KE-50-HC item F115-C127, selected air-cooled flake model. Current product page remains listed.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Exact-model drawing p.2 reviewed in recovered research shows W 940, D 600, H800 including 89 mm feet. Product body-height convention is H711 plus adjustable 87-122 mm feet. Runtime consistently uses installed H800; open door and service access are supplementary.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manufacturer installation manual pp.4-5 requires a firm level foundation and leveling with supplied adjustable legs; floor mounting.",
+          "source_ids": [
+            "S3"
+          ]
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact product Electrical Consumption is 0.355 kW. This is manufacturer electrical input, distinct from heat rejection and daily energy; no voltage/current calculation.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "Exact current product specifies 1/220-240 V/50 Hz and 6 A electrical circuit breaker protection. Manual p.5 calls for a separate grounded 220-240 VAC, 13 A supply protected by a suitable breaker. Supply capacity and protective device rating are separate fields; preserve both verbatim in meaning, do not equate either to operating current.",
+          "source_ids": [
+            "S1",
+            "S3"
+          ]
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Matching manual pp.5-6 requires potable cold-water inlet and gravity drain with downward fall and minimum 50 mm air gap. Exact drawing shows G3/4 water inlet and R3/4 waste. Product lists 0.05-0.8 MPa and 5-35 C.",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ]
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Manual p.1 states propane is sealed refrigeration charge; complete connections pp.5-6 cover electricity, potable water and waste, with no fuel-gas connection.",
+          "source_ids": [
+            "S3"
+          ]
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Selected installed height 800 mm with supplied feet set to 89 mm; body is 711 mm and feet adjust 87-122 mm. Indoor level floor, away from heat and water jets. Manual diagram requires 150 mm left, right, rear and above; front louver and bin-door/service access unobstructed. Potable cold water 5-35 C at 0.05-0.8 MPa, G3/4 inlet; R3/4 gravity waste with downward fall and at least 50 mm vertical air gap to floor drain. Grounded separate 220-240 VAC supply: manual specifies 13 A supply capacity; exact product separately lists 6 A circuit-breaker protection. These distinct ratings are retained, not used to calculate input. R290 is sealed refrigerant, no fuel-gas supply.",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ]
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Current exact Middle East product pages and documentation index reopened 2026-10-30 Dubai; the linked installation document is L2F114202 (031522). Original downloaded PDF hash was verified in recovered workspace; only its clearance page was exported and independently SHA256-verified locally. No newer applicable revision was shown in the current index.",
+          "source_ids": [
+            "S1",
+            "S3"
+          ]
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Ice/floor/electric, dimensions mm and input kW, both utility flags explicitly true. Selected installed envelope, article number, market, source revision and clearance details retained in sidecar.",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ]
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Hoshizaki",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact Middle East product FM-120KE-50-HC item F115-C127, selected air-cooled flake model. Current product page remains listed.",
+          "reason": "Exact Middle East product FM-120KE-50-HC item F115-C127, selected air-cooled flake model. Current product page remains listed."
+        },
+        "model": {
+          "value": "FM-120KE-50-HC",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact Middle East product FM-120KE-50-HC item F115-C127, selected air-cooled flake model. Current product page remains listed.",
+          "reason": "Exact Middle East product FM-120KE-50-HC item F115-C127, selected air-cooled flake model. Current product page remains listed."
+        },
+        "w": {
+          "value": 940,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact-model drawing p.2",
+          "reason": "Exact-model drawing p.2 reviewed in recovered research shows W 940, D 600, H800 including 89 mm feet. Product body-height convention is H711 plus adjustable 87-122 mm feet. Runtime consistently uses installed H800; open door and service access are supplementary.",
+          "original_value": 940,
+          "original_unit": "mm"
+        },
+        "d": {
+          "value": 600,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact-model drawing p.2",
+          "reason": "Exact-model drawing p.2 reviewed in recovered research shows W 940, D 600, H800 including 89 mm feet. Product body-height convention is H711 plus adjustable 87-122 mm feet. Runtime consistently uses installed H800; open door and service access are supplementary.",
+          "original_value": 600,
+          "original_unit": "mm"
+        },
+        "h": {
+          "value": 800,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact-model drawing p.2",
+          "reason": "Exact-model drawing p.2 reviewed in recovered research shows W 940, D 600, H800 including 89 mm feet. Product body-height convention is H711 plus adjustable 87-122 mm feet. Runtime consistently uses installed H800; open door and service access are supplementary.",
+          "original_value": 800,
+          "original_unit": "mm"
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S3"
+          ],
+          "locator": "Manufacturer installation manual pp.4-5 requires a firm level foundation and leveling with supplied adjustable legs; floor mounting.",
+          "reason": "Manufacturer installation manual pp.4-5 requires a firm level foundation and leveling with supplied adjustable legs; floor mounting."
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact product electrical specification",
+          "reason": "Exact product Electrical Consumption is 0.355 kW. This is manufacturer electrical input, distinct from heat rejection and daily energy; no voltage/current calculation."
+        },
+        "kw": {
+          "value": 0.355,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact product electrical specification",
+          "reason": "Exact product Electrical Consumption is 0.355 kW. This is manufacturer electrical input, distinct from heat rejection and daily energy; no voltage/current calculation.",
+          "original_value": 0.355,
+          "original_unit": "kW"
+        },
+        "elec": {
+          "value": "220-240 V/1 ph/50 Hz",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S3"
+          ],
+          "locator": "Exact current product specifies 1/220-240 V/50 Hz and 6 A electrical circuit breaker protection. Manual p.5 calls for a separate grounded 220-240 VAC, 13 A supply protected by a suitable breaker. Supply capacity and protective device rating are separate fields; preserve both verbatim in meaning, do not equate either to operating current.",
+          "reason": "Exact current product specifies 1/220-240 V/50 Hz and 6 A electrical circuit breaker protection. Manual p.5 calls for a separate grounded 220-240 VAC, 13 A supply protected by a suitable breaker. Supply capacity and protective device rating are separate fields; preserve both verbatim in meaning, do not equate either to operating current."
+        },
+        "water": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "locator": "Matching manual pp.5-6 requires potable cold-water inlet and gravity drain with downward fall and minimum 50 mm air gap. Exact drawing shows G3/4 water inlet and R3/4 waste. Product lists 0.05-0.8 MPa and 5-35 C.",
+          "reason": "Matching manual pp.5-6 requires potable cold-water inlet and gravity drain with downward fall and minimum 50 mm air gap. Exact drawing shows G3/4 water inlet and R3/4 waste. Product lists 0.05-0.8 MPa and 5-35 C."
+        },
+        "drain": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "locator": "Matching manual pp.5-6 requires potable cold-water inlet and gravity drain with downward fall and minimum 50 mm air gap. Exact drawing shows G3/4 water inlet and R3/4 waste. Product lists 0.05-0.8 MPa and 5-35 C.",
+          "reason": "Matching manual pp.5-6 requires potable cold-water inlet and gravity drain with downward fall and minimum 50 mm air gap. Exact drawing shows G3/4 water inlet and R3/4 waste. Product lists 0.05-0.8 MPa and 5-35 C."
+        }
+      },
+      "candidate_runtime_row": [
+        "Hoshizaki",
+        "FM-120KE-50-HC",
+        "Ice",
+        "Self-contained flake ice maker (H800 incl. legs)",
+        940,
+        600,
+        800,
+        "floor",
+        "electric",
+        0.355,
+        "220-240 V/1 ph/50 Hz",
+        1,
+        1,
+        "https://hoshizaki-europe.com/middleeast/product/fm-120ke-50-hc-flaker-self-contained/"
+      ],
+      "installation_notes": "Selected installed height 800 mm with supplied feet set to 89 mm; body is 711 mm and feet adjust 87-122 mm. Indoor level floor, away from heat and water jets. Manual diagram requires 150 mm left, right, rear and above; front louver and bin-door/service access unobstructed. Potable cold water 5-35 C at 0.05-0.8 MPa, G3/4 inlet; R3/4 gravity waste with downward fall and at least 50 mm vertical air gap to floor drain. Grounded separate 220-240 VAC supply: manual specifies 13 A supply capacity; exact product separately lists 6 A circuit-breaker protection. These distinct ratings are retained, not used to calculate input. R290 is sealed refrigerant, no fuel-gas supply.",
+      "installation_details": {
+        "manual_source_id": "S3",
+        "manual_locator": "English pp.1-7, clearance diagram p.4",
+        "clearance_mm": {
+          "left": 150,
+          "right": 150,
+          "rear": 150,
+          "top": 150,
+          "front": "Unobstructed louver and bin-door/service access; no numeric dimension stated"
+        },
+        "selected_height_mm": 800,
+        "body_height_mm": 711,
+        "selected_feet_height_mm": 89,
+        "adjustable_feet_mm": [
+          87,
+          122
+        ],
+        "water_pressure_MPa": [
+          0.05,
+          0.8
+        ],
+        "water_temperature_C": [
+          5,
+          35
+        ],
+        "ambient_temperature_C": [
+          5,
+          40
+        ],
+        "water_connection": "G3/4",
+        "drain_connection": "R3/4",
+        "drain_air_gap_min_mm": 50,
+        "supply_capacity_A": 13,
+        "product_circuit_breaker_protection_A": 6,
+        "notes": "Selected installed height 800 mm with supplied feet set to 89 mm; body is 711 mm and feet adjust 87-122 mm. Indoor level floor, away from heat and water jets. Manual diagram requires 150 mm left, right, rear and above; front louver and bin-door/service access unobstructed. Potable cold water 5-35 C at 0.05-0.8 MPa, G3/4 inlet; R3/4 gravity waste with downward fall and at least 50 mm vertical air gap to floor drain. Grounded separate 220-240 VAC supply: manual specifies 13 A supply capacity; exact product separately lists 6 A circuit-breaker protection. These distinct ratings are retained, not used to calculate input. R290 is sealed refrigerant, no fuel-gas supply."
+      },
+      "recovery": {
+        "original_source_hashes_preserved": true,
+        "clearance_image": "hoshi-page6.png",
+        "clearance_image_sha256": "19156352bf4a7b620d915b204b6f77fd76c9281633db669b5e554e95b4fdcdfc",
+        "drawing_review": "Inherited exact-model manufacturer drawing review; clearance diagram independently inspected locally"
+      },
+      "proposed_queue_row": [
+        "Hoshizaki",
+        "FM-120KE-50-HC",
+        "Ice",
+        "Self-contained flake ice maker (H800 incl. legs)",
+        "940",
+        "600",
+        "800",
+        "floor",
+        "electric",
+        "0.355",
+        "220-240 V/1 ph/50 Hz",
+        "1",
+        "1",
+        "https://hoshizaki-europe.com/middleeast/product/fm-120ke-50-hc-flaker-self-contained/",
+        "Manufacturer Middle East exact item; supplier availability and local approval not asserted.",
+        "Selected installed height 800 mm with supplied feet set to 89 mm; body is 711 mm and feet adjust 87-122 mm. Indoor level floor, away from heat and water jets. Manual diagram requires 150 mm left, right, rear and above; front louver and bin-door/service access unobstructed. Potable cold water 5-35 C at 0.05-0.8 MPa, G3/4 inlet; R3/4 gravity waste with downward fall and at least 50 mm vertical air gap to floor drain. Grounded separate 220-240 VAC supply: manual specifies 13 A supply capacity; exact product separately lists 6 A circuit-breaker protection. These distinct ratings are retained, not used to calculate input. R290 is sealed refrigerant, no fuel-gas supply.",
+        "2026-10-30"
+      ],
+      "source_row_hash": "8a7ad8faaaee66e7414c701dc968b078d679c4b339b291403fe218cbd533cbc9"
+    },
+    "hoshizaki|fm120ke50hcn": {
+      "schema_version": 1,
+      "key": "hoshizaki|fm120ke50hcn",
+      "brand": "Hoshizaki",
+      "model": "FM-120KE-50-HCN",
+      "manufacturer_sku": "FM-120KE-50-HCN",
+      "manufacturer_item_number": "F115-C129",
+      "market": "Manufacturer Middle East exact item; supplier availability and local approval not asserted.",
+      "batch_id": "2026-10-30-hoshizaki-ice-4",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-29T21:16:42.418Z",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://hoshizaki-europe.com/middleeast/product/fm-120ke-50-hcn-nugget-ice-maker-self-contained/",
+          "retrieved_at": "2026-10-28T17:57:51.198Z",
+          "document_sha256": "b16fe8f6016d653ab70447ae109d483ec19cc9c58e87e0cd39d8db887c1e1a89",
+          "reviewed_at": "2026-10-29T21:16:42.418Z"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://spec-sheets.hoshizaki-europe.com/pdf.php?lang=be_FR&sku=F115-C129",
+          "retrieved_at": "2026-10-29T15:32:59.506Z",
+          "document_sha256": "93beb1983f80b2c5c60bb3634237be3e0c9a22f0dee168bc1b0d7550dfc7f1b7",
+          "pages": 2,
+          "drawing_page": 2,
+          "reviewed_at": "2026-10-29T21:16:42.418Z",
+          "visual_review": "Exact model French manufacturer sheet p.2 visually inspected: W/D/H, leg convention, water/drain callouts and open door envelope. Exact Middle East product page and English manufacturer installation manual also checked.",
+          "review_basis": "Recovered exact-model drawing review with original retrieval and document hash preserved"
+        },
+        {
+          "id": "S3",
+          "kind": "manufacturer-installation-manual",
+          "url": "https://pim-docs.hoshizaki-europe.com/production/Ice_Makers/Nugget_Ice_Makers/F115-C129/Installation_manual/l2f114202.pdf",
+          "retrieved_at": "2026-10-29T15:30:54.221Z",
+          "document_sha256": "ac0ddc5dcf999dd1f2ed970a9958fe990ad75adaaa3507d3559b11d577fdfe23",
+          "reviewed_at": "2026-10-29T21:16:42.418Z",
+          "revision": "L2F114202 (031522), 2022-03-15",
+          "locator": "English printed pp. 1-7; cover explicitly lists all five selected models",
+          "visual_review": "English printed p.4 (PDF page6) visually reviewed locally: 15 cm left/right/rear/top, no numerical front clearance"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact Middle East product FM-120KE-50-HCN item F115-C129, selected air-cooled nugget model. Current product page remains listed.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Exact-model drawing p.2 reviewed in recovered research shows W 940, D 600, H800 including 89 mm feet. Product body-height convention is H711 plus adjustable 87-122 mm feet. Runtime consistently uses installed H800; open door and service access are supplementary.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manufacturer installation manual pp.4-5 requires a firm level foundation and leveling with supplied adjustable legs; floor mounting.",
+          "source_ids": [
+            "S3"
+          ]
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact product Electrical Consumption is 0.355 kW. This is manufacturer electrical input, distinct from heat rejection and daily energy; no voltage/current calculation.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "Exact current product specifies 1/220-240 V/50 Hz and 6 A electrical circuit breaker protection. Manual p.5 calls for a separate grounded 220-240 VAC, 13 A supply protected by a suitable breaker. Supply capacity and protective device rating are separate fields; preserve both verbatim in meaning, do not equate either to operating current.",
+          "source_ids": [
+            "S1",
+            "S3"
+          ]
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Matching manual pp.5-6 requires potable cold-water inlet and gravity drain with downward fall and minimum 50 mm air gap. Exact drawing shows G3/4 water inlet and R3/4 waste. Product lists 0.05-0.8 MPa and 5-35 C.",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ]
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Manual p.1 states propane is sealed refrigeration charge; complete connections pp.5-6 cover electricity, potable water and waste, with no fuel-gas connection.",
+          "source_ids": [
+            "S3"
+          ]
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Selected installed height 800 mm with supplied feet set to 89 mm; body is 711 mm and feet adjust 87-122 mm. Indoor level floor, away from heat and water jets. Manual diagram requires 150 mm left, right, rear and above; front louver and bin-door/service access unobstructed. Potable cold water 5-35 C at 0.05-0.8 MPa, G3/4 inlet; R3/4 gravity waste with downward fall and at least 50 mm vertical air gap to floor drain. Grounded separate 220-240 VAC supply: manual specifies 13 A supply capacity; exact product separately lists 6 A circuit-breaker protection. These distinct ratings are retained, not used to calculate input. R290 is sealed refrigerant, no fuel-gas supply.",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ]
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Current exact Middle East product pages and documentation index reopened 2026-10-30 Dubai; the linked installation document is L2F114202 (031522). Original downloaded PDF hash was verified in recovered workspace; only its clearance page was exported and independently SHA256-verified locally. No newer applicable revision was shown in the current index.",
+          "source_ids": [
+            "S1",
+            "S3"
+          ]
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Ice/floor/electric, dimensions mm and input kW, both utility flags explicitly true. Selected installed envelope, article number, market, source revision and clearance details retained in sidecar.",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ]
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Hoshizaki",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact Middle East product FM-120KE-50-HCN item F115-C129, selected air-cooled nugget model. Current product page remains listed.",
+          "reason": "Exact Middle East product FM-120KE-50-HCN item F115-C129, selected air-cooled nugget model. Current product page remains listed."
+        },
+        "model": {
+          "value": "FM-120KE-50-HCN",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact Middle East product FM-120KE-50-HCN item F115-C129, selected air-cooled nugget model. Current product page remains listed.",
+          "reason": "Exact Middle East product FM-120KE-50-HCN item F115-C129, selected air-cooled nugget model. Current product page remains listed."
+        },
+        "w": {
+          "value": 940,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact-model drawing p.2",
+          "reason": "Exact-model drawing p.2 reviewed in recovered research shows W 940, D 600, H800 including 89 mm feet. Product body-height convention is H711 plus adjustable 87-122 mm feet. Runtime consistently uses installed H800; open door and service access are supplementary.",
+          "original_value": 940,
+          "original_unit": "mm"
+        },
+        "d": {
+          "value": 600,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact-model drawing p.2",
+          "reason": "Exact-model drawing p.2 reviewed in recovered research shows W 940, D 600, H800 including 89 mm feet. Product body-height convention is H711 plus adjustable 87-122 mm feet. Runtime consistently uses installed H800; open door and service access are supplementary.",
+          "original_value": 600,
+          "original_unit": "mm"
+        },
+        "h": {
+          "value": 800,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact-model drawing p.2",
+          "reason": "Exact-model drawing p.2 reviewed in recovered research shows W 940, D 600, H800 including 89 mm feet. Product body-height convention is H711 plus adjustable 87-122 mm feet. Runtime consistently uses installed H800; open door and service access are supplementary.",
+          "original_value": 800,
+          "original_unit": "mm"
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S3"
+          ],
+          "locator": "Manufacturer installation manual pp.4-5 requires a firm level foundation and leveling with supplied adjustable legs; floor mounting.",
+          "reason": "Manufacturer installation manual pp.4-5 requires a firm level foundation and leveling with supplied adjustable legs; floor mounting."
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact product electrical specification",
+          "reason": "Exact product Electrical Consumption is 0.355 kW. This is manufacturer electrical input, distinct from heat rejection and daily energy; no voltage/current calculation."
+        },
+        "kw": {
+          "value": 0.355,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact product electrical specification",
+          "reason": "Exact product Electrical Consumption is 0.355 kW. This is manufacturer electrical input, distinct from heat rejection and daily energy; no voltage/current calculation.",
+          "original_value": 0.355,
+          "original_unit": "kW"
+        },
+        "elec": {
+          "value": "220-240 V/1 ph/50 Hz",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S3"
+          ],
+          "locator": "Exact current product specifies 1/220-240 V/50 Hz and 6 A electrical circuit breaker protection. Manual p.5 calls for a separate grounded 220-240 VAC, 13 A supply protected by a suitable breaker. Supply capacity and protective device rating are separate fields; preserve both verbatim in meaning, do not equate either to operating current.",
+          "reason": "Exact current product specifies 1/220-240 V/50 Hz and 6 A electrical circuit breaker protection. Manual p.5 calls for a separate grounded 220-240 VAC, 13 A supply protected by a suitable breaker. Supply capacity and protective device rating are separate fields; preserve both verbatim in meaning, do not equate either to operating current."
+        },
+        "water": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "locator": "Matching manual pp.5-6 requires potable cold-water inlet and gravity drain with downward fall and minimum 50 mm air gap. Exact drawing shows G3/4 water inlet and R3/4 waste. Product lists 0.05-0.8 MPa and 5-35 C.",
+          "reason": "Matching manual pp.5-6 requires potable cold-water inlet and gravity drain with downward fall and minimum 50 mm air gap. Exact drawing shows G3/4 water inlet and R3/4 waste. Product lists 0.05-0.8 MPa and 5-35 C."
+        },
+        "drain": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "locator": "Matching manual pp.5-6 requires potable cold-water inlet and gravity drain with downward fall and minimum 50 mm air gap. Exact drawing shows G3/4 water inlet and R3/4 waste. Product lists 0.05-0.8 MPa and 5-35 C.",
+          "reason": "Matching manual pp.5-6 requires potable cold-water inlet and gravity drain with downward fall and minimum 50 mm air gap. Exact drawing shows G3/4 water inlet and R3/4 waste. Product lists 0.05-0.8 MPa and 5-35 C."
+        }
+      },
+      "candidate_runtime_row": [
+        "Hoshizaki",
+        "FM-120KE-50-HCN",
+        "Ice",
+        "Self-contained nugget ice maker (H800 incl. legs)",
+        940,
+        600,
+        800,
+        "floor",
+        "electric",
+        0.355,
+        "220-240 V/1 ph/50 Hz",
+        1,
+        1,
+        "https://hoshizaki-europe.com/middleeast/product/fm-120ke-50-hcn-nugget-ice-maker-self-contained/"
+      ],
+      "installation_notes": "Selected installed height 800 mm with supplied feet set to 89 mm; body is 711 mm and feet adjust 87-122 mm. Indoor level floor, away from heat and water jets. Manual diagram requires 150 mm left, right, rear and above; front louver and bin-door/service access unobstructed. Potable cold water 5-35 C at 0.05-0.8 MPa, G3/4 inlet; R3/4 gravity waste with downward fall and at least 50 mm vertical air gap to floor drain. Grounded separate 220-240 VAC supply: manual specifies 13 A supply capacity; exact product separately lists 6 A circuit-breaker protection. These distinct ratings are retained, not used to calculate input. R290 is sealed refrigerant, no fuel-gas supply.",
+      "installation_details": {
+        "manual_source_id": "S3",
+        "manual_locator": "English pp.1-7, clearance diagram p.4",
+        "clearance_mm": {
+          "left": 150,
+          "right": 150,
+          "rear": 150,
+          "top": 150,
+          "front": "Unobstructed louver and bin-door/service access; no numeric dimension stated"
+        },
+        "selected_height_mm": 800,
+        "body_height_mm": 711,
+        "selected_feet_height_mm": 89,
+        "adjustable_feet_mm": [
+          87,
+          122
+        ],
+        "water_pressure_MPa": [
+          0.05,
+          0.8
+        ],
+        "water_temperature_C": [
+          5,
+          35
+        ],
+        "ambient_temperature_C": [
+          5,
+          40
+        ],
+        "water_connection": "G3/4",
+        "drain_connection": "R3/4",
+        "drain_air_gap_min_mm": 50,
+        "supply_capacity_A": 13,
+        "product_circuit_breaker_protection_A": 6,
+        "notes": "Selected installed height 800 mm with supplied feet set to 89 mm; body is 711 mm and feet adjust 87-122 mm. Indoor level floor, away from heat and water jets. Manual diagram requires 150 mm left, right, rear and above; front louver and bin-door/service access unobstructed. Potable cold water 5-35 C at 0.05-0.8 MPa, G3/4 inlet; R3/4 gravity waste with downward fall and at least 50 mm vertical air gap to floor drain. Grounded separate 220-240 VAC supply: manual specifies 13 A supply capacity; exact product separately lists 6 A circuit-breaker protection. These distinct ratings are retained, not used to calculate input. R290 is sealed refrigerant, no fuel-gas supply."
+      },
+      "recovery": {
+        "original_source_hashes_preserved": true,
+        "clearance_image": "hoshi-page6.png",
+        "clearance_image_sha256": "19156352bf4a7b620d915b204b6f77fd76c9281633db669b5e554e95b4fdcdfc",
+        "drawing_review": "Inherited exact-model manufacturer drawing review; clearance diagram independently inspected locally"
+      },
+      "proposed_queue_row": [
+        "Hoshizaki",
+        "FM-120KE-50-HCN",
+        "Ice",
+        "Self-contained nugget ice maker (H800 incl. legs)",
+        "940",
+        "600",
+        "800",
+        "floor",
+        "electric",
+        "0.355",
+        "220-240 V/1 ph/50 Hz",
+        "1",
+        "1",
+        "https://hoshizaki-europe.com/middleeast/product/fm-120ke-50-hcn-nugget-ice-maker-self-contained/",
+        "Manufacturer Middle East exact item; supplier availability and local approval not asserted.",
+        "Selected installed height 800 mm with supplied feet set to 89 mm; body is 711 mm and feet adjust 87-122 mm. Indoor level floor, away from heat and water jets. Manual diagram requires 150 mm left, right, rear and above; front louver and bin-door/service access unobstructed. Potable cold water 5-35 C at 0.05-0.8 MPa, G3/4 inlet; R3/4 gravity waste with downward fall and at least 50 mm vertical air gap to floor drain. Grounded separate 220-240 VAC supply: manual specifies 13 A supply capacity; exact product separately lists 6 A circuit-breaker protection. These distinct ratings are retained, not used to calculate input. R290 is sealed refrigerant, no fuel-gas supply.",
+        "2026-10-30"
+      ],
+      "source_row_hash": "9139139ee6a793db71875841bb4c444be8a8925cd0e5783b6985c763da3b21dd"
+    },
+    "hoshizaki|fm120kehcn": {
+      "schema_version": 1,
+      "key": "hoshizaki|fm120kehcn",
+      "brand": "Hoshizaki",
+      "model": "FM-120KE-HCN",
+      "manufacturer_sku": "FM-120KE-HCN",
+      "manufacturer_item_number": "F115-C106",
+      "market": "Manufacturer Middle East exact item; supplier availability and local approval not asserted.",
+      "batch_id": "2026-10-30-hoshizaki-ice-4",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-29T21:16:42.419Z",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://hoshizaki-europe.com/middleeast/product/fm-120ke-hcn-nugget-ice-maker-self-contained/",
+          "retrieved_at": "2026-10-28T17:57:50.751Z",
+          "document_sha256": "c84a97e40c1ea03f370c1a40ce227d481ca27a2a9d9bdc6c85a83f07e485af37",
+          "reviewed_at": "2026-10-29T21:16:42.419Z"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://spec-sheets.hoshizaki-europe.com/pdf.php?lang=be_FR&sku=F115-C106",
+          "retrieved_at": "2026-10-29T15:32:59.733Z",
+          "document_sha256": "017645297bdef48ed851e797303114d0e6401e5653f9d5c180a90f3af71ca0dd",
+          "pages": 2,
+          "drawing_page": 2,
+          "reviewed_at": "2026-10-29T21:16:42.419Z",
+          "visual_review": "Exact model French manufacturer sheet p.2 visually inspected: W/D/H, leg convention, water/drain callouts and open door envelope. Exact Middle East product page and English manufacturer installation manual also checked.",
+          "review_basis": "Recovered exact-model drawing review with original retrieval and document hash preserved"
+        },
+        {
+          "id": "S3",
+          "kind": "manufacturer-installation-manual",
+          "url": "https://pim-docs.hoshizaki-europe.com/production/Ice/Ice_Makers/Nugget_Ice_Makers/F115-C106/Installation_manual/l2f114202.pdf",
+          "retrieved_at": "2026-10-29T15:30:54.713Z",
+          "document_sha256": "ac0ddc5dcf999dd1f2ed970a9958fe990ad75adaaa3507d3559b11d577fdfe23",
+          "reviewed_at": "2026-10-29T21:16:42.419Z",
+          "revision": "L2F114202 (031522), 2022-03-15",
+          "locator": "English printed pp. 1-7; cover explicitly lists all five selected models",
+          "visual_review": "English printed p.4 (PDF page6) visually reviewed locally: 15 cm left/right/rear/top, no numerical front clearance"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact Middle East product FM-120KE-HCN item F115-C106, selected air-cooled nugget model. Current product page remains listed.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Exact-model drawing p.2 reviewed in recovered research shows W 640, D 600, H800 including 89 mm feet. Product body-height convention is H711 plus adjustable 87-122 mm feet. Runtime consistently uses installed H800; open door and service access are supplementary.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manufacturer installation manual pp.4-5 requires a firm level foundation and leveling with supplied adjustable legs; floor mounting.",
+          "source_ids": [
+            "S3"
+          ]
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact product Electrical Consumption is 0.355 kW. This is manufacturer electrical input, distinct from heat rejection and daily energy; no voltage/current calculation.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "Exact current product specifies 1/220-240 V/50 Hz and 6 A electrical circuit breaker protection. Manual p.5 calls for a separate grounded 220-240 VAC, 13 A supply protected by a suitable breaker. Supply capacity and protective device rating are separate fields; preserve both verbatim in meaning, do not equate either to operating current.",
+          "source_ids": [
+            "S1",
+            "S3"
+          ]
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Matching manual pp.5-6 requires potable cold-water inlet and gravity drain with downward fall and minimum 50 mm air gap. Exact drawing shows G3/4 water inlet and R3/4 waste. Product lists 0.05-0.8 MPa and 5-35 C.",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ]
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Manual p.1 states propane is sealed refrigeration charge; complete connections pp.5-6 cover electricity, potable water and waste, with no fuel-gas connection.",
+          "source_ids": [
+            "S3"
+          ]
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Selected installed height 800 mm with supplied feet set to 89 mm; body is 711 mm and feet adjust 87-122 mm. Indoor level floor, away from heat and water jets. Manual diagram requires 150 mm left, right, rear and above; front louver and bin-door/service access unobstructed. Potable cold water 5-35 C at 0.05-0.8 MPa, G3/4 inlet; R3/4 gravity waste with downward fall and at least 50 mm vertical air gap to floor drain. Grounded separate 220-240 VAC supply: manual specifies 13 A supply capacity; exact product separately lists 6 A circuit-breaker protection. These distinct ratings are retained, not used to calculate input. R290 is sealed refrigerant, no fuel-gas supply.",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ]
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Current exact Middle East product pages and documentation index reopened 2026-10-30 Dubai; the linked installation document is L2F114202 (031522). Original downloaded PDF hash was verified in recovered workspace; only its clearance page was exported and independently SHA256-verified locally. No newer applicable revision was shown in the current index.",
+          "source_ids": [
+            "S1",
+            "S3"
+          ]
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Ice/floor/electric, dimensions mm and input kW, both utility flags explicitly true. Selected installed envelope, article number, market, source revision and clearance details retained in sidecar.",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ]
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Hoshizaki",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact Middle East product FM-120KE-HCN item F115-C106, selected air-cooled nugget model. Current product page remains listed.",
+          "reason": "Exact Middle East product FM-120KE-HCN item F115-C106, selected air-cooled nugget model. Current product page remains listed."
+        },
+        "model": {
+          "value": "FM-120KE-HCN",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact Middle East product FM-120KE-HCN item F115-C106, selected air-cooled nugget model. Current product page remains listed.",
+          "reason": "Exact Middle East product FM-120KE-HCN item F115-C106, selected air-cooled nugget model. Current product page remains listed."
+        },
+        "w": {
+          "value": 640,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact-model drawing p.2",
+          "reason": "Exact-model drawing p.2 reviewed in recovered research shows W 640, D 600, H800 including 89 mm feet. Product body-height convention is H711 plus adjustable 87-122 mm feet. Runtime consistently uses installed H800; open door and service access are supplementary.",
+          "original_value": 640,
+          "original_unit": "mm"
+        },
+        "d": {
+          "value": 600,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact-model drawing p.2",
+          "reason": "Exact-model drawing p.2 reviewed in recovered research shows W 640, D 600, H800 including 89 mm feet. Product body-height convention is H711 plus adjustable 87-122 mm feet. Runtime consistently uses installed H800; open door and service access are supplementary.",
+          "original_value": 600,
+          "original_unit": "mm"
+        },
+        "h": {
+          "value": 800,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact-model drawing p.2",
+          "reason": "Exact-model drawing p.2 reviewed in recovered research shows W 640, D 600, H800 including 89 mm feet. Product body-height convention is H711 plus adjustable 87-122 mm feet. Runtime consistently uses installed H800; open door and service access are supplementary.",
+          "original_value": 800,
+          "original_unit": "mm"
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S3"
+          ],
+          "locator": "Manufacturer installation manual pp.4-5 requires a firm level foundation and leveling with supplied adjustable legs; floor mounting.",
+          "reason": "Manufacturer installation manual pp.4-5 requires a firm level foundation and leveling with supplied adjustable legs; floor mounting."
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact product electrical specification",
+          "reason": "Exact product Electrical Consumption is 0.355 kW. This is manufacturer electrical input, distinct from heat rejection and daily energy; no voltage/current calculation."
+        },
+        "kw": {
+          "value": 0.355,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact product electrical specification",
+          "reason": "Exact product Electrical Consumption is 0.355 kW. This is manufacturer electrical input, distinct from heat rejection and daily energy; no voltage/current calculation.",
+          "original_value": 0.355,
+          "original_unit": "kW"
+        },
+        "elec": {
+          "value": "220-240 V/1 ph/50 Hz",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S3"
+          ],
+          "locator": "Exact current product specifies 1/220-240 V/50 Hz and 6 A electrical circuit breaker protection. Manual p.5 calls for a separate grounded 220-240 VAC, 13 A supply protected by a suitable breaker. Supply capacity and protective device rating are separate fields; preserve both verbatim in meaning, do not equate either to operating current.",
+          "reason": "Exact current product specifies 1/220-240 V/50 Hz and 6 A electrical circuit breaker protection. Manual p.5 calls for a separate grounded 220-240 VAC, 13 A supply protected by a suitable breaker. Supply capacity and protective device rating are separate fields; preserve both verbatim in meaning, do not equate either to operating current."
+        },
+        "water": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "locator": "Matching manual pp.5-6 requires potable cold-water inlet and gravity drain with downward fall and minimum 50 mm air gap. Exact drawing shows G3/4 water inlet and R3/4 waste. Product lists 0.05-0.8 MPa and 5-35 C.",
+          "reason": "Matching manual pp.5-6 requires potable cold-water inlet and gravity drain with downward fall and minimum 50 mm air gap. Exact drawing shows G3/4 water inlet and R3/4 waste. Product lists 0.05-0.8 MPa and 5-35 C."
+        },
+        "drain": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "locator": "Matching manual pp.5-6 requires potable cold-water inlet and gravity drain with downward fall and minimum 50 mm air gap. Exact drawing shows G3/4 water inlet and R3/4 waste. Product lists 0.05-0.8 MPa and 5-35 C.",
+          "reason": "Matching manual pp.5-6 requires potable cold-water inlet and gravity drain with downward fall and minimum 50 mm air gap. Exact drawing shows G3/4 water inlet and R3/4 waste. Product lists 0.05-0.8 MPa and 5-35 C."
+        }
+      },
+      "candidate_runtime_row": [
+        "Hoshizaki",
+        "FM-120KE-HCN",
+        "Ice",
+        "Self-contained nugget ice maker (H800 incl. legs)",
+        640,
+        600,
+        800,
+        "floor",
+        "electric",
+        0.355,
+        "220-240 V/1 ph/50 Hz",
+        1,
+        1,
+        "https://hoshizaki-europe.com/middleeast/product/fm-120ke-hcn-nugget-ice-maker-self-contained/"
+      ],
+      "installation_notes": "Selected installed height 800 mm with supplied feet set to 89 mm; body is 711 mm and feet adjust 87-122 mm. Indoor level floor, away from heat and water jets. Manual diagram requires 150 mm left, right, rear and above; front louver and bin-door/service access unobstructed. Potable cold water 5-35 C at 0.05-0.8 MPa, G3/4 inlet; R3/4 gravity waste with downward fall and at least 50 mm vertical air gap to floor drain. Grounded separate 220-240 VAC supply: manual specifies 13 A supply capacity; exact product separately lists 6 A circuit-breaker protection. These distinct ratings are retained, not used to calculate input. R290 is sealed refrigerant, no fuel-gas supply.",
+      "installation_details": {
+        "manual_source_id": "S3",
+        "manual_locator": "English pp.1-7, clearance diagram p.4",
+        "clearance_mm": {
+          "left": 150,
+          "right": 150,
+          "rear": 150,
+          "top": 150,
+          "front": "Unobstructed louver and bin-door/service access; no numeric dimension stated"
+        },
+        "selected_height_mm": 800,
+        "body_height_mm": 711,
+        "selected_feet_height_mm": 89,
+        "adjustable_feet_mm": [
+          87,
+          122
+        ],
+        "water_pressure_MPa": [
+          0.05,
+          0.8
+        ],
+        "water_temperature_C": [
+          5,
+          35
+        ],
+        "ambient_temperature_C": [
+          5,
+          40
+        ],
+        "water_connection": "G3/4",
+        "drain_connection": "R3/4",
+        "drain_air_gap_min_mm": 50,
+        "supply_capacity_A": 13,
+        "product_circuit_breaker_protection_A": 6,
+        "notes": "Selected installed height 800 mm with supplied feet set to 89 mm; body is 711 mm and feet adjust 87-122 mm. Indoor level floor, away from heat and water jets. Manual diagram requires 150 mm left, right, rear and above; front louver and bin-door/service access unobstructed. Potable cold water 5-35 C at 0.05-0.8 MPa, G3/4 inlet; R3/4 gravity waste with downward fall and at least 50 mm vertical air gap to floor drain. Grounded separate 220-240 VAC supply: manual specifies 13 A supply capacity; exact product separately lists 6 A circuit-breaker protection. These distinct ratings are retained, not used to calculate input. R290 is sealed refrigerant, no fuel-gas supply."
+      },
+      "recovery": {
+        "original_source_hashes_preserved": true,
+        "clearance_image": "hoshi-page6.png",
+        "clearance_image_sha256": "19156352bf4a7b620d915b204b6f77fd76c9281633db669b5e554e95b4fdcdfc",
+        "drawing_review": "Inherited exact-model manufacturer drawing review; clearance diagram independently inspected locally"
+      },
+      "proposed_queue_row": [
+        "Hoshizaki",
+        "FM-120KE-HCN",
+        "Ice",
+        "Self-contained nugget ice maker (H800 incl. legs)",
+        "640",
+        "600",
+        "800",
+        "floor",
+        "electric",
+        "0.355",
+        "220-240 V/1 ph/50 Hz",
+        "1",
+        "1",
+        "https://hoshizaki-europe.com/middleeast/product/fm-120ke-hcn-nugget-ice-maker-self-contained/",
+        "Manufacturer Middle East exact item; supplier availability and local approval not asserted.",
+        "Selected installed height 800 mm with supplied feet set to 89 mm; body is 711 mm and feet adjust 87-122 mm. Indoor level floor, away from heat and water jets. Manual diagram requires 150 mm left, right, rear and above; front louver and bin-door/service access unobstructed. Potable cold water 5-35 C at 0.05-0.8 MPa, G3/4 inlet; R3/4 gravity waste with downward fall and at least 50 mm vertical air gap to floor drain. Grounded separate 220-240 VAC supply: manual specifies 13 A supply capacity; exact product separately lists 6 A circuit-breaker protection. These distinct ratings are retained, not used to calculate input. R290 is sealed refrigerant, no fuel-gas supply.",
+        "2026-10-30"
+      ],
+      "source_row_hash": "3ff3b643b904c338f78fbf338443a37290ac30d0e5a8a4d353b27bc9a80466ac"
+    },
+    "hoshizaki|fm80kehcn": {
+      "schema_version": 1,
+      "key": "hoshizaki|fm80kehcn",
+      "brand": "Hoshizaki",
+      "model": "FM-80KE-HCN",
+      "manufacturer_sku": "FM-80KE-HCN",
+      "manufacturer_item_number": "F114-C106",
+      "market": "Manufacturer Middle East exact model; regional stock and approval not asserted.",
+      "batch_id": "2026-10-30-hoshizaki-ice-4",
+      "status": "exact-variant-checked",
+      "ready_to_import": true,
+      "reviewed_at": "2026-10-29T21:16:42.419Z",
+      "blockers": [],
+      "sources": [
+        {
+          "id": "S1",
+          "kind": "manufacturer-product-page",
+          "url": "https://hoshizaki-europe.com/middleeast/product/fm-80ke-hcn-nugget-ice-maker-self-contained/",
+          "retrieved_at": "2026-10-28T17:58:49.430Z",
+          "document_sha256": "9d813dee544fe435e25374dccd5853c4f17d4161c04091a68e2d4236a4fd4d7d",
+          "reviewed_at": "2026-10-29T21:16:42.419Z"
+        },
+        {
+          "id": "S2",
+          "kind": "manufacturer-specification",
+          "url": "https://spec-sheets.hoshizaki-europe.com/pdf.php?sku=F114-C106&lang=en_MidE",
+          "retrieved_at": "2026-10-29T15:31:05.025Z",
+          "document_sha256": "568d573141f2e9b58a481bbf9a570656739a363fc547b987848a354d9d274f83",
+          "pages": 2,
+          "drawing_page": 2,
+          "reviewed_at": "2026-10-29T21:16:42.419Z",
+          "visual_review": "Exact model manufacturer specification p.2 visually reviewed for dimensions and service callouts; manufacturer page electrical data checked.",
+          "review_basis": "Recovered exact-model drawing review with original retrieval and document hash preserved"
+        },
+        {
+          "id": "S3",
+          "kind": "manufacturer-installation-manual",
+          "url": "https://pim-docs.hoshizaki-europe.com/production/Ice/Ice_Makers/Nugget_Ice_Makers/F114-C106/Installation_manual/l2f114202.pdf",
+          "retrieved_at": "2026-10-29T15:31:05.495Z",
+          "document_sha256": "ac0ddc5dcf999dd1f2ed970a9958fe990ad75adaaa3507d3559b11d577fdfe23",
+          "reviewed_at": "2026-10-29T21:16:42.419Z",
+          "revision": "L2F114202 (031522), 2022-03-15",
+          "locator": "English printed pp. 1-7; cover explicitly lists all five selected models",
+          "visual_review": "English printed p.4 (PDF page6) visually reviewed locally: 15 cm left/right/rear/top, no numerical front clearance"
+        }
+      ],
+      "required_checks": {
+        "identity": {
+          "status": "checked",
+          "reason": "Exact Middle East product FM-80KE-HCN item F114-C106, selected air-cooled nugget model. Current product page remains listed.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "dimensions": {
+          "status": "checked",
+          "reason": "Exact-model drawing p.2 reviewed in recovered research shows W 640, D 600, H800 including 89 mm feet. Product body-height convention is H711 plus adjustable 87-122 mm feet. Runtime consistently uses installed H800; open door and service access are supplementary.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "mounting": {
+          "status": "checked",
+          "reason": "Manufacturer installation manual pp.4-5 requires a firm level foundation and leveling with supplied adjustable legs; floor mounting.",
+          "source_ids": [
+            "S3"
+          ]
+        },
+        "power_input": {
+          "status": "checked",
+          "reason": "Exact product Electrical Consumption is 0.27 kW. This is manufacturer electrical input, distinct from heat rejection and daily energy; no voltage/current calculation.",
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "electrical_supply": {
+          "status": "checked",
+          "reason": "Exact current product specifies 1/220-240 V/50 Hz and 6 A electrical circuit breaker protection. Manual p.5 calls for a separate grounded 220-240 VAC, 13 A supply protected by a suitable breaker. Supply capacity and protective device rating are separate fields; preserve both verbatim in meaning, do not equate either to operating current.",
+          "source_ids": [
+            "S1",
+            "S3"
+          ]
+        },
+        "water_drain": {
+          "status": "checked",
+          "reason": "Matching manual pp.5-6 requires potable cold-water inlet and gravity drain with downward fall and minimum 50 mm air gap. Exact drawing shows G3/4 water inlet and R3/4 waste. Product lists 0.05-0.8 MPa and 5-35 C.",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ]
+        },
+        "gas": {
+          "status": "checked",
+          "reason": "Manual p.1 states propane is sealed refrigeration charge; complete connections pp.5-6 cover electricity, potable water and waste, with no fuel-gas connection.",
+          "source_ids": [
+            "S3"
+          ]
+        },
+        "installation": {
+          "status": "checked",
+          "reason": "Selected installed height 800 mm with supplied feet set to 89 mm; body is 711 mm and feet adjust 87-122 mm. Indoor level floor, away from heat and water jets. Manual diagram requires 150 mm left, right, rear and above; front louver and bin-door/service access unobstructed. Potable cold water 5-35 C at 0.05-0.8 MPa, G3/4 inlet; R3/4 gravity waste with downward fall and at least 50 mm vertical air gap to floor drain. Grounded separate 220-240 VAC supply: manual specifies 13 A supply capacity; exact product separately lists 6 A circuit-breaker protection. These distinct ratings are retained, not used to calculate input. R290 is sealed refrigerant, no fuel-gas supply.",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ]
+        },
+        "source_freshness": {
+          "status": "checked",
+          "reason": "Current exact Middle East product pages and documentation index reopened 2026-10-30 Dubai; the linked installation document is L2F114202 (031522). Original downloaded PDF hash was verified in recovered workspace; only its clearance page was exported and independently SHA256-verified locally. No newer applicable revision was shown in the current index.",
+          "source_ids": [
+            "S1",
+            "S3"
+          ]
+        },
+        "app_compatibility": {
+          "status": "checked",
+          "reason": "Ice/floor/electric, dimensions mm and input kW, both utility flags explicitly true. Selected installed envelope, article number, market, source revision and clearance details retained in sidecar.",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ]
+        }
+      },
+      "field_evidence": {
+        "brand": {
+          "value": "Hoshizaki",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact Middle East product FM-80KE-HCN item F114-C106, selected air-cooled nugget model. Current product page remains listed.",
+          "reason": "Exact Middle East product FM-80KE-HCN item F114-C106, selected air-cooled nugget model. Current product page remains listed."
+        },
+        "model": {
+          "value": "FM-80KE-HCN",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact Middle East product FM-80KE-HCN item F114-C106, selected air-cooled nugget model. Current product page remains listed.",
+          "reason": "Exact Middle East product FM-80KE-HCN item F114-C106, selected air-cooled nugget model. Current product page remains listed."
+        },
+        "w": {
+          "value": 640,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact-model drawing p.2",
+          "reason": "Exact-model drawing p.2 reviewed in recovered research shows W 640, D 600, H800 including 89 mm feet. Product body-height convention is H711 plus adjustable 87-122 mm feet. Runtime consistently uses installed H800; open door and service access are supplementary.",
+          "original_value": 640,
+          "original_unit": "mm"
+        },
+        "d": {
+          "value": 600,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact-model drawing p.2",
+          "reason": "Exact-model drawing p.2 reviewed in recovered research shows W 640, D 600, H800 including 89 mm feet. Product body-height convention is H711 plus adjustable 87-122 mm feet. Runtime consistently uses installed H800; open door and service access are supplementary.",
+          "original_value": 600,
+          "original_unit": "mm"
+        },
+        "h": {
+          "value": 800,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact-model drawing p.2",
+          "reason": "Exact-model drawing p.2 reviewed in recovered research shows W 640, D 600, H800 including 89 mm feet. Product body-height convention is H711 plus adjustable 87-122 mm feet. Runtime consistently uses installed H800; open door and service access are supplementary.",
+          "original_value": 800,
+          "original_unit": "mm"
+        },
+        "mount": {
+          "value": "floor",
+          "status": "checked",
+          "source_ids": [
+            "S3"
+          ],
+          "locator": "Manufacturer installation manual pp.4-5 requires a firm level foundation and leveling with supplied adjustable legs; floor mounting.",
+          "reason": "Manufacturer installation manual pp.4-5 requires a firm level foundation and leveling with supplied adjustable legs; floor mounting."
+        },
+        "power": {
+          "value": "electric",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact product electrical specification",
+          "reason": "Exact product Electrical Consumption is 0.27 kW. This is manufacturer electrical input, distinct from heat rejection and daily energy; no voltage/current calculation."
+        },
+        "kw": {
+          "value": 0.27,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "locator": "Exact product electrical specification",
+          "reason": "Exact product Electrical Consumption is 0.27 kW. This is manufacturer electrical input, distinct from heat rejection and daily energy; no voltage/current calculation.",
+          "original_value": 0.27,
+          "original_unit": "kW"
+        },
+        "elec": {
+          "value": "220-240 V/1 ph/50 Hz",
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S3"
+          ],
+          "locator": "Exact current product specifies 1/220-240 V/50 Hz and 6 A electrical circuit breaker protection. Manual p.5 calls for a separate grounded 220-240 VAC, 13 A supply protected by a suitable breaker. Supply capacity and protective device rating are separate fields; preserve both verbatim in meaning, do not equate either to operating current.",
+          "reason": "Exact current product specifies 1/220-240 V/50 Hz and 6 A electrical circuit breaker protection. Manual p.5 calls for a separate grounded 220-240 VAC, 13 A supply protected by a suitable breaker. Supply capacity and protective device rating are separate fields; preserve both verbatim in meaning, do not equate either to operating current."
+        },
+        "water": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "locator": "Matching manual pp.5-6 requires potable cold-water inlet and gravity drain with downward fall and minimum 50 mm air gap. Exact drawing shows G3/4 water inlet and R3/4 waste. Product lists 0.05-0.8 MPa and 5-35 C.",
+          "reason": "Matching manual pp.5-6 requires potable cold-water inlet and gravity drain with downward fall and minimum 50 mm air gap. Exact drawing shows G3/4 water inlet and R3/4 waste. Product lists 0.05-0.8 MPa and 5-35 C."
+        },
+        "drain": {
+          "value": 1,
+          "status": "checked",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "locator": "Matching manual pp.5-6 requires potable cold-water inlet and gravity drain with downward fall and minimum 50 mm air gap. Exact drawing shows G3/4 water inlet and R3/4 waste. Product lists 0.05-0.8 MPa and 5-35 C.",
+          "reason": "Matching manual pp.5-6 requires potable cold-water inlet and gravity drain with downward fall and minimum 50 mm air gap. Exact drawing shows G3/4 water inlet and R3/4 waste. Product lists 0.05-0.8 MPa and 5-35 C."
+        }
+      },
+      "candidate_runtime_row": [
+        "Hoshizaki",
+        "FM-80KE-HCN",
+        "Ice",
+        "Self-contained nugget ice maker (H800 incl. legs)",
+        640,
+        600,
+        800,
+        "floor",
+        "electric",
+        0.27,
+        "220-240 V/1 ph/50 Hz",
+        1,
+        1,
+        "https://hoshizaki-europe.com/middleeast/product/fm-80ke-hcn-nugget-ice-maker-self-contained/"
+      ],
+      "installation_notes": "Selected installed height 800 mm with supplied feet set to 89 mm; body is 711 mm and feet adjust 87-122 mm. Indoor level floor, away from heat and water jets. Manual diagram requires 150 mm left, right, rear and above; front louver and bin-door/service access unobstructed. Potable cold water 5-35 C at 0.05-0.8 MPa, G3/4 inlet; R3/4 gravity waste with downward fall and at least 50 mm vertical air gap to floor drain. Grounded separate 220-240 VAC supply: manual specifies 13 A supply capacity; exact product separately lists 6 A circuit-breaker protection. These distinct ratings are retained, not used to calculate input. R290 is sealed refrigerant, no fuel-gas supply.",
+      "installation_details": {
+        "manual_source_id": "S3",
+        "manual_locator": "English pp.1-7, clearance diagram p.4",
+        "clearance_mm": {
+          "left": 150,
+          "right": 150,
+          "rear": 150,
+          "top": 150,
+          "front": "Unobstructed louver and bin-door/service access; no numeric dimension stated"
+        },
+        "selected_height_mm": 800,
+        "body_height_mm": 711,
+        "selected_feet_height_mm": 89,
+        "adjustable_feet_mm": [
+          87,
+          122
+        ],
+        "water_pressure_MPa": [
+          0.05,
+          0.8
+        ],
+        "water_temperature_C": [
+          5,
+          35
+        ],
+        "ambient_temperature_C": [
+          5,
+          40
+        ],
+        "water_connection": "G3/4",
+        "drain_connection": "R3/4",
+        "drain_air_gap_min_mm": 50,
+        "supply_capacity_A": 13,
+        "product_circuit_breaker_protection_A": 6,
+        "notes": "Selected installed height 800 mm with supplied feet set to 89 mm; body is 711 mm and feet adjust 87-122 mm. Indoor level floor, away from heat and water jets. Manual diagram requires 150 mm left, right, rear and above; front louver and bin-door/service access unobstructed. Potable cold water 5-35 C at 0.05-0.8 MPa, G3/4 inlet; R3/4 gravity waste with downward fall and at least 50 mm vertical air gap to floor drain. Grounded separate 220-240 VAC supply: manual specifies 13 A supply capacity; exact product separately lists 6 A circuit-breaker protection. These distinct ratings are retained, not used to calculate input. R290 is sealed refrigerant, no fuel-gas supply."
+      },
+      "recovery": {
+        "original_source_hashes_preserved": true,
+        "clearance_image": "hoshi-page6.png",
+        "clearance_image_sha256": "19156352bf4a7b620d915b204b6f77fd76c9281633db669b5e554e95b4fdcdfc",
+        "drawing_review": "Inherited exact-model manufacturer drawing review; clearance diagram independently inspected locally"
+      },
+      "proposed_queue_row": [
+        "Hoshizaki",
+        "FM-80KE-HCN",
+        "Ice",
+        "Self-contained nugget ice maker (H800 incl. legs)",
+        "640",
+        "600",
+        "800",
+        "floor",
+        "electric",
+        "0.27",
+        "220-240 V/1 ph/50 Hz",
+        "1",
+        "1",
+        "https://hoshizaki-europe.com/middleeast/product/fm-80ke-hcn-nugget-ice-maker-self-contained/",
+        "Manufacturer Middle East exact model; regional stock and approval not asserted.",
+        "Selected installed height 800 mm with supplied feet set to 89 mm; body is 711 mm and feet adjust 87-122 mm. Indoor level floor, away from heat and water jets. Manual diagram requires 150 mm left, right, rear and above; front louver and bin-door/service access unobstructed. Potable cold water 5-35 C at 0.05-0.8 MPa, G3/4 inlet; R3/4 gravity waste with downward fall and at least 50 mm vertical air gap to floor drain. Grounded separate 220-240 VAC supply: manual specifies 13 A supply capacity; exact product separately lists 6 A circuit-breaker protection. These distinct ratings are retained, not used to calculate input. R290 is sealed refrigerant, no fuel-gas supply.",
+        "2026-10-30"
+      ],
+      "source_row_hash": "b3e4f276475c0859112e8a2c63d8eadc87612749f64470ab19d1237c5792f67b"
     }
   }
 }
