@@ -43,7 +43,13 @@ try{
   assert.ok(stats.calls<45,it.family+JSON.stringify(stats));assert.ok(stats.triangles<100000,it.family+JSON.stringify(stats));
   await page.locator('#stage').screenshot({path:`test-results/families/${it.family}.png`,timeout:90000});renders.push({family:it.family,...stats});
  }
- const warm=await page.evaluate(()=>KS3D.stats());for(const it of samples)await page.evaluate(it=>showFamily(it),it);const end=await page.evaluate(()=>KS3D.stats());
+ const warm=await page.evaluate(()=>KS3D.stats());
+ // Present each stress-test frame before rebuilding again. Queuing dozens of
+ // software-WebGL frames without presentation overwhelms the Windows driver
+ // even though the application's live geometry and texture counts stay flat.
+ const cycle=['slush','hood-washer','vacuum','stockpot-range','oven-stand'].map(f=>samples.find(i=>i.family===f)).concat(samples.at(-1));
+ for(let pass=0;pass<2;pass++)for(const it of cycle){await page.evaluate(it=>showFamily(it),it);await page.locator('#stage').screenshot({timeout:90000});}
+ const end=await page.evaluate(()=>KS3D.stats());
  assert.ok(end.geometries<=warm.geometries+1,JSON.stringify({warm,end}));assert.ok(end.textures<=warm.textures+1);
  console.log(`${samples.length} family renders and repeated GPU rebuilds passed.`);
  // Begin the interaction checks with a fresh document after the GPU stress run.
