@@ -16,7 +16,7 @@
     function close(){if(busy)return;dialog.close();generation++;}
     $("intakeOpen").onclick=open;$("intakeClose").onclick=close;
     dialog.addEventListener("cancel",e=>{if(busy)e.preventDefault();else generation++;});
-    function lock(on){busy=on;$("intakeClose").disabled=on;body.querySelectorAll("input,textarea,select,button").forEach(el=>el.disabled=on);}
+    function lock(on){busy=on;dialog.setAttribute("aria-busy",String(on));$("intakeClose").disabled=on;body.querySelectorAll("input,textarea,select,button").forEach(el=>el.disabled=on);}
     function start(rows){draft={schema:1,id:uuid(),createdAt:new Date().toISOString(),rows:rows.map(data=>({id:uuid(),data,selected:true,match:null,confirmed:false,contribute:false,saved:false,placed:false,cloud:"",request:""}))};store();render();}
     function field(row,f,label,type="text"){
       const v=row.data[f],rid=row.id+"-"+f;
@@ -112,7 +112,8 @@
       const file=$("intakeFile").files[0],text=$("intakeText").value.trim(),consent=$("intakeConsent").checked,token=generation;
       if(file&&text){notice("Choose a file or pasted text, so the source is unambiguous.");return;}
       if(!file&&!text){notice("Choose a document, paste equipment lines or enter manually.");return;}
-      lock(true);notice("Reading your equipment…");
+      lock(true);notice("Reading your equipment… Your file will stay selected if this cannot finish.");
+      const progress=setTimeout(()=>{if(active(token)&&busy)notice("Still reading your document… This can take up to two minutes. Your file is still selected.");},15000);
       try{
         const source=file?await documentData(file):{text,images:[],table:/^(brand|manufacturer)[,\t]/i.test(text)};
         if(!active(token))return;
@@ -126,8 +127,8 @@
           if(!active(token))return;rows=I.extracted(result);
         }
         busy=false;start(rows);notice("Nothing has been added yet. Review the extracted lines below.");
-      }catch(e){notice(e.code==="rate_limited"?"AI reading is currently rate limited. Your input is still here; retry later or use CSV/manual entry.":e.message||"Could not read this document. Try manual entry.");}
-      finally{busy=false;$("intakeClose").disabled=false;if(!draft)body.querySelectorAll("input,textarea,button").forEach(el=>el.disabled=false);}
+      }catch(e){if(active(token))notice(e.code==="rate_limited"?"AI reading is currently rate limited. Your input is still here; retry later or use CSV/manual entry.":e.message||"Could not read this document. Try manual entry.");}
+      finally{clearTimeout(progress);busy=false;dialog.setAttribute("aria-busy","false");$("intakeClose").disabled=false;if(!draft)body.querySelectorAll("input,textarea,button").forEach(el=>el.disabled=false);}
     }
     async function syncRow(r,token){
       if(!hooks.owner()){r.cloud="Saved on this device";if(r.contribute)r.request="Sign in to request review";return;}
@@ -161,14 +162,14 @@
         }
         if(active(token))notice(add?"Selected equipment added to the layout. Review the per-item online and contribution status below.":"New models saved to My models; matched items remain in the catalogue. Review the per-item status below.");
       }catch(e){notice(e.message||"Could not finish saving. Your review is still available.");}
-      finally{busy=false;$("intakeClose").disabled=false;if(active(token))render();}
+      finally{busy=false;dialog.setAttribute("aria-busy","false");$("intakeClose").disabled=false;if(active(token))render();}
     }
     async function retry(){
       if(!hooks.owner()){notice("Sign in, then reopen this review to save online or request verification.");return;}
       lock(true);const token=generation;
       try{for(const r of draft.rows.filter(r=>r.saved&&r.match===null)){if(!active(token))break;await syncRow(r,token);if(active(token))store();}notice("Online saves and review requests checked. See each item’s status.");}
-      finally{busy=false;$("intakeClose").disabled=false;if(active(token))render();}
+      finally{busy=false;dialog.setAttribute("aria-busy","false");$("intakeClose").disabled=false;if(active(token))render();}
     }
-    return {open,authChanged(){generation++;if(dialog.open)dialog.close();draft=null;busy=false;$("intakeClose").disabled=false;}};
+    return {open,authChanged(){generation++;if(dialog.open)dialog.close();draft=null;busy=false;dialog.setAttribute("aria-busy","false");$("intakeClose").disabled=false;}};
   };
 })(globalThis);

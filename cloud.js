@@ -19,6 +19,25 @@
   function strip(p){let s=JSON.stringify(p);if(s.length<=MAX)return {data:p,stripped:false};const q=JSON.parse(s);if(q.under)q.under.src=null;return {data:q,stripped:true};}
   const summary=p=>{try{const R=p.room,n=(p.items||[]).filter(i=>i.kind!=="arch").length;return `${(R.w/1000).toFixed(1)} × ${(R.d/1000).toFixed(1)} m · ${n} item${n===1?"":"s"}`;}catch(_){return "";}};
   const providers=fetch(cfg.supabaseUrl+"/auth/v1/settings",{headers:{apikey:cfg.supabaseAnonKey}}).then(r=>r.json()).then(j=>Object.keys(j.external||{}).filter(k=>j.external[k])).catch(()=>["email"]);
+  async function aiFailure(error,data){
+    let payload=data,st=error&&error.context&&error.context.status;
+    if(!payload&&error&&error.context&&typeof error.context.json==="function"){
+      try{payload=await error.context.json();}catch(_){}
+    }
+    const code=payload&&payload.code;
+    let kind=code||((st===401||st===403)?"not_granted":st===429?"rate_limited":st===504?"timeout":error&&error.name==="FunctionsFetchError"?"unreachable":"failed");
+    if(code==="ai_not_configured"||/AI is not configured/i.test(payload&&payload.error||""))kind="ai_not_configured";
+    const messages={
+      ai_not_configured:"Document reading is unavailable because the AI service is not configured. Use CSV or manual entry for now.",
+      not_granted:"Your sign-in session could not be verified. Sign in again, then retry. Your file is still selected.",
+      rate_limited:"The AI reader is busy or its daily limit has been reached. Try again later, or use CSV or manual entry.",
+      timeout:"Document reading took too long. Your file is still selected. Try fewer pages or a clearer crop, or use CSV or manual entry.",
+      unreachable:"Could not reach the document reader. Your file is still selected. Check your connection and retry, or use CSV or manual entry.",
+      provider_unavailable:"The AI provider is unavailable. Your file is still selected. Try again later, or use CSV or manual entry.",
+      invalid_response:"The document reader could not finish extracting the equipment. Try fewer items or a clearer image, or use CSV or manual entry."
+    };
+    const e=new Error(messages[kind]||"The document reader could not complete this request. Your file is still selected. Retry or use CSV or manual entry.");e.code=kind;return e;
+  }
   window.KS_backend={
     ready,linkError:()=>linkError,user:()=>user,providers:()=>providers,onAuth:f=>{listeners.add(f);return()=>listeners.delete(f);},
     signInEmail:async(email,redirect)=>{const {error}=await sb.auth.signInWithOtp({email,options:{emailRedirectTo:redirect||siteUrl+"/app/"}});if(error){if(error.status===429||/rate limit/i.test(error.message||""))error.message="Too many sign-in emails in a short time. Wait a few minutes and try again.";fail(error);}},
@@ -39,9 +58,13 @@
     listEquipment:async()=>{need();const {data,error}=await sb.from("equipment").select("data").order("created_at",{ascending:false});if(error)fail(error);return (data||[]).map(r=>r.data);},
     saveEquipment:async e=>{need();const {error}=await sb.from("equipment").upsert({owner:user.id,cid:e.cid,data:e},{onConflict:"owner,cid"});if(error)fail(error);},
     deleteEquipment:async cid=>{need();const {error}=await sb.from("equipment").delete().eq("cid",cid);if(error)fail(error);},
-    ai:async(prompt,opts)=>{need();opts=opts||{};const {data,error}=await sb.functions.invoke("ai",{body:{prompt,tier:opts.modelTier||"default",kind:opts.kind||null,images:opts.images||null,max_tokens:opts.maxTokens||null}});
-      if(error){const st=error.context&&error.context.status;const e=new Error(error.message||"AI request failed");e.code=st===429?"rate_limited":st===401||st===403?"not_granted":"failed";throw e;}
-      if(data&&data.error){const e=new Error(data.error);e.code=data.code||"failed";throw e;}return data&&data.json;},
+    ai:async(prompt,opts)=>{need();opts=opts||{};const controller=new AbortController();let timer;
+      const deadline=new Promise((_,reject)=>{timer=setTimeout(()=>{controller.abort();const e=new Error("timeout");e.code="timeout";reject(e);},110000);});
+      try{const {data,error}=await Promise.race([sb.functions.invoke("ai",{signal:controller.signal,body:{prompt,tier:opts.modelTier||"default",kind:opts.kind||null,images:opts.images||null,max_tokens:opts.maxTokens||null}}),deadline]);
+        if(error||data&&data.error)throw await aiFailure(error,data&&data.error?data:null);
+        if(!data||!data.json)throw await aiFailure(null,{code:"invalid_response"});return data.json;
+      }catch(e){if(e.code==="timeout"||controller.signal.aborted)throw await aiFailure(null,{code:"timeout"});if(e.code)throw e;throw await aiFailure(e);}
+      finally{clearTimeout(timer);}},
     report:async r=>{const row={kind:r.kind||"gap",message:String(r.message||"").slice(0,4000),view:r.view||null,context:r.context||null,project:r.project||null,email:user?(user.email||null):(r.email||null)};if(user)row.reporter=user.id;
       const {error}=await sb.from("reports").insert(row);if(error)fail(error);},
     waitlist:async(email,consent,note)=>{if(consent!==true){const e=new Error("Marketing consent is required");e.code="consent_required";throw e;}const {error}=await sb.from("waitlist").insert({email,note:note||null,source:location.pathname,marketing_consent:true,consent_at:new Date().toISOString(),consent_version:"v1"});if(error)fail(error);}

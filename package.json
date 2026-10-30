@@ -9,7 +9,7 @@
     "build:artifact": "node build.mjs artifact",
     "build:standalone": "node build.mjs standalone",
     "dev": "node build.mjs && npx --yes serve dist -l 5173",
-    "test": "node --test equipment-intake.test.mjs && node equipment-intake.browser.test.mjs && node site.test.mjs && node mcp.test.mjs",
+    "test": "node --test ai-handler.test.mjs cloud-ai.test.mjs equipment-intake.test.mjs && node equipment-intake.browser.test.mjs && node site.test.mjs && node mcp.test.mjs",
     "test:ci": "npm run test:coordination && npm run build && npm run audit:discovery && npm test && node equipment/check-latest-batch.mjs && npm run test:3d",
     "test:coordination": "node --test coordination/*.test.mjs",
     "audit:discovery": "node scripts/discovery-audit.mjs",
