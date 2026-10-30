@@ -95,6 +95,22 @@ try{
   await page.check('#intakeConsent');const callsBefore=await page.evaluate(()=>__aiCalls.length);await page.click('#intakeRead');
   await page.waitForFunction(()=>!document.getElementById('intakeClose').disabled);
   assert.match(await page.textContent('#intakeMessage'),/5 pages/);assert.equal(await page.evaluate(()=>__aiCalls.length),callsBefore,'oversized PDF is never partially submitted');
+  // Exercise the real cloud error decoder through the actual upload form.
+  await page.evaluate(source=>{
+    const original=window.KS_backend,sdk=window.supabase,realFetch=window.fetch;
+    delete window.KS_backend;
+    window.supabase={createClient:()=>({auth:{getSession:async()=>({data:{session:{user:original.user()}}}),onAuthStateChange:()=>{}},functions:{invoke:async()=>({error:{name:'FunctionsHttpError',context:Response.json({error:'AI is not configured on the server',code:'failed'},{status:500})}})}})};
+    window.fetch=async()=>Response.json({external:{}});
+    try{(0,eval)(source);const reader=window.KS_backend;original.ai=async(...args)=>{await reader.ready;return reader.ai(...args);};}
+    finally{window.KS_backend=original;window.supabase=sdk;window.fetch=realFetch;}
+  },fs.readFileSync('cloud.js','utf8'));
+  const photo=await page.screenshot();
+  await page.locator('#intakeFile').setInputFiles({name:'equipment.png',mimeType:'image/png',buffer:photo});
+  await page.check('#intakeConsent');await page.click('#intakeRead');
+  await page.waitForFunction(()=>!document.getElementById('intakeClose').disabled);
+  assert.match(await page.textContent('#intakeMessage'),/AI service is not configured/);
+  assert.equal(await page.locator('#intakeFile').evaluate(el=>el.files[0].name),'equipment.png');
+  assert.equal(await page.locator('#intakeRead').isEnabled(),true);
   assert.deepEqual(errors,[]);
   console.log('PASS: intake CSV, PDF parsing/rendering, matching, review, quantities, unknowns, retry, reload, privacy, AI errors, escaping, mobile and exports');
 }finally{await ctx.close();await browser.close();await new Promise(r=>server.close(r));}
