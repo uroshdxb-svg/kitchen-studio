@@ -315,7 +315,7 @@ function renderResults(){
   if(!shown.length){$("results").innerHTML=`<div class="empty"><div>No model matches${q?` “${esc(q)}”`:""}.</div><button class="btn" id="goNew">Add ${q?`“${esc(q)}”`:"it"} as a new model</button><button class="btn" id="goReport">Ask for it to be added to the catalogue</button></div>`;return;}
   const total=shown.length;shown=shown.slice(0,60);
   $("results").innerHTML=`<div class="ut" style="padding:6px 2px">${total} model${total===1?"":"s"}${total>60?", showing the first 60. Type to narrow it down.":""}</div>`+shown.map((e,k)=>{
-    const pill=e.conf==="verified"?`<a class="pill ok" href="${esc(e.src)}" target="_blank" rel="noopener">spec source ↗</a>`:e.conf==="ai"?`<span class="pill warn">AI estimate</span>`:`<span class="pill me">your entry</span>`;
+    const pill=e.conf==="verified"?`<a class="pill ok" href="${esc(e.src)}" target="_blank" rel="noopener">spec source ↗</a>`:e.conf==="ai"?`<span class="pill warn">AI estimate</span>`:`<span class="pill me">${e.intake?"User supplied · unverified":"your entry"}</span>`;
     const ut=[e.power&&e.power!=="none"?e.power+(e.kw?` ${e.kw} kW`:""):null,e.water?"water":null,e.drain?"drain":null,e.mount==="top"?"countertop":null].filter(Boolean).join(" · ");
     return `<div class="row"><div><div class="bm"><span>${esc(e.brand)}</span>${esc(e.model)}</div><div class="nm">${esc(e.name)}</div>
       <div class="dm"><span>${e.w} × ${e.d} × ${e.h}</span>${pill}<span class="ut">${esc(ut)}</span></div></div>
@@ -404,7 +404,7 @@ $("nSaveOnly").addEventListener("click",()=>saveNew(false));
 function groups(kind){
   const m=new Map();
   eqList().forEach((it,k)=>{if(isFab(it)!==(kind==="ss"))return;
-    const key=isFab(it)?KS_fab.groupKey(it):[it.brand,it.model,it.w,it.d,it.h,(it.opts||[]).join("|"),it.mat||""].join("~");
+    const key=isFab(it)?KS_fab.groupKey(it):[it.brand,it.model,it.w,it.d,it.h,it.power,it.kw,it.elec,it.water,it.drain,it.conf,it.region,it.variant,(it.opts||[]).join("|"),it.mat||""].join("~");
     if(!m.has(key))m.set(key,{it,tags:[]});m.get(key).tags.push(k+1);});
   return [...m.values()];
 }
@@ -413,13 +413,14 @@ function renderSchedule(){
   let el=0,gas=0,wat=0,dr=0,unk=0;
   eqList().forEach(i=>{if(i.power==="electric"){if(i.kw)el+=i.kw;else unk++;}if(i.power==="gas"&&i.kw)gas+=i.kw;if(i.water)wat++;if(i.drain)dr++;});
   $("totals").innerHTML=`<div><span class="lbl">Electrical load</span><b>${el.toFixed(1)} kW</b>${unk?`<span class="ut">${unk} item${unk>1?"s":""} without a listed load</span>`:""}</div><div><span class="lbl">Gas load</span><b>${gas.toFixed(1)} kW</b></div><div><span class="lbl">Water points</span><b>${wat}</b></div><div><span class="lbl">Drain points</span><b>${dr}</b></div>`;
-  $("schEq").innerHTML=eq.length?`<table><thead><tr><th>No.</th><th>Qty</th><th>Brand / model</th><th>W × D × H</th><th>Energy</th><th>Electrical</th><th>W / D</th><th>Data</th></tr></thead><tbody>${eq.map(g=>{const i=g.it;return `<tr><td class="n">${g.tags.join(", ")}</td><td class="n">${g.tags.length}</td><td class="w"><b>${esc(i.brand)}</b> ${esc(i.model)}<br><span class="ut">${esc(i.name)}</span></td><td class="n">${i.w} × ${i.d} × ${i.h}</td><td>${esc(i.power||"")}${i.kw?" "+i.kw+" kW":""}</td><td>${esc(i.elec||"–")}</td><td>${i.water?"W":"–"} / ${i.drain?"D":"–"}</td><td>${i.conf==="verified"?`<a class="pill ok" href="${esc(i.src)}" target="_blank" rel="noopener">source ↗</a>`:i.conf==="ai"?`<span class="pill warn">AI estimate</span>`:`<span class="pill me">your entry</span>`}</td></tr>`;}).join("")}</tbody></table>`:`<div class="empty">No equipment placed yet.</div>`;
+  const missing=KS_intake.uncertainty(eqList());if(missing)$("totals").innerHTML+=`<p class="note warnbox" style="grid-column:1/-1">Partial totals: ${esc(missing)}. Confirm before planning services.</p>`;
+  $("schEq").innerHTML=eq.length?`<table><thead><tr><th>No.</th><th>Qty</th><th>Brand / model</th><th>W × D × H</th><th>Energy</th><th>Electrical</th><th>W / D</th><th>Data</th></tr></thead><tbody>${eq.map(g=>{const i=g.it;return `<tr><td class="n">${g.tags.join(", ")}</td><td class="n">${g.tags.length}</td><td class="w"><b>${esc(i.brand)}</b> ${esc(i.model)}<br><span class="ut">${esc(i.name)}</span></td><td class="n">${i.w} × ${i.d} × ${i.h}</td><td>${esc(i.power||"Unknown")}${i.kw!=null?" "+i.kw+" kW":i.power==="electric"||i.power==="gas"?" · load unknown":""}</td><td>${esc(i.elec||"–")}</td><td>${KS_intake.connection(i.water,"W","–")} / ${KS_intake.connection(i.drain,"D","–")}</td><td>${i.conf==="verified"?`<a class="pill ok" href="${esc(i.src)}" target="_blank" rel="noopener">source ↗</a>`:i.conf==="ai"?`<span class="pill warn">AI estimate</span>`:`<span class="pill me">${i.intake?"User supplied · unverified":"your entry"}</span>`}</td></tr>`;}).join("")}</tbody></table>`:`<div class="empty">No equipment placed yet.</div>`;
   $("schSs").innerHTML=ss.length?`<table><thead><tr><th>No.</th><th>Qty</th><th>Module</th><th>W × D × H</th><th>Material</th><th>Options</th></tr></thead><tbody>${ss.map(g=>{const i=g.it;return `<tr><td class="n">${g.tags.join(", ")}</td><td class="n">${g.tags.length}</td><td class="w"><b>${esc(i.name)}</b>${i.mount==="over"?`<br><span class="ut">underside at ${i.z}</span>`:""}</td><td class="n">${i.w} × ${i.d} × ${i.h}</td><td>${esc(i.mat||"")}</td><td class="w">${esc([...(i.opts||[]),i.kw?i.kw+" kW, "+(i.elec||"230V"):""].filter(Boolean).join(", ")||"–")}</td></tr>`;}).join("")}</tbody></table>`:`<div class="empty">No stainless modules placed yet.</div>`;
 }
 function csv(){
-  const q=v=>`"${String(v??"").replace(/"/g,'""')}"`;
+  const q=v=>{const text=String(v??"");return `"${(/^[=+@\-\t\r]/.test(text)?"'":"")+text.replace(/"/g,'""')}"`;};
   const rows=[["Type","Item no.","Qty","Brand","Model / module","Description","Width mm","Depth mm","Height mm","Energy","kW","Electrical","Water","Drain","Material","Options","Data source"]];
-  for(const k of ["eq","ss"])for(const g of groups(k)){const i=g.it;rows.push([k==="eq"?"Equipment":"Fabrication",g.tags.join(" "),g.tags.length,i.brand,i.model,i.name,i.w,i.d,i.h,i.power,i.kw??"",i.elec??"",i.water?"yes":"",i.drain?"yes":"",i.mat??"",(i.opts||[]).join("; "),i.conf==="verified"?i.src:i.conf==="ai"?"AI estimate - verify":"User entry"]);}
+  for(const k of ["eq","ss"])for(const g of groups(k)){const i=g.it;rows.push([k==="eq"?"Equipment":"Fabrication",g.tags.join(" "),g.tags.length,i.brand,i.model,i.name,i.w,i.d,i.h,i.power||"Unknown",i.kw??"Unknown",i.elec??"Unknown",KS_intake.connection(i.water),KS_intake.connection(i.drain),i.mat??"",(i.opts||[]).join("; "),i.conf==="verified"?i.src:i.conf==="ai"?"AI estimate - verify":"User supplied - not verified"]);}
   return "﻿"+rows.map(r=>r.map(q).join(",")).join("\r\n");
 }
 async function save(filename,data){
@@ -890,6 +891,7 @@ function buildSheets(PW,PH,meta){
   eq.forEach((it,i)=>{const pts=utilPoints(it);if(!pts.length)return;pts.forEach(p=>{const u=UT[p.k];marks+=`<circle cx="${p.x}" cy="${p.y}" r="${r}" fill="${u[0]}" stroke="#FFFFFF" stroke-width="${.25*S}"/><text x="${p.x}" y="${p.y+r*.42}" text-anchor="middle" font-family="helvetica" font-weight="bold" font-size="${r*1.15}" fill="#FFFFFF">${u[1]}</text>`;});
     rows.push({a:String(i+1),b:pts.map(p=>p.k+(p.note?" "+p.note:"")).join(" · ")});});
   const tot={E:0,G:0,W:0,D:0};eq.forEach(i=>{if(i.power==="electric"&&i.kw)tot.E+=i.kw;if(i.power==="gas"&&i.kw)tot.G+=i.kw;if(i.water)tot.W++;if(i.drain)tot.D++;});
+  const unknownUtilities=KS_intake.uncertainty(eq);if(unknownUtilities)rows.unshift({a:"?",b:"Partial totals: "+unknownUtilities});
   rows.unshift({a:"",b:""});rows.unshift({a:"D",b:`Drain points: ${tot.D}`,col:UT.D[0]});rows.unshift({a:"W",b:`Water points: ${tot.W}`,col:UT.W[0]});rows.unshift({a:"G",b:`Gas, total ${tot.G.toFixed(1)} kW`,col:UT.G[0]});rows.unshift({a:"E",b:`Electrical, total ${tot.E.toFixed(1)} kW connected`,col:UT.E[0]});
   sheets.push({title:"Utilities plan",scale:"1:"+S,inner:place(planSVG(upp,"pdf",true).body+marks),side:listSide(rows,"CONNECTION POINTS")});
   // 3 elevations, 2 x 2
@@ -925,8 +927,8 @@ function buildSheets(PW,PH,meta){
         {a:"1",b:"All dimensions in mm, overall sizes."},{a:"2",b:"AISI 304, No. 4 satin, unless noted."},{a:"3",b:"Check all sizes on site before cutting."},{a:"4",b:"Send shop drawings for approval"},{a:"",b:"before fabrication starts."},{a:"5",b:"Plan item numbers match sheet 1."},{a:"6",b:"Water, waste and power by others,"},{a:"",b:"positions on the utilities plan."},{a:"7",b:"Fabricated refrigeration: loads are"},{a:"",b:"typical; confirm compressor rating."}],"ON THIS SHEET")});}
   }
   // 4+ schedules
-  const lines=[];lines.push({h:"EQUIPMENT SCHEDULE"});lines.push({c:["No.","Qty","Brand / model","Description","W × D × H","Energy","Electrical","W","D"],b:1});
-  for(const g of groups("eq")){const i=g.it;lines.push({c:[g.tags.join(","),g.tags.length,i.brand+" "+i.model,i.name,`${i.w} × ${i.d} × ${i.h}`,(i.power||"")+(i.kw?" "+i.kw+" kW":""),i.elec||"-",i.water?"Y":"-",i.drain?"Y":"-"]});}
+  const lines=[];if(unknownUtilities)lines.push({h:"PARTIAL TOTALS: "+unknownUtilities});if(eq.some(i=>i.intake))lines.push({h:"User-supplied equipment is unverified. Confirm specifications with the manufacturer."});lines.push({h:"EQUIPMENT SCHEDULE"});lines.push({c:["No.","Qty","Brand / model","Description","W × D × H","Energy","Electrical","W","D"],b:1});
+  for(const g of groups("eq")){const i=g.it;lines.push({c:[g.tags.join(","),g.tags.length,i.brand+" "+i.model,i.name,`${i.w} × ${i.d} × ${i.h}`,(i.power||"Unknown")+(i.kw!=null?" "+i.kw+" kW":i.power==="electric"||i.power==="gas"?" load unknown":""),i.elec||"Unknown",KS_intake.connection(i.water,"Y","N"),KS_intake.connection(i.drain,"Y","N")]});}
   lines.push({h:""});lines.push({h:"STAINLESS FABRICATION SCHEDULE (details on the fabrication sheets)"});lines.push({c:["No.","Qty","Module","Options","W × D × H","Material","","",""],b:1});
   for(const g of groups("ss")){const i=g.it;lines.push({c:[g.tags.join(","),g.tags.length,i.name+(i.mount==="over"?` (underside ${i.z})`:""),[...(i.opts||[]),i.kw?i.kw+" kW":""].filter(Boolean).join(", ")||"-",`${i.w} × ${i.d} × ${i.h}`,i.mat||"","","",""]});}
   const colX=[0,16,26,92,168,206,238,278,286].map(v=>v*(aw+16)/296),per=Math.floor((ah+6)/4.6);
@@ -1044,7 +1046,10 @@ async function persist(){
 function flushLocal(){if(!dirty)return;clearTimeout(saveT);persistLocal();}
 window.addEventListener("pagehide",flushLocal);
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden")flushLocal();});
-function saveCustomLocal(){try{localStorage.setItem("ks.custom",JSON.stringify(custom));}catch(_){}}
+function intakeOwner(){return be&&be.user()?be.user().id:"device";}
+function intakeModelsKey(){return "ks.intake.models.v1."+intakeOwner();}
+function loadIntakeModels(){try{return JSON.parse(localStorage.getItem(intakeModelsKey())||"[]").filter(e=>e&&e.intake&&e.w>0);}catch(_){return [];}}
+function saveCustomLocal(){try{localStorage.setItem("ks.custom",JSON.stringify(custom.filter(e=>!e.intake)));localStorage.setItem(intakeModelsKey(),JSON.stringify(custom.filter(e=>e.intake)));return true;}catch(_){return false;}}
 function underData(){return under?{src:under.src,pw:under.pw,ph:under.ph,mmpp:under.mmpp,x:under.x,y:under.y,op:under.op,show:under.show}:null;}
 function blobUrl(u){try{const b=atob(u.src.split(",")[1]),arr=new Uint8Array(b.length);for(let i=0;i<b.length;i++)arr[i]=b.charCodeAt(i);const url=URL.createObjectURL(new Blob([arr],{type:"image/jpeg"})),im=new Image();im.onload=()=>{if(under===u){u.url=url;render();}};im.src=url;}catch(_){}}
 function adopt(p){if(!p||!p.room||!Array.isArray(p.items))return false;state={room:{w:+p.room.w||9000,d:+p.room.d||6000,h:+p.room.h||3000},items:p.items.filter(i=>i&&i.w>0&&i.d>0).map(KS_fab.migrate)};
@@ -1186,7 +1191,8 @@ async function loadSharedFromUrl(){const m=location.pathname.match(/\/k\/([A-Za-
     saveLabel("Shared copy");return true;}
   catch(e){toast("Couldn't open the shared kitchen.");return false;}}
 async function cloudSync(){acctUI();if(!be||!be.user())return;
-  try{const remote=await be.listEquipment();const seen=new Set(remote.map(e=>e.cid));for(const c of custom)if(!seen.has(c.cid)){remote.push(c);be.saveEquipment(c).catch(()=>{});}
+  const syncOwner=intakeOwner();custom=[...custom.filter(e=>!e.intake),...loadIntakeModels()];
+  try{const remote=await be.listEquipment();if(intakeOwner()!==syncOwner)return;const seen=new Set(remote.map(e=>e.cid));for(const c of custom)if(!seen.has(c.cid)){remote.push(c);be.saveEquipment(c).catch(()=>{});}
     custom=remote.filter(e=>e&&e.brand&&e.w>0).sort((a,b)=>(b.cid||"").localeCompare(a.cid||""));saveCustomLocal();renderResults();}catch(_){}
   if(sharedFrom)return;/* a shared copy is saved only when the user asks */
   try{const list=await be.listProjects();projList=list;let local=null;try{local=JSON.parse(localStorage.getItem("ks.project")||"null");}catch(_){}
@@ -1201,7 +1207,7 @@ async function cloudSync(){acctUI();if(!be||!be.user())return;
 
 async function boot(){
   ssInit();renderChips();renderResults();
-  let local=null;try{local=JSON.parse(localStorage.getItem("ks.project")||"null");custom=JSON.parse(localStorage.getItem("ks.custom")||"[]")||[];}catch(_){custom=[];}
+  let local=null;try{local=JSON.parse(localStorage.getItem("ks.project")||"null");custom=[...(JSON.parse(localStorage.getItem("ks.custom")||"[]")||[]),...loadIntakeModels()];}catch(_){custom=[];}
   if(!adopt(local)){example();roomInputs();render();}else $("saveState").textContent="Saved on this device";
   renderResults();
   try{const t=localStorage.getItem("ks.tab");if(t&&$("p-"+t)&&t!=="new")setTab(t,{quiet:true});}catch(_){}
@@ -1217,7 +1223,7 @@ async function boot(){
     const shared=await loadSharedFromUrl();
     if(!shared)await cloudSync();else if(be.user())cloudSync();
     if(!be.user()&&!shared)saveLabel(isExample?"Example layout · sign in to save online":"Saved on this device · sign in to save online");
-    be.onAuth(async u=>{acctUI();if(u){closeDlg();toast(`Signed in as ${u.email||"you"}.`);if(consentId())runConsent(consentId());await cloudSync();}else{curId=null;curVersion=null;localStorage.setItem("ks.curId","");saveLabel("Saved on this device · sign in to save online");toast("Signed out. Your kitchen stays on this device.");}});
+    be.onAuth(async u=>{intakeUI.authChanged();custom=[...custom.filter(e=>!e.intake),...loadIntakeModels()];renderResults();acctUI();if(u){closeDlg();toast(`Signed in as ${u.email||"you"}.`);if(consentId())runConsent(consentId());await cloudSync();}else{curId=null;curVersion=null;localStorage.setItem("ks.curId","");saveLabel("Saved on this device · sign in to save online");toast("Signed out. Your kitchen stays on this device.");}});
     return;}
   const use=window.claude&&window.claude.use?n=>window.claude.use(n).catch(()=>null):()=>Promise.resolve(null);
   use("sample").then(s=>{sampleFn=s;$("aiBriefBox").hidden=!s;$("aiNoBrief").hidden=!!s;if(!s){$("nLookup").hidden=true;}});
@@ -1283,5 +1289,15 @@ function addPerson(){const R=state.room,it=Object.assign({id:newId(),kind:"arch"
   toast(best?"Person added. Drag them into an aisle to read the clear width.":"Person added, but there's no free floor. Drag them into a walkway.");revealCanvas();}
 $("personBtn").addEventListener("click",addPerson);
 
+const intakeUI=KS_createIntake({
+  catalogue:BASE,categories:CATS,owner:()=>be&&be.user()?be.user().id:null,
+  canAI:()=>!!(sampleFn&&(!be||be.user())),ai:(prompt,opts)=>sampleFn.json(prompt,opts),
+  download:save,
+  pdfReady:async()=>{if(typeof pdfjsLib==="undefined"){await loadScript("pdfjs-src","https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js");await loadScript("pdfjs-worker-src","https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js");}},
+  saveLocal:async e=>{const next=custom.filter(c=>c.cid!==e.cid);next.unshift(e);const previous=custom;custom=next;if(!saveCustomLocal()){custom=previous;throw new Error("Equipment could not be saved: browser storage is full.");}renderChips();renderResults();},
+  sync:async e=>{if(!be||!be.user())throw new Error("Sign in first");await be.saveEquipment(e);},
+  request:async r=>{if(!be||!be.user())throw new Error("Sign in first");await be.report(r);},
+  placeBatch:(equipment,quantity,batchId)=>{for(let n=0;n<quantity;n++){const intakePlacement=batchId+":"+n;if(state.items.some(i=>i.intakePlacement===intakePlacement))continue;const it={...JSON.parse(JSON.stringify(equipment)),id:newId(),x:0,y:0,rot:0,kind:"eq",intakePlacement};state.items.push(it);findSpot(it);sel=it.id;}changed();if(!persistLocal())throw new Error("The layout could not be saved on this device. Free browser storage and retry before closing.");}
+});
 boot();
 })();
