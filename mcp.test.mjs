@@ -135,5 +135,29 @@ console.log("5. isolation and conflicts");
   const unk = await rpc("tools/call", { name: "export_pdf", arguments: {} }); check(unk.body.error && /Unknown tool/.test(unk.body.error.message), "no export tool can be called");
 }
 
+
+console.log("6. shared equipment preparation and unknowns");
+{
+ const before=JSON.stringify(rows);
+ const prep=await call('prepare_equipment',{equipment:[{brand:'Example',model:'TABLE-1',width_mm:900,depth_mm:700,height_mm:850,mount:'floor',power:'electric',quantity:2,price:1234,customer:'private',spec_url:'javascript:bad'}]});
+ check(!prep.err && prep.out.rows[0].ready && prep.out.rows[0].quantity===2,'prepare valid equipment and quantity');
+ check(JSON.stringify(rows)===before,'preparation writes nothing');
+ const c=prep.out.rows[0].custom;
+ check(c.water===null && c.drain===null && c.kw===null && c.spec_url===null && !('price' in c) && !('customer' in c),'unknowns and allowlist preserved');
+ const missing=await call('prepare_equipment',{equipment:[{brand:'Example',model:'TABLE-2'}]});
+ check(!missing.out.rows[0].ready && missing.out.rows[0].errors.length===4,'missing dimensions and placement reported');
+ const rejected=await call('add_items',{kitchen_id:K,items:[{custom:missing.out.rows[0].custom,wall:'east'}]});
+ check(!!rejected.err && JSON.stringify(rows)===before,'incomplete custom record cannot write');
+ const added=await call('add_items',{kitchen_id:K,items:[{custom:c,wall:'east'}]});
+ const got=await call('get_kitchen',{kitchen_id:K});
+ const item=got.out.items.find(i=>i.id===added.out.added[0].id);
+ check(item.water===null && item.drain===null && item.kw===null && item.kind==='custom','placed custom item keeps unknowns and unverified status');
+ const schedule=await call('get_schedule',{kitchen_id:K});check(schedule.out.totals_partial,'unknowns make totals partial');
+ const catalogue=JSON.parse(catJson),r=catalogue[0];
+ const conflict=await call('prepare_equipment',{equipment:[{brand:r[0],model:r[1],width_mm:r[4]+1}]});
+ check(conflict.out.rows[0].matches.some(m=>m.key===r[0]+'|'+r[1]&&m.conflicts.includes('w')),'exact catalogue conflict is explicit');
+ const suffix=await call('prepare_equipment',{equipment:[{brand:r[0],model:r[1]+'-different'}]});check(suffix.out.rows[0].matches.length===0,'similar model is never substituted');
+}
+
 globalThis.fetch = origFetch;
 console.log(fails ? `\n${fails} check(s) failed` : "\nall MCP checks passed"); process.exit(fails ? 1 : 0);

@@ -19,6 +19,7 @@
       kw:kw!==null&&kw>=0&&kw<=2000?kw:null,elec:clean(raw.elec||raw.electrical)||null,
       water:tri(raw.water),drain:tri(raw.drain),region:clean(raw.region),variant:clean(raw.variant),
       src:url(raw.src),qty:Number.isInteger(qty)&&qty>=1&&qty<=LIMITS.quantity?qty:null,
+      dimensionText:/^\d+(?:\.\d+)?\s*[×x*]\s*\d+(?:\.\d+)?\s*[×x*]\s*\d+(?:\.\d+)?(?:\s*(?:mm|cm|m|in|inches))?$/i.test(raw.dimensionText||'')?clean(raw.dimensionText,80):'',
       excerpt:clean(raw.excerpt,500)};
   }
   function validate(row){
