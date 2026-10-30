@@ -153,12 +153,14 @@ function checks(p) {
   return { ok: issues.length === 0, issues };
 }
 function schedule(p) {
-  const eq = eqList(p.items || []), tot = { electrical_kw: 0, gas_kw: 0, water_points: 0, drain_points: 0 }, missing = [];
+  const eq = eqList(p.items || []), tot = { electrical_kw: 0, gas_kw: 0, water_points: 0, drain_points: 0 }, missing = [], unknown = [];
   const rows = eq.map((it, i) => { if (it.power === "electric" && it.kw) tot.electrical_kw += it.kw; if (it.power === "gas" && it.kw) tot.gas_kw += it.kw;
     if (it.water) tot.water_points++; if (it.drain) tot.drain_points++; if ((it.power === "electric" || it.power === "gas") && !it.kw) missing.push(i + 1);
-    return { no: i + 1, item: label(it), size_mm: `${it.w} × ${it.d} × ${it.h}`, power: it.power, kw: it.kw ?? null, electrical: it.elec || null, water: !!it.water, drain: !!it.drain, source: it.src || null }; });
+    const fields = [!it.power ? "power" : null, it.water == null ? "water" : null, it.drain == null ? "drain" : null].filter(Boolean);
+    if (fields.length) unknown.push({ no: i + 1, fields });
+    return { no: i + 1, item: label(it), size_mm: `${it.w} × ${it.d} × ${it.h}`, power: it.power ?? null, kw: it.kw ?? null, electrical: it.elec || null, water: it.water == null ? null : !!it.water, drain: it.drain == null ? null : !!it.drain, source: it.src || null, verification: it.conf === "verified" ? "catalogue" : "unverified" }; });
   tot.electrical_kw = Math.round(tot.electrical_kw * 100) / 100; tot.gas_kw = Math.round(tot.gas_kw * 100) / 100;
-  return { totals: tot, items_without_load: missing, items: rows, note: "Drawing exports (PDF set) are made in the Kitchen Studio app." };
+  return { totals: tot, totals_partial: missing.length > 0 || unknown.length > 0, items_without_load: missing, unknown_utilities: unknown, items: rows, note: "Totals include known requirements only. Confirm unknown utilities before planning services. Drawing exports (PDF set) are made in the Kitchen Studio app." };
 }
 
 /* ---------- building items ---------- */

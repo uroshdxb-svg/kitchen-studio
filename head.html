@@ -78,6 +78,22 @@ select.mini{border:1px solid var(--line);background:var(--surface);border-radius
 .menu-acct{padding:8px 12px 4px;font-size:12.5px;color:var(--muted);font-family:var(--f-mono);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dlg{border:0;border-radius:var(--r);background:var(--surface);color:var(--ink);padding:0;width:min(520px,calc(100vw - 24px));max-height:min(80vh,720px);box-shadow:var(--shadow-lg)}
 .dlg::backdrop{background:rgba(10,14,18,.45)}
+.intake-dialog{width:min(920px,calc(100vw - 24px));max-height:90vh}
+.intake-dialog .dlg-body{max-height:calc(90vh - 110px)}
+.intake-lead{font-size:18px!important;color:var(--ink)!important;font-weight:800}
+.intake-steps{display:flex;gap:12px;list-style:none;padding:0;margin:4px 0;color:var(--muted);font-size:13px}
+.intake-steps .current{color:var(--primary);font-weight:800}
+.intake-upload{padding:18px;border:1px dashed var(--line2);border-radius:var(--r);display:grid;gap:12px;background:var(--ground)}
+.intake-upload input{max-width:100%;min-width:0}
+.intake-card{border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:12px 0;display:grid;gap:12px;min-width:0}
+.intake-row-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;overflow-wrap:anywhere}
+.intake-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding-top:12px}
+.intake-fields .fld,.intake-fields input,.intake-fields select{min-width:0;width:100%;box-sizing:border-box}
+.intake-card blockquote{margin:8px 0;padding:10px;background:var(--ground);overflow-wrap:anywhere;white-space:pre-wrap;font-size:13px}
+.intake-card summary{cursor:pointer;font-size:13px;font-weight:700}
+.intake-footer{border-top:1px solid var(--line);padding-top:16px;display:grid;gap:12px}
+#intakeMessage{padding:8px 20px 16px;margin:0}
+@media(max-width:600px){.intake-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.intake-card{padding:12px}.intake-dialog .dlg-body{padding:6px 12px 16px}.intake-dialog .bar .btn{flex:1 1 140px}}
 .dlg-head{display:flex;align-items:center;justify-content:space-between;padding:14px 12px 6px 20px}
 .dlg-head h2{margin:0;font-size:18px;font-weight:800;letter-spacing:-.01em;text-transform:none;color:var(--ink)}
 .dlg-body{padding:6px 20px 20px;display:flex;flex-direction:column;gap:12px;overflow:auto;max-height:calc(min(80vh,720px) - 60px)}
@@ -341,6 +357,7 @@ td.w{white-space:normal;min-width:180px}
       </div>
 
       <div class="pane" id="p-eq">
+        <button class="btn pri" id="intakeOpen">Add equipment from a quotation</button>
         <input id="q" type="search" placeholder="Search 1000+ models: combi, Rational, fryer…" autocomplete="off" aria-label="Search brand, model or type">
         <div class="chips" id="catChips"></div>
         <label class="checks"><span style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="hideUS"> Hide US-spec models</span></label>
@@ -433,6 +450,11 @@ td.w{white-space:normal;min-width:180px}
   </aside>
 </div>
 <div class="toast" id="toast" hidden></div>
+<dialog id="intakeDlg" class="dlg intake-dialog" aria-labelledby="intakeTitle">
+  <div class="dlg-head"><h2 id="intakeTitle">Your equipment</h2><button class="btn sm" id="intakeClose" aria-label="Close equipment review">Close</button></div>
+  <div id="intakeBody" class="dlg-body"></div>
+  <p id="intakeMessage" class="note" role="status" aria-live="polite"></p>
+</dialog>
 <dialog id="dlg" class="dlg">
   <div class="dlg-head"><h2 id="dlgTitle">Sign in</h2><button class="iconbtn" id="dlgClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div id="dlgBody" class="dlg-body"></div>

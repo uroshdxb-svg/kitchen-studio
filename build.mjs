@@ -27,7 +27,7 @@ for(const [key,file] of Object.entries(assetFiles)){
 }
 const renderingLibs=['libs/meshopt_decoder.js','loaders/GLTFLoader.js','utils/BufferGeometryUtils.js','loaders/RGBELoader.js','math/SimplexNoise.js','shaders/CopyShader.js','shaders/SSAOShader.js','postprocessing/Pass.js','postprocessing/SSAOPass.js'].map(f=>read('node_modules/three/examples/js/'+f)).join('\n');
 const rendererJs=renderingLibs+'\nwindow.KS_3D_URLS='+JSON.stringify({chef:assetURLs.chef,environment:assetURLs.environment,floor:{diffuse:assetURLs.diffuse,normal:assetURLs.normal,rough:assetURLs.rough}})+';\n'+['view3d-assets.js','view3d-equipment.js','view3d-families.js','view3d-details.js','view3d-effects.js','view3d.js'].map(read).join('\n');
-const appJs=['brand.js','fab.js','cat.js','symbols.js'].map(read).join('\n')+'\n'+rendererJs+'\n'+read('app.js');
+const appJs=['brand.js','fab.js','cat.js','symbols.js','equipment-intake.js','equipment-intake-ui.js'].map(read).join('\n')+'\n'+rendererJs+'\n'+read('app.js');
 const META='<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">';
 const ver=Date.now().toString(36);
 const LIBS={"three.min.js":"node_modules/three/build/three.min.js","jspdf.min.js":"node_modules/jspdf/dist/jspdf.umd.min.js","svg2pdf.min.js":"node_modules/svg2pdf.js/dist/svg2pdf.umd.min.js","pdf.min.js":"node_modules/pdfjs-dist/build/pdf.min.js","pdf.worker.min.js":"node_modules/pdfjs-dist/build/pdf.worker.min.js","supabase.js":"node_modules/@supabase/supabase-js/dist/umd/supabase.js"};
