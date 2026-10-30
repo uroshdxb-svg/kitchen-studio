@@ -56,61 +56,10 @@ try{
   await page.click('#intakeClose');
   await page.evaluate(()=>KS_backend.signOut());await open();assert.equal(await page.locator('[data-row]').count(),0,'signed-out user cannot see account draft');
   assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('ks.custom')).filter(e=>e.intake).length),0,'intake models are not in global storage');
-  await page.fill('#intakeText','Quotation for customer Private Person with price 1234');await page.click('#intakeRead');
-  assert.match(await page.textContent('#intakeMessage'),/Allow AI/);assert.equal(await page.evaluate(()=>__aiCalls.length),0);
-  await page.click('#intakeClose');await page.evaluate(()=>KS_backend.signInGoogle());
-  await page.waitForFunction(()=>/Saved online/.test(document.getElementById('saveState').textContent));await open();
-  page.once('dialog',d=>d.accept());await page.click('#intakeReset');
-  await page.fill('#intakeText','Quotation text');await page.check('#intakeConsent');await page.evaluate(()=>window.__aiError=true);await page.click('#intakeRead');
-  assert.match(await page.textContent('#intakeMessage'),/rate limited/);assert.equal(await page.inputValue('#intakeText'),'Quotation text');
-  await page.evaluate(()=>{window.__aiError=false;window.__aiResult={items:[{brand:'Example',model:'PHOTO-1',name:'<img src=x onerror=alert(1)>',w:600,d:700,h:850,mount:'floor',qty:1,excerpt:'Equipment only',conf:'verified',price:9999}]};});
-  await page.click('#intakeRead');await page.locator('[data-row]').first().waitFor();
-  assert.equal(await page.locator('#intakeRows img').count(),0,'extracted text is escaped');
-  await card(0).locator('[data-confirm]').check();await page.click('#intakeSave');await page.waitForFunction(()=>!document.getElementById('intakeClose').disabled);
-  const draft=await page.evaluate(()=>JSON.parse(localStorage.getItem('ks.intake.v1.u1')));
-  assert.equal(draft.rows[0].equipment.conf,'user');assert.equal(draft.rows[0].equipment.excerpt,undefined);
-  assert.equal(draft.rows[0].equipment.price,undefined);
-  // Exact catalogue matching is an explicit choice; conflicting specifications are visible.
-  await page.setViewportSize({width:1280,height:900});
-  page.once('dialog',d=>d.accept());await page.click('#intakeReset');
-  const catalogue=JSON.parse(fs.readFileSync('dist/app/catalogue.json','utf8')),baseRow=catalogue.find(r=>r[7]==='floor'&&r[4]>100);
-  await page.evaluate(r=>window.__aiResult={items:[{brand:r[0],model:r[1],name:r[3],qty:1,w:r[4]+50,d:r[5],h:r[6],mount:r[7],elec:'Different supply'}]},baseRow);
-  await page.fill('#intakeText','Exact catalogue model quotation');await page.check('#intakeConsent');await page.click('#intakeRead');
-  await card(0).locator('[data-match]').waitFor();assert.match(await card(0).textContent(),/Check differences: w/);
-  assert.equal(await card(0).locator('[data-match]').inputValue(),'');
-  await card(0).locator('[data-match]').selectOption(String(catalogue.indexOf(baseRow)));
-  await card(0).locator('[data-confirm]').check();await page.click('#intakeAdd');await page.waitForFunction(()=>!document.getElementById('intakeClose').disabled);
-  const catalogueItem=await page.evaluate(()=>JSON.parse(localStorage.getItem('ks.project')).items.at(-1));
-  assert.equal(catalogueItem.w,baseRow[4]);assert.equal(catalogueItem.conf,'verified');
-  page.once('dialog',d=>d.accept());await page.click('#intakeReset');
-  // Actual PDF parsing/rendering uses local libraries; only the AI response is mocked.
-  const pdf=new jsPDF();pdf.text('Example PHOTO-1 counter chiller 600 x 700 x 850 mm',20,20);pdf.addPage();pdf.text('Second page specification',20,20);
-  await page.locator('#intakeFile').setInputFiles({name:'quotation.pdf',mimeType:'application/pdf',buffer:Buffer.from(pdf.output('arraybuffer'))});
-  await page.check('#intakeConsent');await page.click('#intakeRead');await page.locator('[data-row]').first().waitFor();
-  const call=await page.evaluate(()=>__aiCalls.at(-1));assert.match(call.prompt,/Second page specification/);assert.equal(call.opts.images.length,2);
-  assert.equal(call.opts.kind,'equipment-intake');
-  page.once('dialog',d=>d.accept());await page.click('#intakeReset');
-  for(let i=0;i<3;i++)pdf.addPage();
-  await page.locator('#intakeFile').setInputFiles({name:'five-pages.pdf',mimeType:'application/pdf',buffer:Buffer.from(pdf.output('arraybuffer'))});
-  await page.check('#intakeConsent');const callsBefore=await page.evaluate(()=>__aiCalls.length);await page.click('#intakeRead');
-  await page.waitForFunction(()=>!document.getElementById('intakeClose').disabled);
-  assert.match(await page.textContent('#intakeMessage'),/5 pages/);assert.equal(await page.evaluate(()=>__aiCalls.length),callsBefore,'oversized PDF is never partially submitted');
-  // Exercise the real cloud error decoder through the actual upload form.
-  await page.evaluate(source=>{
-    const original=window.KS_backend,sdk=window.supabase,realFetch=window.fetch;
-    delete window.KS_backend;
-    window.supabase={createClient:()=>({auth:{getSession:async()=>({data:{session:{user:original.user()}}}),onAuthStateChange:()=>{}},functions:{invoke:async()=>({error:{name:'FunctionsHttpError',context:Response.json({error:'AI is not configured on the server',code:'failed'},{status:500})}})}})};
-    window.fetch=async()=>Response.json({external:{}});
-    try{(0,eval)(source);const reader=window.KS_backend;original.ai=async(...args)=>{await reader.ready;return reader.ai(...args);};}
-    finally{window.KS_backend=original;window.supabase=sdk;window.fetch=realFetch;}
-  },fs.readFileSync('cloud.js','utf8'));
-  const photo=await page.screenshot();
-  await page.locator('#intakeFile').setInputFiles({name:'equipment.png',mimeType:'image/png',buffer:photo});
-  await page.check('#intakeConsent');await page.click('#intakeRead');
-  await page.waitForFunction(()=>!document.getElementById('intakeClose').disabled);
-  assert.match(await page.textContent('#intakeMessage'),/AI service is not configured/);
-  assert.equal(await page.locator('#intakeFile').evaluate(el=>el.files[0].name),'equipment.png');
-  assert.equal(await page.locator('#intakeRead').isEnabled(),true);
+  await page.fill('#intakeText','Brand: Example\nModel: LOCAL-1\nWidth: 600 mm\nDepth: 700 mm\nHeight: 850 mm\nPlacement: floor');
+  await page.click('#intakeRead');await page.locator('#intakeRecognized').waitFor();await page.click('#intakeBuild');
+  assert.equal(await page.locator('[data-row]').count(),1);
+  assert.equal(await page.evaluate(()=>__aiCalls.length),0,'document entry never calls AI');
   assert.deepEqual(errors,[]);
-  console.log('PASS: intake CSV, PDF parsing/rendering, matching, review, quantities, unknowns, retry, reload, privacy, AI errors, escaping, mobile and exports');
+  console.log('PASS: intake CSV, local text parsing, review, quantities, unknowns, retry, reload, privacy, mobile and exports');
 }finally{await ctx.close();await browser.close();await new Promise(r=>server.close(r));}
