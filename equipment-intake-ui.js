@@ -89,7 +89,7 @@
       const uploadNodes=[...body.childNodes];
       body.innerHTML=`<ol class="intake-steps"><li class="current">1 · Check text</li><li>2 · Review fields</li><li>3 · Add</li></ol>
         <p class="intake-lead">Check the recognized text</p><p class="note">Keep equipment details only. Put each item in a separate block with a blank line between items. Correct misread model numbers. Labels such as Brand:, Model:, Width: 600 mm, Depth: 700 mm and Height: 850 mm help fill fields. Unlabelled dimensions and missing details stay blank.</p>
-        <div class="fld"><label for="intakeRecognized">Editable document text</label><textarea id="intakeRecognized" rows="14" maxlength="60000"></textarea></div>
+        <div class="fld"><label for="intakeRecognized">Editable document text</label><textarea id="intakeRecognized" rows="8" maxlength="60000"></textarea></div>
         <p class="note">Text recognition cannot identify equipment from a photograph without readable text. You can always enter details manually.</p>
         <div class="bar"><button id="intakeBuild" class="btn pri">Review equipment fields</button><button id="intakeBack" class="btn">Back to upload</button></div>`;
       $("intakeRecognized").value=text;
