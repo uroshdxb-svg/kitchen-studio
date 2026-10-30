@@ -42,12 +42,6 @@ test('matching retains suffixes and punctuation, flags dimensions and variant co
   assert.equal(matches.length,1);assert.deepEqual(matches[0].conflicts,['w','electrical supply','market / configuration needs confirmation']);
   assert.equal(I.matches(I.normalize({...raw,model:'X-1'}),[base]).length,0);
 });
-test('AI truncation and malformed envelopes fail closed',()=>{
-  assert.throws(()=>I.extracted({items:[raw],truncated:true}),/smaller batches/);
-  assert.throws(()=>I.extracted({items:[]}),/No equipment/);
-  const r=I.extracted({items:[{...raw,water:'unknown',kw:'not stated'}]})[0];
-  assert.equal(r.water,null);assert.equal(r.kw,null);
-});
 test('connector schedule preserves unknown utilities and marks partial totals',()=>{
   const item={...I.privateEquipment(I.normalize(raw),'x'),kind:'eq',id:'one'};
   const result=mcp.schedule({items:[item]});

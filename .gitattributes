@@ -1,0 +1,2 @@
+# Preserve vendored OCR assets exactly as recorded in sources.json.
+assets/ocr/** -text

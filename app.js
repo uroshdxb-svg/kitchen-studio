@@ -1291,7 +1291,6 @@ $("personBtn").addEventListener("click",addPerson);
 
 const intakeUI=KS_createIntake({
   catalogue:BASE,categories:CATS,owner:()=>be&&be.user()?be.user().id:null,
-  canAI:()=>!!(sampleFn&&(!be||be.user())),ai:(prompt,opts)=>sampleFn.json(prompt,opts),
   download:save,
   pdfReady:async()=>{if(typeof pdfjsLib==="undefined"){await loadScript("pdfjs-src","https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js");await loadScript("pdfjs-worker-src","https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js");}},
   saveLocal:async e=>{const next=custom.filter(c=>c.cid!==e.cid);next.unshift(e);const previous=custom;custom=next;if(!saveCustomLocal()){custom=previous;throw new Error("Equipment could not be saved: browser storage is full.");}renderChips();renderResults();},

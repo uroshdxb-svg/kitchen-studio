@@ -5,7 +5,7 @@
     const I=root.KS_intake,$=id=>document.getElementById(id);
     const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
     const uuid=()=>crypto.randomUUID();
-    let draft=null,owner=null,busy=false,generation=0;
+    let draft=null,owner=null,busy=false,generation=0,readController=null;
     const dialog=$("intakeDlg"),body=$("intakeBody");
     const scope=()=>hooks.owner()||"device",storageKey=()=>"ks.intake.v1."+owner;
     function store(){try{localStorage.setItem(storageKey(),JSON.stringify(draft));return true;}catch(_){return false;}}
@@ -16,7 +16,7 @@
     function close(){if(busy)return;dialog.close();generation++;}
     $("intakeOpen").onclick=open;$("intakeClose").onclick=close;
     dialog.addEventListener("cancel",e=>{if(busy)e.preventDefault();else generation++;});
-    function lock(on){busy=on;dialog.setAttribute("aria-busy",String(on));$("intakeClose").disabled=on;body.querySelectorAll("input,textarea,select,button").forEach(el=>el.disabled=on);}
+    function lock(on){busy=on;dialog.setAttribute("aria-busy",String(on));$("intakeClose").disabled=on;body.querySelectorAll("input,textarea,select,button").forEach(el=>el.disabled=on&&el.id!=="intakeCancel");if($("intakeCancel"))$("intakeCancel").hidden=!on;}
     function start(rows){draft={schema:1,id:uuid(),createdAt:new Date().toISOString(),rows:rows.map(data=>({id:uuid(),data,selected:true,match:null,confirmed:false,contribute:false,saved:false,placed:false,cloud:"",request:""}))};store();render();}
     function field(row,f,label,type="text"){
       const v=row.data[f],rid=row.id+"-"+f;
@@ -33,10 +33,10 @@
         <div class="intake-upload"><label for="intakeFile"><b>Choose a quotation or specification</b></label><input id="intakeFile" type="file" accept=".pdf,.png,.jpg,.jpeg,.webp,.csv,.tsv,.txt">
         <p class="note">PDF (up to 4 pages), photo, CSV or tab-separated table. Up to 10 MB and 50 equipment lines. Export Excel files as CSV.</p></div>
         <div class="fld"><label for="intakeText">Or paste equipment lines</label><textarea id="intakeText" rows="5" maxlength="60000" placeholder="Paste a quotation excerpt or a table with Brand, Model, Qty, Width mm, Depth mm, Height mm…"></textarea></div>
-        <label class="checks"><span><input id="intakeConsent" type="checkbox"> Allow AI to read this document or pasted text.</span></label>
-        <p class="note">AI reading sends the selected content to the app’s AI provider. Remove prices and personal details first if you prefer. CSV tables are read on your device. Original files are not stored; review drafts stay in this browser.</p>
-        <div class="bar"><button id="intakeRead" class="btn pri">Review equipment</button><button id="intakeManual" class="btn">Enter manually</button><button id="intakeTemplate" class="btn sm">Sample CSV</button>${owner!=="device"?'<button id="intakeDevice" class="btn sm">Open this device’s draft</button>':''}</div>`;
+        <p class="note">Files are read on your device. No AI service, API key or sign-in is needed. Image text recognition supports printed English; check model numbers and measurements carefully. Original files and recognized text are not stored. Equipment review drafts stay in this browser.</p>
+        <div class="bar"><button id="intakeRead" class="btn pri">Review equipment</button><button id="intakeCancel" class="btn" hidden>Cancel reading</button><button id="intakeManual" class="btn">Enter manually</button><button id="intakeTemplate" class="btn sm">Sample CSV</button>${owner!=="device"?'<button id="intakeDevice" class="btn sm">Open this device’s draft</button>':''}</div>`;
         $("intakeRead").onclick=read;$("intakeManual").onclick=()=>start([I.normalize({})]);
+        $("intakeCancel").onclick=()=>readController?.abort();
         $("intakeTemplate").onclick=()=>hooks.download("equipment-template.csv","brand,model,name,qty,w,d,h,units,mount,power,kw,elec,water,drain,region,variant,src\r\nExample manufacturer,Exact model,Equipment description,1,600,700,850,mm,floor,,,,,,,,\r\n");
         if($("intakeDevice"))$("intakeDevice").onclick=()=>{try{const d=JSON.parse(localStorage.getItem("ks.intake.v1.device")||"null");if(!d||d.schema!==1||!Array.isArray(d.rows)||d.rows.length>I.LIMITS.rows){notice("No signed-out review draft is stored on this device.");return;}if(!confirm("Open this device’s signed-out draft in your account? Its saved models can then be saved online when you choose Retry."))return;draft=d;store();render();notice("Device draft opened. Choose Retry online saves / requests to sync saved models.");}catch(_){notice("The device draft could not be opened.");}};
         notice("Original documents stay out of your project and the shared catalogue.");return;
@@ -85,50 +85,66 @@
         ${r.match===null&&r.request!=="Review requested"?`<label class="checks"><span><input type="checkbox" data-contribute ${r.contribute?"checked":""}> Contribute these product specifications for verification.</span></label>`:""}
       </section>`;
     }
-    async function documentData(file){
+    function reviewText(text){
+      const uploadNodes=[...body.childNodes];
+      body.innerHTML=`<ol class="intake-steps"><li class="current">1 · Check text</li><li>2 · Review fields</li><li>3 · Add</li></ol>
+        <p class="intake-lead">Check the recognized text</p><p class="note">Keep equipment details only. Put each item in a separate block with a blank line between items. Correct misread model numbers. Labels such as Brand:, Model:, Width: 600 mm, Depth: 700 mm and Height: 850 mm help fill fields. Unlabelled dimensions and missing details stay blank.</p>
+        <div class="fld"><label for="intakeRecognized">Editable document text</label><textarea id="intakeRecognized" rows="14" maxlength="60000"></textarea></div>
+        <p class="note">Text recognition cannot identify equipment from a photograph without readable text. You can always enter details manually.</p>
+        <div class="bar"><button id="intakeBuild" class="btn pri">Review equipment fields</button><button id="intakeBack" class="btn">Back to upload</button></div>`;
+      $("intakeRecognized").value=text;
+      $("intakeBack").onclick=()=>{body.replaceChildren(...uploadNodes);lock(false);notice("Your original input is still selected.");};
+      $("intakeBuild").onclick=()=>{try{const rows=KS_reader.parseText($("intakeRecognized").value,hooks.catalogue);start(rows);notice("Check every field. Missing specifications remain unknown; nothing has been added yet.");}catch(e){notice(e.message);}};
+      notice(text.trim()?"Text read on your device. Check it before creating equipment rows.":"No readable text was found. Paste or type equipment details here, or go back and try a clearer crop.");
+    }
+    async function documentData(file,signal){
       if(file.size>I.LIMITS.fileBytes)throw new Error("The file is larger than 10 MB. Split or compress it first.");
       const ext=file.name.split(".").pop().toLowerCase();
-      if(["csv","tsv","txt"].includes(ext)){const text=await file.text();if(text.length>I.LIMITS.text)throw new Error("Use a smaller document (up to 60,000 characters).");return {text,images:[],table:["csv","tsv"].includes(ext),delimiter:ext==="tsv"?"\t":","};}
-      const jpeg=canvas=>({media_type:"image/jpeg",data:canvas.toDataURL("image/jpeg",.82).split(",")[1]});
+      if(["csv","tsv","txt"].includes(ext)){const text=await file.text();if(text.length>I.LIMITS.text)throw new Error("Use a smaller document (up to 60,000 characters).");return {text,table:["csv","tsv"].includes(ext),delimiter:ext==="tsv"?"\t":","};}
+      const ocr=(cv,prefix="")=>KS_readImage(cv,{signal,onProgress:message=>{if(!signal.aborted)notice(prefix+message);}});
       if(ext==="pdf"){
-        await hooks.pdfReady();const doc=await pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer()),isEvalSupported:false}).promise;
+        await hooks.pdfReady();signal.throwIfAborted();
+        const loading=pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer()),isEvalSupported:false});
+        const abort=()=>{void loading.destroy();};signal.addEventListener("abort",abort,{once:true});
         try{
+          const doc=await loading.promise;
           if(doc.numPages>I.LIMITS.pages)throw new Error("This PDF has "+doc.numPages+" pages. Select a file of up to 4 pages so every page can be reviewed.");
-          let text="";const images=[];
+          const pages=[];
           for(let n=1;n<=doc.numPages;n++){
-            const page=await doc.getPage(n),tc=await page.getTextContent();text+="\nPAGE "+n+"\n"+tc.items.map(t=>t.str+(t.hasEOL?"\n":" ")).join("");
-            const v=page.getViewport({scale:1}),vp=page.getViewport({scale:Math.min(2,1568/Math.max(v.width,v.height))});
-            const cv=document.createElement("canvas");cv.width=Math.ceil(vp.width);cv.height=Math.ceil(vp.height);await page.render({canvasContext:cv.getContext("2d"),viewport:vp}).promise;images.push(jpeg(cv));cv.width=cv.height=0;
+            signal.throwIfAborted();const page=await doc.getPage(n),tc=await page.getTextContent();
+            let text=tc.items.map(t=>t.str+(t.hasEOL?"\n":" ")).join("").trim();
+            if(!text){
+              notice("Reading scanned page "+n+" of "+doc.numPages+"…");
+              const v=page.getViewport({scale:1}),vp=page.getViewport({scale:Math.min(3,2400/Math.max(v.width,v.height))});
+              const cv=document.createElement("canvas");cv.width=Math.ceil(vp.width);cv.height=Math.ceil(vp.height);
+              try{await page.render({canvasContext:cv.getContext("2d"),viewport:vp}).promise;text=await ocr(cv,"Page "+n+" of "+doc.numPages+": ");}finally{cv.width=cv.height=0;}
+            }
+            pages.push(text);if(pages.join("\n\n").length>I.LIMITS.text)throw new Error("This PDF contains too much text. Split it into smaller files.");
           }
-          if(text.length>I.LIMITS.text)throw new Error("This PDF contains too much text. Split it into smaller files.");
-          return {text,images};
-        }finally{await doc.destroy();}
+          return {text:pages.join("\n\n")};
+        }finally{signal.removeEventListener("abort",abort);await loading.destroy();}
       }
       if(!["png","jpg","jpeg","webp"].includes(ext))throw new Error("Use PDF, PNG, JPEG, WebP, CSV, TSV or text. Export Excel files as CSV.");
-      const bitmap=await createImageBitmap(file);
-      try{const scale=Math.min(1,1568/Math.max(bitmap.width,bitmap.height)),cv=document.createElement("canvas");cv.width=Math.max(1,Math.round(bitmap.width*scale));cv.height=Math.max(1,Math.round(bitmap.height*scale));const cx=cv.getContext("2d");cx.fillStyle="#fff";cx.fillRect(0,0,cv.width,cv.height);cx.drawImage(bitmap,0,0,cv.width,cv.height);return {text:"Read the equipment in this image.",images:[jpeg(cv)]};}finally{bitmap.close();}
+      const bitmap=await createImageBitmap(file);signal.throwIfAborted();
+      const cv=document.createElement("canvas");
+      try{
+        const scale=Math.min(2,2400/Math.max(bitmap.width,bitmap.height));cv.width=Math.max(1,Math.round(bitmap.width*scale));cv.height=Math.max(1,Math.round(bitmap.height*scale));
+        const cx=cv.getContext("2d");cx.fillStyle="#fff";cx.fillRect(0,0,cv.width,cv.height);cx.drawImage(bitmap,0,0,cv.width,cv.height);
+        const text=await ocr(cv);if(text.length>I.LIMITS.text)throw new Error("Too much text was found. Use a smaller crop.");return {text};
+      }finally{bitmap.close();cv.width=cv.height=0;}
     }
     async function read(){
-      const file=$("intakeFile").files[0],text=$("intakeText").value.trim(),consent=$("intakeConsent").checked,token=generation;
+      const file=$("intakeFile").files[0],text=$("intakeText").value.trim(),token=generation;
       if(file&&text){notice("Choose a file or pasted text, so the source is unambiguous.");return;}
       if(!file&&!text){notice("Choose a document, paste equipment lines or enter manually.");return;}
-      lock(true);notice("Reading your equipment… Your file will stay selected if this cannot finish.");
-      const progress=setTimeout(()=>{if(active(token)&&busy)notice("Still reading your document… This can take up to two minutes. Your file is still selected.");},15000);
+      const controller=new AbortController();readController=controller;lock(true);notice("Reading on your device… Your file will stay selected if this cannot finish.");
       try{
-        const source=file?await documentData(file):{text,images:[],table:/^(brand|manufacturer)[,\t]/i.test(text)};
-        if(!active(token))return;
-        let rows;
-        if(source.table)rows=I.parseDelimited(source.text,source.delimiter);
-        else{
-          if(!consent)throw new Error("Tick Allow AI to read before sending a document or unstructured text. CSV and manual entry work without AI.");
-          if(!hooks.canAI())throw new Error("Sign in to read documents with AI, or use CSV or manual entry.");
-          if(source.images.reduce((sum,i)=>sum+i.data.length,0)>8000000)throw new Error("The page images are too large. Use fewer pages.");
-          const result=await hooks.ai(I.prompt(source.text,hooks.categories),{kind:"equipment-intake",images:source.images,maxTokens:12000});
-          if(!active(token))return;rows=I.extracted(result);
-        }
-        busy=false;start(rows);notice("Nothing has been added yet. Review the extracted lines below.");
-      }catch(e){if(active(token))notice(e.code==="rate_limited"?"AI reading is currently rate limited. Your input is still here; retry later or use CSV/manual entry.":e.message||"Could not read this document. Try manual entry.");}
-      finally{clearTimeout(progress);busy=false;dialog.setAttribute("aria-busy","false");$("intakeClose").disabled=false;if(!draft)body.querySelectorAll("input,textarea,button").forEach(el=>el.disabled=false);}
+        const source=file?await documentData(file,controller.signal):{text,table:/^(brand|manufacturer)[,\t]/i.test(text)};
+        controller.signal.throwIfAborted();if(!active(token))return;
+        if(source.table){start(I.parseDelimited(source.text,source.delimiter));notice("Check the equipment fields below. Nothing has been added yet.");}
+        else reviewText(source.text);
+      }catch(e){if(active(token))notice(controller.signal.aborted?"Reading cancelled. Your file is still selected.":e.message||"Could not read this document. Try manual entry.");}
+      finally{if(readController===controller){readController=null;lock(false);if(draft)render();}}
     }
     async function syncRow(r,token){
       if(!hooks.owner()){r.cloud="Saved on this device";if(r.contribute)r.request="Sign in to request review";return;}
@@ -170,6 +186,6 @@
       try{for(const r of draft.rows.filter(r=>r.saved&&r.match===null)){if(!active(token))break;await syncRow(r,token);if(active(token))store();}notice("Online saves and review requests checked. See each item’s status.");}
       finally{busy=false;dialog.setAttribute("aria-busy","false");$("intakeClose").disabled=false;if(active(token))render();}
     }
-    return {open,authChanged(){generation++;if(dialog.open)dialog.close();draft=null;busy=false;dialog.setAttribute("aria-busy","false");$("intakeClose").disabled=false;}};
+    return {open,authChanged(){readController?.abort();generation++;if(dialog.open)dialog.close();draft=null;busy=false;dialog.setAttribute("aria-busy","false");$("intakeClose").disabled=false;}};
   };
 })(globalThis);
