@@ -57,6 +57,7 @@
         const m=card.querySelector("[data-match]");if(m)m.onchange=e=>{r.match=e.target.value===""?null:Number(e.target.value);r.matchKey=r.match===null?null:I.catalogueKey(hooks.catalogue[r.match]);r.catalogueChanged=false;r.confirmed=false;store();render();};
         const c=card.querySelector("[data-confirm]");if(c)c.onchange=e=>{r.confirmed=e.target.checked;store();};
         const s=card.querySelector("[data-contribute]");if(s)s.onchange=e=>{r.contribute=e.target.checked;store();};
+        const size=card.querySelector('[data-use-size]');if(size)size.onclick=()=>{const parts=r.data.dimensionText.match(/\d+(?:\.\d+)?/g),unit=r.data.dimensionText.match(/(?:mm|cm|inches|in|m)$/i)?.[0]||'mm';r.data=I.normalize({...r.data,w:parts[0],d:parts[1],h:parts[2],units:unit});r.confirmed=false;store();render();};
       });
       $("intakeAdd").onclick=()=>apply(true);$("intakeSave").onclick=()=>apply(false);$("intakeRetry").onclick=()=>retry();
       $("intakeMore").onclick=()=>{if(draft.rows.length>=I.LIMITS.rows){notice("This review is limited to 50 lines.");return;}draft.rows.push({id:uuid(),data:I.normalize({}),selected:true,match:null,confirmed:false,contribute:false,saved:false,placed:false,cloud:"",request:""});store();render();};
@@ -68,6 +69,7 @@
       const choices=[["","Unknown"],["true","Yes"],["false","No"]];
       return `<section class="intake-card" data-row="${r.id}"><div class="intake-row-head"><label class="checks"><span><input type="checkbox" data-select ${r.selected?"checked":""} ${r.placed?"disabled":""}> ${n+1}. ${esc(r.data.brand||"Equipment")} ${esc(r.data.model)}</span></label><span class="pill ${r.saved?"me":"warn"}">${esc(status)}</span></div>
         ${r.catalogueChanged?'<p class="note warnbox">The catalogue specifications changed since this draft. Compare and confirm the model again.</p>':''}
+        ${r.data.dimensionText&&!r.saved?`<p class="note">Quoted size: <b>${esc(r.data.dimensionText)}</b>. The quotation does not label the axis order${/\d$/.test(r.data.dimensionText)?' or units':''}.</p>${!r.data.w?`<button class="btn sm" data-use-size>Use as width × depth × height${/\d$/.test(r.data.dimensionText)?' in mm':''}</button>`:''}`:''}
         ${r.data.excerpt?`<details><summary>Document excerpt</summary><blockquote>${esc(r.data.excerpt)}</blockquote></details>`:""}
         <details ${!r.saved?"open":""}><summary>Product details</summary><div class="intake-fields">
           ${field(r,"brand","Manufacturer")}${field(r,"model","Full model / private reference")}${field(r,"name","Description")}${field(r,"qty","Quantity","number")}
@@ -112,16 +114,15 @@
           const pages=[];
           for(let n=1;n<=doc.numPages;n++){
             signal.throwIfAborted();const page=await doc.getPage(n),tc=await page.getTextContent();
-            let text=tc.items.map(t=>t.str+(t.hasEOL?"\n":" ")).join("").trim();
-            if(!text){
-              notice("Reading scanned page "+n+" of "+doc.numPages+"…");
-              const v=page.getViewport({scale:1}),vp=page.getViewport({scale:Math.min(3,2400/Math.max(v.width,v.height))});
-              const cv=document.createElement("canvas");cv.width=Math.ceil(vp.width);cv.height=Math.ceil(vp.height);
-              try{await page.render({canvasContext:cv.getContext("2d"),viewport:vp}).promise;text=await ocr(cv,"Page "+n+" of "+doc.numPages+": ");}finally{cv.width=cv.height=0;}
-            }
-            pages.push(text);if(pages.join("\n\n").length>I.LIMITS.text)throw new Error("This PDF contains too much text. Split it into smaller files.");
+            const text=tc.items.map(t=>t.str+(t.hasEOL?"\n":" ")).join("").trim();let result={text,tables:[]};
+            const v=page.getViewport({scale:1}),vp=page.getViewport({scale:Math.min(3,2400/Math.max(v.width,v.height))});
+            const cv=document.createElement("canvas");cv.width=Math.ceil(vp.width);cv.height=Math.ceil(vp.height);
+            try{await page.render({canvasContext:cv.getContext("2d"),viewport:vp}).promise;
+              if(!text||KS_layout.grid(cv).bands.some(b=>b.cells.length>=5))result=await ocr(cv,"Page "+n+" of "+doc.numPages+": ");
+            }finally{cv.width=cv.height=0;}
+            pages.push(result);if(pages.map(p=>p.text).join("\n\n").length>I.LIMITS.text)throw new Error("This PDF contains too much text. Split it into smaller files.");
           }
-          return {text:pages.join("\n\n")};
+          return {text:pages.map(p=>p.text).join("\n\n"),tables:pages.every(p=>!p.text.trim()||p.tables.length)?pages.flatMap(p=>p.tables):[]};
         }finally{signal.removeEventListener("abort",abort);await loading.destroy();}
       }
       if(!["png","jpg","jpeg","webp"].includes(ext))throw new Error("Use PDF, PNG, JPEG, WebP, CSV, TSV or text. Export Excel files as CSV.");
@@ -130,7 +131,7 @@
       try{
         const scale=Math.min(2,2400/Math.max(bitmap.width,bitmap.height));cv.width=Math.max(1,Math.round(bitmap.width*scale));cv.height=Math.max(1,Math.round(bitmap.height*scale));
         const cx=cv.getContext("2d");cx.fillStyle="#fff";cx.fillRect(0,0,cv.width,cv.height);cx.drawImage(bitmap,0,0,cv.width,cv.height);
-        const text=await ocr(cv);if(text.length>I.LIMITS.text)throw new Error("Too much text was found. Use a smaller crop.");return {text};
+        const result=await ocr(cv);if(result.text.length>I.LIMITS.text)throw new Error("Too much text was found. Use a smaller crop.");return result;
       }finally{bitmap.close();cv.width=cv.height=0;}
     }
     async function read(){
@@ -142,6 +143,7 @@
         const source=file?await documentData(file,controller.signal):{text,table:/^(brand|manufacturer)[,\t]/i.test(text)};
         controller.signal.throwIfAborted();if(!active(token))return;
         if(source.table){start(I.parseDelimited(source.text,source.delimiter));notice("Check the equipment fields below. Nothing has been added yet.");}
+        else if(source.tables?.length){const rows=KS_reader.fromTables(source.tables);if(!rows.length)throw new Error('No equipment rows were found in the table. Use CSV or manual entry.');start(rows);notice('Equipment rows extracted. Prices, customer details and sales terms were excluded. Check only the flagged details before adding.');}
         else reviewText(source.text);
       }catch(e){if(active(token))notice(controller.signal.aborted?"Reading cancelled. Your file is still selected.":e.message||"Could not read this document. Try manual entry.");}
       finally{if(readController===controller){readController=null;lock(false);if(draft)render();}}

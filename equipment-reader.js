@@ -47,5 +47,21 @@
       return I.normalize(raw);
     });
   }
-  root.KS_reader={parseText,blocks};
+  function fromTables(tables){
+    const rows=tables.flatMap(t=>t.rows||[]);if(rows.length>I.LIMITS.rows)throw new Error('Review up to 50 equipment lines at a time. Split this quotation first.');
+    return rows.filter(r=>r.name&&!/^(delivery|transport|installation|labou?r|discount|subtotal|total|vat|accessor(?:y|ies))\b/i.test(r.name.trim())).map(r=>{
+      const text=r.name,raw={brand:r.brand?.trim(),model:r.model?.trim(),name:text.split('\n')[0],qty:r.qty?.trim()||null};
+      const dim=String(r.dimensions||'').trim(),triple=dim.match(/^(\d+(?:\.\d+)?)\s*[x×*]\s*(\d+(?:\.\d+)?)\s*[x×*]\s*(\d+(?:\.\d+)?)(?:\s*(mm|cm|inches|in|m))?$/i);
+      // Preserve an unlabelled size without silently assigning units or axes.
+      if(triple)raw.dimensionText=triple.slice(1,4).join(' × ')+(triple[4]?' '+triple[4]:'');
+      const labelled=parseText(text)[0]||{};for(const f of ['w','d','h','mount','water','drain'])if(labelled[f]!=null)raw[f]=labelled[f];
+      const voltage=text.match(/\bVOLTAGE\s*[:=]\s*([^\n]+)/i);if(voltage){raw.elec=voltage[1].trim();raw.power='electric';}
+      const load=text.match(/\b(?:POWER|CONNECTED LOAD|ELECTRICAL LOAD)\s*[:=]\s*([^\n]+)/i);
+      if(load){const s=load[1].replace(/\s/g,'');if(/^\d+(?:\.\d+)?(?:k?W)(?:\+\d+(?:\.\d+)?(?:k?W))*$/i.test(s)){
+        raw.kw=[...s.matchAll(/(\d+(?:\.\d+)?)(k?W)/gi)].reduce((n,m)=>n+Number(m[1])*(m[2].toLowerCase()==='kw'?1:.001),0);
+      }}
+      return I.normalize(raw);
+    });
+  }
+  root.KS_reader={parseText,blocks,fromTables};
 })(globalThis);

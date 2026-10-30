@@ -2,7 +2,26 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import './equipment-intake.js';
 import './equipment-reader.js';
+import './equipment-layout.js';
 const parse=globalThis.KS_reader.parseText;
+test('table header positions, multiline rows and commercial columns stay separate',()=>{
+  const L=globalThis.KS_layout;
+  const band=y=>({cells:Array.from({length:7},(_,i)=>({left:i*100,right:(i+1)*100,top:y,bottom:y+40}))});
+  const tokens=(values,y)=>values.map((text,i)=>({text,x:i*100+5,y:y+10,w:80,h:12}));
+  const tables=L.tables({bands:[band(0),band(50),band(100),{cells:[{left:0,right:700,top:150,bottom:190}]}]},[
+    ...tokens(['MODEL','PRICE','BRAND','QTY','DESCRIPTION','COMMENTS','DIMENSION'],0),
+    ...tokens(['X-1','9000','Example','2','Grill','brush excluded','900x700x450'],50),
+    ...tokens(['X-2','8000','Example','1','Chiller','private notes','600x700x850'],100),
+    {text:'TOTAL',x:5,y:160,w:80,h:12}]);
+  assert.equal(tables.length,1);assert.equal(tables[0].rows.length,2);
+  const rows=KS_reader.fromTables(tables);assert.equal(rows[0].model,'X-1');assert.equal(rows[0].qty,2);assert.equal(rows[0].dimensionText,'900 × 700 × 450');
+  assert.doesNotMatch(JSON.stringify(rows),/9000|8000|brush|private notes|TOTAL/);
+  for(const r of rows)for(const f of ['w','d','h','mount','power','water','drain'])assert.equal(r[f],null);
+});
+test('table load sums only explicit watt terms, never voltage; missing quantity stays missing',()=>{
+  const rows=KS_reader.fromTables([{rows:[{name:'Grill\nPOWER: 500W+1.5kW\nVOLTAGE: 230V',brand:'Example',model:'A'}, {name:'Grill\nPOWER: 230V 15A',qty:'1',model:'B'}]}]);
+  assert.equal(rows[0].kw,2);assert.equal(rows[0].qty,null);assert.equal(rows[0].power,'electric');assert.equal(rows[1].kw,null);
+});
 test('local labels preserve exact model, units, quantity and explicit utility states',()=>{
   const [r]=parse('Brand: Example\nModel: X-10/UK\nQuantity: 2\nWidth: 60 cm\nDepth (mm): 700\nHeight: 850 mm\nPlacement: countertop\nPower: electric\nElectrical load: 0.5 kW\nWater: no');
   assert.equal(r.brand,'Example');assert.equal(r.model,'X-10/UK');assert.equal(r.qty,2);assert.equal(r.w,600);assert.equal(r.d,700);assert.equal(r.h,850);assert.equal(r.mount,'top');assert.equal(r.kw,.5);assert.equal(r.water,false);assert.equal(r.drain,null);

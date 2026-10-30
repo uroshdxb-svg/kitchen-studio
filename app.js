@@ -31,7 +31,7 @@ const STD_W=[600,900,1200,1500,1800,2100,2400], STD_D=[300,400,600,700,800];
 
 let state={room:{w:9000,d:6000,h:3000},items:[]};
 let custom=[]; let sel=null; let view="plan"; let wall="N"; let zoom=1; let dirty=false; let isExample=true;
-let db=null, sampleFn=null, downloads=null; let cat="All"; let ssOptsSel=new Set();
+let db=null, downloads=null; let cat="All"; let ssOptsSel=new Set();
 let be=null,curId=null,curVersion=null,projName="",sharedFrom=null,projList=[];/* cloud backend (website build) */
 const remoteEq={set:e=>{const j=JSON.parse(JSON.stringify(e));if(be&&be.user())be.saveEquipment(j).catch(()=>{});else if(db)db.doc("equipment/"+e.cid).set(j).catch(()=>{});},
   del:cid=>{if(be&&be.user())be.deleteEquipment(cid).catch(()=>{});else if(db)db.doc("equipment/"+cid).delete().catch(()=>{});}};
@@ -355,31 +355,15 @@ $("ssAdd").addEventListener("click",()=>{
 /* ---------- new model ---------- */
 $("nCat").innerHTML=CATS.map(c=>`<option>${esc(c)}</option>`).join("");
 let lastConf="user";
-$("nLookup").addEventListener("click",async()=>{
+$("nLookup").addEventListener("click",()=>{
   const brand=$("nBrand").value.trim(),model=$("nModel").value.trim(),msg=$("nMsg");
-  if(!brand||!model){msg.textContent="Enter both a brand and a model first.";return;}
-  if(be&&!be.user()){openSignIn("Sign in to look up a model with AI.");return;}
-  if(!sampleFn){msg.textContent="Claude lookup isn't available in this view. Type the dimensions from the spec sheet instead.";return;}
-  const btn=$("nLookup");btn.disabled=true;msg.className="note";msg.textContent="Asking Claude about "+brand+" "+model+"…";
-  const prompt=`You are helping a commercial kitchen designer. Give the external dimensions and utility connections of this commercial kitchen equipment model from the manufacturer's published specification, as best you recall it.
-Brand: ${brand}
-Model: ${model}
-Reply with ONLY a JSON object with these keys:
-{"found": boolean, "brand": string, "model": string, "name": short description under 70 chars, "category": one of ${JSON.stringify(CATS)}, "w": external width mm integer, "d": external depth mm integer, "h": external height mm integer, "mount": "floor" or "top" (top = sits on a counter or stand), "power": "electric"|"gas"|"charcoal"|"none", "kw": connected load in kW or null, "electrical": e.g. "400V 3N 50Hz" or null, "water": boolean, "drain": boolean, "confidence": "high"|"medium"|"low", "note": one short sentence on what to double-check}
-Rules: if you do not recognise this exact model or cannot recall its dimensions with reasonable confidence, set "found": false and explain in "note". Never invent dimensions. Use millimetres.`;
-  try{
-    const r=await sampleFn.json(prompt,{modelTier:"default"});
-    const okNum=v=>Number.isFinite(+v)&&+v>=20&&+v<=8000;
-    if(!r||!r.found||!okNum(r.w)||!okNum(r.d)||!okNum(r.h)){msg.className="note warnbox";msg.textContent="Claude couldn't recall reliable dimensions for this model"+(r&&r.note?": "+r.note:".")+" Enter them from the spec sheet below.";lastConf="user";}
-    else{$("nName").value=r.name||"";$("nW").value=Math.round(r.w);$("nD").value=Math.round(r.d);$("nH").value=Math.round(r.h);$("nKw").value=r.kw??"";
-      if(CATS.includes(r.category))$("nCat").value=r.category;$("nMount").value=r.mount==="top"?"top":"floor";
-      if(["electric","gas","charcoal","none"].includes(r.power))$("nPower").value=r.power;$("nElec").value=r.electrical||"";$("nWater").checked=!!r.water;$("nDrain").checked=!!r.drain;
-      if(r.brand)$("nBrand").value=r.brand;if(r.model)$("nModel").value=r.model;
-      lastConf="ai";msg.className="note warnbox";msg.textContent=`Filled from Claude's memory (${r.confidence||"unknown"} confidence), not from a live spec sheet. ${r.note||""} Check the numbers, correct anything, then save.`;}
-  }catch(err){msg.className="note warnbox";msg.textContent=err&&err.code==="rate_limited"?"Claude is rate limited right now. Try again in a minute, or enter the dimensions yourself.":err&&err.code==="not_granted"?"Claude lookup wasn't allowed. Enter the dimensions yourself.":"The lookup didn't work. Enter the dimensions from the spec sheet.";}
-  btn.disabled=false;
+  const hits=BASE.filter(e=>e.brand.toLowerCase()===brand.toLowerCase()&&e.model.toLowerCase()===model.toLowerCase());
+  if(hits.length!==1){msg.textContent="No unique exact catalogue match. Enter supplier specifications below, or ask your connected agent to research this exact model.";return;}
+  const r=hits[0];$("nName").value=r.name||"";$("nW").value=r.w;$("nD").value=r.d;$("nH").value=r.h;$("nKw").value=r.kw??"";
+  if(CATS.includes(r.cat))$("nCat").value=r.cat;$("nMount").value=r.mount;$("nPower").value=r.power||"none";$("nElec").value=r.elec||"";$("nWater").checked=r.water===true;$("nDrain").checked=r.drain===true;lastConf="user";
+  msg.textContent="Exact catalogue specifications copied. This editable copy remains your private entry; use the catalogue result directly to retain its verified status.";
 });
-["nW","nD","nH"].forEach(id=>$(id).addEventListener("input",()=>{if(lastConf==="ai")lastConf="user-edited";}));
+
 function readNew(){
   const brand=$("nBrand").value.trim(),model=$("nModel").value.trim(),w=Math.round(+$("nW").value),d=Math.round(+$("nD").value),h=Math.round(+$("nH").value);
   if(!brand||!model){toast("Brand and model are required.");return null;}
@@ -496,7 +480,7 @@ $("fpFile").addEventListener("change",async e=>{const f=e.target.files[0];e.targ
   try{const pdf=/pdf$/i.test(f.type)||/\.pdf$/i.test(f.name),cv=pdf?await pdfToCanvas(f):await imgToCanvas(f);
     const src=cv.toDataURL("image/jpeg",.72),mmpp=state.room.w/cv.width;under={src,pw:cv.width,ph:cv.height,mmpp,x:0,y:0,op:.55,show:true};blobUrl(under);calPts=[];
     planFile={file:f,pdf};$("fpReadMsg").textContent="";$("fpUndo").hidden=true;
-    $("fpMsg").textContent=`Loaded ${f.name}${pdf?" (page 1)":""}. Let AI read it below, or set the scale and trace the walls yourself.`;if(view!=="plan")setView("plan");fpUI();changed();}
+    $("fpMsg").textContent=`Loaded ${f.name}${pdf?" (page 1)":""}. Set the scale and trace the walls, or share the drawing with your connected agent.`;if(view!=="plan")setView("plan");fpUI();changed();}
   catch(err){$("fpMsg").textContent="That file couldn't be read. Use a JPG, PNG or PDF"+(/load/.test(String(err&&err.message))?" (PDF needs an internet connection the first time).":".");}});
 $("fpPick").addEventListener("click",()=>$("fpFile").click());
 $("fpOp").addEventListener("input",e=>{if(under){under.op=+e.target.value;render();}});
@@ -635,17 +619,7 @@ function reviewDrawing(g){
   $("rvCancel").onclick=closeDlg;
   $("rvApply").onclick=async()=>{const keep=[...$("dlgBody").querySelectorAll("input[data-k]")].filter(c=>c.checked).map(c=>g.items[+c.dataset.k]);closeDlg();await applyDrawing(g,keep);
     $("fpReadMsg").textContent=`Built ${(g.w/1000).toFixed(2)} × ${(g.d/1000).toFixed(2)} m with ${keep.length} item${keep.length===1?"":"s"}. Drawing aligned underneath: check a few items against it.`;toast("Room built from your drawing.");};}
-async function readDrawing(){
-  if(!planFile){toast("Upload a drawing first.");return;}
-  const ask=window.KS_readDrawing||(be&&be.ai?(p,o)=>be.ai(p,o):null);
-  if(!ask){$("fpReadMsg").textContent="Reading drawings needs the online studio at kitchenstudio.design.";return;}
-  if(be&&!be.user()&&!window.KS_readDrawing){openSignIn("Sign in to let AI read your drawing. It's free.");return;}
-  const btn=$("fpRead");btn.disabled=true;const msg=$("fpReadMsg");msg.textContent="Reading the drawing… this takes 20 to 60 seconds.";
-  try{const {pages,text}=await drawingPages();msg.textContent=`Reading ${pages.length} page${pages.length>1?"s":""}…`;
-    const r=await ask(drawingPrompt(pages.length,text),{images:pages.map(q=>({media_type:q.media_type,data:q.data})),kind:"drawing",maxTokens:8000});
-    const g=cleanDrawing(r);msg.textContent="";reviewDrawing(g);}
-  catch(e){console.warn(e);msg.textContent=e&&e.code==="rate_limited"?"The AI is busy or today's limit is reached. Try again later.":e&&e.code==="not_granted"?"Sign in to read drawings.":/room/.test(e&&e.message||"")?"Couldn't find a room outline in this drawing. Set the scale and trace the walls instead.":"The drawing couldn't be read this time. Try again, or set the scale and trace the walls yourself.";}
-  btn.disabled=false;}
+function readDrawing(){window.open('/connect/','_blank','noopener');}
 $("fpRead").addEventListener("click",readDrawing);
 $("fpUndo").addEventListener("click",()=>{if(!drawUndo)return;const s=JSON.parse(drawUndo);state.room=s.room;state.items=s.items;if(s.under){under=s.under;blobUrl(under);}drawUndo=null;$("fpUndo").hidden=true;roomInputs();fpUI();changed();toast("Back to what you had before the import.");});
 
@@ -771,44 +745,15 @@ function runAuto(){
   if(!state.items.length){toast("Add some equipment first, then arrange it.");return;}
   undoSnap=JSON.stringify(state);const a=Math.min(2000,Math.max(900,Math.round(+$("aiAisle").value)||1200));
   const notes=autoLayout(a);sel=null;$("aiUndo").hidden=false;if(view==="elev")setView("plan");changed();showNotes(notes,"What the layout did");showTrim();
-  if(lastUnfit.length)toast(`${lastUnfit.length} item${lastUnfit.length>1?"s":""} didn't fit the room. Remove them in AI design or make the room bigger.`);
+  if(lastUnfit.length)toast(`${lastUnfit.length} item${lastUnfit.length>1?"s":""} didn't fit the room. Remove them in Plan tools or make the room bigger.`);
   revealCanvas();
 }
 $("aiArrange").addEventListener("click",runAuto);
 $("aiUndo").addEventListener("click",()=>{if(!undoSnap)return;adopt(JSON.parse(undoSnap));undoSnap=null;$("aiUndo").hidden=true;changed();toast("Back to your previous layout.");});
 $("aiBrief").addEventListener("click",async()=>{
-  const brief=$("aiText").value.trim();if(brief.length<8){toast("Describe the kitchen first: concept, menu, covers or orders per day.");return;}
-  if(be&&!be.user()){openSignIn("Sign in to use the AI brief. It is free during early access.");return;}
-  if(!sampleFn){toast("The AI brief only works on the published page inside Claude.");return;}
-  const cat=all(),btn=$("aiBrief");btn.disabled=true;$("aiNotes").textContent="Claude is choosing equipment for your brief…";
-  const lines=cat.map((e,i)=>`${i}|${e.brand} ${e.model}|${e.name}|${e.w}x${e.d}x${e.h}|${e.mount==="top"?"countertop":"floor"}`).join("\n");
-  const ssl=Object.entries(SS).map(([k,v])=>`${k}: ${v.n}, default ${v.w}x${v.d}x${v.h}, options ${v.opts.join("/")}`).join("\n");
-  const B=roomBudget();
-  const prompt=`You are an experienced commercial kitchen designer. Choose the equipment for this kitchen. A separate program will position it, so do not give coordinates.
-ROOM: ${B.shape}, ${state.room.w} x ${state.room.d} mm overall, ${B.area} m² floor, ceiling ${state.room.h} mm, ${B.doors} door${B.doors===1?"":"s"}.
-HARD BUDGET: usable wall run is ${B.wall} mm after doors and corners. The summed width of all floor-standing items (equipment plus stainless tables, sinks, racks) must stay under ${B.wall} mm, and their summed footprint under ${B.foot} m². Count it before you answer and drop items until it fits. A ${B.area} m² room is ${B.size}.
-BRIEF: ${brief}
-EQUIPMENT CATALOGUE (index|brand model|description|WxDxH mm|mount). Choose only from these indexes:
-${lines}
-STAINLESS MODULES you can specify (type: description). Width is free between 400 and 3000 in steps of 100:
-${ssl}
-Rules: countertop equipment needs a table or refrigerated counter wide enough to sit on. Always include one hand wash basin ("hand"), at least one sink, cold storage, and warewashing if the brief implies dishes or pots. Do not include a hood; it is added automatically. Prefer 220-240V / 380-415V 50Hz models over US-spec 115V ones unless the brief says otherwise. Fit the list to the room; a small room gets a short list.
-Reply with ONLY JSON: {"equipment":[{"i":catalogue index,"qty":1}],"stainless":[{"type":"table","w":1500,"qty":1,"opts":["Undershelf"]}],"notes":["up to 5 short sentences explaining the main choices and anything the owner should double-check"]}`;
-  try{
-    const r=await sampleFn.json(prompt,{modelTier:"default",cache:false});
-    const eq=Array.isArray(r&&r.equipment)?r.equipment:[],ss=Array.isArray(r&&r.stainless)?r.stainless:[];
-    const next=[];
-    for(const e of eq){const spec=cat[+e.i];if(!spec)continue;for(let k=0;k<Math.min(6,Math.max(1,+e.qty||1));k++)next.push(Object.assign({id:newId(),x:0,y:0,rot:0,kind:"eq"},JSON.parse(JSON.stringify(spec))));}
-    for(const m of ss){const t=SS[m.type];if(!t||m.type==="hood")continue;const w=Math.min(3000,Math.max(300,Math.round((+m.w||t.w)/50)*50)),opts=(Array.isArray(m.opts)?m.opts:[]).filter(o=>t.opts.includes(o));
-      for(let k=0;k<Math.min(8,Math.max(1,+m.qty||1));k++)next.push({id:newId(),x:0,y:0,rot:0,kind:"ss",ssType:m.type,brand:"Fabricated",model:t.n,name:t.n,cat:"Stainless",w,d:t.d,h:t.h,mount:t.mount,z:t.z,power:"none",kw:null,elec:null,water:!!t.water,drain:!!t.drain,opts,mat:"AISI 304, 1.2 mm",conf:"user"});}
-    if(next.length<3){$("aiNotes").textContent="Claude didn't return a usable equipment list. Try a more specific brief.";btn.disabled=false;return;}
-    undoSnap=JSON.stringify(state);state.items=[...state.items.filter(i=>i.kind==="arch"),...next];const a=Math.min(2000,Math.max(900,Math.round(+$("aiAisle").value)||1200));
-    const fit=fitToRoom(a),ln=fit.notes;if(fit.removed.length)ln.unshift(`Trimmed to the room: left out ${fit.removed.map(i=>i.name||i.model).join(", ")} because they didn't fit in ${(state.room.w/1000).toFixed(1)} × ${(state.room.d/1000).toFixed(1)} m.`);
-    sel=null;$("aiUndo").hidden=false;if(view==="elev")setView("plan");changed();showTrim();
-    showNotes([...(Array.isArray(r.notes)?r.notes.slice(0,5).map(String):[]),...ln],"Claude's equipment choices, then the layout rules");
-    revealCanvas();
-  }catch(err){$("aiNotes").textContent=err&&err.code==="rate_limited"?"Claude is rate limited right now. Try again in a minute.":err&&err.code==="not_granted"?"The AI brief wasn't allowed for this page.":"The AI brief didn't work this time. You can still add equipment yourself and use Arrange.";}
-  btn.disabled=false;
+  const brief=$("aiText").value.trim();if(!brief){toast("Describe the kitchen first.");return;}
+  const text="Use the Kitchen Studio MCP tools to help with my saved kitchen. First list my kitchens and confirm the target. Room: "+state.room.w+" x "+state.room.d+" mm. Brief: "+brief+". Search the catalogue, prepare any custom equipment without inventing missing specifications, then check the layout. Ask before replacing existing work.";
+  try{await navigator.clipboard.writeText(text);$("aiNotes").textContent="Brief copied. Paste it into your connected Claude, Codex or other MCP agent. No request was sent by the webapp.";}catch(_){save("kitchen-brief.txt",text);$("aiNotes").textContent="Brief downloaded. Share it with your connected MCP agent.";}
 });
 
 /* ---------- starter templates ---------- */
@@ -1217,7 +1162,7 @@ async function boot(){
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(render);
   be=window.KS_backend||null;
   if(be){curId=localStorage.getItem("ks.curId")||null;if(curId==="")curId=null;
-    sampleFn={json:(prompt,opts)=>be.ai(prompt,opts)};$("aiBriefBox").hidden=false;$("aiNoBrief").hidden=true;
+    $("aiBriefBox").hidden=false;$("aiNoBrief").hidden=false;
     await be.ready;acctUI();if(be.linkError&&be.linkError())toast(be.linkError());
     if(consentId())setTimeout(()=>runConsent(consentId()),0);
     const shared=await loadSharedFromUrl();
@@ -1226,7 +1171,7 @@ async function boot(){
     be.onAuth(async u=>{intakeUI.authChanged();custom=[...custom.filter(e=>!e.intake),...loadIntakeModels()];renderResults();acctUI();if(u){closeDlg();toast(`Signed in as ${u.email||"you"}.`);if(consentId())runConsent(consentId());await cloudSync();}else{curId=null;curVersion=null;localStorage.setItem("ks.curId","");saveLabel("Saved on this device · sign in to save online");toast("Signed out. Your kitchen stays on this device.");}});
     return;}
   const use=window.claude&&window.claude.use?n=>window.claude.use(n).catch(()=>null):()=>Promise.resolve(null);
-  use("sample").then(s=>{sampleFn=s;$("aiBriefBox").hidden=!s;$("aiNoBrief").hidden=!!s;if(!s){$("nLookup").hidden=true;}});
+  $("aiBriefBox").hidden=false;$("aiNoBrief").hidden=false;
   use("downloads").then(d=>{downloads=d;});
   use("db").then(async d=>{
     if(!d)return;db=d;
