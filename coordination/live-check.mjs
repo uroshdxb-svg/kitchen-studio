@@ -1,6 +1,7 @@
 // Read-only production verification; no account, customer, or publishing actions.
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
+import {TOOLS} from '../mcp.js';
 const origin='https://kitchenstudio.design';
 const pages=['/','/app/','/connect/','/guides/','/guides/commercial-kitchen-layout/','/guides/equipment-schedule/','/docs/','/docs/ai/'];
 const docs=pages.slice(3);
@@ -24,7 +25,7 @@ if(JSON.stringify(sitemap)!==JSON.stringify(pages.map(p=>origin+p)))failures.pus
 if(!(bodies.get('/robots.txt')??'').includes('Sitemap: '+origin+'/sitemap.xml'))failures.push('Missing robots sitemap');
 let catalogueRows=null,toolCount=null;
 try{const catalogue=JSON.parse(bodies.get('/app/catalogue.json'));catalogueRows=Array.isArray(catalogue)?catalogue.length:null;if(catalogueRows===null||catalogueRows<483)failures.push('Catalogue fell below verified baseline483');}catch{failures.push('Invalid catalogue JSON');}
-try{toolCount=JSON.parse(bodies.get('/docs/ai/tools.json')).tools.length;if(toolCount!==11)failures.push('Unexpected tool-schema count');}catch{failures.push('Invalid tool reference JSON');}
+try{const tools=JSON.parse(bodies.get('/docs/ai/tools.json')).tools;toolCount=tools.length;if(JSON.stringify(tools.map(t=>t.name).sort())!==JSON.stringify(TOOLS.map(t=>t.name).sort()))failures.push('Published tool names differ from source');}catch{failures.push('Invalid tool reference JSON');}
 for(const path of ['/guides','/docs/ai'])if(rows.find(x=>x.path===path)?.url!==origin+path+'/')failures.push(path+': trailing slash redirect');
 const report={scope:'public_HTTP_only',checkedAt:new Date().toISOString(),workflowCommit:process.env.GITHUB_SHA??null,requests:paths.length,sitemapPages:sitemap.length,catalogueRows,toolCount,failures,rows,indexing:'not_measured',engineMentions:'not_measured',authenticatedExternalMcp:'not_tested'};
 fs.mkdirSync('test-results',{recursive:true});fs.writeFileSync('test-results/production-http-report.json',JSON.stringify(report,null,2)+'\n');
