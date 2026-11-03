@@ -31,7 +31,8 @@ const appJs=['brand.js','fab.js','cat.js','symbols.js','equipment-intake.js','eq
 const META='<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">';
 const ver=Date.now().toString(36);
 const LIBS={"three.min.js":"node_modules/three/build/three.min.js","jspdf.min.js":"node_modules/jspdf/dist/jspdf.umd.min.js","svg2pdf.min.js":"node_modules/svg2pdf.js/dist/svg2pdf.umd.min.js","pdf.min.js":"node_modules/pdfjs-dist/build/pdf.min.js","pdf.worker.min.js":"node_modules/pdfjs-dist/build/pdf.worker.min.js","supabase.js":"node_modules/@supabase/supabase-js/dist/umd/supabase.js"};
-const out=(dir,file,data)=>{fs.mkdirSync(path.join(ROOT,dir,path.dirname(file)),{recursive:true});fs.writeFileSync(path.join(ROOT,dir,file),data);};
+let analyticsTag='';
+const out=(dir,file,data)=>{if(dir==='dist'&&file.endsWith('.html')&&analyticsTag)data=data.replace('</head>',analyticsTag+'\n</head>');fs.mkdirSync(path.join(ROOT,dir,path.dirname(file)),{recursive:true});fs.writeFileSync(path.join(ROOT,dir,file),data);};
 const copy=(src,dir,file)=>{fs.mkdirSync(path.join(ROOT,dir,path.dirname(file)),{recursive:true});fs.copyFileSync(path.join(ROOT,src),path.join(ROOT,dir,file));};
 
 if(mode==="artifact"){
@@ -46,9 +47,16 @@ if(mode==="artifact"){
   console.log("dist-standalone/Kitchen_Studio.html",(html.length/1e6).toFixed(2),"MB");
 }else{
   let fileCfg={};try{fileCfg=JSON.parse(read("site.config.json"));}catch(_){}
+  // Public ingestion identifier only. Never use an Amplitude Secret Key or Data API token.
+  const amplitudeApiKey=(process.env.AMPLITUDE_API_KEY||fileCfg.amplitudeApiKey||'').trim();
+  if(amplitudeApiKey&&!/^[a-zA-Z0-9_-]{20,128}$/.test(amplitudeApiKey))throw new Error('Invalid AMPLITUDE_API_KEY format');
+  const amplitudeZone=(process.env.AMPLITUDE_SERVER_ZONE||fileCfg.amplitudeServerZone||'US').toUpperCase();
+  if(!['US','EU'].includes(amplitudeZone))throw new Error('AMPLITUDE_SERVER_ZONE must be US or EU');
+  if(amplitudeApiKey)analyticsTag=`<script defer src="/analytics.js?v=${ver}" data-amplitude-key="${amplitudeApiKey}" data-amplitude-zone="${amplitudeZone}"></script>`;
   const cfg={supabaseUrl:process.env.SUPABASE_URL||fileCfg.supabaseUrl||"",supabaseAnonKey:process.env.SUPABASE_ANON_KEY||fileCfg.supabaseAnonKey||"",siteUrl:process.env.SITE_URL||fileCfg.siteUrl||"",version:ver};
   const D="dist";
   fs.rmSync(path.join(ROOT,D),{recursive:true,force:true});
+  copy('analytics.js',D,'analytics.js');
   // catalogue rows for the MCP server (mcp.js reads /app/catalogue.json through the ASSETS binding)
   {const m={};new Function("m",read("cat.js")+";m.rows=CATALOGUE_ROWS;")(m);out(D,"app/catalogue.json",JSON.stringify(m.rows));}
   const libs={"jspdf-src":"/app/vendor/jspdf.min.js","svg2pdf-src":"/app/vendor/svg2pdf.min.js","pdfjs-src":"/app/vendor/pdf.min.js","pdfjs-worker-src":"/app/vendor/pdf.worker.min.js"};
