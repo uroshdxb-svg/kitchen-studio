@@ -11,6 +11,11 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
     const p = url.pathname;
+    if (p === "/analytics-country") {
+      const value = request.cf?.country;
+      const country_code = typeof value === "string" && /^[A-Z]{2}$/.test(value) && value !== "XX" ? value : "Unknown";
+      return Response.json({ country_code }, { headers: { "Cache-Control": "private, no-store", "CDN-Cache-Control": "no-store" } });
+    }
     if (isMcpPath(p)) return handleMcp(request, env);
     if (p.startsWith("/k/") || p === "/app" || p === "/app/" || p === "/oauth/consent" || p === "/oauth/consent/") {
       const r = await env.ASSETS.fetch(new Request(new URL("/app/", url), request));

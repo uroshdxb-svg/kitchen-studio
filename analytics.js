@@ -2,17 +2,29 @@
 (() => {
   'use strict';
   if (window.KS_analytics) return;
-  const status = window.KS_analytics = { state: 'disabled' };
+  const status = window.KS_analytics = { state: 'disabled', track: () => {} };
+  const pending = [];
+  const params = new URLSearchParams(location.search);
   const config = document.currentScript?.dataset || {};
   const key = config.amplitudeKey || '';
   const host = location.hostname;
   const path = location.pathname;
   const storeKey = 'KS_analytics_disabled';
   let excluded = false;
-  try { excluded = localStorage.getItem(storeKey) === '1'; } catch (_) {}
+  try {
+    if (params.get('analytics_exclude') === '1') localStorage.setItem(storeKey, '1');
+    if (params.get('analytics_exclude') === '0') localStorage.removeItem(storeKey);
+    excluded = localStorage.getItem(storeKey) === '1';
+  } catch (_) { excluded = params.get('analytics_exclude') === '1'; }
+  let internalTest = params.get('analytics_test') === '1';
+  try {
+    if (internalTest) sessionStorage.setItem('KS_analytics_test', '1');
+    internalTest = internalTest || sessionStorage.getItem('KS_analytics_test') === '1';
+  } catch (_) {}
   status.excludeThisBrowser = () => {
     try { localStorage.setItem(storeKey, '1'); } catch (_) {}
-    window.amplitude?.setOptOut(true);
+    try { window.amplitude?.setOptOut(true); } catch (_) {}
+    pending.length = 0;
     status.state = 'excluded';
   };
   // Do not mix previews, automated tests, or authentication screens into visitor counts.
@@ -32,7 +44,33 @@
   else if (/^\/showcase\/?$/.test(path)) { page = 'showcase'; safePath = '/showcase/'; }
   let referrer = '';
   try { referrer = new URL(document.referrer).hostname; } catch (_) {}
-  const properties = { site: 'kitchenstudio.design', page, path: safePath, referrer_host: referrer };
+  const properties = { site: 'kitchenstudio.design', page, path: safePath, referrer_host: referrer,
+    country_code: 'Unknown', internal_test: internalTest, measurement_version: 2 };
+  const events = new Set(['App Engaged', 'Equipment Added', 'Project Saved', 'Project Created', 'Export Generated', 'Share Enabled']);
+  const once = new Set();
+  status.track = (name, details = {}) => {
+    if (!events.has(name) || !['loading', 'active'].includes(status.state)) return;
+    if (name === 'App Engaged') { if (once.has(name)) return; once.add(name); }
+    const safe = {};
+    for (const [key, values] of Object.entries({storage:['local','cloud'],format:['json','csv','svg','pdf','txt','other'],source:['catalogue','custom','fabricated','duplicate','intake'],destination:['download','host']})) {
+      if (values.includes(details[key])) safe[key] = details[key];
+    }
+    if (typeof details.example_layout === 'boolean') safe.example_layout = details.example_layout;
+    if (Number.isInteger(details.quantity) && details.quantity > 0) safe.quantity = Math.min(details.quantity, 400);
+    if (status.state === 'loading') { if (pending.length < 100) pending.push([name, safe]); return; }
+    try { window.amplitude.track('Kitchen Studio ' + name, { ...properties, ...safe }); } catch (_) {}
+  };
+  // Only the country code leaves Cloudflare, never the visitor's IP or precise location.
+  const countryReady = (async () => {
+    let timer;
+    try {
+      const data = await Promise.race([
+        fetch('/analytics-country', { cache:'no-store', credentials:'omit', referrerPolicy:'no-referrer' }).then(r => r.ok ? r.json() : {}),
+        new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('timeout')), 1500); })
+      ]);
+      if (/^[A-Z]{2}$/.test(data.country_code) && data.country_code !== 'XX') properties.country_code = data.country_code;
+    } catch (_) {} finally { clearTimeout(timer); }
+  })();
   const script = document.createElement('script');
   script.src = 'https://cdn.amplitude.com/libs/analytics-browser-2.48.1-min.js.gz';
   script.async = true;
@@ -43,6 +81,12 @@
       if (status.state === 'excluded') return;
       const amplitude = window.amplitude;
       if (!amplitude?.init) { status.state = 'blocked'; return; }
+      await countryReady;
+      if (status.state === 'excluded') return;
+      amplitude.add({name:'ks-reporting-context',type:'enrichment',execute:async event => {
+        event.event_properties = { ...event.event_properties, ...properties };
+        return event;
+      }});
       await amplitude.init(key, {
         serverZone: config.amplitudeZone === 'EU' ? 'EU' : 'US',
         identityStorage: 'localStorage',
@@ -51,7 +95,7 @@
         enableDiagnostics: false,
         transport: { referrerPolicy: 'no-referrer' },
         autocapture: {
-          sessions: true, attribution: false, pageViews: false,
+          sessions: true, attribution: false, pageViews: false, pageUrlEnrichment: false,
           fileDownloads: false, formInteractions: false, elementInteractions: false,
           networkTracking: false, webVitals: false, frustrationInteractions: false
         }
@@ -60,6 +104,7 @@
       amplitude.track('Kitchen Studio Page Viewed', properties);
       if (page === 'builder') amplitude.track('Kitchen Studio Builder Opened', properties);
       status.state = 'active';
+      for (const [name, details] of pending.splice(0)) { once.delete(name); status.track(name, details); }
     } catch (_) {
       // Analytics is optional: an unavailable service must never interrupt the planner.
       status.state = 'blocked';

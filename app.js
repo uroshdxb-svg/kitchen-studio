@@ -1,5 +1,11 @@
 (function(){
 "use strict";
+// Analytics must never interrupt editing, storage, or exports.
+function measure(name,details={}){try{window.KS_analytics?.track(name,details);}catch(_){}}
+function engage(){measure("App Engaged",{example_layout:isExample});}
+function equipmentAdded(source,quantity=1){engage();measure("Equipment Added",{source,quantity,example_layout:isExample});}
+let analyticsRevision=0,analyticsLocalSaved=0,analyticsCloudSaved=0;
+function savedMetric(storage,revision){if(!revision)return;const last=storage==="local"?analyticsLocalSaved:analyticsCloudSaved;if(revision<=last)return;if(storage==="local")analyticsLocalSaved=revision;else analyticsCloudSaved=revision;measure("Project Saved",{storage,example_layout:isExample});}
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const CATS=["Combi ovens","Cooking","Fryers","High-speed ovens","Refrigeration","Blast chilling","Ice","Warewashing","Prep","Bakery","Holding","Service","Display","Beverage","Countertop","Storage"];
@@ -209,7 +215,7 @@ $("selbar").addEventListener("click",e=>{
   const a=e.target.closest("[data-act]")?.dataset.act;if(!a)return;const it=state.items.find(i=>i.id===sel);if(!it)return;
   if(a==="flip"){it.flip=!it.flip;}
   if(a==="rot"){const cx=it.x+fw(it)/2,cy=it.y+fd(it)/2;it.rot=(it.rot+90)%360;it.x=Math.round((cx-fw(it)/2)/50)*50;it.y=Math.round((cy-fd(it)/2)/50)*50;clamp(it);}
-  if(a==="dup"){const c=JSON.parse(JSON.stringify(it));c.id=newId();state.items.push(c);findSpot(c);sel=c.id;}
+  if(a==="dup"){const c=JSON.parse(JSON.stringify(it));c.id=newId();state.items.push(c);findSpot(c);sel=c.id;if(c.kind!=="arch")equipmentAdded("duplicate");}
   if(a==="del"){state.items=state.items.filter(i=>i!==it);sel=null;}
   changed();
 });
@@ -289,7 +295,7 @@ svg.addEventListener("pointerup",e=>{if(tapStart&&tapStart.pid===e.pointerId){co
 function place(spec){
   const it=Object.assign({id:newId(),x:0,y:0,rot:0,kind:"eq"},JSON.parse(JSON.stringify(spec)));
   if(isExample&&!dirty){/* keep example; user is building on it */}
-  state.items.push(it);const ok=findSpot(it);sel=it.id;
+  state.items.push(it);const ok=findSpot(it);sel=it.id;equipmentAdded(it.ssType?"fabricated":it.cid?"custom":"catalogue");
   if(view==="elev")setView("plan");
   changed();
   toast(ok?`Added ${itemLabel(it)}. Drag it into place.`:`Added ${itemLabel(it)}, but the room is full. It overlaps for now.`);
@@ -408,8 +414,9 @@ function csv(){
   return "﻿"+rows.map(r=>r.map(q).join(",")).join("\r\n");
 }
 async function save(filename,data){
-  if(downloads){try{await downloads.save({filename,data});toast("Exported "+filename);}catch(e){if(e&&e.code!=="declined")toast("Export didn't go through. Try again.");}return;}
-  try{const url=URL.createObjectURL(new Blob([data],{type:"application/octet-stream"}));const l=document.createElement("a");l.href=url;l.download=filename;document.body.appendChild(l);l.click();l.remove();setTimeout(()=>URL.revokeObjectURL(url),4000);toast("Downloaded "+filename);}
+  const exported=()=>{engage();const ext=filename.split(".").pop().toLowerCase();measure("Export Generated",{format:["json","csv","svg","pdf","txt"].includes(ext)?ext:"other",destination:downloads?"host":"download",example_layout:isExample});};
+  if(downloads){try{await downloads.save({filename,data});exported();toast("Exported "+filename);}catch(e){if(e&&e.code!=="declined")toast("Export didn't go through. Try again.");}return;}
+  try{const url=URL.createObjectURL(new Blob([data],{type:"application/octet-stream"}));const l=document.createElement("a");l.href=url;l.download=filename;document.body.appendChild(l);l.click();l.remove();exported();setTimeout(()=>URL.revokeObjectURL(url),4000);toast("Downloaded "+filename);}
   catch(_){toast("This browser blocked the download.");}
 }
 $("projSave").addEventListener("click",()=>save("kitchen-project.json",JSON.stringify({v:1,room:state.room,items:state.items,under:underData(),custom,at:Date.now()},null,1)));
@@ -970,19 +977,19 @@ let toastT;function toast(m){const t=$("toast");t.textContent=m;t.hidden=false;c
 
 /* ---------- persistence ---------- */
 let saveT=null,saving=false,again=false,saveConflictShown=false;
-function changed(){histNote();dirty=true;isExample=false;render();$("saveState").textContent="Saving…";clearTimeout(saveT);saveT=setTimeout(persist,1200);}
+function changed(){engage();analyticsRevision++;histNote();dirty=true;isExample=false;render();$("saveState").textContent="Saving…";clearTimeout(saveT);saveT=setTimeout(persist,1200);}
 function currentPayload(){return JSON.parse(JSON.stringify({v:1,name:projName||undefined,room:state.room,items:state.items,under:underData(),at:Date.now()}));}
 const projTitle=()=>projName||"Untitled kitchen";
 function saveLabel(where){$("saveState").textContent=be&&(curId||sharedFrom||!isExample)?`${projTitle()} · ${where}`:where;}
 function persistLocal(payload=currentPayload()){
-  try{localStorage.setItem("ks.project",JSON.stringify(payload));localStorage.setItem("ks.curId",curId||"");return true;}catch(_){return false;}}
+  try{localStorage.setItem("ks.project",JSON.stringify(payload));localStorage.setItem("ks.curId",curId||"");savedMetric("local",analyticsRevision);return true;}catch(_){return false;}}
 async function persist(){
   if(saving){again=true;return;}saving=true;
-  const payload=currentPayload();
+  const payload=currentPayload(),revision=analyticsRevision;
   let where="";
   if(persistLocal(payload))where="Saved on this device";
   if(db){try{let cloud=payload;if(JSON.stringify(payload).length>230000){cloud=JSON.parse(JSON.stringify(payload));if(cloud.under)cloud.under.src=null;}await db.doc("projects/main").set(cloud);where=cloud===payload?"Saved":"Saved (plan image kept on this device only)";}catch(_){}}
-  if(be&&be.user()&&curId){try{const r=await be.saveProject(curId,payload,projName||undefined,curVersion);curVersion=Number.isInteger(r.version)?r.version:curVersion;saveConflictShown=false;where=r.stripped?"Saved online (plan image kept on this device only)":"Saved online";}catch(e){if(e&&e.code==="conflict"){where="Newer online version exists · reopen from My kitchens";if(!saveConflictShown){saveConflictShown=true;toast("This kitchen changed elsewhere. Reopen it from My kitchens before saving again.");}}else where="Saved on this device, not online";}}
+  if(be&&be.user()&&curId){try{const r=await be.saveProject(curId,payload,projName||undefined,curVersion);curVersion=Number.isInteger(r.version)?r.version:curVersion;saveConflictShown=false;where=r.stripped?"Saved online (plan image kept on this device only)":"Saved online";savedMetric("cloud",revision);}catch(e){if(e&&e.code==="conflict"){where="Newer online version exists · reopen from My kitchens";if(!saveConflictShown){saveConflictShown=true;toast("This kitchen changed elsewhere. Reopen it from My kitchens before saving again.");}}else where="Saved on this device, not online";}}
   else if(be&&be.user()&&!curId)where="Saved on this device · not yet in My kitchens";
   else if(be&&!be.user())where="Saved on this device · sign in to save online";
   saveLabel(where||"Not saved (storage unavailable)");
@@ -1113,13 +1120,13 @@ async function openProject(id){if(id===curId){closeDlg();return;}
 async function newKitchen(){if(curId&&dirty)await persist();
   const n=await askText("New kitchen","","Kitchen name");if(n===null)return;
   state={room:{w:9000,d:6000,h:3000},items:[]};under=null;mode=null;fpUI();sel=null;projName=n||"Untitled kitchen";sharedFrom=null;$("banner").hidden=true;roomInputs();render();
-  try{const r=await be.createProject(projName,currentPayload());curId=r.id;curVersion=Number.isInteger(r.version)?r.version:null;saveConflictShown=false;localStorage.setItem("ks.curId",curId);saveLabel("Saved online");closeDlg();toast(`“${projTitle()}” created. Set the room size, then add equipment.`);setTab("room");}
+  try{const r=await be.createProject(projName,currentPayload());curId=r.id;curVersion=Number.isInteger(r.version)?r.version:null;saveConflictShown=false;localStorage.setItem("ks.curId",curId);saveLabel("Saved online");engage();measure("Project Created",{storage:"cloud"});measure("Project Saved",{storage:"cloud",example_layout:false});closeDlg();toast(`“${projTitle()}” created. Set the room size, then add equipment.`);setTab("room");}
   catch(e){curId=null;curVersion=null;toast("Couldn't create it online; it's saved on this device.");closeDlg();}}
 async function saveAsNew(){const n=await askText("Save to my kitchens",projName||"","Kitchen name");if(n===null)return;projName=n||"Untitled kitchen";
-  try{const r=await be.createProject(projName,currentPayload());curId=r.id;curVersion=Number.isInteger(r.version)?r.version:null;saveConflictShown=false;sharedFrom=null;$("banner").hidden=true;localStorage.setItem("ks.curId",curId);saveLabel("Saved online");closeDlg();toast(`Saved “${projTitle()}” to your kitchens.`);}catch(e){toast("Couldn't save online. It stays on this device.");}}
+  try{const r=await be.createProject(projName,currentPayload());curId=r.id;curVersion=Number.isInteger(r.version)?r.version:null;saveConflictShown=false;sharedFrom=null;$("banner").hidden=true;localStorage.setItem("ks.curId",curId);saveLabel("Saved online");engage();measure("Project Saved",{storage:"cloud",example_layout:isExample});closeDlg();toast(`Saved “${projTitle()}” to your kitchens.`);}catch(e){toast("Couldn't save online. It stays on this device.");}}
 async function shareCurrent(){if(!be.user()){openSignIn("Sign in to share a link to this kitchen.");return;}if(!curId){openDlg("Share link",`<p>Save this kitchen to your list first, then share it.</p><div class="bar"><button class="btn pri" id="shSave">Save to my kitchens</button></div>`);$("shSave").onclick=()=>saveAsNew();return;}shareDialog(curId,projName);}
 async function shareDialog(id,name){openDlg("Share link",`<p>Turning on the link…</p>`);
-  try{const pid=await be.setPublic(id,true),url=be.shareUrl(pid);
+  try{const pid=await be.setPublic(id,true),url=be.shareUrl(pid);engage();measure("Share Enabled",{example_layout:isExample});
     $("dlgBody").innerHTML=`<p>Anyone with this link can open a read-only copy of “${esc(name||"this kitchen")}”: plan, elevations, 3D and the schedule. They can't change your version.</p>
       <div class="share-url"><input id="shUrl" type="text" readonly value="${esc(url)}"><button class="btn pri" id="shCopy">Copy</button></div>
       <div class="bar"><button class="btn" id="shOpen">Open</button><button class="btn danger" id="shOff">Stop sharing</button></div><p class="note" id="shMsg"></p>`;
@@ -1241,7 +1248,7 @@ const intakeUI=KS_createIntake({
   saveLocal:async e=>{const next=custom.filter(c=>c.cid!==e.cid);next.unshift(e);const previous=custom;custom=next;if(!saveCustomLocal()){custom=previous;throw new Error("Equipment could not be saved: browser storage is full.");}renderChips();renderResults();},
   sync:async e=>{if(!be||!be.user())throw new Error("Sign in first");await be.saveEquipment(e);},
   request:async r=>{if(!be||!be.user())throw new Error("Sign in first");await be.report(r);},
-  placeBatch:(equipment,quantity,batchId)=>{for(let n=0;n<quantity;n++){const intakePlacement=batchId+":"+n;if(state.items.some(i=>i.intakePlacement===intakePlacement))continue;const it={...JSON.parse(JSON.stringify(equipment)),id:newId(),x:0,y:0,rot:0,kind:"eq",intakePlacement};state.items.push(it);findSpot(it);sel=it.id;}changed();if(!persistLocal())throw new Error("The layout could not be saved on this device. Free browser storage and retry before closing.");}
+  placeBatch:(equipment,quantity,batchId)=>{let added=0;for(let n=0;n<quantity;n++){const intakePlacement=batchId+":"+n;if(state.items.some(i=>i.intakePlacement===intakePlacement))continue;const it={...JSON.parse(JSON.stringify(equipment)),id:newId(),x:0,y:0,rot:0,kind:"eq",intakePlacement};state.items.push(it);findSpot(it);sel=it.id;added++;}if(added)equipmentAdded("intake",added);changed();if(!persistLocal())throw new Error("The layout could not be saved on this device. Free browser storage and retry before closing.");}
 });
 boot();
 })();

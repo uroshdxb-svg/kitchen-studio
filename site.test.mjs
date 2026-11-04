@@ -7,6 +7,8 @@ const mock=fs.readFileSync(path.join(HERE,"mock-backend.js"),"utf8");
 const errors=[];let fails=0;const check=(ok,msg)=>{console.log((ok?"  ok   ":"  FAIL ")+msg);if(!ok)fails++;};
 const ctx=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:2,isMobile:true,hasTouch:true,colorScheme:"light"});
 await ctx.addInitScript(mock);
+const captureAnalytics=()=>{window.__metrics=[];window.KS_analytics={track:(name,details)=>window.__metrics.push({name,details})};};
+await ctx.addInitScript(captureAnalytics);
 const page=await ctx.newPage();page.on("pageerror",e=>errors.push("app: "+e.message));page.on("console",m=>{if(m.type()==="error"){const loc=m.location();if(!loc.url.startsWith("https://fonts.googleapis.com/"))errors.push(`console: ${m.text()}${loc.url?` (${loc.url})`:""}`);}});
 
 console.log("1. landing page");
@@ -25,6 +27,7 @@ check(/on the list/.test(await page.textContent("#wlMsg")),"waitlist submit");
 
 console.log("2. app, signed out");
 await page.goto(BASE+"/app/");await page.waitForTimeout(1200);
+check((await page.evaluate(()=>window.__metrics.length))===0,"initial example does not count as app engagement or a save");
 check(!(await page.locator("#kitchensBtn").isHidden()),"kitchens button visible");
 check(/sign in/.test(await page.textContent("#saveState")),"save label asks to sign in: "+await page.textContent("#saveState"));
 await page.click("#kitchensBtn");await page.waitForTimeout(300);
@@ -52,6 +55,7 @@ const list2=await page.evaluate(()=>JSON.parse(localStorage.getItem("ks.mock")).
 check(/Café Riyadh/.test(await page.textContent("#saveState")),"header shows new kitchen name");
 check((await page.evaluate(()=>document.querySelectorAll(".it").length))===0,"new kitchen is empty");
 
+check(await page.evaluate(()=>window.__metrics.some(e=>e.name==="Project Created")&&window.__metrics.some(e=>e.name==="Project Saved"&&e.details.storage==="cloud")),"successful project creation reports creation and cloud save");
 console.log("4. share link");
 await page.click("#menuBtn");await page.click("#mShare");await page.waitForTimeout(400);
 const url=await page.inputValue("#shUrl");check(/\/k\/[A-Za-z0-9]{8,}/.test(url),"share url: "+url);
@@ -85,7 +89,7 @@ check(reps[0]&&reps[0].project&&Array.isArray(reps[0].project.items)&&reps[0].co
 check(/Thanks/.test(await page.textContent("#dlgBody")),"report thank-you shown");await page.click("#rpDone");
 
 console.log("6. screenshots for the landing page (desktop plan, phone plan, 3D)");
-const d=await browser.newContext({viewport:{width:1280,height:900},deviceScaleFactor:1,colorScheme:"light"});await d.addInitScript(mock);const dp=await d.newPage();dp.on("pageerror",e=>errors.push("desk: "+e.message));
+const d=await browser.newContext({viewport:{width:1280,height:900},deviceScaleFactor:1,colorScheme:"light"});await d.addInitScript(mock);await d.addInitScript(captureAnalytics);const dp=await d.newPage();dp.on("pageerror",e=>errors.push("desk: "+e.message));
 await dp.goto(BASE+"/app/");await dp.waitForTimeout(1500);await dp.click("#t-eq");await dp.waitForTimeout(400);await dp.screenshot({path:path.join(SHOTS,"plan-desktop.png")});
 await dp.click("#v3dBtn");await dp.waitForTimeout(2500);await dp.screenshot({path:path.join(SHOTS,"3d.png"),clip:{x:400,y:0,width:800,height:900}});
 console.log("7. branded drawing exports, A3 and A4");
@@ -117,6 +121,7 @@ for(const paper of ["a3","a4"]){
   fs.writeFileSync(path.join(SHOTS,"branded-"+paper+"-first.svg"),sheets[0].svg);
   fs.writeFileSync(path.join(SHOTS,"branded-"+paper+"-last.svg"),sheets.at(-1).svg);
 }
+check(await dp.evaluate(()=>window.__metrics.filter(e=>e.name==="Export Generated"&&e.details.format==="pdf").length===2),"completed PDF generation is measured twice");
 console.log("8. fabrication details on stainless items");
 await dp.click("#t-eq");
 const fabId=await dp.evaluate(()=>{const it=KS_ui.items().find(i=>i.kind==="ss"&&/^sink|table/.test(i.ssType));KS_ui.select(it.id);return it.id;});
@@ -137,6 +142,11 @@ await dp.screenshot({path:path.join(SHOTS,"brand-app-desktop.png")});
 await dp.evaluate(()=>KS_ui.setTheme("dark"));await dp.screenshot({path:path.join(SHOTS,"brand-app-dark.png")});
 await dp.evaluate(()=>KS_ui.setTheme("light"));
 
+await dp.click("#t-eq");
+await dp.locator('[data-add]').first().click();
+await dp.waitForTimeout(1500);
+check(await dp.evaluate(()=>window.__metrics.some(e=>e.name==="Equipment Added")&&window.__metrics.some(e=>e.name==="Project Saved"&&e.details.storage==="local")),"equipment placement and successful local autosave are measured");
+check(await dp.evaluate(()=>!JSON.stringify(window.__metrics).includes("Café Riyadh")),"analytics excludes kitchen names");
 console.log("9. undo, redo and a person in the aisle");
 const n0=await dp.evaluate(()=>KS_ui.items().length);
 await dp.click("#personBtn");await dp.waitForTimeout(300);
