@@ -90,6 +90,7 @@
       await amplitude.init(key, {
         serverZone: config.amplitudeZone === 'EU' ? 'EU' : 'US',
         identityStorage: 'localStorage',
+        optOut: false, // The explicit KS_analytics_disabled preference above is authoritative.
         trackingOptions: { ipAddress: false },
         remoteConfig: { fetchRemoteConfig: false },
         enableDiagnostics: false,
