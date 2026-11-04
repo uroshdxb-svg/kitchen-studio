@@ -26,8 +26,8 @@ screens, Do Not Track and Global Privacy Control are excluded.
   count the same person again. No installation can recover uncollected historical data.
 
 The event properties include site, page category, normalized path, referrer hostname,
-country_code, internal_test, measurement_version, and allowlisted action details. Version 3
-also adds account status and the selected profile country, profession and use case.
+country_code, internal_test, measurement_version, and allowlisted action details. The
+account integration adds account status and the selected profile country, profession and use case.
 No page titles, query strings, fragments, kitchen IDs/content, account emails,
 free-text form values or session recordings are collected by this integration. The SDK's optional
 autocapture, remote configuration and diagnostics are disabled; IP collection is disabled.
@@ -68,25 +68,25 @@ verify ingestion: confirm an ingested event in Amplitude before calling setup co
 
 Cloudflare returns only the request's two-letter country code from `/analytics-country`.
 Responses are private/no-store. Amplitude IP collection stays disabled; no city, coordinates,
-kitchen data or content is sent. Version 3 uses the opaque Supabase account UUID as the
+kitchen data or content is sent. Account tracking uses the opaque Supabase account UUID as the
 Amplitude user ID after verified sign-in. Missing/blocked geolocation becomes `Unknown`
 without interrupting the app. Country estimates can reflect a VPN or proxy location.
 The SDK's `pageUrlEnrichment` is explicitly disabled (it otherwise defaults on).
 
 Verification uses `?analytics_test=1`, retained for that tab's session. All subsequent
 page, action, and SDK session events carry `internal_test=true`. Every normal new event
-has `internal_test=false`; this originally used `measurement_version=2`, and the current
-signup/profile integration uses `measurement_version=3`. Exclude tests in every report.
+has `internal_test=false` and `measurement_version=2`. Signup/profile instrumentation
+is additive and retains version 2 for compatibility with existing reports. Exclude tests in every report.
 Do not use the original pre-version-2 verification events as customer traffic.
 
 ## Standard report / dashboard specification
 
 Project: https://app.amplitude.com/analytics/blue-bar-623719/home/project/870640
 
-Use event filters `measurement_version` in `[2,3]` and `internal_test=false` for clean
-traffic reporting across both releases. Existing charts that filter only version 2
-must be updated or they will stop displaying new traffic. Use version 3 for the new
-signup and profile breakdowns.
+Use event filters `measurement_version=2` and `internal_test=false` for clean reporting.
+The new profile dimensions and signup events retain this measurement version so existing
+reports continue counting traffic. Profile breakdowns are available only after the
+account integration's deployment and successful profile collection.
 Use all available dates, but clearly state collection start: page tracking began
 3 November 2026; geography and engagement begin with this version's deployment.
 Earlier Cloudflare screenshots are a separate 30-day visits snapshot, not unique people.
@@ -117,7 +117,7 @@ creation but not chart creation/saving; permanent charts must be saved through t
 Amplitude UI before their IDs can be used in create_dashboard. Never pass query edit IDs
 as saved chart IDs or claim an empty text dashboard is a completed reporting dashboard.
 
-## Account conversion and profile reporting (measurement version 3)
+## Account conversion and profile reporting (additive to measurement version 2)
 
 The app calls `KS_analytics.identify(user.id, profile)` after verified sign-in and after
 profile completion. `user.id` must be a Supabase UUID; email-shaped or arbitrary IDs

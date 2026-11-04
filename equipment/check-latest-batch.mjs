@@ -9,6 +9,9 @@ async function verify(base,label){
  const context=await browser.newContext({viewport:{width:1280,height:900}}),writes=[],errors=[];await context.addInitScript(mock);
  await context.route('**/rest/v1/**',route=>{if(!['GET','HEAD'].includes(route.request().method()))writes.push(route.request().method());return route.abort();});await context.route('**/auth/v1/**',route=>route.abort());
  const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
+ // Catalogue checks keep exercising the guest planner after its signup nudge.
+ // The access suite separately verifies when that nudge appears and its gates.
+ await page.addLocatorHandler(page.locator('#ksAccessDialog[open]'),async()=>{await page.locator('#ksAccessLater').click();});
  try{
   const response=await context.request.get(base+'catalogue.json?batch='+encodeURIComponent(batch.id),{headers:{'Cache-Control':'no-cache'}});assert.equal(response.status(),200);const rows=await response.json();
   for(const e of expected){const matches=rows.filter(r=>r[0]===e.brand&&r[1]===e.model);assert.equal(matches.length,1);assert.deepEqual(matches[0],e.candidate_runtime_row);}

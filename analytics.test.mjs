@@ -46,6 +46,7 @@ test('production traffic initializes once, with only allowlisted event propertie
   assert.equal(v.calls[0][2].enableDiagnostics, false);
   assert.deepEqual(v.calls.filter(c => c[0] === 'track').map(c => c[1]), ['Kitchen Studio Page Viewed', 'Kitchen Studio Builder Opened']);
   assert.equal(v.calls.find(c=>c[0]==='track')[2].referrer_host, 'www.google.com');
+  assert.equal(v.calls.find(c=>c[0]==='track')[2].measurement_version, 2, 'additive profile tracking preserves existing report filters');
   assert.equal(JSON.stringify(v.calls).includes('private'), false);
   vm.runInContext(source, v.context);
   assert.equal(v.scripts.length, 1);

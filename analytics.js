@@ -45,7 +45,7 @@
   let referrer = '';
   try { referrer = new URL(document.referrer).hostname; } catch (_) {}
   const properties = { site: 'kitchenstudio.design', page, path: safePath, referrer_host: referrer,
-    country_code: 'Unknown', internal_test: internalTest, measurement_version: 3 };
+    country_code: 'Unknown', internal_test: internalTest, measurement_version: 2 };
   const roles = ['operator','chef','restaurant_manager','general_manager','owner','supplier','other'];
   const uses = ['new_opening','redesign','client_project','equipment_sales','exploring'];
   const guest = () => ({ account_status:'guest', profile_country_code:'Unknown', professional_role:'unknown', use_case:'unknown' });
