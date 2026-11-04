@@ -52,8 +52,8 @@ if(mode==="artifact"){
   if(amplitudeApiKey&&!/^[a-zA-Z0-9_-]{20,128}$/.test(amplitudeApiKey))throw new Error('Invalid AMPLITUDE_API_KEY format');
   const amplitudeZone=(process.env.AMPLITUDE_SERVER_ZONE||fileCfg.amplitudeServerZone||'US').toUpperCase();
   if(!['US','EU'].includes(amplitudeZone))throw new Error('AMPLITUDE_SERVER_ZONE must be US or EU');
-  if(amplitudeApiKey)analyticsTag=`<script defer src="/analytics.js?v=${ver}" data-amplitude-key="${amplitudeApiKey}" data-amplitude-zone="${amplitudeZone}"></script>`;
-  const cfg={supabaseUrl:process.env.SUPABASE_URL||fileCfg.supabaseUrl||"",supabaseAnonKey:process.env.SUPABASE_ANON_KEY||fileCfg.supabaseAnonKey||"",siteUrl:process.env.SITE_URL||fileCfg.siteUrl||"",version:ver};
+  if(amplitudeApiKey)analyticsTag=`<script src="/analytics.js?v=${ver}" data-amplitude-key="${amplitudeApiKey}" data-amplitude-zone="${amplitudeZone}"></script>`;
+  const cfg={supabaseUrl:process.env.SUPABASE_URL||fileCfg.supabaseUrl||"",supabaseAnonKey:process.env.SUPABASE_ANON_KEY||fileCfg.supabaseAnonKey||"",siteUrl:process.env.SITE_URL||fileCfg.siteUrl||"",accessPolicy:"guest-v1",version:ver};
   const D="dist";
   fs.rmSync(path.join(ROOT,D),{recursive:true,force:true});
   copy('analytics.js',D,'analytics.js');
@@ -65,6 +65,7 @@ if(mode==="artifact"){
     `<script src="/app/vendor/three.min.js"></script>`,
     `<script src="/app/vendor/supabase.js?v=${ver}"></script>`,
     `<script src="/app/cloud.js?v=${ver}"></script>`,
+    `<script src="/app/access.js?v=${ver}"></script>`,
     `<script src="/app/app.js?v=${ver}"></script>`].join("\n");
   out(D,"app/index.html",`<!DOCTYPE html><html lang="en"><head>${META}${seo}\n${headPart}\n</head><body style="margin:0">\n${bodyPart}\n${scripts}\n</body></html>`);
   out(D,"app/app.js",appJs);
@@ -75,6 +76,7 @@ if(mode==="artifact"){
   {const rows=new Function(read('cat.js')+';return CATALOGUE_ROWS')(),registry=new Function(read('view3d-equipment.js')+';return KS3DEquipment')(),entries=registry.entries,refs=JSON.parse(read('equipment-model-references.json'));
    const models=entries.map(e=>{const r=rows.find(r=>r[0]===e.brand&&r[1]===e.model);if(!r||!refs[e.id])throw new Error('Missing catalogue row or reference for '+e.id);const ref=refs[e.id];copy('assets/equipment-reference/'+ref.file,D,'equipment/reference/'+ref.file);return {kind:'eq',brand:r[0],model:r[1],cat:r[2],name:r[3],w:r[4],d:r[5],h:r[6],mount:r[7],image:'/equipment/reference/'+ref.file,source:ref.source};});out(D,'equipment/models.json',JSON.stringify(models));const symbolOf=new Function(read('symbols.js')+';return KS_symOf')();out(D,'equipment/coverage.json',JSON.stringify(visualCoverage(rows,registry,symbolOf,refs,new Function(read('view3d-families.js')+';return KS3DFamilies')())));}
   copy("cloud.js",D,"app/cloud.js");
+  copy("access.js",D,"app/access.js");
   copy("equipment-ocr-worker.js",D,"app/ocr-worker.js");
   copy("equipment-layout.js",D,"app/equipment-layout.js");
   for(const name of fs.readdirSync(path.join(ROOT,"assets/ocr/v1")))copy("assets/ocr/v1/"+name,D,"app/vendor/ocr/v1/"+name);

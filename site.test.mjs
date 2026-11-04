@@ -27,14 +27,15 @@ check(/on the list/.test(await page.textContent("#wlMsg")),"waitlist submit");
 
 console.log("2. app, signed out");
 await page.goto(BASE+"/app/");await page.waitForTimeout(1200);
-check((await page.evaluate(()=>window.__metrics.length))===0,"initial example does not count as app engagement or a save");
+check((await page.evaluate(()=>window.__metrics.filter(e=>["App Engaged","Project Saved","Project Created"].includes(e.name)).length))===0,"initial example does not count as app engagement or a save");
 check(!(await page.locator("#kitchensBtn").isHidden()),"kitchens button visible");
 check(/sign in/.test(await page.textContent("#saveState")),"save label asks to sign in: "+await page.textContent("#saveState"));
+await page.click("#t-room");await page.fill("#roomW","8500");await page.dispatchEvent("#roomW","change");
 await page.click("#kitchensBtn");await page.waitForTimeout(300);
-check(await page.locator("#dlg").evaluate(d=>d.open),"sign-in dialog opens");
-check(/Sign in/.test(await page.textContent("#dlgTitle")),"dialog is sign-in");
-await page.fill("#siEmail","chef@example.com");await page.click("#siSend");await page.waitForTimeout(900);
-check(!(await page.locator("#dlg").evaluate(d=>d.open)),"dialog closed after sign-in");
+check(await page.locator("#ksAccessDialog").evaluate(d=>d.open),"sign-in dialog opens");
+check(/Keep building/.test(await page.textContent("#ksAccessTitle")),"dialog invites a free account");
+await page.fill("#ksEmail","chef@example.com");await page.selectOption("#ksCountry","AE");await page.selectOption("#ksRole","chef");await page.selectOption("#ksUseCase","new_opening");await page.click("#ksAccessSubmit");await page.waitForTimeout(900);
+check(!(await page.locator("#ksAccessDialog").evaluate(d=>d.open)),"dialog closed after sign-in");
 check(/Saved online/.test(await page.textContent("#saveState")),"first kitchen created online: "+await page.textContent("#saveState"));
 const list1=await page.evaluate(()=>JSON.parse(localStorage.getItem("ks.mock")).projects);check(list1.length===1,"one project in backend");
 const conflict=await page.evaluate(async()=>{const s=JSON.parse(localStorage.getItem("ks.mock")),p=s.projects[0],v=p.version;p.version=v+1;localStorage.setItem("ks.mock",JSON.stringify(s));let code="";try{await window.KS_backend.saveProject(p.id,p.data,p.name,v);}catch(e){code=e.code||"";}p.version=v;localStorage.setItem("ks.mock",JSON.stringify(s));return code;});
@@ -55,7 +56,7 @@ const list2=await page.evaluate(()=>JSON.parse(localStorage.getItem("ks.mock")).
 check(/Café Riyadh/.test(await page.textContent("#saveState")),"header shows new kitchen name");
 check((await page.evaluate(()=>document.querySelectorAll(".it").length))===0,"new kitchen is empty");
 
-check(await page.evaluate(()=>window.__metrics.some(e=>e.name==="Project Created")&&window.__metrics.some(e=>e.name==="Project Saved"&&e.details.storage==="cloud")),"successful project creation reports creation and cloud save");
+check(await page.evaluate(()=>window.__metrics.some(e=>e.name==="Project Created"&&e.details.storage==="cloud"&&e.details.example_layout===false)&&window.__metrics.some(e=>e.name==="Project Saved"&&e.details.storage==="cloud")),"successful project creation reports a real kitchen and cloud save");
 console.log("4. share link");
 await page.click("#menuBtn");await page.click("#mShare");await page.waitForTimeout(400);
 const url=await page.inputValue("#shUrl");check(/\/k\/[A-Za-z0-9]{8,}/.test(url),"share url: "+url);
@@ -69,7 +70,7 @@ await p2.goto(url);await p2.waitForTimeout(1200);
 check(!(await p2.locator("#banner").isHidden()),"shared banner shown");
 check(/Café Riyadh/.test(await p2.textContent("#banner")),"banner names the kitchen");
 check(p2.url().endsWith("/app/"),"url rewritten to /app/ after loading the share");
-await p2.click("#bnSave");await p2.waitForTimeout(300);check(/Sign in/.test(await p2.textContent("#dlgTitle")),"save-copy asks to sign in when signed out");
+await p2.click("#bnSave");await p2.waitForTimeout(300);check(await p2.locator("#ksAccessDialog").evaluate(d=>d.open),"save-copy asks to sign in when signed out");
 await ctx2.close();
 
 console.log("5. sign out keeps local copy");
@@ -90,7 +91,7 @@ check(/Thanks/.test(await page.textContent("#dlgBody")),"report thank-you shown"
 
 console.log("6. screenshots for the landing page (desktop plan, phone plan, 3D)");
 const d=await browser.newContext({viewport:{width:1280,height:900},deviceScaleFactor:1,colorScheme:"light"});await d.addInitScript(mock);await d.addInitScript(captureAnalytics);const dp=await d.newPage();dp.on("pageerror",e=>errors.push("desk: "+e.message));
-await dp.goto(BASE+"/app/");await dp.waitForTimeout(1500);await dp.click("#t-eq");await dp.waitForTimeout(400);await dp.screenshot({path:path.join(SHOTS,"plan-desktop.png")});
+await dp.goto(BASE+"/app/");await dp.waitForTimeout(1500);await dp.evaluate(()=>KS_backend.signInGoogle());await dp.waitForFunction(()=>KS_access.isReady());await dp.click("#t-eq");await dp.waitForTimeout(400);await dp.screenshot({path:path.join(SHOTS,"plan-desktop.png")});
 await dp.click("#v3dBtn");await dp.waitForTimeout(2500);await dp.screenshot({path:path.join(SHOTS,"3d.png"),clip:{x:400,y:0,width:800,height:900}});
 console.log("7. branded drawing exports, A3 and A4");
 await dp.click("#vPlan");

@@ -1,5 +1,13 @@
 # Kitchen Studio
 
+## Free accounts and guest access
+
+The website offers a 72-hour guest trial from the first builder visit in that browser. After three meaningful edits it shows a dismissible signup prompt, with a 24-hour reminder cooldown. Basic planning and device drafts remain available after expiry; creating/importing custom equipment requires a free account. PDF, SVG, CSV, JSON and text exports, online saves and MCP require sign-in from the start. Existing offline/artifact builds retain their local workflow.
+
+Signup uses a verified email link plus country, professional role and planning purpose. Returning users can request a link with email alone; incomplete profiles are finished after sign-in. Account signup does not grant marketing consent. Apply `supabase/migrations/20261104052050_profile_onboarding.sql` before deploying this client (applied to production on 2026-11-04).
+
+Guest trial state is browser-local and can reset when storage is cleared or another browser is used. Client-generated exports are guarded through the application; this is not DRM. MCP independently validates the authenticated, confirmed email account. Current distinct saved kitchens are counted from `public.projects`; analytics save events count repeated saves. See `docs/analytics-setup.md` for export, signup and profile segmentation.
+
 Commercial kitchen design for operators. A static web app (vanilla JS, no framework) with accounts, saved kitchens, share links on Supabase and an MCP interface for user-connected AI agents.
 
 ```
