@@ -21,20 +21,22 @@
   const USE_CASES=["new_opening","redesign","client_project","equipment_sales","exploring"];
   function profileFields(p){const v={country_code:String(p&&p.country_code||"").trim().toUpperCase(),professional_role:p&&p.professional_role,use_case:p&&p.use_case};
     if(!/^[A-Z]{2}$/.test(v.country_code)||v.country_code==="XX"||!ROLES.includes(v.professional_role)||!USE_CASES.includes(v.use_case)){const e=new Error("Choose your country, role and what you are planning.");e.code="invalid_profile";throw e;}return v;}
+  const SOURCES=['google','ai','instagram','linkedin','youtube','supplier','recommendation','other'];
+  const discovery=p=>SOURCES.includes(p?.discovery_source)?{discovery_source:p.discovery_source}:{};
   const MAX=1500000;
   function strip(p){let s=JSON.stringify(p);if(s.length<=MAX)return {data:p,stripped:false};const q=JSON.parse(s);if(q.under)q.under.src=null;return {data:q,stripped:true};}
   const summary=p=>{try{const R=p.room,n=(p.items||[]).filter(i=>i.kind!=="arch").length;return `${(R.w/1000).toFixed(1)} × ${(R.d/1000).toFixed(1)} m · ${n} item${n===1?"":"s"}`;}catch(_){return "";}};
   const providers=fetch(cfg.supabaseUrl+"/auth/v1/settings",{headers:{apikey:cfg.supabaseAnonKey}}).then(r=>r.json()).then(j=>Object.keys(j.external||{}).filter(k=>j.external[k])).catch(()=>["email"]);
   window.KS_backend={
     ready,linkError:()=>linkError,user:()=>user,providers:()=>providers,onAuth:f=>{listeners.add(f);return()=>listeners.delete(f);},
-    signInEmail:async(email,redirect,profile)=>{const options={emailRedirectTo:redirect||siteUrl+"/app/"};if(profile)options.data=profileFields(profile);const {error}=await sb.auth.signInWithOtp({email,options});if(error){if(error.status===429||/rate limit/i.test(error.message||""))error.message="Too many sign-in emails in a short time. Wait a few minutes and try again.";fail(error);}},
+    signInEmail:async(email,redirect,profile)=>{const options={emailRedirectTo:redirect||siteUrl+"/app/"};if(profile)options.data={...profileFields(profile),...discovery(profile)};const {error}=await sb.auth.signInWithOtp({email,options});if(error){if(error.status===429||/rate limit/i.test(error.message||""))error.message="Too many sign-in emails in a short time. Wait a few minutes and try again.";fail(error);}},
     signInGoogle:async redirect=>{const {error}=await sb.auth.signInWithOAuth({provider:"google",options:{redirectTo:redirect||siteUrl+"/app/"}});if(error)fail(error);},
     /* OAuth consent for apps such as Claude's Kitchen Studio connector (Supabase OAuth 2.1 server) */
     oauthDetails:async id=>{const {data,error}=await sb.auth.oauth.getAuthorizationDetails(id);if(error)fail(error);return data;},
     oauthDecide:async(id,approve)=>{const fn=approve?sb.auth.oauth.approveAuthorization:sb.auth.oauth.denyAuthorization;const {data,error}=await fn.call(sb.auth.oauth,id,{skipBrowserRedirect:true});if(error)fail(error);return data;},
     signOut:()=>sb.auth.signOut(),
-    getProfile:async()=>{need();const {data,error}=await sb.from("profiles").select(PROFILE_FIELDS).eq("id",user.id).maybeSingle();if(error)fail(error);return data;},
-    saveProfile:async profile=>{need();const row=profileFields(profile);const {data,error}=await sb.from("profiles").update(row).eq("id",user.id).select(PROFILE_FIELDS).single();if(error)fail(error);return data;},
+    getProfile:async()=>{need();const {data,error}=await sb.from("profiles").select(PROFILE_FIELDS).eq("id",user.id).maybeSingle();if(error)fail(error);return data?{...data,...discovery(user.user_metadata)}:data;},
+    saveProfile:async profile=>{need();const owner=user.id,row=profileFields(profile),source=discovery(profile);if(source.discovery_source){const {data,error}=await sb.auth.updateUser({data:source});if(error)fail(error);if(user?.id!==owner)throw new Error("Account changed. Please try again.");if(data?.user)user=verified(data.user);if(!user)throw new Error("Sign in again.");}const {data,error}=await sb.from("profiles").update(row).eq("id",user.id).select(PROFILE_FIELDS).single();if(error)fail(error);return {...data,...discovery(user.user_metadata),...source};},
     listProjects:async()=>{need();const {data,error}=await sb.from("projects").select("id,name,summary,updated_at,is_public,public_id,version").order("updated_at",{ascending:false});if(error)fail(error);return data||[];},
     loadProject:async id=>{need();const {data,error}=await sb.from("projects").select("id,name,data,updated_at,is_public,public_id,version").eq("id",id).maybeSingle();if(error)fail(error);return data;},
     createProject:async(name,payload)=>{need();const s=strip(payload);const {data,error}=await sb.from("projects").insert({owner:user.id,name:name||"Untitled kitchen",data:s.data,summary:summary(payload)}).select("id,public_id,version,updated_at").single();if(error)fail(error);return Object.assign({stripped:s.stripped},data);},

@@ -216,3 +216,17 @@ test('onboarding events accept only controlled enums and reject email-shaped ide
   a.identify(accountB,profileA);a.reset();a.track('Profile Completed');
   assert.equal(v.calls.length,calls);
 });
+
+ test('research events redact answers and only allowlisted signup sources become analytics traits', async () => {
+  const v=visit(),a=v.window.KS_analytics;
+  a.identify(accountA,{...profileA,discovery_source:'ai'});
+  a.track('Research Submitted',{email:'private@example.test',budget:'secret',goal:'secret'});
+  await v.scripts[0].onload();
+  const event=v.calls.filter(c=>c[0]==='track').at(-1);
+  assert.equal(event[2].discovery_source,'ai');
+  assert.equal(JSON.stringify(v.calls).includes('private@example.test'),false);
+  assert.equal(JSON.stringify(v.calls).includes('secret'),false);
+  a.identify(accountA,{...profileA,discovery_source:'private@example.test'});
+  a.track('Updates Viewed');
+  assert.equal(v.calls.filter(c=>c[0]==='track').at(-1)[2].discovery_source,'unknown');
+});

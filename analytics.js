@@ -48,7 +48,7 @@
     country_code: 'Unknown', internal_test: internalTest, measurement_version: 2 };
   const roles = ['operator','chef','restaurant_manager','general_manager','owner','supplier','other'];
   const uses = ['new_opening','redesign','client_project','equipment_sales','exploring'];
-  const guest = () => ({ account_status:'guest', profile_country_code:'Unknown', professional_role:'unknown', use_case:'unknown' });
+  const guest = () => ({ account_status:'guest', profile_country_code:'Unknown', professional_role:'unknown', use_case:'unknown', discovery_source:'unknown' });
   let identity = { id:null, profile:guest(), epoch:0 };
   let appliedIdentity = null;
   const snapshot = () => ({ ...identity, profile:{...identity.profile} });
@@ -80,7 +80,8 @@
     const nextProfile = { account_status:'signed_in',
       profile_country_code:/^[A-Z]{2}$/.test(profile.country_code) && profile.country_code !== 'XX' ? profile.country_code : 'Unknown',
       professional_role:roles.includes(profile.professional_role) ? profile.professional_role : 'unknown',
-      use_case:uses.includes(profile.use_case) ? profile.use_case : 'unknown' };
+      use_case:uses.includes(profile.use_case) ? profile.use_case : 'unknown',
+      discovery_source:['google','ai','instagram','linkedin','youtube','supplier','recommendation','other'].includes(profile.discovery_source) ? profile.discovery_source : 'unknown' };
     identity = { id:userId, profile:nextProfile, epoch:identity.epoch + (identity.id && identity.id !== userId ? 1 : 0) };
     if (status.state === 'active') { try { applyIdentity(snapshot()); } catch (_) {} }
   };
@@ -91,7 +92,7 @@
   };
   const events = new Set(['App Engaged', 'Equipment Added', 'Project Saved', 'Project Created', 'Export Generated', 'Share Enabled',
     'Signup Prompt Viewed', 'Signup Prompt Dismissed', 'Sign In Requested', 'Sign In Completed', 'Profile Completed',
-    'Feature Gated', 'Guest Trial Started', 'Guest Trial Expired']);
+    'Feature Gated', 'Guest Trial Started', 'Guest Trial Expired', 'Updates Viewed', 'Research Viewed', 'Research Submitted']);
   function emit(name, details, who) {
     applyIdentity(who);
     window.amplitude.track('Kitchen Studio ' + name, { ...properties, ...who.profile, ...details });
