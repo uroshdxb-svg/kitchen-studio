@@ -22,7 +22,7 @@ const card=n=>page.locator('[data-row]').nth(n);
 const csv='brand,model,name,qty,w,d,h,mount,power,kw,water,drain\nExample,TEST-1,Counter chiller,2,600,700,850,floor,,,,\nExample,TEST-2,Await dimensions,1,,,,floor,,,,\n';
 try{
   await page.goto(base+'/app/');await page.waitForFunction(()=>!!window.KS_backend);
-  await page.evaluate(()=>KS_backend.signInGoogle());await page.waitForFunction(()=>/Saved online/.test(document.getElementById('saveState').textContent));
+  await page.evaluate(()=>KS_backend.signInGoogle());await page.waitForFunction(()=>KS_access.isReady());
   await open();
   await page.screenshot({path:'test-results/intake-upload-desktop.png'});
   await page.locator('#intakeFile').setInputFiles({name:'supplier.csv',mimeType:'text/csv',buffer:Buffer.from(csv)});
@@ -31,7 +31,7 @@ try{
   await page.click('#intakeAdd');assert.match(await page.textContent('#intakeMessage'),/Confirm each/);
   await card(1).locator('[data-select]').uncheck();await card(0).locator('[data-confirm]').check();
   await card(0).locator('[data-contribute]').check();
-  const countBefore=await page.evaluate(()=>JSON.parse(localStorage.getItem('ks.mock')).projects[0].data.items.length);
+  const countBefore=await page.evaluate(()=>KS_ui.items().length);
   await page.evaluate(()=>window.__failSave=true);
   await page.click('#intakeAdd');await page.waitForFunction(()=>document.getElementById('intakeClose').disabled===false);
   assert.match(await card(0).textContent(),/Online save pending/);

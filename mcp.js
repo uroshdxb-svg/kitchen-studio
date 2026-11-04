@@ -93,7 +93,7 @@ async function catalogue(env, origin) {
 async function userFromToken(token) {
   const r = await fetch(SUPABASE + "/auth/v1/user", { headers: { apikey: ANON, Authorization: "Bearer " + token } });
   if (!r.ok) return null;
-  const u = await r.json(); return u && u.id ? { id: u.id, email: u.email || null } : null;
+  const u = await r.json(); return u && u.id && !u.is_anonymous && u.email && u.email_confirmed_at ? { id: u.id, email: u.email } : null;
 }
 function db(token) {
   const H = { apikey: ANON, Authorization: "Bearer " + token, "Content-Type": "application/json" };

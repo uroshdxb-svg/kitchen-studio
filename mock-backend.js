@@ -4,10 +4,15 @@
   const save=s=>localStorage.setItem(K,JSON.stringify(s));
   let S=load();const listeners=new Set();const uid=()=>Math.random().toString(36).slice(2,10);
   const emit=()=>listeners.forEach(f=>f(S.user));
+  const defaultProfile={country_code:"AE",professional_role:"chef",use_case:"new_opening"};
+  const signedUser=email=>({id:"u1",email,email_confirmed_at:new Date().toISOString(),is_anonymous:false});
   window.KS_backend={
     ready:Promise.resolve(),user:()=>S.user,onAuth:f=>{listeners.add(f);return()=>listeners.delete(f);},
-    signInEmail:async email=>{setTimeout(()=>{S=load();S.user={id:"u1",email};save(S);emit();},300);},
-    signInGoogle:async()=>{S.user={id:"u1",email:"g@example.com"};save(S);emit();},
+    providers:async()=>["email","google"],
+    signInEmail:async(email,redirect,profile)=>{setTimeout(()=>{S=load();S.user={...signedUser(email),user_metadata:profile||{}};if(profile)S.profile={id:S.user.id,...profile,onboarding_completed_at:new Date().toISOString()};save(S);emit();},300);},
+    signInGoogle:async()=>{S.user=signedUser("g@example.com");S.profile={id:S.user.id,...defaultProfile,onboarding_completed_at:new Date().toISOString()};save(S);emit();},
+    getProfile:async()=>{S=load();return S.profile?.id===S.user?.id?S.profile:null;},
+    saveProfile:async profile=>{S=load();if(!S.user)throw new Error("Sign in first");S.profile={id:S.user.id,...profile,onboarding_completed_at:new Date().toISOString()};save(S);return S.profile;},
     signOut:async()=>{S.user=null;save(S);emit();},
     listProjects:async()=>{S=load();return S.projects.map(p=>({id:p.id,name:p.name,summary:p.summary,updated_at:p.updated_at,is_public:p.is_public,public_id:p.public_id,version:p.version||1})).sort((a,b)=>b.updated_at.localeCompare(a.updated_at));},
     loadProject:async id=>{S=load();return S.projects.find(p=>p.id===id)||null;},

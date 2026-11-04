@@ -20,7 +20,7 @@ console.log("1. fabricated types match app.js");
 }
 
 /* fake backend */
-const USERS = { "tok-uros": { id: "u-uros", email: "uros@example.com" }, "tok-other": { id: "u-other", email: "x@example.com" } };
+const USERS = { "tok-uros": { id: "u-uros", email: "uros@example.com", email_confirmed_at: "2026-01-01T00:00:00Z" }, "tok-other": { id: "u-other", email: "x@example.com", email_confirmed_at: "2026-01-01T00:00:00Z" }, "tok-anonymous": { id: "u-anon", is_anonymous: true }, "tok-unconfirmed": { id: "u-new", email: "new@example.com" } };
 let rows = []; let versionBump = 0;
 const origFetch = globalThis.fetch;
 globalThis.fetch = async (url, init = {}) => {
@@ -53,6 +53,10 @@ console.log("2. protocol and auth");
   const noTok = await rpc("initialize", { protocolVersion: "2025-06-18" }, null);
   check(noTok.status === 401 && /resource_metadata=".*\/\.well-known\/oauth-protected-resource\/mcp"/.test(noTok.headers.get("WWW-Authenticate")), "no token: 401 with resource metadata challenge");
   const badTok = await rpc("initialize", {}, "nope"); check(badTok.status === 401 && /invalid_token/.test(badTok.headers.get("WWW-Authenticate")), "bad token: 401 invalid_token");
+  for (const token of ["tok-anonymous", "tok-unconfirmed"]) {
+    const rejected = await rpc("tools/list", {}, token);
+    check(rejected.status === 401, `${token}: verified email account required`);
+  }
   const prm = await handleMcp(new Request("https://kitchenstudio.design/.well-known/oauth-protected-resource/mcp"), env); const pj = await prm.json();
   check(pj.resource === "https://kitchenstudio.design/mcp" && /\/auth\/v1$/.test(pj.authorization_servers[0]), "protected resource metadata points at Supabase auth");
   check(Array.isArray(pj.scopes_supported) && pj.scopes_supported.includes("offline_access"), "metadata lists scopes (ChatGPT requires it; offline_access gives refresh tokens)");

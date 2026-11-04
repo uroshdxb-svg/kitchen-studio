@@ -39,6 +39,12 @@ let state={room:{w:9000,d:6000,h:3000},items:[]};
 let custom=[]; let sel=null; let view="plan"; let wall="N"; let zoom=1; let dirty=false; let isExample=true;
 let db=null, downloads=null; let cat="All"; let ssOptsSel=new Set();
 let be=null,curId=null,curVersion=null,projName="",sharedFrom=null,projList=[];/* cloud backend (website build) */
+let access=null;
+function allowed(feature){
+  if(!window.KS_CONFIG?.accessPolicy)return true; // Existing offline/artifact builds have no account service.
+  if(access)return access.gate(feature);
+  toast("Account access is still loading. Please try again in a moment.");return false;
+}
 const remoteEq={set:e=>{const j=JSON.parse(JSON.stringify(e));if(be&&be.user())be.saveEquipment(j).catch(()=>{});else if(db)db.doc("equipment/"+e.cid).set(j).catch(()=>{});},
   del:cid=>{if(be&&be.user())be.deleteEquipment(cid).catch(()=>{});else if(db)db.doc("equipment/"+cid).delete().catch(()=>{});}};
 let fabOpen=false;
@@ -379,6 +385,7 @@ function readNew(){
     elec:$("nElec").value.trim()||null,water:$("nWater").checked,drain:$("nDrain").checked,src:null,conf:lastConf==="ai"?"ai":"user",cid:"c"+Date.now().toString(36)};
 }
 function saveNew(add){
+  if(!allowed("custom_equipment"))return;
   const e=readNew();if(!e)return;
   custom=custom.filter(c=>!(c.brand.toLowerCase()===e.brand.toLowerCase()&&c.model.toLowerCase()===e.model.toLowerCase()));
   custom.unshift(e);saveCustomLocal();
@@ -414,6 +421,7 @@ function csv(){
   return "﻿"+rows.map(r=>r.map(q).join(",")).join("\r\n");
 }
 async function save(filename,data){
+  if(!allowed("export"))return;
   const exported=()=>{engage();const ext=filename.split(".").pop().toLowerCase();measure("Export Generated",{format:["json","csv","svg","pdf","txt"].includes(ext)?ext:"other",destination:downloads?"host":"download",example_layout:isExample});};
   if(downloads){try{await downloads.save({filename,data});exported();toast("Exported "+filename);}catch(e){if(e&&e.code!=="declined")toast("Export didn't go through. Try again.");}return;}
   try{const url=URL.createObjectURL(new Blob([data],{type:"application/octet-stream"}));const l=document.createElement("a");l.href=url;l.download=filename;document.body.appendChild(l);l.click();l.remove();exported();setTimeout(()=>URL.revokeObjectURL(url),4000);toast("Downloaded "+filename);}
@@ -422,6 +430,7 @@ async function save(filename,data){
 $("projSave").addEventListener("click",()=>save("kitchen-project.json",JSON.stringify({v:1,room:state.room,items:state.items,under:underData(),custom,at:Date.now()},null,1)));
 $("projOpen").addEventListener("click",()=>$("projFile").click());
 $("projFile").addEventListener("change",async e=>{const f=e.target.files[0];e.target.value="";if(!f)return;
+  if(!allowed("custom_equipment"))return;
   try{const p=JSON.parse(await f.text());if(!adopt(p)){toast("That file isn't a Kitchen Studio project.");return;}
     if(Array.isArray(p.custom)){const seen=new Set(custom.map(c=>c.cid));for(const c of p.custom)if(c&&c.brand&&c.w>0&&!seen.has(c.cid))custom.push(c);saveCustomLocal();renderResults();}
     changed();toast("Project opened.");}catch(_){toast("Couldn't read that file.");}});
@@ -626,7 +635,7 @@ function reviewDrawing(g){
   $("rvCancel").onclick=closeDlg;
   $("rvApply").onclick=async()=>{const keep=[...$("dlgBody").querySelectorAll("input[data-k]")].filter(c=>c.checked).map(c=>g.items[+c.dataset.k]);closeDlg();await applyDrawing(g,keep);
     $("fpReadMsg").textContent=`Built ${(g.w/1000).toFixed(2)} × ${(g.d/1000).toFixed(2)} m with ${keep.length} item${keep.length===1?"":"s"}. Drawing aligned underneath: check a few items against it.`;toast("Room built from your drawing.");};}
-function readDrawing(){window.open('/connect/','_blank','noopener');}
+function readDrawing(){if(allowed("mcp"))window.open('/connect/','_blank','noopener');}
 $("fpRead").addEventListener("click",readDrawing);
 $("fpUndo").addEventListener("click",()=>{if(!drawUndo)return;const s=JSON.parse(drawUndo);state.room=s.room;state.items=s.items;if(s.under){under=s.under;blobUrl(under);}drawUndo=null;$("fpUndo").hidden=true;roomInputs();fpUI();changed();toast("Back to what you had before the import.");});
 
@@ -758,6 +767,7 @@ function runAuto(){
 $("aiArrange").addEventListener("click",runAuto);
 $("aiUndo").addEventListener("click",()=>{if(!undoSnap)return;adopt(JSON.parse(undoSnap));undoSnap=null;$("aiUndo").hidden=true;changed();toast("Back to your previous layout.");});
 $("aiBrief").addEventListener("click",async()=>{
+  if(!allowed("mcp"))return;
   const brief=$("aiText").value.trim();if(!brief){toast("Describe the kitchen first.");return;}
   const text="Use the Kitchen Studio MCP tools to help with my saved kitchen. First list my kitchens and confirm the target. Room: "+state.room.w+" x "+state.room.d+" mm. Brief: "+brief+". Search the catalogue, prepare any custom equipment without inventing missing specifications, then check the layout. Ask before replacing existing work.";
   try{await navigator.clipboard.writeText(text);$("aiNotes").textContent="Brief copied. Paste it into your connected Claude, Codex or other MCP agent. No request was sent by the webapp.";}catch(_){save("kitchen-brief.txt",text);$("aiNotes").textContent="Brief downloaded. Share it with your connected MCP agent.";}
@@ -893,6 +903,7 @@ function buildSheets(PW,PH,meta){
 }
 let EXPORT_3D=null;
 async function exportPDF(){
+  if(!allowed("export"))return;
   const btn=$("expPdf");btn.disabled=true;const old=btn.textContent;btn.textContent="Building PDF…";
   try{
     if(!window.jspdf){await loadScript("jspdf-src","https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js");await loadScript("svg2pdf-src","https://cdn.jsdelivr.net/npm/svg2pdf.js@2.2.4/dist/svg2pdf.umd.min.js");}
@@ -928,7 +939,7 @@ function setPanel(s){panelState=s;const p=$("panel");p.classList.toggle("half",s
   clearTimeout(padT);padT=setTimeout(()=>{if(view!=="3d")render();else if(threeReady)KS3D.resize();},300);}
 function revealCanvas(){if(phone())setPanel("peek");}
 let curTab="eq";
-function setTab(t,opts){for(const k of ["room","eq","ss","new","ai","sch"]){$("p-"+k).hidden=k!==t;$("t-"+k).setAttribute("aria-selected",k===t||(t==="new"&&k==="eq"));}
+function setTab(t,opts){if(t==="new"&&!allowed("custom_equipment"))return;for(const k of ["room","eq","ss","new","ai","sch"]){$("p-"+k).hidden=k!==t;$("t-"+k).setAttribute("aria-selected",k===t||(t==="new"&&k==="eq"));}
   if(t==="sch")renderSchedule();curTab=t;$("pbody").scrollTop=0;try{localStorage.setItem("ks.tab",t==="new"?"eq":t);}catch(_){}
   if(phone()&&!(opts&&opts.quiet)&&panelState==="peek")setPanel("half");}
 document.querySelector(".tabs").addEventListener("click",e=>{const t=e.target.closest("[data-tab]");if(!t)return;const k=t.dataset.tab;
@@ -968,7 +979,7 @@ $("zIn").addEventListener("click",()=>{if(view==="3d"){KS3D.zoom(.8);return;}zoo
 $("zOut").addEventListener("click",()=>{if(view==="3d"){KS3D.zoom(1.25);return;}zoom=Math.max(1,zoom/1.4);render();});
 function roomInputs(){$("roomW").value=state.room.w;$("roomD").value=state.room.d;$("roomH").value=state.room.h;}
 for(const [id,k,lo,hi] of [["roomW","w",2000,40000],["roomD","d",2000,40000],["roomH","h",2200,6000]])
-  $(id).addEventListener("change",e=>{const v=Math.round(+e.target.value);if(!(v>=lo&&v<=hi)){toast(`Enter a value between ${lo} and ${hi} mm.`);roomInputs();return;}state.room[k]=v;state.items.forEach(i=>{if(i.archType==="column")i.h=state.room.h;clamp(i);});changed();});
+  $(id).addEventListener("change",e=>{const v=Math.round(+e.target.value);if(!(v>=lo&&v<=hi)){toast(`Enter a value between ${lo} and ${hi} mm.`);roomInputs();return;}if(state.room[k]===v)return;state.room[k]=v;state.items.forEach(i=>{if(i.archType==="column")i.h=state.room.h;clamp(i);});changed();});
 let clearArmed=0;
 $("clearAll").addEventListener("click",()=>{const b=$("clearAll");
   if(Date.now()-clearArmed<4000){state.items=state.items.filter(i=>i.kind==="arch"&&!isPerson(i));sel=null;b.textContent="Clear layout";clearArmed=0;changed();toast("Layout cleared.");}
@@ -977,7 +988,7 @@ let toastT;function toast(m){const t=$("toast");t.textContent=m;t.hidden=false;c
 
 /* ---------- persistence ---------- */
 let saveT=null,saving=false,again=false,saveConflictShown=false;
-function changed(){engage();analyticsRevision++;histNote();dirty=true;isExample=false;render();$("saveState").textContent="Saving…";clearTimeout(saveT);saveT=setTimeout(persist,1200);}
+function changed(){engage();analyticsRevision++;histNote();dirty=true;isExample=false;render();$("saveState").textContent="Saving…";clearTimeout(saveT);saveT=setTimeout(persist,1200);access?.action();}
 function currentPayload(){return JSON.parse(JSON.stringify({v:1,name:projName||undefined,room:state.room,items:state.items,under:underData(),at:Date.now()}));}
 const projTitle=()=>projName||"Untitled kitchen";
 function saveLabel(where){$("saveState").textContent=be&&(curId||sharedFrom||!isExample)?`${projTitle()} · ${where}`:where;}
@@ -988,8 +999,9 @@ async function persist(){
   const payload=currentPayload(),revision=analyticsRevision;
   let where="";
   if(persistLocal(payload))where="Saved on this device";
+  if(be&&be.user()&&!curId&&!isExample&&!sharedFrom&&(!access||access.isReady()))await cloudSync();
   if(db){try{let cloud=payload;if(JSON.stringify(payload).length>230000){cloud=JSON.parse(JSON.stringify(payload));if(cloud.under)cloud.under.src=null;}await db.doc("projects/main").set(cloud);where=cloud===payload?"Saved":"Saved (plan image kept on this device only)";}catch(_){}}
-  if(be&&be.user()&&curId){try{const r=await be.saveProject(curId,payload,projName||undefined,curVersion);curVersion=Number.isInteger(r.version)?r.version:curVersion;saveConflictShown=false;where=r.stripped?"Saved online (plan image kept on this device only)":"Saved online";savedMetric("cloud",revision);}catch(e){if(e&&e.code==="conflict"){where="Newer online version exists · reopen from My kitchens";if(!saveConflictShown){saveConflictShown=true;toast("This kitchen changed elsewhere. Reopen it from My kitchens before saving again.");}}else where="Saved on this device, not online";}}
+  if(be&&be.user()&&curId&&(!access||access.isReady())){try{const r=await be.saveProject(curId,payload,projName||undefined,curVersion);curVersion=Number.isInteger(r.version)?r.version:curVersion;saveConflictShown=false;where=r.stripped?"Saved online (plan image kept on this device only)":"Saved online";savedMetric("cloud",revision);}catch(e){if(e&&e.code==="conflict"){where="Newer online version exists · reopen from My kitchens";if(!saveConflictShown){saveConflictShown=true;toast("This kitchen changed elsewhere. Reopen it from My kitchens before saving again.");}}else where="Saved on this device, not online";}}
   else if(be&&be.user()&&!curId)where="Saved on this device · not yet in My kitchens";
   else if(be&&!be.user())where="Saved on this device · sign in to save online";
   saveLabel(where||"Not saved (storage unavailable)");
@@ -1045,7 +1057,7 @@ function askText(title,value,label){return new Promise(res=>{openDlg(title,`<div
 function fmtWhen(iso){try{const d=new Date(iso),diff=(Date.now()-d)/864e5;return diff<1?d.toLocaleTimeString(undefined,{hour:"2-digit",minute:"2-digit"}):diff<7?d.toLocaleDateString(undefined,{weekday:"short"}):d.toLocaleDateString(undefined,{day:"numeric",month:"short"});}catch(_){return "";}}
 function acctUI(){const u=be&&be.user();$("kitchensBtn").hidden=!be;$("mKitchens").hidden=!be;$("mShare").hidden=!u;$("mSignIn").hidden=!be||!!u;$("acctSep").hidden=!be;
   const row=$("acctRow");row.hidden=!u;if(u){row.innerHTML=`<span>${esc(u.email||"Signed in")}</span> · <button id="mSignOut" style="font:inherit;color:var(--accent)">Sign out</button>`;$("mSignOut").onclick=async e=>{e.stopPropagation();await be.signOut();};}}
-function openSignIn(note){openDlg("Sign in",`<p>${esc(note||"Save your kitchens online, open them on any device and share a link with your contractor.")}</p>
+function openSignIn(note){if(access){access.account();return;}openDlg("Sign in",`<p>${esc(note||"Save your kitchens online, open them on any device and share a link with your contractor.")}</p>
   <div class="fld"><label for="siEmail">Email</label><input id="siEmail" type="email" autocomplete="email" inputmode="email" placeholder="you@restaurant.com"></div>
   <div class="bar"><button class="btn pri" id="siSend">Email me a sign-in link</button><button class="btn" id="siGoogle">Continue with Google</button></div><p class="note" id="siMsg">No password. The link signs you in on this device.</p>`);
   $("siSend").onclick=async()=>{const em=$("siEmail").value.trim();if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){$("siMsg").textContent="Enter a valid email address.";return;}$("siSend").disabled=true;
@@ -1057,6 +1069,7 @@ $("mSignIn").addEventListener("click",()=>openSignIn());
 /* OAuth consent: Claude (or another app) asks to work on this person's kitchens through the Kitchen Studio MCP server */
 function consentId(){if(!/^\/oauth\/consent\/?$/.test(location.pathname))return null;return new URLSearchParams(location.search).get("authorization_id");}
 async function runConsent(id){
+  if(!allowed("mcp"))return;
   if(!be||!be.oauthDetails){openDlg("Connect an app",`<p>Connecting apps works in the online app at kitchenstudio.design.</p>`);return;}
   if(!be.user()){openSignIn("Sign in to connect it to your Kitchen Studio kitchens. You'll come straight back here.");return;}
   let d;try{d=await be.oauthDetails(id);}catch(e){openDlg("Connect an app",`<p>This connection request has expired or was already used. Start the connection again from Claude.</p>`);return;}
@@ -1097,6 +1110,7 @@ $("kitchensBtn").addEventListener("click",()=>{if(!be.user())openSignIn();else o
 $("mKitchens").addEventListener("click",()=>{if(!be.user())openSignIn();else openKitchens();});
 $("mShare").addEventListener("click",()=>shareCurrent());
 async function openKitchens(){
+  if(!allowed("save"))return;
   openDlg("My kitchens",`<p>Loading…</p>`);
   try{projList=await be.listProjects();}catch(e){$("dlgBody").innerHTML=`<p>Couldn't load your kitchens: ${esc(e.message||"try again")}.</p>`;return;}
   const ic={pen:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0-3-3L5 17z"/><path d="M13.5 6.5l3 3"/></svg>',
@@ -1117,14 +1131,14 @@ async function openProject(id){if(id===curId){closeDlg();return;}
   if(curId&&dirty)await persist();
   try{const row=await be.loadProject(id);if(!row||!adopt(row.data))throw new Error("empty");curId=id;curVersion=Number.isInteger(row.version)?row.version:null;saveConflictShown=false;projName=row.name||projName;sharedFrom=null;$("banner").hidden=true;localStorage.setItem("ks.curId",curId);persist();closeDlg();toast(`Opened “${projTitle()}”.`);syncPdfName();revealCanvas();}
   catch(e){toast("Couldn't open that kitchen.");}}
-async function newKitchen(){if(curId&&dirty)await persist();
+async function newKitchen(){if(!allowed("save"))return;if(curId&&dirty)await persist();
   const n=await askText("New kitchen","","Kitchen name");if(n===null)return;
-  state={room:{w:9000,d:6000,h:3000},items:[]};under=null;mode=null;fpUI();sel=null;projName=n||"Untitled kitchen";sharedFrom=null;$("banner").hidden=true;roomInputs();render();
-  try{const r=await be.createProject(projName,currentPayload());curId=r.id;curVersion=Number.isInteger(r.version)?r.version:null;saveConflictShown=false;localStorage.setItem("ks.curId",curId);saveLabel("Saved online");engage();measure("Project Created",{storage:"cloud"});measure("Project Saved",{storage:"cloud",example_layout:false});closeDlg();toast(`“${projTitle()}” created. Set the room size, then add equipment.`);setTab("room");}
-  catch(e){curId=null;curVersion=null;toast("Couldn't create it online; it's saved on this device.");closeDlg();}}
-async function saveAsNew(){const n=await askText("Save to my kitchens",projName||"","Kitchen name");if(n===null)return;projName=n||"Untitled kitchen";
-  try{const r=await be.createProject(projName,currentPayload());curId=r.id;curVersion=Number.isInteger(r.version)?r.version:null;saveConflictShown=false;sharedFrom=null;$("banner").hidden=true;localStorage.setItem("ks.curId",curId);saveLabel("Saved online");engage();measure("Project Saved",{storage:"cloud",example_layout:isExample});closeDlg();toast(`Saved “${projTitle()}” to your kitchens.`);}catch(e){toast("Couldn't save online. It stays on this device.");}}
-async function shareCurrent(){if(!be.user()){openSignIn("Sign in to share a link to this kitchen.");return;}if(!curId){openDlg("Share link",`<p>Save this kitchen to your list first, then share it.</p><div class="bar"><button class="btn pri" id="shSave">Save to my kitchens</button></div>`);$("shSave").onclick=()=>saveAsNew();return;}shareDialog(curId,projName);}
+  state={room:{w:9000,d:6000,h:3000},items:[]};isExample=false;under=null;mode=null;fpUI();sel=null;histReset();projName=n||"Untitled kitchen";sharedFrom=null;$("banner").hidden=true;roomInputs();render();
+  try{const r=await be.createProject(projName,currentPayload());curId=r.id;curVersion=Number.isInteger(r.version)?r.version:null;saveConflictShown=false;localStorage.setItem("ks.curId",curId);persistLocal();saveLabel("Saved online");engage();measure("Project Created",{storage:"cloud"});measure("Project Saved",{storage:"cloud",example_layout:false});closeDlg();toast(`“${projTitle()}” created. Set the room size, then add equipment.`);setTab("room");}
+  catch(e){curId=null;curVersion=null;persistLocal();toast("Couldn't create it online; it's saved on this device.");closeDlg();}}
+async function saveAsNew(){if(!allowed("save"))return;const n=await askText("Save to my kitchens",projName||"","Kitchen name");if(n===null)return;projName=n||"Untitled kitchen";
+  try{const r=await be.createProject(projName,currentPayload());curId=r.id;curVersion=Number.isInteger(r.version)?r.version:null;saveConflictShown=false;sharedFrom=null;$("banner").hidden=true;localStorage.setItem("ks.curId",curId);saveLabel("Saved online");engage();measure("Project Created",{storage:"cloud",example_layout:isExample});measure("Project Saved",{storage:"cloud",example_layout:isExample});closeDlg();toast(`Saved “${projTitle()}” to your kitchens.`);}catch(e){toast("Couldn't save online. It stays on this device.");}}
+async function shareCurrent(){if(!allowed("save"))return;if(!be.user()){openSignIn("Sign in to share a link to this kitchen.");return;}if(!curId){openDlg("Share link",`<p>Save this kitchen to your list first, then share it.</p><div class="bar"><button class="btn pri" id="shSave">Save to my kitchens</button></div>`);$("shSave").onclick=()=>saveAsNew();return;}shareDialog(curId,projName);}
 async function shareDialog(id,name){openDlg("Share link",`<p>Turning on the link…</p>`);
   try{const pid=await be.setPublic(id,true),url=be.shareUrl(pid);engage();measure("Share Enabled",{example_layout:isExample});
     $("dlgBody").innerHTML=`<p>Anyone with this link can open a read-only copy of “${esc(name||"this kitchen")}”: plan, elevations, 3D and the schedule. They can't change your version.</p>
@@ -1142,20 +1156,41 @@ async function loadSharedFromUrl(){const m=location.pathname.match(/\/k\/([A-Za-
     $("bnSave").onclick=()=>{if(!be.user())openSignIn("Sign in to keep a copy of this kitchen in your account.");else saveAsNew();};
     saveLabel("Shared copy");return true;}
   catch(e){toast("Couldn't open the shared kitchen.");return false;}}
-async function cloudSync(){acctUI();if(!be||!be.user())return;
-  const syncOwner=intakeOwner();custom=[...custom.filter(e=>!e.intake),...loadIntakeModels()];
-  try{const remote=await be.listEquipment();if(intakeOwner()!==syncOwner)return;const seen=new Set(remote.map(e=>e.cid));for(const c of custom)if(!seen.has(c.cid)){remote.push(c);be.saveEquipment(c).catch(()=>{});}
-    custom=remote.filter(e=>e&&e.brand&&e.w>0).sort((a,b)=>(b.cid||"").localeCompare(a.cid||""));saveCustomLocal();renderResults();}catch(_){}
-  if(sharedFrom)return;/* a shared copy is saved only when the user asks */
-  try{const list=await be.listProjects();projList=list;let local=null;try{local=JSON.parse(localStorage.getItem("ks.project")||"null");}catch(_){}
-    const localId=localStorage.getItem("ks.curId")||"";
-    if(curId&&list.some(p=>p.id===curId)){const row=await be.loadProject(curId);curVersion=row&&Number.isInteger(row.version)?row.version:null;
-      if(row&&row.data&&!(local&&localId===curId&&(local.at||0)>(row.data.at||0))){adopt(row.data);projName=row.name||projName;}else persist();}
-    else if(!list.length){const r=await be.createProject(projName||"My first kitchen",currentPayload());curId=r.id;curVersion=Number.isInteger(r.version)?r.version:null;projName=projName||"My first kitchen";}
-    else if(!isExample&&local&&(local.items||[]).length){const r=await be.createProject(projName||"Untitled kitchen",currentPayload());curId=r.id;curVersion=Number.isInteger(r.version)?r.version:null;projName=projName||"Untitled kitchen";}
-    else{const row=await be.loadProject(list[0].id);if(row&&adopt(row.data)){curId=row.id;curVersion=Number.isInteger(row.version)?row.version:null;projName=row.name||projName;}}
-    localStorage.setItem("ks.curId",curId||"");saveLabel("Saved online");syncPdfName();}
-  catch(e){saveLabel("Saved on this device, not online");}}
+let cloudSyncPending=null;
+function cloudSync(){
+  if(cloudSyncPending)return cloudSyncPending;
+  cloudSyncPending=syncCurrentAccount().finally(()=>{cloudSyncPending=null;});return cloudSyncPending;
+}
+async function syncCurrentAccount(){
+  acctUI();if(!be||!be.user()||(access&&!access.isReady()))return;
+  const syncOwner=be.user().id,current=()=>be.user()?.id===syncOwner&&(!access||access.isReady());
+  flushLocal();
+  custom=[...custom.filter(e=>!e.intake),...loadIntakeModels()];
+  try{const remote=await be.listEquipment();if(!current())return;const seen=new Set(remote.map(e=>e.cid));for(const c of custom)if(!seen.has(c.cid)){remote.push(c);be.saveEquipment(c).catch(()=>{});}
+    custom=remote.filter(e=>e&&e.brand&&e.w>0).sort((a,b)=>(b.cid||'').localeCompare(a.cid||''));saveCustomLocal();renderResults();}catch(_){}
+  if(!current()||sharedFrom)return;
+  try{
+    const list=await be.listProjects();if(!current())return;projList=list;
+    flushLocal();let local=null;try{local=JSON.parse(localStorage.getItem('ks.project')||'null');}catch(_){}
+    const localId=localStorage.getItem('ks.curId')||'';
+    if(curId&&list.some(p=>p.id===curId)){
+      const revision=analyticsRevision,row=await be.loadProject(curId);if(!current())return;
+      curVersion=row&&Number.isInteger(row.version)?row.version:null;
+      if(revision!==analyticsRevision){await persist();return;}
+      if(row&&row.data&&!(local&&localId===curId&&(local.at||0)>(row.data.at||0))){adopt(row.data);projName=row.name||projName;}
+      else await persist();
+    }else if(!isExample){
+      const r=await be.createProject(projName||'Untitled kitchen',currentPayload());if(!current())return;
+      curId=r.id;curVersion=Number.isInteger(r.version)?r.version:null;projName=projName||'Untitled kitchen';
+      measure('Project Created',{storage:'cloud',example_layout:false});measure('Project Saved',{storage:'cloud',example_layout:false});persistLocal();
+    }else if(list.length){
+      const revision=analyticsRevision,row=await be.loadProject(list[0].id);if(!current())return;
+      if(revision!==analyticsRevision){saveLabel('Saved on this device — choose Save to my kitchens');return;}
+      if(row&&adopt(row.data)){curId=row.id;curVersion=Number.isInteger(row.version)?row.version:null;projName=row.name||projName;}
+    }
+    if(!current())return;localStorage.setItem('ks.curId',curId||'');saveLabel(curId?'Saved online':'Example layout — edit it or create a kitchen to save');syncPdfName();
+  }catch(e){if(current())saveLabel('Saved on this device, not online');}
+}
 
 async function boot(){
   ssInit();renderChips();renderResults();
@@ -1168,6 +1203,12 @@ async function boot(){
   new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(render);
   be=window.KS_backend||null;
+  if(window.KS_CONFIG?.accessPolicy&&window.KS_createAccess){
+    if(be)await be.ready;
+    access=window.KS_access=window.KS_createAccess({backend:be,measure,onReady:async()=>{await cloudSync();if(consentId())runConsent(consentId());}});
+    if(be)be.onAuth(async u=>{if(access)await access.authChanged(u);intakeUI.authChanged();custom=[...custom.filter(e=>!e.intake),...loadIntakeModels()];renderResults();acctUI();if(u){closeDlg();toast(`Signed in as ${u.email||"you"}.`);if(consentId())runConsent(consentId());await cloudSync();}else{curId=null;curVersion=null;localStorage.setItem("ks.curId","");saveLabel("Saved on this device · sign in to save online");toast("Signed out. Your kitchen stays on this device.");}});
+    await access.start();
+  }
   if(be){curId=localStorage.getItem("ks.curId")||null;if(curId==="")curId=null;
     $("aiBriefBox").hidden=false;$("aiNoBrief").hidden=false;
     await be.ready;acctUI();if(be.linkError&&be.linkError())toast(be.linkError());
@@ -1175,7 +1216,6 @@ async function boot(){
     const shared=await loadSharedFromUrl();
     if(!shared)await cloudSync();else if(be.user())cloudSync();
     if(!be.user()&&!shared)saveLabel(isExample?"Example layout · sign in to save online":"Saved on this device · sign in to save online");
-    be.onAuth(async u=>{intakeUI.authChanged();custom=[...custom.filter(e=>!e.intake),...loadIntakeModels()];renderResults();acctUI();if(u){closeDlg();toast(`Signed in as ${u.email||"you"}.`);if(consentId())runConsent(consentId());await cloudSync();}else{curId=null;curVersion=null;localStorage.setItem("ks.curId","");saveLabel("Saved on this device · sign in to save online");toast("Signed out. Your kitchen stays on this device.");}});
     return;}
   const use=window.claude&&window.claude.use?n=>window.claude.use(n).catch(()=>null):()=>Promise.resolve(null);
   $("aiBriefBox").hidden=false;$("aiNoBrief").hidden=false;
@@ -1242,13 +1282,15 @@ function addPerson(){const R=state.room,it=Object.assign({id:newId(),kind:"arch"
 $("personBtn").addEventListener("click",addPerson);
 
 const intakeUI=KS_createIntake({
+  canUse:()=>allowed("custom_equipment"),
   catalogue:BASE,categories:CATS,owner:()=>be&&be.user()?be.user().id:null,
   download:save,
   pdfReady:async()=>{if(typeof pdfjsLib==="undefined"){await loadScript("pdfjs-src","https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js");await loadScript("pdfjs-worker-src","https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js");}},
-  saveLocal:async e=>{const next=custom.filter(c=>c.cid!==e.cid);next.unshift(e);const previous=custom;custom=next;if(!saveCustomLocal()){custom=previous;throw new Error("Equipment could not be saved: browser storage is full.");}renderChips();renderResults();},
+  saveLocal:async e=>{if(!allowed("custom_equipment"))throw new Error("Sign in to add your own equipment.");const next=custom.filter(c=>c.cid!==e.cid);next.unshift(e);const previous=custom;custom=next;if(!saveCustomLocal()){custom=previous;throw new Error("Equipment could not be saved: browser storage is full.");}renderChips();renderResults();},
   sync:async e=>{if(!be||!be.user())throw new Error("Sign in first");await be.saveEquipment(e);},
   request:async r=>{if(!be||!be.user())throw new Error("Sign in first");await be.report(r);},
-  placeBatch:(equipment,quantity,batchId)=>{let added=0;for(let n=0;n<quantity;n++){const intakePlacement=batchId+":"+n;if(state.items.some(i=>i.intakePlacement===intakePlacement))continue;const it={...JSON.parse(JSON.stringify(equipment)),id:newId(),x:0,y:0,rot:0,kind:"eq",intakePlacement};state.items.push(it);findSpot(it);sel=it.id;added++;}if(added)equipmentAdded("intake",added);changed();if(!persistLocal())throw new Error("The layout could not be saved on this device. Free browser storage and retry before closing.");}
+  placeBatch:(equipment,quantity,batchId)=>{if(!allowed("custom_equipment"))throw new Error("Sign in to add equipment from a quotation.");let added=0;for(let n=0;n<quantity;n++){const intakePlacement=batchId+":"+n;if(state.items.some(i=>i.intakePlacement===intakePlacement))continue;const it={...JSON.parse(JSON.stringify(equipment)),id:newId(),x:0,y:0,rot:0,kind:"eq",intakePlacement};state.items.push(it);findSpot(it);sel=it.id;added++;}if(added)equipmentAdded("intake",added);changed();if(!persistLocal())throw new Error("The layout could not be saved on this device. Free browser storage and retry before closing.");}
 });
+document.querySelectorAll('a[href="/connect/"]').forEach(link=>link.addEventListener("click",e=>{if(!allowed("mcp"))e.preventDefault();}));
 boot();
 })();

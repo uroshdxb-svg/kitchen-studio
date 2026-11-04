@@ -12,7 +12,7 @@
     function notice(text){$("intakeMessage").textContent=text;}
     function active(token){return token===generation&&owner===scope();}
     function load(){owner=scope();try{const d=JSON.parse(localStorage.getItem(storageKey())||"null");draft=d&&d.schema===1&&Array.isArray(d.rows)&&d.rows.length<=I.LIMITS.rows?d:null;}catch(_){draft=null;}}
-    function open(){generation++;load();render();dialog.showModal();}
+    function open(){if(hooks.canUse&&!hooks.canUse())return;generation++;load();render();dialog.showModal();}
     function close(){if(busy)return;dialog.close();generation++;}
     $("intakeOpen").onclick=open;$("intakeClose").onclick=close;
     dialog.addEventListener("cancel",e=>{if(busy)e.preventDefault();else generation++;});
@@ -33,7 +33,7 @@
         <div class="intake-upload"><label for="intakeFile"><b>Choose a quotation or specification</b></label><input id="intakeFile" type="file" accept=".pdf,.png,.jpg,.jpeg,.webp,.csv,.tsv,.txt">
         <p class="note">PDF (up to 4 pages), photo, CSV or tab-separated table. Up to 10 MB and 50 equipment lines. Export Excel files as CSV.</p></div>
         <div class="fld"><label for="intakeText">Or paste equipment lines</label><textarea id="intakeText" rows="5" maxlength="60000" placeholder="Paste a quotation excerpt or a table with Brand, Model, Qty, Width mm, Depth mm, Height mm…"></textarea></div>
-        <p class="note">Files are read on your device. No AI service, API key or sign-in is needed. Image text recognition supports printed English; check model numbers and measurements carefully. Original files and recognized text are not stored. Equipment review drafts stay in this browser.</p>
+        <p class="note">Files are read on your device. Custom equipment is available during your three-day guest trial; a free account keeps it unlocked. Image text recognition supports printed English; check model numbers and measurements carefully. Original files and recognized text are not stored. Equipment review drafts stay in this browser.</p>
         <div class="bar"><button id="intakeRead" class="btn pri">Review equipment</button><button id="intakeCancel" class="btn" hidden>Cancel reading</button><button id="intakeManual" class="btn">Enter manually</button><button id="intakeTemplate" class="btn sm">Sample CSV</button>${owner!=="device"?'<button id="intakeDevice" class="btn sm">Open this device’s draft</button>':''}</div>`;
         $("intakeRead").onclick=read;$("intakeManual").onclick=()=>start([I.normalize({})]);
         $("intakeCancel").onclick=()=>readController?.abort();
@@ -135,6 +135,7 @@
       }finally{bitmap.close();cv.width=cv.height=0;}
     }
     async function read(){
+      if(hooks.canUse&&!hooks.canUse())return;
       const file=$("intakeFile").files[0],text=$("intakeText").value.trim(),token=generation;
       if(file&&text){notice("Choose a file or pasted text, so the source is unambiguous.");return;}
       if(!file&&!text){notice("Choose a document, paste equipment lines or enter manually.");return;}
@@ -158,6 +159,7 @@
       }
     }
     async function apply(add){
+      if(hooks.canUse&&!hooks.canUse())return;
       const selected=draft.rows.filter(r=>r.selected&&!r.placed),fresh=selected.filter(r=>!r.saved),token=generation;
       if(!selected.length){notice("Select at least one line that has not already been added.");return;}
       if(fresh.some(r=>!r.confirmed||I.validate(effective(r)).length)){notice("Confirm each selected line and complete its dimensions and placement. Uncheck incomplete lines to keep them as drafts.");return;}
