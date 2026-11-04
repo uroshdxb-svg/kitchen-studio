@@ -56,7 +56,7 @@ const list2=await page.evaluate(()=>JSON.parse(localStorage.getItem("ks.mock")).
 check(/Café Riyadh/.test(await page.textContent("#saveState")),"header shows new kitchen name");
 check((await page.evaluate(()=>document.querySelectorAll(".it").length))===0,"new kitchen is empty");
 
-check(await page.evaluate(()=>window.__metrics.some(e=>e.name==="Project Created")&&window.__metrics.some(e=>e.name==="Project Saved"&&e.details.storage==="cloud")),"successful project creation reports creation and cloud save");
+check(await page.evaluate(()=>window.__metrics.some(e=>e.name==="Project Created"&&e.details.storage==="cloud"&&e.details.example_layout===false)&&window.__metrics.some(e=>e.name==="Project Saved"&&e.details.storage==="cloud")),"successful project creation reports a real kitchen and cloud save");
 console.log("4. share link");
 await page.click("#menuBtn");await page.click("#mShare");await page.waitForTimeout(400);
 const url=await page.inputValue("#shUrl");check(/\/k\/[A-Za-z0-9]{8,}/.test(url),"share url: "+url);
