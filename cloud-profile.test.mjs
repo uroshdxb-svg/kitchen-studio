@@ -10,7 +10,8 @@ function backend(user=verifiedUser){
   const sb={auth:{
     getSession:async()=>({data:{session:user?{user}:null}}),
     onAuthStateChange:f=>{authChange=f;},
-    signInWithOtp:async args=>{calls.push({kind:'email',args});return {error:null};}
+    signInWithOtp:async args=>{calls.push({kind:'email',args});return {error:null};},
+    updateUser:async args=>{calls.push({kind:'metadata',args});user={...user,user_metadata:{...user?.user_metadata,...args.data}};return {data:{user},error:null};}
   },from:table=>{
     const q={table,filters:[]};calls.push(q);
     const chain={select:fields=>{q.fields=fields;return chain;},eq:(key,value)=>{q.filters.push([key,value]);return chain;},update:row=>{q.update=row;return chain;},maybeSingle:async()=>({data:{id:user.id,...profile},error:null}),single:async()=>({data:{id:user.id,...q.update,onboarding_completed_at:'2026-11-04T00:00:00Z'},error:null})};
@@ -44,6 +45,18 @@ test('passwordless signup carries only the validated survey answers',async()=>{
   await B.signInEmail('chef@example.test','https://kitchenstudio.design/app/',{...profile,plan:'admin'});
   assert.equal(calls[0].args.options.emailRedirectTo,'https://kitchenstudio.design/app/');
   assert.deepEqual(JSON.parse(JSON.stringify(calls[0].args.options.data)),profile);
+});
+
+test('discovery source is optional, allowlisted and persisted through email metadata and profile updates',async()=>{
+  const {B,calls}=backend();await B.ready;
+  await B.signInEmail('chef@example.test',undefined,{...profile,discovery_source:'ai'});
+  assert.equal(calls[0].args.options.data.discovery_source,'ai');
+  const saved=await B.saveProfile({...profile,discovery_source:'recommendation'});
+  assert.equal(calls[1].kind,'metadata');assert.deepEqual(JSON.parse(JSON.stringify(calls[1].args)),{data:{discovery_source:'recommendation'}});
+  assert.equal(saved.discovery_source,'recommendation');
+  assert.equal((await B.getProfile()).discovery_source,'recommendation');
+  await B.signInEmail('chef@example.test',undefined,{...profile,discovery_source:'private@email.test'});
+  assert.equal(calls.at(-1).args.options.data.discovery_source,undefined);
 });
 
 test('anonymous and unconfirmed sessions cannot access account features',async()=>{

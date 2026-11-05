@@ -1106,6 +1106,10 @@ function openReport(pre){
       $("dlgBody").innerHTML=`<p>Thanks, it's in. ${u||em?"You'll hear back by email if there's a question.":"Add your email next time if you'd like a reply."}</p><div class="bar"><button class="btn pri" id="rpDone">Close</button></div>`;$("rpDone").onclick=closeDlg;}
     catch(e){$("rpSend").disabled=false;$("rpNote").textContent="It didn't send: "+(e.message||"try again in a minute.");}};}
 $("mReport").addEventListener("click",()=>openReport());
+const customerLoop=window.KS_createEngagement({backend:()=>be,open:openDlg,close:closeDlg,measure});
+$("updatesBtn").addEventListener("click",()=>customerLoop.updates());
+$("mUpdates").addEventListener("click",()=>customerLoop.updates());
+$("mResearch").addEventListener("click",()=>customerLoop.research());
 $("kitchensBtn").addEventListener("click",()=>{if(!be.user())openSignIn();else openKitchens();});
 $("mKitchens").addEventListener("click",()=>{if(!be.user())openSignIn();else openKitchens();});
 $("mShare").addEventListener("click",()=>shareCurrent());

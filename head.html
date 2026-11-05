@@ -55,6 +55,14 @@ button{cursor:pointer;border:0;background:none;padding:0}
 .iconbtn{width:36px;height:36px;border-radius:var(--pill);display:grid;place-items:center;color:var(--ink);background:transparent}
 .iconbtn:hover{background:var(--sunk)}
 .iconbtn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.top .iconbtn{flex-shrink:0;position:relative}
+.top .save{min-width:0;max-width:240px;overflow:hidden;text-overflow:ellipsis}
+#ksUpdatesMenuBadge{position:absolute;right:3px;top:3px;width:7px;height:7px;background:var(--primary);border-radius:50%}
+@media(max-width:599px){
+  #updatesBtn{display:none}
+  .top{gap:6px;padding:0 8px}
+  .top .seg button{padding:0 9px;font-size:12px}
+}
 .save{font-family:var(--f-mono);font-size:11px;color:var(--muted);white-space:nowrap;display:none}
 @media (min-width:720px){.save{display:block}}
 select.mini{border:1px solid var(--line);background:var(--surface);border-radius:var(--pill);padding:0 30px 0 12px;height:32px;font-weight:600;font-size:13px;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2366727F' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
@@ -281,7 +289,8 @@ body:has(#banner:not([hidden])) .ks-trial-notice{display:none}
     <div class="grow"></div>
     <div class="save" id="saveState" aria-live="polite">Example layout</div>
     <button class="iconbtn" id="kitchensBtn" aria-label="My kitchens" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5A1.5 1.5 0 0 1 4.5 6h4.2l1.8 2h9A1.5 1.5 0 0 1 21 9.5v8A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5z"/></svg></button>
-    <button class="iconbtn" id="menuBtn" aria-label="More" aria-expanded="false"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/></svg></button>
+    <button class="btn sm" id="updatesBtn">What's new <span id="ksUpdatesBadge" hidden>●</span></button>
+    <button class="iconbtn" id="menuBtn" aria-label="More" aria-expanded="false"><span id="ksUpdatesMenuBadge" hidden></span><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/></svg></button>
     <div class="menu" id="menu" hidden>
       <div class="menu-acct" id="acctRow" hidden></div>
       <button id="mKitchens" hidden>My kitchens</button>
@@ -289,6 +298,8 @@ body:has(#banner:not([hidden])) .ks-trial-notice{display:none}
       <button id="mSignIn" hidden>Sign in to save online</button>
       <div class="menu-sep" id="acctSep" hidden></div>
       <a class="menu-link" id="mConnect" href="/connect/" target="_blank" rel="noopener">Connect an AI agent ↗</a>
+      <button id="mUpdates">What's new</button>
+      <button id="mResearch">Help shape Kitchen Studio</button>
       <button id="mReport">Report a gap</button>
       <div class="menu-sep"></div>
       <button id="projSave">Save project file</button>
