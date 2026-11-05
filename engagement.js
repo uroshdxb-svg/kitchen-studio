@@ -14,10 +14,12 @@
   root.KS_createEngagement=function({backend=()=>null,open,close,measure=()=>{}}){
     const doc=root.document,$=id=>doc.getElementById(id),seenKey='ks.updates.seen.v1';
     const seen=()=>{try{return root.localStorage.getItem(seenKey);}catch(_){return null;}};
-    const badge=$('ksUpdatesBadge');if(badge)badge.hidden=seen()===RELEASES[0].id;
+    const badges=[$('ksUpdatesBadge'),$('ksUpdatesMenuBadge')].filter(Boolean),menu=$('menuBtn');
+    function markRead(read){badges.forEach(b=>b.hidden=read);menu?.setAttribute('aria-label',read?'More':'More: new product updates');}
+    markRead(seen()===RELEASES[0].id);
     function updates(){
       open("What's new",`<p>Recent improvements to Kitchen Studio.</p>${RELEASES.map(r=>`<article><p class="note">${esc(r.date)}</p><h3>${esc(r.title)}</h3><ul>${r.items.map(i=>`<li>${esc(i)}</li>`).join('')}</ul></article>`).join('')}<div class="bar"><button class="btn pri" id="ksUpdateFeedback">Tell us what to build next</button><button class="btn" id="ksUpdateClose">Close</button></div>`);
-      try{root.localStorage.setItem(seenKey,RELEASES[0].id);}catch(_){}if(badge)badge.hidden=true;
+      try{root.localStorage.setItem(seenKey,RELEASES[0].id);}catch(_){}markRead(true);
       measure('Updates Viewed');$('ksUpdateFeedback').onclick=research;$('ksUpdateClose').onclick=close;
     }
     function research(){

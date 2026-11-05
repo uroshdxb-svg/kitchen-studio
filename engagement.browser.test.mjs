@@ -17,8 +17,12 @@ try{
   await context.addInitScript({content:fs.readFileSync('mock-backend.js','utf8')+'\nwindow.__events=[];window.KS_analytics={track:(name,details)=>__events.push({name,details}),identify:()=>{},reset:()=>{}};'});
   const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
   await page.goto(base+'/app/');await page.waitForFunction(()=>window.KS_access);
-  assert.equal(await page.locator('#ksUpdatesBadge').isVisible(),true);
-  await page.click('#updatesBtn');await page.waitForSelector('#ksUpdateFeedback');
+  for(const width of [320,390]){
+    await page.setViewportSize({width,height:844});
+    assert.ok(await page.locator('#menuBtn').evaluate(e=>{const r=e.getBoundingClientRect();return r.left>=0&&r.right<=innerWidth;}),'phone menu remains inside viewport');
+  }
+  assert.equal(await page.locator('#ksUpdatesMenuBadge').isVisible(),true);
+  await page.click('#menuBtn');await page.click('#mUpdates');await page.waitForSelector('#ksUpdateFeedback');
   assert.equal(await page.locator('#ksUpdatesBadge').isVisible(),false);
   assert.ok(await page.locator('#dlg').evaluate(e=>e.scrollWidth<=e.clientWidth+1));
   await page.click('#ksUpdateFeedback');
@@ -43,7 +47,7 @@ try{
   assert.equal(report.project,null);assert.equal(report.email,'tester@example.com');
   assert.equal(await page.evaluate(()=>JSON.stringify(__events).includes('tester@example.com')),false);
   assert.equal(await page.evaluate(()=>JSON.stringify(__events).includes('extraction')),false);
-  await page.click('#ksResearchDone');await page.reload();await page.waitForSelector('#updatesBtn');
+  await page.click('#ksResearchDone');await page.reload();await page.waitForSelector('#menuBtn');
   assert.equal(await page.locator('#ksUpdatesBadge').isVisible(),false,'read updates stay read');
   // Optional signup attribution survives passwordless signup without becoming an access condition.
   await page.setViewportSize({width:1280,height:900});await page.click('#t-sch');await page.click('#expCsv');await page.fill('#ksEmail','signup@example.com');
@@ -51,6 +55,11 @@ try{
   await page.selectOption('#ksCountry','AE');await page.selectOption('#ksRole','chef');await page.selectOption('#ksUseCase','new_opening');await page.selectOption('#ksDiscovery','recommendation');
   await page.click('#ksAccessSubmit');await page.waitForFunction(()=>KS_access.isReady());
   assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('ks.mock')).profile.discovery_source),'recommendation');
+  for(const width of [320,390]){
+    await page.setViewportSize({width,height:844});
+    await page.click('#menuBtn');assert.equal(await page.locator('#menu').isVisible(),true);await page.click('#menuBtn');
+  }
   assert.deepEqual(errors,[]);
   console.log('PASS: mobile updates, read persistence, optional source, research validation, consent, private answers, failed-send recovery, signup attribution');
 }finally{await context.close();await browser.close();}
+
